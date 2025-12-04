@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Humidificador Ultrasónico",
+        "desc": "Mantiene la humedad ideal para evitar sequedad nasal.",
+        "url": "#", 
+        "icon": "💧"
+    },
+    {
+        "id": 2,
+        "name": "Saco de Dormir Bebé",
+        "desc": "Más seguro que las mantas sueltas, temperatura constante.",
+        "url": "#",
+        "icon": "😴" 
+    },
+    {
+        "id": 3,
+        "name": "Swaddle (Arrullo)",
+        "desc": "Evita el reflejo de Moro y recrea la presión del útero.",
+        "url": "#",
+        "icon": "🌯"
+    },
+    {
+        "id": 4,
+        "name": "Fular Portabebés",
+        "desc": "Calma inmediata gracias al contacto piel con piel.",
+        "url": "#",
+        "icon": "🦘"
+    },
+    {
+        "id": 5,
+        "name": "Luz Nocturna Roja",
+        "desc": "Ilumina sin interrumpir la producción de melatonina.",
+        "url": "#",
+        "icon": "💡"
+    }
+]
