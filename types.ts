@@ -1,4 +1,3 @@
-
 export enum SoundType {
   WHITE_NOISE = 'WHITE_NOISE',
   RAIN = 'RAIN',

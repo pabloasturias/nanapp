@@ -1,4 +1,3 @@
-
 export type Language = 'es' | 'en' | 'de' | 'fr' | 'pt' | 'it';
 
 export const translations = {
@@ -39,6 +38,8 @@ export const translations = {
     layer_heartbeat: "Capa Latidos",
     layer_heartbeat_desc: "Añadir latido de fondo a todo",
     language: "Idioma",
+    settings_timer_default: "Tiempo Inicial",
+    settings_timer_desc: "Duración al abrir la app",
 
     // Common
     why_works: "¿Por qué funciona?",
@@ -172,7 +173,6 @@ export const translations = {
     legal_med_title: "Aviso Médico",
     legal_med: "Esta app es una herramienta de apoyo y no sustituye el consejo médico. Ante fiebre, cólicos severos o dudas, consulta siempre a tu pediatra.",
 
-    // Why Modal
     why_womb_title: "Efecto Útero",
     why_womb_desc: "El útero es ruidoso (90dB). El silencio asusta a los recién nacidos.",
     why_mask_title: "Enmascaramiento",
@@ -221,6 +221,8 @@ export const translations = {
     layer_heartbeat: "Heartbeat Layer",
     layer_heartbeat_desc: "Add background heartbeat to everything",
     language: "Language",
+    settings_timer_default: "Default Timer",
+    settings_timer_desc: "Startup duration",
     why_works: "Why it works?",
     temp_range: "68°F - 72°F",
     back: "Back",
@@ -374,6 +376,8 @@ export const translations = {
     layer_heartbeat: "Herzschlag-Ebene",
     layer_heartbeat_desc: "Hintergrund-Herzschlag hinzufügen",
     language: "Sprache",
+    settings_timer_default: "Standard-Timer",
+    settings_timer_desc: "Startdauer",
     why_works: "Warum es wirkt?",
     temp_range: "20°C - 22°C",
     back: "Zurück",
@@ -527,6 +531,8 @@ export const translations = {
     layer_heartbeat: "Calque Battement",
     layer_heartbeat_desc: "Ajouter battement de cœur en fond",
     language: "Langue",
+    settings_timer_default: "Minuterie par défaut",
+    settings_timer_desc: "Durée au démarrage",
     why_works: "Pourquoi ça marche ?",
     temp_range: "20°C - 22°C",
     back: "Retour",
@@ -680,6 +686,8 @@ export const translations = {
     layer_heartbeat: "Camada Batimentos",
     layer_heartbeat_desc: "Adicionar batimentos de fundo",
     language: "Idioma",
+    settings_timer_default: "Timer Padrão",
+    settings_timer_desc: "Duração ao iniciar",
     why_works: "Por que funciona?",
     temp_range: "20°C - 22°C",
     back: "Voltar",
@@ -833,6 +841,8 @@ export const translations = {
     layer_heartbeat: "Livello Battito",
     layer_heartbeat_desc: "Aggiungi battito cardiaco di sottofondo",
     language: "Lingua",
+    settings_timer_default: "Timer Predefinito",
+    settings_timer_desc: "Durata iniziale",
     why_works: "Perché funziona?",
     temp_range: "20°C - 22°C",
     back: "Indietro",

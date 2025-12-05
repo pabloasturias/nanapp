@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Heart, Music, Sparkles, BookOpen, ArrowLeft } from 'lucide-react';
+import { Heart, Music, Sparkles, BookOpen, ArrowLeft, Star } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface StoryViewProps {
@@ -78,11 +77,19 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
 
             </div>
 
-            {/* Signature / Dedication */}
-            <div className="text-center pt-8 pb-4 space-y-2">
+            {/* Signature / Dedication (Vega's Wink) */}
+            <div className="text-center pt-8 pb-4 space-y-4">
                 <p className="font-['Quicksand'] text-sm text-orange-100 italic opacity-60">"{t('story_quote')}"</p>
-                <div className="pt-4">
-                     <p className="text-[10px] text-orange-200/40 uppercase tracking-widest font-bold">{t('inspired_by')}</p>
+                
+                <div className="flex justify-center">
+                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-950/30 border border-indigo-500/10">
+                        <p className="text-[10px] text-indigo-200 uppercase tracking-widest font-bold">{t('inspired_by')}</p>
+                        {/* Vega Star Icon */}
+                        <div className="relative">
+                            <Star size={12} className="text-amber-200 fill-amber-200 animate-pulse" />
+                            <div className="absolute inset-0 bg-amber-200 blur-sm opacity-50 animate-pulse"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X, Brain, Ear, Activity } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Package, HeartHandshake, ShoppingBag, Lightbulb, Sparkles, Cat, Hand, Smile, EyeOff, AlertCircle, Music2, Ghost, Utensils, Layers, ShieldAlert, Milk, PauseCircle, Footprints, Flower2, Sunrise, Moon } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';

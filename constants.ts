@@ -1,4 +1,3 @@
-
 import { SoundType, SoundOption, TimerOption } from './types';
 
 export const SOUNDS: SoundOption[] = [

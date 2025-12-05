@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { X, Heart, Star, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
@@ -29,9 +28,10 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
         
         {/* Header Image / Icon */}
         <div className="bg-gradient-to-b from-orange-500/20 to-slate-900/50 p-6 flex justify-center pt-8 relative">
-             {/* Floating Stars Animation */}
+             {/* Floating Stars Animation (Vega Wink) */}
              <div className="absolute top-4 left-8 text-orange-400/40 animate-pulse"><Star size={14} fill="currentColor" /></div>
-             <div className="absolute top-8 right-10 text-orange-300/40 animate-bounce"><Star size={10} fill="currentColor" /></div>
+             <div className="absolute top-8 right-10 text-amber-300/60 animate-bounce delay-100"><Star size={12} fill="currentColor" /></div>
+             <div className="absolute bottom-6 left-12 text-orange-300/30 animate-pulse delay-300"><Star size={8} fill="currentColor" /></div>
 
             <div className="p-4 bg-orange-500 rounded-full text-white shadow-[0_0_30px_rgba(249,115,22,0.4)] relative z-10">
                 <Heart size={40} fill="currentColor" />

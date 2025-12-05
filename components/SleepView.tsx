@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Moon, Thermometer, ShieldCheck, TrendingUp, Smile, Clock, Zap, Sun, Brain, AlertCircle, Shirt, Stethoscope, Activity } from 'lucide-react';
+import { Moon, Thermometer, ShieldCheck, TrendingUp, Smile, Clock, Zap, Sun, Brain, AlertCircle, Shirt, Stethoscope, Activity, Shield } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 export const SleepView: React.FC = () => {
@@ -227,6 +226,20 @@ export const SleepView: React.FC = () => {
                         <p className="text-xs text-slate-300 mt-1 leading-relaxed">{t('crisis_12m_desc')}</p>
                     </div>
                 </div>
+            </div>
+
+            {/* LEGAL DISCLAIMER */}
+            <div className="px-4 py-6 mt-4 opacity-50 hover:opacity-80 transition-opacity">
+                <div className="flex gap-3 mb-2">
+                    <Shield size={16} className="text-slate-400 shrink-0 mt-0.5" />
+                    <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
+                        <strong>{t('legal_title')}</strong>
+                    </p>
+                </div>
+                <p className="text-[10px] text-slate-500 leading-relaxed pl-7">
+                    {t('legal_vol')}<br/><br/>
+                    {t('legal_med')}
+                </p>
             </div>
 
         </div>

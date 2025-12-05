@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Play, Pause, Square, Plus, Minus, Clock } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';

@@ -173,7 +173,7 @@ const AppContent: React.FC = () => {
               navigator.mediaSession.playbackState = 'none';
           }
       }
-  }, [isPlaying, isPaused, currentSound, language, t]); // Added t to dependencies to update if lang changes while playing
+  }, [isPlaying, isPaused, currentSound, language, t]); 
 
 
   // --- Audio Handlers ---
@@ -287,6 +287,14 @@ const AppContent: React.FC = () => {
       showNotification(`${t('timer')}: ${newDuration}m`);
   };
 
+  const handleSetTimer = (minutes: number) => {
+      setTimerDuration(minutes);
+      if (isPlaying && timerRemaining !== null) {
+      } else {
+          setTimerRemaining(null);
+      }
+  };
+
   const handleToggleTimerActive = () => {
       const newState = !isTimerActive;
       setIsTimerActive(newState);
@@ -298,7 +306,6 @@ const AppContent: React.FC = () => {
       }
   };
 
-  // --- Gestures ---
   const lastTapRef = useRef(0);
   const handleBackgroundClick = () => {
       const now = Date.now();
@@ -309,7 +316,6 @@ const AppContent: React.FC = () => {
       lastTapRef.current = now;
   };
 
-  // --- Conditional Render Logic ---
   const renderContent = () => {
       if (activeTab === 'story') {
           return <StoryView onBack={() => setActiveTab('sounds')} />;
@@ -322,7 +328,6 @@ const AppContent: React.FC = () => {
       }
       return (
         <>
-            {/* Sounds Header & Help */}
             <div className="shrink-0 flex items-center justify-between px-6 mb-2">
                  <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
                  <button 
@@ -334,7 +339,6 @@ const AppContent: React.FC = () => {
                  </button>
             </div>
 
-            {/* Flexible Grid - Sounds */}
             <div className="flex-1 min-h-0 grid grid-cols-2 gap-3 mb-1 auto-rows-fr animate-[fade-in_0.3s_ease-out] px-6">
                 {SOUNDS.map(sound => (
                     <SoundButton
@@ -346,7 +350,6 @@ const AppContent: React.FC = () => {
                 ))}
             </div>
 
-            {/* Status Indicator */}
             <div className="shrink-0 h-6 flex items-center justify-center mb-1">
                 {isPlaying && (
                     <div className="flex items-center gap-2">
@@ -361,7 +364,6 @@ const AppContent: React.FC = () => {
                 )}
             </div>
 
-            {/* Fixed Controls */}
             <div className="shrink-0 px-6 pb-2" onClick={(e) => e.stopPropagation()}>
                 <Controls 
                     isPlaying={isPlaying}
@@ -383,14 +385,12 @@ const AppContent: React.FC = () => {
 
   return (
     <div 
-        className="relative h-screen w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950"
+        className="relative h-[100dvh] w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950"
         onClick={handleBackgroundClick}
     >
       
-      {/* Background Layer: Only render if page is visible to save battery */}
       {isPageVisible && <Visualizer isActive={isPlaying} type="calm" />}
       
-      {/* Modals */}
       <SettingsModal 
         isOpen={showSettings} 
         onClose={() => setShowSettings(false)} 
@@ -399,6 +399,7 @@ const AppContent: React.FC = () => {
         isMuted={isMuted} onToggleMute={handleToggleMute}
         fadeDuration={fadeDuration} onFadeChange={handleFadeChange}
         heartbeatLayer={heartbeatLayer} onToggleHeartbeatLayer={handleToggleHeartbeatLayer}
+        timerDuration={timerDuration} onTimerChange={handleSetTimer}
         onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
       />
       <WhyItWorksModal 
@@ -416,10 +417,8 @@ const AppContent: React.FC = () => {
       />
       <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
-      {/* Main Layout Container */}
-      <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-24">
+      <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-[calc(5rem+env(safe-area-inset-bottom))]">
             
-            {/* Header with Contrast Background */}
             <header className="shrink-0 w-full flex items-center justify-between mb-2 p-4 pt-safe bg-slate-900/60 backdrop-blur-md border-b border-white/5 rounded-b-[2.5rem] shadow-lg">
                 <button 
                     onClick={() => setActiveTab('story')}
@@ -449,13 +448,11 @@ const AppContent: React.FC = () => {
                 </div>
             </header>
 
-            {/* Dynamic Content */}
             {renderContent()}
       </div>
 
-      {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 left-0 w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 safe-area-bottom rounded-t-[2rem]">
-          <div className="flex justify-around items-center max-w-lg mx-auto h-20 pb-2">
+      <div className="fixed bottom-0 left-0 w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 rounded-t-[2rem] pb-[env(safe-area-inset-bottom)]">
+          <div className="flex justify-around items-center max-w-lg mx-auto h-20">
               <button 
                 onClick={() => setActiveTab('sounds')}
                 className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'sounds' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
@@ -485,7 +482,6 @@ const AppContent: React.FC = () => {
   );
 };
 
-// --- Main Wrapper ---
 const App: React.FC = () => {
     return (
         <LanguageProvider>

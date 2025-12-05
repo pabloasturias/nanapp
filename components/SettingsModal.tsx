@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight, Clock } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface SettingsModalProps {
@@ -16,7 +15,9 @@ interface SettingsModalProps {
   onFadeChange: (val: number) => void;
   heartbeatLayer: boolean;
   onToggleHeartbeatLayer: () => void;
-  onOpenLegal: () => void; // New prop
+  onOpenLegal: () => void;
+  timerDuration: number;
+  onTimerChange: (val: number) => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ 
@@ -25,7 +26,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     volume, onVolumeChange, isMuted, onToggleMute,
     fadeDuration, onFadeChange,
     heartbeatLayer, onToggleHeartbeatLayer,
-    onOpenLegal
+    onOpenLegal,
+    timerDuration, onTimerChange
 }) => {
   const { t, language, setLanguage } = useLanguage();
 
@@ -33,6 +35,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
         onClick={onClose}
@@ -117,6 +120,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 />
             </div>
 
+            {/* Timer Default Setting */}
+            <div className="bg-slate-800/30 p-4 rounded-3xl border border-slate-700/30">
+                <div className="flex items-center gap-3 mb-4">
+                    <Clock size={18} className="text-teal-300" />
+                    <div>
+                        <span className="text-sm font-semibold text-orange-50 block">{t('settings_timer_default')}</span>
+                        <span className="text-[10px] text-slate-400">{t('settings_timer_desc')}</span>
+                    </div>
+                    <span className="ml-auto text-xs font-mono text-teal-200">{timerDuration}m</span>
+                </div>
+                <input
+                    type="range"
+                    min="10"
+                    max="120"
+                    step="5"
+                    value={timerDuration}
+                    onChange={(e) => onTimerChange(parseInt(e.target.value, 10))}
+                    className="w-full h-2 bg-slate-700 rounded-full appearance-none cursor-pointer accent-teal-400 hover:accent-teal-300 focus:outline-none"
+                />
+            </div>
+
             {/* PRO AUDIO SECTION */}
             <div className="space-y-4">
                 <h3 className="px-1 text-xs font-bold text-slate-500 uppercase tracking-widest">{t('settings_pro_audio')}</h3>
@@ -196,7 +220,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
 
              <div className="pt-4 mt-2 border-t border-slate-800 text-center">
-                 <p className="text-[10px] text-slate-500">nanapp v3.1 · International</p>
+                 <p className="text-[10px] text-slate-500">nanapp v3.2 · International</p>
              </div>
         </div>
       </div>

@@ -317,12 +317,17 @@ export class AudioEngine {
     const noise = this.ctx.createBufferSource();
     noise.buffer = this.createPinkNoiseBuffer(); 
     noise.loop = true;
+    
+    // CORRECTION: Opened filter to 2500Hz to make it sound like Heavy Rain/Waterfall
+    // and distinct from the deep Brown Noise.
     const filter = this.ctx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 500; 
+    filter.frequency.value = 2500; 
+    
     const gain = this.ctx.createGain();
-    gain.gain.value = 1.5; 
+    gain.gain.value = 1.0; 
     const fadeGain = this.createSourceGain();
+    
     noise.connect(filter);
     filter.connect(gain);
     gain.connect(fadeGain);
@@ -465,7 +470,8 @@ export class AudioEngine {
     brownFilter.type = 'lowpass';
     brownFilter.frequency.value = 300;
     const brownGain = this.ctx.createGain();
-    brownGain.gain.value = 0.4;
+    // INCREASED VOLUME: Was 0.4
+    brownGain.gain.value = 0.6;
     
     brownNoise.connect(brownFilter);
     brownFilter.connect(brownGain);
@@ -496,7 +502,8 @@ export class AudioEngine {
 
     // Modulate Volume (Louder as wave comes in)
     const volModGain = this.ctx.createGain();
-    volModGain.gain.value = 0.5;
+    // INCREASED INTENSITY: Was 0.5, now 1.0 for stronger crashes
+    volModGain.gain.value = 1.0;
     lfo.connect(volModGain);
     volModGain.connect(pinkGain.gain);
     
