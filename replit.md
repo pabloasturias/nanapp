@@ -2,7 +2,13 @@
 
 nanapp is a Progressive Web App (PWA) designed to help babies sleep using scientifically-backed white noise and soothing sounds. The app features multiple sound types (white noise, pink noise, brown noise, ocean, hair dryer, lullabies, and rhythmic shushing), a customizable timer, audio processing features (warmth filter, fade transitions, heartbeat layer), and comprehensive sleep education content for parents.
 
-The app is built as a mobile-first PWA with offline capabilities, multilingual support (Spanish, English, French), and is optimized for deployment to Google Play Store via PWA Builder. It focuses on providing a calm, distraction-free experience with no intrusive ads, emphasizing parental education about infant sleep patterns and techniques.
+The app is built as a mobile-first PWA with offline capabilities, multilingual support (Spanish, English, French, Italian, German, Portuguese), and is optimized for deployment to Google Play Store via PWA Builder. It focuses on providing a calm, distraction-free experience with no intrusive ads, emphasizing parental education about infant sleep patterns and techniques.
+
+**Recent Updates (December 2024)**:
+- Splash screen with yawning baby image during app loading
+- Shh Rítmico icon updated to text "shh" + musical note
+- Updated dedication text
+- Added Italian, German, and Portuguese translations with automatic browser language detection
 
 # User Preferences
 
