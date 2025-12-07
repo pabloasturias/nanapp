@@ -45,7 +45,8 @@ export const Controls: React.FC<ControlsProps> = ({
     }
   };
 
-  const isCountingDown = isPlaying && timerRemaining !== null;
+  const hasTimeRemaining = timerRemaining !== null && timerRemaining > 0;
+  const isCountingDown = isPlaying && hasTimeRemaining;
 
   const handleMainAction = () => {
       triggerHaptic();
@@ -78,15 +79,15 @@ export const Controls: React.FC<ControlsProps> = ({
                 onClick={() => { onToggleTimerActive(); triggerHaptic(); }}
                 className={`relative min-w-[80px] h-8 flex items-center justify-center rounded-2xl border transition-all duration-300 
                 ${!isTimerActive ? 'bg-transparent border-transparent text-slate-600' : 
-                   isCountingDown 
+                   hasTimeRemaining 
                     ? 'bg-orange-500/10 border-orange-500/30 text-orange-200 shadow-[inset_0_0_15px_rgba(249,115,22,0.1)]' 
                     : 'bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600'}`}
              >
                 {isCountingDown && (
                    <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse shadow-[0_0_5px_rgba(251,146,60,0.8)]" />
                 )}
-                <span className={`font-mono font-bold text-base leading-none ${isTimerActive ? '' : 'line-through decoration-slate-600'}`}>
-                    {isCountingDown 
+                <span className="font-mono font-bold text-base leading-none">
+                    {hasTimeRemaining 
                         ? formatTime(timerRemaining!) 
                         : `${timerDuration}m`}
                 </span>
