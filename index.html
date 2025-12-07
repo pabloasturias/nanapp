@@ -10,12 +10,27 @@
     <meta name="description" content="La mejor app de ruido blanco para dormir bebés. Sonidos de alta calidad (Útero, Mar, Secador), alivio de cólicos y guía pediátrica de sueño. 100% Gratis y funciona Offline." />
     <meta name="keywords" content="ruido blanco bebe, white noise baby, colicos lactante, dormir bebe, sonidos relajantes, ruido rosa, sueño bebe, recien nacido, sleep training, offline" />
     <meta name="author" content="nanapp" />
+    <link rel="canonical" href="https://nanapp.replit.app" />
     
-    <!-- Social Sharing (Open Graph) -->
-    <meta property="og:title" content="nanapp: El sonido del descanso" />
-    <meta property="og:description" content="Ayuda a tu bebé a dormir en minutos. Ruido blanco, rosa y marrón diseñados científicamente. Gratis y sin anuncios intrusivos." />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://img.icons8.com/fluency/512/sleeping-baby.png" />
+    <meta property="og:url" content="https://nanapp.replit.app" />
+    <meta property="og:title" content="nanapp: El sonido del descanso para tu bebé" />
+    <meta property="og:description" content="Ayuda a tu bebé a dormir en minutos con ruido blanco científicamente diseñado. 8 sonidos calmantes, filtro de calidez, guía de sueño. 100% gratis, sin anuncios, funciona offline." />
+    <meta property="og:image" content="https://nanapp.replit.app/icons/icon-512x512.png" />
+    <meta property="og:image:alt" content="nanapp - Ruido blanco para bebés" />
+    <meta property="og:site_name" content="nanapp" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://nanapp.replit.app" />
+    <meta name="twitter:title" content="nanapp: El sonido del descanso para tu bebé" />
+    <meta name="twitter:description" content="Ruido blanco científicamente diseñado para ayudar a tu bebé a dormir. Gratis, sin anuncios, funciona offline." />
+    <meta name="twitter:image" content="https://nanapp.replit.app/icons/icon-512x512.png" />
+    <meta name="twitter:image:alt" content="nanapp - Aplicación de ruido blanco para bebés" />
     
     <!-- PWA Settings -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -28,6 +43,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "nanapp",
+      "applicationCategory": "HealthApplication",
+      "applicationSubCategory": "Baby Sleep & White Noise",
+      "operatingSystem": "Android, Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Progressive Web App de ruido blanco para ayudar a bebés a dormir. Incluye ruido blanco, rosa, marrón, océano, secador, olas y nanas. Con filtro de calidez, capa de latidos y guía pediátrica completa sobre sueño infantil.",
+      "featureList": [
+        "8 sonidos científicamente diseñados (Ruido Blanco, Rosa, Marrón, Océano, Secador, Olas, Shush, Nana)",
+        "Filtro de Calidez (simula efecto útero)",
+        "Capa de latidos cardíacos opcional",
+        "Temporizador personalizable",
+        "Funciona 100% offline",
+        "Sin anuncios intrusivos",
+        "Guía pediátrica de sueño",
+        "Técnicas para aliviar cólicos",
+        "Multiidioma (Español, Inglés, Francés)"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "nanapp Team"
+      },
+      "softwareVersion": "1.0",
+      "datePublished": "2024-12-01",
+      "installUrl": "https://nanapp.replit.app",
+      "screenshot": [
+        "https://nanapp.replit.app/screenshots/main-screen.png",
+        "https://nanapp.replit.app/screenshots/tips-wide.png"
+      ]
+    }
+    </script>
+    
     <style>
       html {
         height: 100%;
@@ -63,6 +119,19 @@
       }
       .pt-safe {
         padding-top: max(1rem, env(safe-area-inset-top));
+      }
+      @keyframes slide-down {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .animate-slide-down {
+        animation: slide-down 0.4s ease-out;
       }
     </style>
   <script type="importmap">

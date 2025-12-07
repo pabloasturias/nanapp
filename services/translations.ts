@@ -20,6 +20,14 @@ export const translations = {
     start: "Iniciar",
     finish: "Finalizar",
     paused: "Pausado",
+    install: {
+      banner_message: "Instala nanapp para acceso rápido sin navegador",
+      button: "Instalar",
+      success: "¡App instalada con éxito!",
+    },
+    app: {
+      installed: "¡nanapp instalada correctamente!",
+    },
     settings_title: "Ajustes",
     settings_pro_audio: "Audio Pro",
     volume_app: "Volumen App",
@@ -191,6 +199,14 @@ export const translations = {
     start: "Start",
     finish: "Stop",
     paused: "Paused",
+    install: {
+      banner_message: "Install nanapp for quick access without browser",
+      button: "Install",
+      success: "App installed successfully!",
+    },
+    app: {
+      installed: "nanapp installed successfully!",
+    },
     settings_title: "Settings",
     settings_pro_audio: "Pro Audio",
     volume_app: "App Volume",
@@ -356,6 +372,14 @@ export const translations = {
     start: "Démarrer",
     finish: "Arrêter",
     paused: "En pause",
+    install: {
+      banner_message: "Installez nanapp pour un accès rapide sans navigateur",
+      button: "Installer",
+      success: "Application installée avec succès !",
+    },
+    app: {
+      installed: "nanapp installée correctement !",
+    },
     settings_title: "Paramètres",
     settings_pro_audio: "Audio Pro",
     volume_app: "Volume App",
