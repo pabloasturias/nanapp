@@ -134,7 +134,7 @@
   "screenshots": [
     {
       "src": "/screenshots/main-screen.png",
-      "sizes": "720x1280",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow",
       "platform": "android",
@@ -142,15 +142,15 @@
     },
     {
       "src": "/screenshots/tips-wide.png",
-      "sizes": "1280x720",
+      "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "wide",
+      "form_factor": "narrow",
       "platform": "android",
-      "label": "Consejos de sueño para bebés - Vista tablet"
+      "label": "Consejos de sueño para bebés"
     },
     {
       "src": "/screenshots/sleep-guide.png",
-      "sizes": "720x1280",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow",
       "platform": "android",
@@ -158,7 +158,7 @@
     },
     {
       "src": "/screenshots/timer-controls.png",
-      "sizes": "720x1280",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow",
       "platform": "android",
@@ -166,7 +166,7 @@
     },
     {
       "src": "/screenshots/story-view.png",
-      "sizes": "720x1280",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow",
       "platform": "android",

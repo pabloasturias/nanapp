@@ -1,5 +1,5 @@
-const CACHE_NAME = 'nanapp-v4';
-const RUNTIME_CACHE = 'nanapp-runtime-v4';
+const CACHE_NAME = 'nanapp-v5';
+const RUNTIME_CACHE = 'nanapp-runtime-v5';
 
 const ASSETS_TO_CACHE = [
   '/',
