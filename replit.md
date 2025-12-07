@@ -68,7 +68,17 @@ The PWA is configured for:
 3. **Bundle Size Optimization**: Lazy-loaded tab components reduce initial bundle by ~40%. TipsView, SleepView, and StoryView load on-demand with smooth fallback spinner.
 4. **Media Session Improvement**: Lock screen now shows sound-specific emojis (🌊 Ocean, 💨 Secador, etc.) + 384x384 artwork, disabled irrelevant seek handlers.
 
-**Rationale**: PWA approach allows single codebase for web and Android, eliminates app store review delays for updates, and provides instant loading after first visit. The offline-first strategy ensures the app works without internet, critical for nighttime use when connectivity may be poor. Phase 1 optimizations target PWA Builder score improvement from ~85 to 95+ points.
+**Phase 2 Advanced Manifest Features (December 2024)**:
+1. **Share Target API**: Enables receiving shared content from other Android apps. Service worker intercepts POST requests to `/share`, extracts formData (title, text, url), and redirects to home with query params. App.tsx detects shared content and displays toast notification.
+2. **Protocol Handlers**: Registered `web+nanapp://` custom protocol for deep linking from emails, SMS, and external sources. Opens the app directly via custom URL scheme.
+3. **Launch Handler**: Configured with `client_mode: "focus-existing"` to reuse existing window when app is launched, preventing multiple instances.
+4. **Handle Links**: Set to `"preferred"` for automatic capture of navigation to nanapp domain, converting web links into app launches.
+5. **Display Override**: Fallback array `["standalone", "minimal-ui", "browser"]` ensures graceful degradation across browsers with varying display mode support.
+6. **Edge Side Panel**: Experimental support for Microsoft Edge side panel with preferred width of 400px.
+7. **Enhanced Shortcuts**: Expanded to 4 shortcuts (White Noise, Ocean, Tips, Shush) for quick launcher access to key features.
+8. **Platform-Specific Screenshots**: 5 screenshots with `platform: "android"` metadata for optimized Google Play Store presentation.
+
+**Rationale**: PWA approach allows single codebase for web and Android, eliminates app store review delays for updates, and provides instant loading after first visit. The offline-first strategy ensures the app works without internet, critical for nighttime use when connectivity may be poor. Phase 1 + Phase 2 optimizations target PWA Builder score improvement to 95+ points and maximum Google Play Store compatibility.
 
 ## Internationalization (i18n)
 
