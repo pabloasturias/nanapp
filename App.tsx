@@ -507,7 +507,12 @@ const AppContent: React.FC = () => {
       />
       <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
       <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
-      <SupportModal isOpen={showSupportModal} onClose={() => setShowSupportModal(false)} onGoToProducts={() => setActiveTab('tips')} />
+      <SupportModal 
+        isOpen={showSupportModal} 
+        onClose={() => setShowSupportModal(false)} 
+        onGoToProducts={() => setActiveTab('tips')}
+        onCoffeeClick={() => showNotification(t('coffee_thanks'))}
+      />
       <LegalModal isOpen={showLegalModal} onClose={() => setShowLegalModal(false)} />
       <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
@@ -517,6 +522,7 @@ const AppContent: React.FC = () => {
                 onOpenSupport={() => setShowSupportModal(true)}
                 onGoToStory={() => setActiveTab('story')}
                 isOffline={isOffline}
+                coffeeTooltip={t('coffee_tooltip')}
             />
             {renderContent()}
       </div>

@@ -8,9 +8,10 @@ interface HeaderProps {
   onOpenSupport: () => void;
   onGoToStory: () => void;
   isOffline: boolean;
+  coffeeTooltip?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, onGoToStory, isOffline }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, onGoToStory, isOffline, coffeeTooltip }) => {
   const { t } = useLanguage();
   
   return (
@@ -34,8 +35,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, o
         </button>
         
         <div className="flex items-center gap-2">
-            <button onClick={onOpenSupport} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
-                <Heart size={18} />
+            <button 
+                onClick={onOpenSupport} 
+                className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800 group"
+                title={coffeeTooltip || "Support nanapp"}
+                aria-label={coffeeTooltip || "Support nanapp"}
+            >
+                <Heart size={18} className="group-hover:text-red-400 group-hover:fill-red-400 transition-colors animate-[pulse_2s_ease-in-out_infinite]" />
             </button>
             <button onClick={onOpenSettings} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
                 <Settings size={18} />
