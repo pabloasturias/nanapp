@@ -1,5 +1,5 @@
-const CACHE_NAME = 'nanapp-v3';
-const RUNTIME_CACHE = 'nanapp-runtime-v3';
+const CACHE_NAME = 'nanapp-v4';
+const RUNTIME_CACHE = 'nanapp-runtime-v4';
 
 const ASSETS_TO_CACHE = [
   '/',
@@ -46,10 +46,29 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+  
+  if (event.request.method === 'POST' && url.pathname === '/share') {
+    event.respondWith(
+      (async () => {
+        const formData = await event.request.formData();
+        const title = formData.get('title') || '';
+        const text = formData.get('text') || '';
+        const shareUrl = formData.get('url') || '';
+        
+        const params = new URLSearchParams();
+        if (title) params.set('title', title);
+        if (text) params.set('text', text);
+        if (shareUrl) params.set('url', shareUrl);
+        
+        return Response.redirect(`/?${params.toString()}`, 303);
+      })()
+    );
+    return;
+  }
+  
   if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith('http')) return;
-
-  const url = new URL(event.request.url);
 
   if (url.origin === location.origin) {
     event.respondWith(cacheFirstStrategy(event.request));

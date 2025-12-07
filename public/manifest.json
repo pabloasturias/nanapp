@@ -6,6 +6,7 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "background_color": "#020617",
   "theme_color": "#020617",
   "orientation": "portrait",
@@ -52,6 +53,19 @@
       "short_name": "Tips",
       "description": "Ver consejos de sueño para bebés",
       "url": "/?tab=tips",
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Shush Rítmico",
+      "short_name": "Shush",
+      "description": "Reproducir sonido shush calmante",
+      "url": "/?sound=SHUSH",
       "icons": [
         {
           "src": "/icons/icon-96x96.png",
@@ -123,6 +137,7 @@
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
+      "platform": "android",
       "label": "nanapp - Pantalla principal con controles de sonido"
     },
     {
@@ -130,7 +145,55 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
+      "platform": "android",
       "label": "Consejos de sueño para bebés - Vista tablet"
+    },
+    {
+      "src": "/screenshots/sleep-guide.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Guía completa de sueño infantil con técnicas científicas"
+    },
+    {
+      "src": "/screenshots/timer-controls.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Temporizador personalizable y controles de audio avanzados"
+    },
+    {
+      "src": "/screenshots/story-view.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "platform": "android",
+      "label": "Historia de nanapp - Tecnología al servicio del sueño infantil"
     }
-  ]
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+nanapp",
+      "url": "/?source=%s"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }

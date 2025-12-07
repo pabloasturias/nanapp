@@ -86,6 +86,23 @@ const AppContent: React.FC = () => {
   };
 
   useEffect(() => {
+    const checkSharedContent = async () => {
+      const shareParams = new URLSearchParams(window.location.search);
+      const sharedTitle = shareParams.get('title');
+      const sharedText = shareParams.get('text');
+      const sharedUrl = shareParams.get('url');
+      
+      if (sharedTitle || sharedText || sharedUrl) {
+        const message = sharedTitle || sharedText || 'Contenido compartido recibido';
+        showNotification(`📤 ${message}`);
+        window.history.replaceState({}, '', '/');
+      }
+    };
+    
+    checkSharedContent();
+  }, []);
+
+  useEffect(() => {
     engineRef.current = new AudioEngine();
     engineRef.current.setVolume(volume);
     engineRef.current.setWarmth(isWarmthActive);
