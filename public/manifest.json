@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "nanapp: Ruido Blanco Bebé",
   "short_name": "nanapp",
   "description": "La app definitiva de ruido blanco para dormir bebés. Sonidos de alta calidad, guía de sueño y alivio de cólicos. Funciona offline y es 100% gratuita.",
@@ -9,7 +10,57 @@
   "theme_color": "#020617",
   "orientation": "portrait",
   "lang": "es",
+  "dir": "ltr",
   "categories": ["health", "lifestyle", "medical"],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.nanapp.baby",
+      "id": "com.nanapp.baby"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ruido Blanco",
+      "short_name": "Blanco",
+      "description": "Reproducir ruido blanco directamente",
+      "url": "/?sound=WHITE_NOISE",
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Océano Rítmico",
+      "short_name": "Océano",
+      "description": "Reproducir sonido de océano profundo",
+      "url": "/?sound=OCEAN",
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Tips de Sueño",
+      "short_name": "Tips",
+      "description": "Ver consejos de sueño para bebés",
+      "url": "/?tab=tips",
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-48x48.png",
@@ -68,11 +119,18 @@
   ],
   "screenshots": [
     {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/screenshots/main-screen.png",
+      "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "nanapp - Sonidos para dormir bebés"
+      "label": "nanapp - Pantalla principal con controles de sonido"
+    },
+    {
+      "src": "/screenshots/tips-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Consejos de sueño para bebés - Vista tablet"
     }
   ]
 }

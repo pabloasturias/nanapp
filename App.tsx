@@ -29,13 +29,28 @@ const AppContent: React.FC = () => {
   const loadSavedFade = () => parseFloat(localStorage.getItem('dw_fade') || '1.5');
   const loadSavedHeartbeatLayer = () => localStorage.getItem('dw_hb_layer') === 'true';
 
-  const [currentSound, setCurrentSound] = useState<SoundType | null>(loadSavedSound);
+  const urlParams = new URLSearchParams(window.location.search);
+  const rawUrlSound = urlParams.get('sound');
+  const rawUrlTab = urlParams.get('tab');
+
+  const validSoundIds = SOUNDS.map(s => s.id);
+  const validTabs = ['sounds', 'sleep', 'tips', 'story'];
+
+  const urlSound = rawUrlSound && validSoundIds.includes(rawUrlSound as SoundType) 
+    ? (rawUrlSound as SoundType) 
+    : null;
+  
+  const urlTab = rawUrlTab && validTabs.includes(rawUrlTab) 
+    ? (rawUrlTab as 'sounds' | 'sleep' | 'tips' | 'story') 
+    : null;
+
+  const [currentSound, setCurrentSound] = useState<SoundType | null>(urlSound || loadSavedSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [volume, setVolume] = useState(loadSavedVolume); 
   const [isMuted, setIsMuted] = useState(false);
   
-  const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>('sounds');
+  const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>(urlTab || 'sounds');
   const [showSettings, setShowSettings] = useState(false);
   const [showWhyModal, setShowWhyModal] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
@@ -85,6 +100,12 @@ const AppContent: React.FC = () => {
     
     window.addEventListener('online', () => setIsOffline(false));
     window.addEventListener('offline', () => setIsOffline(true));
+
+    if (urlSound && !isPlaying) {
+      setTimeout(() => {
+        handleSoundSelect(urlSound);
+      }, 500);
+    }
 
     return () => {
       engineRef.current?.stopAll(false);
