@@ -1,3 +1,4 @@
+
 import React from 'react';
 import * as Icons from 'lucide-react';
 import { SoundOption, SoundType } from '../types';
@@ -22,18 +23,12 @@ const ShushIcon = ({ className, size }: { className?: string, size?: number }) =
         strokeLinejoin="round" 
         className={className}
     >
-        {/* Head */}
         <circle cx="12" cy="12" r="9" />
-        
-        {/* Eyes (Closed/Relaxed) */}
-        <path d="M9 10a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1" />
-        <path d="M15 10a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1" />
-        
-        {/* Hand/Finger Gesture */}
-        {/* Index Finger */}
-        <rect x="11.5" y="11" width="1" height="6" rx="0.5" fill="currentColor" opacity="0.9" />
-        {/* Knuckles/Hand Backing */}
-        <path d="M10 15a2 2 0 0 0 4 0" strokeDasharray="1 1" opacity="0.6"/>
+        <path d="M8 10c.5-.5 1.5-.5 2 0" />
+        <path d="M14 10c.5-.5 1.5-.5 2 0" />
+        <rect x="11" y="11" width="2" height="6" rx="1" fill="currentColor" stroke="none" />
+        <rect x="11" y="11" width="2" height="6" rx="1" stroke="currentColor" fill="none"/>
+        <path d="M10 17h4" />
     </svg>
 );
 
@@ -44,7 +39,7 @@ export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onCli
   return (
     <button
       onClick={(e) => {
-          e.stopPropagation(); // Prevent triggering double tap on background
+          e.stopPropagation(); 
           onClick();
       }}
       className={`group relative flex flex-col items-center justify-center p-2 w-full h-full min-h-[65px] rounded-[2rem] border transition-all duration-300
@@ -68,7 +63,6 @@ export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onCli
         )}
       </div>
       <span className={`text-xs font-semibold tracking-wide ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-orange-50'}`}>
-        {/* Dynamic translation based on Sound ID key */}
         {t(sound.id as any)}
       </span>
     </button>

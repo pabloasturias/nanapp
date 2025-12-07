@@ -8,19 +8,20 @@ import { SleepView } from './components/SleepView';
 import { StoryView } from './components/StoryView';
 import { SettingsModal } from './components/SettingsModal';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
+import { QuickInfoModal } from './components/QuickInfoModal';
 import { SupportModal } from './components/SupportModal';
 import { LegalModal } from './components/LegalModal';
 import { Toast } from './components/Toast';
+import { Header } from './components/Header';
+import { BottomNav } from './components/BottomNav';
 import { SOUNDS } from './constants';
 import { SoundType } from './types';
-import { Settings, WifiOff, Baby, Music, Sparkles, Moon, HelpCircle, Heart } from 'lucide-react';
+import { HelpCircle, Info } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './services/LanguageContext';
 
-// --- Inner Component to use Hook ---
 const AppContent: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
-  // --- Persisted State Loaders ---
   const loadSavedVolume = () => parseFloat(localStorage.getItem('dw_volume') || '0.4');
   const loadSavedSound = () => localStorage.getItem('dw_sound') as SoundType | null;
   const loadSavedDuration = () => parseInt(localStorage.getItem('dw_duration') || '40', 10);
@@ -28,23 +29,21 @@ const AppContent: React.FC = () => {
   const loadSavedFade = () => parseFloat(localStorage.getItem('dw_fade') || '1.5');
   const loadSavedHeartbeatLayer = () => localStorage.getItem('dw_hb_layer') === 'true';
 
-  // --- State ---
   const [currentSound, setCurrentSound] = useState<SoundType | null>(loadSavedSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [volume, setVolume] = useState(loadSavedVolume); 
   const [isMuted, setIsMuted] = useState(false);
   
-  // UI State
   const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>('sounds');
   const [showSettings, setShowSettings] = useState(false);
   const [showWhyModal, setShowWhyModal] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [showLegalModal, setShowLegalModal] = useState(false);
+  const [quickInfoType, setQuickInfoType] = useState<'colic' | 'arsenic' | null>(null);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
 
-  // Pro Features State
   const [isWarmthActive, setIsWarmthActive] = useState(loadSavedWarmth);
   const [fadeDuration, setFadeDuration] = useState(loadSavedFade);
   const [heartbeatLayer, setHeartbeatLayer] = useState(loadSavedHeartbeatLayer);
@@ -52,23 +51,19 @@ const AppContent: React.FC = () => {
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
 
-  // --- Timer State ---
   const [timerDuration, setTimerDuration] = useState(loadSavedDuration); 
   const [timerRemaining, setTimerRemaining] = useState<number | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
-  // --- Refs ---
   const engineRef = useRef<AudioEngine | null>(null);
   const timerIntervalRef = useRef<number | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
 
-  // --- Helpers ---
   const showNotification = (msg: string) => {
       setToastMessage(msg);
       setShowToast(true);
   };
 
-  // --- Initialization ---
   useEffect(() => {
     engineRef.current = new AudioEngine();
     engineRef.current.setVolume(volume);
@@ -88,7 +83,6 @@ const AppContent: React.FC = () => {
     const handleVisibilityChange = () => setIsPageVisible(!document.hidden);
     document.addEventListener('visibilitychange', handleVisibilityChange);
     
-    // Network Status
     window.addEventListener('online', () => setIsOffline(false));
     window.addEventListener('offline', () => setIsOffline(true));
 
@@ -101,7 +95,6 @@ const AppContent: React.FC = () => {
     };
   }, []);
 
-  // --- Persistence Effects ---
   useEffect(() => localStorage.setItem('dw_volume', volume.toString()), [volume]);
   useEffect(() => { if(currentSound) localStorage.setItem('dw_sound', currentSound); }, [currentSound]);
   useEffect(() => localStorage.setItem('dw_duration', timerDuration.toString()), [timerDuration]);
@@ -109,7 +102,6 @@ const AppContent: React.FC = () => {
   useEffect(() => localStorage.setItem('dw_fade', fadeDuration.toString()), [fadeDuration]);
   useEffect(() => localStorage.setItem('dw_hb_layer', heartbeatLayer.toString()), [heartbeatLayer]);
 
-  // --- Toggle Handlers (Settings) ---
   const handleToggleWarmth = () => { 
       const newState = !isWarmthActive;
       setIsWarmthActive(newState); 
@@ -125,29 +117,21 @@ const AppContent: React.FC = () => {
       engineRef.current?.toggleHeartbeatLayer(newState);
   };
 
-  // --- Wake Lock ---
   const requestWakeLock = async () => {
     if ('wakeLock' in navigator) {
         try { wakeLockRef.current = await navigator.wakeLock.request('screen'); } catch (err) {}
     }
   };
-
   const releaseWakeLock = async () => {
       if (wakeLockRef.current) {
           try { await wakeLockRef.current.release(); wakeLockRef.current = null; } catch(err) {}
       }
   };
+  useEffect(() => { if (isPlaying) requestWakeLock(); else releaseWakeLock(); }, [isPlaying]);
 
-  useEffect(() => {
-      if (isPlaying) requestWakeLock();
-      else releaseWakeLock();
-  }, [isPlaying]);
-
-  // --- Media Session API (Lock Screen Controls) ---
   useEffect(() => {
       if ('mediaSession' in navigator && currentSound) {
           const soundLabel = t(currentSound as any); 
-          
           if (isPlaying) {
               navigator.mediaSession.playbackState = 'playing';
               navigator.mediaSession.metadata = new MediaMetadata({
@@ -155,29 +139,24 @@ const AppContent: React.FC = () => {
                   artist: 'nanapp',
                   album: t('app_slogan'),
                   artwork: [
-                      { src: 'https://img.icons8.com/fluency/96/sleeping-baby.png', sizes: '96x96', type: 'image/png' },
-                      { src: 'https://img.icons8.com/fluency/512/sleeping-baby.png', sizes: '512x512', type: 'image/png' },
+                      { src: './icon.svg', sizes: '96x96', type: 'image/svg+xml' },
+                      { src: './icon.svg', sizes: '512x512', type: 'image/svg+xml' },
                   ]
               });
-
               navigator.mediaSession.setActionHandler('play', handlePlay);
               navigator.mediaSession.setActionHandler('pause', handlePause);
               navigator.mediaSession.setActionHandler('stop', () => handleStop(false));
               navigator.mediaSession.setActionHandler('previoustrack', handlePrevSound);
               navigator.mediaSession.setActionHandler('nexttrack', handleNextSound);
               navigator.mediaSession.setActionHandler('seekto', () => {}); 
-
           } else if (isPaused) {
               navigator.mediaSession.playbackState = 'paused';
           } else {
               navigator.mediaSession.playbackState = 'none';
           }
       }
-  }, [isPlaying, isPaused, currentSound, language, t]); 
+  }, [isPlaying, isPaused, currentSound, t]); 
 
-
-  // --- Audio Handlers ---
-  
   const handleSoundSelect = (soundId: SoundType) => {
     if (currentSound === soundId && isPlaying) {
       handlePause();
@@ -186,7 +165,8 @@ const AppContent: React.FC = () => {
       setIsPaused(false);
       engineRef.current?.play(soundId);
       setIsPlaying(true);
-      startTimer();
+      setTimerRemaining(null); 
+      startTimer(true);
     }
   };
 
@@ -209,7 +189,8 @@ const AppContent: React.FC = () => {
         engineRef.current?.play(currentSound);
         setIsPlaying(true);
         setIsPaused(false);
-        startTimer();
+        // CRITICAL FIX: Resume timer (false = no force reset)
+        startTimer(false); 
     } else {
         handleSoundSelect(SOUNDS[0].id);
     }
@@ -220,21 +201,18 @@ const AppContent: React.FC = () => {
      setIsPlaying(false);
      setIsPaused(true);
      stopTimer();
+     // State 'timerRemaining' is preserved
   };
 
   const handleStop = (longFade = false) => {
       const shouldFade = longFade;
       engineRef.current?.stopAll(shouldFade, longFade);
-      
       setIsPlaying(false);
       setIsPaused(false);
-      setCurrentSound(null); // Reset selection to "Off" state
+      setCurrentSound(null);
       stopTimer();
       setTimerRemaining(null);
-      
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.playbackState = 'none';
-      }
+      if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'none';
   };
 
   const handleVolumeChange = (val: number) => {
@@ -249,19 +227,28 @@ const AppContent: React.FC = () => {
     engineRef.current?.toggleMute(newMuteState);
   };
 
-  // --- Timer Logic (Smart Fade) ---
-  const startTimer = () => {
+  // Timer Logic Fixed
+  const startTimer = (forceReset: boolean = false) => {
       stopTimer(); 
       if (!isTimerActive) return;
 
-      const initialSeconds = timerRemaining !== null ? timerRemaining : timerDuration * 60;
+      let initialSeconds;
+      
+      // If forceReset is true, OR we don't have a valid remaining time (>0), start fresh.
+      if (forceReset || timerRemaining === null || timerRemaining <= 0) {
+          initialSeconds = timerDuration * 60;
+      } else {
+          // Resume from where we left off
+          initialSeconds = timerRemaining;
+      }
+
       setTimerRemaining(initialSeconds);
 
       timerIntervalRef.current = window.setInterval(() => {
           setTimerRemaining(prev => {
               if (prev === null || prev <= 1) {
                   stopTimer();
-                  handleStop(true); // Trigger LONG fade out
+                  handleStop(true);
                   return null;
               }
               return prev - 1;
@@ -279,20 +266,18 @@ const AppContent: React.FC = () => {
   const handleAdjustTimer = (delta: number) => {
       const newDuration = Math.max(10, timerDuration + delta); 
       setTimerDuration(newDuration);
+      
       if (isPlaying && timerRemaining !== null) {
           setTimerRemaining(Math.max(10, timerRemaining + (delta * 60)));
-      } else {
-          setTimerRemaining(null);
+      } else if (timerRemaining !== null) {
+           setTimerRemaining(Math.max(10, timerRemaining + (delta * 60)));
       }
       showNotification(`${t('timer')}: ${newDuration}m`);
   };
 
   const handleSetTimer = (minutes: number) => {
       setTimerDuration(minutes);
-      if (isPlaying && timerRemaining !== null) {
-      } else {
-          setTimerRemaining(null);
-      }
+      if (!isPlaying && !isPaused) setTimerRemaining(null);
   };
 
   const handleToggleTimerActive = () => {
@@ -302,11 +287,10 @@ const AppContent: React.FC = () => {
           stopTimer();
           setTimerRemaining(null);
       } else if (isPlaying) {
-          startTimer();
+          startTimer(true);
       }
   };
 
-  const lastTapRef = useRef(0);
   const handleBackgroundClick = () => {
       const now = Date.now();
       if (now - lastTapRef.current < 300) {
@@ -315,17 +299,14 @@ const AppContent: React.FC = () => {
       }
       lastTapRef.current = now;
   };
+  
+  const lastTapRef = useRef(0);
 
   const renderContent = () => {
-      if (activeTab === 'story') {
-          return <StoryView onBack={() => setActiveTab('sounds')} />;
-      }
-      if (activeTab === 'sleep') {
-          return <SleepView />;
-      }
-      if (activeTab === 'tips') {
-          return <TipsView />;
-      }
+      if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
+      if (activeTab === 'sleep') return <SleepView />;
+      if (activeTab === 'tips') return <TipsView />;
+      
       return (
         <>
             <div className="shrink-0 flex items-center justify-between px-6 mb-2">
@@ -384,10 +365,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div 
-        className="relative h-[100dvh] w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950"
-        onClick={handleBackgroundClick}
-    >
+    <div className="relative h-[100dvh] w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950" onClick={handleBackgroundClick}>
       
       {isPageVisible && <Visualizer isActive={isPlaying} type="calm" />}
       
@@ -401,83 +379,25 @@ const AppContent: React.FC = () => {
         heartbeatLayer={heartbeatLayer} onToggleHeartbeatLayer={handleToggleHeartbeatLayer}
         timerDuration={timerDuration} onTimerChange={handleSetTimer}
         onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
+        onOpenAbout={() => { setShowSettings(false); setActiveTab('story'); }}
       />
-      <WhyItWorksModal 
-        isOpen={showWhyModal}
-        onClose={() => setShowWhyModal(false)}
-      />
-      <SupportModal 
-        isOpen={showSupportModal} 
-        onClose={() => setShowSupportModal(false)}
-        onGoToProducts={() => setActiveTab('tips')}
-      />
-      <LegalModal
-        isOpen={showLegalModal}
-        onClose={() => setShowLegalModal(false)}
-      />
+      <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
+      <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
+      <SupportModal isOpen={showSupportModal} onClose={() => setShowSupportModal(false)} onGoToProducts={() => setActiveTab('tips')} />
+      <LegalModal isOpen={showLegalModal} onClose={() => setShowLegalModal(false)} />
       <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
       <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-[calc(5rem+env(safe-area-inset-bottom))]">
-            
-            <header className="shrink-0 w-full flex items-center justify-between mb-2 p-4 pt-safe bg-slate-900/60 backdrop-blur-md border-b border-white/5 rounded-b-[2.5rem] shadow-lg">
-                <button 
-                    onClick={() => setActiveTab('story')}
-                    className="flex items-center gap-3 group text-left"
-                >
-                    <div className="p-2.5 bg-orange-400/10 rounded-full border border-orange-200/10 group-hover:bg-orange-400/20 transition-colors">
-                      <Baby size={24} className="text-orange-200" strokeWidth={2} />
-                    </div>
-                    <div>
-                        <h1 className="text-2xl font-bold tracking-tight text-orange-50 leading-none mb-1 font-['Quicksand']">
-                            nanapp
-                        </h1>
-                        <div className="flex items-center gap-2">
-                            <p className="text-[10px] text-orange-200/70 font-medium tracking-widest uppercase opacity-90 group-hover:text-orange-100 transition-colors">{t('app_slogan')}</p>
-                            {isOffline && <WifiOff size={10} className="text-red-400" />}
-                        </div>
-                    </div>
-                </button>
-                
-                <div className="flex items-center gap-2">
-                    <button onClick={() => setShowSupportModal(true)} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
-                        <Heart size={18} />
-                    </button>
-                    <button onClick={() => setShowSettings(true)} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
-                        <Settings size={18} />
-                    </button>
-                </div>
-            </header>
-
+            <Header 
+                onOpenSettings={() => setShowSettings(true)}
+                onOpenSupport={() => setShowSupportModal(true)}
+                onGoToStory={() => setActiveTab('story')}
+                isOffline={isOffline}
+            />
             {renderContent()}
       </div>
 
-      <div className="fixed bottom-0 left-0 w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 rounded-t-[2rem] pb-[env(safe-area-inset-bottom)]">
-          <div className="flex justify-around items-center max-w-lg mx-auto h-20">
-              <button 
-                onClick={() => setActiveTab('sounds')}
-                className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'sounds' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
-              >
-                  <Music size={26} strokeWidth={activeTab === 'sounds' ? 2.5 : 2} className={activeTab === 'sounds' ? 'drop-shadow-lg' : ''} />
-                  <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sounds')}</span>
-              </button>
-              
-              <button 
-                onClick={() => setActiveTab('sleep')}
-                className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'sleep' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
-              >
-                  <Moon size={26} strokeWidth={activeTab === 'sleep' ? 2.5 : 2} className={activeTab === 'sleep' ? 'drop-shadow-lg' : ''} />
-                  <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sleep')}</span>
-              </button>
-
-              <button 
-                onClick={() => setActiveTab('tips')}
-                className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tips' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
-              >
-                  <Sparkles size={26} strokeWidth={activeTab === 'tips' ? 2.5 : 2} className={activeTab === 'tips' ? 'drop-shadow-lg' : ''} />
-                  <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_tricks')}</span>
-              </button>
-          </div>
-      </div>
+      <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
 };

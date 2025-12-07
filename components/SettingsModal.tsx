@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight, Clock } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight, Clock, Info } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface SettingsModalProps {
@@ -16,6 +16,7 @@ interface SettingsModalProps {
   heartbeatLayer: boolean;
   onToggleHeartbeatLayer: () => void;
   onOpenLegal: () => void;
+  onOpenAbout: () => void; 
   timerDuration: number;
   onTimerChange: (val: number) => void;
 }
@@ -26,7 +27,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     volume, onVolumeChange, isMuted, onToggleMute,
     fadeDuration, onFadeChange,
     heartbeatLayer, onToggleHeartbeatLayer,
-    onOpenLegal,
+    onOpenLegal, onOpenAbout,
     timerDuration, onTimerChange
 }) => {
   const { t, language, setLanguage } = useLanguage();
@@ -35,7 +36,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
         onClick={onClose}
@@ -72,28 +72,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         English
                     </button>
                     <button 
-                        onClick={() => setLanguage('de')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'de' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Deutsch
-                    </button>
-                    <button 
                         onClick={() => setLanguage('fr')}
                         className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'fr' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
                     >
                         Français
-                    </button>
-                    <button 
-                        onClick={() => setLanguage('pt')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'pt' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Português
-                    </button>
-                    <button 
-                        onClick={() => setLanguage('it')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'it' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Italiano
                     </button>
                 </div>
             </div>
@@ -205,8 +187,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
             </div>
 
-            {/* Legal Button */}
-            <div className="pt-2">
+            {/* Links Section */}
+            <div className="pt-2 space-y-2">
+                <button
+                    onClick={onOpenAbout}
+                    className="w-full p-4 rounded-3xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-between group hover:bg-slate-800 transition-all"
+                >
+                    <div className="flex items-center gap-3">
+                        <Info size={20} className="text-slate-400 group-hover:text-indigo-300" />
+                        <span className="text-sm font-semibold text-slate-300 group-hover:text-orange-50">{t('about_nanapp')}</span>
+                    </div>
+                    <ArrowRight size={16} className="text-slate-500 group-hover:text-indigo-300" />
+                </button>
+
                 <button
                     onClick={onOpenLegal}
                     className="w-full p-4 rounded-3xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-between group hover:bg-slate-800 transition-all"
@@ -220,7 +213,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
 
              <div className="pt-4 mt-2 border-t border-slate-800 text-center">
-                 <p className="text-[10px] text-slate-500">nanapp v3.2 · International</p>
+                 <p className="text-[10px] text-slate-500">nanapp v4.0 · Final</p>
              </div>
         </div>
       </div>

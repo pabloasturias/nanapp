@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Moon, Thermometer, ShieldCheck, TrendingUp, Smile, Clock, Zap, Sun, Brain, AlertCircle, Shirt, Stethoscope, Activity, Shield } from 'lucide-react';
+import { Moon, Thermometer, ShieldCheck, TrendingUp, Smile, Clock, Zap, Sun, Brain, AlertCircle, Shirt, Stethoscope, Activity, Shield, Ghost, ZapOff } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 export const SleepView: React.FC = () => {
@@ -180,23 +181,61 @@ export const SleepView: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-slate-900/40 rounded-[2rem] p-6 border border-orange-100/5">
-                <div className="flex items-center gap-4 mb-4">
-                    <div className="p-2 bg-pink-500/10 rounded-xl text-pink-300">
-                        <AlertCircle size={20} />
+            {/* NEW: MAJOR CHALLENGES (Colic & Arsenic Hour) */}
+            <div className="space-y-4">
+                <h3 className="px-4 text-xs font-bold text-orange-200/50 uppercase tracking-widest">{t('challenges_title')}</h3>
+
+                {/* COLIC CARD */}
+                <div className="bg-pink-900/10 rounded-[2rem] p-6 border border-pink-500/20">
+                    <div className="flex items-center gap-4 mb-4">
+                        <div className="p-2 bg-pink-500/20 rounded-xl text-pink-300">
+                            <AlertCircle size={20} />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-bold text-orange-50">{t('colic_title')}</h2>
+                            <p className="text-[10px] text-slate-400 uppercase tracking-wide">{t('colic_rule')}</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 className="text-lg font-bold text-orange-50">{t('colic_title')}</h2>
-                        <p className="text-[10px] text-slate-400 uppercase tracking-wide">{t('colic_rule')}</p>
+                    <div className="p-4 bg-slate-900/40 rounded-2xl mb-4">
+                        <p className="text-sm text-slate-300 leading-relaxed font-medium">{t('colic_desc')}</p>
                     </div>
-                </div>
-                <div className="p-4 bg-slate-800/40 rounded-2xl border border-pink-500/10 mb-6">
-                    <p className="text-sm text-slate-300 leading-relaxed font-medium">
-                        {t('colic_desc')}
-                    </p>
+                    {/* How Sound Helps */}
+                    <div className="flex gap-4 items-start">
+                         <div className="mt-1 text-slate-400"><ZapOff size={18} /></div>
+                         <div>
+                             <h4 className="text-xs font-bold text-orange-200 mb-1">{t('how_sound_helps')}</h4>
+                             <p className="text-xs text-slate-400 leading-relaxed">{t('colic_sound_help')}</p>
+                         </div>
+                    </div>
                 </div>
 
-                 <div className="flex items-center gap-4 mb-5">
+                {/* ARSENIC HOUR CARD */}
+                <div className="bg-indigo-900/10 rounded-[2rem] p-6 border border-indigo-500/20">
+                    <div className="flex items-center gap-4 mb-4">
+                        <div className="p-2 bg-indigo-500/20 rounded-xl text-indigo-300">
+                            <Ghost size={20} />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-bold text-orange-50">{t('tips_arsenic_title')}</h2>
+                            <p className="text-[10px] text-slate-400 uppercase tracking-wide">18:00 - 22:00</p>
+                        </div>
+                    </div>
+                    <div className="p-4 bg-slate-900/40 rounded-2xl mb-4">
+                        <p className="text-sm text-slate-300 leading-relaxed font-medium">{t('tips_arsenic_desc')}</p>
+                    </div>
+                    {/* How Sound Helps */}
+                    <div className="flex gap-4 items-start">
+                         <div className="mt-1 text-slate-400"><ZapOff size={18} /></div>
+                         <div>
+                             <h4 className="text-xs font-bold text-orange-200 mb-1">{t('how_sound_helps')}</h4>
+                             <p className="text-xs text-slate-400 leading-relaxed">{t('arsenic_sound_help')}</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-slate-900/40 rounded-[2rem] p-6 border border-orange-100/5">
+                <div className="flex items-center gap-4 mb-5">
                     <div className="p-2 bg-red-500/10 rounded-xl text-red-300">
                         <TrendingUp size={20} />
                     </div>

@@ -169,9 +169,6 @@ export class AudioEngine {
   private updateVolume() {
     if (this.masterGain && this.ctx) {
       const now = this.ctx.currentTime;
-      // Exponential volume curve for better human hearing perception
-      // Input 0-1 mapped to an exponential curve
-      // Math.pow(val, 2.5) is a standard approximation for audio
       const volume = this.isMuted ? 0 : Math.max(0.0001, Math.pow(this.currentVolume, 2.5)); 
       
       this.masterGain.gain.cancelScheduledValues(now);
@@ -191,9 +188,12 @@ export class AudioEngine {
         this.ctx.resume();
     }
 
-    if (this.currentSound === sound) return;
+    // Logic Fix: If we have active nodes, and it's the SAME sound, ignore.
+    // BUT if activeNodes is empty (because we paused), we must play!
+    if (this.currentSound === sound && this.activeNodes.length > 0) return;
     
-    if (this.currentSound) {
+    // Crossfade: Stop previous sound with fade
+    if (this.currentSound && this.activeNodes.length > 0) {
         this.stopAll(true, false);
     }
     
@@ -317,17 +317,12 @@ export class AudioEngine {
     const noise = this.ctx.createBufferSource();
     noise.buffer = this.createPinkNoiseBuffer(); 
     noise.loop = true;
-    
-    // CORRECTION: Opened filter to 2500Hz to make it sound like Heavy Rain/Waterfall
-    // and distinct from the deep Brown Noise.
     const filter = this.ctx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.frequency.value = 2500; 
-    
     const gain = this.ctx.createGain();
     gain.gain.value = 1.0; 
     const fadeGain = this.createSourceGain();
-    
     noise.connect(filter);
     filter.connect(gain);
     gain.connect(fadeGain);
@@ -457,12 +452,9 @@ export class AudioEngine {
     this.activeNodes.push(noise, filter, shushGain, lfo, lfoGain, fadeGain);
   }
 
-  // UPDATED: "Olas" (Waves) - Realistic Beach
   private playWaves() {
     if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-    
-    // 1. Deep Rumble (Brown Noise) - Constant base
     const brownNoise = this.ctx.createBufferSource();
     brownNoise.buffer = this.createBrownNoiseBuffer();
     brownNoise.loop = true;
@@ -470,53 +462,36 @@ export class AudioEngine {
     brownFilter.type = 'lowpass';
     brownFilter.frequency.value = 300;
     const brownGain = this.ctx.createGain();
-    // INCREASED VOLUME: Was 0.4
     brownGain.gain.value = 0.6;
-    
     brownNoise.connect(brownFilter);
     brownFilter.connect(brownGain);
     brownGain.connect(fadeGain);
-
-    // 2. Wave Crash/Foam (Pink Noise) - Modulated
     const pinkNoise = this.ctx.createBufferSource();
     pinkNoise.buffer = this.createPinkNoiseBuffer();
     pinkNoise.loop = true;
-    
     const pinkFilter = this.ctx.createBiquadFilter();
     pinkFilter.type = 'lowpass';
-    pinkFilter.frequency.value = 100; // Starts closed
-
+    pinkFilter.frequency.value = 100; 
     const pinkGain = this.ctx.createGain();
-    pinkGain.gain.value = 0; // Starts silent
-
-    // LFO for wave cycle (approx 8 seconds)
+    pinkGain.gain.value = 0; 
     const lfo = this.ctx.createOscillator();
     lfo.type = 'sine';
-    lfo.frequency.value = 0.12; // Slow swell
-
-    // Modulate Filter Frequency (Brightens as wave comes in)
+    lfo.frequency.value = 0.12; 
     const filterModGain = this.ctx.createGain();
-    filterModGain.gain.value = 600; // Sweep +600Hz
+    filterModGain.gain.value = 600; 
     lfo.connect(filterModGain);
     filterModGain.connect(pinkFilter.frequency);
-
-    // Modulate Volume (Louder as wave comes in)
     const volModGain = this.ctx.createGain();
-    // INCREASED INTENSITY: Was 0.5, now 1.0 for stronger crashes
     volModGain.gain.value = 1.0;
     lfo.connect(volModGain);
     volModGain.connect(pinkGain.gain);
-    
     pinkNoise.connect(pinkFilter);
     pinkFilter.connect(pinkGain);
     pinkGain.connect(fadeGain);
-
     fadeGain.connect(this.masterGain);
-
     brownNoise.start();
     pinkNoise.start();
     lfo.start();
-
     this.activeNodes.push(brownNoise, brownFilter, brownGain, pinkNoise, pinkFilter, pinkGain, lfo, filterModGain, volModGain, fadeGain);
   }
 
