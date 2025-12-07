@@ -14,12 +14,14 @@ Preferred communication style: Simple, everyday language.
 
 **Framework**: React 19.2 with TypeScript  
 **Build Tool**: Vite 6.2  
-**Styling**: Tailwind CSS (via CDN)  
+**Styling**: Tailwind CSS v4 (local installation via PostCSS)  
 **Icons**: Lucide React
 
 The app uses a component-based architecture with a single-page application (SPA) design. The main `App.tsx` manages global state and orchestrates different views (Sounds, Sleep Guide, Tips, Story) through a bottom navigation system. State management is handled through React hooks (useState, useEffect, useRef) without external state libraries, keeping the bundle size minimal.
 
-**Rationale**: React provides excellent PWA support and component reusability. Vite offers fast development experience and optimized production builds. The decision to avoid complex state management libraries (like Redux) reduces complexity and bundle size, which is crucial for a PWA targeting mobile devices with potentially slow connections.
+**Tailwind CSS Setup**: Migrated from CDN to local installation using Tailwind CSS v4 with `@tailwindcss/postcss` plugin. This eliminates the production warning and improves performance by allowing tree-shaking and build-time optimization. Configuration includes explicit content paths (index.tsx, App.tsx, src/\*, components/\*, services/\*) to ensure all components are scanned for class usage.
+
+**Rationale**: React provides excellent PWA support and component reusability. Vite offers fast development experience and optimized production builds. Local Tailwind CSS installation provides better performance, smaller bundle size, and production-ready optimization. The decision to avoid complex state management libraries (like Redux) reduces complexity and bundle size, which is crucial for a PWA targeting mobile devices with potentially slow connections.
 
 ## Audio Processing System
 
