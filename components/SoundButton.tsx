@@ -23,12 +23,10 @@ const ShushIcon = ({ className, size }: { className?: string, size?: number }) =
         strokeLinejoin="round" 
         className={className}
     >
-        <circle cx="12" cy="11" r="9" />
-        <circle cx="9" cy="9" r="1.2" fill="currentColor" />
-        <circle cx="15" cy="9" r="1.2" fill="currentColor" />
-        <path d="M9 14 Q12 16 15 14" />
-        <rect x="17" y="8" width="3" height="10" rx="1.5" fill="currentColor" stroke="currentColor" strokeWidth="0.5" />
-        <circle cx="18.5" cy="6.5" r="1.5" fill="currentColor" stroke="currentColor" strokeWidth="0.5" />
+        <text x="2" y="16" fontSize="11" fontWeight="bold" fontStyle="italic" fill="currentColor" stroke="none">shh</text>
+        <path d="M17 8 L17 16" strokeWidth="2" />
+        <circle cx="17" cy="18" r="2.5" fill="currentColor" stroke="currentColor" />
+        <path d="M19.5 8 L19.5 5 Q22 6 19.5 8" fill="currentColor" stroke="none" />
     </svg>
 );
 

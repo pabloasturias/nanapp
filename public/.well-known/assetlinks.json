@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.nanapp.baby",
+      "package_name": "app.nanapp.twa",
       "sha256_cert_fingerprints": [
-        "PLACEHOLDER_SHA256_FINGERPRINT_FROM_PWA_BUILDER"
+        "REEMPLAZA_AQUI_CON_TU_SHA256_FINGERPRINT_DE_PWABUILDER"
       ]
     }
   }
