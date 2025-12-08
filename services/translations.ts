@@ -21,10 +21,11 @@ export const translations = {
     finish: "Finalizar",
     paused: "Pausado",
     install: {
-      banner_message: "Instala nanapp para acceso rápido sin navegador",
-      button: "Instalar",
+      banner_message: "Instala nanapp para escuchar sin interrupciones y con controles en pantalla bloqueada",
+      button: "Instalar ahora",
       success: "¡App instalada con éxito!",
     },
+    volume_warning: "⚠️ Alto volumen para exteriores. Cuidado cerca del oído del bebé.",
     app: {
       installed: "¡nanapp instalada correctamente!",
     },
@@ -204,10 +205,11 @@ export const translations = {
     finish: "Stop",
     paused: "Paused",
     install: {
-      banner_message: "Install nanapp for quick access without browser",
-      button: "Install",
+      banner_message: "Install nanapp to listen without interruptions and with lock screen controls",
+      button: "Install now",
       success: "App installed successfully!",
     },
+    volume_warning: "⚠️ High volume for outdoors. Be careful near baby's ears.",
     app: {
       installed: "nanapp installed successfully!",
     },
@@ -381,10 +383,11 @@ export const translations = {
     finish: "Arrêter",
     paused: "En pause",
     install: {
-      banner_message: "Installez nanapp pour un accès rapide sans navigateur",
-      button: "Installer",
+      banner_message: "Installez nanapp pour écouter sans interruptions avec contrôles sur écran verrouillé",
+      button: "Installer maintenant",
       success: "Application installée avec succès !",
     },
+    volume_warning: "⚠️ Volume élevé pour l'extérieur. Attention près des oreilles du bébé.",
     app: {
       installed: "nanapp installée correctement !",
     },
@@ -564,10 +567,11 @@ export const translations = {
     finish: "Ferma",
     paused: "In pausa",
     install: {
-      banner_message: "Installa nanapp per accesso rapido senza browser",
-      button: "Installa",
+      banner_message: "Installa nanapp per ascoltare senza interruzioni con controlli su schermo bloccato",
+      button: "Installa ora",
       success: "App installata con successo!",
     },
+    volume_warning: "⚠️ Volume alto per esterni. Attenzione vicino alle orecchie del bambino.",
     app: {
       installed: "nanapp installata correttamente!",
     },
@@ -747,10 +751,11 @@ export const translations = {
     finish: "Stopp",
     paused: "Pausiert",
     install: {
-      banner_message: "Installiere nanapp für schnellen Zugriff ohne Browser",
-      button: "Installieren",
+      banner_message: "Installiere nanapp für unterbrechungsfreies Hören mit Sperrbildschirm-Steuerung",
+      button: "Jetzt installieren",
       success: "App erfolgreich installiert!",
     },
+    volume_warning: "⚠️ Hohe Lautstärke für draußen. Vorsicht in der Nähe der Ohren des Babys.",
     app: {
       installed: "nanapp erfolgreich installiert!",
     },
@@ -930,10 +935,11 @@ export const translations = {
     finish: "Parar",
     paused: "Pausado",
     install: {
-      banner_message: "Instale nanapp para acesso rápido sem navegador",
-      button: "Instalar",
+      banner_message: "Instale nanapp para ouvir sem interrupções com controles na tela bloqueada",
+      button: "Instalar agora",
       success: "App instalado com sucesso!",
     },
+    volume_warning: "⚠️ Volume alto para exteriores. Cuidado perto dos ouvidos do bebê.",
     app: {
       installed: "nanapp instalado corretamente!",
     },

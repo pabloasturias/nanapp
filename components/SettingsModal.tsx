@@ -118,6 +118,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
                     className="w-full h-2 bg-slate-700 rounded-full appearance-none cursor-pointer accent-orange-400 hover:accent-orange-300 focus:outline-none"
                 />
+                <p className="text-[10px] text-amber-400/80 leading-tight mt-2">{t('volume_warning')}</p>
             </div>
 
             {/* Timer Default Setting */}

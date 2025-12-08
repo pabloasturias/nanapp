@@ -118,7 +118,12 @@ const AppContent: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
 
-    const handleVisibilityChange = () => setIsPageVisible(!document.hidden);
+    const handleVisibilityChange = () => {
+      setIsPageVisible(!document.hidden);
+      if (!document.hidden && engineRef.current) {
+        engineRef.current.resumeContext();
+      }
+    };
     document.addEventListener('visibilitychange', handleVisibilityChange);
     
     window.addEventListener('online', () => setIsOffline(false));
