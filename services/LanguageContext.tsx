@@ -15,7 +15,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   useEffect(() => {
     // Auto-detect language
     const savedLang = localStorage.getItem('dw_lang') as Language;
-    const supportedLangs: Language[] = ['es', 'en', 'fr', 'it', 'de', 'pt'];
+    const supportedLangs: Language[] = ['es', 'en', 'fr'];
     
     if (savedLang && supportedLangs.includes(savedLang)) {
       setLanguage(savedLang);

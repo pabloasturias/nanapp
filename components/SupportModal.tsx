@@ -1,17 +1,16 @@
 import React from 'react';
-import { X, Heart, Star, Coffee } from 'lucide-react';
+import { X, Heart, Star, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface SupportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onGoToProducts: () => void;
-  onCoffeeClick?: () => void;
+  onGoToProducts: () => void; 
 }
 
 const PACKAGE_NAME = "com.nanapp.android"; 
 
-export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose, onCoffeeClick }) => {
+export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
   const { t } = useLanguage();
   
   if (!isOpen) return null;
@@ -55,7 +54,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose, onC
                 </p>
             </div>
             
-            {/* Action Button - Rate */}
+            {/* Action Button */}
             <a 
                 href={`https://play.google.com/store/apps/details?id=${PACKAGE_NAME}`}
                 target="_blank"
@@ -65,30 +64,6 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose, onC
                 <Star size={20} fill="currentColor" className="text-white" />
                 <span>{t('support_btn')}</span>
             </a>
-
-            {/* Divider */}
-            <div className="flex items-center gap-3 py-1">
-                <div className="flex-1 h-px bg-slate-700/50"></div>
-                <span className="text-xs text-slate-500">o</span>
-                <div className="flex-1 h-px bg-slate-700/50"></div>
-            </div>
-
-            {/* Buy Me a Coffee */}
-            <div className="space-y-2">
-                <p className="text-xs text-amber-400/80 font-medium italic">
-                    {t('coffee_title')} ☕
-                </p>
-                <a 
-                    href="https://buymeacoffee.com/blonen"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => onCoffeeClick?.()}
-                    className="flex items-center justify-center gap-3 w-full p-3 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/30 transition-all active:scale-[0.98] group"
-                >
-                    <Coffee size={18} className="group-hover:animate-bounce" />
-                    <span>{t('coffee_btn')}</span>
-                </a>
-            </div>
 
             <div className="pt-2">
                  <p className="text-xs text-slate-500 font-medium">

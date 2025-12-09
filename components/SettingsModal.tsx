@@ -77,24 +77,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     >
                         Français
                     </button>
-                    <button 
-                        onClick={() => setLanguage('it')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'it' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Italiano
-                    </button>
-                    <button 
-                        onClick={() => setLanguage('de')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'de' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Deutsch
-                    </button>
-                    <button 
-                        onClick={() => setLanguage('pt')}
-                        className={`p-2 rounded-xl text-xs font-bold transition-all ${language === 'pt' ? 'bg-blue-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
-                    >
-                        Português
-                    </button>
                 </div>
             </div>
 
@@ -118,7 +100,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
                     className="w-full h-2 bg-slate-700 rounded-full appearance-none cursor-pointer accent-orange-400 hover:accent-orange-300 focus:outline-none"
                 />
-                <p className="text-[10px] text-amber-400/80 leading-tight mt-2">{t('volume_warning')}</p>
             </div>
 
             {/* Timer Default Setting */}

@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AudioEngine } from './services/audioEngine';
 import { SoundButton } from './components/SoundButton';
 import { Controls } from './components/Controls';
 import { Visualizer } from './components/Visualizer';
+import { TipsView } from './components/TipsView';
+import { SleepView } from './components/SleepView';
+import { StoryView } from './components/StoryView';
 import { SettingsModal } from './components/SettingsModal';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
 import { QuickInfoModal } from './components/QuickInfoModal';
@@ -11,15 +14,10 @@ import { LegalModal } from './components/LegalModal';
 import { Toast } from './components/Toast';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
-import { InstallBanner } from './components/InstallBanner';
 import { SOUNDS } from './constants';
 import { SoundType } from './types';
 import { HelpCircle, Info } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './services/LanguageContext';
-
-const TipsView = lazy(() => import('./components/TipsView').then(m => ({ default: m.TipsView })));
-const SleepView = lazy(() => import('./components/SleepView').then(m => ({ default: m.SleepView })));
-const StoryView = lazy(() => import('./components/StoryView').then(m => ({ default: m.StoryView })));
 
 const AppContent: React.FC = () => {
   const { t } = useLanguage();
@@ -31,28 +29,13 @@ const AppContent: React.FC = () => {
   const loadSavedFade = () => parseFloat(localStorage.getItem('dw_fade') || '1.5');
   const loadSavedHeartbeatLayer = () => localStorage.getItem('dw_hb_layer') === 'true';
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const rawUrlSound = urlParams.get('sound');
-  const rawUrlTab = urlParams.get('tab');
-
-  const validSoundIds = SOUNDS.map(s => s.id);
-  const validTabs = ['sounds', 'sleep', 'tips', 'story'];
-
-  const urlSound = rawUrlSound && validSoundIds.includes(rawUrlSound as SoundType) 
-    ? (rawUrlSound as SoundType) 
-    : null;
-  
-  const urlTab = rawUrlTab && validTabs.includes(rawUrlTab) 
-    ? (rawUrlTab as 'sounds' | 'sleep' | 'tips' | 'story') 
-    : null;
-
-  const [currentSound, setCurrentSound] = useState<SoundType | null>(urlSound || loadSavedSound);
+  const [currentSound, setCurrentSound] = useState<SoundType | null>(loadSavedSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [volume, setVolume] = useState(loadSavedVolume); 
   const [isMuted, setIsMuted] = useState(false);
   
-  const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>(urlTab || 'sounds');
+  const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>('sounds');
   const [showSettings, setShowSettings] = useState(false);
   const [showWhyModal, setShowWhyModal] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
@@ -72,10 +55,6 @@ const AppContent: React.FC = () => {
   const [timerRemaining, setTimerRemaining] = useState<number | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [isInstalled, setIsInstalled] = useState(false);
-  const [showInstallBanner, setShowInstallBanner] = useState(false);
-
   const engineRef = useRef<AudioEngine | null>(null);
   const timerIntervalRef = useRef<number | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
@@ -84,23 +63,6 @@ const AppContent: React.FC = () => {
       setToastMessage(msg);
       setShowToast(true);
   };
-
-  useEffect(() => {
-    const checkSharedContent = async () => {
-      const shareParams = new URLSearchParams(window.location.search);
-      const sharedTitle = shareParams.get('title');
-      const sharedText = shareParams.get('text');
-      const sharedUrl = shareParams.get('url');
-      
-      if (sharedTitle || sharedText || sharedUrl) {
-        const message = sharedTitle || sharedText || 'Contenido compartido recibido';
-        showNotification(`📤 ${message}`);
-        window.history.replaceState({}, '', '/');
-      }
-    };
-    
-    checkSharedContent();
-  }, []);
 
   useEffect(() => {
     engineRef.current = new AudioEngine();
@@ -118,42 +80,11 @@ const AppContent: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
 
-    const handleVisibilityChange = () => {
-      setIsPageVisible(!document.hidden);
-      if (!document.hidden && engineRef.current) {
-        engineRef.current.resumeContext();
-      }
-    };
+    const handleVisibilityChange = () => setIsPageVisible(!document.hidden);
     document.addEventListener('visibilitychange', handleVisibilityChange);
     
     window.addEventListener('online', () => setIsOffline(false));
     window.addEventListener('offline', () => setIsOffline(true));
-
-    const handleBeforeInstallPrompt = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      const hasDeclined = localStorage.getItem('install_declined');
-      const hasInstalled = localStorage.getItem('app_installed');
-      if (!hasDeclined && !hasInstalled) {
-        setTimeout(() => setShowInstallBanner(true), 3000);
-      }
-    };
-
-    const handleAppInstalled = () => {
-      setIsInstalled(true);
-      setShowInstallBanner(false);
-      localStorage.setItem('app_installed', 'true');
-      showNotification(t('app.installed'));
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    window.addEventListener('appinstalled', handleAppInstalled);
-
-    if (urlSound && !isPlaying) {
-      setTimeout(() => {
-        handleSoundSelect(urlSound);
-      }, 500);
-    }
 
     return () => {
       engineRef.current?.stopAll(false);
@@ -161,8 +92,6 @@ const AppContent: React.FC = () => {
       releaseWakeLock();
       window.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, []);
 
@@ -172,24 +101,6 @@ const AppContent: React.FC = () => {
   useEffect(() => localStorage.setItem('dw_warmth', isWarmthActive.toString()), [isWarmthActive]);
   useEffect(() => localStorage.setItem('dw_fade', fadeDuration.toString()), [fadeDuration]);
   useEffect(() => localStorage.setItem('dw_hb_layer', heartbeatLayer.toString()), [heartbeatLayer]);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      localStorage.setItem('app_installed', 'true');
-    } else {
-      localStorage.setItem('install_declined', 'true');
-    }
-    setDeferredPrompt(null);
-    setShowInstallBanner(false);
-  };
-
-  const handleDismissInstall = () => {
-    setShowInstallBanner(false);
-    localStorage.setItem('install_declined', 'true');
-  };
 
   const handleToggleWarmth = () => { 
       const newState = !isWarmthActive;
@@ -220,29 +131,16 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
       if ('mediaSession' in navigator && currentSound) {
-          const soundLabel = t(currentSound as any);
-          const soundEmoji = {
-              WHITE_NOISE: '〰️',
-              RAIN: '🌸',
-              BROWN_NOISE: '🟤',
-              OCEAN: '🌊',
-              HAIR_DRYER: '💨',
-              SHUSH: '🤫',
-              WAVES: '🌊',
-              LULLABY: '🎵'
-          }[currentSound] || '🎵';
-          
+          const soundLabel = t(currentSound as any); 
           if (isPlaying) {
               navigator.mediaSession.playbackState = 'playing';
               navigator.mediaSession.metadata = new MediaMetadata({
-                  title: `${soundEmoji} ${soundLabel}`,
+                  title: soundLabel || 'nanapp',
                   artist: 'nanapp',
                   album: t('app_slogan'),
                   artwork: [
-                      { src: '/icons/icon-96x96.png', sizes: '96x96', type: 'image/png' },
-                      { src: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
-                      { src: '/icons/icon-384x384.png', sizes: '384x384', type: 'image/png' },
-                      { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+                      { src: './icon.svg', sizes: '96x96', type: 'image/svg+xml' },
+                      { src: './icon.svg', sizes: '512x512', type: 'image/svg+xml' },
                   ]
               });
               navigator.mediaSession.setActionHandler('play', handlePlay);
@@ -250,9 +148,7 @@ const AppContent: React.FC = () => {
               navigator.mediaSession.setActionHandler('stop', () => handleStop(false));
               navigator.mediaSession.setActionHandler('previoustrack', handlePrevSound);
               navigator.mediaSession.setActionHandler('nexttrack', handleNextSound);
-              navigator.mediaSession.setActionHandler('seekbackward', null);
-              navigator.mediaSession.setActionHandler('seekforward', null);
-              navigator.mediaSession.setActionHandler('seekto', null);
+              navigator.mediaSession.setActionHandler('seekto', () => {}); 
           } else if (isPaused) {
               navigator.mediaSession.playbackState = 'paused';
           } else {
@@ -406,26 +302,10 @@ const AppContent: React.FC = () => {
   
   const lastTapRef = useRef(0);
 
-  const LoadingFallback = () => (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="text-center space-y-4">
-        <div className="w-12 h-12 border-4 border-orange-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-        <p className="text-sm text-slate-400">Cargando...</p>
-      </div>
-    </div>
-  );
-
   const renderContent = () => {
-      if (activeTab !== 'sounds') {
-        const LazyComponent = activeTab === 'story' ? StoryView : activeTab === 'sleep' ? SleepView : TipsView;
-        const props = activeTab === 'story' ? { onBack: () => setActiveTab('sounds') } : {};
-        
-        return (
-          <Suspense fallback={<LoadingFallback />}>
-            <LazyComponent {...props} />
-          </Suspense>
-        );
-      }
+      if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
+      if (activeTab === 'sleep') return <SleepView />;
+      if (activeTab === 'tips') return <TipsView />;
       
       return (
         <>
@@ -489,15 +369,6 @@ const AppContent: React.FC = () => {
       
       {isPageVisible && <Visualizer isActive={isPlaying} type="calm" />}
       
-      {showInstallBanner && (
-        <InstallBanner
-          onInstall={handleInstallClick}
-          onDismiss={handleDismissInstall}
-          message={t('install.banner_message')}
-          installText={t('install.button')}
-        />
-      )}
-      
       <SettingsModal 
         isOpen={showSettings} 
         onClose={() => setShowSettings(false)} 
@@ -512,12 +383,7 @@ const AppContent: React.FC = () => {
       />
       <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
       <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
-      <SupportModal 
-        isOpen={showSupportModal} 
-        onClose={() => setShowSupportModal(false)} 
-        onGoToProducts={() => setActiveTab('tips')}
-        onCoffeeClick={() => showNotification(t('coffee_thanks'))}
-      />
+      <SupportModal isOpen={showSupportModal} onClose={() => setShowSupportModal(false)} onGoToProducts={() => setActiveTab('tips')} />
       <LegalModal isOpen={showLegalModal} onClose={() => setShowLegalModal(false)} />
       <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
@@ -527,7 +393,6 @@ const AppContent: React.FC = () => {
                 onOpenSupport={() => setShowSupportModal(true)}
                 onGoToStory={() => setActiveTab('story')}
                 isOffline={isOffline}
-                coffeeTooltip={t('coffee_tooltip')}
             />
             {renderContent()}
       </div>

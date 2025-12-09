@@ -5,6 +5,7 @@ export class AudioEngine {
   private masterGain: GainNode | null = null;
   private warmthFilter: BiquadFilterNode | null = null; 
   private activeNodes: AudioNode[] = [];
+  // Separate tracking for heartbeat layer
   private heartbeatNodes: AudioNode[] = [];
   private heartbeatInterval: number | null = null;
   private isHeartbeatLayerActive: boolean = false;
@@ -17,10 +18,8 @@ export class AudioEngine {
   private fadeTime: number = 1.5; 
   private longFadeTime: number = 10; 
 
-  private mediaStreamDest: MediaStreamAudioDestinationNode | null = null;
-  private hiddenAudio: HTMLAudioElement | null = null;
-
   constructor() {
+    // Lazy initialization handled in init()
   }
 
   public init() {
@@ -38,29 +37,11 @@ export class AudioEngine {
       this.masterGain.connect(this.warmthFilter);
       this.warmthFilter.connect(this.ctx.destination);
       
-      this.mediaStreamDest = this.ctx.createMediaStreamDestination();
-      this.warmthFilter.connect(this.mediaStreamDest);
-      
-      this.hiddenAudio = document.createElement('audio');
-      this.hiddenAudio.srcObject = this.mediaStreamDest.stream;
-      this.hiddenAudio.loop = true;
-      this.hiddenAudio.muted = false;
-      this.hiddenAudio.volume = 0;
-      this.hiddenAudio.play().catch(() => {});
-      
+      // Initialize silent
       this.masterGain.gain.value = 0;
     }
     if (this.ctx.state === 'suspended') {
       this.ctx.resume().catch(e => console.error("Audio resume failed", e));
-    }
-  }
-
-  public resumeContext() {
-    if (this.ctx?.state === 'suspended') {
-      this.ctx.resume().catch(() => {});
-    }
-    if (this.hiddenAudio?.paused) {
-      this.hiddenAudio.play().catch(() => {});
     }
   }
 
