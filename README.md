@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# nanapp - Ruido Blanco para Bebés
 
-# Run and deploy your AI Studio app
+Una aplicación web progresiva (PWA) diseñada para ayudar a los bebés a dormir usando ruido blanco y sonidos relajantes.
 
-This contains everything you need to run your app locally.
+## Características
 
-View your app in AI Studio: https://ai.studio/apps/drive/1nc2dtRU-aadkORXF5E-N4AbyuTr-QAmx
+- Múltiples tipos de sonido: ruido blanco, rosa, marrón, océano, secador, shh rítmico, olas y nanas
+- Funciona completamente offline una vez instalada
+- Controles de volumen y temporizador
+- Guía de sueño para bebés
+- Soporte para 6 idiomas: Español, English, Français, Italiano, Deutsch, Português
+- Optimizada para Android (TWA/APK)
 
-## Run Locally
+## Ejecutar Localmente
 
-**Prerequisites:**  Node.js
+**Requisitos:** Node.js
 
+1. Instalar dependencias:
+   ```
+   npm install
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+2. Ejecutar la app:
+   ```
+   npm run dev
+   ```
+
+## Tecnologías
+
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS
+- Web Audio API (generación de sonido procedural)
+- Service Worker para funcionamiento offline

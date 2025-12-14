@@ -11,25 +11,13 @@ interface SoundButtonProps {
 }
 
 const ShushIcon = ({ className, size }: { className?: string, size?: number }) => (
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        width={size} 
-        height={size} 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        className={className}
+    <div 
+        className={`flex items-center justify-center ${className}`}
+        style={{ width: size, height: size }}
     >
-        <circle cx="12" cy="12" r="9" />
-        <path d="M8 10c.5-.5 1.5-.5 2 0" />
-        <path d="M14 10c.5-.5 1.5-.5 2 0" />
-        <rect x="11" y="11" width="2" height="6" rx="1" fill="currentColor" stroke="none" />
-        <rect x="11" y="11" width="2" height="6" rx="1" stroke="currentColor" fill="none"/>
-        <path d="M10 17h4" />
-    </svg>
+        <span className="text-[10px] font-bold leading-none">shh</span>
+        <Icons.Music2 size={8} className="ml-0.5 -mt-1" strokeWidth={2} />
+    </div>
 );
 
 export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onClick }) => {

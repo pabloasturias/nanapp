@@ -38,7 +38,7 @@ The app follows a component-based architecture with a single-page application (S
 ### Internationalization
 - **Location**: `services/LanguageContext.tsx` and `services/translations.ts`
 - **Approach**: React Context-based language provider
-- **Languages**: Spanish (default), English, French
+- **Languages**: Spanish (default), English, French, Italian, German, Portuguese
 - **Detection**: Auto-detects browser language, falls back to saved preference or English
 
 ### PWA Configuration
@@ -71,9 +71,6 @@ Settings are stored in localStorage with `dw_` prefix:
 - `vite`: Build and dev server
 - `@vitejs/plugin-react`: React plugin for Vite
 - `typescript`: Type checking
-
-### Environment Variables
-- `GEMINI_API_KEY`: Referenced in Vite config but not actively used in current codebase (likely for future AI features)
 
 ### No Backend Required
 This is a fully client-side application with no server dependencies. All audio is generated procedurally, and data persists in localStorage.
