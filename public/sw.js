@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nanapp-v4';
+const CACHE_NAME = 'nanapp-v5';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -7,7 +7,9 @@ const PRECACHE_ASSETS = [
   '/icons/icon-144.png',
   '/icons/icon-192.png',
   '/icons/icon-384.png',
-  '/icons/icon-512.png'
+  '/icons/icon-512.png',
+  '/screenshots/screenshot-wide.png',
+  '/screenshots/screenshot-portrait.png'
 ];
 
 self.addEventListener('install', (event) => {

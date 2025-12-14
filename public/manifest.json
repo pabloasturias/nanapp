@@ -35,10 +35,26 @@
       "purpose": "maskable"
     }
   ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "nanapp - Pantalla principal con sonidos"
+    },
+    {
+      "src": "/screenshots/screenshot-portrait.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "nanapp - Interfaz móvil"
+    }
+  ],
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone"],
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#020617",
   "theme_color": "#020617",
@@ -46,6 +62,14 @@
   "lang": "es",
   "dir": "ltr",
   "prefer_related_applications": false,
+  "related_applications": [],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
   "shortcuts": [
     {
       "name": "Ruido Blanco",
@@ -56,10 +80,32 @@
     },
     {
       "name": "Ruido Rosa",
-      "short_name": "Rosa", 
+      "short_name": "Rosa",
       "description": "Iniciar ruido rosa",
       "url": "/?sound=PINK_NOISE",
       "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Océano",
+      "short_name": "Océano",
+      "description": "Sonido del océano",
+      "url": "/?sound=OCEAN",
+      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
     }
-  ]
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+nanapp",
+      "url": "/?action=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }
