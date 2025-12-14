@@ -1,0 +1,65 @@
+{
+  "id": "/",
+  "short_name": "nanapp",
+  "name": "nanapp: Ruido Blanco Bebé",
+  "description": "La app definitiva de ruido blanco para dormir bebés. Sonidos de alta calidad, guía de sueño y alivio de cólicos. Funciona offline y es 100% gratuita.",
+  "icons": [
+    {
+      "src": "/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone"],
+  "orientation": "portrait",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "categories": ["health", "lifestyle", "medical"],
+  "lang": "es",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Ruido Blanco",
+      "short_name": "Blanco",
+      "description": "Iniciar ruido blanco",
+      "url": "/?sound=WHITE_NOISE",
+      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Ruido Rosa",
+      "short_name": "Rosa", 
+      "description": "Iniciar ruido rosa",
+      "url": "/?sound=PINK_NOISE",
+      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+    }
+  ]
+}
