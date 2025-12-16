@@ -27,7 +27,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     isWarmthActive, onToggleWarmth,
     volume, onVolumeChange, isMuted, onToggleMute,
     fadeDuration, onFadeChange,
-    heartbeatLayer, onToggleHeartbeatLayer,
+
     heartbeatLayer, onToggleHeartbeatLayer,
     onOpenLegal, onOpenAbout, onOpenStats,
     timerDuration, onTimerChange
