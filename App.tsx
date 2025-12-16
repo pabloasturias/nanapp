@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { SoundButton } from './components/SoundButton';
 import { Controls } from './components/Controls';
 import { Visualizer } from './components/Visualizer';
-import { TipsView } from './components/TipsView';
+import { ProductsView } from './components/ProductsView';
 import { SleepView } from './components/SleepView';
 import { StoryView } from './components/StoryView';
 import { SettingsModal } from './components/SettingsModal';
+import { ReloadPrompt } from './components/ReloadPrompt';
 import { StatsView } from './components/StatsView';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
 import { QuickInfoModal } from './components/QuickInfoModal';
@@ -228,7 +229,7 @@ const AppContent: React.FC = () => {
     const renderContent = () => {
         if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
         if (activeTab === 'sleep') return <SleepView />;
-        if (activeTab === 'tips') return <TipsView />;
+        if (activeTab === 'tips') return <ProductsView />;
         if (activeTab === 'stats') return <StatsView />;
 
         return (
@@ -293,6 +294,8 @@ const AppContent: React.FC = () => {
 
             {isPageVisible && <Visualizer isActive={audio.isPlaying} type="calm" />}
 
+            {/* UI Layovers */}
+            <ReloadPrompt />
             <SettingsModal
                 isOpen={showSettings}
                 onClose={() => setShowSettings(false)}

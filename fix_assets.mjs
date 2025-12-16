@@ -18,46 +18,25 @@ const screenshots = [
 
 const processFiles = async () => {
     const publicDir = path.resolve("public");
+    const masterPath = path.resolve("master_icon.png");
+
+    if (!fs.existsSync(masterPath)) {
+        console.error("master_icon.png not found!");
+        return;
+    }
+
+    const masterImage = await Jimp.read(masterPath);
 
     for (const icon of icons) {
         const filePath = path.join(publicDir, "icons", icon.name);
-        if (!fs.existsSync(filePath)) {
-            console.log(`Skipping missing: ${icon.name}`);
-            continue;
-        }
-
         try {
-            const image = await Jimp.read(filePath);
-            if (image.width === icon.w && image.height === icon.h) {
-                console.log(`OK: ${icon.name}`);
-            } else {
-                console.log(`Resizing ${icon.name}: ${image.width}x${image.height} -> ${icon.w}x${icon.h}`);
-                image.resize({ w: icon.w, h: icon.h });
-                await image.write(filePath);
-            }
+            console.log(`Generating ${icon.name} (${icon.w}x${icon.h})...`);
+            // Clone master to avoid modifying it for next iteration
+            const image = masterImage.clone();
+            image.resize({ w: icon.w, h: icon.h });
+            await image.write(filePath);
         } catch (err) {
             console.error(`Error processing ${icon.name}:`, err);
-        }
-    }
-
-    for (const shot of screenshots) {
-        const filePath = path.join(publicDir, "screenshots", shot.name);
-        if (!fs.existsSync(filePath)) {
-            console.log(`Skipping missing: ${shot.name}`);
-            continue;
-        }
-
-        try {
-            const image = await Jimp.read(filePath);
-            if (image.width === shot.w && image.height === shot.h) {
-                console.log(`OK: ${shot.name}`);
-            } else {
-                console.log(`Resizing ${shot.name}: ${image.width}x${image.height} -> ${shot.w}x${shot.h}`);
-                image.resize({ w: shot.w, h: shot.h });
-                await image.write(filePath);
-            }
-        } catch (err) {
-            console.error(`Error processing ${shot.name}:`, err);
         }
     }
 };

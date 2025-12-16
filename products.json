@@ -1,37 +1,174 @@
-[
-    {
-        "id": 1,
-        "name": "Humidificador Ultrasónico",
-        "desc": "Mantiene la humedad ideal para evitar sequedad nasal.",
-        "url": "#", 
-        "icon": "💧"
-    },
-    {
-        "id": 2,
-        "name": "Saco de Dormir Bebé",
-        "desc": "Más seguro que las mantas sueltas, temperatura constante.",
-        "url": "#",
-        "icon": "😴" 
-    },
-    {
-        "id": 3,
-        "name": "Swaddle (Arrullo)",
-        "desc": "Evita el reflejo de Moro y recrea la presión del útero.",
-        "url": "#",
-        "icon": "🌯"
-    },
-    {
-        "id": 4,
-        "name": "Fular Portabebés",
-        "desc": "Calma inmediata gracias al contacto piel con piel.",
-        "url": "#",
-        "icon": "🦘"
-    },
-    {
-        "id": 5,
-        "name": "Luz Nocturna Roja",
-        "desc": "Ilumina sin interrumpir la producción de melatonina.",
-        "url": "#",
-        "icon": "💡"
-    }
-]
+{
+    "es": [
+        {
+            "id": 1,
+            "name": "Humidificador Ultrasónico",
+            "category": "environment",
+            "shortDesc": "Mantiene la humedad ideal (40-60%) para evitar sequedad nasal y tos.",
+            "longDesc": "El ambiente seco es uno de los mayores enemigos del sueño del bebé. Este humidificador ultrasónico no solo mantiene la humedad en el rango óptimo (40-60%), sino que es totalmente silencioso y cuenta con luz roja para no interferir con la melatonina. Es fácil de limpiar y tiene apagado automático.",
+            "features": [
+                "Ultrasónico y Silencioso (<20dB)",
+                "Luz nocturna roja integrada",
+                "Fácil limpieza (sin filtros)",
+                "Apagado automático"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 2,
+            "name": "Saco de Dormir TOG 2.5",
+            "category": "sleep",
+            "shortDesc": "La forma más segura de abrigar a tu bebé. Temperatura constante toda la noche.",
+            "longDesc": "Olvídate de las mantas sueltas que pueden cubrir la cara del bebé. El saco de dormir garantiza que tu pequeño mantenga una temperatura corporal constante durante toda la noche, reduciendo los despertares por frío. El TOG 2.5 es ideal para inviernos o habitaciones entre 16-20°C.",
+            "features": [
+                "Algodón orgánico transpirable",
+                "Cremallera de doble dirección",
+                "Diseño amplio de caderas (Hip Healthy)",
+                "Sin etiquetas que rocen"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 3,
+            "name": "Swaddle Ergonómico",
+            "category": "sleep",
+            "shortDesc": "Evita el reflejo de Moro y recrea la seguridad del útero materno.",
+            "longDesc": "Perfecto para los primeros 3 meses (Cuarto Trimestre). Este arrullo recrea la presión suave que el bebé sentía en el útero, calmando el llanto casi al instante y evitando que se despierte por sus propios movimientos involuntarios (Reflejo de Moro).",
+            "features": [
+                "Tejido elástico y suave",
+                "Velcro silencioso",
+                "Fácil de poner en 3 pasos",
+                "Permite cambio de pañal fácil"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 4,
+            "name": "Fular Portabebés",
+            "category": "travel",
+            "shortDesc": "Contacto piel con piel para calmar el llanto y libertad para tus manos.",
+            "longDesc": "El porteo es la herramienta número 1 para los días difíciles. Mantener al bebé cerca de tu latido reduce el cortisol y le ayuda a regular su temperatura y respiración. Este fular es ligero, fresco y reparte el peso perfectamente por tu espalda.",
+            "features": [
+                "Tejido de bambú termorregulador",
+                "Talla única adaptable",
+                "Soporte ergonómico en 'M'",
+                "Incluye bolsa de transporte"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 5,
+            "name": "Luz Roja de Noche",
+            "category": "environment",
+            "shortDesc": "Iluminación que respeta el ciclo circadiano y la producción de melatonina.",
+            "longDesc": "La luz azul de las bombillas normales o móviles despierta al cerebro. Esta luz emite una frecuencia roja/ámbar específica que permite ver para cambiar pañales o dar el pecho sin interrumpir el sueño del bebé (ni el tuyo).",
+            "features": [
+                "Espectro 100% libre de luz azul",
+                "Batería recargable (duración 1 semana)",
+                "Portátil y táctil",
+                "Intensidad regulable"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 6,
+            "name": "Cambiador Portátil",
+            "category": "hygiene",
+            "shortDesc": "Higiene y comodidad en cualquier lugar. Impermeable y acolchado.",
+            "longDesc": "Un imprescindible para salir de casa. Este cambiador se pliega como un pequeño bolso pero se despliega ofreciendo una superficie amplia, limpia y acolchada para cambiar a tu bebé en cualquier baño público o superficie.",
+            "features": [
+                "Superficie impermeable",
+                "Bolsillo para pañales y toallitas",
+                "Cojín para la cabeza",
+                "Se limpia con un paño"
+            ],
+            "url": "#"
+        }
+    ],
+    "en": [
+        {
+            "id": 1,
+            "name": "Ultrasonic Humidifier",
+            "category": "environment",
+            "shortDesc": "Maintains ideal humidity (40-60%) to prevent dry nose and coughs.",
+            "longDesc": "Dry air is one of the biggest enemies of baby sleep. This ultrasonic humidifier not only maintains humidity in the optimal range (40-60%) but is completely silent and features a red light so as not to interfere with melatonin. Easy to clean and auto-shutoff.",
+            "features": [
+                "Ultrasonic & Silent (<20dB)",
+                "Integrated red night light",
+                "Easy cleaning (filter-free)",
+                "Auto shut-off"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 2,
+            "name": "Sleep Sack TOG 2.5",
+            "category": "sleep",
+            "shortDesc": "The safest way to keep your baby warm. Constant temperature all night.",
+            "longDesc": "Forget loose blankets that can cover the baby's face. The sleep sack guarantees your little one maintains a constant body temperature throughout the night, reducing cold awakenings. TOG 2.5 is deal for winters or rooms between 16-20°C.",
+            "features": [
+                "Breathable organic cotton",
+                "Two-way zipper",
+                "Hip Healthy design",
+                "Tag-free"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 3,
+            "name": "Ergonomic Swaddle",
+            "category": "sleep",
+            "shortDesc": "Prevents Moro reflex and recreates the security of the womb.",
+            "longDesc": "Perfect for the first 3 months (Fourth Trimester). This swaddle recreates the gentle pressure the baby felt in the womb, soothing crying almost instantly and preventing them from waking up due to their own startle reflex.",
+            "features": [
+                "Soft, stretchy fabric",
+                "Quiet velcro",
+                "Easy 3-step wrap",
+                "Easy diaper change access"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 4,
+            "name": "Baby Wrap Carrier",
+            "category": "travel",
+            "shortDesc": "Skin-to-skin contact to soothe crying and freedom for your hands.",
+            "longDesc": "Babywearing is the #1 tool for fussy days. Keeping baby close to your heartbeat reduces cortisol and helps regulate their temperature and breathing. This wrap is lightweight, cool, and distributes weight perfectly across your back.",
+            "features": [
+                "Thermoregulating bamboo fabric",
+                "One size fits all",
+                "Ergonomic 'M' support",
+                "Includes carry bag"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 5,
+            "name": "Red Night Light",
+            "category": "environment",
+            "shortDesc": "Lighting that respects the circadian rhythm and melatonin production.",
+            "longDesc": "Blue light from regular bulbs or phones wakes up the brain. This light emits a specific red/amber frequency that allows you to see for diaper changes or breastfeeding without interrupting the baby's sleep (or yours).",
+            "features": [
+                "100% blue light free spectrum",
+                "Rechargeable battery (1 week life)",
+                "Portable and touch control",
+                "Dimmable"
+            ],
+            "url": "#"
+        },
+        {
+            "id": 6,
+            "name": "Portable Changing Pad",
+            "category": "hygiene",
+            "shortDesc": "Hygiene and comfort anywhere. Waterproof and padded.",
+            "longDesc": "A must-have for leaving the house. This changing pad folds like a small clutch but unfolds to offer a large, clean, and padded surface to change your baby in any public restroom or surface.",
+            "features": [
+                "Waterproof surface",
+                "Pocket for diapers and wipes",
+                "Head cushion",
+                "Wipe clean"
+            ],
+            "url": "#"
+        }
+    ]
+}

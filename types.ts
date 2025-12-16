@@ -22,3 +22,13 @@ export interface TimerOption {
   minutes: number;
   label: string;
 }
+
+export interface Product {
+  id: number;
+  name: string;
+  category: string;
+  shortDesc: string;
+  longDesc: string;
+  features: string[];
+  url: string;
+}
