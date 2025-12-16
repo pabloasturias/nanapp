@@ -1,35 +1,36 @@
 import { SoundType, SoundOption, TimerOption } from './types';
-import { WhiteNoiseIcon, RainIcon, BrownNoiseIcon, OceanIcon, HairDryerIcon, ShushIcon, WavesIcon, LullabyIcon } from './components/icons/SoundIcons';
+import { ShushIcon } from './components/icons/SoundIcons';
+import { CloudRain, Wind, Waves, Disc, Volume2, Music, Zap } from 'lucide-react'; // Using Lucide for others
 
 export const SOUNDS: SoundOption[] = [
   {
     id: SoundType.WHITE_NOISE,
     label: 'Ruido Blanco',
-    Icon: WhiteNoiseIcon,
+    Icon: Volume2, // Using Volume2 for White Noise or similar
     description: 'Aísla ruidos externos'
   },
   {
     id: SoundType.RAIN,
     label: 'Ruido Rosa',
-    Icon: RainIcon,
+    Icon: CloudRain,
     description: 'Ruido rosa relajante'
   },
   {
     id: SoundType.BROWN_NOISE,
     label: 'Ruido Marrón',
-    Icon: BrownNoiseIcon,
+    Icon: Disc, // Represents Brown Noise
     description: 'Profundo y grave'
   },
   {
     id: SoundType.OCEAN,
     label: 'Océano',
-    Icon: OceanIcon,
+    Icon: Waves,
     description: 'Ruido marrón rítmico'
   },
   {
     id: SoundType.HAIR_DRYER,
     label: 'Secador',
-    Icon: HairDryerIcon,
+    Icon: Wind,
     description: 'Zumbido cálido'
   },
   {
@@ -41,13 +42,13 @@ export const SOUNDS: SoundOption[] = [
   {
     id: SoundType.WAVES,
     label: 'Olas',
-    Icon: WavesIcon,
+    Icon: Zap, // Waves usually represented by something moving
     description: 'Sonido de mar suave'
   },
   {
     id: SoundType.LULLABY,
     label: 'Nana',
-    Icon: LullabyIcon,
+    Icon: Music,
     description: 'Melodía suave'
   }
 ];

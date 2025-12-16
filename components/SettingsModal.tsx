@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight, Clock, Info } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Wind, Heart, Shield, ArrowRight, Clock, Info, BarChart2 } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface SettingsModalProps {
@@ -17,6 +17,7 @@ interface SettingsModalProps {
     onToggleHeartbeatLayer: () => void;
     onOpenLegal: () => void;
     onOpenAbout: () => void;
+    onOpenStats: () => void;
     timerDuration: number;
     onTimerChange: (val: number) => void;
 }
@@ -27,7 +28,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     volume, onVolumeChange, isMuted, onToggleMute,
     fadeDuration, onFadeChange,
     heartbeatLayer, onToggleHeartbeatLayer,
-    onOpenLegal, onOpenAbout,
+    heartbeatLayer, onToggleHeartbeatLayer,
+    onOpenLegal, onOpenAbout, onOpenStats,
     timerDuration, onTimerChange
 }) => {
     const { t, language, setLanguage } = useLanguage();
@@ -207,6 +209,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
                     {/* Links Section */}
                     <div className="pt-2 space-y-2">
+                        <button
+                            onClick={onOpenStats}
+                            className="w-full p-4 rounded-3xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-between group hover:bg-slate-800 transition-all"
+                        >
+                            <div className="flex items-center gap-3">
+                                <BarChart2 size={20} className="text-slate-400 group-hover:text-blue-300" />
+                                <span className="text-sm font-semibold text-slate-300 group-hover:text-orange-50">{t('tab_stats')}</span>
+                            </div>
+                            <ArrowRight size={16} className="text-slate-500 group-hover:text-blue-300" />
+                        </button>
                         <button
                             onClick={onOpenAbout}
                             className="w-full p-4 rounded-3xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-between group hover:bg-slate-800 transition-all"

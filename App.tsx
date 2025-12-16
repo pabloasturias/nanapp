@@ -304,6 +304,7 @@ const AppContent: React.FC = () => {
                 timerDuration={timer.duration} onTimerChange={timer.setDuration}
                 onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
                 onOpenAbout={() => { setShowSettings(false); setActiveTab('story'); }}
+                onOpenStats={() => { setShowSettings(false); setActiveTab('stats'); }}
             />
             <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
             <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
