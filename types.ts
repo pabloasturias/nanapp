@@ -1,3 +1,5 @@
+import React from 'react';
+
 export enum SoundType {
   WHITE_NOISE = 'WHITE_NOISE',
   RAIN = 'RAIN',
@@ -12,7 +14,7 @@ export enum SoundType {
 export interface SoundOption {
   id: SoundType;
   label: string;
-  iconName: string; // Key for Lucide icon lookup
+  Icon: React.ComponentType<{ size?: number | string; strokeWidth?: number; className?: string }>;
   description: string;
 }
 

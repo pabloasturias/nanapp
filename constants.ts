@@ -1,52 +1,53 @@
 import { SoundType, SoundOption, TimerOption } from './types';
+import { WhiteNoiseIcon, RainIcon, BrownNoiseIcon, OceanIcon, HairDryerIcon, ShushIcon, WavesIcon, LullabyIcon } from './components/icons/SoundIcons';
 
 export const SOUNDS: SoundOption[] = [
   {
     id: SoundType.WHITE_NOISE,
     label: 'Ruido Blanco',
-    iconName: 'ZapOff',
+    Icon: WhiteNoiseIcon,
     description: 'Aísla ruidos externos'
   },
   {
     id: SoundType.RAIN,
     label: 'Ruido Rosa',
-    iconName: 'Flower2',
+    Icon: RainIcon,
     description: 'Ruido rosa relajante'
   },
   {
     id: SoundType.BROWN_NOISE,
     label: 'Ruido Marrón',
-    iconName: 'Cloud',
+    Icon: BrownNoiseIcon,
     description: 'Profundo y grave'
   },
   {
     id: SoundType.OCEAN,
     label: 'Océano',
-    iconName: 'Waves',
+    Icon: OceanIcon,
     description: 'Ruido marrón rítmico'
   },
   {
     id: SoundType.HAIR_DRYER,
     label: 'Secador',
-    iconName: 'Wind',
+    Icon: HairDryerIcon,
     description: 'Zumbido cálido'
   },
   {
     id: SoundType.SHUSH,
     label: 'Shh Rítmico',
-    iconName: 'Mic2',
+    Icon: ShushIcon,
     description: 'Sonido calmante humano'
   },
   {
     id: SoundType.WAVES,
     label: 'Olas',
-    iconName: 'Waves',
+    Icon: WavesIcon,
     description: 'Sonido de mar suave'
   },
   {
     id: SoundType.LULLABY,
     label: 'Nana',
-    iconName: 'Music',
+    Icon: LullabyIcon,
     description: 'Melodía suave'
   }
 ];

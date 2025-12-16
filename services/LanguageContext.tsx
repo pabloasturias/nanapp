@@ -15,16 +15,16 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   useEffect(() => {
     // Auto-detect language
     const savedLang = localStorage.getItem('dw_lang') as Language;
-    const supportedLangs: Language[] = ['es', 'en', 'fr'];
-    
+    const supportedLangs: Language[] = ['es', 'en', 'fr', 'de', 'it', 'pt'];
+
     if (savedLang && supportedLangs.includes(savedLang)) {
       setLanguage(savedLang);
     } else {
       const browserLang = navigator.language.split('-')[0] as Language;
       if (supportedLangs.includes(browserLang)) {
-          setLanguage(browserLang);
+        setLanguage(browserLang);
       } else {
-          setLanguage('en'); // Global Fallback
+        setLanguage('en'); // Global Fallback
       }
     }
   }, []);

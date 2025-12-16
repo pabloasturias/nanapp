@@ -6,6 +6,7 @@ import { TipsView } from './components/TipsView';
 import { SleepView } from './components/SleepView';
 import { StoryView } from './components/StoryView';
 import { SettingsModal } from './components/SettingsModal';
+import { StatsView } from './components/StatsView';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
 import { QuickInfoModal } from './components/QuickInfoModal';
 import { SupportModal } from './components/SupportModal';
@@ -19,6 +20,7 @@ import { HelpCircle } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './services/LanguageContext';
 import { useAudioEngine } from './services/hooks/useAudioEngine';
 import { useTimer } from './services/hooks/useTimer';
+import { useStatistics } from './services/hooks/useStatistics';
 
 const AppContent: React.FC = () => {
     const { t } = useLanguage();
@@ -26,8 +28,9 @@ const AppContent: React.FC = () => {
     // Custom Hooks
     const audio = useAudioEngine(parseFloat(localStorage.getItem('dw_volume') || '0.4'));
     const timer = useTimer(parseInt(localStorage.getItem('dw_duration') || '40', 10));
+    const { logSession } = useStatistics();
 
-    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story'>('sounds');
+    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats'>('sounds');
     const [showSettings, setShowSettings] = useState(false);
     const [showWhyModal, setShowWhyModal] = useState(false);
     const [showSupportModal, setShowSupportModal] = useState(false);
@@ -111,6 +114,39 @@ const AppContent: React.FC = () => {
         }
     }, [audio.isPlaying, audio.isPaused, audio.currentSound, t]);
 
+    // Statistics Logging
+    useEffect(() => {
+        let startTime: number | null = null;
+
+        if (audio.isPlaying) {
+            startTime = Date.now();
+        }
+
+        return () => {
+            // This cleanup runs when audio.isPlaying changes (e.g. becomes false)
+            // or when component unmounts. 
+            // Ideally we want to capture ONLY when it STOPS playing.
+            // But hooks are tricky. Let's use a separate effect for strict state changes?
+            // Or better: Tracking ref.
+        };
+    }, [audio.isPlaying]);
+
+    const startTimeRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        if (audio.isPlaying) {
+            startTimeRef.current = Date.now();
+        } else {
+            // Stopped or Paused
+            if (startTimeRef.current && audio.currentSound) {
+                const durationSeconds = (Date.now() - startTimeRef.current) / 1000;
+                logSession(durationSeconds, audio.currentSound);
+                startTimeRef.current = null;
+            }
+        }
+    }, [audio.isPlaying, audio.currentSound]); // logSession is stable
+
+
     // Handlers bridging Hooks and UI
     const handleSoundSelect = (soundId: SoundType) => {
         if (audio.currentSound === soundId && audio.isPlaying) {
@@ -193,6 +229,7 @@ const AppContent: React.FC = () => {
         if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
         if (activeTab === 'sleep') return <SleepView />;
         if (activeTab === 'tips') return <TipsView />;
+        if (activeTab === 'stats') return <StatsView />;
 
         return (
             <>
