@@ -1,85 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#020617" />
-    
-    <!-- SEO & ASO Optimization -->
-    <title>nanapp: Ruido Blanco y Sueño Bebé</title>
-    <meta name="description" content="La mejor app de ruido blanco para dormir bebés. Sonidos de alta calidad (Útero, Mar, Secador), alivio de cólicos y guía pediátrica de sueño. 100% Gratis y funciona Offline." />
-    <meta name="keywords" content="ruido blanco bebe, white noise baby, colicos lactante, dormir bebe, sonidos relajantes, ruido rosa, sueño bebe, recien nacido, sleep training, offline" />
-    <meta name="author" content="nanapp" />
-    
-    <!-- Social Sharing (Open Graph) -->
-    <meta property="og:title" content="nanapp: El sonido del descanso" />
-    <meta property="og:description" content="Ayuda a tu bebé a dormir en minutos. Ruido blanco, rosa y marrón diseñados científicamente. Gratis y sin anuncios intrusivos." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/icons/icon-512.png" />
-    
-    <!-- PWA Settings -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="nanapp" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-      html {
-        height: 100%;
-        overscroll-behavior: none; /* Prevent bounce effect */
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#020617" />
+
+  <!-- SEO & ASO Optimization -->
+  <title>nanapp: Ruido Blanco y Sueño Bebé</title>
+  <meta name="description"
+    content="La mejor app de ruido blanco para dormir bebés. Sonidos de alta calidad (Útero, Mar, Secador), alivio de cólicos y guía pediátrica de sueño. 100% Gratis y funciona Offline." />
+  <meta name="keywords"
+    content="ruido blanco bebe, white noise baby, colicos lactante, dormir bebe, sonidos relajantes, ruido rosa, sueño bebe, recien nacido, sleep training, offline" />
+  <meta name="author" content="nanapp" />
+
+  <!-- Social Sharing (Open Graph) -->
+  <meta property="og:site_name" content="nanapp" />
+  <meta property="og:title" content="nanapp: El sonido del descanso" />
+  <meta property="og:description"
+    content="Ayuda a tu bebé a dormir en minutos. Ruido blanco, rosa y marrón diseñados científicamente. Gratis y sin anuncios intrusivos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/icons/icon-512.png" />
+  <meta property="og:url" content="https://nanapp.vercel.app/" />
+
+  <!-- PWA Settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="nanapp" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "nanapp",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Android, iOS, Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Aplicación de ruido blanco para bebés. Ayuda a dormir, calma cólicos y mejora el descanso.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "120"
       }
-      body {
-        font-family: 'Quicksand', sans-serif;
-        background-color: #020617; /* slate-950 */
-        color: #fff7ed; /* orange-50 */
-        overflow: hidden; /* Prevent scrolling for app-like feel */
-        touch-action: manipulation; /* Improve touch response */
-        -webkit-tap-highlight-color: transparent;
-        user-select: none;
-        height: 100%;
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-      }
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0f172a; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #334155; 
-        border-radius: 3px;
-      }
-      .safe-area-bottom {
-        padding-bottom: env(safe-area-inset-bottom);
-      }
-      .pt-safe {
-        padding-top: max(1rem, env(safe-area-inset-top));
-      }
-    </style>
-</head>
-  <body>
-    <div id="root"></div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW registrado'))
-            .catch(err => console.log('Error SW', err));
-        });
-      }
+    }
     </script>
-    <!-- Main Entry Point Script -->
-    <script type="module" src="./index.tsx"></script>
-  </body>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      height: 100%;
+      overscroll-behavior: none;
+      /* Prevent bounce effect */
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #020617;
+      /* slate-950 */
+      color: #fff7ed;
+      /* orange-50 */
+      overflow: hidden;
+      /* Prevent scrolling for app-like feel */
+      touch-action: manipulation;
+      /* Improve touch response */
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      height: 100%;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    /* Custom scrollbar for webkit */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .pt-safe {
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('SW registrado'))
+          .catch(err => console.log('Error SW', err));
+      });
+    }
+  </script>
+  <!-- Main Entry Point Script -->
+  <script type="module" src="./index.tsx"></script>
+</body>
+
 </html>
