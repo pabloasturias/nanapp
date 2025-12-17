@@ -23,8 +23,11 @@ import { useAudioEngine } from './services/hooks/useAudioEngine';
 import { useTimer } from './services/hooks/useTimer';
 import { useStatistics } from './services/hooks/useStatistics';
 
+import { SplashScreen } from './components/SplashScreen';
+
 const AppContent: React.FC = () => {
     const { t } = useLanguage();
+    const [showSplash, setShowSplash] = useState(true);
 
     // Custom Hooks
     const audio = useAudioEngine(parseFloat(localStorage.getItem('dw_volume') || '0.4'));
@@ -292,6 +295,9 @@ const AppContent: React.FC = () => {
     return (
         <div className="relative h-[100dvh] w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950" onClick={handleBackgroundClick}>
 
+            {/* Splash Screen */}
+            {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+
             {isPageVisible && <Visualizer isActive={audio.isPlaying} type="calm" />}
 
             {/* UI Layovers */}
@@ -306,6 +312,7 @@ const AppContent: React.FC = () => {
                 heartbeatLayer={audio.heartbeatLayer} onToggleHeartbeatLayer={audio.toggleHeartbeat}
                 timerDuration={timer.duration} onTimerChange={timer.setDuration}
                 onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
+                onGoToStory={() => setActiveTab('story')}
             />
             <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
             <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, Info, Search } from 'lucide-react';
+import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, Info, Star } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 import productsData from '../products.json';
 import { Product } from '../types';
@@ -19,46 +19,76 @@ const getCategoryIcon = (category: string) => {
     }
 };
 
+const CATEGORIES = [
+    { id: 'all', label: 'Todos', icon: BookOpen },
+    { id: 'sleep', label: 'Sueño', icon: Moon },
+    { id: 'environment', label: 'Entorno', icon: Droplets },
+    { id: 'travel', label: 'Viaje', icon: Plane },
+    { id: 'hygiene', label: 'Higiene', icon: Sparkles },
+];
+
 export const ProductsView: React.FC = () => {
     const { t, language } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [activeCategory, setActiveCategory] = useState('all');
 
     // Select products for current language (fallback to 'en' or empty)
     const currentProducts = productsByLang[language] || productsByLang['en'] || [];
 
-    // Search filter
-    const filteredProducts = currentProducts.filter(p =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.shortDesc.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Filter
+    const filteredProducts = activeCategory === 'all'
+        ? currentProducts
+        : currentProducts.filter(p => p.category === activeCategory);
+
+    const renderStars = (rating: number) => {
+        return (
+            <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                        key={star}
+                        size={10}
+                        className={star <= rating ? "text-amber-400 fill-amber-400" : "text-slate-700"}
+                    />
+                ))}
+            </div>
+        );
+    };
 
     return (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative">
             <div className="animate-[fade-in_0.5s_ease-out]">
 
                 {/* Header */}
-                <div className="px-4 pt-4 mb-6">
-                    <div className="flex items-center gap-3 mb-2">
+                <div className="px-4 pt-4 mb-2">
+                    <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-2xl text-teal-300 shadow-[0_0_20px_rgba(20,184,166,0.15)] border border-teal-500/10">
                             <BookOpen size={24} />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold text-orange-50">Recursos</h2>
-                            <p className="text-xs text-slate-400 font-medium">Guía esencial para padres</p>
+                            <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">Recursos</h2>
+                            <p className="text-xs text-slate-400 font-medium tracking-wide">Guía esencial para padres</p>
                         </div>
                     </div>
+                </div>
 
-                    {/* Search Bar */}
-                    <div className="mt-4 relative">
-                        <input
-                            type="text"
-                            placeholder="Buscar recurso..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full bg-slate-800/50 border border-slate-700 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-200 focus:outline-none focus:border-teal-500/50 transition-colors placeholder:text-slate-600"
-                        />
-                        <Search size={16} className="absolute left-3.5 top-3.5 text-slate-500" />
+                {/* Category Chips */}
+                <div className="px-4 mb-6 relative">
+                    <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-gradient-r">
+                        {CATEGORIES.map(cat => (
+                            <button
+                                key={cat.id}
+                                onClick={() => setActiveCategory(cat.id)}
+                                className={`
+                                    flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all border
+                                    ${activeCategory === cat.id
+                                        ? 'bg-teal-500/20 border-teal-500/50 text-teal-300'
+                                        : 'bg-slate-800/50 border-white/5 text-slate-400 hover:bg-slate-800'}
+                                `}
+                            >
+                                <cat.icon size={14} />
+                                <span className="text-xs font-bold uppercase tracking-wide">{cat.label}</span>
+                            </button>
+                        ))}
                     </div>
                 </div>
 
@@ -82,26 +112,32 @@ export const ProductsView: React.FC = () => {
                                 </div>
 
                                 <div className="flex-1 min-w-0">
-                                    <div className="flex justify-between items-start gap-4">
-                                        <div className="flex items-center gap-2 mb-1">
+                                    <div className="flex items-center justify-between mb-1">
+                                        <div className="flex items-center gap-2">
                                             <span className="sm:hidden text-xs font-mono text-teal-500 font-bold">#{product.id}</span>
                                             <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
-                                                <span className="text-slate-400">{getCategoryIcon(product.category)}</span>
-                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{product.category}</span>
+                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{product.category}</span>
                                             </div>
                                         </div>
+                                        {/* Mini Stars Preview */}
+                                        {product.ratings && (
+                                            <div className="flex gap-0.5">
+                                                <Star size={10} className="text-amber-400 fill-amber-400" />
+                                                <span className="text-[10px] text-amber-400 font-bold ml-1">{product.ratings.sleep}</span>
+                                            </div>
+                                        )}
                                     </div>
 
-                                    <h3 className="text-lg font-bold text-orange-50 mb-1 leading-tight group-hover:text-teal-200 transition-colors">
+                                    <h3 className="text-lg font-bold text-orange-50 mb-1 leading-tight group-hover:text-teal-200 transition-colors font-['Quicksand']">
                                         {product.name}
                                     </h3>
 
-                                    <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed mb-3 pr-8">
+                                    <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed mb-3 pr-8 font-light">
                                         {product.shortDesc}
                                     </p>
 
                                     <div className="flex items-center gap-1 text-xs font-bold text-teal-400/80 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                                        Leer más <ChevronRight size={14} />
+                                        Ver detalles <ChevronRight size={14} />
                                     </div>
                                 </div>
                             </div>
@@ -143,8 +179,26 @@ export const ProductsView: React.FC = () => {
                                     <span className="text-teal-400">{getCategoryIcon(selectedProduct.category)}</span>
                                     <span className="text-xs font-bold text-teal-100 uppercase tracking-wider">{selectedProduct.category}</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-orange-50 leading-none">{selectedProduct.name}</h2>
+                                <h2 className="text-3xl font-bold text-orange-50 leading-none font-['Quicksand']">{selectedProduct.name}</h2>
                             </div>
+
+                            {/* Ratings Block */}
+                            {selectedProduct.ratings && (
+                                <div className="grid grid-cols-3 gap-2 mb-6">
+                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
+                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Dormir</span>
+                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.sleep)}</div>
+                                    </div>
+                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
+                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Calma</span>
+                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.calm)}</div>
+                                    </div>
+                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
+                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Confort</span>
+                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.comfort)}</div>
+                                    </div>
+                                </div>
+                            )}
 
                             <p className="text-slate-300 leading-relaxed mb-8 text-sm font-light">
                                 {selectedProduct.longDesc}
@@ -164,7 +218,7 @@ export const ProductsView: React.FC = () => {
                                 </ul>
                             </div>
 
-                            {/* Affiliate Links Section - Only render if links exist */}
+                            {/* Affiliate Links Section */}
                             {selectedProduct.affiliateLinks && selectedProduct.affiliateLinks.length > 0 ? (
                                 <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5">
                                     <div className="flex items-center gap-2 mb-4 text-orange-200/80">
