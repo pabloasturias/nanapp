@@ -607,7 +607,7 @@
             "name": "Alfombra Gruesa",
             "category": "environment",
             "shortDesc": "Aísla del frío y amortigua tus pasos.",
-            "longDesc": "Te permite salir de la habitación en silencio ("modo ninja") sin que el suelo cruja. También amortigua caídas cuando empiezan a ponerse de pie en la cuna.",
+            "longDesc": "Te permite salir de la habitación en silencio ('modo ninja') sin que el suelo cruja. También amortigua caídas cuando empiezan a ponerse de pie en la cuna.",
             "features": [
                 "Pelo corto (limpieza)",
                 "Base antideslizante",
