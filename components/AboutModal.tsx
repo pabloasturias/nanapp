@@ -70,8 +70,13 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                             </p>
                         </div>
 
-                        <div className="text-center pt-4">
-                            <p className="text-[10px] text-slate-600">Hecho con ♥ en Asturias</p>
+                        <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+                            <p className="text-xs text-slate-400">
+                                Hecho con ❤️ para Leo
+                            </p>
+                            <p className="text-[10px] text-slate-300 mt-1 font-mono">
+                                v1.2.1 (Monetization Update)
+                            </p>
                         </div>
                     </div>
                 </div>
