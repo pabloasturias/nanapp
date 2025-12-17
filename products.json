@@ -349,6 +349,356 @@
                 "Multiusos futuro"
             ],
             "affiliateLink": null
+        },
+        {
+            "id": 26,
+            "name": "Monitor Inteligente (Calcetín)",
+            "category": "health",
+            "shortDesc": "Control de constantes vitales en tiempo real.",
+            "longDesc": "Mide el ritmo cardíaco y niveles de oxígeno mientras duerme. Avisa al móvil si algo se sale de lo normal, ofreciendo una tranquilidad extra a padres primerizos.",
+            "features": [
+                "Biometría en tiempo real",
+                "Alertas automáticas",
+                "Histórico de sueño",
+                "Sin cables peligrosos"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 27,
+            "name": "Sensor de Movimiento",
+            "category": "health",
+            "shortDesc": "Detecta la respiración por micro-movimientos.",
+            "longDesc": "Una almohadilla bajo el colchón detecta cada respiración. Si no detecta movimiento en 20 segundos, emite una alarma para despertarte. Una capa extra de seguridad contra el SMSL.",
+            "features": [
+                "Sin contacto con la piel",
+                "Alarma sonora potente",
+                "Sensibilidad ajustable",
+                "Instalación bajo colchón"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 28,
+            "name": "Purificador de Aire HEPA",
+            "category": "environment",
+            "shortDesc": "Aire puro libre de alérgenos y polvo.",
+            "longDesc": "Filtra el 99.9% de partículas, polvo y virus. Vital para bebés alérgicos o en ciudades. Un aire limpio evita congestión nasal nocturna y mejora la calidad del sueño.",
+            "features": [
+                "Filtro HEPA verdadero",
+                "Silencioso (Modo noche)",
+                "Elimina olores",
+                "Sin ozono dañino"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 29,
+            "name": "Ventilador de Torre Silencioso",
+            "category": "environment",
+            "shortDesc": "Circulación de aire segura contra el SMSL.",
+            "longDesc": "Mover el aire reduce el riesgo de acumulación de CO2. Un ventilador de torre seguro (sin aspas accesibles) mantiene la habitación fresca y el aire en movimiento suavemente.",
+            "features": [
+                "Sin aspas peligrosas",
+                "Temporizador de apagado",
+                "Oscilación suave",
+                "Ruido blanco natural"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 30,
+            "name": "Reloj de Entrenamiento",
+            "category": "sleep",
+            "shortDesc": "Enseña visualmente cuándo es hora de despertar.",
+            "longDesc": "Para niños a partir de 2 años. Usa colores (ej. azul=dormir, amarillo=despertar) para que sepan si pueden levantarse, evitando madrugones innecesarios.",
+            "features": [
+                "Código visual simple",
+                "Brillo ajustable",
+                "Opción de alarma",
+                "Modo siesta"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 31,
+            "name": "Contenedor de Pañales",
+            "category": "hygiene",
+            "shortDesc": "Bloquea olores desagradables en la habitación.",
+            "longDesc": "Los pañales sucios huelen fuerte. Este cubo sella cada pañal individualmente o herméticamente, permitiendo tenerlo cerca del cambiador sin que la habitación huela mal.",
+            "features": [
+                "Bloqueo de olores total",
+                "Uso con una mano",
+                "Bolsas continuas o estándar",
+                "Cierre seguridad"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 32,
+            "name": "Calentador de Toallitas",
+            "category": "hygiene",
+            "shortDesc": "Evita el sobresalto frío en cambios nocturnos.",
+            "longDesc": "Una toallita helada a las 3 AM despierta a cualquiera. Mantenerlas tibias ayuda a que el bebé siga medio dormido durante el cambio de pañal.",
+            "features": [
+                "Temperatura segura",
+                "Mantiene humedad",
+                "Luz tenue integrada",
+                "Bajo consumo"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 33,
+            "name": "Calienta Biberones Rápido",
+            "category": "mom",
+            "shortDesc": "Leche a temperatura perfecta en 3 minutos.",
+            "longDesc": "Calentar al baño maría es lento y peligroso de noche. Un calentador preciso evita quemaduras (puntos calientes) y conserva los nutrientes de la leche materna.",
+            "features": [
+                "Calentamiento uniforme",
+                "Descongelado suave",
+                "Mantiene calor",
+                "Compatible universal"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 34,
+            "name": "Dosificador Leche en Polvo",
+            "category": "mom",
+            "shortDesc": "Biberones nocturnos preparados en segundos.",
+            "longDesc": "No midas cacitos medio dormida. Deja las dosis listas en este dispensador apilable. Solo verter y agitar. Imprescindible para salidas y noches.",
+            "features": [
+                "Dosis exactas listas",
+                "Boca anti-derrames",
+                "Apilable y compacto",
+                "Libre de BPA"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 35,
+            "name": "Colector de Leche (Silicona)",
+            "category": "mom",
+            "shortDesc": "Recoge cada gota sin esfuerzo mientras das el pecho.",
+            "longDesc": "Tipo Haakaa. Se usa en el pecho contrario mientras amamantas para aprovechar a bajada de leche. Silencioso y sin cables, ideal para aliviar congestión de noche.",
+            "features": [
+                "Succión natural vacío",
+                "Una sola pieza silicona",
+                "Sin ruido ni motor",
+                "Fácil de limpiar"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 36,
+            "name": "Luz de Lactancia (Pinza)",
+            "category": "mom",
+            "shortDesc": "Luz directa donde la necesitas, oscuridad en el resto.",
+            "longDesc": "Se engancha a tu ropa o cojín. Ilumina solo la zona del pecho/biberón para que veas el agarre sin iluminar la cara del bebé ni la habitación.",
+            "features": [
+                "Pequeña y ligera",
+                "Cuello flexible",
+                "Luz cálida/ambar",
+                "Recargable USB"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 37,
+            "name": "Organizador Colgante Cuna",
+            "category": "environment",
+            "shortDesc": "Chupetes y doudous siempre a mano.",
+            "longDesc": "Se cuelga en el lateral de la cuna (por fuera). Guarda chupetes de recambio, el termómetro o crema para no tener que buscarlos en muebles lejanos.",
+            "features": [
+                "Bolsillos accesibles",
+                "Tela resistente",
+                "Sujeción segura",
+                "Diseño neutro"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 38,
+            "name": "Pantalones con Pies",
+            "category": "sleep",
+            "shortDesc": "Pies calientes sin calcetines que se caen.",
+            "longDesc": "Los calcetines siempre acaban perdidos en la cuna. Los pantalones o polainas con pie integrado aseguran que sus extremidades nunca se enfríen.",
+            "features": [
+                "Cintura elástica suave",
+                "Algodón 100%",
+                "Sin costuras molestas",
+                "Libertad movimiento"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 39,
+            "name": "Mono Polar (Fleece)",
+            "category": "sleep",
+            "shortDesc": "Capa extra para noches muy frías.",
+            "longDesc": "Para poner sobre el pijama de algodón en invierno crudo. El tejido polar es ligero pero muy cálido y seca rápido si hay fugas.",
+            "features": [
+                "Calor ligero",
+                "Secado rápido",
+                "Cremallera completa",
+                "Suave al tacto"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 40,
+            "name": "Cortina Opaca Portátil",
+            "category": "travel",
+            "shortDesc": "Convierte cualquier ventana en una noche oscura.",
+            "longDesc": "Se pega al cristal con ventosas. Imprescindible para vacaciones o casas de abuelos sin persianas. Garantiza la oscuridad necesaria para la siesta.",
+            "features": [
+                "Sistema de ventosas",
+                "Ajustable con velcro",
+                "Bolsa de transporte",
+                "Bloqueo luz total"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 41,
+            "name": "Protector Colchón Impermeable",
+            "category": "hygiene",
+            "shortDesc": "Salva el colchón de 'accidentes' nocturnos.",
+            "longDesc": "Capa silenciosa (que no cruja) e impermeable. Pon dos: Colchón > Protector > Sábana > Protector > Sábana. Así si vomita, quitas la capa de arriba y la cama sigue lista.",
+            "features": [
+                "Impermeable y transpirable",
+                "Sin ruido plástico",
+                "Lavable a máquina",
+                "Ajuste perfecto"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 42,
+            "name": "Detergente Hipoalergénico",
+            "category": "hygiene",
+            "shortDesc": "Cuida la piel atópica y evita picores nocturnos.",
+            "longDesc": "La ropa de cama está en contacto con su piel 12h. Un detergente sin perfumes ni químicos agresivos evita irritaciones que causan incomodidad y despertares.",
+            "features": [
+                "Fórmula bebé",
+                "Sin enzimas fuertes",
+                "Testado dermatológicamente",
+                "Olor neutro"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 43,
+            "name": "Clip Sujeta-Chupetes",
+            "category": "sleep",
+            "shortDesc": "El fin de buscar chupetes por el suelo a oscuras.",
+            "longDesc": "Asegura el chupete al pijama (usar solo cortos y homologados para dormir, o bajo supervisión). Evita que caiga al suelo o se pierda entre los barrotes.",
+            "features": [
+                "Longitud segura (corta)",
+                "Broche sin metal",
+                "Tela lavable",
+                "Universal"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 44,
+            "name": "Alfombra Gruesa",
+            "category": "environment",
+            "shortDesc": "Aísla del frío y amortigua tus pasos.",
+            "longDesc": "Te permite salir de la habitación en silencio ("modo ninja") sin que el suelo cruja. También amortigua caídas cuando empiezan a ponerse de pie en la cuna.",
+            "features": [
+                "Pelo corto (limpieza)",
+                "Base antideslizante",
+                "Amortiguación ruido",
+                "Material no tóxico"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 45,
+            "name": "Tapones para Oídos (Padres)",
+            "category": "mom",
+            "shortDesc": "Reduce el estrés del llanto, permitiendo oír la alarma.",
+            "longDesc": "Los Loop o similares bajan los decibelios del llanto agudo (que dispara el cortisol) pero te dejan oír lo necesario. Ayudan a mantener la calma en crisis.",
+            "features": [
+                "Filtro de ruido selectivo",
+                "Cómodos para dormir",
+                "Material silicona suave",
+                "Reutilizables"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 46,
+            "name": "Antifaz para Dormir",
+            "category": "mom",
+            "shortDesc": "Aprovecha cualquier minuto para dormir, sea de día o noche.",
+            "longDesc": "Cuando te toca dormir, necesitas oscuridad total inmediata. Un antifaz cómodo te ayuda a caer rendida/o en las siestas diurnas mientras el bebé duerme.",
+            "features": [
+                "Seda suave",
+                "No presiona ojos",
+                "Ajuste elástico",
+                "Oscuridad total"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 47,
+            "name": "Barrera de Cama",
+            "category": "sleep",
+            "shortDesc": "Seguridad para el paso de cuna a cama.",
+            "longDesc": "Evita caídas nocturnas. Abatible para poder hacer la cama o sentarte. Da sensación de contención al niño acostumbrado a los barrotes.",
+            "features": [
+                "Abatible 180º",
+                "Malla transpirable",
+                "Anclaje seguro somier",
+                "Altura extra"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 48,
+            "name": "Dispositivo 'Shusher'",
+            "category": "sleep",
+            "shortDesc": "Hace el sonido 'Shhh' por ti para que descanses.",
+            "longDesc": "El sonido 'Shhh' fuerte calma, pero hacerlo 20 min marea. Este aparato emite un 'Shhh' rítmico y humano que rompe el ciclo de llanto.",
+            "features": [
+                "Volumen ajustable",
+                "Temporizador",
+                "Portátil (pilas)",
+                "Sonido humano real"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 49,
+            "name": "DouDou / Manta de Apego",
+            "category": "sleep",
+            "shortDesc": "Objeto transicional para seguridad emocional.",
+            "longDesc": "Introducir (seguro +12m) un muñeco plano y suave que huela a mamá. Se convierte en su fuente de seguridad cuando no estás, ayudando a dormir solos.",
+            "features": [
+                "Pequeño y manejable",
+                "Lavable a máquina",
+                "Sin piezas sueltas",
+                "Tejido muy suave"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 50,
+            "name": "Termo de Sólidos",
+            "category": "travel",
+            "shortDesc": "Comida caliente en cualquier lugar.",
+            "longDesc": "Mantén el agua caliente para biberones o el puré listo cuando sales. Evita tener que buscar microondas o volver a casa por horarios de comida.",
+            "features": [
+                "Acero inoxidable doble",
+                "Mantiene 6-12h",
+                "Boca ancha",
+                "Cierre hermético"
+            ],
+            "affiliateLink": null
         }
     ],
     "en": [
@@ -699,6 +1049,356 @@
                 "Sturdy handles",
                 "Lightweight",
                 "Multi-use"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 26,
+            "name": "Smart Sock Monitor",
+            "category": "health",
+            "shortDesc": "Real-time tracking of vital signs.",
+            "longDesc": "Tracks heart rate and oxygen levels while they sleep. Notifies your phone if readings leave safe zones, offering extra peace of mind for new parents.",
+            "features": [
+                "Real-time biometrics",
+                "Automatic alerts",
+                "Sleep history",
+                "No dangerous cords"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 27,
+            "name": "Movement Sensor Pad",
+            "category": "health",
+            "shortDesc": "Detects breathing via micro-movements.",
+            "longDesc": "A pad under the mattress detects every breath. If no movement is detected for 20 seconds, it sounds an alarm to wake you. An extra layer of SIDS protection.",
+            "features": [
+                "No skin contact",
+                "Loud alarm",
+                "Adjustable sensitivity",
+                "Under-mattress install"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 28,
+            "name": "HEPA Air Purifier",
+            "category": "environment",
+            "shortDesc": "Pure air free of allergens and dust.",
+            "longDesc": "Filters 99.9% of particles, dust, and viruses. Vital for city babies or allergies. Clean air prevents night congestion and improves sleep quality.",
+            "features": [
+                "True HEPA filter",
+                "Quiet (Night mode)",
+                "Eliminates odors",
+                "No harmful ozone"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 29,
+            "name": "Tower Fan",
+            "category": "environment",
+            "shortDesc": "Safe air circulation against SIDS.",
+            "longDesc": "Moving air reduces the risk of CO2 accumulation. A safe tower fan (no accessible blades) keeps the room cool and air moving gently.",
+            "features": [
+                "No dangerous blades",
+                "Sleep timer",
+                "Gentle oscillation",
+                "Natural white noise"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 30,
+            "name": "Sleep Training Clock",
+            "category": "sleep",
+            "shortDesc": "Visually teaches when it's time to wake up.",
+            "longDesc": "For toddlers 2yrs+. Uses colors (e.g., blue=sleep, yellow=wake) so they know if they can get up, preventing unnecessary early risings.",
+            "features": [
+                "Simple visual code",
+                "Adjustable brightness",
+                "Alarm option",
+                "Nap mode"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 31,
+            "name": "Diaper Pail",
+            "category": "hygiene",
+            "shortDesc": "Locks unpleasant odors in the room.",
+            "longDesc": "Dirty diapers smell. This pail seals each diaper individually or tightly, allowing you to keep it near the changing table without stink.",
+            "features": [
+                "Total odor lock",
+                "One-hand use",
+                "Refill cartridges",
+                "Child lock"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 32,
+            "name": "Wipes Warmer",
+            "category": "hygiene",
+            "shortDesc": "Avoids cold shocks during night changes.",
+            "longDesc": "A freezing wipe at 3 AM wakes anyone up. Keeping them warm helps baby stay half-asleep during diaper changes.",
+            "features": [
+                "Safe temperature",
+                "Retains moisture",
+                "Integrated nightlight",
+                "Low energy"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 33,
+            "name": "Fast Bottle Warmer",
+            "category": "mom",
+            "shortDesc": "Perfect temp milk in 3 minutes.",
+            "longDesc": "Heating water manually is slow and dangerous at night. A precise warmer avoids burn spots and preserves breastmilk nutrients.",
+            "features": [
+                "Uniform heating",
+                "Gentle thaw",
+                "Keep warm function",
+                "Universal fit"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 34,
+            "name": "Formula Powder Dispenser",
+            "category": "mom",
+            "shortDesc": "Night bottles prepped in seconds.",
+            "longDesc": "Don't measure scoops while half-asleep. Pre-fill doses in this stackable container. Just pour and shake. Essential for nights and outings.",
+            "features": [
+                "Exact doses ready",
+                "Spill-proof spout",
+                "Stackable compact",
+                "BPA free"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 35,
+            "name": "Silicone Breast Pump",
+            "category": "mom",
+            "shortDesc": "Collects every drop effortlessly while nursing.",
+            "longDesc": "Haakaa style. Use on the opposite breast while nursing to catch let-down. Silent and cordless, perfect for night relief.",
+            "features": [
+                "Natural vacuum suction",
+                "One-piece silicone",
+                "No motor noise",
+                "Easy to clean"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 36,
+            "name": "Clip-on Nursing Light",
+            "category": "mom",
+            "shortDesc": "Direct light where needed, dark elsewhere.",
+            "longDesc": "Clips to clothes or pillow. Illumintes only the latch area so you can see without lighting up baby's face or the room.",
+            "features": [
+                "Small lightweight",
+                "Flexible neck",
+                "Warm amber light",
+                "USB rechargeable"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 37,
+            "name": "Hanging Crib Organizer",
+            "category": "environment",
+            "shortDesc": "Pacifiers and loveys always at hand.",
+            "longDesc": "Hangs on the outside of the crib. Holds spare pacifiers, thermometer, or cream so you don't have to search in drawers.",
+            "features": [
+                "Accessible pockets",
+                "Sturdy fabric",
+                "Secure attachment",
+                "Neutral design"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 38,
+            "name": "Footed Pants",
+            "category": "sleep",
+            "shortDesc": "Warm feet without socks falling off.",
+            "longDesc": "Socks always get lost in the crib. Pants with integrated feet ensure limbs never get cold.",
+            "features": [
+                "Safe waist elastic",
+                "100% cotton",
+                "No rubbing seams",
+                "Movement freedom"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 39,
+            "name": "Fleece Onesie layer",
+            "category": "sleep",
+            "shortDesc": "Extra layer for very cold nights.",
+            "longDesc": "To wear over cotton PJs in harsh winter. Fleece is lightweight but very warm and dries fast if leaks occur.",
+            "features": [
+                "Light weight warmth",
+                "Fast drying",
+                "Full zipper",
+                "Soft touch"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 40,
+            "name": "Portable Blackout Curtain",
+            "category": "travel",
+            "shortDesc": "Turns any window into dark night.",
+            "longDesc": "Sticks to glass with suction cups. Essential for travel or grandma's house. Guarantees the darkness needed for naps.",
+            "features": [
+                "Suction cups",
+                "Velcro adjust",
+                "Travel bag",
+                "Total light block"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 41,
+            "name": "Waterproof Mattress Protector",
+            "category": "hygiene",
+            "shortDesc": "Saves the mattress from night 'accidents'.",
+            "longDesc": "Silent (non-crinkly) and waterproof. Layer: Mattress > Protector > Sheet > Protector > Sheet. If leak occurs, peel off top layer and bed is ready.",
+            "features": [
+                "Breathable waterproof",
+                "No plastic noise",
+                "Machine washable",
+                "Perfect fit"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 42,
+            "name": "Hypoallergenic Detergent",
+            "category": "hygiene",
+            "shortDesc": "Cares for sensitive skin, avoids night itch.",
+            "longDesc": "Bedding touches skin for 12h. A detergent without perfumes or harsh chemicals prevents irritations that cause waking.",
+            "features": [
+                "Baby formula",
+                "No strong enzymes",
+                "Dermatology tested",
+                "Neutral scent"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 43,
+            "name": "Pacifier Clip",
+            "category": "sleep",
+            "shortDesc": "Ends searching for pacifiers on dark floors.",
+            "longDesc": "Secures pacifier to PJ (use short safe ones only). Prevents it falling to the floor or getting lost between bars.",
+            "features": [
+                "Safe short length",
+                "Metal-free clip",
+                "Washable ribbon",
+                "Universal"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 44,
+            "name": "Nursery Rug",
+            "category": "environment",
+            "shortDesc": "Insulates cold and muffles footsteps.",
+            "longDesc": "Allows you to exit the room silently ('ninja mode') without floor creaks. Cushions falls when they start standing.",
+            "features": [
+                "Short pile (clean)",
+                "Non-slip base",
+                "Noise dampening",
+                "Non-toxic"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 45,
+            "name": "Loop Earplugs (Parents)",
+            "category": "mom",
+            "shortDesc": "Reduces crying stress but lets you hear alarms.",
+            "longDesc": "Loop or similar lower the decibels of shrill crying (which spikes cortisol) but let you hear what's needed. Helps keep calm in crises.",
+            "features": [
+                "Selective noise filter",
+                "Comfortable for sleep",
+                "Soft silicone",
+                "Reusable"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 46,
+            "name": "Sleep Mask",
+            "category": "mom",
+            "shortDesc": "Seize any minute to sleep, day or night.",
+            "longDesc": "When it's your turn to sleep, you need instant darkness. A comfy mask helps you crash during day naps while baby sleeps.",
+            "features": [
+                "Soft silk",
+                "No eye pressure",
+                "Elastic fit",
+                "Total darkness"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 47,
+            "name": "Bed Rail",
+            "category": "sleep",
+            "shortDesc": "Safety for the crib-to-bed transition.",
+            "longDesc": "Prevents night falls. Foldable to sit or make the bed. Gives a sense of containment to kids used to crib bars.",
+            "features": [
+                "Folds 180º",
+                "Breathable mesh",
+                "Secure anchor",
+                "Extra height"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 48,
+            "name": "Baby Shusher",
+            "category": "sleep",
+            "shortDesc": "Makes the 'Shhh' sound for you.",
+            "longDesc": "Loud 'Shhh' calms, but doing it for 20 mins makes you dizzy. This device emits a rhythmic human 'Shhh' that breaks crying cycles.",
+            "features": [
+                "Volume control",
+                "Timer",
+                "Portable (battery)",
+                "Real human sound"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 49,
+            "name": "Lovey / Security Blanket",
+            "category": "sleep",
+            "shortDesc": "Transitional object for emotional safety.",
+            "longDesc": "Introduce (safe +12m) a small soft blanket that smells like mom. Becomes their security source when you aren't there, helping self-settling.",
+            "features": [
+                "Small size",
+                "Machine washable",
+                "No loose parts",
+                "Super soft"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 50,
+            "name": "Insulated Food Jar",
+            "category": "travel",
+            "shortDesc": "Hot food anywhere.",
+            "longDesc": "Keep water hot for bottles or puree ready when out. Avoids hunting for microwaves or rushing home for feed times.",
+            "features": [
+                "Double stainless steel",
+                "Keeps 6-12h",
+                "Wide mouth",
+                "Leak proof"
             ],
             "affiliateLink": null
         }

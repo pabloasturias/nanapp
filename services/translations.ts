@@ -177,6 +177,19 @@ export const translations = {
     story_community_title: "Comunidad",
     story_community_desc: "Gracias por confiar en nosotros para cuidar el sueño de lo que más quieres.",
     about_nanapp: "Sobre nanapp",
+
+    // Resources
+    buy_amazon: "Ver recomendación",
+    affiliate_disclaimer: "Si te es útil, este enlace te lleva al producto que recomendamos. Como afiliados de Amazon, recibimos una pequeña comisión.",
+
+    // Categories
+    cat_all: "Todos",
+    cat_sleep: "Sueño",
+    cat_environment: "Entorno",
+    cat_travel: "Viaje",
+    cat_hygiene: "Higiene",
+    cat_mom: "Mamá/Lactancia",
+    cat_health: "Salud"
   },
   en: {
     app_slogan: "sound of sleep",
@@ -348,6 +361,19 @@ export const translations = {
     story_community_title: "Community",
     story_community_desc: "Thank you for trusting us to care for what you love most.",
     about_nanapp: "About nanapp",
+
+    // Resources
+    buy_amazon: "See Recommendation",
+    affiliate_disclaimer: "If helpful, this link takes you to our recommendation. As Amazon Associates we earn from qualifying purchases.",
+
+    // Categories
+    cat_all: "All",
+    cat_sleep: "Sleep",
+    cat_environment: "Environment",
+    cat_travel: "Travel",
+    cat_hygiene: "Hygiene",
+    cat_mom: "Mom/Nursing",
+    cat_health: "Health"
   },
   fr: {
     app_slogan: "le son du repos",

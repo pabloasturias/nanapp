@@ -185,7 +185,7 @@ export const ProductsView: React.FC = () => {
                             </div>
 
                             {/* Affiliate Links Section */}
-                            {selectedProduct.affiliateLink ? (
+                            {selectedProduct.affiliateLink && (
                                 <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5">
                                     <div className="flex items-center gap-2 mb-4 text-orange-200/80">
                                         <ShoppingCart size={16} />
@@ -205,13 +205,6 @@ export const ProductsView: React.FC = () => {
                                     <p className="text-[10px] text-center text-slate-600 mt-3">
                                         {t('affiliate_disclaimer')}
                                     </p>
-                                </div>
-                            ) : (
-                                <div className="p-4 rounded-2xl bg-slate-800/30 border border-white/5 flex items-center gap-3">
-                                    <div className="p-2 bg-slate-700/50 rounded-full text-slate-400">
-                                        <Info size={18} />
-                                    </div>
-                                    <p className="text-xs text-slate-500">{t('resource_info')}</p>
                                 </div>
                             )}
 
