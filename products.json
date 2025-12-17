@@ -2,1405 +2,1405 @@
     "es": [
         {
             "id": 1,
-            "name": "Cuna de Colecho",
+            "name": "Chicco Next2Me Forever",
             "category": "sleep",
-            "shortDesc": "Dormir cerca pero seguro. Facilita la lactancia y el vínculo nocturno.",
-            "longDesc": "El colecho seguro (superficie aparte pero unida a la cama) reduce el riesgo de SMSL y facilita enormemente las tomas nocturnas. Permite atender al bebé sin levantarte, manteniendo tu propio descanso y fortaleciendo el apego seguro.",
+            "shortDesc": "La cuna de colecho evolutiva definitiva 3 en 1.",
+            "longDesc": "Más que una cuna de colecho. Evoluciona con tu bebé hasta los 4 años. Panel lateral abatible patentado para máxima seguridad, ruedas para moverla y modo cama de suelo Montessori.",
             "features": [
-                "Facilita lactancia materna",
-                "Reduce ansiedad nocturna",
-                "Superficie firme e independiente",
-                "Lateral abatible para acceso"
+                "Uso hasta 4 años",
+                "Sistema colecho seguro patentado",
+                "Modo cama de suelo Montessori",
+                "Ruedas con frenos"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Chicco+Next2Me+Forever&tag=100bcb-21"
         },
         {
             "id": 2,
-            "name": "Colchón de Cuna Firme",
+            "name": "Ecus Kids Colchón Pigü",
             "category": "sleep",
-            "shortDesc": "La base de la seguridad. Evita hundimientos y asegura la transpiración.",
-            "longDesc": "La superficie de sueño debe ser firme para evitar asfixia y problemas posturales. Un buen colchón transpirable reduce el riesgo de sobrecalentamiento (factor de riesgo SMSL) y evita la acumulación de CO2 alrededor de la cara del bebé.",
+            "shortDesc": "El colchón de cuna anti-asfixia más recomendado.",
+            "longDesc": "Diseñado científicamente para prevenir la plagiocefalia y la asfixia. Su núcleo con canales de aire reduce la presión en la cabeza del bebé y garantiza que respire incluso si se gira boca abajo.",
             "features": [
-                "Firmeza adecuada (no blando)",
-                "Materiales transpirables 3D",
-                "Hipoalergénico y anti-ácaros",
-                "Funda lavable esencial"
+                "Prevención Plagiocefalia",
+                "Certificado Sanitario",
+                "Máxima transpirabilidad 3D",
+                "Tratamiento anti-ácaros"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Ecus+Kids+Pigu+Colchon+Cuna&tag=100bcb-21"
         },
         {
             "id": 3,
-            "name": "Saco de Dormir (TOG 2.5)",
+            "name": "Tommee Tippee Grobag 2.5 TOG",
             "category": "sleep",
-            "shortDesc": "Seguridad térmica. Evita que el bebé se destape o se cubra la cara.",
-            "longDesc": "Sustituye a mantas y edredones peligrosos. Mantiene una temperatura corporal constante toda la noche, evitando despertares por frío. El TOG 2.5 es estándar para invierno (16-20°C). Es la prenda #1 recomendada por expertos en sueño.",
+            "shortDesc": "Saco de dormir premium para seguridad térmica absoluta.",
+            "longDesc": "El estándar de oro en sacos de dormir. Diseño ergonómico para caderas sanas (IHDI), cambios de pañal nocturnos fáciles con cremallera doble y tejido de algodón de lujo.",
             "features": [
-                "Sin riesgo de asfixia",
-                "Temperatura constante",
-                "Señal positiva de rutina",
-                "Cremallera doble (cambio fácil)"
+                "Cadera saludable (Certificado)",
+                "Cremallera bidireccional",
+                "Tejido premium suave",
+                "Sin broches ruidosos"
             ],
-            "affiliateLink": "https://www.amazon.es/dp/B07KKK5G6L"
+            "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Saco+Dormir+2.5+TOG&tag=100bcb-21"
         },
         {
             "id": 4,
-            "name": "Arrullo / Swaddle (R.Nacidos)",
+            "name": "Love To Dream Swaddle UP",
             "category": "sleep",
-            "shortDesc": "Recrea el abrazo del útero y evita el reflejo de moro.",
-            "longDesc": "Para los primeros 3 meses (4º trimestre). La contención suave calma el llanto y evita que el bebé se despierte por sus propios espasmos (reflejo de moro). Debe dejar libertad en las caderas y dejar de usarse al voltearse.",
+            "shortDesc": "El único arrullo que permite dormir con brazos arriba.",
+            "longDesc": "Revolucionario diseño que permite al bebé dormir en su posición natural (brazos arriba) para auto-calmarse, mientras evita el reflejo de moro. Miles de reseñas de padres "salvados".",
             "features": [
-                "Calma el llanto (contención)",
-                "Evita sobresaltos (Moro)",
-                "Facilita el sueño boca arriba",
-                "Tejido elástico y transpirable"
+                "Posición natural brazos",
+                "Auto-calma (chupar manos)",
+                "Evita reflejo Moro",
+                "Cambio pañal fácil"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Love+To+Dream+Swaddle+UP&tag=100bcb-21"
         },
         {
             "id": 5,
-            "name": "Máquina de Ruido Blanco",
+            "name": "Hatch Rest 2.ª Gen",
             "category": "environment",
-            "shortDesc": "Enmascara ruidos bruscos y calma recordando al útero.",
-            "longDesc": "El silencio total puede alertar al bebé. El ruido blanco constante (lluvia, ventilador) enmascara portazos o ladridos y actúa como una potente señal de sueño. Debe usarse a un volumen seguro (<50dB) y alejado de la cuna.",
+            "shortDesc": "El dispositivo de sueño 'Todo en Uno' más deseado.",
+            "longDesc": "Combina máquina de ruido blanco inteligente, luz nocturna, y monitor de audio. Todo controlado desde tu móvil. Crea rutinas de sueño personalizadas que crecen con tu hijo.",
             "features": [
-                "Bloquea ruidos del hogar",
-                "Señal auditiva de sueño",
-                "Efecto calmante inmediato",
-                "Portátil (mismo entorno siempre)"
+                "Control por App Wi-Fi",
+                "Luz y sonido personalizables",
+                "Función 'Time-to-Rise'",
+                "Monitor de audio"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B0BJ7V69Q2?tag=100bcb-21"
         },
         {
             "id": 6,
-            "name": "Cortinas Opacas (Blackout)",
+            "name": "Cortinas Opacas Portátiles",
             "category": "environment",
-            "shortDesc": "Oscuridad total para potenciar la melatonina y alargar siestas.",
-            "longDesc": "La luz inhibe la melatonina (hormona del sueño). La oscuridad total ayuda a conciliar el sueño antes, alargar las siestas del día y evitar los 'despertares de gallo' a las 5 o 6 de la mañana.",
+            "shortDesc": "Oscuridad total 'Blackout' donde vayas.",
+            "longDesc": "Convierte cualquier habitación en una cueva de sueño. Se adhiere a la ventana con ventosas premium. Imprescindible para vacaciones o casas de familiares.",
             "features": [
-                "Oscuridad 100% real",
-                "Regula ritmo circadiano",
-                "Aislante térmico (frío/calor)",
-                "Portátil (versión ventosas)"
+                "Bloqueo 100% luz",
+                "Ventosas de alta fijación",
+                "Ajustable con velcro",
+                "Bolsa de viaje incluida"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Cortinas+Opacas+Portatiles+Bebe&tag=100bcb-21"
         },
         {
             "id": 7,
-            "name": "Monitor de Video (Vigilabebés)",
+            "name": "Nanit Pro Smart Monitor",
             "category": "environment",
-            "shortDesc": "Tranquilidad para los padres sin entrar en la habitación.",
-            "longDesc": "Permite vigilar al bebé sin abrir la puerta (lo que podría despertarlo). Busca uno con visión nocturna nítida y modo VOX (se activa solo con ruido) para no tener una pantalla brillando toda la noche.",
+            "shortDesc": "El Tesla de los vigilabebés. Visión artificial del sueño.",
+            "longDesc": "No solo ves a tu bebé, sino que analiza su sueño. Te da datos sobre cuánto durmió, visitas nocturnas y su respiración (con la banda especial). Calidad de video HD inigualable.",
             "features": [
-                "Visión nocturna infrarroja",
-                "Modo ECO/VOX (ahorro bat.)",
-                "Alcance seguro",
+                "Video 1080p HD cenital",
+                "Analíticas de sueño",
+                "Monitor respiración (wearable)",
                 "Audio bidireccional"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nanit+Pro+Camera&tag=100bcb-21"
         },
         {
             "id": 8,
-            "name": "Humidificador Ultrasónico",
+            "name": "Levoit Dual 150 Humidificador",
             "category": "health",
-            "shortDesc": "Ambiente óptimo. Vital para mocos y tos seca.",
-            "longDesc": "Mantiene la humedad entre 40-60%. Imprescindible en invierno (calefacción) o resfriados. Ayuda a mantener las vías respiratorias hidratadas y aflojar la mucosidad. Siempre de vapor frío para evitar quemaduras.",
+            "shortDesc": "Silencio absoluto y control de humedad preciso.",
+            "longDesc": "El humidificador favorito de Amazon. Tecnología ultrasónica casi inaudible (28dB), tanque fácil de limpiar (gran apertura) y boquilla giratoria. Vital para resfriados.",
             "features": [
-                "Alivia congestión nasal",
-                "Silencioso (<30dB)",
-                "Vapor frío seguro",
-                "Fácil limpieza (evitar moho)"
+                "Silencioso (<28dB)",
+                "Relleno superior fácil",
+                "Apagado automático seguridad",
+                "Difusor aceites esenciales"
             ],
-            "affiliateLink": "https://www.amazon.es/dp/B09JVH8W7G"
+            "affiliateLink": "https://www.amazon.es/s?k=Levoit+Humidificador+Bebe&tag=100bcb-21"
         },
         {
             "id": 9,
-            "name": "Aspirador Nasal Eléctrico",
+            "name": "Nosiboo Pro Aspirador Nasal",
             "category": "health",
-            "shortDesc": "Higiene rápida. Si no respira bien, no duerme bien.",
-            "longDesc": "Los bebés no saben sonarse. Un aspirador seguro y rápido es vital antes de dormir si hay mocos. Los eléctricos son más constantes y higiénicos que las peras manuales.",
+            "shortDesc": "Potencia hospitalaria con diseño amigable.",
+            "longDesc": "El aspirador nasal definitivo. Ganador de múltiples premios de diseño. Succión regulable y potente para despejar narices en segundos cuando ningún otro aspirador puede.",
             "features": [
-                "Succión suave y constante",
-                "Puntas de silicona blandas",
-                "Fácil de lavar",
-                "Música para distraer"
+                "Potencia succión regulable",
+                "Diseño 'Osito' amigable",
+                "Fácil limpieza (cabezal)",
+                "Recomendado por ORLs"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nosiboo+Pro&tag=100bcb-21"
         },
         {
             "id": 10,
-            "name": "Termómetro de Habitación (GroEgg)",
+            "name": "GroEgg 2 Termómetro",
             "category": "environment",
-            "shortDesc": "Control visual de la temperatura segura (18-21°C).",
-            "longDesc": "El sobrecalentamiento es peligroso. Un termómetro que cambia de color te avisa de un vistazo si necesitas quitar una capa de ropa o ventilar, sin tener que encender luces ni mirar números pequeños.",
+            "shortDesc": "Seguridad visual. Cambia de color con la temperatura.",
+            "longDesc": "De un vistazo sabes si la habitación es segura. Amarillo (perfecto), Azul (frío), Rojo (calor). Además actúa como una luz nocturna tenue perfecta muy agradable.",
             "features": [
                 "Código de colores intuitivo",
-                "Luz tenue quitamiedos",
-                "Lectura precisa",
-                "Diseño seguro"
+                "Luz nocturna regulable",
+                "Lectura digital precisa",
+                "Diseño icónico"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=GroEgg+2&tag=100bcb-21"
         },
         {
             "id": 11,
-            "name": "Luz Roja de Noche",
+            "name": "Luz Nocturna VAVA",
             "category": "environment",
-            "shortDesc": "Iluminación respetuosa. No despierta al cerebro.",
-            "longDesc": "Para cambios de pañal y tomas nocturnas. La luz roja no bloquea la producción de melatonina como la luz blanca o azul (móvil). Permite ver lo necesario sin desvelar al bebé ni a ti.",
+            "shortDesc": "La luz táctil favorita de los padres.",
+            "longDesc": "Portátil, recargable y con luz cálida que no despierta. Perfecta para lactancia nocturna y cambios de pañal. Modo SOS y superficie segura para que el bebé juegue.",
             "features": [
-                "Espectro rojo/ámbar",
-                "Regulable en intensidad",
-                "Batería recargable",
-                "Táctil y silenciosa"
+                "Control táctil fácil",
+                "Batería larga duración",
+                "Luz cálida/blanca",
+                "Segura (ABS+PP)"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=VAVA+Luz+Nocturna+Bebe&tag=100bcb-21"
         },
         {
             "id": 12,
-            "name": "Chupete Ortodóntico",
+            "name": "Chupetes Bibs De Lux",
             "category": "sleep",
-            "shortDesc": "Mecanismo natural de calma y reducción de riesgo SMSL.",
-            "longDesc": "La succión no nutritiva relaja el sistema nervioso y ayuda a transitar entre ciclos de sueño. Se recomienda para dormir (una vez establecida la lactancia) por su factor protector contra el SMSL.",
+            "shortDesc": "El clásico danés renovado. Estilo y aceptación.",
+            "longDesc": "Tetina redonda que imita el pezón materno, con la icónica estética vintage y acabados mate premium. Escudo curvado para no irritar la piel alrededor de la boca.",
             "features": [
-                "Diseño respetuoso dientes",
+                "Tetina cereza látex/silicona",
+                "Diseño icónico y colores",
                 "Escudo ventilado",
-                "Silicona médica",
-                "Brilla en la oscuridad (útil)"
+                "Libre BPA/PVC"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Bibs+De+Lux+Chupetes&tag=100bcb-21"
         },
         {
             "id": 13,
-            "name": "Cojín de Lactancia",
+            "name": "Cojín Lactancia Jané",
             "category": "mom",
-            "shortDesc": "Postura correcta y descanso para brazos y espalda.",
-            "longDesc": "El dolor de espalda dificulta tu descanso. Un buen cojín eleva al bebé a la altura del pecho, evitando que te encorves, y puede usarse como nido de contención (siempre supervisado) o apoyo para ti.",
+            "shortDesc": "Versatilidad 4 en 1 con relleno ergonómico.",
+            "longDesc": "Un clásico de confianza. Relleno de microesferas que se adaptan a tu cuerpo y al del bebé. Sirve para embarazo, lactancia, y como nido de descanso para el bebé.",
             "features": [
-                "Soporte ergonómico",
-                "Funda lavable algodón",
-                "Relleno firme y adaptable",
-                "Multiusos (embarazo/lactancia)"
+                "Relleno microesferas adaptable",
+                "Funda extraíble lavable",
+                "Multiusos evolutivo",
+                "Arnés seguridad bebé"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Jane+Cojin+Lactancia&tag=100bcb-21"
         },
         {
             "id": 14,
-            "name": "Mecedora / Sillón Lactancia",
+            "name": "Sillón Lactancia Songmics",
             "category": "mom",
-            "shortDesc": "El lugar sagrado para tomas y calmar el llanto.",
-            "longDesc": "Pasarás muchas horas aquí. El movimiento rítmico calma al bebé y el soporte lumbar cuida tu espalda. Busca reposabrazos cómodos y tela fácil de limpiar.",
+            "shortDesc": "La mecedora superventas por comodidad y precio.",
+            "longDesc": "No necesitas gastar 600€. Esta mecedora de abedul ofrece el balanceo perfecto y reposapiés ajustable. Miles de madres la recomiendan para las tomas nocturnas.",
             "features": [
-                "Balanceo suave",
-                "Soporte lumbar alto",
-                "Reposabrazos acolchados",
-                "Bolsillos laterales útiles"
+                "Estructura madera abedul",
+                "Reposapiés ajustable 5 pos.",
+                "Funda 100% algodón lavable",
+                "Bolsillo lateral útil"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Songmics+Mecedora+Lactancia&tag=100bcb-21"
         },
         {
             "id": 15,
-            "name": "Mochila de Porteo Ergonómica",
+            "name": "BabyBjörn Harmony",
             "category": "travel",
-            "shortDesc": "La herramienta definitiva para las siestas difíciles.",
-            "longDesc": "El contacto piel con piel regula el estrés y la temperatura del bebé. Cuando nada funciona, el porteo y el movimiento suelen dormir al bebé en minutos, dejándote las manos libres.",
+            "shortDesc": "El portabebés de lujo. Malla 3D súper suave.",
+            "longDesc": "La mochila definitiva desde recién nacido hasta 3 años. Malla 3D tecnológica que evita el calor. Soporte lumbar superior y diseño ergonómico de cadera certificado.",
             "features": [
-                "Posición 'Ranita' (M) segura",
-                "Reparto peso espalda",
-                "Manos libres",
-                "Tejido fresco y adaptable"
+                "Malla 3D transpirable",
+                "Soporte lumbar premium",
+                "Desde RN sin adaptador",
+                "Diseño escandinavo"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B09JM112B1?tag=100bcb-21"
         },
         {
             "id": 16,
-            "name": "Cuna de Viaje Ligera",
+            "name": "BabyBjörn Cuna de Viaje Light",
             "category": "travel",
-            "shortDesc": "Su espacio seguro y familiar en cualquier lugar.",
-            "longDesc": "Dormir fuera altera al bebé. Llevar su propia cuna (con su olor y sábanas) ayuda a que se sienta seguro en entornos extraños. Busca una que se monte rápido y tenga colchón decente.",
+            "shortDesc": "Se monta en 1 movimiento. Máxima ligereza.",
+            "longDesc": "La mejor cuna de viaje del mercado, sin duda. Pesa solo 6kg y se despliega mágicamente en un segundo. Colchón integrado cómodo (no una tabla) y bolsa de transporte.",
             "features": [
-                "Montaje en segundos",
-                "Ligera y compacta",
-                "Laterales de malla (visión)",
-                "Colchón incluido"
+                "Montaje instantáneo",
+                "Peso pluma (6kg)",
+                "Colchón cómodo incluido",
+                "Tejido red transpirable"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Babybjorn+Cuna+Viaje+Light&tag=100bcb-21"
         },
         {
             "id": 17,
-            "name": "Cambiador Portátil",
+            "name": "Munchkin Cambiador Portátil",
             "category": "hygiene",
-            "shortDesc": "Higiene rápida y limpia en cualquier superficie.",
-            "longDesc": "Evita manchar la cama o el sofá en cambios nocturnos complicados. Un cambiador impermeable fácil de limpiar es imprescindible en la habitación y en el bolso del carro.",
+            "shortDesc": "Kit de supervivencia para cambios rápidos.",
+            "longDesc": "Compacto y elegante. Incluye almohadilla para la cabeza, bolsillo de malla para pañales y estuche de toallitas. Todo lo que necesitas en un bolso de mano.",
             "features": [
-                "Impermeable y lavable",
-                "Acolchado para confort",
-                "Bolsillo para pañal/toallita",
-                "Plegado compacto"
+                "Acolchado extra cabeza",
+                "Estuche toallitas incluido",
+                "Bolsillos organizadores",
+                "Fácil limpieza"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Cambiador+Portatil&tag=100bcb-21"
         },
         {
             "id": 18,
-            "name": "Pijamas con Cremallera Doble",
+            "name": "Pijamas Carter's 2-Way Zip",
             "category": "sleep",
-            "shortDesc": "Cambios de pañal nocturnos en tiempo récord.",
-            "longDesc": "Evita los botones a presión a las 3 AM. La cremallera de doble dirección permite abrir solo la parte de abajo para cambiar el pañal sin desnudar ni enfriar el pecho del bebé.",
+            "shortDesc": "Los pijamas americanos #1 por calidad y ajuste.",
+            "longDesc": "Famosos por sus diseños y durabilidad. La cremallera de 2 vías es estándar en todos sus modelos, facilitando la vida a los padres en cada cambio de pañal.",
             "features": [
-                "Cremallera bidireccional",
-                "Algodón orgánico suave",
-                "Sin etiquetas que rocen",
-                "Protector de barbilla"
+                "Cremallera tobillo a barbilla",
+                "Algodón resistente",
+                "Ajuste seguro 'snug fit'",
+                "Diseños divertidos"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Carter's+Pijama+Bebe+Cremallera&tag=100bcb-21"
         },
         {
             "id": 19,
-            "name": "Libros de Cuento (Rutina)",
+            "name": "Libros 'Cuna a Luna'",
             "category": "sleep",
-            "shortDesc": "La señal perfecta para bajar revoluciones.",
-            "longDesc": "Leer el mismo cuento corto cada noche es una señal potente de que el día ha acabado. La voz monótona de mamá/papá relaja y prepara el cerebro para el sueño.",
+            "shortDesc": "Poesía visual para dormir (Kalandraka).",
+            "longDesc": "Clásicos modernos de la literatura infantil. Sus rimas sencillas ("pictogramas poéticos") y ritmo suave son hipnóticos para los bebés. El título 'Luna' es perfecto para la noche.",
             "features": [
-                "Imágenes de alto contraste",
-                "Historias cortas y rítmicas",
-                "Cartón resistente",
-                "Vínculo afectivo"
+                "Rima y ritmo relajante",
+                "Cartón duro resistente",
+                "Ilustraciones alto contraste",
+                "Fomenta vocabulario"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Kalandraka+Cuna+Luna&tag=100bcb-21"
         },
         {
             "id": 20,
-            "name": "Termómetro de Baño",
+            "name": "Stokke Flexi Bath + Soporte",
             "category": "hygiene",
-            "shortDesc": "El baño relajante perfecto sin sustos de temperatura.",
-            "longDesc": "El baño es parte clave de la rutina de sueño. El agua a temperatura corporal (37°C) relaja los músculos. Un termómetro flotante asegura que no esté ni muy fría (despierta) ni muy caliente.",
+            "shortDesc": "La bañera plegable noruega que ahorra espacio.",
+            "longDesc": "Diseño icónico que se pliega totalmente plana. Con el soporte para recién nacido opcional, es la solución perfecta para baños seguros y cómodos sin ocupar todo el baño.",
             "features": [
-                "Lectura rápida y segura",
-                "Juguete flotante seguro",
-                "Sin pilas (algunos)",
-                "Alerta visual calor"
+                "Plegado ultra compacto",
+                "Soporte RN ergonómico",
+                "Tapón termosensible",
+                "Diseño duradero"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Stokke+Flexi+Bath&tag=100bcb-21"
         },
         {
             "id": 21,
-            "name": "Aceite de Masaje (Almendras/Lavanda)",
+            "name": "Weleda Aceite de Caléndula",
             "category": "hygiene",
-            "shortDesc": "Relajación muscular y conexión antes de dormir.",
-            "longDesc": "Un masaje suave tras el baño libera oxitocina (hormona del amor y calma). Aceites naturales neutros o con un toque muy leve de lavanda (si el pediatra lo aprueba) favorecen la relajación.",
+            "shortDesc": "El oro líquido para la piel del bebé.",
+            "longDesc": "Cosmética natural certificada. Calma la piel y envuelve al bebé en una capa protectora térmica. El olor suave es relajante y perfecto para el masaje post-baño.",
             "features": [
-                "100% natural / orgánico",
-                "Hipoalergénico",
-                "Absorción lenta (masaje)",
-                "Sin perfumes fuertes"
+                "100% Bio y Natural",
+                "Sin aceites minerales",
+                "Con extracto caléndula",
+                "Protege piel sensible"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Weleda+Aceite+Calendula+Bebe&tag=100bcb-21"
         },
         {
             "id": 22,
-            "name": "Mordedores Refrigerables",
+            "name": "Sophie La Girafe",
             "category": "health",
-            "shortDesc": "Alivio para el dolor de encías que rompe el sueño.",
-            "longDesc": "La dentición es causa frecuente de malas noches. Un mordedor enfriado en nevera adormece las encías inflamadas y calma al bebé antes de intentar dormir.",
+            "shortDesc": "El mordedor más famoso del mundo desde 1961.",
+            "longDesc": "Hecha de caucho natural 100% y pintura alimentaria. Estimula los 5 sentidos. Sus patas y orejas son perfectas para aliviar encías doloridas. Un regalo imprescindible.",
             "features": [
-                "Gel refrigerante seguro",
-                "Texturas de masaje",
+                "Caucho natural Hevea",
+                "Estimula 5 sentidos",
                 "Fácil agarre",
-                "Libre de BPA"
+                "Icono cultural"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Sophie+La+Girafe&tag=100bcb-21"
         },
         {
             "id": 23,
-            "name": "Sabanas Bajeras Ajustables (x3)",
+            "name": "Sábanas Bajeras Aden+Anais",
             "category": "sleep",
-            "shortDesc": "Higiene y seguridad. Siempre ten recambios a mano.",
-            "longDesc": "Los escapes ocurren. Necesitas sábanas 100% algodón que ajusten fuerte al colchón (sin arrugas peligrosas) y tener varias para cambiar la cama en segundos a mitad de noche.",
+            "shortDesc": "Muselina de lujo que se suaviza con cada lavado.",
+            "longDesc": "La muselina de algodón es el tejido más transpirable para bebés. Estas sábanas no solo son preciosas, sino que regulan la temperatura mejor que el algodón normal.",
             "features": [
-                "Ajuste elástico firme",
-                "Algodón transpirable",
-                "Lavables a 60°C",
-                "Suavidad duradera"
+                "100% Muselina algodón",
+                "Termorreguladoras",
+                "Diseños de autor",
+                "Suavidad extra"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Aden+Anais+Sabanas+Cuna&tag=100bcb-21"
         },
         {
             "id": 24,
-            "name": "Pelota de Pilates",
+            "name": "Pelota Pilates Galetoss",
             "category": "mom",
-            "shortDesc": "El 'arma secreta' para calmar bebés difíciles.",
-            "longDesc": "El rebote suave en la pelota simula el movimiento de caminar (o del útero) mucho mejor que mecerse de pie. Salva la espalda de los padres y calma llantos intensos en minutos.",
+            "shortDesc": "Resistente y segura para botar con el bebé.",
+            "longDesc": "Material anti-estallido engrosado. Esencial para calmar cólicos mediante el rebote suave. Un salvavidas para padres con bebés de alta demanda.",
             "features": [
+                "Sistema Anti-Burst",
                 "Superficie antideslizante",
-                "Material anti-estallido",
-                "Alivio suelo pélvico",
-                "Calma cólicos (rebote)"
+                "Bomba incluida",
+                "Soporta +300kg"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Pelota+Pilates+Embarazo&tag=100bcb-21"
         },
         {
             "id": 25,
-            "name": "Organizador de Pañales (Caddy)",
+            "name": "Munchkin Organizador Pañales",
             "category": "mom",
-            "shortDesc": "Todo a mano para no encender luces buscando cosas.",
-            "longDesc": "Tener pañales, toallitas, crema y bodys de cambio ordenados en una cesta pórtatil te permite hacer el 'box stop' nocturno en cualquier lugar de la casa sin caos.",
+            "shortDesc": "Cesta organizadora robusta y espaciosa.",
+            "longDesc": "Mantén el caos bajo control. Espacio para decenas de pañales, toallitas y cremas. Asa resistente para llevar el 'cuartel general' del cambio a cualquier habitación.",
             "features": [
-                "Compartimentos divisores",
-                "Asas resistentes",
-                "Ligero y portátil",
-                "Multiusos futuro"
+                "Compartimentos rígidos",
+                "Bolsillos malla laterales",
+                "Asa reforzada",
+                "Regalo perfecto"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Organizador+Pañales&tag=100bcb-21"
         },
         {
             "id": 26,
-            "name": "Monitor Inteligente (Calcetín)",
+            "name": "Owlet Dream Sock",
             "category": "health",
-            "shortDesc": "Control de constantes vitales en tiempo real.",
-            "longDesc": "Mide el ritmo cardíaco y niveles de oxígeno mientras duerme. Avisa al móvil si algo se sale de lo normal, ofreciendo una tranquilidad extra a padres primerizos.",
+            "shortDesc": "Tranquilidad total monitoreando constantes.",
+            "longDesc": "Tecnología hospitalaria en casa. Mide oxígeno y pulso mientras duerme. Te avisa en la base y el móvil si los niveles bajan, permitiéndote dormir con verdadera paz mental.",
             "features": [
-                "Biometría en tiempo real",
-                "Alertas automáticas",
-                "Histórico de sueño",
-                "Sin cables peligrosos"
+                "Oximetría de pulso",
+                "Historial de sueño",
+                "Carga inalámbrica",
+                "Notificaciones tiempo real"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Owlet+Dream+Sock&tag=100bcb-21"
         },
         {
             "id": 27,
-            "name": "Sensor de Movimiento",
+            "name": "Nanny Monitor Respiración",
             "category": "health",
-            "shortDesc": "Detecta la respiración por micro-movimientos.",
-            "longDesc": "Una almohadilla bajo el colchón detecta cada respiración. Si no detecta movimiento en 20 segundos, emite una alarma para despertarte. Una capa extra de seguridad contra el SMSL.",
+            "shortDesc": "El monitor con certificado médico más fiable.",
+            "longDesc": "Usado en maternidades de toda Europa. Un colchón sensor de gran superficie detecta cada microsespiración. Si para 20s, suena una alarma acústica potente.",
             "features": [
-                "Sin contacto con la piel",
-                "Alarma sonora potente",
-                "Sensibilidad ajustable",
-                "Instalación bajo colchón"
+                "Certificado Dispositivo Médico",
+                "Gran superficie sensor",
+                "Alarma acústica fuerte",
+                "Sin falsas alarmas"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nanny+Monitor+Respiracion&tag=100bcb-21"
         },
         {
             "id": 28,
-            "name": "Purificador de Aire HEPA",
+            "name": "Philips Serie 800 Purificador",
             "category": "environment",
-            "shortDesc": "Aire puro libre de alérgenos y polvo.",
-            "longDesc": "Filtra el 99.9% de partículas, polvo y virus. Vital para bebés alérgicos o en ciudades. Un aire limpio evita congestión nasal nocturna y mejora la calidad del sueño.",
+            "shortDesc": "Aire puro de alérgenos en modo silencio total.",
+            "longDesc": "Tamaño compacto ideal para dormitorios. Su modo sueño es ultra silencioso y sin luces. Elimina virus, alérgenos y polvo en minutos gracias a su filtro HEPA.",
             "features": [
-                "Filtro HEPA verdadero",
-                "Silencioso (Modo noche)",
-                "Elimina olores",
-                "Sin ozono dañino"
+                "Filtro HEPA nanoprotect",
+                "Modo sueño ultra-silencioso",
+                "Indicador calidad aire",
+                "Bajo consumo"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Philips+Purificador+Aire+Serie+800&tag=100bcb-21"
         },
         {
             "id": 29,
-            "name": "Ventilador de Torre Silencioso",
+            "name": "Dyson Purifier Cool Autoreact",
             "category": "environment",
-            "shortDesc": "Circulación de aire segura contra el SMSL.",
-            "longDesc": "Mover el aire reduce el riesgo de acumulación de CO2. Un ventilador de torre seguro (sin aspas accesibles) mantiene la habitación fresca y el aire en movimiento suavemente.",
+            "shortDesc": "La joya de la corona en purificación y ventilación.",
+            "longDesc": "Captura polvo, alérgenos y virus H1N1. Ventila sin aspas (100% seguro para dedos pequeños) y monitorea la calidad del aire en tiempo real. Un lujo que mejora la salud.",
             "features": [
-                "Sin aspas peligrosas",
-                "Temporizador de apagado",
-                "Oscilación suave",
-                "Ruido blanco natural"
+                "Sin aspas (Seguro)",
+                "Filtrado HEPA H13 vidrio",
+                "Giro 350 grados",
+                "Monitorización LCD"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Dyson+Purifier+Cool+Autoreact&tag=100bcb-21"
         },
         {
             "id": 30,
-            "name": "Reloj de Entrenamiento",
+            "name": "GroClock Reloj Sueño",
             "category": "sleep",
-            "shortDesc": "Enseña visualmente cuándo es hora de despertar.",
-            "longDesc": "Para niños a partir de 2 años. Usa colores (ej. azul=dormir, amarillo=despertar) para que sepan si pueden levantarse, evitando madrugones innecesarios.",
+            "shortDesc": "Enseña a dormir más tiempo de forma visual.",
+            "longDesc": "El sol sale en la pantalla solo cuando es hora de levantar. Los niños entienden el concepto visualmente y se quedan en la cama hasta que 'sale el sol', regalándote horas de sueño.",
             "features": [
-                "Código visual simple",
+                "Pantalla educativa",
                 "Brillo ajustable",
-                "Opción de alarma",
-                "Modo siesta"
+                "Cuento incluido",
+                "Opción reloj digital"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=GroClock&tag=100bcb-21"
         },
         {
             "id": 31,
-            "name": "Contenedor de Pañales",
+            "name": "Tommee Tippee Twist & Click",
             "category": "hygiene",
-            "shortDesc": "Bloquea olores desagradables en la habitación.",
-            "longDesc": "Los pañales sucios huelen fuerte. Este cubo sella cada pañal individualmente o herméticamente, permitiendo tenerlo cerca del cambiador sin que la habitación huela mal.",
+            "shortDesc": "El único cubo que envuelve cada pañal individualmente.",
+            "longDesc": "Garantizado contra olores. Su sistema envuelve y sella cada pañal en una película antibacteriana, bloqueando gérmenes y olor. Imprescindible si cambias en la habitación.",
             "features": [
-                "Bloqueo de olores total",
-                "Uso con una mano",
-                "Bolsas continuas o estándar",
-                "Cierre seguridad"
+                "Bloqueo olor garantizado",
+                "Film antibacteriano",
+                "Capacidad ~28 pañales",
+                "Fácil recarga"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B07DNM8Y1V?tag=100bcb-21"
         },
         {
             "id": 32,
-            "name": "Calentador de Toallitas",
+            "name": "Prince Lionheart Calentador",
             "category": "hygiene",
-            "shortDesc": "Evita el sobresalto frío en cambios nocturnos.",
-            "longDesc": "Una toallita helada a las 3 AM despierta a cualquiera. Mantenerlas tibias ayuda a que el bebé siga medio dormido durante el cambio de pañal.",
+            "shortDesc": "Toallitas siempre húmedas y calientes, nunca secas.",
+            "longDesc": "Sistema patentado que evita que se sequen o se pongan marrones. Mantiene la temperatura perfecta para limpiar el culete sin sobresaltos nocturnos.",
             "features": [
-                "Temperatura segura",
-                "Mantiene humedad",
-                "Luz tenue integrada",
-                "Bajo consumo"
+                "Sistema Ever-Fresh",
+                "Luz nocturna suave",
+                "Gran capacidad",
+                "Temperatura segura"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Prince+Lionheart+Wipes+Warmer&tag=100bcb-21"
         },
         {
             "id": 33,
-            "name": "Calienta Biberones Rápido",
+            "name": "Philips Avent Calienta Biberón",
             "category": "mom",
-            "shortDesc": "Leche a temperatura perfecta en 3 minutos.",
-            "longDesc": "Calentar al baño maría es lento y peligroso de noche. Un calentador preciso evita quemaduras (puntos calientes) y conserva los nutrientes de la leche materna.",
+            "shortDesc": "Calentamiento inteligente que evita quemaduras.",
+            "longDesc": "Calcula el tiempo exacto según el volumen y temperatura inicial. Calienta uniformemente sin puntos calientes peligrosos y mantiene la leche caliente hasta 1 hora.",
             "features": [
-                "Calentamiento uniforme",
-                "Descongelado suave",
-                "Mantiene calor",
-                "Compatible universal"
+                "Control temperatura inteligente",
+                "Función descongelar",
+                "Mantiene calor 60min",
+                "Compatible tarritos"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Philips+Avent+Calienta+Biberones+Rapido&tag=100bcb-21"
         },
         {
             "id": 34,
-            "name": "Dosificador Leche en Polvo",
+            "name": "Dosificador Leche MAM",
             "category": "mom",
-            "shortDesc": "Biberones nocturnos preparados en segundos.",
-            "longDesc": "No midas cacitos medio dormida. Deja las dosis listas en este dispensador apilable. Solo verter y agitar. Imprescindible para salidas y noches.",
+            "shortDesc": "Diseño triangular para no derramar ni un gramo.",
+            "longDesc": "Parece simple, pero su forma triangular facilita verter todo el polvo en biberones de boca estrecha sin atascos. Tapas a prueba de fugas y material de calidad médica.",
             "features": [
-                "Dosis exactas listas",
-                "Boca anti-derrames",
-                "Apilable y compacto",
-                "Libre de BPA"
+                "Forma triangular vertido",
+                "3 tomas grandes",
+                "Apto esterilizador",
+                "Sin BPA/BPS"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Dosificador+Leche+MAM&tag=100bcb-21"
         },
         {
             "id": 35,
-            "name": "Colector de Leche (Silicona)",
+            "name": "Haakaa Sacaleches Manual",
             "category": "mom",
-            "shortDesc": "Recoge cada gota sin esfuerzo mientras das el pecho.",
-            "longDesc": "Tipo Haakaa. Se usa en el pecho contrario mientras amamantas para aprovechar a bajada de leche. Silencioso y sin cables, ideal para aliviar congestión de noche.",
+            "shortDesc": "El recolector de silicona original y viral.",
+            "longDesc": "Aprovecha el reflejo de eyección mientras das el pecho. Se adhiere por vacío y recoge la leche que se perdería en el disco. Una pieza, sin ruido, sin cables.",
             "features": [
-                "Succión natural vacío",
-                "Una sola pieza silicona",
-                "Sin ruido ni motor",
-                "Fácil de limpiar"
+                "Silicona grado alimentario",
+                "Base ventosa",
+                "Sin montaje",
+                "Silencioso"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Haakaa+Sacaleches&tag=100bcb-21"
         },
         {
             "id": 36,
-            "name": "Luz de Lactancia (Pinza)",
+            "name": "Luz Lectura Glocusent",
             "category": "mom",
-            "shortDesc": "Luz directa donde la necesitas, oscuridad en el resto.",
-            "longDesc": "Se engancha a tu ropa o cojín. Ilumina solo la zona del pecho/biberón para que veas el agarre sin iluminar la cara del bebé ni la habitación.",
+            "shortDesc": "Luz ámbar cuello de ganso premiada.",
+            "longDesc": "Diseñada para lectores, adoptada por madres. 3 tonos de luz (incluido ámbar protector del sueño). Batería eterna y direccionalidad perfecta para no molestar a tu pareja.",
             "features": [
-                "Pequeña y ligera",
-                "Cuello flexible",
-                "Luz cálida/ambar",
-                "Recargable USB"
+                "Modo Ámbar (1800k)",
+                "Recargable USB-C",
+                "Cuello flexible 360",
+                "No pesa nada"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Glocusent+Luz+Lectura&tag=100bcb-21"
         },
         {
             "id": 37,
-            "name": "Organizador Colgante Cuna",
+            "name": "Organizador Cuna 3 Sprouts",
             "category": "environment",
-            "shortDesc": "Chupetes y doudous siempre a mano.",
-            "longDesc": "Se cuelga en el lateral de la cuna (por fuera). Guarda chupetes de recambio, el termómetro o crema para no tener que buscarlos en muebles lejanos.",
+            "shortDesc": "Diseño animal adorable y funcionalidad.",
+            "longDesc": "Alegra la habitación mientras organiza. Estructura firme que no se deforma. Perfecto para pijamas, pañales de emergencia y cremas.",
             "features": [
-                "Bolsillos accesibles",
-                "Tela resistente",
-                "Sujeción segura",
-                "Diseño neutro"
+                "Diseños animales lienzo",
+                "Estructura firme",
+                "Bolsillos grandes",
+                "Cuelga fácil"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=3+Sprouts+Organizador&tag=100bcb-21"
         },
         {
             "id": 38,
-            "name": "Pantalones con Pies",
-            "category": "sleep",
-            "shortDesc": "Pies calientes sin calcetines que se caen.",
-            "longDesc": "Los calcetines siempre acaban perdidos en la cuna. Los pantalones o polainas con pie integrado aseguran que sus extremidades nunca se enfríen.",
+            "name": "Medela Freestyle Hands-Free",
+            "category": "mom",
+            "shortDesc": "Libertad total. Extractor doble invisible.",
+            "longDesc": "El sacaleches manos libres de grado hospitalario más avanzado. Se lleva dentro del sujetador. Motor compacto en el bolsillo. Recupera horas de tu vida mientras extraes.",
             "features": [
-                "Cintura elástica suave",
-                "Algodón 100%",
-                "Sin costuras molestas",
-                "Libertad movimiento"
+                "Manos libres real",
+                "Copas anatómicas",
+                "Batería recargable",
+                "Conectividad App"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Medela+Freestyle+Hands+Free&tag=100bcb-21"
         },
         {
             "id": 39,
-            "name": "Mono Polar (Fleece)",
+            "name": "Burt's Bees Mono Polar",
             "category": "sleep",
-            "shortDesc": "Capa extra para noches muy frías.",
-            "longDesc": "Para poner sobre el pijama de algodón en invierno crudo. El tejido polar es ligero pero muy cálido y seca rápido si hay fugas.",
+            "shortDesc": "Algodón orgánico y poliéster reciclado suave.",
+            "longDesc": "La marca eco-friendly por excelencia. Su mono de 'fleece' es famoso por ser cálido pero no sofocante, ideal para bebés que se destapan constantemente.",
             "features": [
-                "Calor ligero",
-                "Secado rápido",
-                "Cremallera completa",
-                "Suave al tacto"
+                "Algodón orgánico",
+                "Cremallera con protecciones",
+                "Suelas antideslizantes",
+                "Diseño abejita"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Burt's+Bees+Baby+Jumpsuit&tag=100bcb-21"
         },
         {
             "id": 40,
-            "name": "Cortina Opaca Portátil",
+            "name": "Tommee Tippee Groblind",
             "category": "travel",
-            "shortDesc": "Convierte cualquier ventana en una noche oscura.",
-            "longDesc": "Se pega al cristal con ventosas. Imprescindible para vacaciones o casas de abuelos sin persianas. Garantiza la oscuridad necesaria para la siesta.",
+            "shortDesc": "La persiana portátil de ventosas original.",
+            "longDesc": "Se adapta a cualquier ventana hasta 130x198cm. Ventosas de larga duración que no se caen a mitad de siesta. Imprescindible para el verano y viajes.",
             "features": [
-                "Sistema de ventosas",
-                "Ajustable con velcro",
-                "Bolsa de transporte",
-                "Bloqueo luz total"
+                "Talla XL adaptable",
+                "Blackout total",
+                "Bolsa viaje",
+                "Velcro ajuste tamaño"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Groblind&tag=100bcb-21"
         },
         {
             "id": 41,
-            "name": "Protector Colchón Impermeable",
+            "name": "BSensible Sábana Protectora",
             "category": "hygiene",
-            "shortDesc": "Salva el colchón de 'accidentes' nocturnos.",
-            "longDesc": "Capa silenciosa (que no cruja) e impermeable. Pon dos: Colchón > Protector > Sábana > Protector > Sábana. Así si vomita, quitas la capa de arriba y la cama sigue lista.",
+            "shortDesc": "2 en 1: Sábana Tencel y protector impermeable.",
+            "longDesc": "Tejido dermoprotector natural (Tencel/Zinc) que es impermeable pero respira como una segunda piel. Olvida los plásticos ruidosos. Calidad fabricada en España.",
             "features": [
-                "Impermeable y transpirable",
-                "Sin ruido plástico",
-                "Lavable a máquina",
-                "Ajuste perfecto"
+                "Tencel + Óxido Zinc",
+                "Impermeable invisible",
+                "Anti-ácaros natural",
+                "Fabricado en España"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=BSensible+Sabana+Protectora+Cuna&tag=100bcb-21"
         },
         {
             "id": 42,
-            "name": "Detergente Hipoalergénico",
+            "name": "Norit Bebé Detergente",
             "category": "hygiene",
-            "shortDesc": "Cuida la piel atópica y evita picores nocturnos.",
-            "longDesc": "La ropa de cama está en contacto con su piel 12h. Un detergente sin perfumes ni químicos agresivos evita irritaciones que causan incomodidad y despertares.",
+            "shortDesc": "El aroma a bebé de toda la vida. Hipoalergénico.",
+            "longDesc": "Recomendado por dermatólogos/pediatras. Fórmula sin conservantes sensibilizantes. Mantiene la ropa suave sin suavizante (que no debe usarse en bebés).",
             "features": [
-                "Fórmula bebé",
-                "Sin enzimas fuertes",
-                "Testado dermatológicamente",
-                "Olor neutro"
+                "Hipoalergénico",
+                "Sin blanqueantes ópticos",
+                " olor icónico suave",
+                "Cuida fibras delicadas"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Norit+Bebe&tag=100bcb-21"
         },
         {
             "id": 43,
-            "name": "Clip Sujeta-Chupetes",
+            "name": "MAM Clip It!",
             "category": "sleep",
-            "shortDesc": "El fin de buscar chupetes por el suelo a oscuras.",
-            "longDesc": "Asegura el chupete al pijama (usar solo cortos y homologados para dormir, o bajo supervisión). Evita que caiga al suelo o se pierda entre los barrotes.",
+            "shortDesc": "Longitud segura ajustable y lavable.",
+            "longDesc": "Uno de los pocos broches que permite ajustar la longitud para seguridad durmiendo. Compatible con chupetes de botón, anilla y mordedores. Diseño robusto.",
             "features": [
-                "Longitud segura (corta)",
-                "Broche sin metal",
-                "Tela lavable",
-                "Universal"
+                "Longitud ajustable",
+                "Compatible con todo",
+                "Lavable",
+                "Mecanismo seguro"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=MAM+Clip+It&tag=100bcb-21"
         },
         {
             "id": 44,
-            "name": "Alfombra Gruesa",
+            "name": "Lorena Canals Alfombra Lavable",
             "category": "environment",
-            "shortDesc": "Aísla del frío y amortigua tus pasos.",
-            "longDesc": "Te permite salir de la habitación en silencio ('modo ninja') sin que el suelo cruja. También amortigua caídas cuando empiezan a ponerse de pie en la cuna.",
+            "shortDesc": "Alfombras de algodón que se lavan en lavadora.",
+            "longDesc": "La revolución en decoración infantil. ¿Vómito o mancha? A la lavadora y lista. Algodón 100% natural y tintes no tóxicos. Diseños preciosos y tacto suave.",
             "features": [
-                "Pelo corto (limpieza)",
-                "Base antideslizante",
-                "Amortiguación ruido",
-                "Material no tóxico"
+                "Lavable en casa",
+                "100% Algodón natural",
+                "Hecha a mano",
+                "Tintes no tóxicos"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Lorena+Canals+Alfombra&tag=100bcb-21"
         },
         {
             "id": 45,
-            "name": "Tapones para Oídos (Padres)",
+            "name": "Loop Quiet Tapones",
             "category": "mom",
-            "shortDesc": "Reduce el estrés del llanto, permitiendo oír la alarma.",
-            "longDesc": "Los Loop o similares bajan los decibelios del llanto agudo (que dispara el cortisol) pero te dejan oír lo necesario. Ayudan a mantener la calma en crisis.",
+            "shortDesc": "Reducción de ruido de diseño para dormir.",
+            "longDesc": "Silicona 'soft-touch' comodísima para dormir de lado. Reducen 26dB (ronquidos/ruido calle) pero te permiten oír un llanto fuerte o alarma al lado.",
             "features": [
-                "Filtro de ruido selectivo",
-                "Cómodos para dormir",
-                "Material silicona suave",
-                "Reutilizables"
+                "Silicona ultra-suave",
+                "-26dB reducción",
+                "No se caen",
+                "Caja transporte"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Loop+Quiet+Earplugs&tag=100bcb-21"
         },
         {
             "id": 46,
-            "name": "Antifaz para Dormir",
+            "name": "MantaSilk Antifaz",
             "category": "mom",
-            "shortDesc": "Aprovecha cualquier minuto para dormir, sea de día o noche.",
-            "longDesc": "Cuando te toca dormir, necesitas oscuridad total inmediata. Un antifaz cómodo te ayuda a caer rendida/o en las siestas diurnas mientras el bebé duerme.",
+            "shortDesc": "Seda de morera 100% que protege piel y sueño.",
+            "longDesc": "Seda de grado 6A (la más alta). Bloquea la luz totalmente y es anti-arrugas. El elástico no aprieta el pelo. Un pequeño lujo para mejorar tus siestas.",
             "features": [
-                "Seda suave",
-                "No presiona ojos",
-                "Ajuste elástico",
-                "Oscuridad total"
+                "100% Seda Morera",
+                "Transpirable",
+                "Hipoalergénico",
+                "Certificado Oeko-Tex"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Antifaz+Seda+Natural&tag=100bcb-21"
         },
         {
             "id": 47,
-            "name": "Barrera de Cama",
+            "name": "Banbaloo Barrera Cama",
             "category": "sleep",
-            "shortDesc": "Seguridad para el paso de cuna a cama.",
-            "longDesc": "Evita caídas nocturnas. Abatible para poder hacer la cama o sentarte. Da sensación de contención al niño acostumbrado a los barrotes.",
+            "shortDesc": "El rodillo de espuma seguro (Bumper).",
+            "longDesc": "Mejor que las barreras metálicas feas. Es un cilindro de espuma viscoelástica que se pone bajo la sábana. Frena al niño suavemente sin sensación de 'jaula'.",
             "features": [
-                "Abatible 180º",
-                "Malla transpirable",
-                "Anclaje seguro somier",
-                "Altura extra"
+                "Espuma viscoelástica",
+                "Invisible bajo sábana",
+                "Portátil",
+                "Sin montaje"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Banbaloo+Barrera+Cama&tag=100bcb-21"
         },
         {
             "id": 48,
-            "name": "Dispositivo 'Shusher'",
+            "name": "Baby Shusher Original",
             "category": "sleep",
-            "shortDesc": "Hace el sonido 'Shhh' por ti para que descanses.",
-            "longDesc": "El sonido 'Shhh' fuerte calma, pero hacerlo 20 min marea. Este aparato emite un 'Shhh' rítmico y humano que rompe el ciclo de llanto.",
+            "shortDesc": "La máquina milagrosa del sueño viral.",
+            "longDesc": "Usado por fotógrafos de recién nacidos. Emite un 'SHHHHH' rítmico y fuerte que activa el reflejo de calma. Temporizador de 15/30min y volumen alto necesario.",
             "features": [
-                "Volumen ajustable",
-                "Temporizador",
-                "Portátil (pilas)",
-                "Sonido humano real"
+                "Sonido Shhh real",
+                "Portátil y robusto",
+                "Volumen regulable",
+                "Cordón muñeca"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Baby+Shusher&tag=100bcb-21"
         },
         {
             "id": 49,
-            "name": "DouDou / Manta de Apego",
+            "name": "Jellycat Doudou Conejito",
             "category": "sleep",
-            "shortDesc": "Objeto transicional para seguridad emocional.",
-            "longDesc": "Introducir (seguro +12m) un muñeco plano y suave que huela a mamá. Se convierte en su fuente de seguridad cuando no estás, ayudando a dormir solos.",
+            "shortDesc": "El peluche más suave y lujoso de Londres.",
+            "longDesc": "Un clásico moderno. Su tejido es indescriptiblemente suave. Seguro desde el nacimiento y tan duradero que se convertirá en su compañero de infancia.",
             "features": [
-                "Pequeño y manejable",
-                "Lavable a máquina",
-                "Sin piezas sueltas",
-                "Tejido muy suave"
+                "Suavidad suprema",
+                "Diseño Bashful Bunny",
+                "Seguro EN71",
+                "Lavable a mano"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Jellycat+Bunny+Beige&tag=100bcb-21"
         },
         {
             "id": 50,
-            "name": "Termo de Sólidos",
+            "name": "Beaba Termo Sólidos Inox",
             "category": "travel",
-            "shortDesc": "Comida caliente en cualquier lugar.",
-            "longDesc": "Mantén el agua caliente para biberones o el puré listo cuando sales. Evita tener que buscar microondas o volver a casa por horarios de comida.",
+            "shortDesc": "Estilo francés y rendimiento térmico.",
+            "longDesc": "Acero inoxidable de doble pared. Mantiene la comida caliente 5h o fría 7h. Boca ancha para comer directamente de él y tapa 100% hermética con asa.",
             "features": [
-                "Acero inoxidable doble",
-                "Mantiene 6-12h",
-                "Boca ancha",
-                "Cierre hermético"
+                "Acero Inox 304",
+                "100% Hermético",
+                "Sin transferencia sabor",
+                "Diseño ergonómico"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
         }
     ],
     "en": [
         {
             "id": 1,
-            "name": "Co-Sleeper Bassinet",
+            "name": "Chicco Next2Me Forever",
             "category": "sleep",
-            "shortDesc": "Sleep close but safe. Eases night feeds and bonding.",
-            "longDesc": "Safe co-sleeping (separate surface attached to bed) reduces SIDS risk and keeps baby within arm's reach. Makes night feeds much easier without getting out of bed, preserving your own rest.",
+            "shortDesc": "The ultimate 3-in-1 evolutionary co-sleeper.",
+            "longDesc": "More than just a co-sleeper. Evolves with your baby up to 4 years. Patented folding side panel for safety, wheels for mobility, and converts to a Montessori floor bed.",
             "features": [
-                "Easy breastfeeding access",
-                "Reduces night anxiety",
-                "Firm independent surface",
-                "Drop-side wall"
+                "Use up to 4 years",
+                "Patented safety system",
+                "Montessori floor bed mode",
+                "Wheels with brakes"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Chicco+Next2Me+Forever&tag=100bcb-21"
         },
         {
             "id": 2,
-            "name": "Firm Crib Mattress",
+            "name": "Ecus Kids Pigü Mattress",
             "category": "sleep",
-            "shortDesc": "The foundation of safety. Prevents sinking and overheating.",
-            "longDesc": "Sleep surface must be firm to prevent suffocation and positional issues. A breathable mattress reduces overheating risk and prevents CO2 accumulation around baby's face.",
+            "shortDesc": "The most recommended anti-suffocation crib mattress.",
+            "longDesc": "Scientifically designed to prevent plagiocephaly and suffocation. Its core with air channels reduces pressure on baby's head and ensures breathability even if face-down.",
             "features": [
-                "Proper firmness (not soft)",
-                "Breathable 3D materials",
-                "Hypoallergenic",
-                "Washable cover essential"
+                "Prevents Plagiocephaly",
+                "Sanitary Certified",
+                "Max 3D breathability",
+                "Anti-mite treatment"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Ecus+Kids+Pigu+Colchon+Cuna&tag=100bcb-21"
         },
         {
             "id": 3,
-            "name": "Sleep Sack (TOG 2.5)",
+            "name": "Tommee Tippee Grobag 2.5 TOG",
             "category": "sleep",
-            "shortDesc": "Thermal safety. Prevents kicking off covers or face covering.",
-            "longDesc": "Replaces dangerous loose blankets. Maintains constant body temp all night, preventing cold wake-ups. TOG 2.5 is standard for winter (16-20°C). The #1 sleep expert recommended item.",
+            "shortDesc": "Premium sleep bag for absolute thermal safety.",
+            "longDesc": "The gold standard in sleep bags. Ergonomic design for healthy hips (IHDI), easy night diaper changes with double zipper, and luxury cotton fabric.",
             "features": [
-                "No suffocation risk",
-                "Constant temperature",
-                "Sleep routine cue",
-                "Two-way zipper"
+                "Hip healthy (Certified)",
+                "Two-way zipper",
+                "Premium soft fabric",
+                "No noisy snaps"
             ],
-            "affiliateLink": "https://www.amazon.com/dp/example"
+            "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Saco+Dormir+2.5+TOG&tag=100bcb-21"
         },
         {
             "id": 4,
-            "name": "Newborn Swaddle",
+            "name": "Love To Dream Swaddle UP",
             "category": "sleep",
-            "shortDesc": "Recreates the womb hug and prevents Moro reflex.",
-            "longDesc": "For the first 3 months (4th trimester). Gentle containment soothes crying and prevents baby waking from their own startle reflex. Must allow hip movement and stop when rolling starts.",
+            "shortDesc": "The only swaddle that allows sleeping arms up.",
+            "longDesc": "Revolutionary design allows baby to sleep in their natural position (arms up) to self-soothe, while preventing the Moro reflex. Thousands of 'saved' parents reviews.",
             "features": [
-                "Soothes crying",
-                "Prevents startle reflex",
-                "Promotes back sleeping",
-                "Stretchy breathable fabric"
+                "Natural arms up pos",
+                "Self-soothing access",
+                "Prevents Moro reflex",
+                "Easy diaper change"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Love+To+Dream+Swaddle+UP&tag=100bcb-21"
         },
         {
             "id": 5,
-            "name": "White Noise Machine",
+            "name": "Hatch Rest 2nd Gen",
             "category": "environment",
-            "shortDesc": "Masks sudden noises and mimics the womb sound.",
-            "longDesc": "Total silence can alert a baby. Constant white noise (rain, fan) masks door slams or barks and acts as a powerful sleep cue. Use at safe volume (<50dB) away from crib.",
+            "shortDesc": "The most desired 'All-in-One' sleep device.",
+            "longDesc": "Combines smart white noise machine, night light, and audio monitor. Controlled from your phone. Create custom sleep routines that grow with your child.",
             "features": [
-                "Blocks household noise",
-                "Auditory sleep cue",
-                "Immediate calming effect",
-                "Portable"
+                "Wi-Fi App Control",
+                "Custom light & sound",
+                "Time-to-Rise function",
+                "Audio monitor"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B0BJ7V69Q2?tag=100bcb-21"
         },
         {
             "id": 6,
-            "name": "Blackout Curtains",
+            "name": "Portable Blackout Curtains",
             "category": "environment",
-            "shortDesc": "Total darkness to boost melatonin and lengthen naps.",
-            "longDesc": "Light inhibits melatonin. Total darkness helps baby fall asleep faster, lengthens day naps, and prevents early morning 'rooster' wake-ups at 5 AM.",
+            "shortDesc": "Total 'Blackout' darkness wherever you go.",
+            "longDesc": "Turns any room into a sleep cave. Sticks to window with premium suction cups. Essential for vacations or visiting relatives.",
             "features": [
-                "100% real darkness",
-                "Regulates circadian rhythm",
-                "Thermal insulation",
-                "Portable versions avail."
+                "100% light block",
+                "High-grip suction cups",
+                "Velcro adjustable",
+                "Travel bag included"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Cortinas+Opacas+Portatiles+Bebe&tag=100bcb-21"
         },
         {
             "id": 7,
-            "name": "Video Baby Monitor",
+            "name": "Nanit Pro Smart Monitor",
             "category": "environment",
-            "shortDesc": "Peace of mind without entering the room.",
-            "longDesc": "Allows checking on baby without opening the door (which risks waking them). Look for clear night vision and VOX mode (screen off until noise) to avoid sleeping next to a bright screen.",
+            "shortDesc": "The Tesla of baby monitors. Computer vision sleep tracking.",
+            "longDesc": "Not only see your baby, but analyze their sleep. Gives data on sleep duration, night visits, and breathing (with special band). Unmatched HD video quality.",
             "features": [
-                "Infrared night vision",
-                "VOX/ECO mode",
-                "Secure range",
+                "1080p HD overhead video",
+                "Sleep analytics",
+                "Breathing motion (wearable)",
                 "Two-way audio"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nanit+Pro+Camera&tag=100bcb-21"
         },
         {
             "id": 8,
-            "name": "Ultrasonic Humidifier",
+            "name": "Levoit Dual 150 Humidifier",
             "category": "health",
-            "shortDesc": "Optimal air. Vital for congestion and dry cough.",
-            "longDesc": "Keeps humidity at 40-60%. Essential for winter heating or colds. Hydrates airways and loosens mucus. Always cool mist to avoid burn risks.",
+            "shortDesc": "Absolute silence and precise humidity control.",
+            "longDesc": "Amazon's favorite humidifier. Ultrasonic technology almost inaudible (28dB), easy-to-clean tank (top fill), and rotating nozzle. Vital for colds.",
             "features": [
-                "Relieves nasal congestion",
-                "Silent (<30dB)",
-                "Safe cool mist",
-                "Easy cleaning"
+                "Silent (<28dB)",
+                "Easy top fill",
+                "Auto shut-off safety",
+                "Essential oil diffuser"
             ],
-            "affiliateLink": "https://www.amazon.com/dp/example"
+            "affiliateLink": "https://www.amazon.es/s?k=Levoit+Humidificador+Bebe&tag=100bcb-21"
         },
         {
             "id": 9,
-            "name": "Electric Nasal Aspirator",
+            "name": "Nosiboo Pro Nasal Aspirator",
             "category": "health",
-            "shortDesc": "Quick hygiene. If they can't breathe, they can't sleep.",
-            "longDesc": "Babies can't blow their noses. A safe, fast aspirator is vital before sleep if congested. Electric ones provide constant gentle suction compared to manual bulbs.",
+            "shortDesc": "Hospital power with friendly design.",
+            "longDesc": "The ultimate nasal aspirator. Winner of multiple design awards. Adjustable powerful suction to clear noses in seconds when no other aspirator can.",
             "features": [
-                "Gentle constant suction",
-                "Soft silicone tips",
-                "Easy to wash",
-                "Distraction music"
+                "Adjustable suction power",
+                "Friendly 'Bear' design",
+                "Easy clean (head)",
+                "ENT recommended"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nosiboo+Pro&tag=100bcb-21"
         },
         {
             "id": 10,
-            "name": "Room Thermometer (GroEgg)",
+            "name": "GroEgg 2 Thermometer",
             "category": "environment",
-            "shortDesc": "Visual check for safe temp (18-21°C).",
-            "longDesc": "Overheating is a risk. A color-changing thermometer tells you at a glance if you need to adjust clothing or bedding, without fumbling for lights or reading small numbers.",
+            "shortDesc": "Visual safety. Changes color with temperature.",
+            "longDesc": "Know at a glance if the room is safe. Yellow (perfect), Blue (cold), Red (hot). Also acts as a perfect dim night light.",
             "features": [
                 "Intuitive color code",
-                "Dim nightlight",
-                "Accurate reading",
-                "Safe design"
+                "Dimmable night light",
+                "Accurate digital read",
+                "Iconic design"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=GroEgg+2&tag=100bcb-21"
         },
         {
             "id": 11,
-            "name": "Red Night Light",
+            "name": "VAVA Night Light",
             "category": "environment",
-            "shortDesc": "Respectful lighting. Doesn't wake the brain.",
-            "longDesc": "For diaper changes and feeds. Red light doesn't block melatonin production like blue/white light. Allows you to see without fully waking baby or yourself.",
+            "shortDesc": "Parents' favorite touch light.",
+            "longDesc": "Portable, rechargeable, and with warm light that doesn't wake you up. Perfect for night feeds and diaper changes. SOS mode and safe surface for baby play.",
             "features": [
-                "Red/Amber spectrum",
-                "Dimmable",
-                "Rechargeable",
-                "Touch control"
+                "Easy touch control",
+                "Long battery life",
+                "Warm/White light",
+                "Safe (ABS+PP)"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=VAVA+Luz+Nocturna+Bebe&tag=100bcb-21"
         },
         {
             "id": 12,
-            "name": "Orthodontic Pacifier",
+            "name": "Bibs De Lux Pacifiers",
             "category": "sleep",
-            "shortDesc": "Natural calming mechanism and SIDS risk reduction.",
-            "longDesc": "Non-nutritive sucking relaxes the nervous system. Recommended for sleep onset (after breastfeeding established) as a protective factor against SIDS.",
+            "shortDesc": "The Danish classic renewed. Style and acceptance.",
+            "longDesc": "Round nipple mimicking mother's breast, with iconic vintage aesthetic and premium matte finishes. Curved shield to avoid irritating skin around mouth.",
             "features": [
-                "Tooth-friendly design",
+                "Cherry nipple latex/silicone",
+                "Iconic design & colors",
                 "Ventilated shield",
-                "Medical silicone",
-                "Glow in dark"
+                "BPA/PVC free"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Bibs+De+Lux+Chupetes&tag=100bcb-21"
         },
         {
             "id": 13,
-            "name": "Nursing Pillow",
+            "name": "Jané Nursing Pillow",
             "category": "mom",
-            "shortDesc": "Correct posture and rest for arms and back.",
-            "longDesc": "Back pain hinders your rest. A good pillow lifts baby to breast height, preventing slouching. Can be used as a supervised nest or support for you.",
+            "shortDesc": "4-in-1 versatility with ergonomic filling.",
+            "longDesc": "A trusted classic. Filled with microbeads that adapt to your body and baby's. Uses: pregnancy, nursing, and as a rest nest for baby.",
             "features": [
-                "Ergonomic support",
-                "Washable cover",
-                "Firm filling",
-                "Multi-use"
+                "Adaptable microbead fill",
+                "Removable washable cover",
+                "Evolutionary multi-use",
+                "Baby safety harness"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Jane+Cojin+Lactancia&tag=100bcb-21"
         },
         {
             "id": 14,
-            "name": "Rocking / Nursing Chair",
+            "name": "Songmics Nursing Chair",
             "category": "mom",
-            "shortDesc": "The sacred spot for soothing and feeds.",
-            "longDesc": "You'll spend hours here. Rhythmic motion calms baby and lumbar support saves your back. Look for padded armrests and easy-clean fabric.",
+            "shortDesc": "The bestseller rocker for comfort and price.",
+            "longDesc": "No need to spend €600. This birch rocker offers perfect rocking motion and adjustable footrest. Thousands of moms recommend it for night feeds.",
             "features": [
-                "Smooth rocking",
-                "High back support",
-                "Padded armrests",
-                "Side pockets"
+                "Birch wood structure",
+                "Adj. footrest 5 pos",
+                "100% cotton washable cover",
+                "Useful side pocket"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Songmics+Mecedora+Lactancia&tag=100bcb-21"
         },
         {
             "id": 15,
-            "name": "Ergonomic Baby Carrier",
+            "name": "BabyBjörn Harmony",
             "category": "travel",
-            "shortDesc": "The ultimate tool for difficult naps.",
-            "longDesc": "Skin-to-skin regulates stress and temp. When nothing else works, wearing baby and walking usually induces sleep in minutes, leaving your hands free.",
+            "shortDesc": "The luxury carrier. Super soft 3D mesh.",
+            "longDesc": "The ultimate carrier from newborn to 3 years. Tech 3D mesh prevents heat. Superior lumbar support and certified ergonomic hip design.",
             "features": [
-                "Safe 'M' position",
-                "Weight distribution",
-                "Hands free",
-                "Breathable fabric"
+                "Breathable 3D Mesh",
+                "Premium lumbar support",
+                "From NB (no insert)",
+                "Scandinavian design"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B09JM112B1?tag=100bcb-21"
         },
         {
             "id": 16,
-            "name": "Light Travel Crib",
+            "name": "BabyBjörn Travel Crib Light",
             "category": "travel",
-            "shortDesc": "Safe familiar space anywhere.",
-            "longDesc": "Sleeping away disrupts routines. Bringing their own crib (with their smell) helps them feel safe. Look for fast setup and a decent mattress.",
+            "shortDesc": "Sets up in 1 movement. Maximum lightness.",
+            "longDesc": "The best travel crib on the market, period. Weighs only 6kg and unfolds magically in a second. Comfortable integrated mattress (not a board) and travel bag.",
             "features": [
-                "Fast assembly",
-                "Light & Compact",
-                "Mesh sides",
-                "Mattress included"
+                "Instant setup",
+                "Featherweight (6kg)",
+                "Comfy mattress included",
+                "Breathable mesh fabric"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Babybjorn+Cuna+Viaje+Light&tag=100bcb-21"
         },
         {
             "id": 17,
-            "name": "Portable Changing Mat",
+            "name": "Munchkin Portable Changer",
             "category": "hygiene",
-            "shortDesc": "Clean hygiene on any surface.",
-            "longDesc": "Avoid messes on bed/sofa during night changes. A wipeable waterproof mat is essential in the room and diaper bag.",
+            "shortDesc": "Survival kit for quick changes.",
+            "longDesc": "Compact and stylish. Includes head pillow, mesh pocket for diapers, and wipes case. Everything you need in a clutch bag.",
             "features": [
-                "Waterproof & Washable",
-                "Padded comfort",
-                "Pocket for wipes",
-                "Compact fold"
+                "Extra head padding",
+                "Wipes case included",
+                "Organizer pockets",
+                "Easy wipe clean"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Cambiador+Portatil&tag=100bcb-21"
         },
         {
             "id": 18,
-            "name": "Double Zipper Sleepsuit",
+            "name": "Carter's 2-Way Zip Pajamas",
             "category": "sleep",
-            "shortDesc": "Night diaper changes in record time.",
-            "longDesc": "Avoid snaps at 3 AM. Two-way zippers let you open just the bottom for changes without exposing/chilling baby's chest.",
+            "shortDesc": "The #1 American pajamas for quality and fit.",
+            "longDesc": "Famous for designs and durability. The 2-way zipper is standard on all their models, making life easier for parents at every diaper change.",
             "features": [
-                "Two-way zipper",
-                "Organic cotton",
-                "Tag-free",
-                "Chin guard"
+                "Ankle-to-chin zipper",
+                "Durable cotton",
+                "Secure 'snug fit'",
+                "Fun designs"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Carter's+Pijama+Bebe+Cremallera&tag=100bcb-21"
         },
         {
             "id": 19,
             "name": "Bedtime Story Books",
             "category": "sleep",
-            "shortDesc": "The perfect cue to lower energy.",
-            "longDesc": "Reading the same short book nightly is a powerful signal day is done. Monotonous voice relaxes and preps the brain for sleep.",
+            "shortDesc": "Visual poetry for sleep (classics).",
+            "longDesc": "Modern classics of children's literature. Simple rhymes and soft rhythm are hypnotic for babies. A perfect bedtime ritual to signal sleep.",
             "features": [
+                "Rhyme and soothing rhythm",
+                "Sturdy board book",
                 "High contrast images",
-                "Short rhythmic stories",
-                "Board books",
-                "Bonding time"
+                "Builds vocabulary"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Kalandraka+Cuna+Luna&tag=100bcb-21"
         },
         {
             "id": 20,
-            "name": "Bath Thermometer",
+            "name": "Stokke Flexi Bath + Support",
             "category": "hygiene",
-            "shortDesc": "Perfect relaxing bath without temp shocks.",
-            "longDesc": "Bath is key to routine. Water at body temp (37°C) relaxes muscles. A floaty thermometer ensures it's not too cold (waking) or hot.",
+            "shortDesc": "The Norwegian folding bath that saves space.",
+            "longDesc": "Iconic design that folds completely flat. With the optional newborn support, it is the perfect solution for safe and comfortable baths without taking up the whole bathroom.",
             "features": [
-                "Fast safe reading",
-                "Safe toy",
-                "No batteries (some)",
-                "Visual alert"
+                "Ultra compact fold",
+                "Ergonomic NB support",
+                "Heat-sensitive plug",
+                "Durable design"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Stokke+Flexi+Bath&tag=100bcb-21"
         },
         {
             "id": 21,
-            "name": "Baby Massage Oil",
+            "name": "Weleda Calendula Oil",
             "category": "hygiene",
-            "shortDesc": "Muscle relaxation and connection.",
-            "longDesc": "Gentle massage releases oxytocin. Neutral natural oils or mild lavender (if approved) promote relaxation before PJs.",
+            "shortDesc": "Liquid gold for baby skin.",
+            "longDesc": "Certified natural cosmetics. Calms skin and envelops baby in a protective thermal layer. Mild scent is relaxing and perfect for post-bath massage.",
             "features": [
-                "100% natural",
-                "Hypoallergenic",
-                "Slow absorption",
-                "Mild scent"
+                "100% Bio & Natural",
+                "No mineral oils",
+                "Calendula extract",
+                "Protects sensitive skin"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Weleda+Aceite+Calendula+Bebe&tag=100bcb-21"
         },
         {
             "id": 22,
-            "name": "Cooling Teether",
+            "name": "Sophie La Girafe",
             "category": "health",
-            "shortDesc": "Relief for sleep-wrecking gum pain.",
-            "longDesc": "Teething ruins nights. A fridge-cooled teether numbs inflamed gums and calms baby before sleep attempts.",
+            "shortDesc": "The world's most famous teether since 1961.",
+            "longDesc": "Made of 100% natural rubber and food paint. Stimulates all 5 senses. Legs and ears are perfect for soothing sore gums. An essential gift.",
             "features": [
-                "Safe cooling gel",
-                "Massage textures",
+                "Natural Hevea rubber",
+                "Stimulates 5 senses",
                 "Easy grip",
-                "BPA free"
+                "Cultural icon"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Sophie+La+Girafe&tag=100bcb-21"
         },
         {
             "id": 23,
-            "name": "Fitted Crib Sheets (x3)",
+            "name": "Aden+Anais Crib Sheets",
             "category": "sleep",
-            "shortDesc": "Hygiene and safety. Always have spares.",
-            "longDesc": "Leaks happen. You need 100% cotton sheets that fit tight (no dangerous wrinkles) and multiples for 3 AM changes.",
+            "shortDesc": "Luxury muslin that gets softer with every wash.",
+            "longDesc": "Cotton muslin is the most breathable fabric for babies. These sheets are not only beautiful but regulate temperature better than standard cotton.",
             "features": [
-                "Firm elastic fit",
-                "Breathable cotton",
-                "Hot washable",
-                "Durable soft"
+                "100% Cotton Muslin",
+                "Thermoregulating",
+                "Designer prints",
+                "Extra softness"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Aden+Anais+Sabanas+Cuna&tag=100bcb-21"
         },
         {
             "id": 24,
-            "name": "Yoga/Pilates Ball",
+            "name": "Pilates Ball",
             "category": "mom",
-            "shortDesc": "Secret weapon for fussy babies.",
-            "longDesc": "Bouncing mimics womb motion better than standing rocking. Saves parent backs and calms intense crying fast.",
+            "shortDesc": "Sturdy and safe for bouncing with baby.",
+            "longDesc": "Thickened anti-burst material. Essential for soothing colic via gentle bouncing. A lifesaver for parents with high-needs babies.",
             "features": [
+                "Anti-Burst system",
                 "Non-slip surface",
-                "Anti-burst",
-                "Pelvic relief",
-                "Colic calming"
+                "Pump included",
+                "Supports +300kg"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Pelota+Pilates+Embarazo&tag=100bcb-21"
         },
         {
             "id": 25,
-            "name": "Diaper Caddy",
+            "name": "Munchkin Diaper Organizer",
             "category": "mom",
-            "shortDesc": "Everything at hand in the dark.",
-            "longDesc": "Keep diapers, wipes, cream organized in a portable basket. Allows 'pit stop' changes anywhere without chaos.",
+            "shortDesc": "Sturdy and spacious organizer basket.",
+            "longDesc": "Keep chaos under control. Space for dozens of diapers, wipes, and creams. Sturdy handle to carry the 'changing HQ' to any room.",
             "features": [
-                "Divided sections",
-                "Sturdy handles",
-                "Lightweight",
-                "Multi-use"
+                "Rigid compartments",
+                "Side mesh pockets",
+                "Reinforced handle",
+                "Perfect gift"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Organizador+Pañales&tag=100bcb-21"
         },
         {
             "id": 26,
-            "name": "Smart Sock Monitor",
+            "name": "Owlet Dream Sock",
             "category": "health",
-            "shortDesc": "Real-time tracking of vital signs.",
-            "longDesc": "Tracks heart rate and oxygen levels while they sleep. Notifies your phone if readings leave safe zones, offering extra peace of mind for new parents.",
+            "shortDesc": "Total peace of mind monitoring vitals.",
+            "longDesc": "Hospital tech at home. Measures oxygen and pulse while sleeping. Alerts base and phone if levels drop, allowing you to sleep with true peace of mind.",
             "features": [
-                "Real-time biometrics",
-                "Automatic alerts",
+                "Pulse oximetry",
                 "Sleep history",
-                "No dangerous cords"
+                "Wireless charging",
+                "Real-time notifications"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Owlet+Dream+Sock&tag=100bcb-21"
         },
         {
             "id": 27,
-            "name": "Movement Sensor Pad",
+            "name": "Nanny Breathing Monitor",
             "category": "health",
-            "shortDesc": "Detects breathing via micro-movements.",
-            "longDesc": "A pad under the mattress detects every breath. If no movement is detected for 20 seconds, it sounds an alarm to wake you. An extra layer of SIDS protection.",
+            "shortDesc": "The most reliable medically certified monitor.",
+            "longDesc": "Used in maternities across Europe. Large surface sensor mattress detects every micro-breath. If it stops for 20s, a loud acoustic alarm sounds.",
             "features": [
-                "No skin contact",
-                "Loud alarm",
-                "Adjustable sensitivity",
-                "Under-mattress install"
+                "Medical Device Certified",
+                "Large sensor surface",
+                "Loud acoustic alarm",
+                "No false alarms"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Nanny+Monitor+Respiracion&tag=100bcb-21"
         },
         {
             "id": 28,
-            "name": "HEPA Air Purifier",
+            "name": "Philips Series 800 Purifier",
             "category": "environment",
-            "shortDesc": "Pure air free of allergens and dust.",
-            "longDesc": "Filters 99.9% of particles, dust, and viruses. Vital for city babies or allergies. Clean air prevents night congestion and improves sleep quality.",
+            "shortDesc": "Allergen-free air in total silence mode.",
+            "longDesc": "Compact size ideal for bedrooms. Sleep mode is ultra-quiet and light-free. Removes viruses, allergens, and dust in minutes thanks to its HEPA filter.",
             "features": [
-                "True HEPA filter",
-                "Quiet (Night mode)",
-                "Eliminates odors",
-                "No harmful ozone"
+                "NanoProtect HEPA filter",
+                "Ultra-quiet sleep mode",
+                "Air quality indicator",
+                "Low consumption"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Philips+Purificador+Aire+Serie+800&tag=100bcb-21"
         },
         {
             "id": 29,
-            "name": "Tower Fan",
+            "name": "Dyson Purifier Cool Autoreact",
             "category": "environment",
-            "shortDesc": "Safe air circulation against SIDS.",
-            "longDesc": "Moving air reduces the risk of CO2 accumulation. A safe tower fan (no accessible blades) keeps the room cool and air moving gently.",
+            "shortDesc": "The crown jewel in purification and fans.",
+            "longDesc": "Captures dust, allergens, and H1N1 virus. Bladeless fan (100% safe for little fingers) and monitors air quality in real-time. A luxury that improves health.",
             "features": [
-                "No dangerous blades",
-                "Sleep timer",
-                "Gentle oscillation",
-                "Natural white noise"
+                "Bladeless (Safe)",
+                "HEPA H13 glass filter",
+                "350 degree oscillation",
+                "LCD monitoring"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Dyson+Purifier+Cool+Autoreact&tag=100bcb-21"
         },
         {
             "id": 30,
-            "name": "Sleep Training Clock",
+            "name": "GroClock Sleep Trainer",
             "category": "sleep",
-            "shortDesc": "Visually teaches when it's time to wake up.",
-            "longDesc": "For toddlers 2yrs+. Uses colors (e.g., blue=sleep, yellow=wake) so they know if they can get up, preventing unnecessary early risings.",
+            "shortDesc": "Visually teaches to sleep longer.",
+            "longDesc": "The sun rises on screen only when it's time to get up. Kids understand the concept visually and stay in bed until 'the sun comes up', gifting you hours of sleep.",
             "features": [
-                "Simple visual code",
+                "Educational screen",
                 "Adjustable brightness",
-                "Alarm option",
-                "Nap mode"
+                "Story included",
+                "Digital clock option"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=GroClock&tag=100bcb-21"
         },
         {
             "id": 31,
-            "name": "Diaper Pail",
+            "name": "Tommee Tippee Twist & Click",
             "category": "hygiene",
-            "shortDesc": "Locks unpleasant odors in the room.",
-            "longDesc": "Dirty diapers smell. This pail seals each diaper individually or tightly, allowing you to keep it near the changing table without stink.",
+            "shortDesc": "The only pail that wraps each diaper individually.",
+            "longDesc": "Guaranteed against odors. System wraps and seals each diaper in antibacterial film, blocking germs and smell. Essential if changing in the bedroom.",
             "features": [
-                "Total odor lock",
-                "One-hand use",
-                "Refill cartridges",
-                "Child lock"
+                "Odor block guaranteed",
+                "Antibacterial film",
+                "Capacity ~28 diapers",
+                "Easy refill"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/dp/B07DNM8Y1V?tag=100bcb-21"
         },
         {
             "id": 32,
-            "name": "Wipes Warmer",
+            "name": "Prince Lionheart Warmer",
             "category": "hygiene",
-            "shortDesc": "Avoids cold shocks during night changes.",
-            "longDesc": "A freezing wipe at 3 AM wakes anyone up. Keeping them warm helps baby stay half-asleep during diaper changes.",
+            "shortDesc": "Wipes always moist and warm, never dry.",
+            "longDesc": "Patented system prevents drying or browning. Maintains perfect temperature to clean baby's bum without night shocks.",
             "features": [
-                "Safe temperature",
-                "Retains moisture",
-                "Integrated nightlight",
-                "Low energy"
+                "Ever-Fresh System",
+                "Soft night light",
+                "Large capacity",
+                "Safe temperature"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Prince+Lionheart+Wipes+Warmer&tag=100bcb-21"
         },
         {
             "id": 33,
-            "name": "Fast Bottle Warmer",
+            "name": "Philips Avent Bottle Warmer",
             "category": "mom",
-            "shortDesc": "Perfect temp milk in 3 minutes.",
-            "longDesc": "Heating water manually is slow and dangerous at night. A precise warmer avoids burn spots and preserves breastmilk nutrients.",
+            "shortDesc": "Smart heating prevents burns.",
+            "longDesc": "Calculates exact time based on volume and initial temp. Heats evenly without dangerous hot spots and keeps milk warm for up to 1 hour.",
             "features": [
-                "Uniform heating",
-                "Gentle thaw",
-                "Keep warm function",
-                "Universal fit"
+                "Smart temp control",
+                "Defrost function",
+                "Keeps warm 60min",
+                "Baby food jar compatible"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Philips+Avent+Calienta+Biberones+Rapido&tag=100bcb-21"
         },
         {
             "id": 34,
-            "name": "Formula Powder Dispenser",
+            "name": "MAM Milk Dispenser",
             "category": "mom",
-            "shortDesc": "Night bottles prepped in seconds.",
-            "longDesc": "Don't measure scoops while half-asleep. Pre-fill doses in this stackable container. Just pour and shake. Essential for nights and outings.",
+            "shortDesc": "Triangular design to not spill a gram.",
+            "longDesc": "Seems simple, but its triangular shape makes it easy to pour all powder into narrow-neck bottles without clogging. Leak-proof lids and medical-grade material.",
             "features": [
-                "Exact doses ready",
-                "Spill-proof spout",
-                "Stackable compact",
-                "BPA free"
+                "Triangular pour shape",
+                "3 large servings",
+                "Sterilizer safe",
+                "BPA/BPS free"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Dosificador+Leche+MAM&tag=100bcb-21"
         },
         {
             "id": 35,
-            "name": "Silicone Breast Pump",
+            "name": "Haakaa Manual Breast Pump",
             "category": "mom",
-            "shortDesc": "Collects every drop effortlessly while nursing.",
-            "longDesc": "Haakaa style. Use on the opposite breast while nursing to catch let-down. Silent and cordless, perfect for night relief.",
+            "shortDesc": "The original viral silicone collector.",
+            "longDesc": "Uses let-down reflex while nursing on other side. Attaches by vacuum and collects milk that would be lost in pad. One piece, silent, cordless.",
             "features": [
-                "Natural vacuum suction",
-                "One-piece silicone",
-                "No motor noise",
-                "Easy to clean"
+                "Food grade silicone",
+                "Suction base",
+                "No assembly",
+                "Silent"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Haakaa+Sacaleches&tag=100bcb-21"
         },
         {
             "id": 36,
-            "name": "Clip-on Nursing Light",
+            "name": "Glocusent Reading Light",
             "category": "mom",
-            "shortDesc": "Direct light where needed, dark elsewhere.",
-            "longDesc": "Clips to clothes or pillow. Illumintes only the latch area so you can see without lighting up baby's face or the room.",
+            "shortDesc": "Award-winning goose-neck amber light.",
+            "longDesc": "Designed for readers, adopted by moms. 3 light tones (including sleep-protecting amber). Eternal battery and perfect directionality to not disturb your partner.",
             "features": [
-                "Small lightweight",
-                "Flexible neck",
-                "Warm amber light",
-                "USB rechargeable"
+                "Amber Mode (1800k)",
+                "USB-C rechargeable",
+                "360 flexible neck",
+                "Lightweight"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Glocusent+Luz+Lectura&tag=100bcb-21"
         },
         {
             "id": 37,
-            "name": "Hanging Crib Organizer",
+            "name": "3 Sprouts Crib Organizer",
             "category": "environment",
-            "shortDesc": "Pacifiers and loveys always at hand.",
-            "longDesc": "Hangs on the outside of the crib. Holds spare pacifiers, thermometer, or cream so you don't have to search in drawers.",
+            "shortDesc": "Adorable animal design and functionality.",
+            "longDesc": "Brightens the room while organizing. Sturdy structure that doesn't deform. Perfect for pajamas, emergency diapers, and creams.",
             "features": [
-                "Accessible pockets",
-                "Sturdy fabric",
-                "Secure attachment",
-                "Neutral design"
+                "Canvas animal designs",
+                "Sturdy structure",
+                "Large pockets",
+                "Easy hang"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=3+Sprouts+Organizador&tag=100bcb-21"
         },
         {
             "id": 38,
-            "name": "Footed Pants",
-            "category": "sleep",
-            "shortDesc": "Warm feet without socks falling off.",
-            "longDesc": "Socks always get lost in the crib. Pants with integrated feet ensure limbs never get cold.",
+            "name": "Medela Freestyle Hands-Free",
+            "category": "mom",
+            "shortDesc": "Total freedom. Invisible double pump.",
+            "longDesc": "The most advanced hands-free hospital-grade pump. Worn inside bra. Compact motor in pocket. Reclaim hours of your life while pumping.",
             "features": [
-                "Safe waist elastic",
-                "100% cotton",
-                "No rubbing seams",
-                "Movement freedom"
+                "Real hands-free",
+                "Anatomic cups",
+                "Rechargeable battery",
+                "App connectivity"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Medela+Freestyle+Hands+Free&tag=100bcb-21"
         },
         {
             "id": 39,
-            "name": "Fleece Onesie layer",
+            "name": "Burt's Bees Fleece Jumpsuit",
             "category": "sleep",
-            "shortDesc": "Extra layer for very cold nights.",
-            "longDesc": "To wear over cotton PJs in harsh winter. Fleece is lightweight but very warm and dries fast if leaks occur.",
+            "shortDesc": "Organic cotton and soft recycled polyester.",
+            "longDesc": "The quintessential eco-friendly brand. Its fleece jumpsuit is famous for being warm but not stifling, ideal for babies who constantly kick off covers.",
             "features": [
-                "Light weight warmth",
-                "Fast drying",
-                "Full zipper",
-                "Soft touch"
+                "Organic cotton",
+                "Zipper guard",
+                "Non-slip soles",
+                "Little bee design"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Burt's+Bees+Baby+Jumpsuit&tag=100bcb-21"
         },
         {
             "id": 40,
-            "name": "Portable Blackout Curtain",
+            "name": "Tommee Tippee Groblind",
             "category": "travel",
-            "shortDesc": "Turns any window into dark night.",
-            "longDesc": "Sticks to glass with suction cups. Essential for travel or grandma's house. Guarantees the darkness needed for naps.",
+            "shortDesc": "The original suction portable blind.",
+            "longDesc": "Adapts to any window up to 130x198cm. Long-lasting suction cups that don't fall off mid-nap. Essential for summer and travel.",
             "features": [
-                "Suction cups",
-                "Velcro adjust",
+                "XL size adaptable",
+                "Total blackout",
                 "Travel bag",
-                "Total light block"
+                "Velcro size adjust"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Groblind&tag=100bcb-21"
         },
         {
             "id": 41,
-            "name": "Waterproof Mattress Protector",
+            "name": "BSensible Protective Sheet",
             "category": "hygiene",
-            "shortDesc": "Saves the mattress from night 'accidents'.",
-            "longDesc": "Silent (non-crinkly) and waterproof. Layer: Mattress > Protector > Sheet > Protector > Sheet. If leak occurs, peel off top layer and bed is ready.",
+            "shortDesc": "2-in-1: Tencel sheet and waterproof protector.",
+            "longDesc": "Natural dermoprotective fabric (Tencel/Zinc) that is waterproof but breathes like a second skin. Forget noisy plastics. Quality made in Spain.",
             "features": [
-                "Breathable waterproof",
-                "No plastic noise",
-                "Machine washable",
-                "Perfect fit"
+                "Tencel + Zinc Oxide",
+                "Invisible waterproof",
+                "Natural anti-mite",
+                "Made in Spain"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=BSensible+Sabana+Protectora+Cuna&tag=100bcb-21"
         },
         {
             "id": 42,
-            "name": "Hypoallergenic Detergent",
+            "name": "Norit Baby Detergent",
             "category": "hygiene",
-            "shortDesc": "Cares for sensitive skin, avoids night itch.",
-            "longDesc": "Bedding touches skin for 12h. A detergent without perfumes or harsh chemicals prevents irritations that cause waking.",
+            "shortDesc": "The classic baby scent. Hypoallergenic.",
+            "longDesc": "Recommended by dermatologists/pediatricians. Formula without sensitizing preservatives. Keeps clothes soft without softener (which shouldn't be used on babies).",
             "features": [
-                "Baby formula",
-                "No strong enzymes",
-                "Dermatology tested",
-                "Neutral scent"
+                "Hypoallergenic",
+                "No optical brighteners",
+                "Iconic soft scent",
+                "Cares for delicate fibers"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Norit+Bebe&tag=100bcb-21"
         },
         {
             "id": 43,
-            "name": "Pacifier Clip",
+            "name": "MAM Clip It!",
             "category": "sleep",
-            "shortDesc": "Ends searching for pacifiers on dark floors.",
-            "longDesc": "Secures pacifier to PJ (use short safe ones only). Prevents it falling to the floor or getting lost between bars.",
+            "shortDesc": "Adjustable safe length and washable.",
+            "longDesc": "One of the few clips allowing length adjustment for sleep safety. Compatible with button, ring pacifiers, and teethers. Sturdy design.",
             "features": [
-                "Safe short length",
-                "Metal-free clip",
-                "Washable ribbon",
-                "Universal"
+                "Adjustable length",
+                "Universal compatibility",
+                "Washable",
+                "Safe mechanism"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=MAM+Clip+It&tag=100bcb-21"
         },
         {
             "id": 44,
-            "name": "Nursery Rug",
+            "name": "Lorena Canals Washable Rug",
             "category": "environment",
-            "shortDesc": "Insulates cold and muffles footsteps.",
-            "longDesc": "Allows you to exit the room silently ('ninja mode') without floor creaks. Cushions falls when they start standing.",
+            "shortDesc": "Cotton rugs washable in washing machine.",
+            "longDesc": "The revolution in kids' decor. Vomit or stain? Into the washer and ready. 100% natural cotton and non-toxic dyes. Beautiful designs and soft touch.",
             "features": [
-                "Short pile (clean)",
-                "Non-slip base",
-                "Noise dampening",
-                "Non-toxic"
+                "Machine washable",
+                "100% Natural cotton",
+                "Handmade",
+                "Non-toxic dyes"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Lorena+Canals+Alfombra&tag=100bcb-21"
         },
         {
             "id": 45,
-            "name": "Loop Earplugs (Parents)",
+            "name": "Loop Quiet Earplugs",
             "category": "mom",
-            "shortDesc": "Reduces crying stress but lets you hear alarms.",
-            "longDesc": "Loop or similar lower the decibels of shrill crying (which spikes cortisol) but let you hear what's needed. Helps keep calm in crises.",
+            "shortDesc": "Designer noise reduction for sleep.",
+            "longDesc": "Ultra-soft 'soft-touch' silicone comfortable for side sleeping. Reduces 26dB (snoring/street noise) but lets you hear loud crying or alarm next to you.",
             "features": [
-                "Selective noise filter",
-                "Comfortable for sleep",
-                "Soft silicone",
-                "Reusable"
+                "Ultra-soft silicone",
+                "-26dB reduction",
+                "Stay put",
+                "Carry case"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Loop+Quiet+Earplugs&tag=100bcb-21"
         },
         {
             "id": 46,
-            "name": "Sleep Mask",
+            "name": "MantaSilk Eye Mask",
             "category": "mom",
-            "shortDesc": "Seize any minute to sleep, day or night.",
-            "longDesc": "When it's your turn to sleep, you need instant darkness. A comfy mask helps you crash during day naps while baby sleeps.",
+            "shortDesc": "100% Mulberry silk protecting skin and sleep.",
+            "longDesc": "Grade 6A silk (highest). Blocks light totally and prevents wrinkles. Elastic doesn't squeeze hair. A small luxury to improve your naps.",
             "features": [
-                "Soft silk",
-                "No eye pressure",
-                "Elastic fit",
-                "Total darkness"
+                "100% Mulberry Silk",
+                "Breathable",
+                "Hypoallergenic",
+                "Oeko-Tex Certified"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Antifaz+Seda+Natural&tag=100bcb-21"
         },
         {
             "id": 47,
-            "name": "Bed Rail",
+            "name": "Banbaloo Bed Bumper",
             "category": "sleep",
-            "shortDesc": "Safety for the crib-to-bed transition.",
-            "longDesc": "Prevents night falls. Foldable to sit or make the bed. Gives a sense of containment to kids used to crib bars.",
+            "shortDesc": "The safe foam roller bumper.",
+            "longDesc": "Better than ugly metal rails. It's a memory foam cylinder placed under the fitted sheet. Gently stops the child without 'cage' feeling.",
             "features": [
-                "Folds 180º",
-                "Breathable mesh",
-                "Secure anchor",
-                "Extra height"
+                "Memory foam",
+                "Invisible under sheet",
+                "Portable",
+                "No assembly"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Banbaloo+Barrera+Cama&tag=100bcb-21"
         },
         {
             "id": 48,
-            "name": "Baby Shusher",
+            "name": "Baby Shusher Original",
             "category": "sleep",
-            "shortDesc": "Makes the 'Shhh' sound for you.",
-            "longDesc": "Loud 'Shhh' calms, but doing it for 20 mins makes you dizzy. This device emits a rhythmic human 'Shhh' that breaks crying cycles.",
+            "shortDesc": "The viral miracle sleep machine.",
+            "longDesc": "Used by newborn photographers. Emits rhythmic loud 'SHHHHH' activating calming reflex. 15/30min timer and necessary high volume.",
             "features": [
-                "Volume control",
-                "Timer",
-                "Portable (battery)",
-                "Real human sound"
+                "Real Shhh sound",
+                "Portable & sturdy",
+                "Adjustable volume",
+                "Wrist strap"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Baby+Shusher&tag=100bcb-21"
         },
         {
             "id": 49,
-            "name": "Lovey / Security Blanket",
+            "name": "Jellycat Bashful Bunny",
             "category": "sleep",
-            "shortDesc": "Transitional object for emotional safety.",
-            "longDesc": "Introduce (safe +12m) a small soft blanket that smells like mom. Becomes their security source when you aren't there, helping self-settling.",
+            "shortDesc": "London's softest and most luxurious plush.",
+            "longDesc": "A modern classic. Its fabric is indescribably soft. Safe from birth and durable enough to become a childhood companion.",
             "features": [
-                "Small size",
-                "Machine washable",
-                "No loose parts",
-                "Super soft"
+                "Supreme softness",
+                "Bashful Bunny design",
+                "EN71 Safe",
+                "Hand wash"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Jellycat+Bunny+Beige&tag=100bcb-21"
         },
         {
             "id": 50,
-            "name": "Insulated Food Jar",
+            "name": "Beaba Stainless Food Jar",
             "category": "travel",
-            "shortDesc": "Hot food anywhere.",
-            "longDesc": "Keep water hot for bottles or puree ready when out. Avoids hunting for microwaves or rushing home for feed times.",
+            "shortDesc": "French style and thermal performance.",
+            "longDesc": "Double-wall stainless steel. Keeps food hot 5h or cold 7h. Wide mouth to eat directly from it and 100% airtight lid with handle.",
             "features": [
-                "Double stainless steel",
-                "Keeps 6-12h",
-                "Wide mouth",
-                "Leak proof"
+                "304 Stainless Steel",
+                "100% Airtight",
+                "No flavor transfer",
+                "Ergonomic design"
             ],
-            "affiliateLink": null
+            "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
         }
     ]
 }
