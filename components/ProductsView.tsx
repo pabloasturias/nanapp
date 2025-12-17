@@ -5,7 +5,8 @@ import productsData from '../products.json';
 import { Product } from '../types';
 
 // Cast the JSON to the keyed structure
-const productsByLang = productsData as Record<string, Product[]>;
+const data = (productsData as any).default || productsData;
+const productsByLang = data as Record<string, Product[]>;
 
 // Helper to get icon by category
 const getCategoryIcon = (category: string) => {

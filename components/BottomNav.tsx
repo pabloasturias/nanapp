@@ -2,21 +2,13 @@ import React from 'react';
 import { Music, Moon, BookOpen } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
-import productsData from '../products.json';
-import { Product } from '../types';
-
 interface BottomNavProps {
   activeTab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats';
   setActiveTab: (tab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats') => void;
 }
 
-const productsByLang = productsData as Record<string, Product[]>;
-
 export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
-  const { t, language } = useLanguage();
-
-  // Check if there are products for the current language
-  const hasProducts = productsByLang[language] && productsByLang[language].length > 0;
+  const { t } = useLanguage();
 
   return (
     <div className="fixed bottom-0 left-0 right-0 mx-auto max-w-lg w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 rounded-t-[2rem] pb-[env(safe-area-inset-bottom)]">
@@ -37,15 +29,13 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sleep')}</span>
         </button>
 
-        {hasProducts && (
-          <button
-            onClick={() => setActiveTab('tips')}
-            className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tips' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
-          >
-            <ShoppingBag size={26} strokeWidth={activeTab === 'tips' ? 2.5 : 2} className={activeTab === 'tips' ? 'drop-shadow-lg' : ''} />
-            <span className="text-[10px] font-bold uppercase tracking-wide">Aliados</span>
-          </button>
-        )}
+        <button
+          onClick={() => setActiveTab('tips')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tips' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+        >
+          <BookOpen size={26} strokeWidth={activeTab === 'tips' ? 2.5 : 2} className={activeTab === 'tips' ? 'drop-shadow-lg' : ''} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">Recursos</span>
+        </button>
       </div>
     </div>
   );
