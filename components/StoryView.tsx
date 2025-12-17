@@ -43,7 +43,7 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
 
                         <div className="space-y-4 text-sm text-slate-300 leading-relaxed font-light relative z-10">
                             <p>
-                                Inspirado en las infinitas noches velando por el sueño de mi hija <span className="text-indigo-200 font-medium">Vega</span>.
+                                Inspirado en mi hija <span className="text-indigo-200 font-medium">Vega</span>.
                             </p>
                             <p>
                                 En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer.
