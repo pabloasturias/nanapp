@@ -2,271 +2,705 @@
     "es": [
         {
             "id": 1,
-            "name": "Humidificador Ultrasónico",
-            "category": "environment",
-            "shortDesc": "Mantiene la humedad ideal (40-60%) para evitar sequedad nasal y tos.",
-            "longDesc": "El ambiente seco es uno de los mayores enemigos del sueño del bebé. Un humidificador mantiene la humedad en el rango óptimo (40-60%), evitando que se resequen las vías respiratorias. Busca uno silencioso (<30dB) y de vapor frío para mayor seguridad.",
+            "name": "Cuna de Colecho",
+            "category": "sleep",
+            "shortDesc": "Dormir cerca pero seguro. Facilita la lactancia y el vínculo nocturno.",
+            "longDesc": "El colecho seguro (superficie aparte pero unida a la cama) reduce el riesgo de SMSL y facilita enormemente las tomas nocturnas. Permite atender al bebé sin levantarte, manteniendo tu propio descanso y fortaleciendo el apego seguro.",
             "features": [
-                "Reduce la congestión nasal",
-                "Previene la tos seca",
-                "Piel menos reseca",
-                "Ruido blanco suave natural"
+                "Facilita lactancia materna",
+                "Reduce ansiedad nocturna",
+                "Superficie firme e independiente",
+                "Lateral abatible para acceso"
             ],
-            "affiliateLink": "https://www.amazon.es/dp/B09JVH8W7G",
-            "ratings": {
-                "sleep": 4.5,
-                "calm": 4.0,
-                "comfort": 4.8
-            }
+            "affiliateLink": null
         },
         {
             "id": 2,
-            "name": "Saco de Dormir (TOG 2.5)",
+            "name": "Colchón de Cuna Firme",
             "category": "sleep",
-            "shortDesc": "Alternativa segura a las mantas. Temperatura constante toda la noche.",
-            "longDesc": "Las mantas sueltas son un riesgo. El saco de dormir garantiza una temperatura corporal constante, evitando que el bebé se destape y se despierte por frío. El TOG 2.5 es el estándar ideal para habitaciones entre 16-20°C en invierno.",
+            "shortDesc": "La base de la seguridad. Evita hundimientos y asegura la transpiración.",
+            "longDesc": "La superficie de sueño debe ser firme para evitar asfixia y problemas posturales. Un buen colchón transpirable reduce el riesgo de sobrecalentamiento (factor de riesgo SMSL) y evita la acumulación de CO2 alrededor de la cara del bebé.",
             "features": [
-                "Evita el riesgo de asfixia",
-                "Mantiene temperatura constante",
-                "Señal de rutina de sueño",
-                "Facilita cambios de pañal"
+                "Firmeza adecuada (no blando)",
+                "Materiales transpirables 3D",
+                "Hipoalergénico y anti-ácaros",
+                "Funda lavable esencial"
             ],
-            "affiliateLink": "https://www.amazon.es/dp/B07KKK5G6L",
-            "ratings": {
-                "sleep": 4.9,
-                "calm": 4.2,
-                "comfort": 5.0
-            }
+            "affiliateLink": null
         },
         {
             "id": 3,
-            "name": "Máquina de Ruido Blanco",
-            "category": "environment",
-            "shortDesc": "Enmascara ruidos bruscos y recuerda al sonido del útero materno.",
-            "longDesc": "El útero es un lugar ruidoso (similar a una aspiradora). El silencio total puede inquietar al bebé. El ruido blanco constante enmascara portazos, ladridos o crujidos del suelo que podrían causar micro-despertares.",
+            "name": "Saco de Dormir (TOG 2.5)",
+            "category": "sleep",
+            "shortDesc": "Seguridad térmica. Evita que el bebé se destape o se cubra la cara.",
+            "longDesc": "Sustituye a mantas y edredones peligrosos. Mantiene una temperatura corporal constante toda la noche, evitando despertares por frío. El TOG 2.5 es estándar para invierno (16-20°C). Es la prenda #1 recomendada por expertos en sueño.",
             "features": [
-                "Enmascara ruidos del hogar",
-                "Asociación positiva al sueño",
-                "Calma el llanto (Shushing)",
-                "Portátil para viajes"
+                "Sin riesgo de asfixia",
+                "Temperatura constante",
+                "Señal positiva de rutina",
+                "Cremallera doble (cambio fácil)"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.8,
-                "calm": 5.0,
-                "comfort": 4.2
-            }
+            "affiliateLink": "https://www.amazon.es/dp/B07KKK5G6L"
         },
         {
             "id": 4,
-            "name": "Cortinas Opacas (Blackout)",
-            "category": "environment",
-            "shortDesc": "Oscuridad total para favorecer la melatonina y evitar despertares al alba.",
-            "longDesc": "La luz es la señal principal para despertar al cerebro. Incluso un poco de luz entrando por la persiana puede cortar la siesta o provocar un despertar a las 6 AM. La oscuridad total ayuda a segregar melatonina, la hormona del sueño.",
+            "name": "Arrullo / Swaddle (R.Nacidos)",
+            "category": "sleep",
+            "shortDesc": "Recrea el abrazo del útero y evita el reflejo de moro.",
+            "longDesc": "Para los primeros 3 meses (4º trimestre). La contención suave calma el llanto y evita que el bebé se despierte por sus propios espasmos (reflejo de moro). Debe dejar libertad en las caderas y dejar de usarse al voltearse.",
             "features": [
-                "Prolonga las siestas diurnas",
-                "Evita 'despertares de gallo'",
-                "Ayuda al ritmo circadiano",
-                "Regula temperatura habitación"
+                "Calma el llanto (contención)",
+                "Evita sobresaltos (Moro)",
+                "Facilita el sueño boca arriba",
+                "Tejido elástico y transpirable"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.7,
-                "calm": 3.8,
-                "comfort": 4.5
-            }
+            "affiliateLink": null
         },
         {
             "id": 5,
-            "name": "Aspirador Nasal",
-            "category": "hygiene",
-            "shortDesc": "Alivio inmediato para narices congestionadas. Respirar bien es dormir bien.",
-            "longDesc": "Los bebés respiran casi exclusivamente por la nariz. Si está taponada, no pueden comer ni dormir bien. Un aspirador nasal seguro y efectivo (eléctrico o manual) es una herramienta de emergencia vital para noches de catarro.",
+            "name": "Máquina de Ruido Blanco",
+            "category": "environment",
+            "shortDesc": "Enmascara ruidos bruscos y calma recordando al útero.",
+            "longDesc": "El silencio total puede alertar al bebé. El ruido blanco constante (lluvia, ventilador) enmascara portazos o ladridos y actúa como una potente señal de sueño. Debe usarse a un volumen seguro (<50dB) y alejado de la cuna.",
             "features": [
-                "Despeja vías aéreas al instante",
-                "Mejora la alimentación",
-                "Previene otitis por moco",
-                "Higiene rápida y segura"
+                "Bloquea ruidos del hogar",
+                "Señal auditiva de sueño",
+                "Efecto calmante inmediato",
+                "Portátil (mismo entorno siempre)"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.6,
-                "calm": 3.5,
-                "comfort": 4.9
-            }
+            "affiliateLink": null
         },
         {
             "id": 6,
-            "name": "Chupete Ortodóntico",
-            "category": "sleep",
-            "shortDesc": "La succión no nutritiva relaja el sistema nervioso y ayuda a conciliar.",
-            "longDesc": "Succionar es el mecanismo natural de calma del bebé. El chupete ayuda a relajar el ritmo cardíaco y facilita el tránsito entre ciclos de sueño. Se recomienda ofrecerlo al dormir una vez establecida la lactancia.",
+            "name": "Cortinas Opacas (Blackout)",
+            "category": "environment",
+            "shortDesc": "Oscuridad total para potenciar la melatonina y alargar siestas.",
+            "longDesc": "La luz inhibe la melatonina (hormona del sueño). La oscuridad total ayuda a conciliar el sueño antes, alargar las siestas del día y evitar los 'despertares de gallo' a las 5 o 6 de la mañana.",
             "features": [
-                "Reduce riesgo de SMSL",
-                "Herramienta de auto-calma",
-                "Ayuda en vuelos/viajes",
-                "Satisface reflejo de succión"
+                "Oscuridad 100% real",
+                "Regula ritmo circadiano",
+                "Aislante térmico (frío/calor)",
+                "Portátil (versión ventosas)"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.3,
-                "calm": 4.9,
-                "comfort": 4.0
-            }
+            "affiliateLink": null
         },
         {
             "id": 7,
-            "name": "Luz Roja Nocturna",
+            "name": "Monitor de Video (Vigilabebés)",
             "category": "environment",
-            "shortDesc": "Iluminación que no corta la producción de sueño para tomas nocturnas.",
-            "longDesc": "La luz azul o blanca del móvil o lámparas normales bloquea la melatonina, despertando al bebé (y a ti) en mitad de la noche. La luz roja permite ver lo suficiente para cambiar un pañal sin enviar la señal de 'es de día' al cerebro.",
+            "shortDesc": "Tranquilidad para los padres sin entrar en la habitación.",
+            "longDesc": "Permite vigilar al bebé sin abrir la puerta (lo que podría despertarlo). Busca uno con visión nocturna nítida y modo VOX (se activa solo con ruido) para no tener una pantalla brillando toda la noche.",
             "features": [
-                "No interfiere ritmo circadiano",
-                "Luz tenue para lactancia",
-                "Ambiente relajante",
-                "Miedo a la oscuridad (niños +2a)"
+                "Visión nocturna infrarroja",
+                "Modo ECO/VOX (ahorro bat.)",
+                "Alcance seguro",
+                "Audio bidireccional"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.4,
-                "calm": 4.5,
-                "comfort": 4.6
-            }
+            "affiliateLink": null
+        },
+        {
+            "id": 8,
+            "name": "Humidificador Ultrasónico",
+            "category": "health",
+            "shortDesc": "Ambiente óptimo. Vital para mocos y tos seca.",
+            "longDesc": "Mantiene la humedad entre 40-60%. Imprescindible en invierno (calefacción) o resfriados. Ayuda a mantener las vías respiratorias hidratadas y aflojar la mucosidad. Siempre de vapor frío para evitar quemaduras.",
+            "features": [
+                "Alivia congestión nasal",
+                "Silencioso (<30dB)",
+                "Vapor frío seguro",
+                "Fácil limpieza (evitar moho)"
+            ],
+            "affiliateLink": "https://www.amazon.es/dp/B09JVH8W7G"
+        },
+        {
+            "id": 9,
+            "name": "Aspirador Nasal Eléctrico",
+            "category": "health",
+            "shortDesc": "Higiene rápida. Si no respira bien, no duerme bien.",
+            "longDesc": "Los bebés no saben sonarse. Un aspirador seguro y rápido es vital antes de dormir si hay mocos. Los eléctricos son más constantes y higiénicos que las peras manuales.",
+            "features": [
+                "Succión suave y constante",
+                "Puntas de silicona blandas",
+                "Fácil de lavar",
+                "Música para distraer"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 10,
+            "name": "Termómetro de Habitación (GroEgg)",
+            "category": "environment",
+            "shortDesc": "Control visual de la temperatura segura (18-21°C).",
+            "longDesc": "El sobrecalentamiento es peligroso. Un termómetro que cambia de color te avisa de un vistazo si necesitas quitar una capa de ropa o ventilar, sin tener que encender luces ni mirar números pequeños.",
+            "features": [
+                "Código de colores intuitivo",
+                "Luz tenue quitamiedos",
+                "Lectura precisa",
+                "Diseño seguro"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 11,
+            "name": "Luz Roja de Noche",
+            "category": "environment",
+            "shortDesc": "Iluminación respetuosa. No despierta al cerebro.",
+            "longDesc": "Para cambios de pañal y tomas nocturnas. La luz roja no bloquea la producción de melatonina como la luz blanca o azul (móvil). Permite ver lo necesario sin desvelar al bebé ni a ti.",
+            "features": [
+                "Espectro rojo/ámbar",
+                "Regulable en intensidad",
+                "Batería recargable",
+                "Táctil y silenciosa"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 12,
+            "name": "Chupete Ortodóntico",
+            "category": "sleep",
+            "shortDesc": "Mecanismo natural de calma y reducción de riesgo SMSL.",
+            "longDesc": "La succión no nutritiva relaja el sistema nervioso y ayuda a transitar entre ciclos de sueño. Se recomienda para dormir (una vez establecida la lactancia) por su factor protector contra el SMSL.",
+            "features": [
+                "Diseño respetuoso dientes",
+                "Escudo ventilado",
+                "Silicona médica",
+                "Brilla en la oscuridad (útil)"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 13,
+            "name": "Cojín de Lactancia",
+            "category": "mom",
+            "shortDesc": "Postura correcta y descanso para brazos y espalda.",
+            "longDesc": "El dolor de espalda dificulta tu descanso. Un buen cojín eleva al bebé a la altura del pecho, evitando que te encorves, y puede usarse como nido de contención (siempre supervisado) o apoyo para ti.",
+            "features": [
+                "Soporte ergonómico",
+                "Funda lavable algodón",
+                "Relleno firme y adaptable",
+                "Multiusos (embarazo/lactancia)"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 14,
+            "name": "Mecedora / Sillón Lactancia",
+            "category": "mom",
+            "shortDesc": "El lugar sagrado para tomas y calmar el llanto.",
+            "longDesc": "Pasarás muchas horas aquí. El movimiento rítmico calma al bebé y el soporte lumbar cuida tu espalda. Busca reposabrazos cómodos y tela fácil de limpiar.",
+            "features": [
+                "Balanceo suave",
+                "Soporte lumbar alto",
+                "Reposabrazos acolchados",
+                "Bolsillos laterales útiles"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 15,
+            "name": "Mochila de Porteo Ergonómica",
+            "category": "travel",
+            "shortDesc": "La herramienta definitiva para las siestas difíciles.",
+            "longDesc": "El contacto piel con piel regula el estrés y la temperatura del bebé. Cuando nada funciona, el porteo y el movimiento suelen dormir al bebé en minutos, dejándote las manos libres.",
+            "features": [
+                "Posición 'Ranita' (M) segura",
+                "Reparto peso espalda",
+                "Manos libres",
+                "Tejido fresco y adaptable"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 16,
+            "name": "Cuna de Viaje Ligera",
+            "category": "travel",
+            "shortDesc": "Su espacio seguro y familiar en cualquier lugar.",
+            "longDesc": "Dormir fuera altera al bebé. Llevar su propia cuna (con su olor y sábanas) ayuda a que se sienta seguro en entornos extraños. Busca una que se monte rápido y tenga colchón decente.",
+            "features": [
+                "Montaje en segundos",
+                "Ligera y compacta",
+                "Laterales de malla (visión)",
+                "Colchón incluido"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 17,
+            "name": "Cambiador Portátil",
+            "category": "hygiene",
+            "shortDesc": "Higiene rápida y limpia en cualquier superficie.",
+            "longDesc": "Evita manchar la cama o el sofá en cambios nocturnos complicados. Un cambiador impermeable fácil de limpiar es imprescindible en la habitación y en el bolso del carro.",
+            "features": [
+                "Impermeable y lavable",
+                "Acolchado para confort",
+                "Bolsillo para pañal/toallita",
+                "Plegado compacto"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 18,
+            "name": "Pijamas con Cremallera Doble",
+            "category": "sleep",
+            "shortDesc": "Cambios de pañal nocturnos en tiempo récord.",
+            "longDesc": "Evita los botones a presión a las 3 AM. La cremallera de doble dirección permite abrir solo la parte de abajo para cambiar el pañal sin desnudar ni enfriar el pecho del bebé.",
+            "features": [
+                "Cremallera bidireccional",
+                "Algodón orgánico suave",
+                "Sin etiquetas que rocen",
+                "Protector de barbilla"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 19,
+            "name": "Libros de Cuento (Rutina)",
+            "category": "sleep",
+            "shortDesc": "La señal perfecta para bajar revoluciones.",
+            "longDesc": "Leer el mismo cuento corto cada noche es una señal potente de que el día ha acabado. La voz monótona de mamá/papá relaja y prepara el cerebro para el sueño.",
+            "features": [
+                "Imágenes de alto contraste",
+                "Historias cortas y rítmicas",
+                "Cartón resistente",
+                "Vínculo afectivo"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 20,
+            "name": "Termómetro de Baño",
+            "category": "hygiene",
+            "shortDesc": "El baño relajante perfecto sin sustos de temperatura.",
+            "longDesc": "El baño es parte clave de la rutina de sueño. El agua a temperatura corporal (37°C) relaja los músculos. Un termómetro flotante asegura que no esté ni muy fría (despierta) ni muy caliente.",
+            "features": [
+                "Lectura rápida y segura",
+                "Juguete flotante seguro",
+                "Sin pilas (algunos)",
+                "Alerta visual calor"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 21,
+            "name": "Aceite de Masaje (Almendras/Lavanda)",
+            "category": "hygiene",
+            "shortDesc": "Relajación muscular y conexión antes de dormir.",
+            "longDesc": "Un masaje suave tras el baño libera oxitocina (hormona del amor y calma). Aceites naturales neutros o con un toque muy leve de lavanda (si el pediatra lo aprueba) favorecen la relajación.",
+            "features": [
+                "100% natural / orgánico",
+                "Hipoalergénico",
+                "Absorción lenta (masaje)",
+                "Sin perfumes fuertes"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 22,
+            "name": "Mordedores Refrigerables",
+            "category": "health",
+            "shortDesc": "Alivio para el dolor de encías que rompe el sueño.",
+            "longDesc": "La dentición es causa frecuente de malas noches. Un mordedor enfriado en nevera adormece las encías inflamadas y calma al bebé antes de intentar dormir.",
+            "features": [
+                "Gel refrigerante seguro",
+                "Texturas de masaje",
+                "Fácil agarre",
+                "Libre de BPA"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 23,
+            "name": "Sabanas Bajeras Ajustables (x3)",
+            "category": "sleep",
+            "shortDesc": "Higiene y seguridad. Siempre ten recambios a mano.",
+            "longDesc": "Los escapes ocurren. Necesitas sábanas 100% algodón que ajusten fuerte al colchón (sin arrugas peligrosas) y tener varias para cambiar la cama en segundos a mitad de noche.",
+            "features": [
+                "Ajuste elástico firme",
+                "Algodón transpirable",
+                "Lavables a 60°C",
+                "Suavidad duradera"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 24,
+            "name": "Pelota de Pilates",
+            "category": "mom",
+            "shortDesc": "El 'arma secreta' para calmar bebés difíciles.",
+            "longDesc": "El rebote suave en la pelota simula el movimiento de caminar (o del útero) mucho mejor que mecerse de pie. Salva la espalda de los padres y calma llantos intensos en minutos.",
+            "features": [
+                "Superficie antideslizante",
+                "Material anti-estallido",
+                "Alivio suelo pélvico",
+                "Calma cólicos (rebote)"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 25,
+            "name": "Organizador de Pañales (Caddy)",
+            "category": "mom",
+            "shortDesc": "Todo a mano para no encender luces buscando cosas.",
+            "longDesc": "Tener pañales, toallitas, crema y bodys de cambio ordenados en una cesta pórtatil te permite hacer el 'box stop' nocturno en cualquier lugar de la casa sin caos.",
+            "features": [
+                "Compartimentos divisores",
+                "Asas resistentes",
+                "Ligero y portátil",
+                "Multiusos futuro"
+            ],
+            "affiliateLink": null
         }
     ],
     "en": [
         {
             "id": 1,
-            "name": "Ultrasonic Humidifier",
-            "category": "environment",
-            "shortDesc": "Maintains ideal humidity (40-60%) preventing dry airways and cough.",
-            "longDesc": "Dry air is an enemy to baby sleep. A humidifier keeps moisture at optimal levels (40-60%), preventing dry nose and throat. Look for a cool-mist, silent (<30dB) model for safety and comfort.",
+            "name": "Co-Sleeper Bassinet",
+            "category": "sleep",
+            "shortDesc": "Sleep close but safe. Eases night feeds and bonding.",
+            "longDesc": "Safe co-sleeping (separate surface attached to bed) reduces SIDS risk and keeps baby within arm's reach. Makes night feeds much easier without getting out of bed, preserving your own rest.",
             "features": [
-                "Reduces nasal congestion",
-                "Prevents dry cough",
-                "Soothes dry skin",
-                "Gentle natural white noise"
+                "Easy breastfeeding access",
+                "Reduces night anxiety",
+                "Firm independent surface",
+                "Drop-side wall"
             ],
-            "affiliateLink": "https://www.amazon.com/dp/example1",
-            "ratings": {
-                "sleep": 4.5,
-                "calm": 4.0,
-                "comfort": 4.8
-            }
+            "affiliateLink": null
         },
         {
             "id": 2,
-            "name": "Sleep Sack (TOG 2.5)",
+            "name": "Firm Crib Mattress",
             "category": "sleep",
-            "shortDesc": "Safe alternative to loose blankets. Constant temperature all night.",
-            "longDesc": "Loose blankets pose a risk. A sleep sack ensures consistent body temperature, preventing baby from kicking covers off and waking up cold. TOG 2.5 is the standard for rooms between 16-20°C in winter.",
+            "shortDesc": "The foundation of safety. Prevents sinking and overheating.",
+            "longDesc": "Sleep surface must be firm to prevent suffocation and positional issues. A breathable mattress reduces overheating risk and prevents CO2 accumulation around baby's face.",
             "features": [
-                "Reduces suffocation risk",
-                "Maintains constant temp",
-                "Strong sleep cue",
-                "Easy diaper access"
+                "Proper firmness (not soft)",
+                "Breathable 3D materials",
+                "Hypoallergenic",
+                "Washable cover essential"
             ],
-            "affiliateLink": "https://www.amazon.com/dp/example2",
-            "ratings": {
-                "sleep": 4.9,
-                "calm": 4.2,
-                "comfort": 5.0
-            }
+            "affiliateLink": null
         },
         {
             "id": 3,
-            "name": "White Noise Machine",
-            "category": "environment",
-            "shortDesc": "Masks sudden noises and mimics the comforting sound of the womb.",
-            "longDesc": "The womb is loud (like a vacuum). Total silence can be unsettling. Continuous white noise masks door slams, barking dogs, or creaky floors that cause micro-awakenings.",
+            "name": "Sleep Sack (TOG 2.5)",
+            "category": "sleep",
+            "shortDesc": "Thermal safety. Prevents kicking off covers or face covering.",
+            "longDesc": "Replaces dangerous loose blankets. Maintains constant body temp all night, preventing cold wake-ups. TOG 2.5 is standard for winter (16-20°C). The #1 sleep expert recommended item.",
             "features": [
-                "Masks household noise",
-                "Positive sleep association",
-                "Soothes crying (Shushing)",
-                "Portable for travel"
+                "No suffocation risk",
+                "Constant temperature",
+                "Sleep routine cue",
+                "Two-way zipper"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.8,
-                "calm": 5.0,
-                "comfort": 4.2
-            }
+            "affiliateLink": "https://www.amazon.com/dp/example"
         },
         {
             "id": 4,
-            "name": "Blackout Curtains",
-            "category": "environment",
-            "shortDesc": "Total darkness to boost melatonin and prevent early rising.",
-            "longDesc": "Light is the main 'wake up' signal for the brain. Even a sliver of street light can shorten a nap or cause a 5 AM wake up. Total darkness triggers melatonin, the sleep hormone.",
+            "name": "Newborn Swaddle",
+            "category": "sleep",
+            "shortDesc": "Recreates the womb hug and prevents Moro reflex.",
+            "longDesc": "For the first 3 months (4th trimester). Gentle containment soothes crying and prevents baby waking from their own startle reflex. Must allow hip movement and stop when rolling starts.",
             "features": [
-                "Lengthens day naps",
-                "Prevents early risings",
-                "Supports circadian rhythm",
-                "Regulates room temp"
+                "Soothes crying",
+                "Prevents startle reflex",
+                "Promotes back sleeping",
+                "Stretchy breathable fabric"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.7,
-                "calm": 3.8,
-                "comfort": 4.5
-            }
+            "affiliateLink": null
         },
         {
             "id": 5,
-            "name": "Nasal Aspirator",
-            "category": "hygiene",
-            "shortDesc": "Immediate relief for stuffy noses. Breathing well means sleeping well.",
-            "longDesc": "Babies breathe almost exclusively through their nose. If it's blocked, they can't eat or sleep comfortably. A safe, effective aspirator (electric or manual) is a vital emergency tool for cold nights.",
+            "name": "White Noise Machine",
+            "category": "environment",
+            "shortDesc": "Masks sudden noises and mimics the womb sound.",
+            "longDesc": "Total silence can alert a baby. Constant white noise (rain, fan) masks door slams or barks and acts as a powerful sleep cue. Use at safe volume (<50dB) away from crib.",
             "features": [
-                "Clears airways instantly",
-                "Improves feeding",
-                "Prevents mucus buildup",
-                "Quick & safe hygiene"
+                "Blocks household noise",
+                "Auditory sleep cue",
+                "Immediate calming effect",
+                "Portable"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.6,
-                "calm": 3.5,
-                "comfort": 4.9
-            }
+            "affiliateLink": null
         },
         {
             "id": 6,
-            "name": "Orthodontic Pacifier",
-            "category": "sleep",
-            "shortDesc": "Non-nutritive sucking relaxes the nervous system and aids sleep onset.",
-            "longDesc": "Sucking is a baby's natural calming mechanism. A pacifier helps lower heart rate and eases the transition between sleep cycles. AAP recommends offering it at sleep times once breastfeeding is established.",
+            "name": "Blackout Curtains",
+            "category": "environment",
+            "shortDesc": "Total darkness to boost melatonin and lengthen naps.",
+            "longDesc": "Light inhibits melatonin. Total darkness helps baby fall asleep faster, lengthens day naps, and prevents early morning 'rooster' wake-ups at 5 AM.",
             "features": [
-                "Reduces SIDS risk",
-                "Self-soothing tool",
-                "Helps on flights/travel",
-                "Satisfies suck reflex"
+                "100% real darkness",
+                "Regulates circadian rhythm",
+                "Thermal insulation",
+                "Portable versions avail."
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.3,
-                "calm": 4.9,
-                "comfort": 4.0
-            }
+            "affiliateLink": null
         },
         {
             "id": 7,
+            "name": "Video Baby Monitor",
+            "category": "environment",
+            "shortDesc": "Peace of mind without entering the room.",
+            "longDesc": "Allows checking on baby without opening the door (which risks waking them). Look for clear night vision and VOX mode (screen off until noise) to avoid sleeping next to a bright screen.",
+            "features": [
+                "Infrared night vision",
+                "VOX/ECO mode",
+                "Secure range",
+                "Two-way audio"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 8,
+            "name": "Ultrasonic Humidifier",
+            "category": "health",
+            "shortDesc": "Optimal air. Vital for congestion and dry cough.",
+            "longDesc": "Keeps humidity at 40-60%. Essential for winter heating or colds. Hydrates airways and loosens mucus. Always cool mist to avoid burn risks.",
+            "features": [
+                "Relieves nasal congestion",
+                "Silent (<30dB)",
+                "Safe cool mist",
+                "Easy cleaning"
+            ],
+            "affiliateLink": "https://www.amazon.com/dp/example"
+        },
+        {
+            "id": 9,
+            "name": "Electric Nasal Aspirator",
+            "category": "health",
+            "shortDesc": "Quick hygiene. If they can't breathe, they can't sleep.",
+            "longDesc": "Babies can't blow their noses. A safe, fast aspirator is vital before sleep if congested. Electric ones provide constant gentle suction compared to manual bulbs.",
+            "features": [
+                "Gentle constant suction",
+                "Soft silicone tips",
+                "Easy to wash",
+                "Distraction music"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 10,
+            "name": "Room Thermometer (GroEgg)",
+            "category": "environment",
+            "shortDesc": "Visual check for safe temp (18-21°C).",
+            "longDesc": "Overheating is a risk. A color-changing thermometer tells you at a glance if you need to adjust clothing or bedding, without fumbling for lights or reading small numbers.",
+            "features": [
+                "Intuitive color code",
+                "Dim nightlight",
+                "Accurate reading",
+                "Safe design"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 11,
             "name": "Red Night Light",
             "category": "environment",
-            "shortDesc": "Lighting that doesn't disrupt sleep hormones for night feeds.",
-            "longDesc": "Blue or white light from phones or lamps blocks melatonin, waking both baby and you fully during the night. Red light allows you to see for diaper changes without signaling 'it's day time' to the brain.",
+            "shortDesc": "Respectful lighting. Doesn't wake the brain.",
+            "longDesc": "For diaper changes and feeds. Red light doesn't block melatonin production like blue/white light. Allows you to see without fully waking baby or yourself.",
             "features": [
-                "Circadian rhythm friendly",
-                "Dim light for nursing",
-                "Relaxing ambiance",
-                "Fear of dark (toddlers)"
+                "Red/Amber spectrum",
+                "Dimmable",
+                "Rechargeable",
+                "Touch control"
             ],
-            "affiliateLink": null,
-            "ratings": {
-                "sleep": 4.4,
-                "calm": 4.5,
-                "comfort": 4.6
-            }
+            "affiliateLink": null
+        },
+        {
+            "id": 12,
+            "name": "Orthodontic Pacifier",
+            "category": "sleep",
+            "shortDesc": "Natural calming mechanism and SIDS risk reduction.",
+            "longDesc": "Non-nutritive sucking relaxes the nervous system. Recommended for sleep onset (after breastfeeding established) as a protective factor against SIDS.",
+            "features": [
+                "Tooth-friendly design",
+                "Ventilated shield",
+                "Medical silicone",
+                "Glow in dark"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 13,
+            "name": "Nursing Pillow",
+            "category": "mom",
+            "shortDesc": "Correct posture and rest for arms and back.",
+            "longDesc": "Back pain hinders your rest. A good pillow lifts baby to breast height, preventing slouching. Can be used as a supervised nest or support for you.",
+            "features": [
+                "Ergonomic support",
+                "Washable cover",
+                "Firm filling",
+                "Multi-use"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 14,
+            "name": "Rocking / Nursing Chair",
+            "category": "mom",
+            "shortDesc": "The sacred spot for soothing and feeds.",
+            "longDesc": "You'll spend hours here. Rhythmic motion calms baby and lumbar support saves your back. Look for padded armrests and easy-clean fabric.",
+            "features": [
+                "Smooth rocking",
+                "High back support",
+                "Padded armrests",
+                "Side pockets"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 15,
+            "name": "Ergonomic Baby Carrier",
+            "category": "travel",
+            "shortDesc": "The ultimate tool for difficult naps.",
+            "longDesc": "Skin-to-skin regulates stress and temp. When nothing else works, wearing baby and walking usually induces sleep in minutes, leaving your hands free.",
+            "features": [
+                "Safe 'M' position",
+                "Weight distribution",
+                "Hands free",
+                "Breathable fabric"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 16,
+            "name": "Light Travel Crib",
+            "category": "travel",
+            "shortDesc": "Safe familiar space anywhere.",
+            "longDesc": "Sleeping away disrupts routines. Bringing their own crib (with their smell) helps them feel safe. Look for fast setup and a decent mattress.",
+            "features": [
+                "Fast assembly",
+                "Light & Compact",
+                "Mesh sides",
+                "Mattress included"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 17,
+            "name": "Portable Changing Mat",
+            "category": "hygiene",
+            "shortDesc": "Clean hygiene on any surface.",
+            "longDesc": "Avoid messes on bed/sofa during night changes. A wipeable waterproof mat is essential in the room and diaper bag.",
+            "features": [
+                "Waterproof & Washable",
+                "Padded comfort",
+                "Pocket for wipes",
+                "Compact fold"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 18,
+            "name": "Double Zipper Sleepsuit",
+            "category": "sleep",
+            "shortDesc": "Night diaper changes in record time.",
+            "longDesc": "Avoid snaps at 3 AM. Two-way zippers let you open just the bottom for changes without exposing/chilling baby's chest.",
+            "features": [
+                "Two-way zipper",
+                "Organic cotton",
+                "Tag-free",
+                "Chin guard"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 19,
+            "name": "Bedtime Story Books",
+            "category": "sleep",
+            "shortDesc": "The perfect cue to lower energy.",
+            "longDesc": "Reading the same short book nightly is a powerful signal day is done. Monotonous voice relaxes and preps the brain for sleep.",
+            "features": [
+                "High contrast images",
+                "Short rhythmic stories",
+                "Board books",
+                "Bonding time"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 20,
+            "name": "Bath Thermometer",
+            "category": "hygiene",
+            "shortDesc": "Perfect relaxing bath without temp shocks.",
+            "longDesc": "Bath is key to routine. Water at body temp (37°C) relaxes muscles. A floaty thermometer ensures it's not too cold (waking) or hot.",
+            "features": [
+                "Fast safe reading",
+                "Safe toy",
+                "No batteries (some)",
+                "Visual alert"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 21,
+            "name": "Baby Massage Oil",
+            "category": "hygiene",
+            "shortDesc": "Muscle relaxation and connection.",
+            "longDesc": "Gentle massage releases oxytocin. Neutral natural oils or mild lavender (if approved) promote relaxation before PJs.",
+            "features": [
+                "100% natural",
+                "Hypoallergenic",
+                "Slow absorption",
+                "Mild scent"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 22,
+            "name": "Cooling Teether",
+            "category": "health",
+            "shortDesc": "Relief for sleep-wrecking gum pain.",
+            "longDesc": "Teething ruins nights. A fridge-cooled teether numbs inflamed gums and calms baby before sleep attempts.",
+            "features": [
+                "Safe cooling gel",
+                "Massage textures",
+                "Easy grip",
+                "BPA free"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 23,
+            "name": "Fitted Crib Sheets (x3)",
+            "category": "sleep",
+            "shortDesc": "Hygiene and safety. Always have spares.",
+            "longDesc": "Leaks happen. You need 100% cotton sheets that fit tight (no dangerous wrinkles) and multiples for 3 AM changes.",
+            "features": [
+                "Firm elastic fit",
+                "Breathable cotton",
+                "Hot washable",
+                "Durable soft"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 24,
+            "name": "Yoga/Pilates Ball",
+            "category": "mom",
+            "shortDesc": "Secret weapon for fussy babies.",
+            "longDesc": "Bouncing mimics womb motion better than standing rocking. Saves parent backs and calms intense crying fast.",
+            "features": [
+                "Non-slip surface",
+                "Anti-burst",
+                "Pelvic relief",
+                "Colic calming"
+            ],
+            "affiliateLink": null
+        },
+        {
+            "id": 25,
+            "name": "Diaper Caddy",
+            "category": "mom",
+            "shortDesc": "Everything at hand in the dark.",
+            "longDesc": "Keep diapers, wipes, cream organized in a portable basket. Allows 'pit stop' changes anywhere without chaos.",
+            "features": [
+                "Divided sections",
+                "Sturdy handles",
+                "Lightweight",
+                "Multi-use"
+            ],
+            "affiliateLink": null
         }
     ]
 }

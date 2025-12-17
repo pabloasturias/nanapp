@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, Info, Star } from 'lucide-react';
+import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, Info, Star, Heart, User } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 import productsData from '../products.json';
 import { Product } from '../types';
@@ -20,11 +20,13 @@ const getCategoryIcon = (category: string) => {
 };
 
 const CATEGORIES = [
-    { id: 'all', label: 'Todos', icon: BookOpen },
-    { id: 'sleep', label: 'Sueño', icon: Moon },
-    { id: 'environment', label: 'Entorno', icon: Droplets },
-    { id: 'travel', label: 'Viaje', icon: Plane },
-    { id: 'hygiene', label: 'Higiene', icon: Sparkles },
+    { id: 'all', translationKey: 'cat_all', icon: BookOpen },
+    { id: 'sleep', translationKey: 'cat_sleep', icon: Moon },
+    { id: 'environment', translationKey: 'cat_environment', icon: Droplets },
+    { id: 'health', translationKey: 'cat_health', icon: Heart },
+    { id: 'mom', translationKey: 'cat_mom', icon: User },
+    { id: 'travel', translationKey: 'cat_travel', icon: Plane },
+    { id: 'hygiene', translationKey: 'cat_hygiene', icon: Sparkles },
 ];
 
 export const ProductsView: React.FC = () => {
@@ -39,20 +41,6 @@ export const ProductsView: React.FC = () => {
     const filteredProducts = activeCategory === 'all'
         ? currentProducts
         : currentProducts.filter(p => p.category === activeCategory);
-
-    const renderStars = (rating: number) => {
-        return (
-            <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                        key={star}
-                        size={10}
-                        className={star <= rating ? "text-amber-400 fill-amber-400" : "text-slate-700"}
-                    />
-                ))}
-            </div>
-        );
-    };
 
     return (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative">
@@ -86,7 +74,7 @@ export const ProductsView: React.FC = () => {
                                 `}
                             >
                                 <cat.icon size={14} />
-                                <span className="text-xs font-bold uppercase tracking-wide">{cat.label}</span>
+                                <span className="text-xs font-bold uppercase tracking-wide">{t(cat.translationKey as any)}</span>
                             </button>
                         ))}
                     </div>
@@ -116,16 +104,11 @@ export const ProductsView: React.FC = () => {
                                         <div className="flex items-center gap-2">
                                             <span className="sm:hidden text-xs font-mono text-teal-500 font-bold">#{product.id}</span>
                                             <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
-                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{product.category}</span>
+                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                                                    {t(`cat_${product.category}` as any)}
+                                                </span>
                                             </div>
                                         </div>
-                                        {/* Mini Stars Preview */}
-                                        {product.ratings && (
-                                            <div className="flex gap-0.5">
-                                                <Star size={10} className="text-amber-400 fill-amber-400" />
-                                                <span className="text-[10px] text-amber-400 font-bold ml-1">{product.ratings.sleep}</span>
-                                            </div>
-                                        )}
                                     </div>
 
                                     <h3 className="text-lg font-bold text-orange-50 mb-1 leading-tight group-hover:text-teal-200 transition-colors font-['Quicksand']">
@@ -182,23 +165,6 @@ export const ProductsView: React.FC = () => {
                                 <h2 className="text-3xl font-bold text-orange-50 leading-none font-['Quicksand']">{selectedProduct.name}</h2>
                             </div>
 
-                            {/* Ratings Block */}
-                            {selectedProduct.ratings && (
-                                <div className="grid grid-cols-3 gap-2 mb-6">
-                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
-                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Dormir</span>
-                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.sleep)}</div>
-                                    </div>
-                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
-                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Calma</span>
-                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.calm)}</div>
-                                    </div>
-                                    <div className="bg-slate-800/50 p-2 rounded-xl border border-white/5 text-center">
-                                        <span className="text-[10px] text-slate-500 uppercase tracking-wide block mb-1">Confort</span>
-                                        <div className="flex justify-center">{renderStars(selectedProduct.ratings.comfort)}</div>
-                                    </div>
-                                </div>
-                            )}
 
                             <p className="text-slate-300 leading-relaxed mb-8 text-sm font-light">
                                 {selectedProduct.longDesc}
