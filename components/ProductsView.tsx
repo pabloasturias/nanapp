@@ -219,29 +219,25 @@ export const ProductsView: React.FC = () => {
                             </div>
 
                             {/* Affiliate Links Section */}
-                            {selectedProduct.affiliateLinks && selectedProduct.affiliateLinks.length > 0 ? (
+                            {selectedProduct.affiliateLink ? (
                                 <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5">
                                     <div className="flex items-center gap-2 mb-4 text-orange-200/80">
                                         <ShoppingCart size={16} />
-                                        <span className="text-xs font-bold uppercase tracking-wider">Disponible en Amazon</span>
+                                        <span className="text-xs font-bold uppercase tracking-wider">Disponible Online</span>
                                     </div>
 
-                                    <div className="flex flex-col gap-3">
-                                        {selectedProduct.affiliateLinks.map((link, idx) => (
-                                            <a
-                                                key={idx}
-                                                href={link.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-900/20 hover:shadow-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
-                                            >
-                                                <span>{link.label}</span>
-                                                <ExternalLink size={16} className="opacity-70 group-hover:opacity-100" />
-                                            </a>
-                                        ))}
-                                    </div>
+                                    <a
+                                        href={selectedProduct.affiliateLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-900/20 hover:shadow-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
+                                    >
+                                        <span>{t('buy_amazon')}</span>
+                                        <ExternalLink size={16} className="opacity-70 group-hover:opacity-100" />
+                                    </a>
+
                                     <p className="text-[10px] text-center text-slate-600 mt-3">
-                                        En calidad de Afiliado de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.
+                                        {t('affiliate_disclaimer')}
                                     </p>
                                 </div>
                             ) : (
@@ -249,7 +245,7 @@ export const ProductsView: React.FC = () => {
                                     <div className="p-2 bg-slate-700/50 rounded-full text-slate-400">
                                         <Info size={18} />
                                     </div>
-                                    <p className="text-xs text-slate-500">Este recurso es puramente informativo. No hay enlaces de compra disponibles para tu región.</p>
+                                    <p className="text-xs text-slate-500">{t('resource_info')}</p>
                                 </div>
                             )}
 

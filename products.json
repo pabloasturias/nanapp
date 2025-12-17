@@ -5,84 +5,133 @@
             "name": "Humidificador Ultrasónico",
             "category": "environment",
             "shortDesc": "Mantiene la humedad ideal (40-60%) para evitar sequedad nasal y tos.",
-            "longDesc": "El ambiente seco es uno de los mayores enemigos del sueño del bebé. Este humidificador ultrasónico no solo mantiene la humedad en el rango óptimo (40-60%), sino que es totalmente silencioso y cuenta con luz roja para no interferir con la melatonina. Es fácil de limpiar y tiene apagado automático.",
+            "longDesc": "El ambiente seco es uno de los mayores enemigos del sueño del bebé. Un humidificador mantiene la humedad en el rango óptimo (40-60%), evitando que se resequen las vías respiratorias. Busca uno silencioso (<30dB) y de vapor frío para mayor seguridad.",
             "features": [
-                "Ultrasónico y Silencioso (<20dB)",
-                "Luz nocturna roja integrada",
-                "Fácil limpieza (sin filtros)",
-                "Apagado automático"
+                "Reduce la congestión nasal",
+                "Previene la tos seca",
+                "Piel menos reseca",
+                "Ruido blanco suave natural"
             ],
-            "affiliateLinks": []
+            "affiliateLink": "https://www.amazon.es/dp/B09JVH8W7G",
+            "ratings": {
+                "sleep": 4.5,
+                "calm": 4.0,
+                "comfort": 4.8
+            }
         },
         {
             "id": 2,
-            "name": "Saco de Dormir TOG 2.5",
+            "name": "Saco de Dormir (TOG 2.5)",
             "category": "sleep",
-            "shortDesc": "La forma más segura de abrigar a tu bebé. Temperatura constante toda la noche.",
-            "longDesc": "Olvídate de las mantas sueltas que pueden cubrir la cara del bebé. El saco de dormir garantiza que tu pequeño mantenga una temperatura corporal constante durante toda la noche, reduciendo los despertares por frío. El TOG 2.5 es ideal para inviernos o habitaciones entre 16-20°C.",
+            "shortDesc": "Alternativa segura a las mantas. Temperatura constante toda la noche.",
+            "longDesc": "Las mantas sueltas son un riesgo. El saco de dormir garantiza una temperatura corporal constante, evitando que el bebé se destape y se despierte por frío. El TOG 2.5 es el estándar ideal para habitaciones entre 16-20°C en invierno.",
             "features": [
-                "Algodón orgánico transpirable",
-                "Cremallera de doble dirección",
-                "Diseño amplio de caderas (Hip Healthy)",
-                "Sin etiquetas que rocen"
+                "Evita el riesgo de asfixia",
+                "Mantiene temperatura constante",
+                "Señal de rutina de sueño",
+                "Facilita cambios de pañal"
             ],
-            "affiliateLinks": []
+            "affiliateLink": "https://www.amazon.es/dp/B07KKK5G6L",
+            "ratings": {
+                "sleep": 4.9,
+                "calm": 4.2,
+                "comfort": 5.0
+            }
         },
         {
             "id": 3,
-            "name": "Swaddle Ergonómico",
-            "category": "sleep",
-            "shortDesc": "Evita el reflejo de Moro y recrea la seguridad del útero materno.",
-            "longDesc": "Perfecto para los primeros 3 meses (Cuarto Trimestre). Este arrullo recrea la presión suave que el bebé sentía en el útero, calmando el llanto casi al instante y evitando que se despierte por sus propios movimientos involuntarios (Reflejo de Moro).",
+            "name": "Máquina de Ruido Blanco",
+            "category": "environment",
+            "shortDesc": "Enmascara ruidos bruscos y recuerda al sonido del útero materno.",
+            "longDesc": "El útero es un lugar ruidoso (similar a una aspiradora). El silencio total puede inquietar al bebé. El ruido blanco constante enmascara portazos, ladridos o crujidos del suelo que podrían causar micro-despertares.",
             "features": [
-                "Tejido elástico y suave",
-                "Velcro silencioso",
-                "Fácil de poner en 3 pasos",
-                "Permite cambio de pañal fácil"
+                "Enmascara ruidos del hogar",
+                "Asociación positiva al sueño",
+                "Calma el llanto (Shushing)",
+                "Portátil para viajes"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.8,
+                "calm": 5.0,
+                "comfort": 4.2
+            }
         },
         {
             "id": 4,
-            "name": "Fular Portabebés",
-            "category": "travel",
-            "shortDesc": "Contacto piel con piel para calmar el llanto y libertad para tus manos.",
-            "longDesc": "El porteo es la herramienta número 1 para los días difíciles. Mantener al bebé cerca de tu latido reduce el cortisol y le ayuda a regular su temperatura y respiración. Este fular es ligero, fresco y reparte el peso perfectamente por tu espalda.",
+            "name": "Cortinas Opacas (Blackout)",
+            "category": "environment",
+            "shortDesc": "Oscuridad total para favorecer la melatonina y evitar despertares al alba.",
+            "longDesc": "La luz es la señal principal para despertar al cerebro. Incluso un poco de luz entrando por la persiana puede cortar la siesta o provocar un despertar a las 6 AM. La oscuridad total ayuda a segregar melatonina, la hormona del sueño.",
             "features": [
-                "Tejido de bambú termorregulador",
-                "Talla única adaptable",
-                "Soporte ergonómico en 'M'",
-                "Incluye bolsa de transporte"
+                "Prolonga las siestas diurnas",
+                "Evita 'despertares de gallo'",
+                "Ayuda al ritmo circadiano",
+                "Regula temperatura habitación"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.7,
+                "calm": 3.8,
+                "comfort": 4.5
+            }
         },
         {
             "id": 5,
-            "name": "Luz Roja de Noche",
-            "category": "environment",
-            "shortDesc": "Iluminación que respeta el ciclo circadiano y la producción de melatonina.",
-            "longDesc": "La luz azul de las bombillas normales o móviles despierta al cerebro. Esta luz emite una frecuencia roja/ámbar específica que permite ver para cambiar pañales o dar el pecho sin interrumpir el sueño del bebé (ni el tuyo).",
+            "name": "Aspirador Nasal",
+            "category": "hygiene",
+            "shortDesc": "Alivio inmediato para narices congestionadas. Respirar bien es dormir bien.",
+            "longDesc": "Los bebés respiran casi exclusivamente por la nariz. Si está taponada, no pueden comer ni dormir bien. Un aspirador nasal seguro y efectivo (eléctrico o manual) es una herramienta de emergencia vital para noches de catarro.",
             "features": [
-                "Espectro 100% libre de luz azul",
-                "Batería recargable (duración 1 semana)",
-                "Portátil y táctil",
-                "Intensidad regulable"
+                "Despeja vías aéreas al instante",
+                "Mejora la alimentación",
+                "Previene otitis por moco",
+                "Higiene rápida y segura"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.6,
+                "calm": 3.5,
+                "comfort": 4.9
+            }
         },
         {
             "id": 6,
-            "name": "Cambiador Portátil",
-            "category": "hygiene",
-            "shortDesc": "Higiene y comodidad en cualquier lugar. Impermeable y acolchado.",
-            "longDesc": "Un imprescindible para salir de casa. Este cambiador se pliega como un pequeño bolso pero se despliega ofreciendo una superficie amplia, limpia y acolchada para cambiar a tu bebé en cualquier baño público o superficie.",
+            "name": "Chupete Ortodóntico",
+            "category": "sleep",
+            "shortDesc": "La succión no nutritiva relaja el sistema nervioso y ayuda a conciliar.",
+            "longDesc": "Succionar es el mecanismo natural de calma del bebé. El chupete ayuda a relajar el ritmo cardíaco y facilita el tránsito entre ciclos de sueño. Se recomienda ofrecerlo al dormir una vez establecida la lactancia.",
             "features": [
-                "Superficie impermeable",
-                "Bolsillo para pañales y toallitas",
-                "Cojín para la cabeza",
-                "Se limpia con un paño"
+                "Reduce riesgo de SMSL",
+                "Herramienta de auto-calma",
+                "Ayuda en vuelos/viajes",
+                "Satisface reflejo de succión"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.3,
+                "calm": 4.9,
+                "comfort": 4.0
+            }
+        },
+        {
+            "id": 7,
+            "name": "Luz Roja Nocturna",
+            "category": "environment",
+            "shortDesc": "Iluminación que no corta la producción de sueño para tomas nocturnas.",
+            "longDesc": "La luz azul o blanca del móvil o lámparas normales bloquea la melatonina, despertando al bebé (y a ti) en mitad de la noche. La luz roja permite ver lo suficiente para cambiar un pañal sin enviar la señal de 'es de día' al cerebro.",
+            "features": [
+                "No interfiere ritmo circadiano",
+                "Luz tenue para lactancia",
+                "Ambiente relajante",
+                "Miedo a la oscuridad (niños +2a)"
+            ],
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.4,
+                "calm": 4.5,
+                "comfort": 4.6
+            }
         }
     ],
     "en": [
@@ -90,99 +139,134 @@
             "id": 1,
             "name": "Ultrasonic Humidifier",
             "category": "environment",
-            "shortDesc": "Maintains ideal humidity (40-60%) to prevent dry nose and coughs.",
-            "longDesc": "Dry air is one of the biggest enemies of baby sleep. This ultrasonic humidifier not only maintains humidity in the optimal range (40-60%) but is completely silent and features a red light so as not to interfere with melatonin. Easy to clean and auto-shutoff.",
+            "shortDesc": "Maintains ideal humidity (40-60%) preventing dry airways and cough.",
+            "longDesc": "Dry air is an enemy to baby sleep. A humidifier keeps moisture at optimal levels (40-60%), preventing dry nose and throat. Look for a cool-mist, silent (<30dB) model for safety and comfort.",
             "features": [
-                "Ultrasonic & Silent (<20dB)",
-                "Integrated red night light",
-                "Easy cleaning (filter-free)",
-                "Auto shut-off"
+                "Reduces nasal congestion",
+                "Prevents dry cough",
+                "Soothes dry skin",
+                "Gentle natural white noise"
             ],
-            "affiliateLinks": [
-                {
-                    "label": "Best Overall",
-                    "url": "https://amazon.com/example1"
-                },
-                {
-                    "label": "Budget Pick",
-                    "url": "https://amazon.com/example2"
-                }
-            ]
+            "affiliateLink": "https://www.amazon.com/dp/example1",
+            "ratings": {
+                "sleep": 4.5,
+                "calm": 4.0,
+                "comfort": 4.8
+            }
         },
         {
             "id": 2,
-            "name": "Sleep Sack TOG 2.5",
+            "name": "Sleep Sack (TOG 2.5)",
             "category": "sleep",
-            "shortDesc": "The safest way to keep your baby warm. Constant temperature all night.",
-            "longDesc": "Forget loose blankets that can cover the baby's face. The sleep sack guarantees your little one maintains a constant body temperature throughout the night, reducing cold awakenings. TOG 2.5 is deal for winters or rooms between 16-20°C.",
+            "shortDesc": "Safe alternative to loose blankets. Constant temperature all night.",
+            "longDesc": "Loose blankets pose a risk. A sleep sack ensures consistent body temperature, preventing baby from kicking covers off and waking up cold. TOG 2.5 is the standard for rooms between 16-20°C in winter.",
             "features": [
-                "Breathable organic cotton",
-                "Two-way zipper",
-                "Hip Healthy design",
-                "Tag-free"
+                "Reduces suffocation risk",
+                "Maintains constant temp",
+                "Strong sleep cue",
+                "Easy diaper access"
             ],
-            "affiliateLinks": [
-                {
-                    "label": "Amazon Basics",
-                    "url": "https://amazon.com/example"
-                }
-            ]
+            "affiliateLink": "https://www.amazon.com/dp/example2",
+            "ratings": {
+                "sleep": 4.9,
+                "calm": 4.2,
+                "comfort": 5.0
+            }
         },
         {
             "id": 3,
-            "name": "Ergonomic Swaddle",
-            "category": "sleep",
-            "shortDesc": "Prevents Moro reflex and recreates the security of the womb.",
-            "longDesc": "Perfect for the first 3 months (Fourth Trimester). This swaddle recreates the gentle pressure the baby felt in the womb, soothing crying almost instantly and preventing them from waking up due to their own startle reflex.",
+            "name": "White Noise Machine",
+            "category": "environment",
+            "shortDesc": "Masks sudden noises and mimics the comforting sound of the womb.",
+            "longDesc": "The womb is loud (like a vacuum). Total silence can be unsettling. Continuous white noise masks door slams, barking dogs, or creaky floors that cause micro-awakenings.",
             "features": [
-                "Soft, stretchy fabric",
-                "Quiet velcro",
-                "Easy 3-step wrap",
-                "Easy diaper change access"
+                "Masks household noise",
+                "Positive sleep association",
+                "Soothes crying (Shushing)",
+                "Portable for travel"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.8,
+                "calm": 5.0,
+                "comfort": 4.2
+            }
         },
         {
             "id": 4,
-            "name": "Baby Wrap Carrier",
-            "category": "travel",
-            "shortDesc": "Skin-to-skin contact to soothe crying and freedom for your hands.",
-            "longDesc": "Babywearing is the #1 tool for fussy days. Keeping baby close to your heartbeat reduces cortisol and helps regulate their temperature and breathing. This wrap is lightweight, cool, and distributes weight perfectly across your back.",
+            "name": "Blackout Curtains",
+            "category": "environment",
+            "shortDesc": "Total darkness to boost melatonin and prevent early rising.",
+            "longDesc": "Light is the main 'wake up' signal for the brain. Even a sliver of street light can shorten a nap or cause a 5 AM wake up. Total darkness triggers melatonin, the sleep hormone.",
             "features": [
-                "Thermoregulating bamboo fabric",
-                "One size fits all",
-                "Ergonomic 'M' support",
-                "Includes carry bag"
+                "Lengthens day naps",
+                "Prevents early risings",
+                "Supports circadian rhythm",
+                "Regulates room temp"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.7,
+                "calm": 3.8,
+                "comfort": 4.5
+            }
         },
         {
             "id": 5,
-            "name": "Red Night Light",
-            "category": "environment",
-            "shortDesc": "Lighting that respects the circadian rhythm and melatonin production.",
-            "longDesc": "Blue light from regular bulbs or phones wakes up the brain. This light emits a specific red/amber frequency that allows you to see for diaper changes or breastfeeding without interrupting the baby's sleep (or yours).",
+            "name": "Nasal Aspirator",
+            "category": "hygiene",
+            "shortDesc": "Immediate relief for stuffy noses. Breathing well means sleeping well.",
+            "longDesc": "Babies breathe almost exclusively through their nose. If it's blocked, they can't eat or sleep comfortably. A safe, effective aspirator (electric or manual) is a vital emergency tool for cold nights.",
             "features": [
-                "100% blue light free spectrum",
-                "Rechargeable battery (1 week life)",
-                "Portable and touch control",
-                "Dimmable"
+                "Clears airways instantly",
+                "Improves feeding",
+                "Prevents mucus buildup",
+                "Quick & safe hygiene"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.6,
+                "calm": 3.5,
+                "comfort": 4.9
+            }
         },
         {
             "id": 6,
-            "name": "Portable Changing Pad",
-            "category": "hygiene",
-            "shortDesc": "Hygiene and comfort anywhere. Waterproof and padded.",
-            "longDesc": "A must-have for leaving the house. This changing pad folds like a small clutch but unfolds to offer a large, clean, and padded surface to change your baby in any public restroom or surface.",
+            "name": "Orthodontic Pacifier",
+            "category": "sleep",
+            "shortDesc": "Non-nutritive sucking relaxes the nervous system and aids sleep onset.",
+            "longDesc": "Sucking is a baby's natural calming mechanism. A pacifier helps lower heart rate and eases the transition between sleep cycles. AAP recommends offering it at sleep times once breastfeeding is established.",
             "features": [
-                "Waterproof surface",
-                "Pocket for diapers and wipes",
-                "Head cushion",
-                "Wipe clean"
+                "Reduces SIDS risk",
+                "Self-soothing tool",
+                "Helps on flights/travel",
+                "Satisfies suck reflex"
             ],
-            "affiliateLinks": []
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.3,
+                "calm": 4.9,
+                "comfort": 4.0
+            }
+        },
+        {
+            "id": 7,
+            "name": "Red Night Light",
+            "category": "environment",
+            "shortDesc": "Lighting that doesn't disrupt sleep hormones for night feeds.",
+            "longDesc": "Blue or white light from phones or lamps blocks melatonin, waking both baby and you fully during the night. Red light allows you to see for diaper changes without signaling 'it's day time' to the brain.",
+            "features": [
+                "Circadian rhythm friendly",
+                "Dim light for nursing",
+                "Relaxing ambiance",
+                "Fear of dark (toddlers)"
+            ],
+            "affiliateLink": null,
+            "ratings": {
+                "sleep": 4.4,
+                "calm": 4.5,
+                "comfort": 4.6
+            }
         }
     ]
 }
