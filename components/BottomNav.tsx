@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Music, Moon, ShoppingBag, BarChart2 } from 'lucide-react';
+import { Music, Moon, BookOpen } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 import productsData from '../products.json';

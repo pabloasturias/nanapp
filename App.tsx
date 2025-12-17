@@ -230,7 +230,7 @@ const AppContent: React.FC = () => {
         if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
         if (activeTab === 'sleep') return <SleepView />;
         if (activeTab === 'tips') return <ProductsView />;
-        if (activeTab === 'stats') return <StatsView />;
+        if (activeTab === 'stats') return <StatsView onBack={() => setActiveTab('sounds')} />;
 
         return (
             <>
@@ -306,8 +306,6 @@ const AppContent: React.FC = () => {
                 heartbeatLayer={audio.heartbeatLayer} onToggleHeartbeatLayer={audio.toggleHeartbeat}
                 timerDuration={timer.duration} onTimerChange={timer.setDuration}
                 onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
-                onOpenAbout={() => { setShowSettings(false); setActiveTab('story'); }}
-                onOpenStats={() => { setShowSettings(false); setActiveTab('stats'); }}
             />
             <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
             <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
@@ -319,6 +317,7 @@ const AppContent: React.FC = () => {
                 <Header
                     onOpenSettings={() => setShowSettings(true)}
                     onOpenSupport={() => setShowSupportModal(true)}
+                    onOpenStats={() => setActiveTab('stats')}
                     onGoToStory={() => setActiveTab('story')}
                     isOffline={isOffline}
                 />

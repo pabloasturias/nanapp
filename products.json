@@ -12,7 +12,7 @@
                 "Fácil limpieza (sin filtros)",
                 "Apagado automático"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 2,
@@ -26,7 +26,7 @@
                 "Diseño amplio de caderas (Hip Healthy)",
                 "Sin etiquetas que rocen"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 3,
@@ -40,7 +40,7 @@
                 "Fácil de poner en 3 pasos",
                 "Permite cambio de pañal fácil"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 4,
@@ -54,7 +54,7 @@
                 "Soporte ergonómico en 'M'",
                 "Incluye bolsa de transporte"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 5,
@@ -68,7 +68,7 @@
                 "Portátil y táctil",
                 "Intensidad regulable"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 6,
@@ -82,7 +82,7 @@
                 "Cojín para la cabeza",
                 "Se limpia con un paño"
             ],
-            "url": "#"
+            "affiliateLinks": []
         }
     ],
     "en": [
@@ -98,7 +98,16 @@
                 "Easy cleaning (filter-free)",
                 "Auto shut-off"
             ],
-            "url": "#"
+            "affiliateLinks": [
+                {
+                    "label": "Best Overall",
+                    "url": "https://amazon.com/example1"
+                },
+                {
+                    "label": "Budget Pick",
+                    "url": "https://amazon.com/example2"
+                }
+            ]
         },
         {
             "id": 2,
@@ -112,7 +121,12 @@
                 "Hip Healthy design",
                 "Tag-free"
             ],
-            "url": "#"
+            "affiliateLinks": [
+                {
+                    "label": "Amazon Basics",
+                    "url": "https://amazon.com/example"
+                }
+            ]
         },
         {
             "id": 3,
@@ -126,7 +140,7 @@
                 "Easy 3-step wrap",
                 "Easy diaper change access"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 4,
@@ -140,7 +154,7 @@
                 "Ergonomic 'M' support",
                 "Includes carry bag"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 5,
@@ -154,7 +168,7 @@
                 "Portable and touch control",
                 "Dimmable"
             ],
-            "url": "#"
+            "affiliateLinks": []
         },
         {
             "id": 6,
@@ -168,7 +182,7 @@
                 "Head cushion",
                 "Wipe clean"
             ],
-            "url": "#"
+            "affiliateLinks": []
         }
     ]
 }
