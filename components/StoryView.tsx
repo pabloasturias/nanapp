@@ -43,18 +43,7 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
 
                         <div className="space-y-4 text-sm text-slate-300 leading-relaxed font-light relative z-10">
                             <p>
-                                Inspirado en mi hija <span className="text-indigo-200 font-medium">Vega</span>.
-                            </p>
-                            <p>
                                 En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer.
-                            </p>
-
-                            <div className="h-px bg-white/5 my-4" />
-
-                            <p className="text-xs text-slate-400">
-                                Gracias a <span className="text-indigo-300">Pili</span> y <span className="text-indigo-300">Aurora</span> por las nanas que un día me hicieron dormir.
-                                <br /><br />
-                                Y gracias a <span className="text-pink-300">Sara</span>, por saber calmar a nuestra hija por encima de mis posibilidades.
                             </p>
                         </div>
                     </div>
@@ -105,7 +94,6 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
                     <p className="font-['Quicksand'] text-sm text-orange-100 italic opacity-60 px-8">"{t('story_quote')}"</p>
                     <div className="flex justify-center">
                         <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 border border-white/5">
-                            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold leading-relaxed">{t('inspired_by')}</p>
                             <Star size={10} className="text-amber-500/50" />
                         </div>
                     </div>
