@@ -59,13 +59,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                                 Inspirado en las infinitas noches velando por el sueño de mi hija <span className="text-white font-medium">Vega</span>.
                             </p>
 
-                            <p className="mb-4">
-                                En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer.
-                            </p>
-
                             <p className="text-xs text-slate-400 mt-6 pt-4 border-t border-white/5">
-                                Gracias a <span className="text-indigo-300">Pili</span> y <span className="text-indigo-300">Aurora</span> por las nanas que un día me hicieron dormir.
-                                <br /><br />
                                 Y gracias a <span className="text-pink-300">Sara</span>, por saber calmar a nuestra hija por encima de mis posibilidades.
                             </p>
                         </div>

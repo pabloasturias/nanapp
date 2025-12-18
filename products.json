@@ -699,6 +699,20 @@
                 "Diseño ergonómico"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
+        },
+        {
+            "id": 51,
+            "name": "Lista de Nacimiento Amazon",
+            "category": "mom",
+            "shortDesc": "Crea tu lista de regalos perfecta y recibe beneficios.",
+            "longDesc": "La forma más fácil de organizar lo que necesitas para tu bebé. Compártela con familia y amigos, obtén descuentos por finalización y disfruta de devoluciones extendidas. Todo en un solo lugar.",
+            "features": [
+                "Descuento de bienvenida",
+                "Devoluciones gratuitas 365 días",
+                "Comparte con un clic",
+                "Universal (cualquier producto)"
+            ],
+            "affiliateLink": "http://www.amazon.es/baby-reg/homepage?tag=ID_de_afiliado-21"
         }
     ],
     "en": [
@@ -1401,6 +1415,20 @@
                 "Ergonomic design"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
+        },
+        {
+            "id": 51,
+            "name": "Amazon Baby Registry",
+            "category": "mom",
+            "shortDesc": "Create your perfect gift list and get benefits.",
+            "longDesc": "The easiest way to organize what you need for your baby. Share it with family and friends, get completion discounts, and enjoy extended returns. Everything in one place.",
+            "features": [
+                "Welcome discount",
+                "Free 365-day returns",
+                "Share with one click",
+                "Universal (any product)"
+            ],
+            "affiliateLink": "http://www.amazon.es/baby-reg/homepage?tag=ID_de_afiliado-21"
         }
     ]
 }
