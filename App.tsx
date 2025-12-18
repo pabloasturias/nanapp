@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SoundButton } from './components/SoundButton';
+import { ManageSoundsModal } from './components/ManageSoundsModal'; // New Import
 import { Controls } from './components/Controls';
 import { Visualizer } from './components/Visualizer';
 import { ProductsView } from './components/ProductsView';
@@ -18,11 +19,12 @@ import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
 import { SOUNDS } from './constants';
 import { SoundType } from './types';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, SlidersHorizontal } from 'lucide-react'; // Added SlidersHorizontal
 import { LanguageProvider, useLanguage } from './services/LanguageContext';
 import { useAudioEngine } from './services/hooks/useAudioEngine';
 import { useTimer } from './services/hooks/useTimer';
 import { useStatistics } from './services/hooks/useStatistics';
+import { useSoundPreferences } from './services/hooks/useSoundPreferences'; // New Import
 
 import { SplashScreen } from './components/SplashScreen';
 
@@ -34,9 +36,11 @@ const AppContent: React.FC = () => {
     const audio = useAudioEngine(parseFloat(localStorage.getItem('dw_volume') || '0.4'));
     const timer = useTimer(parseInt(localStorage.getItem('dw_duration') || '40', 10));
     const { logSession } = useStatistics();
+    const { activeSoundIds, toggleSoundVisibility, reorderSounds } = useSoundPreferences(); // New Hook
 
     const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools'>('sounds');
     const [showSettings, setShowSettings] = useState(false);
+    const [showManageSounds, setShowManageSounds] = useState(false); // New State
     const [showWhyModal, setShowWhyModal] = useState(false);
     const [showSupportModal, setShowSupportModal] = useState(false);
     const [showLegalModal, setShowLegalModal] = useState(false);
@@ -241,24 +245,37 @@ const AppContent: React.FC = () => {
             <>
                 <div className="shrink-0 flex items-center justify-between px-6 mb-2">
                     <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
-                    <button
-                        onClick={() => setShowWhyModal(true)}
-                        className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-orange-200 hover:border-orange-200/50 transition-colors flex items-center gap-1.5 pr-3"
-                    >
-                        <HelpCircle size={14} />
-                        <span className="text-[10px] font-bold">{t('why_works')}</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => setShowManageSounds(true)}
+                            className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-teal-200 hover:border-teal-200/50 transition-colors"
+                        >
+                            <SlidersHorizontal size={14} />
+                        </button>
+                        <button
+                            onClick={() => setShowWhyModal(true)}
+                            className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-orange-200 hover:border-orange-200/50 transition-colors flex items-center gap-1.5 pr-3"
+                        >
+                            <HelpCircle size={14} />
+                            <span className="text-[10px] font-bold">{t('why_works')}</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div className="flex-1 min-h-0 grid grid-cols-2 gap-3 mb-1 auto-rows-fr animate-[fade-in_0.3s_ease-out] px-6">
-                    {SOUNDS.map(sound => (
-                        <SoundButton
-                            key={sound.id}
-                            sound={sound}
-                            isActive={audio.currentSound === sound.id}
-                            onClick={() => handleSoundSelect(sound.id)}
-                        />
-                    ))}
+                <div className="flex-1 min-h-0 grid grid-cols-2 gap-3 mb-1 auto-rows-fr animate-[fade-in_0.3s_ease-out] px-6 pb-2 overflow-y-auto">
+                    {activeSoundIds.map(id => {
+                        const sound = SOUNDS.find(s => s.id === id);
+                        if (!sound) return null;
+                        return (
+                            <SoundButton
+                                key={sound.id}
+                                sound={sound}
+                                isActive={audio.currentSound === sound.id}
+                                onClick={() => handleSoundSelect(sound.id)}
+                            />
+                        );
+                    })}
+                    {/* Add placeholder to fill grid if odd number? No, CSS grid handles it. */}
                 </div>
 
                 <div className="shrink-0 h-6 flex items-center justify-center mb-1">
@@ -321,6 +338,14 @@ const AppContent: React.FC = () => {
             <SupportModal isOpen={showSupportModal} onClose={() => setShowSupportModal(false)} onGoToProducts={() => setActiveTab('tips')} />
             <LegalModal isOpen={showLegalModal} onClose={() => setShowLegalModal(false)} />
             <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
+
+            <ManageSoundsModal
+                isOpen={showManageSounds}
+                onClose={() => setShowManageSounds(false)}
+                activeSoundIds={activeSoundIds}
+                onToggleSound={toggleSoundVisibility}
+                onReorderSounds={reorderSounds}
+            />
 
             <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-[calc(5rem+env(safe-area-inset-bottom))]">
                 <Header

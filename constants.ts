@@ -1,6 +1,6 @@
 import { SoundType, SoundOption, TimerOption } from './types';
 import { ShushIcon } from './components/icons/SoundIcons';
-import { CloudRain, Wind, Waves, Disc, Volume2, Music, Zap } from 'lucide-react'; // Using Lucide for others
+import { CloudRain, Wind, Waves, Disc, Volume2, Music, Zap, TrainFront, PawPrint, Flame, Trees, Moon, Droplets, Fan, Heart, Ghost } from 'lucide-react'; // Added new icons
 
 export const SOUNDS: SoundOption[] = [
   {
@@ -50,6 +50,54 @@ export const SOUNDS: SoundOption[] = [
     label: 'Nana',
     Icon: Music,
     description: 'Melodía suave'
+  },
+  {
+    id: SoundType.TRAIN,
+    label: 'Tren',
+    Icon: TrainFront,
+    description: 'Rítmico y constante'
+  },
+  {
+    id: SoundType.CAT_PURR,
+    label: 'Ronroneo',
+    Icon: PawPrint,
+    description: 'Vibración relajante'
+  },
+  {
+    id: SoundType.FIREPLACE,
+    label: 'Fuego',
+    Icon: Flame,
+    description: 'Crepitar cálido'
+  },
+  {
+    id: SoundType.FOREST,
+    label: 'Bosque',
+    Icon: Trees,
+    description: 'Naturaleza viva'
+  },
+  {
+    id: SoundType.NIGHT_CRICKETS,
+    label: 'Grillos',
+    Icon: Moon,
+    description: 'Noche tranquila'
+  },
+  {
+    id: SoundType.STREAM,
+    label: 'Arroyo',
+    Icon: Droplets,
+    description: 'Agua fluyendo'
+  },
+  {
+    id: SoundType.FAN,
+    label: 'Ventilador',
+    Icon: Fan,
+    description: 'Zumbido de aire'
+  },
+  {
+    id: SoundType.HEARTBEAT,
+    label: 'Latido',
+    Icon: Heart,
+    description: 'Ritmo vital'
   }
 ];
 

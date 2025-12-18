@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Moon, BookOpen, LayoutGrid } from 'lucide-react';
+import { Music, Moon, BookOpen, Hammer, Wrench } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface BottomNavProps {
@@ -25,7 +25,10 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           onClick={() => setActiveTab('tools')}
           className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tools' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <LayoutGrid size={26} strokeWidth={activeTab === 'tools' ? 2.5 : 2} className={activeTab === 'tools' ? 'drop-shadow-lg' : ''} />
+          <div className="relative w-[26px] h-[26px] flex items-center justify-center">
+            <Hammer size={18} className={`absolute -top-0.5 -left-0.5 ${activeTab === 'tools' ? 'drop-shadow-lg' : ''} -rotate-12`} strokeWidth={activeTab === 'tools' ? 2.5 : 2} />
+            <Wrench size={14} className={`absolute bottom-0 right-0 ${activeTab === 'tools' ? 'drop-shadow-lg' : ''} rotate-12`} strokeWidth={activeTab === 'tools' ? 2.5 : 2} />
+          </div>
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_tools')}</span>
         </button>
 

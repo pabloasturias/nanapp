@@ -699,6 +699,126 @@
                 "Diseño ergonómico"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
+        },
+        {
+            "id": 101,
+            "name": "Lamaze Freddie la Luciérnaga",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Juguete sensorial completo para el desarrollo temprano.",
+            "longDesc": "Estimula la vista, el oído y el tacto. Alas con diferentes texturas, espejo de autodescubrimiento, sonajeros y mordedor. El juguete de cochecito perfecto.",
+            "features": [
+                "Estimulación visual",
+                "Mordedor incluido",
+                "Clip universal",
+                "Texturas variadas"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie+Luciérnaga&tag=100bcb-21"
+        },
+        {
+            "id": 102,
+            "name": "Manhattan Toy Winkel",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "El sonajero y mordedor de diseño laberíntico.",
+            "longDesc": "Fácil de agarrar por manos diminutas. Sus tubos de colores suaves se pueden enfriar en la nevera para aliviar las encías. Hipnótico para los bebés.",
+            "features": [
+                "Fácil agarre",
+                "Efecto frío (nevera)",
+                "Desarrollo motor",
+                "Sin BPA"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=100bcb-21"
+        },
+        {
+            "id": 103,
+            "name": "VTech Bola Gatea",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Anima al bebé a perseguirla y gatear.",
+            "longDesc": "Se mueve sola de forma aleatoria animando al bebé a seguirla. Luces, canciones y animales que enseñan vocabulario básico mientras desarrollan la motricidad gruesa.",
+            "features": [
+                "Movimiento automático",
+                "Luces y sonidos",
+                "Fomenta el gateo",
+                "Español"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=VTech+Bola+Cantarina&tag=100bcb-21"
+        },
+        {
+            "id": 104,
+            "name": "Torre Apilable Mushie",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Estilo nórdico para la motricidad fina.",
+            "longDesc": "Vasos apilables de diseño danés en colores suaves. Ideales para la torre, el baño o la playa. Ayudan a la coordinación mano-ojo sin sobreestimular.",
+            "features": [
+                "Diseño nórdico",
+                "Sin BPA/PVC",
+                "Juego abierto",
+                "Multiusos (baño/arena)"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=100bcb-21"
+        },
+        {
+            "id": 105,
+            "name": "Mega Bloks Bolsa Clásica",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Bloques gigantes para pequeños constructores.",
+            "longDesc": "El primer juego de construcción ideal. Bloques grandes imposibles de tragar y fáciles de encajar/separar. Fomentan la creatividad y la motricidad fina.",
+            "features": [
+                "Tamaño seguro",
+                "Fácil encaje",
+                "Bolsa almacenaje",
+                "Creatividad infinita"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+Bolsa&tag=100bcb-21"
+        },
+        {
+            "id": 106,
+            "name": "VTech Correpasillos Andandín",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Centro de actividades y apoyo para primeros pasos.",
+            "longDesc": "Panel de actividades extraíble para jugar en el suelo y andador robusto para ganar confianza al caminar. Control de velocidad en ruedas para seguridad.",
+            "features": [
+                "Panel extraíble",
+                "Freno regulable",
+                "Teclado musical",
+                "Robusto"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=VTech+Correpasillos+Andandin&tag=100bcb-21"
+        },
+        {
+            "id": 107,
+            "name": "Magna-Tiles 32 Piezas",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Construcción magnética 3D original.",
+            "longDesc": "La inversión definitiva en juguetes. Piezas translúcidas que se unen magnéticamente por cualquier lado. Matemáticas, geometría y creatividad en un solo juguete duradero.",
+            "features": [
+                "Imanes seguros",
+                "Juego STEAM",
+                "Durabilidad extrema",
+                "Compatible expansiones"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles&tag=100bcb-21"
+        },
+        {
+            "id": 108,
+            "name": "Melissa & Doug Puzzle Sonidos",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Puzzle de madera con recompensa auditiva.",
+            "longDesc": "Al colocar la pieza correcta (ej. vaca), suena el animal realista. Refuerza la relación causa-efecto, el vocabulario y la motricidad fina.",
+            "features": [
+                "Madera real",
+                "Sonidos realistas",
+                "Botones agarre fácil",
+                "Calidad educativa"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Puzzle+Sonidos&tag=100bcb-21"
         }
     ],
     "en": [
@@ -1401,6 +1521,126 @@
                 "Ergonomic design"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
+        },
+        {
+            "id": 101,
+            "name": "Lamaze Freddie the Firefly",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Complete sensory toy for early development.",
+            "longDesc": "Stimulates sight, sound, and touch. Wings with different textures, self-discovery mirror, rattles, and teether. The perfect stroller toy.",
+            "features": [
+                "Visual stimulation",
+                "Teether included",
+                "Universal clip",
+                "Varied textures"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie+The+Firefly&tag=100bcb-21"
+        },
+        {
+            "id": 102,
+            "name": "Manhattan Toy Winkel",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "The maze-like rattle and teether loop.",
+            "longDesc": "Easy to grasp for tiny hands. Its soft color tubes can be cooled in the fridge to soothe gums. Mesmerizing for babies.",
+            "features": [
+                "Easy grip",
+                "Fridge safe",
+                "Motor development",
+                "BPA Free"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=100bcb-21"
+        },
+        {
+            "id": 103,
+            "name": "VTech Wiggle & Crawl Ball",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Encourages baby to chase and crawl.",
+            "longDesc": "Moves on its own randomly encouraging baby to follow. Lights, songs, and animals teach basic vocabulary while developing gross motor skills.",
+            "features": [
+                "Self-moving",
+                "Lights & sounds",
+                "Encourages crawling",
+                "Interactive"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=VTech+Wiggle+Crawl+Ball&tag=100bcb-21"
+        },
+        {
+            "id": 104,
+            "name": "Mushie Stacking Cups",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Nordic style for fine motor skills.",
+            "longDesc": "Danish design stacking cups in soft colors. Ideal for towers, bath time, or the beach. Helps hand-eye coordination without overstimulating.",
+            "features": [
+                "Nordic design",
+                "BPA/PVC Free",
+                "Open-ended play",
+                "Multi-use"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=100bcb-21"
+        },
+        {
+            "id": 105,
+            "name": "Mega Bloks First Builders",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Giant blocks for little builders.",
+            "longDesc": "The ideal first building set. Large blocks impossible to swallow and easy to snap together/apart. Fosters creativity and fine motor skills.",
+            "features": [
+                "Safe size",
+                "Easy fit",
+                "Storage bag",
+                "Endless creativity"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+First+Builders&tag=100bcb-21"
+        },
+        {
+            "id": 106,
+            "name": "VTech Sit-to-Stand Learning Walker",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Activity center and support for first steps.",
+            "longDesc": "Removable activity panel for floor play and sturdy walker to gain walking confidence. Adjustable wheel speed for safety.",
+            "features": [
+                "Removable panel",
+                "Adjustable brake",
+                "Musical keyboard",
+                "Sturdy"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=VTech+Sit+to+Stand+Walker&tag=100bcb-21"
+        },
+        {
+            "id": 107,
+            "name": "Magna-Tiles 32 Pieces",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Original 3D magnetic construction.",
+            "longDesc": "The ultimate toy investment. Translucent pieces that snap together magnetically on any side. Math, geometry, and creativity in one durable toy.",
+            "features": [
+                "Safe magnets",
+                "STEAM play",
+                "Extreme durability",
+                "Expansion compatible"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles+32&tag=100bcb-21"
+        },
+        {
+            "id": 108,
+            "name": "Melissa & Doug Sound Puzzle",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Wooden puzzle with auditory reward.",
+            "longDesc": "Make a realistic sound when the correct piece (e.g., cow) is placed. Reinforces cause-and-effect, vocabulary, and fine motor skills.",
+            "features": [
+                "Real wood",
+                "Realistic sounds",
+                "Easy grip knobs",
+                "Educational quality"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Sound+Puzzle&tag=100bcb-21"
         }
     ]
 }

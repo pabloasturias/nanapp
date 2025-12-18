@@ -8,7 +8,15 @@ export enum SoundType {
   HAIR_DRYER = 'HAIR_DRYER',
   LULLABY = 'LULLABY',
   SHUSH = 'SHUSH',
-  WAVES = 'WAVES'
+  WAVES = 'WAVES',
+  TRAIN = 'TRAIN',
+  CAT_PURR = 'CAT_PURR',
+  FIREPLACE = 'FIREPLACE',
+  FOREST = 'FOREST',
+  NIGHT_CRICKETS = 'NIGHT_CRICKETS',
+  STREAM = 'STREAM',
+  FAN = 'FAN',
+  HEARTBEAT = 'HEARTBEAT'
 }
 
 export interface SoundOption {

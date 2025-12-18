@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, User, Heart, Gift } from 'lucide-react';
+import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, User, Heart, Gift, Gamepad2 } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 import productsData from '../products.json';
 import { Product } from '../types';
@@ -17,12 +17,14 @@ const getCategoryIcon = (category: string) => {
         case 'hygiene': return <Sparkles size={24} strokeWidth={1.5} />;
         case 'mom': return <User size={24} strokeWidth={1.5} />;
         case 'health': return <Heart size={24} strokeWidth={1.5} />;
+        case 'toys': return <Gamepad2 size={24} strokeWidth={1.5} />;
         default: return <BookOpen size={24} strokeWidth={1.5} />;
     }
 };
 
 const CATEGORIES = [
     { id: 'all', translationKey: 'cat_all', icon: BookOpen },
+    { id: 'toys', translationKey: 'cat_toys', icon: Gamepad2 },
     { id: 'sleep', translationKey: 'cat_sleep', icon: Moon },
     { id: 'environment', translationKey: 'cat_environment', icon: Droplets },
     { id: 'health', translationKey: 'cat_health', icon: Heart },
@@ -35,6 +37,7 @@ export const ProductsView: React.FC = () => {
     const { t, language } = useLanguage();
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [activeCategory, setActiveCategory] = useState('all');
+    const [activeAge, setActiveAge] = useState('all'); // For Toys filter
     const [activeTab, setActiveTab] = useState<'products' | 'registry'>('products');
 
     // Select products for current language (fallback to 'en' or empty)
@@ -46,9 +49,18 @@ export const ProductsView: React.FC = () => {
     }, [language]);
 
     // Filter
-    const filteredProducts = activeCategory === 'all'
-        ? currentProducts
-        : currentProducts.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+    const filteredProducts = useMemo(() => {
+        let filtered = activeCategory === 'all'
+            ? currentProducts
+            : currentProducts.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+
+        // Age filter for toys
+        if (activeCategory === 'toys' && activeAge !== 'all') {
+            filtered = filtered.filter(p => p.subcategory === activeAge);
+        }
+
+        return filtered;
+    }, [currentProducts, activeCategory, activeAge]);
 
     return (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative">
@@ -100,7 +112,7 @@ export const ProductsView: React.FC = () => {
                                 {CATEGORIES.map(cat => (
                                     <button
                                         key={cat.id}
-                                        onClick={() => setActiveCategory(cat.id)}
+                                        onClick={() => { setActiveCategory(cat.id); setActiveAge('all'); }}
                                         className={`
                                             flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all border
                                             ${activeCategory === cat.id
@@ -114,6 +126,28 @@ export const ProductsView: React.FC = () => {
                                 ))}
                             </div>
                         </div>
+
+                        {/* Age Filter for Toys */}
+                        {activeCategory === 'toys' && (
+                            <div className="px-4 mb-6 animate-[fade-in_0.2s_ease-out]">
+                                <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                                    {['all', '0-6m', '6-12m', '1-2y', '2y+'].map(age => (
+                                        <button
+                                            key={age}
+                                            onClick={() => setActiveAge(age)}
+                                            className={`
+                                                px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border
+                                                ${activeAge === age
+                                                    ? 'bg-orange-500/20 border-orange-500/50 text-orange-300'
+                                                    : 'bg-slate-800/30 border-white/5 text-slate-500 hover:text-slate-300'}
+                                            `}
+                                        >
+                                            {age === 'all' ? t('cat_all') : age}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Products List (No Numbering) */}
                         <div className="flex flex-col gap-3 px-4 pb-8 animate-[fade-in_0.3s_ease-out]">
@@ -225,77 +259,78 @@ export const ProductsView: React.FC = () => {
             {selectedProduct && (
                 <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm animate-[fade-in_0.2s_ease-out]" onClick={() => setSelectedProduct(null)}>
                     <div
-                        className="bg-slate-900 w-full max-w-lg h-[80vh] sm:h-auto max-h-[85vh] overflow-y-auto rounded-t-[2.5rem] sm:rounded-[2.5rem] border-t sm:border border-white/10 shadow-2xl relative animate-[slide-up_0.3s_ease-out]"
+                        className="bg-slate-900 w-full max-w-lg h-[92vh] sm:h-[85vh] rounded-t-[2.5rem] sm:rounded-[2.5rem] border-t sm:border border-white/10 shadow-2xl relative animate-[slide-up_0.3s_ease-out] flex flex-col"
                         onClick={e => e.stopPropagation()}
                     >
-                        {/* Modal Header */}
-                        <div className="h-32 bg-gradient-to-br from-teal-900/40 to-slate-900 flex items-center justify-between px-8 relative overflow-hidden shrink-0">
-                            <div className="relative z-10 flex gap-4 items-center mt-4">
-                                {/* Removed Number */}
+                        {/* Close Button - Always visible on top right */}
+                        <button
+                            onClick={() => setSelectedProduct(null)}
+                            className="absolute top-4 right-4 z-50 p-2 bg-black/40 rounded-full text-white hover:bg-black/60 transition-colors backdrop-blur-md"
+                        >
+                            <X size={24} />
+                        </button>
+
+                        {/* Modal Header Image/Color - Scrollable with content but button is fixed above */}
+                        <div className="flex-1 overflow-y-auto pb-24">
+                            <div className="h-48 bg-gradient-to-br from-teal-900/40 to-slate-900 flex items-center justify-between px-8 relative overflow-hidden shrink-0">
+                                {/* Decor */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                             </div>
 
-                            <button
-                                onClick={() => setSelectedProduct(null)}
-                                className="absolute top-6 right-6 p-2 bg-black/20 rounded-full text-white/70 hover:bg-black/40 hover:text-white transition-colors backdrop-blur-md z-20"
-                            >
-                                <X size={24} />
-                            </button>
-                        </div>
-
-                        <div className="px-8 pb-12 -mt-8 relative z-10">
-                            <div className="mb-6">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-teal-500/20 backdrop-blur-md mb-3">
-                                    <span className="text-teal-400">{getCategoryIcon(selectedProduct.category)}</span>
-                                    <span className="text-xs font-bold text-teal-100 uppercase tracking-wider">
-                                        {t(`cat_${selectedProduct.category.toLowerCase()}` as any)}
-                                    </span>
-                                </div>
-                                <h2 className="text-3xl font-bold text-orange-50 leading-none font-['Quicksand']">{selectedProduct.name}</h2>
-                            </div>
-
-
-                            <p className="text-slate-300 leading-relaxed mb-8 text-sm font-light">
-                                {selectedProduct.longDesc}
-                            </p>
-
-                            <div className="space-y-4 mb-8">
-                                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-white/5 pb-2">Lo que lo hace especial</h4>
-                                <ul className="space-y-3">
-                                    {selectedProduct.features?.map((feature, idx) => (
-                                        <li key={idx} className="flex gap-3 text-sm text-slate-300">
-                                            <div className="mt-0.5 p-0.5 bg-teal-500/20 rounded-full text-teal-400 shrink-0 h-fit">
-                                                <Check size={12} strokeWidth={3} />
-                                            </div>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Affiliate Links Section */}
-                            {selectedProduct.affiliateLink && (
-                                <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5 mb-8">
-                                    <div className="flex items-center gap-2 mb-4 text-orange-200/80">
-                                        <ShoppingCart size={16} />
-                                        <span className="text-xs font-bold uppercase tracking-wider">Disponible Online</span>
+                            <div className="px-8 -mt-12 relative z-10">
+                                <div className="mb-6">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-teal-500/20 backdrop-blur-md mb-3 shadow-lg">
+                                        <span className="text-teal-400">{getCategoryIcon(selectedProduct.category)}</span>
+                                        <span className="text-xs font-bold text-teal-100 uppercase tracking-wider">
+                                            {t(`cat_${selectedProduct.category.toLowerCase()}` as any)}
+                                        </span>
                                     </div>
-
-                                    <a
-                                        href={selectedProduct.affiliateLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-900/20 hover:shadow-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
-                                    >
-                                        <span>{t('buy_amazon')}</span>
-                                        <ExternalLink size={16} className="opacity-70 group-hover:opacity-100" />
-                                    </a>
-
-                                    <p className="text-[10px] text-center text-slate-600 mt-3">
-                                        {t('affiliate_disclaimer')}
-                                    </p>
+                                    <h2 className="text-3xl font-bold text-orange-50 leading-none font-['Quicksand']">{selectedProduct.name}</h2>
                                 </div>
-                            )}
 
+
+                                <p className="text-slate-300 leading-relaxed mb-8 text-sm font-light">
+                                    {selectedProduct.longDesc}
+                                </p>
+
+                                <div className="space-y-4 mb-8">
+                                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-white/5 pb-2">Lo que lo hace especial</h4>
+                                    <ul className="space-y-3">
+                                        {selectedProduct.features?.map((feature, idx) => (
+                                            <li key={idx} className="flex gap-3 text-sm text-slate-300">
+                                                <div className="mt-0.5 p-0.5 bg-teal-500/20 rounded-full text-teal-400 shrink-0 h-fit">
+                                                    <Check size={12} strokeWidth={3} />
+                                                </div>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Affiliate Links Section */}
+                                {selectedProduct.affiliateLink && (
+                                    <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5 mb-8">
+                                        <div className="flex items-center gap-2 mb-4 text-orange-200/80">
+                                            <ShoppingCart size={16} />
+                                            <span className="text-xs font-bold uppercase tracking-wider">Disponible Online</span>
+                                        </div>
+
+                                        <a
+                                            href={selectedProduct.affiliateLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-900/20 hover:shadow-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
+                                        >
+                                            <span>{t('buy_amazon')}</span>
+                                            <ExternalLink size={16} className="opacity-70 group-hover:opacity-100" />
+                                        </a>
+
+                                        <p className="text-[10px] text-center text-slate-600 mt-3">
+                                            {t('affiliate_disclaimer')}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
