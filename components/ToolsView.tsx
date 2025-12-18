@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { BreastfeedingDashboard, BreastfeedingFull } from './tools/BreastfeedingWidget';
 import { DiaperDashboard, DiaperFull } from './tools/DiaperWidget';
+import { BottleDashboard, BottleFull } from './tools/BottleWidget';
+import { MedsDashboard, MedsFull } from './tools/MedsWidget';
 
 // Configuration for all 18 tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -46,6 +48,8 @@ export const ToolsView: React.FC = () => {
         switch (toolId) {
             case 'breastfeeding': return <BreastfeedingFull onClose={() => setSelectedToolId(null)} />;
             case 'diapers': return <DiaperFull onClose={() => setSelectedToolId(null)} />;
+            case 'bottle': return <BottleFull onClose={() => setSelectedToolId(null)} />;
+            case 'meds': return <MedsFull onClose={() => setSelectedToolId(null)} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -91,8 +95,8 @@ export const ToolsView: React.FC = () => {
                 <button
                     onClick={() => setIsManageMode(!isManageMode)}
                     className={`p-2.5 rounded-full border transition-all duration-300 ${isManageMode
-                            ? 'bg-orange-500/20 border-orange-500 text-orange-300'
-                            : 'bg-slate-800 border-white/5 text-slate-400 hover:text-white'
+                        ? 'bg-orange-500/20 border-orange-500 text-orange-300'
+                        : 'bg-slate-800 border-white/5 text-slate-400 hover:text-white'
                         }`}
                 >
                     {isManageMode ? <X size={20} /> : <SlidersHorizontal size={20} />}
@@ -164,8 +168,9 @@ export const ToolsView: React.FC = () => {
                                 <div className="text-[10px] text-slate-500 font-medium uppercase tracking-wide min-h-[1.5em]">
                                     {tool.id === 'breastfeeding' ? <BreastfeedingDashboard /> :
                                         tool.id === 'diapers' ? <DiaperDashboard /> :
-                                            tool.id === 'meds' ? "Vit D: Pendiente" :
-                                                "--"}
+                                            tool.id === 'bottle' ? <BottleDashboard /> :
+                                                tool.id === 'meds' ? <MedsDashboard /> :
+                                                    "--"}
                                 </div>
                             </div>
 
