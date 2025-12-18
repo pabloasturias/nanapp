@@ -38,9 +38,20 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
         return logs.filter(l => l.timestamp >= start && l.timestamp <= end);
     }, [logs]);
 
+    const updateLatestLog = useCallback((updates: Partial<T>) => {
+        setLogs(prev => {
+            if (prev.length === 0) return prev;
+            const newLogs = [...prev];
+            newLogs[0] = { ...newLogs[0], ...updates };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(newLogs));
+            return newLogs;
+        });
+    }, [STORAGE_KEY]);
+
     return {
         logs,
         addLog,
+        updateLatestLog,
         getLatestLog,
         getLogsByDate
     };

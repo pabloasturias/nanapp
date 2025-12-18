@@ -11,6 +11,9 @@ import { BreastfeedingDashboard, BreastfeedingFull } from './tools/Breastfeeding
 import { DiaperDashboard, DiaperFull } from './tools/DiaperWidget';
 import { BottleDashboard, BottleFull } from './tools/BottleWidget';
 import { MedsDashboard, MedsFull } from './tools/MedsWidget';
+import { SleepDashboard, SleepFull } from './tools/SleepWidget';
+import { GrowthDashboard, GrowthFull } from './tools/GrowthWidget';
+import { TempDashboard, TempFull } from './tools/TemperatureWidget';
 
 // Configuration for all 18 tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -50,6 +53,9 @@ export const ToolsView: React.FC = () => {
             case 'diapers': return <DiaperFull onClose={() => setSelectedToolId(null)} />;
             case 'bottle': return <BottleFull onClose={() => setSelectedToolId(null)} />;
             case 'meds': return <MedsFull onClose={() => setSelectedToolId(null)} />;
+            case 'sleep': return <SleepFull onClose={() => setSelectedToolId(null)} />;
+            case 'growth': return <GrowthFull onClose={() => setSelectedToolId(null)} />;
+            case 'fever': return <TempFull onClose={() => setSelectedToolId(null)} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -170,7 +176,10 @@ export const ToolsView: React.FC = () => {
                                         tool.id === 'diapers' ? <DiaperDashboard /> :
                                             tool.id === 'bottle' ? <BottleDashboard /> :
                                                 tool.id === 'meds' ? <MedsDashboard /> :
-                                                    "--"}
+                                                    tool.id === 'sleep' ? <SleepDashboard /> :
+                                                        tool.id === 'growth' ? <GrowthDashboard /> :
+                                                            tool.id === 'fever' ? <TempDashboard /> :
+                                                                "--"}
                                 </div>
                             </div>
 

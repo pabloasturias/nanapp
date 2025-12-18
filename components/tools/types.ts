@@ -63,3 +63,26 @@ export interface MedsLog {
     dose?: string;
 }
 
+// --- Batch 2: Tracking ---
+
+export interface SleepLog {
+    timestamp: number; // Start of sleep
+    endTime?: number; // If finished
+    durationMinutes?: number;
+    type: 'nap' | 'night';
+    quality?: 'good' | 'bad' | 'ok';
+}
+
+export interface GrowthLog {
+    timestamp: number;
+    weightKg?: number;
+    heightCm?: number;
+    headCm?: number; // Can be tracked here or separately
+}
+
+export interface TemperatureLog {
+    timestamp: number;
+    temp: number; // Celsius
+    note?: string; // "After Meds" etc
+}
+
