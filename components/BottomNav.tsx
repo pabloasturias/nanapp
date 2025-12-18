@@ -1,10 +1,10 @@
 import React from 'react';
-import { Music, Moon, BookOpen } from 'lucide-react';
+import { Music, Moon, BookOpen, LayoutGrid } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface BottomNavProps {
-  activeTab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats';
-  setActiveTab: (tab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats') => void;
+  activeTab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools';
+  setActiveTab: (tab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools') => void;
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
@@ -19,6 +19,14 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
         >
           <Music size={26} strokeWidth={activeTab === 'sounds' ? 2.5 : 2} className={activeTab === 'sounds' ? 'drop-shadow-lg' : ''} />
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sounds')}</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('tools')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tools' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+        >
+          <LayoutGrid size={26} strokeWidth={activeTab === 'tools' ? 2.5 : 2} className={activeTab === 'tools' ? 'drop-shadow-lg' : ''} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_tools')}</span>
         </button>
 
         <button

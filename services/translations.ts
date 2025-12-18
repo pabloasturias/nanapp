@@ -204,7 +204,34 @@ export const translations = {
     registry_hero_desc: "Pónselo fácil a tu familia y amigos, incluso si están lejos. Crea tu lista desde el móvil, comparte el enlace y evita regalos repetidos. Además, Amazon te regala un 15% de descuento en tus compras finales.",
     registry_bullet_1: "Facilita los regalos a familiares lejanos",
     registry_bullet_2: "15% de descuento en productos elegibles",
-    registry_bullet_3: "Gestión total desde tu móvil"
+    registry_bullet_3: "Gestión total desde tu móvil",
+
+    // Tools
+    tab_tools: "Herramientas",
+    tools_manage: "Gestionar",
+    tool_breastfeeding: "Lactancia",
+    tool_bottle: "Biberón",
+    tool_diapers: "Pañales",
+    tool_sleep: "Ventanas Sueño",
+    tool_meds: "Botiquín",
+    tool_growth: "Crecimiento",
+    tool_teething: "Dentición",
+    tool_solids: "Alimentación",
+    tool_tummy_time: "Tummy Time",
+    tool_bath: "Baño",
+    tool_vaccines: "Vacunas",
+    tool_fever: "Fiebre",
+    tool_pumping: "Extractor",
+    tool_pediatrician_notes: "Notas Pediatra",
+    tool_milestones: "Hitos",
+    tool_sound_memories: "Grabadora",
+    tool_medical_agenda: "Agenda Médica",
+    tool_head_circumference: "Perímetro Craneal",
+
+    // Tools UI
+    tool_add_title: "Añadir Herramienta",
+    tool_active: "Activas",
+    tool_available: "Disponibles"
   },
   en: {
     app_slogan: "sound of sleep",
@@ -403,7 +430,34 @@ export const translations = {
     registry_hero_desc: "Make it easy for family and friends, even if they are far away. Create your list from your mobile, share the link, and avoid duplicate gifts. Plus, Amazon gives you a 15% discount on your final purchases.",
     registry_bullet_1: "Makes gifting easy for distant relatives",
     registry_bullet_2: "15% discount on eligible items",
-    registry_bullet_3: "Full management from your mobile"
+    registry_bullet_3: "Full management from your mobile",
+
+    // Tools
+    tab_tools: "Tools",
+    tools_manage: "Manage",
+    tool_breastfeeding: "Breastfeeding",
+    tool_bottle: "Bottle",
+    tool_diapers: "Diapers",
+    tool_sleep: "Sleep Windows",
+    tool_meds: "Medical Kit",
+    tool_growth: "Growth",
+    tool_teething: "Teething",
+    tool_solids: "Solids",
+    tool_tummy_time: "Tummy Time",
+    tool_bath: "Bath",
+    tool_vaccines: "Vaccines",
+    tool_fever: "Fever",
+    tool_pumping: "Pumping",
+    tool_pediatrician_notes: "Dr. Notes",
+    tool_milestones: "Milestones",
+    tool_sound_memories: "Recorder",
+    tool_medical_agenda: "Medical Agenda",
+    tool_head_circumference: "Head Circumference",
+
+    // Tools UI
+    tool_add_title: "Add Tool",
+    tool_active: "Active",
+    tool_available: "Available"
   },
   fr: {
     app_slogan: "le son du repos",

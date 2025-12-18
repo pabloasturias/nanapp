@@ -8,6 +8,7 @@ import { StoryView } from './components/StoryView';
 import { SettingsModal } from './components/SettingsModal';
 import { ReloadPrompt } from './components/ReloadPrompt';
 import { StatsView } from './components/StatsView';
+import { ToolsView } from './components/ToolsView';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
 import { QuickInfoModal } from './components/QuickInfoModal';
 import { SupportModal } from './components/SupportModal';
@@ -34,7 +35,7 @@ const AppContent: React.FC = () => {
     const timer = useTimer(parseInt(localStorage.getItem('dw_duration') || '40', 10));
     const { logSession } = useStatistics();
 
-    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats'>('sounds');
+    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools'>('sounds');
     const [showSettings, setShowSettings] = useState(false);
     const [showWhyModal, setShowWhyModal] = useState(false);
     const [showSupportModal, setShowSupportModal] = useState(false);
@@ -234,6 +235,7 @@ const AppContent: React.FC = () => {
         if (activeTab === 'sleep') return <SleepView />;
         if (activeTab === 'tips') return <ProductsView />;
         if (activeTab === 'stats') return <StatsView onBack={() => setActiveTab('sounds')} />;
+        if (activeTab === 'tools') return <ToolsView />;
 
         return (
             <>
