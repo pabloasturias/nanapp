@@ -33,3 +33,33 @@ export interface ToolData {
     timestamp: number;
     [key: string]: any;
 }
+
+// --- Specific Log Types ---
+
+export interface BreastfeedingLog {
+    timestamp: number; // Start time
+    side: 'L' | 'R';
+    durationSeconds: number;
+    manual?: boolean; // true if added manually (not timer)
+}
+
+export interface BottleLog {
+    timestamp: number;
+    amount: number; // ml
+    unit: 'ml' | 'oz'; // default ml
+    type: 'formula' | 'breastmilk' | 'cow' | 'water';
+}
+
+export interface DiaperLog {
+    timestamp: number;
+    type: 'wet' | 'dirty' | 'mixed'; // mixed = wet + dirty
+    color?: string; // Hex code or label for stool
+    notes?: string;
+}
+
+export interface MedsLog {
+    timestamp: number;
+    medName: string; // 'Vitamin D' | 'Apiretal' etc
+    dose?: string;
+}
+

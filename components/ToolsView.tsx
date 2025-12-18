@@ -7,6 +7,8 @@ import {
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
     Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X
 } from 'lucide-react';
+import { BreastfeedingDashboard, BreastfeedingFull } from './tools/BreastfeedingWidget';
+import { DiaperDashboard, DiaperFull } from './tools/DiaperWidget';
 
 // Configuration for all 18 tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -34,13 +36,49 @@ export const ToolsView: React.FC = () => {
     const { t } = useLanguage();
     const { activeTools, toggleTool } = useTools();
     const [isManageMode, setIsManageMode] = useState(false);
+    const [selectedToolId, setSelectedToolId] = useState<ToolId | null>(null);
 
     // Filter tools
     const activeToolsList = TOOLS_CONFIG.filter(tool => activeTools.includes(tool.id));
     const availableToolsList = TOOLS_CONFIG.filter(tool => !activeTools.includes(tool.id));
 
+    const renderToolContent = (toolId: ToolId) => {
+        switch (toolId) {
+            case 'breastfeeding': return <BreastfeedingFull onClose={() => setSelectedToolId(null)} />;
+            case 'diapers': return <DiaperFull onClose={() => setSelectedToolId(null)} />;
+            default: return (
+                <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
+                    <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
+                    <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">Estamos trabajando en esta herramienta.</p>
+                </div>
+            );
+        }
+    };
+
     return (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative animate-[fade-in_0.5s_ease-out]">
+
+            {/* Tool Detail Modal */}
+            {selectedToolId && (
+                <div className="fixed inset-0 z-[60] bg-slate-950 animate-[slide-up_0.2s_ease-out] flex flex-col">
+                    {/* Modal Header */}
+                    <div className="p-4 flex items-center gap-4 border-b border-white/5 bg-slate-900/50 backdrop-blur-md">
+                        <button
+                            onClick={() => setSelectedToolId(null)}
+                            className="p-2 -ml-2 text-slate-400 hover:text-white transition-colors"
+                        >
+                            <ChevronRight className="rotate-180" size={24} />
+                        </button>
+                        <h2 className="text-lg font-bold text-white flex-1 text-center pr-8">
+                            {t(`tool_${selectedToolId}` as any)}
+                        </h2>
+                    </div>
+                    {/* Modal Content */}
+                    <div className="flex-1 overflow-hidden">
+                        {renderToolContent(selectedToolId)}
+                    </div>
+                </div>
+            )}
 
             {/* Header with Manage Toggle */}
             <div className="px-4 pt-4 mb-6 flex items-center justify-between">
@@ -53,8 +91,8 @@ export const ToolsView: React.FC = () => {
                 <button
                     onClick={() => setIsManageMode(!isManageMode)}
                     className={`p-2.5 rounded-full border transition-all duration-300 ${isManageMode
-                        ? 'bg-orange-500/20 border-orange-500 text-orange-300'
-                        : 'bg-slate-800 border-white/5 text-slate-400 hover:text-white'
+                            ? 'bg-orange-500/20 border-orange-500 text-orange-300'
+                            : 'bg-slate-800 border-white/5 text-slate-400 hover:text-white'
                         }`}
                 >
                     {isManageMode ? <X size={20} /> : <SlidersHorizontal size={20} />}
@@ -65,12 +103,12 @@ export const ToolsView: React.FC = () => {
             {isManageMode ? (
                 <div className="px-4 space-y-8 animate-[fade-in_0.2s_ease-out]">
 
-                    {/* Active Section (Drag reordering could go here later) */}
+                    {/* Active Section */}
                     <div>
                         <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-1">{t('tool_active')}</h3>
                         <div className="grid grid-cols-1 gap-2">
                             {activeToolsList.map(tool => (
-                                <div key={tool.id} onClick={() => toggleTool(tool.id)} className="flex items-center justify-between p-3 rounded-2xl bg-slate-800/80 border border-teal-500/30 cursor-pointer hover:bg-slate-800">
+                                <div key={tool.id} onClick={() => toggleTool(tool.id)} className="flex items-center justify-between p-3 rounded-2xl bg-slate-800/80 border border-teal-500/30 cursor-pointer hover:bg-slate-800 transform active:scale-[0.98] transition-all">
                                     <div className="flex items-center gap-3">
                                         <div className={`p-2 rounded-xl ${tool.bgColor} ${tool.color}`}>
                                             <tool.icon size={20} />
@@ -90,7 +128,7 @@ export const ToolsView: React.FC = () => {
                         <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-1">{t('tool_available')}</h3>
                         <div className="grid grid-cols-1 gap-2">
                             {availableToolsList.map(tool => (
-                                <div key={tool.id} onClick={() => toggleTool(tool.id)} className="flex items-center justify-between p-3 rounded-2xl bg-slate-800/40 border border-white/5 cursor-pointer hover:bg-slate-800/80">
+                                <div key={tool.id} onClick={() => toggleTool(tool.id)} className="flex items-center justify-between p-3 rounded-2xl bg-slate-800/40 border border-white/5 cursor-pointer hover:bg-slate-800/80 transform active:scale-[0.98] transition-all">
                                     <div className="flex items-center gap-3 opacity-60">
                                         <div className={`p-2 rounded-xl ${tool.bgColor} ${tool.color}`}>
                                             <tool.icon size={20} />
@@ -111,7 +149,8 @@ export const ToolsView: React.FC = () => {
                     {activeToolsList.map(tool => (
                         <div
                             key={tool.id}
-                            className="bg-slate-800/50 backdrop-blur-md rounded-[1.5rem] p-4 border border-white/5 hover:bg-slate-800 transition-all cursor-pointer group relative overflow-hidden h-32 flex flex-col justify-between"
+                            onClick={() => setSelectedToolId(tool.id)}
+                            className="bg-slate-800/50 backdrop-blur-md rounded-[1.5rem] p-4 border border-white/5 hover:bg-slate-800 transition-all cursor-pointer group relative overflow-hidden h-32 flex flex-col justify-between active:scale-[0.98]"
                         >
                             {/* Icon Bg Glow */}
                             <div className={`absolute -right-4 -top-4 w-24 h-24 rounded-full blur-3xl opacity-20 ${tool.bgColor.replace('/10', '')}`} />
@@ -122,18 +161,12 @@ export const ToolsView: React.FC = () => {
 
                             <div>
                                 <h3 className="text-sm font-bold text-slate-200 leading-tight mb-0.5">{t(tool.translationKey as any)}</h3>
-                                <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wide">
-                                    {/* Mock Status for Preview */}
-                                    {tool.id === 'breastfeeding' && "Última: hace 2h (D)"}
-                                    {tool.id === 'bottle' && "Hoy: 120ml"}
-                                    {tool.id === 'diapers' && "Hoy: 4 (1 suspeto)"}
-                                    {tool.id === 'sleep' && "Próxima siesta: 14:30"}
-                                    {tool.id === 'meds' && "Vit D: Pendiente"}
-                                    {tool.id === 'growth' && "6.2kg · 60cm"}
-                                    {tool.id === 'fever' && "36.5°C (10:00)"}
-                                    {tool.id === 'vaccines' && "Próxima: 4 meses"}
-                                    {!['breastfeeding', 'bottle', 'diapers', 'sleep', 'meds', 'growth', 'fever', 'vaccines'].includes(tool.id) && "Sin registros hoy"}
-                                </p>
+                                <div className="text-[10px] text-slate-500 font-medium uppercase tracking-wide min-h-[1.5em]">
+                                    {tool.id === 'breastfeeding' ? <BreastfeedingDashboard /> :
+                                        tool.id === 'diapers' ? <DiaperDashboard /> :
+                                            tool.id === 'meds' ? "Vit D: Pendiente" :
+                                                "--"}
+                                </div>
                             </div>
 
                             {/* Chevron */}
