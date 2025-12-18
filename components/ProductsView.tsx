@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, User, Heart } from 'lucide-react';
+import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, User, Heart, Gift } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 import productsData from '../products.json';
 import { Product } from '../types';
@@ -85,6 +85,61 @@ export const ProductsView: React.FC = () => {
                             </button>
                         ))}
                     </div>
+                </div>
+
+                {/* Amazon Registry Banner */}
+                <div className="px-4 mb-8">
+                    <a
+                        href="http://www.amazon.es/baby-reg/homepage?tag=ID_de_afiliado-21"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-orange-400 to-amber-600 shadow-xl shadow-orange-500/20 group hover:shadow-orange-500/30 transition-all duration-300 hover:scale-[1.01]"
+                    >
+                        {/* Background Deco */}
+                        <div className="absolute -top-4 -right-4 p-8 opacity-10 rotate-12 pointer-events-none text-white">
+                            <Gift size={140} strokeWidth={1.5} />
+                        </div>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl rounded-full pointer-events-none" />
+
+                        <div className="relative z-10 p-6 sm:p-8">
+                            <div className="flex items-start justify-between mb-2">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full border border-white/20 mb-4 shadow-sm">
+                                    <Gift size={14} className="text-white" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-white">{t('amazon_banner_subtitle')}</span>
+                                </div>
+                            </div>
+
+                            <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-['Quicksand'] leading-tight text-white max-w-[85%] drop-shadow-sm">
+                                {t('amazon_banner_title')}
+                            </h3>
+
+                            <div className="flex flex-col gap-2 mb-8">
+                                <div className="flex items-center gap-2 text-sm font-medium text-white/95">
+                                    <div className="p-0.5 rounded-full bg-white/20">
+                                        <Check size={12} className="text-white" strokeWidth={4} />
+                                    </div>
+                                    <span>{t('amazon_benefit_1')}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm font-medium text-white/95">
+                                    <div className="p-0.5 rounded-full bg-white/20">
+                                        <Check size={12} className="text-white" strokeWidth={4} />
+                                    </div>
+                                    <span>{t('amazon_benefit_2')}</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm font-medium text-white/95">
+                                    <div className="p-0.5 rounded-full bg-white/20">
+                                        <Check size={12} className="text-white" strokeWidth={4} />
+                                    </div>
+                                    <span>{t('amazon_benefit_3')}</span>
+                                </div>
+                            </div>
+
+                            <div className="inline-flex items-center gap-2 bg-white text-orange-600 px-6 py-3.5 rounded-2xl font-bold text-sm shadow-xl hover:bg-orange-50 transition-colors">
+                                <span>{t('amazon_banner_cta')}</span>
+                                <ExternalLink size={16} strokeWidth={2.5} />
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 {/* Products List (No Numbering) */}

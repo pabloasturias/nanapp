@@ -41,7 +41,7 @@ export const translations = {
     why_works: "¿Por qué funciona?",
     temp_range: "20°C - 22°C",
     back: "Volver",
-    inspired_by: "Inspirado en Vega y dedicado a Pili y Aurora, por las nanas de madre y abuela que algún día me ayudaron a dormir.",
+    inspired_by: "",
     support_title: "¿Te gusta nanapp?",
     support_body: "Creé esta app gratuita para ayudar a mi hija Vega a descansar mejor. Si también te está sirviendo a ti, nos harías muy felices con tu valoración.",
     support_btn: "Valorar en Play Store",
@@ -189,7 +189,15 @@ export const translations = {
     cat_travel: "Viaje",
     cat_hygiene: "Higiene",
     cat_mom: "Mamá/Lactancia",
-    cat_health: "Salud"
+    cat_health: "Salud",
+
+    // Amazon Banner
+    amazon_banner_title: "TOP 50 Productos útiles para padres",
+    amazon_banner_subtitle: "Haz tu lista de nacimiento aquí",
+    amazon_banner_cta: "Crear Lista de Nacimiento",
+    amazon_benefit_1: "Descuento de bienvenida",
+    amazon_benefit_2: "Devoluciones gratuitas 365 días",
+    amazon_benefit_3: "Universal (cualquier tienda)"
   },
   en: {
     app_slogan: "sound of sleep",
@@ -231,7 +239,7 @@ export const translations = {
     why_works: "Why it works?",
     temp_range: "68°F - 72°F",
     back: "Back",
-    inspired_by: "Inspired by Vega and dedicated to Pili and Aurora, for the lullabies from mother and grandmother that once helped me sleep.",
+    inspired_by: "",
     support_title: "Do you like nanapp?",
     support_body: "I created this free app to help my daughter Vega sleep better. If it helps you too, a review would mean the world to us.",
     support_btn: "Rate on Play Store",
@@ -373,7 +381,15 @@ export const translations = {
     cat_travel: "Travel",
     cat_hygiene: "Hygiene",
     cat_mom: "Mom/Nursing",
-    cat_health: "Health"
+    cat_health: "Health",
+
+    // Amazon Banner
+    amazon_banner_title: "TOP 50 Useful Products for Parents",
+    amazon_banner_subtitle: "Create your baby registry here",
+    amazon_banner_cta: "Create Baby Registry",
+    amazon_benefit_1: "Welcome discount",
+    amazon_benefit_2: "Free 365-day returns",
+    amazon_benefit_3: "Universal (add from any store)"
   },
   fr: {
     app_slogan: "le son du repos",
