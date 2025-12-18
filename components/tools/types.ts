@@ -86,3 +86,29 @@ export interface TemperatureLog {
     note?: string; // "After Meds" etc
 }
 
+// --- Batch 3: Activity & Feeding ---
+
+export interface PumpingLog {
+    timestamp: number;
+    amountMl: number;
+    durationSeconds: number;
+    side: 'L' | 'R' | 'double';
+}
+
+export interface TummyLog {
+    timestamp: number;
+    durationSeconds: number;
+}
+
+export interface BathLog {
+    timestamp: number;
+    type?: 'sponge' | 'tub';
+}
+
+export interface SolidsLog {
+    timestamp: number;
+    food: string;
+    reaction: 'love' | 'ok' | 'hate' | 'allergy';
+    amount?: 'taste' | 'meal';
+}
+

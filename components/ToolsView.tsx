@@ -14,6 +14,10 @@ import { MedsDashboard, MedsFull } from './tools/MedsWidget';
 import { SleepDashboard, SleepFull } from './tools/SleepWidget';
 import { GrowthDashboard, GrowthFull } from './tools/GrowthWidget';
 import { TempDashboard, TempFull } from './tools/TemperatureWidget';
+import { TummyDashboard, TummyFull } from './tools/TummyWidget';
+import { BathDashboard, BathFull } from './tools/BathWidget';
+import { SolidsDashboard, SolidsFull } from './tools/SolidsWidget';
+import { PumpingDashboard, PumpingFull } from './tools/PumpingWidget';
 
 // Configuration for all 18 tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -56,6 +60,10 @@ export const ToolsView: React.FC = () => {
             case 'sleep': return <SleepFull onClose={() => setSelectedToolId(null)} />;
             case 'growth': return <GrowthFull onClose={() => setSelectedToolId(null)} />;
             case 'fever': return <TempFull onClose={() => setSelectedToolId(null)} />;
+            case 'tummy_time': return <TummyFull onClose={() => setSelectedToolId(null)} />;
+            case 'bath': return <BathFull onClose={() => setSelectedToolId(null)} />;
+            case 'solids': return <SolidsFull onClose={() => setSelectedToolId(null)} />;
+            case 'pumping': return <PumpingFull onClose={() => setSelectedToolId(null)} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -179,7 +187,11 @@ export const ToolsView: React.FC = () => {
                                                     tool.id === 'sleep' ? <SleepDashboard /> :
                                                         tool.id === 'growth' ? <GrowthDashboard /> :
                                                             tool.id === 'fever' ? <TempDashboard /> :
-                                                                "--"}
+                                                                tool.id === 'tummy_time' ? <TummyDashboard /> :
+                                                                    tool.id === 'bath' ? <BathDashboard /> :
+                                                                        tool.id === 'solids' ? <SolidsDashboard /> :
+                                                                            tool.id === 'pumping' ? <PumpingDashboard /> :
+                                                                                "--"}
                                 </div>
                             </div>
 
