@@ -62,7 +62,7 @@ export const ProductsView: React.FC = () => {
                         </div>
                         <div>
                             <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">Recursos</h2>
-                            <p className="text-xs text-slate-400 font-medium tracking-wide">Guía esencial para padres</p>
+                            <p className="text-xs text-slate-400 font-medium tracking-wide">{t('resource_subtitle')}</p>
                         </div>
                     </div>
                 </div>
@@ -167,52 +167,53 @@ export const ProductsView: React.FC = () => {
                             href="http://www.amazon.es/baby-reg/homepage?tag=ID_de_afiliado-21"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-orange-400 to-amber-600 shadow-xl shadow-orange-500/20 group hover:shadow-orange-500/30 transition-all duration-300 hover:scale-[1.01]"
+                            className="block relative overflow-hidden rounded-[2rem] bg-slate-800 border border-white/5 shadow-2xl group transition-all duration-300 hover:scale-[1.01] hover:border-white/10"
                         >
-                            {/* Background Deco */}
-                            <div className="absolute -top-10 -right-10 p-8 opacity-10 rotate-12 pointer-events-none text-white">
-                                <Gift size={200} strokeWidth={1} />
+                            {/* Simple Background Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-slate-700/20 to-transparent pointer-events-none" />
+
+                            {/* Subtle Deco */}
+                            <div className="absolute -right-8 -bottom-8 opacity-[0.03] text-white rotate-12 pointer-events-none">
+                                <Gift size={240} strokeWidth={1} />
                             </div>
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 blur-3xl rounded-full pointer-events-none" />
 
-                            <div className="relative z-10 p-6 sm:p-10 pt-12 pb-12">
-                                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 mb-6 shadow-sm">
-                                    <Gift size={16} className="text-white" />
-                                    <span className="text-[11px] font-bold uppercase tracking-wider text-white">{t('registry_hero_subtitle')}</span>
-                                </div>
+                            <div className="relative z-10 p-6 sm:p-8">
+                                <span className="inline-block text-xs font-bold text-teal-400 uppercase tracking-widest mb-3">
+                                    {t('registry_hero_subtitle')}
+                                </span>
 
-                                <h3 className="text-3xl sm:text-4xl font-bold mb-6 font-['Quicksand'] leading-none text-white drop-shadow-sm">
+                                <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-['Quicksand'] text-white leading-tight">
                                     {t('registry_hero_title')}
                                 </h3>
 
-                                <p className="text-white/90 font-medium leading-relaxed mb-8 max-w-[90%] text-sm sm:text-base">
+                                <p className="text-slate-300 text-sm leading-relaxed mb-8 font-light max-w-[95%]">
                                     {t('registry_hero_desc')}
                                 </p>
 
-                                <div className="flex flex-col gap-3 mb-10 bg-black/10 rounded-2xl p-4 border border-white/10">
-                                    <div className="flex items-center gap-3 text-sm font-medium text-white/95">
-                                        <div className="p-1 rounded-full bg-white/20 shrink-0">
-                                            <Check size={12} className="text-white" strokeWidth={4} />
+                                <div className="space-y-3 mb-8">
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
+                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
                                         </div>
-                                        <span>{t('registry_bullet_1')}</span>
+                                        <span className="text-sm text-slate-200">{t('registry_bullet_1')}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 text-sm font-medium text-white/95">
-                                        <div className="p-1 rounded-full bg-white/20 shrink-0">
-                                            <Check size={12} className="text-white" strokeWidth={4} />
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
+                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
                                         </div>
-                                        <span>{t('registry_bullet_2')}</span>
+                                        <span className="text-sm text-slate-200">{t('registry_bullet_2')}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 text-sm font-medium text-white/95">
-                                        <div className="p-1 rounded-full bg-white/20 shrink-0">
-                                            <Check size={12} className="text-white" strokeWidth={4} />
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
+                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
                                         </div>
-                                        <span>{t('registry_bullet_3')}</span>
+                                        <span className="text-sm text-slate-200">{t('registry_bullet_3')}</span>
                                     </div>
                                 </div>
 
-                                <div className="inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-2xl font-bold text-sm shadow-xl hover:bg-orange-50 transition-colors">
+                                <div className="inline-flex w-full items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-orange-900/20 hover:shadow-orange-500/20 transition-all">
                                     <span>{t('amazon_banner_cta')}</span>
-                                    <ExternalLink size={18} strokeWidth={2.5} />
+                                    <ExternalLink size={16} strokeWidth={2.5} />
                                 </div>
                             </div>
                         </a>

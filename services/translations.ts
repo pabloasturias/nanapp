@@ -197,17 +197,15 @@ export const translations = {
     amazon_banner_cta: "Crear Lista de Nacimiento",
     amazon_benefit_1: "Descuento de bienvenida",
     amazon_benefit_2: "Devoluciones gratuitas 365 días",
-    amazon_benefit_3: "Universal (cualquier tienda)",
-
-    // Resource Tabs
     tab_top50: "Top 50 Productos",
     tab_registry: "Lista Nacimiento",
-    registry_hero_title: "Tu Lista de Nacimiento",
-    registry_hero_subtitle: "Organiza, comparte y recibe",
-    registry_hero_desc: "La llegada de un bebé implica muchas cosas. La Lista de Nacimiento de Amazon te ayuda a organizar todo lo que necesitas, compartirlo con familia y amigos para que acierten con los regalos, y obtener beneficios exclusivos.",
-    registry_bullet_1: "Descuento de bienvenida por completar tu lista",
-    registry_bullet_2: "Devoluciones gratuitas extendidas (365 días)",
-    registry_bullet_3: "Añade productos de cualquier otra tienda web"
+    resource_subtitle: "Utilidades y herramientas prácticas",
+    registry_hero_title: "Lista de Nacimiento",
+    registry_hero_subtitle: "¿Te preguntan qué regalarte?",
+    registry_hero_desc: "Pónselo fácil a tu familia y amigos, incluso si están lejos. Crea tu lista desde el móvil, comparte el enlace y evita regalos repetidos. Además, Amazon te regala un 15% de descuento en tus compras finales.",
+    registry_bullet_1: "Facilita los regalos a familiares lejanos",
+    registry_bullet_2: "15% de descuento en productos elegibles",
+    registry_bullet_3: "Gestión total desde tu móvil"
   },
   en: {
     app_slogan: "sound of sleep",
@@ -399,17 +397,15 @@ export const translations = {
     amazon_banner_cta: "Create Baby Registry",
     amazon_benefit_1: "Welcome discount",
     amazon_benefit_2: "Free 365-day returns",
-    amazon_benefit_3: "Universal (add from any store)",
-
-    // Resource Tabs
     tab_top50: "Top 50 Products",
     tab_registry: "Baby Registry",
-    registry_hero_title: "Your Baby Registry",
-    registry_hero_subtitle: "Organize, share and receive",
-    registry_hero_desc: "A baby's arrival involves many things. The Amazon Baby Registry helps you organize everything you need, share it with family and friends so they get the gifts right, and get exclusive benefits.",
-    registry_bullet_1: "Welcome discount for completing your list",
-    registry_bullet_2: "Extended free returns (365 days)",
-    registry_bullet_3: "Add products from any other online store"
+    resource_subtitle: "Useful tools and practical resources",
+    registry_hero_title: "Baby Registry",
+    registry_hero_subtitle: "Are they asking what to buy?",
+    registry_hero_desc: "Make it easy for family and friends, even if they are far away. Create your list from your mobile, share the link, and avoid duplicate gifts. Plus, Amazon gives you a 15% discount on your final purchases.",
+    registry_bullet_1: "Makes gifting easy for distant relatives",
+    registry_bullet_2: "15% discount on eligible items",
+    registry_bullet_3: "Full management from your mobile"
   },
   fr: {
     app_slogan: "le son du repos",
