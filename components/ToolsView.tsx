@@ -7,6 +7,8 @@ import {
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
     Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X
 } from 'lucide-react';
+
+// Widget Imports
 import { BreastfeedingDashboard, BreastfeedingFull } from './tools/BreastfeedingWidget';
 import { DiaperDashboard, DiaperFull } from './tools/DiaperWidget';
 import { BottleDashboard, BottleFull } from './tools/BottleWidget';
@@ -18,6 +20,13 @@ import { TummyDashboard, TummyFull } from './tools/TummyWidget';
 import { BathDashboard, BathFull } from './tools/BathWidget';
 import { SolidsDashboard, SolidsFull } from './tools/SolidsWidget';
 import { PumpingDashboard, PumpingFull } from './tools/PumpingWidget';
+import { VaccinesDashboard, VaccinesFull } from './tools/VaccinesWidget';
+import { TeethingDashboard, TeethingFull } from './tools/TeethingWidget';
+import { MilestonesDashboard, MilestonesFull } from './tools/MilestonesWidget';
+import { NotesDashboard, NotesFull } from './tools/NotesWidget';
+import { AgendaDashboard, AgendaFull } from './tools/AgendaWidget';
+import { SoundDashboard, SoundFull } from './tools/SoundWidget';
+import { HeadDashboard, HeadFull } from './tools/HeadWidget';
 
 // Configuration for all 18 tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -64,6 +73,13 @@ export const ToolsView: React.FC = () => {
             case 'bath': return <BathFull onClose={() => setSelectedToolId(null)} />;
             case 'solids': return <SolidsFull onClose={() => setSelectedToolId(null)} />;
             case 'pumping': return <PumpingFull onClose={() => setSelectedToolId(null)} />;
+            case 'vaccines': return <VaccinesFull onClose={() => setSelectedToolId(null)} />;
+            case 'teething': return <TeethingFull onClose={() => setSelectedToolId(null)} />;
+            case 'milestones': return <MilestonesFull onClose={() => setSelectedToolId(null)} />;
+            case 'pediatrician_notes': return <NotesFull onClose={() => setSelectedToolId(null)} />;
+            case 'medical_agenda': return <AgendaFull onClose={() => setSelectedToolId(null)} />;
+            case 'sound_memories': return <SoundFull onClose={() => setSelectedToolId(null)} />;
+            case 'head_circumference': return <HeadFull onClose={() => setSelectedToolId(null)} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -191,7 +207,14 @@ export const ToolsView: React.FC = () => {
                                                                     tool.id === 'bath' ? <BathDashboard /> :
                                                                         tool.id === 'solids' ? <SolidsDashboard /> :
                                                                             tool.id === 'pumping' ? <PumpingDashboard /> :
-                                                                                "--"}
+                                                                                tool.id === 'vaccines' ? <VaccinesDashboard /> :
+                                                                                    tool.id === 'teething' ? <TeethingDashboard /> :
+                                                                                        tool.id === 'milestones' ? <MilestonesDashboard /> :
+                                                                                            tool.id === 'pediatrician_notes' ? <NotesDashboard /> :
+                                                                                                tool.id === 'medical_agenda' ? <AgendaDashboard /> :
+                                                                                                    tool.id === 'sound_memories' ? <SoundDashboard /> :
+                                                                                                        tool.id === 'head_circumference' ? <HeadDashboard /> :
+                                                                                                            "--"}
                                 </div>
                             </div>
 

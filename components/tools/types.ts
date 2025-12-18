@@ -112,3 +112,50 @@ export interface SolidsLog {
     amount?: 'taste' | 'meal';
 }
 
+// --- Batch 4: Lists & Memories ---
+
+export interface VaccineLog {
+    timestamp: number; // Date administered
+    vaccineName: string;
+    doseNumber?: number;
+}
+
+export interface MilestoneLog {
+    timestamp: number;
+    milestoneId: string; // 'smile', 'roll', etc
+    note?: string;
+}
+
+export interface TeethingLog {
+    timestamp: number;
+    toothId: string; // 'incisor_upper_left', etc
+}
+
+export interface NoteLog {
+    timestamp: number;
+    title?: string;
+    content: string;
+}
+
+export interface AppointmentLog {
+    timestamp: number; // Date of appointment
+    doctorName?: string;
+    reason: string;
+    completed: boolean;
+}
+
+export interface SoundLog {
+    timestamp: number;
+    title: string;
+    durationSeconds: number;
+    audioUrl?: string; // Blob URL? Note: LocalStorage has limit. 
+    // Storing audio in localStorage is BAD. 
+    // Realistically, for this demo, we might skip actual audio blob storage 
+    // or store very short clips as base64 (risk of quota exceeded).
+    // Better: Just "Log a memory" description for now, or use IndexedDB (too complex for this agent context?).
+    // I will try to implement a simple "Microphone" record that saves to a temporary blob URL 
+    // (active session only) but warns about persistence, 
+    // OR just use it as a "Quote/Sound Log" (Text describing the sound).
+    // Let's stick to "Transcript/Description" to be safe on storage, or very short base64.
+}
+
