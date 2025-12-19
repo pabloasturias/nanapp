@@ -25,9 +25,17 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           onClick={() => setActiveTab('tools')}
           className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tools' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <div className="relative w-[26px] h-[26px] flex items-center justify-center">
-            <Hammer size={18} className={`absolute ${activeTab === 'tools' ? 'drop-shadow-lg' : ''} -rotate-45 -translate-x-1 text-current`} strokeWidth={activeTab === 'tools' ? 2.5 : 2} />
-            <Wrench size={18} className={`absolute ${activeTab === 'tools' ? 'drop-shadow-lg' : ''} rotate-45 translate-x-1 text-current`} strokeWidth={activeTab === 'tools' ? 2.5 : 2} />
+          <div className="relative w-7 h-7 flex items-center justify-center">
+            <Hammer
+              size={22}
+              className={`absolute transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} -rotate-45 text-current transform-origin-center`}
+              strokeWidth={activeTab === 'tools' ? 2.5 : 2}
+            />
+            <Wrench
+              size={22}
+              className={`absolute transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} rotate-45 text-current transform-origin-center scale-x-[-1]`}
+              strokeWidth={activeTab === 'tools' ? 2.5 : 2}
+            />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_tools')}</span>
         </button>
