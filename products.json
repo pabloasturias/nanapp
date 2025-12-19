@@ -702,17 +702,17 @@
         },
         {
             "id": 51,
-            "name": "Rockit Rocker",
+            "name": "Rockit Rocker (Recargable)",
             "category": "travel",
             "shortDesc": "El cohete que mece el carrito automáticamente.",
-            "longDesc": "Mano de santo para paradas en semáforos o cafeterías. Se acopla a cualquier carrito y lo mece suavemente para que el bebé no se despierte. Silencioso y con velocidad regulable.",
+            "longDesc": "Mano de santo para paradas en semáforos o cafeterías. Se acopla a cualquier carrito y lo mece suavemente para que el bebé no se despierte. Silencioso, velocidad regulable y ahora recargable por USB.",
             "features": [
                 "Universal (cualquier cochecito)",
                 "Mecimiento suave",
-                "Silencioso",
+                "Recargable USB",
                 "Resistente al agua"
             ],
-            "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Carrito&tag=100bcb-21"
+            "affiliateLink": "https://www.amazon.es/dp/B0BNP1G2ZD?tag=100bcb-21"
         },
         {
             "id": 101,
@@ -1538,17 +1538,17 @@
         },
         {
             "id": 51,
-            "name": "Rockit Rocker",
+            "name": "Rockit Rocker (Rechargeable)",
             "category": "travel",
             "shortDesc": "The rocket that rocks the stroller automatically.",
-            "longDesc": "A lifesaver for stops at traffic lights or cafes. Attaches to any stroller and gently rocks it so baby doesn't wake up. Quiet and adjustable speed.",
+            "longDesc": "A lifesaver for stops at traffic lights or cafes. Attaches to any stroller and gently rocks it so baby doesn't wake up. Quiet, adjustable speed and now USB rechargeable.",
             "features": [
-                "Universal (cualquier cochecito)",
-                "Mecimiento suave",
-                "Silencioso",
-                "Resistente al agua"
+                "Universal (any stroller)",
+                "Gentle rocking",
+                "USB Rechargeable",
+                "Water resistant"
             ],
-            "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Carrito&tag=100bcb-21"
+            "affiliateLink": "https://www.amazon.es/dp/B0BNP1G2ZD?tag=100bcb-21"
         },
         {
             "id": 101,
