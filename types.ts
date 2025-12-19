@@ -35,8 +35,10 @@ export interface Product {
   id: number;
   name: string;
   category: string;
+  subcategory?: string;
   shortDesc: string;
   longDesc: string;
-  features: string[];
-  url: string;
+  features?: string[];
+  url?: string;
+  affiliateLink?: string;
 }

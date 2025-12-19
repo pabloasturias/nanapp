@@ -45,7 +45,8 @@ export function useSoundPreferences() {
                 setActiveSoundIds(prev => prev.filter(id => id !== soundId));
             }
         } else {
-            // Add
+            // Add (Limit to 8)
+            if (activeSoundIds.length >= 8) return;
             setActiveSoundIds(prev => [...prev, soundId]);
         }
     };

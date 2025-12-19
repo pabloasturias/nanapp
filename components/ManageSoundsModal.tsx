@@ -127,7 +127,10 @@ export const ManageSoundsModal: React.FC<ManageSoundsModalProps> = ({
                     {/* Available Sounds Section */}
                     {inactiveSoundsObj.length > 0 && (
                         <div>
-                            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 px-1 mt-4">{t('tool_available')}</h3>
+                            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 px-1 mt-4 flex justify-between">
+                                <span>{t('tool_available')}</span>
+                                {activeSoundsObj.length >= 8 && <span className="text-orange-400">Max 8</span>}
+                            </h3>
                             <div className="space-y-2">
                                 {inactiveSoundsObj.map(sound => (
                                     <div key={sound.id} className="flex items-center gap-3 bg-slate-800/20 p-3 rounded-xl border border-white/5 opacity-70 hover:opacity-100 transition-all">
@@ -139,7 +142,8 @@ export const ManageSoundsModal: React.FC<ManageSoundsModalProps> = ({
                                         </div>
                                         <button
                                             onClick={() => onToggleSound(sound.id)}
-                                            className="p-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 rounded-lg transition-colors"
+                                            disabled={activeSoundsObj.length >= 8}
+                                            className="p-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 rounded-lg transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                                             title="Add"
                                         >
                                             <Check size={16} />

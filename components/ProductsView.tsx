@@ -38,7 +38,7 @@ export const ProductsView: React.FC = () => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [activeCategory, setActiveCategory] = useState('all');
     const [activeAge, setActiveAge] = useState('all'); // For Toys filter
-    const [activeTab, setActiveTab] = useState<'products' | 'registry'>('products');
+    const [activeTab, setActiveTab] = useState<'products' | 'toys' | 'registry'>('products');
 
     // Select products for current language (fallback to 'en' or empty)
     // Memoize to avoid re-shuffling on every render unless language changes
@@ -50,17 +50,26 @@ export const ProductsView: React.FC = () => {
 
     // Filter
     const filteredProducts = useMemo(() => {
-        let filtered = activeCategory === 'all'
-            ? currentProducts
-            : currentProducts.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
-
-        // Age filter for toys
-        if (activeCategory === 'toys' && activeAge !== 'all') {
-            filtered = filtered.filter(p => p.subcategory === activeAge);
+        if (activeTab === 'toys') {
+            let toys = currentProducts.filter(p => p.category.toLowerCase() === 'toys');
+            if (activeAge !== 'all') {
+                toys = toys.filter(p => p.subcategory === activeAge);
+            }
+            return toys;
         }
 
-        return filtered;
-    }, [currentProducts, activeCategory, activeAge]);
+        // Top 50 Tab (Exclude toys)
+        if (activeTab === 'products') {
+            let filtered = currentProducts.filter(p => p.category.toLowerCase() !== 'toys');
+
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+            }
+            return filtered;
+        }
+
+        return [];
+    }, [currentProducts, activeCategory, activeAge, activeTab]);
 
     return (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative">
@@ -84,8 +93,8 @@ export const ProductsView: React.FC = () => {
                     <div className="flex bg-slate-800/50 p-1 rounded-2xl border border-white/5 relative">
                         {/* Selected Indicator Background */}
                         <div
-                            className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-slate-700/80 rounded-xl shadow-sm transition-all duration-300 ease-out border border-white/5
-                                ${activeTab === 'products' ? 'left-1' : 'left-[calc(50%+2px)]'}
+                            className={`absolute top-1 bottom-1 w-[calc(33.33%-4px)] bg-slate-700/80 rounded-xl shadow-sm transition-all duration-300 ease-out border border-white/5
+                                ${activeTab === 'products' ? 'left-1' : activeTab === 'toys' ? 'left-[calc(33.33%+2px)]' : 'left-[calc(66.66%+2px)]'}
                             `}
                         />
 
@@ -96,6 +105,12 @@ export const ProductsView: React.FC = () => {
                             {t('tab_top50')}
                         </button>
                         <button
+                            onClick={() => setActiveTab('toys')}
+                            className={`flex-1 relative z-10 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${activeTab === 'toys' ? 'text-purple-300' : 'text-slate-500 hover:text-slate-300'}`}
+                        >
+                            {t('cat_toys')}
+                        </button>
+                        <button
                             onClick={() => setActiveTab('registry')}
                             className={`flex-1 relative z-10 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${activeTab === 'registry' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
                         >
@@ -104,33 +119,35 @@ export const ProductsView: React.FC = () => {
                     </div>
                 </div>
 
-                {activeTab === 'products' ? (
+                {activeTab !== 'registry' ? (
                     <>
-                        {/* Category Chips */}
-                        <div className="px-4 mb-6 relative">
-                            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-gradient-r">
-                                {CATEGORIES.map(cat => (
-                                    <button
-                                        key={cat.id}
-                                        onClick={() => { setActiveCategory(cat.id); setActiveAge('all'); }}
-                                        className={`
-                                            flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all border
-                                            ${activeCategory === cat.id
-                                                ? 'bg-teal-500/20 border-teal-500/50 text-teal-300'
-                                                : 'bg-slate-800/50 border-white/5 text-slate-400 hover:bg-slate-800'}
-                                        `}
-                                    >
-                                        <cat.icon size={14} />
-                                        <span className="text-xs font-bold uppercase tracking-wide">{t(cat.translationKey as any)}</span>
-                                    </button>
-                                ))}
+                        {/* Category Chips (Only for Top 50) */}
+                        {activeTab === 'products' && (
+                            <div className="px-4 mb-6 relative">
+                                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-gradient-r">
+                                    {CATEGORIES.filter(c => c.id !== 'toys').map(cat => (
+                                        <button
+                                            key={cat.id}
+                                            onClick={() => setActiveCategory(cat.id)}
+                                            className={`
+                                                flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all border
+                                                ${activeCategory === cat.id
+                                                    ? 'bg-teal-500/20 border-teal-500/50 text-teal-300'
+                                                    : 'bg-slate-800/50 border-white/5 text-slate-400 hover:bg-slate-800'}
+                                            `}
+                                        >
+                                            <cat.icon size={14} />
+                                            <span className="text-xs font-bold uppercase tracking-wide">{t(cat.translationKey as any)}</span>
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {/* Age Filter for Toys */}
-                        {activeCategory === 'toys' && (
+                        {activeTab === 'toys' && (
                             <div className="px-4 mb-6 animate-[fade-in_0.2s_ease-out]">
-                                <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                                <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar justify-center">
                                     {['all', '0-6m', '6-12m', '1-2y', '2y+'].map(age => (
                                         <button
                                             key={age}
@@ -138,7 +155,7 @@ export const ProductsView: React.FC = () => {
                                             className={`
                                                 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border
                                                 ${activeAge === age
-                                                    ? 'bg-orange-500/20 border-orange-500/50 text-orange-300'
+                                                    ? 'bg-purple-500/20 border-purple-500/50 text-purple-300'
                                                     : 'bg-slate-800/30 border-white/5 text-slate-500 hover:text-slate-300'}
                                             `}
                                         >
@@ -149,7 +166,7 @@ export const ProductsView: React.FC = () => {
                             </div>
                         )}
 
-                        {/* Products List (No Numbering) */}
+                        {/* Products List */}
                         <div className="flex flex-col gap-3 px-4 pb-8 animate-[fade-in_0.3s_ease-out]">
                             {filteredProducts.map((product) => (
                                 <div
@@ -158,12 +175,10 @@ export const ProductsView: React.FC = () => {
                                     className="group relative bg-slate-900/40 backdrop-blur-md border border-white/5 rounded-[1.5rem] p-4 hover:bg-slate-800/60 transition-all duration-300 cursor-pointer active:scale-[0.98] overflow-hidden"
                                 >
                                     <div className="flex gap-4 relative z-10">
-
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between mb-1">
                                                 <div className="flex items-center gap-2">
                                                     <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
-                                                        {/* Use toLowerCase() for safe key generation */}
                                                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                                                             {t(`cat_${product.category.toLowerCase()}` as any)}
                                                         </span>
@@ -203,10 +218,8 @@ export const ProductsView: React.FC = () => {
                             rel="noopener noreferrer"
                             className="block relative overflow-hidden rounded-[2rem] bg-slate-800 border border-white/5 shadow-2xl group transition-all duration-300 hover:scale-[1.01] hover:border-white/10"
                         >
-                            {/* Simple Background Gradient */}
+                            {/* Content same as before */}
                             <div className="absolute inset-0 bg-gradient-to-b from-slate-700/20 to-transparent pointer-events-none" />
-
-                            {/* Subtle Deco */}
                             <div className="absolute -right-8 -bottom-8 opacity-[0.03] text-white rotate-12 pointer-events-none">
                                 <Gift size={240} strokeWidth={1} />
                             </div>
@@ -225,22 +238,17 @@ export const ProductsView: React.FC = () => {
                                 </p>
 
                                 <div className="space-y-3 mb-8">
+                                    {/* Bullets */}
                                     <div className="flex items-start gap-3">
-                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
-                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
-                                        </div>
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5"><Check size={12} className="text-teal-400" strokeWidth={3} /></div>
                                         <span className="text-sm text-slate-200">{t('registry_bullet_1')}</span>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
-                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
-                                        </div>
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5"><Check size={12} className="text-teal-400" strokeWidth={3} /></div>
                                         <span className="text-sm text-slate-200">{t('registry_bullet_2')}</span>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5">
-                                            <Check size={12} className="text-teal-400" strokeWidth={3} />
-                                        </div>
+                                        <div className="p-1 rounded-full bg-teal-500/10 shrink-0 mt-0.5"><Check size={12} className="text-teal-400" strokeWidth={3} /></div>
                                         <span className="text-sm text-slate-200">{t('registry_bullet_3')}</span>
                                     </div>
                                 </div>
@@ -255,82 +263,80 @@ export const ProductsView: React.FC = () => {
                 )}
             </div>
 
-            {/* Product Detail Modal */}
+            {/* Product Detail "Page" (Full Screen Overlay) */}
             {selectedProduct && (
-                <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm animate-[fade-in_0.2s_ease-out]" onClick={() => setSelectedProduct(null)}>
-                    <div
-                        className="bg-slate-900 w-full max-w-lg h-[92vh] sm:h-[85vh] rounded-t-[2.5rem] sm:rounded-[2.5rem] border-t sm:border border-white/10 shadow-2xl relative animate-[slide-up_0.3s_ease-out] flex flex-col"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        {/* Close Button - Always visible on top right */}
+                <div className="fixed inset-0 z-[100] bg-slate-900 animate-[slide-in-right_0.3s_ease-out] overflow-y-auto">
+                    {/* Header/Nav */}
+                    <div className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-xl px-4 py-4 flex items-center justify-between border-b border-white/5 shadow-lg">
                         <button
                             onClick={() => setSelectedProduct(null)}
-                            className="absolute top-4 right-4 z-50 p-2 bg-black/40 rounded-full text-white hover:bg-black/60 transition-colors backdrop-blur-md"
+                            className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
                         >
-                            <X size={24} />
+                            <div className="p-2 bg-slate-800 rounded-full group-hover:bg-slate-700 transition-colors">
+                                <ChevronRight size={20} className="rotate-180" />
+                            </div>
+                            <span className="font-bold text-sm uppercase tracking-wide">{t('back')}</span>
                         </button>
+                    </div>
 
-                        {/* Modal Header Image/Color - Scrollable with content but button is fixed above */}
-                        <div className="flex-1 overflow-y-auto pb-24">
-                            <div className="h-48 bg-gradient-to-br from-teal-900/40 to-slate-900 flex items-center justify-between px-8 relative overflow-hidden shrink-0">
-                                {/* Decor */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                    <div className="max-w-3xl mx-auto pb-32">
+                        <div className="h-72 bg-gradient-to-br from-teal-900/40 to-slate-900 flex items-center justify-between px-8 relative overflow-hidden shrink-0">
+                            {/* Decor */}
+                            <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/5 rounded-full blur-[50px] translate-y-1/4 -translate-x-1/4" />
+                        </div>
+
+                        <div className="px-6 sm:px-10 -mt-20 relative z-10">
+                            <div className="mb-8">
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-teal-500/30 backdrop-blur-md mb-6 shadow-xl">
+                                    <span className="text-teal-400">{getCategoryIcon(selectedProduct.category)}</span>
+                                    <span className="text-xs font-bold text-teal-100 uppercase tracking-wider">
+                                        {t(`cat_${selectedProduct.category.toLowerCase()}` as any)}
+                                    </span>
+                                </div>
+                                <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight font-['Quicksand'] mb-4 drop-shadow-sm">{selectedProduct.name}</h2>
+                                <p className="text-xl text-slate-400 font-light leading-snug">{selectedProduct.shortDesc}</p>
                             </div>
 
-                            <div className="px-8 -mt-12 relative z-10">
-                                <div className="mb-6">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-teal-500/20 backdrop-blur-md mb-3 shadow-lg">
-                                        <span className="text-teal-400">{getCategoryIcon(selectedProduct.category)}</span>
-                                        <span className="text-xs font-bold text-teal-100 uppercase tracking-wider">
-                                            {t(`cat_${selectedProduct.category.toLowerCase()}` as any)}
-                                        </span>
-                                    </div>
-                                    <h2 className="text-3xl font-bold text-orange-50 leading-none font-['Quicksand']">{selectedProduct.name}</h2>
-                                </div>
+                            <p className="text-slate-300 leading-relaxed mb-12 text-lg font-light">
+                                {selectedProduct.longDesc}
+                            </p>
 
+                            <div className="bg-slate-800/30 rounded-[2rem] p-8 border border-white/5 mb-12">
+                                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-white/5 pb-4 mb-6">Lo que lo hace especial</h4>
+                                <ul className="space-y-5">
+                                    {selectedProduct.features?.map((feature, idx) => (
+                                        <li key={idx} className="flex gap-4 text-base text-slate-200">
+                                            <div className="mt-1 p-1 bg-teal-500/20 rounded-full text-teal-400 shrink-0 h-fit">
+                                                <Check size={16} strokeWidth={3} />
+                                            </div>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-                                <p className="text-slate-300 leading-relaxed mb-8 text-sm font-light">
-                                    {selectedProduct.longDesc}
-                                </p>
-
-                                <div className="space-y-4 mb-8">
-                                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-white/5 pb-2">Lo que lo hace especial</h4>
-                                    <ul className="space-y-3">
-                                        {selectedProduct.features?.map((feature, idx) => (
-                                            <li key={idx} className="flex gap-3 text-sm text-slate-300">
-                                                <div className="mt-0.5 p-0.5 bg-teal-500/20 rounded-full text-teal-400 shrink-0 h-fit">
-                                                    <Check size={12} strokeWidth={3} />
-                                                </div>
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {/* Affiliate Links Section */}
-                                {selectedProduct.affiliateLink && (
-                                    <div className="bg-slate-800/30 rounded-2xl p-4 border border-white/5 mb-8">
-                                        <div className="flex items-center gap-2 mb-4 text-orange-200/80">
-                                            <ShoppingCart size={16} />
-                                            <span className="text-xs font-bold uppercase tracking-wider">Disponible Online</span>
-                                        </div>
-
+                            {/* Affiliate Links Section */}
+                            {selectedProduct.affiliateLink && (
+                                <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 via-slate-900/95 to-transparent z-40 flex justify-center">
+                                    <div className="w-full max-w-md">
                                         <a
                                             href={selectedProduct.affiliateLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center flex items-center justify-between bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-900/20 hover:shadow-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
+                                            className="w-full py-4 px-6 rounded-[1.5rem] font-bold text-lg text-center flex items-center justify-between bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-[0_0_25px_rgba(20,184,166,0.3)] hover:shadow-[0_0_35px_rgba(20,184,166,0.5)] active:scale-[0.98] transition-all duration-300 group"
                                         >
-                                            <span>{t('buy_amazon')}</span>
-                                            <ExternalLink size={16} className="opacity-70 group-hover:opacity-100" />
+                                            <span className="ml-2">{t('buy_amazon')}</span>
+                                            <div className="bg-white/20 p-2 rounded-full group-hover:scale-110 transition-transform">
+                                                <ExternalLink size={24} className="text-white" />
+                                            </div>
                                         </a>
-
-                                        <p className="text-[10px] text-center text-slate-600 mt-3">
+                                        <p className="text-[10px] text-center text-slate-500 mt-3 pb-2">
                                             {t('affiliate_disclaimer')}
                                         </p>
                                     </div>
-                                )}
-                            </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

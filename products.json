@@ -701,6 +701,20 @@
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
         },
         {
+            "id": 51,
+            "name": "Rockit Rocker",
+            "category": "travel",
+            "shortDesc": "El cohete que mece el carrito automáticamente.",
+            "longDesc": "Mano de santo para paradas en semáforos o cafeterías. Se acopla a cualquier carrito y lo mece suavemente para que el bebé no se despierte. Silencioso y con velocidad regulable.",
+            "features": [
+                "Universal (cualquier cochecito)",
+                "Mecimiento suave",
+                "Silencioso",
+                "Resistente al agua"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Carrito&tag=100bcb-21"
+        },
+        {
             "id": 101,
             "name": "Lamaze Freddie la Luciérnaga",
             "category": "toys",
@@ -1521,6 +1535,20 @@
                 "Ergonomic design"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=100bcb-21"
+        },
+        {
+            "id": 51,
+            "name": "Rockit Rocker",
+            "category": "travel",
+            "shortDesc": "El cohete que mece el carrito automáticamente.",
+            "longDesc": "Mano de santo para paradas en semáforos o cafeterías. Se acopla a cualquier carrito y lo mece suavemente para que el bebé no se despierte. Silencioso y con velocidad regulable.",
+            "features": [
+                "Universal (cualquier cochecito)",
+                "Mecimiento suave",
+                "Silencioso",
+                "Resistente al agua"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Carrito&tag=100bcb-21"
         },
         {
             "id": 101,
