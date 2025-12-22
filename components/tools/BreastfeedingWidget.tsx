@@ -110,7 +110,7 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
         setIsPaused(false);
         setIsTimerMode(false);
 
-        if (startTimeRef.current && duration > 5) {
+        if (startTimeRef.current && duration > 0) { // Save even short durations for testing
             addLog({
                 side,
                 durationSeconds: duration,

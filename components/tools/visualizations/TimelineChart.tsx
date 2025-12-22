@@ -21,37 +21,37 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24
 
     // Window definition
     const msIn24h = 24 * 60 * 60 * 1000;
-    const windowEnd = now;
-    const windowStart = now - msIn24h;
+    // We want 'Now' to be at ~90% of the chart so the latest bar is visible
+    const buffer = msIn24h * 0.1;
+    const windowEnd = now + buffer;
+    const windowStart = now - (msIn24h - buffer);
 
     // Filter events in window
     const activeEvents = useMemo(() => {
         return events.filter(e => {
-            const end = e.timestamp + (e.durationSeconds || 0) * 1000;
-            return e.timestamp >= windowStart && e.timestamp <= windowEnd; // Simplified overlap logic
+            // Simplified overlap logic
+            return e.timestamp >= windowStart;
         });
-    }, [events, windowStart, windowEnd]);
+    }, [events, windowStart]);
 
     // Calculate position (0 to 100%)
     const getPos = (ts: number) => {
         const p = ((ts - windowStart) / msIn24h) * 100;
-        return Math.max(0, Math.min(100, p));
+        return Math.max(0, Math.min(100, p)); // Clamp
     };
 
     const getWidth = (ts: number, durSec: number = 0) => {
         const durMs = durSec * 1000;
-        // Min width representation (e.g. 1% for instant events)
+        // Min width representation (e.g. 2% for instant events of ~30mins scope, but here 24h = 1440mins. 1% is 14mins)
+        // Let's set min width to 1.5% for visibility (~20 mins visual width)
         const w = (durMs / msIn24h) * 100;
-        return Math.max(0.5, w); // Min width 0.5%
+        return Math.max(1.5, w);
     };
 
-    // Ticks: Every 4 hours
-    const ticks = [];
-    for (let i = 0; i <= 24; i += 4) {
-        // i hours ago
-        const tickTime = windowEnd - (i * 60 * 60 * 1000);
-        ticks.push(tickTime);
-    }
+    // Ticks: Every 4 hours relevant to the window
+    // We want ticks at nice hours (00:00, 04:00, etc) OR just relative "Now", "-4h".
+    // Relative is easier.
+    const ticks = [0, 4, 8, 12, 16, 20];
 
     return (
         <div className="w-full select-none">
@@ -59,12 +59,14 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24
             <div className="relative h-24 bg-slate-900/50 rounded-xl border border-slate-800 overflow-hidden">
 
                 {/* Background Grid/Ticks */}
-                <div className="absolute inset-0 flex justify-between px-2 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none">
                     {/* Render grid lines manually based on % */}
-                    {[0, 4, 8, 12, 16, 20, 24].map(h => {
-                        const pos = 100 - (h / 24 * 100);
+                    {ticks.map(h => {
+                        // h hours ago from NOW.
+                        const ts = now - (h * 60 * 60 * 1000);
+                        const pos = getPos(ts);
                         return (
-                            <div key={h} className="absolute top-0 bottom-0 border-l border-slate-800 text-[9px] text-slate-600 pl-1" style={{ left: `${pos}%` }}>
+                            <div key={h} className="absolute top-0 bottom-0 border-l border-slate-800 text-[9px] text-slate-600 pl-1 flex flex-col justify-end pb-1" style={{ left: `${pos}%` }}>
                                 {h === 0 ? 'Ahora' : `-${h}h`}
                             </div>
                         );
