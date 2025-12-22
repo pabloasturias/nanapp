@@ -1,12 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { BookOpen, ChevronRight, X, ExternalLink, Check, Moon, Droplets, Plane, Sparkles, ShoppingCart, User, Heart, Gift, Gamepad2, ChevronLeft, Star } from 'lucide-react'; // Added ChevronLeft, Star
 import { useLanguage } from '../services/LanguageContext';
-import productsData from '../products.json';
 import { Product } from '../types';
-
-// Cast the JSON to the keyed structure
-const data = (productsData as any).default || productsData;
-const productsByLang = data as Record<string, Product[]>;
 
 // Helper to get icon by category
 const getCategoryIcon = (category: string) => {
@@ -41,12 +36,28 @@ export const ProductsView: React.FC = () => {
     const [currentView, setCurrentView] = useState<ViewMode>('menu');
     const [activeCategory, setActiveCategory] = useState('all');
     const [activeAge, setActiveAge] = useState('all'); // For Toys filter
+    const [products, setProducts] = useState<Product[]>([]);
+
+    // Load products dynamically
+    React.useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                // Dynamic import with Vite glob or direct import if path is known
+                // We use direct import construction which Vite supports if files exist
+                const module = await import(`../data/products/${language}.json`);
+                setProducts(module.default || module);
+            } catch (err) {
+                console.error(`Failed to load products for ${language}`, err);
+                setProducts([]);
+            }
+        };
+        loadProducts();
+    }, [language]);
 
     // Select products for current language
     const currentProducts = useMemo(() => {
-        const products = productsByLang[language] || productsByLang['en'] || [];
         return [...products].sort(() => Math.random() - 0.5);
-    }, [language]);
+    }, [products]);
 
     // Filter Logic
     const filteredProducts = useMemo(() => {
@@ -124,13 +135,13 @@ export const ProductsView: React.FC = () => {
 
                             <div className="space-y-6">
                                 <div>
-                                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Descripción</h3>
+                                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">{t('description_title')}</h3>
                                     <p className="text-slate-300 leading-relaxed text-base">{selectedProduct.longDesc}</p>
                                 </div>
 
                                 {selectedProduct.features && selectedProduct.features.length > 0 && (
                                     <div>
-                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Características</h3>
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">{t('features_title')}</h3>
                                         <ul className="space-y-3">
                                             {selectedProduct.features.map((feature, i) => (
                                                 <li key={i} className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-xl">
@@ -158,7 +169,7 @@ export const ProductsView: React.FC = () => {
                         <BookOpen size={24} />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">Recursos</h2>
+                        <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">{t('tab_resources')}</h2>
                         <p className="text-xs text-slate-400 font-medium tracking-wide">{t('resource_subtitle')}</p>
                     </div>
                 </div>
@@ -186,7 +197,7 @@ export const ProductsView: React.FC = () => {
                         </div>
                         <div>
                             <h3 className="text-xl font-bold text-white mb-1">{t('tab_top50')}</h3>
-                            <p className="text-sm text-slate-400">Los esenciales imprescindibles</p>
+                            <p className="text-sm text-slate-400">{t('top50_subtitle')}</p>
                         </div>
                     </div>
                 </button>
@@ -212,7 +223,7 @@ export const ProductsView: React.FC = () => {
                         </div>
                         <div>
                             <h3 className="text-xl font-bold text-white mb-1">{t('cat_toys')}</h3>
-                            <p className="text-sm text-slate-400">Juego y desarrollo (0-3 años)</p>
+                            <p className="text-sm text-slate-400">{t('toys_subtitle')}</p>
                         </div>
                     </div>
                 </button>
@@ -237,8 +248,8 @@ export const ProductsView: React.FC = () => {
                             </div>
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-white">Biblioteca para Padres</h3>
-                            <p className="text-xs text-slate-400">Libros esenciales de crianza</p>
+                            <h3 className="text-lg font-bold text-white">{t('books_title')}</h3>
+                            <p className="text-xs text-slate-400">{t('books_subtitle')}</p>
                         </div>
                     </div>
                 </button>
@@ -256,7 +267,7 @@ export const ProductsView: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold text-white">{t('tab_registry')}</h3>
-                                <p className="text-xs text-slate-400">Ideas para regalar</p>
+                                <p className="text-xs text-slate-400">{t('registry_subtitle')}</p>
                             </div>
                         </div>
                         <ChevronRight size={20} className="text-slate-500" />
@@ -282,7 +293,7 @@ export const ProductsView: React.FC = () => {
                     </span>
                 </button>
                 <h2 className="mt-2 text-xl font-bold text-white font-['Quicksand']">
-                    {currentView === 'top50' ? t('tab_top50') : currentView === 'toys' ? t('cat_toys') : currentView === 'books' ? 'Biblioteca' : t('tab_registry')}
+                    {currentView === 'top50' ? t('tab_top50') : currentView === 'toys' ? t('cat_toys') : currentView === 'books' ? t('cat_books') : t('tab_registry')}
                 </h2>
             </div>
 
@@ -376,7 +387,7 @@ export const ProductsView: React.FC = () => {
                                         <div className="flex items-center gap-2">
                                             <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
                                                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                                                    {t(`cat_${product.category.toLowerCase()}` as any) || (product.category === 'books' ? 'Libros' : product.category)}
+                                                    {t(`cat_${product.category.toLowerCase()}` as any) || product.category}
                                                 </span>
                                             </div>
                                         </div>
@@ -391,7 +402,7 @@ export const ProductsView: React.FC = () => {
                                     </p>
 
                                     <div className="flex items-center gap-1 text-xs font-bold text-teal-400/80 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                                        Ver detalles <ChevronRight size={14} />
+                                        {t('see_details')} <ChevronRight size={14} />
                                     </div>
                                 </div>
                             </div>
