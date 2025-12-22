@@ -56,7 +56,9 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                             <h3 className="text-orange-50 font-bold mb-4 font-serif italic text-lg">Dedicado a...</h3>
 
                             <p className="mb-4">
-                                A todas las madres y padres que buscan un momento de calma.
+                                A Sara, Pili y Aurora.
+                                <br /><br />
+                                Y a todas las madres y padres que buscan un momento de calma.
                             </p>
                         </div>
 
