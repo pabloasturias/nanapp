@@ -1551,6 +1551,526 @@
             "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Rechargeable&tag=100bcb-21"
         },
         {
+            "id": 106,
+            "name": "Móvil Montessori Munari",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Seguimiento visual para recién nacidos.",
+            "longDesc": "El primer móvil Montessori. Formas geométricas de alto contraste en blanco y negro equilibradas en una esfera de cristal para reflejar la luz. Perfecto para desarrollar el enfoque y seguimiento.",
+            "features": [
+                "Alto contraste",
+                "Seguimiento visual",
+                "Movimiento calmante",
+                "Clásico Montessori"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Munari+Mobile&tag=100bcb-21"
+        },
+        {
+            "id": 107,
+            "name": "Tarjetas Alto Contraste",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Estimulación visual 0-3 meses.",
+            "longDesc": "Tarjetas con patrones en blanco y negro diseñadas para la visión en desarrollo del bebé. Estimula el crecimiento cerebral y la atención visual durante el tiempo boca abajo.",
+            "features": [
+                "Estimulación visual",
+                "Ayuda tummy time",
+                "Cartón resistente",
+                "Desarrollo cerebral"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=High+Contrast+Baby+Cards&tag=100bcb-21"
+        },
+        {
+            "id": 108,
+            "name": "Gimnasio de Madera",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Fomenta el alcance y agarre.",
+            "longDesc": "Estructura simple de madera para colgar móviles táctiles. Promueve la libertad de movimiento y la concentración sin la sobreestimulación de juguetes a pilas.",
+            "features": [
+                "Madera natural",
+                "Base estable",
+                "Fomenta alcance",
+                "Minimalista"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Baby+Play+Gym&tag=100bcb-21"
+        },
+        {
+            "id": 109,
+            "name": "Discos de Agarre",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Primer juguete de transferencia mano a mano.",
+            "longDesc": "Dos discos de madera unidos. La forma única anima al bebé a pasar el objeto de una mano a otra y rotar sus muñecas.",
+            "features": [
+                "Rotación muñeca",
+                "Transferencia manual",
+                "Destreza agarre",
+                "Madera natural"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Interlocking+Discs&tag=100bcb-21"
+        },
+        {
+            "id": 110,
+            "name": "Rodari (Sonajero Rodante)",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Incentiva el seguimiento auditivo.",
+            "longDesc": "Un cilindro con un cascabel dentro. Al rodar, emite un sonido agradable, animando al bebé a girar la cabeza y eventualmente a gatear hacia él.",
+            "features": [
+                "Seguimiento auditivo",
+                "Incentiva movimiento",
+                "Barrotes madera",
+                "Sonido agradable"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Rolling+Bell+Rattle&tag=100bcb-21"
+        },
+        {
+            "id": 111,
+            "name": "Set Pelotas Sensoriales",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Variedad táctil para exploración.",
+            "longDesc": "Un set de pelotas con diferentes texturas, tamaños y pesos. Perfecto para la exploración sensorial y desarrollar la fuerza de agarre.",
+            "features": [
+                "Texturas variadas",
+                "Libre BPA",
+                "Juego sensorial",
+                "Agarre fácil"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Baby+Sensory+Balls+Textured&tag=100bcb-21"
+        },
+        {
+            "id": 112,
+            "name": "Sonajeros de Muñeca",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Descubriendo manos y pies.",
+            "longDesc": "Sonajeros suaves que se ajustan a muñecas o tobillos. Ayuda al bebé a descubrir sus propias extremidades y entender que él controla el movimiento que causa sonido.",
+            "features": [
+                "Conciencia corporal",
+                "Tela suave",
+                "Causa-efecto",
+                "Feedback auditivo"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Wrist+Rattles&tag=100bcb-21"
+        },
+        {
+            "id": 113,
+            "name": "Caja de Permanencia",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Juguete cognitivo Montessori clásico.",
+            "longDesc": "Caja de madera con agujero y bandeja. El bebé tira la bola y reaparece. Enseña que los objetos siguen existiendo aunque no se vean (permanencia del objeto).",
+            "features": [
+                "Permanencia objeto",
+                "Coord. ojo-mano",
+                "Lógica",
+                "Satisfacción"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Object+Permanence+Box&tag=100bcb-21"
+        },
+        {
+            "id": 114,
+            "name": "Tambor Giratorio",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Fortaleciendo muñeca y enfoque color.",
+            "longDesc": "Un tambor giratorio con colores y espejo. Hacerlo girar requiere un movimiento de muñeca específico y produce recompensa visual y auditiva.",
+            "features": [
+                "Músculo muñeca",
+                "Seguimiento visual",
+                "Causa-efecto",
+                "Interactivo"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Spinning+Drum&tag=100bcb-21"
+        },
+        {
+            "id": 115,
+            "name": "Huevo en Copa",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Movimientos precisos de mano.",
+            "longDesc": "Un huevo de madera y una copa a medida. Poner el huevo en la copa y sacarlo refina las habilidades de agarre y soltado.",
+            "features": [
+                "Agarre y soltado",
+                "Motricidad fina",
+                "Madera natural",
+                "Enfoque simplista"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Egg+Cup&tag=100bcb-21"
+        },
+        {
+            "id": 116,
+            "name": "Cesta de los Tesoros",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Juego heurístico con objetos reales.",
+            "longDesc": "Una cesta baja llena de objetos seguros y cotidianos de diversos materiales (madera, metal, cuero, cepillo). Fomenta la exploración independiente.",
+            "features": [
+                "Variedad sensorial",
+                "Curiosidad",
+                "Objetos reales",
+                "Juego abierto"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Heuristic+Play+Treasure+Basket&tag=100bcb-21"
+        },
+        {
+            "id": 117,
+            "name": "Torre de Bolas (Rampa)",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Seguimiento de objetos móviles.",
+            "longDesc": "Una torre de madera por donde caen bolas en zigzag. Hipnótico para bebés, enseña gravedad y seguimiento visual de objetos en movimiento.",
+            "features": [
+                "Seguimiento visual",
+                "Previsibilidad",
+                "Enfoque",
+                "Lección gravedad"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Ball+Tracker+Run&tag=100bcb-21"
+        },
+        {
+            "id": 118,
+            "name": "Juguete Pop-Up",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Mecanismo de empujar, girar, conmutar.",
+            "longDesc": "Clásico de causa-efecto donde diferentes botones (pulsar, interruptor, giro) hacen saltar animales. Genial para fuerza de dedos y resolución de problemas.",
+            "features": [
+                "Fuerza dedos",
+                "Lógica mecanismo",
+                "Elemento sorpresa",
+                "Colores"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Galt+Toys+Pop+Up&tag=100bcb-21"
+        },
+        {
+            "id": 119,
+            "name": "Puzzle Forma Única",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "El primer paso a los puzzles.",
+            "longDesc": "Un puzzle de una sola pieza (círculo habitualmente) con pomo grande. Se centra en el concepto de encajar una forma en un hueco específico.",
+            "features": [
+                "Pomo grande",
+                "Encaje formas",
+                "Sensación éxito",
+                "Control motor"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Single+Shape+Puzzle&tag=100bcb-21"
+        },
+        {
+            "id": 120,
+            "name": "Triángulo Pikler",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Estructura de escalada segura indoor.",
+            "longDesc": "Un triángulo de escalada de madera. Permite a los niños explorar sus límites físicos, equilibrio y habilidades de trepa en un entorno seguro.",
+            "features": [
+                "Motricidad gruesa",
+                "Evaluación riesgo",
+                "Madera robusta",
+                "Plegable"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Pikler+Triangle+Foldable&tag=100bcb-21"
+        },
+        {
+            "id": 121,
+            "name": "Banco de Golpear",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Coordinación y fuerza.",
+            "longDesc": "Banco de madera con clavijas y un martillo. Golpear las clavijas requiere coordinación ojo-mano y permite practicar la fuerza controlada.",
+            "features": [
+                "Coord. ojo-mano",
+                "Fuerza brazo",
+                "Juego repetitivo",
+                "Duradero"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Hammering+Bench&tag=100bcb-21"
+        },
+        {
+            "id": 122,
+            "name": "Arcoíris Waldorf",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Juguete apilable de final abierto.",
+            "longDesc": "El famoso arcoíris. Puede apilarse, usarse como túneles, puentes o cercas. Fomenta la creatividad y la comprensión del equilibrio.",
+            "features": [
+                "Creatividad",
+                "Equilibrio",
+                "Colores vibrantes",
+                "Decorativo"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Grimms+Wooden+Rainbow&tag=100bcb-21"
+        },
+        {
+            "id": 123,
+            "name": "Cubo Clasificador Formas",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Resolución de problemas clásica.",
+            "longDesc": "Cubo de madera con orificios para diferentes formas geométricas. Un estándar para aprender formas y resolución de problemas por ensayo y error.",
+            "features": [
+                "Reconocimiento formas",
+                "Resolución problemas",
+                "Motricidad fina",
+                "Juguete clásico"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Shape+Sorting+Cube&tag=100bcb-21"
+        },
+        {
+            "id": 124,
+            "name": "Caja de Monedas",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Refinando motricidad fina.",
+            "longDesc": "Una caja con ranura para monedas/fichas. Insertar las monedas requiere orientación precisa y control de muñeca. Muy satisfactorio para toddlers.",
+            "features": [
+                "Precisión",
+                "Repetición",
+                "Recuperación cajón",
+                "Concentración"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Coin+Box&tag=100bcb-21"
+        },
+        {
+            "id": 125,
+            "name": "Figuras Animales Realistas",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Vocabulario y emparejamiento.",
+            "longDesc": "Figuras de animales de alta calidad y realismo (tipo Schleich). Genial para aprender nombres, sonidos y emparejar con tarjetas de imágenes.",
+            "features": [
+                "Detalle realista",
+                "Vocabulario",
+                "Juego imaginativo",
+                "Juego emparejar"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Schleich+Farm+Animals&tag=100bcb-21"
+        },
+        {
+            "id": 126,
+            "name": "Set Musical Madera",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Ritmo y exploración auditiva.",
+            "longDesc": "Instrumentos reales (xilófono, maracas, pandereta) hechos de madera. Introducción al ritmo y la música sin sonidos electrónicos.",
+            "features": [
+                "Iniciación musical",
+                "Ritmo",
+                "Materiales naturales",
+                "Sentido auditivo"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Musical+Instruments+Toddler&tag=100bcb-21"
+        },
+        {
+            "id": 127,
+            "name": "Busy Board (Tabla Actividades)",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Cerraduras y pestillos de vida real.",
+            "longDesc": "Un tablero con cremalleras, pestillos, interruptores y ruedas. Forma segura de satisfacer la curiosidad sobre cómo funcionan los mecanismos cotidianos.",
+            "features": [
+                "Motricidad fina",
+                "Mecánica",
+                "Resolución problemas",
+                "Ideal viaje"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Busy+Board&tag=100bcb-21"
+        },
+        {
+            "id": 128,
+            "name": "Bloques Magnéticos",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Construcción 3D y geometría.",
+            "longDesc": "Piezas magnéticas translúcidas que se unen. Esencial para aprender formas 3D, magnetismo y creatividad arquitectónica.",
+            "features": [
+                "Construcción 3D",
+                "Magnetismo",
+                "Mezcla colores",
+                "STEAM creativo"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles+Set&tag=100bcb-21"
+        },
+        {
+            "id": 129,
+            "name": "Set Limpieza Madera",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Habilidades de vida práctica.",
+            "longDesc": "Escoba, fregona y plumero tamaño niño. A los toddlers les encanta imitar a los adultos y ayudar. Fomenta responsabilidad y coordinación grosera.",
+            "features": [
+                "Herramientas funcionales",
+                "Responsabilidad",
+                "Motricidad gruesa",
+                "Juego imitación"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cleaning+Set&tag=100bcb-21"
+        },
+        {
+            "id": 130,
+            "name": "Tabla Curva Equilibrio",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Equilibrio y juego abierto.",
+            "longDesc": "Una tabla de madera curva. Es una barra de equilibrio, un puente, un tobogán, una cuna o una silla. Los límites son solo la imaginación.",
+            "features": [
+                "Sistema vestibular",
+                "Equilibrio",
+                "Imaginación",
+                "Madera robusta"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Wobble+Balance+Board&tag=100bcb-21"
+        },
+        {
+            "id": 131,
+            "name": "Fruta para Cortar",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Motricidad fina y habilidades vida.",
+            "longDesc": "Frutas de madera unidas por velcro que se pueden 'cortar' con un cuchillo de madera. Sonido satisfactorio y genial para fuerza de mano.",
+            "features": [
+                "Fuerza mano",
+                "Vida práctica",
+                "Alimentación sana",
+                "Sonido velcro"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cutting+Fruit&tag=100bcb-21"
+        },
+        {
+            "id": 132,
+            "name": "Cuentas para Ensartar",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Concentración y destreza.",
+            "longDesc": "Cuentas grandes de madera y un cordón. Ensartarlas requiere alta concentración y desarrolla la pinza para la escritura posterior.",
+            "features": [
+                "Enfoque",
+                "Pinza digital",
+                "Motricidad fina",
+                "Secuenciación"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Lacing+Beads&tag=100bcb-21"
+        },
+        {
+            "id": 133,
+            "name": "Bloques de Patrones",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Geometría y patrones.",
+            "longDesc": "Formas geométricas para crear patrones o dibujos. Introducción a conceptos matemáticos como simetría, fracciones y visión espacial.",
+            "features": [
+                "Geometría",
+                "Simetría",
+                "Resolución puzzles",
+                "Relajante"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Pattern+Blocks&tag=100bcb-21"
+        },
+        {
+            "id": 134,
+            "name": "Acuarelas No Tóxicas",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Expresión artística.",
+            "longDesc": "Acuarelas no tóxicas y papel de buena calidad. Permite experimentar con la mezcla de colores y el movimiento fluido. Arte de proceso sobre producto.",
+            "features": [
+                "Creatividad",
+                "Teoría color",
+                "Motricidad fina",
+                "Autoexpresión"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Non+Toxic+Watercolor+Set+Kids&tag=100bcb-21"
+        },
+        {
+            "id": 135,
+            "name": "Bicicleta de Equilibrio",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Coordinación antes de pedalear.",
+            "longDesc": "Una bici sin pedales. Enseña equilibrio y dirección primero, haciendo la transición a bici real mucho más fácil que los ruedines.",
+            "features": [
+                "Equilibrio",
+                "Coordinación",
+                "Juego exterior",
+                "Confianza"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Kinderkraft+Balance+Bike&tag=100bcb-21"
+        },
+        {
+            "id": 200,
+            "name": "El cerebro del niño",
+            "category": "books",
+            "shortDesc": "Estrategias revolucionarias para nutrir la mente de tu hijo.",
+            "longDesc": "Daniel J. Siegel y Tina Payne Bryson ofrecen 12 estrategias clave para fomentar el desarrollo cerebral saludable, llevando a niños más tranquilos y felices.",
+            "features": [
+                "Neurociencia",
+                "Estrategias prácticas",
+                "Inteligencia emocional",
+                "Bestseller"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=El+Cerebro+del+Niño+Siegel&tag=100bcb-21"
+        },
+        {
+            "id": 201,
+            "name": "Cómo hablar para que sus hijos le escuchen",
+            "category": "books",
+            "shortDesc": "La guía definitiva de comunicación.",
+            "longDesc": "Adele Faber y Elaine Mazlish proporcionan métodos prácticos y respetuosos para resolver conflictos comunes y sentar bases de relación duraderas.",
+            "features": [
+                "Comunicación",
+                "Resolución conflictos",
+                "Crianza respetuosa",
+                "Clásico"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Como+hablar+para+que+hijos+escuchen&tag=100bcb-21"
+        },
+        {
+            "id": 202,
+            "name": "Disciplina sin lágrimas",
+            "category": "books",
+            "shortDesc": "Disciplina sin caos.",
+            "longDesc": "Siegel y Bryson destacan el vínculo entre el desarrollo neurológico del niño y la forma en que los padres reaccionan ante la mala conducta.",
+            "features": [
+                "Disciplina",
+                "Basado en cerebro",
+                "Conexión",
+                "Calma"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Disciplina+Sin+Lagrimas&tag=100bcb-21"
+        },
+        {
+            "id": 203,
+            "name": "El niño Montessori",
+            "category": "books",
+            "shortDesc": "Convierte tu hogar en un paraíso Montessori.",
+            "longDesc": "Simone Davies muestra cómo convertir la vida con un niño pequeño en un tiempo rico y gratificante de curiosidad, aprendizaje, respeto y descubrimiento.",
+            "features": [
+                "Montessori en casa",
+                "Guía toddlers",
+                "Ilustraciones bellas",
+                "Práctico"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=El+Niño+Montessori&tag=100bcb-21"
+        },
+        {
+            "id": 204,
+            "name": "Bésame mucho",
+            "category": "books",
+            "shortDesc": "Carlos González y la defensa de la crianza natural.",
+            "longDesc": "Una guía pediátrica que enfatiza que los niños son buenos, no egoístas y no manipulan. Una llamada al afecto y a la respuesta sensible.",
+            "features": [
+                "Crianza con apego",
+                "Autor pediatra",
+                "Tranquilizador",
+                "Orientado al amor"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Besame+Mucho+Carlos+Gonzalez&tag=100bcb-21"
+        },
+        {
             "id": 101,
             "name": "Lamaze Freddie the Firefly",
             "category": "toys",
