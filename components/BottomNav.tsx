@@ -28,7 +28,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           <div className="relative w-7 h-7 flex items-center justify-center">
             <Wrench
               size={24}
-              className={`transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} rotate-90 text-current transform-origin-center`}
+              className={`transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} -rotate-45 text-current transform-origin-center`}
               strokeWidth={activeTab === 'tools' ? 2.5 : 2}
             />
           </div>

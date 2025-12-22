@@ -89,16 +89,7 @@ export const ProductsView: React.FC = () => {
                 </div>
 
                 <div className="max-w-3xl mx-auto pb-32">
-                    <div className="h-40 bg-gradient-to-br from-teal-900/40 to-slate-900 flex items-center justify-center relative overflow-hidden shrink-0">
-                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-400 via-slate-900 to-slate-900" />
-                        <div className="relative z-10 text-center">
-                            <div className="w-16 h-16 mx-auto bg-slate-800/80 rounded-2xl flex items-center justify-center shadow-xl border border-white/10 text-teal-300 mb-2 mt-4">
-                                {React.cloneElement(getCategoryIcon(selectedProduct.category) as React.ReactElement, { size: 32 })}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="px-6 -mt-10 relative z-10">
+                    <div className="px-6 pt-6 relative z-10">
                         <div className="bg-slate-900/80 backdrop-blur-md rounded-[2rem] border border-white/5 p-6 shadow-2xl">
                             <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-teal-500/10 border border-teal-500/20">
                                 <span className="text-xs font-bold text-teal-300 uppercase tracking-widest">
