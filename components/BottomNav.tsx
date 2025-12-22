@@ -48,7 +48,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tips' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <BookOpen size={26} strokeWidth={activeTab === 'tips' ? 2.5 : 2} className={activeTab === 'tips' ? 'drop-shadow-lg' : ''} />
-          <span className="text-[10px] font-bold uppercase tracking-wide">Recursos</span>
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_resources')}</span>
         </button>
       </div>
     </div>
