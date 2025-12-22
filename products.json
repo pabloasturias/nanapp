@@ -2069,602 +2069,603 @@
                 "Orientado al amor"
             ],
             "affiliateLink": "https://www.amazon.es/s?k=Besame+Mucho+Carlos+Gonzalez&tag=100bcb-21"
+        }
+    ],
+    "en": [
+        {
+            "id": 101,
+            "name": "Lamaze Freddie the Firefly",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Complete sensory toy for early development.",
+            "longDesc": "Stimulates sight, sound, and touch. Wings with different textures, self-discovery mirror, rattles, and teether. The perfect stroller toy.",
+            "features": [
+                "Visual stimulation",
+                "Teether included",
+                "Universal clip",
+                "Varied textures"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie+The+Firefly&tag=100bcb-21"
         },
-        "en": [
-            {
-                "id": 101,
-                "name": "Lamaze Freddie the Firefly",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Complete sensory toy for early development.",
-                "longDesc": "Stimulates sight, sound, and touch. Wings with different textures, self-discovery mirror, rattles, and teether. The perfect stroller toy.",
-                "features": [
-                    "Visual stimulation",
-                    "Teether included",
-                    "Universal clip",
-                    "Varied textures"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie+The+Firefly&tag=100bcb-21"
-            },
-            {
-                "id": 102,
-                "name": "Manhattan Toy Winkel",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "The maze-like rattle and teether loop.",
-                "longDesc": "Easy to grasp for tiny hands. Its soft color tubes can be cooled in the fridge to soothe gums. Mesmerizing for babies.",
-                "features": [
-                    "Easy grip",
-                    "Fridge safe",
-                    "Motor development",
-                    "BPA Free"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=100bcb-21"
-            },
-            {
-                "id": 103,
-                "name": "VTech Wiggle & Crawl Ball",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Encourages baby to chase and crawl.",
-                "longDesc": "Moves on its own randomly encouraging baby to follow. Lights, songs, and animals teach basic vocabulary while developing gross motor skills.",
-                "features": [
-                    "Self-moving",
-                    "Lights & sounds",
-                    "Encourages crawling",
-                    "Interactive"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=VTech+Wiggle+Crawl+Ball&tag=100bcb-21"
-            },
-            {
-                "id": 104,
-                "name": "Mushie Stacking Cups",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Nordic style for fine motor skills.",
-                "longDesc": "Danish design stacking cups in soft colors. Ideal for towers, bath time, or the beach. Helps hand-eye coordination without overstimulating.",
-                "features": [
-                    "Nordic design",
-                    "BPA/PVC Free",
-                    "Open-ended play",
-                    "Multi-use"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=100bcb-21"
-            },
-            {
-                "id": 105,
-                "name": "Mega Bloks First Builders",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Giant blocks for little builders.",
-                "longDesc": "The ideal first building set. Large blocks impossible to swallow and easy to snap together/apart. Fosters creativity and fine motor skills.",
-                "features": [
-                    "Safe size",
-                    "Easy fit",
-                    "Storage bag",
-                    "Endless creativity"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+First+Builders&tag=100bcb-21"
-            },
-            {
-                "id": 106,
-                "name": "Montessori Munari Mobile",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Visual tracking for newborns.",
-                "longDesc": "The first Montessori mobile. High contrast black and white geometric shapes balanced on a glass sphere to reflect light. Perfect for developing focus and tracking.",
-                "features": [
-                    "High contrast",
-                    "Visual tracking",
-                    "Calming movement",
-                    "Montessori classic"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Munari+Mobile&tag=100bcb-21"
-            },
-            {
-                "id": 107,
-                "name": "High Contrast Cards",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Visual stimulation for 0-3 months.",
-                "longDesc": "Black and white patterned cards designed for baby's developing vision. Stimulates brain growth and visual attention during tummy time.",
-                "features": [
-                    "Visual stimulation",
-                    "Tummy time aid",
-                    "Durable card",
-                    "Brain development"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=High+Contrast+Baby+Cards&tag=100bcb-21"
-            },
-            {
-                "id": 108,
-                "name": "Wooden Play Gym",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Encourages reaching and grasping.",
-                "longDesc": "Simple wooden frame to hang tactile mobiles. Promotes freedom of movement and concentration without overstimulation required by battery toys.",
-                "features": [
-                    "Natural wood",
-                    "Stable base",
-                    "Encourages reaching",
-                    "Minimalist"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Baby+Play+Gym&tag=100bcb-21"
-            },
-            {
-                "id": 109,
-                "name": "Interlocking Discs",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "First hand-to-hand transfer toy.",
-                "longDesc": "Two wooden discs joined together. The unique shape encourages the baby to transfer the object from one hand to the other and rotate their wrists.",
-                "features": [
-                    "Wrist rotation",
-                    "Hand transfer",
-                    "Grasping skill",
-                    "Natural wood"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Interlocking+Discs&tag=100bcb-21"
-            },
-            {
-                "id": 110,
-                "name": "Rolling Bell Rattle",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Encourages auditory tracking.",
-                "longDesc": "A cylinder with a bell inside. When rolled, it makes a pleasant sound, encouraging the baby to turn their head and eventually crawl towards it.",
-                "features": [
-                    "Auditory tracking",
-                    "Encourages movement",
-                    "Wooden bars",
-                    "Pleasant sound"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Rolling+Bell+Rattle&tag=100bcb-21"
-            },
-            {
-                "id": 111,
-                "name": "Sensory Balls Set",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Tactile variety for exploration.",
-                "longDesc": "A set of balls with different textures, sizes, and weights. Perfect for sensory exploration and developing grasping strength.",
-                "features": [
-                    "Varied textures",
-                    "BPA Free",
-                    "Sensory play",
-                    "Easy grip"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Baby+Sensory+Balls+Textured&tag=100bcb-21"
-            },
-            {
-                "id": 112,
-                "name": "Wrist Rattles",
-                "category": "toys",
-                "subcategory": "0-6m",
-                "shortDesc": "Discovering hands and feet.",
-                "longDesc": "Soft rattles that attach to wrists or ankles. Helps the baby discover their own limbs and understand that they control movement causing sound.",
-                "features": [
-                    "Body awareness",
-                    "Soft fabric",
-                    "Cause & effect",
-                    "Auditory feedback"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Wrist+Rattles&tag=100bcb-21"
-            },
-            {
-                "id": 113,
-                "name": "Object Permanence Box",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Classic Montessori cognitive toy.",
-                "longDesc": "A wooden box with a hole and tray. Baby drops the ball and it reappears. Teaches that objects still exist even when unseen (object permanence).",
-                "features": [
-                    "Object permanence",
-                    "Hand-eye coordination",
-                    "Logic skill",
-                    "Satisfaction"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Object+Permanence+Box&tag=100bcb-21"
-            },
-            {
-                "id": 114,
-                "name": "Spinning Drum",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Building wrist strength and color focus.",
-                "longDesc": "A rotating drum with colors and mirror. Spinning it requires a specific wrist movement and produces visual and auditory reward.",
-                "features": [
-                    "Wrist muscle",
-                    "Visual tracking",
-                    "Cause & effect",
-                    "Interactive"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Spinning+Drum&tag=100bcb-21"
-            },
-            {
-                "id": 115,
-                "name": "Egg in Cup",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Precise hand movements.",
-                "longDesc": "A wooden egg and a matching cup. Putting the egg in the cup and taking it out refines grasp and release skills.",
-                "features": [
-                    "Grasp release",
-                    "Fine motor",
-                    "Natural wood",
-                    "Simplistic focus"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Egg+Cup&tag=100bcb-21"
-            },
-            {
-                "id": 116,
-                "name": "Treasure Basket",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Heuristic play with real objects.",
-                "longDesc": "A low basket filled with safe, everyday objects of various materials (wood, metal, leather, brush). Encourages independent exploration.",
-                "features": [
-                    "Sensory variety",
-                    "Curiosity",
-                    "Real world items",
-                    "Open play"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Heuristic+Play+Treasure+Basket&tag=100bcb-21"
-            },
-            {
-                "id": 117,
-                "name": "Ball Tracker Run",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Tracking moving objects.",
-                "longDesc": "A wooden tower where balls zigzag down. Mesmerizing for babies, teaching gravity and tracking moving objects visually.",
-                "features": [
-                    "Visual tracking",
-                    "Predictability",
-                    "Focus",
-                    "Gravity lesson"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Ball+Tracker+Run&tag=100bcb-21"
-            },
-            {
-                "id": 118,
-                "name": "Pop-Up Toy",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "Push, turn, toggle mechanism.",
-                "longDesc": "Classic cause-and-effect toy where different buttons (push, switch, turn) make animals pop up. Great for finger strength and problem solving.",
-                "features": [
-                    "Finger strength",
-                    "Mechanism logic",
-                    "Surprise element",
-                    "Color matching"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Galt+Toys+Pop+Up&tag=100bcb-21"
-            },
-            {
-                "id": 119,
-                "name": "Single Shape Puzzle",
-                "category": "toys",
-                "subcategory": "6-12m",
-                "shortDesc": "First step to puzzles.",
-                "longDesc": "A puzzle with just one piece (usually a circle) and a large knob. Focuses on the concept of fitting a shape into a specific hole.",
-                "features": [
-                    "Large knob",
-                    "Shape matching",
-                    "Success feeling",
-                    "Motor control"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Single+Shape+Puzzle&tag=100bcb-21"
-            },
-            {
-                "id": 120,
-                "name": "Pikler Triangle",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Safe indoor climbing structure.",
-                "longDesc": "A wooden climbing triangle. Allows children to explore their physical limits, balance, and climbing skills in a safe environment.",
-                "features": [
-                    "Gross motor",
-                    "Risk assessment",
-                    "Sturdy wood",
-                    "Foldable"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Pikler+Triangle+Foldable&tag=100bcb-21"
-            },
-            {
-                "id": 121,
-                "name": "Hammering Bench",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Coordination and strength.",
-                "longDesc": "Wooden bench with pegs and a hammer. Hitting the pegs requires hand-eye coordination and allows practicing controlled force.",
-                "features": [
-                    "Hand-eye coord",
-                    "Arm strength",
-                    "Repetitive play",
-                    "Durable"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Hammering+Bench&tag=100bcb-21"
-            },
-            {
-                "id": 122,
-                "name": "Wooden Rainbow",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Open-ended stacking toy.",
-                "longDesc": "The famous Waldorf rainbow. Can be stacked, used as tunnels, bridges, or fences. Encourages creativity and understanding balance.",
-                "features": [
-                    "Creativity",
-                    "Balance",
-                    "Vibrant colors",
-                    "Decorative"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Grimms+Wooden+Rainbow&tag=100bcb-21"
-            },
-            {
-                "id": 123,
-                "name": "Shape Sorter Cube",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Classic problem solving.",
-                "longDesc": "Wooden cube with holes for different geometric shapes. A standard for learning shapes and trial-and-error problem solving.",
-                "features": [
-                    "Shape recognition",
-                    "Problem solving",
-                    "Fine motor",
-                    "Classic toy"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Shape+Sorting+Cube&tag=100bcb-21"
-            },
-            {
-                "id": 124,
-                "name": "Coin Posting Box",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Refining fine motor skills.",
-                "longDesc": "A box with a slot for coins. Inserting coins requires precise orientation and wrist control. Very satisfying for toddlers.",
-                "features": [
-                    "Precision",
-                    "Repetition",
-                    "Drawer retrieval",
-                    "Concentration"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Coin+Box&tag=100bcb-21"
-            },
-            {
-                "id": 125,
-                "name": "Realistic Animal Figures",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Vocabulary and matching.",
-                "longDesc": "High quality, realistic animal figures (like Schleich). Great for learning names, sounds, and matching with picture cards.",
-                "features": [
-                    "Realistic detail",
-                    "Vocabulary",
-                    "Imaginative play",
-                    "Matching game"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Schleich+Farm+Animals&tag=100bcb-21"
-            },
-            {
-                "id": 126,
-                "name": "Wooden Musical Set",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Rhythm and auditory exploration.",
-                "longDesc": "Real instruments (xylophone, maracas, tambourine) made of wood. Introduction to rhythm and music without electronic sounds.",
-                "features": [
-                    "Musical initiation",
-                    "Rhythm",
-                    "Natural materials",
-                    "Auditory sense"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Musical+Instruments+Toddler&tag=100bcb-21"
-            },
-            {
-                "id": 127,
-                "name": "Busy Board",
-                "category": "toys",
-                "subcategory": "1-2y",
-                "shortDesc": "Real life locks and latches.",
-                "longDesc": "A board with zippers, latches, switches, and wheels. Safe way to satisfy curiosity about how everyday mechanics work.",
-                "features": [
-                    "Fine motor",
-                    "Mechanics",
-                    "Problem solving",
-                    "Travel friendly"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Montessori+Busy+Board&tag=100bcb-21"
-            },
-            {
-                "id": 128,
-                "name": "Magnetic Tiles",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "3D construction and geometry.",
-                "longDesc": "Translucent magnetic tiles that snap together. Essential for learning 3D shapes, magnetism, and architectural creativity.",
-                "features": [
-                    "3D building",
-                    "Magnetism",
-                    "Color mixing",
-                    "Creative STEM"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles+Set&tag=100bcb-21"
-            },
-            {
-                "id": 129,
-                "name": "Wooden Cleaning Set",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Practical life skills.",
-                "longDesc": "Child-sized broom, mop, and duster. Toddlers love to imitate adults and help. Fosters responsibility and coordination.",
-                "features": [
-                    "Functional tools",
-                    "Responsibility",
-                    "Gross motor",
-                    "Imitation play"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cleaning+Set&tag=100bcb-21"
-            },
-            {
-                "id": 130,
-                "name": "Wobble Balance Board",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Balance and open-ended play.",
-                "longDesc": "A curved wooden board. It's a balance beam, a bridge, a slide, a cradle, or a chair. Limits are only imagination.",
-                "features": [
-                    "Vestibular system",
-                    "Balance",
-                    "Imagination",
-                    "Sturdy wood"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Wobble+Balance+Board&tag=100bcb-21"
-            },
-            {
-                "id": 131,
-                "name": "Cutting Fruit Set",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Fine motor and life skills.",
-                "longDesc": "Wooden fruits held by velcro that can be 'sliced' with a wooden knife. Satisfying sound and great for hand strength.",
-                "features": [
-                    "Hand strength",
-                    "Life skills",
-                    "Healthy food",
-                    "Velcro sound"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cutting+Fruit&tag=100bcb-21"
-            },
-            {
-                "id": 132,
-                "name": "Lacing Beads",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Concentration and dexterity.",
-                "longDesc": "Large wooden beads and a string. Threading them requires high concentration and develops the pincer grasp for writing later.",
-                "features": [
-                    "Focus",
-                    "Pincer grasp",
-                    "Fine motor",
-                    "Sequencing"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Lacing+Beads&tag=100bcb-21"
-            },
-            {
-                "id": 133,
-                "name": "Pattern Blocks",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Geometry and patterns.",
-                "longDesc": "Geometric shapes to create patterns or pictures. Introduction to math concepts like symmetry, fractions, and spatial awareness.",
-                "features": [
-                    "Geometry",
-                    "Symmetry",
-                    "Puzzle solving",
-                    "Relaxing"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Wooden+Pattern+Blocks&tag=100bcb-21"
-            },
-            {
-                "id": 134,
-                "name": "Watercolor Paint Set",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Artistic expression.",
-                "longDesc": "Non-toxic watercolors and good quality paper. Allows experimenting with color mixing and fluid movement. Process art over product.",
-                "features": [
-                    "Creativity",
-                    "Color theory",
-                    "Fine motor",
-                    "Self expression"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Non+Toxic+Watercolor+Set+Kids&tag=100bcb-21"
-            },
-            {
-                "id": 135,
-                "name": "Balance Bike",
-                "category": "toys",
-                "subcategory": "2y+",
-                "shortDesc": "Coordination before pedaling.",
-                "longDesc": "A pedal-free bike. Teaches balance and steering first, making the transition to a real bike much easier than training wheels.",
-                "features": [
-                    "Balance",
-                    "Coordination",
-                    "Outdoor play",
-                    "Confidence"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Kinderkraft+Balance+Bike&tag=100bcb-21"
-            },
-            {
-                "id": 200,
-                "name": "The Whole-Brain Child",
-                "category": "books",
-                "shortDesc": "Revolutionary strategies to nurture your child's developing mind.",
-                "longDesc": "Daniel J. Siegel and Tina Payne Bryson offer 12 key strategies to foster healthy brain development, leading to calmer, happier children.",
-                "features": [
-                    "Neuroscience",
-                    "Practical strategies",
-                    "Emotional intelligence",
-                    "Bestseller"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=The+Whole+Brain+Child+Siegel&tag=100bcb-21"
-            },
-            {
-                "id": 201,
-                "name": "How to Talk So Kids Will Listen",
-                "category": "books",
-                "shortDesc": "The ultimate communication guide.",
-                "longDesc": "Adele Faber and Elaine Mazlish provide down-to-earth methods to solve common problems and build foundations for lasting relationships.",
-                "features": [
-                    "Communication",
-                    "Conflict resolution",
-                    "Respectful parenting",
-                    "Classic"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=How+to+Talk+So+Kids+Will+Listen&tag=100bcb-21"
-            },
-            {
-                "id": 202,
-                "name": "No-Drama Discipline",
-                "category": "books",
-                "shortDesc": "Discipline without chaos.",
-                "longDesc": "Siegel and Bryson highlight the link between a child's neurological development and the way a parent reacts to misbehavior.",
-                "features": [
-                    "Discipline",
-                    "Brain based",
-                    "Connection",
-                    "Calmness"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=No+Drama+Discipline&tag=100bcb-21"
-            },
-            {
-                "id": 203,
-                "name": "The Montessori Toddler",
-                "category": "books",
-                "shortDesc": "Turn your home into a Montessori haven.",
-                "longDesc": "Simone Davies shows how to turn life with a toddler into a mutually rich and rewarding time of curiosity, learning, respect, and discovery.",
-                "features": [
-                    "Montessori at home",
-                    "Toddler guide",
-                    "Beautifully illustrated",
-                    "Practical"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=The+Montessori+Toddler&tag=100bcb-21"
-            },
-            {
-                "id": 204,
-                "name": "Kiss Me: How to Raise Your Children With Love",
-                "category": "books",
-                "shortDesc": "Carlos González's defense of natural parenting.",
-                "longDesc": "A pediatrician's guide emphasizing that children are good, unselfish, and don't manipulate. A call for affection and responsiveness.",
-                "features": [
-                    "Attachment parenting",
-                    "Pediatrician author",
-                    "Reassuring",
-                    "Love oriented"
-                ],
-                "affiliateLink": "https://www.amazon.es/s?k=Kiss+Me+Carlos+Gonzalez&tag=100bcb-21"
-            }
-        ]
-    }
+        {
+            "id": 102,
+            "name": "Manhattan Toy Winkel",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "The maze-like rattle and teether loop.",
+            "longDesc": "Easy to grasp for tiny hands. Its soft color tubes can be cooled in the fridge to soothe gums. Mesmerizing for babies.",
+            "features": [
+                "Easy grip",
+                "Fridge safe",
+                "Motor development",
+                "BPA Free"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=100bcb-21"
+        },
+        {
+            "id": 103,
+            "name": "VTech Wiggle & Crawl Ball",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Encourages baby to chase and crawl.",
+            "longDesc": "Moves on its own randomly encouraging baby to follow. Lights, songs, and animals teach basic vocabulary while developing gross motor skills.",
+            "features": [
+                "Self-moving",
+                "Lights & sounds",
+                "Encourages crawling",
+                "Interactive"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=VTech+Wiggle+Crawl+Ball&tag=100bcb-21"
+        },
+        {
+            "id": 104,
+            "name": "Mushie Stacking Cups",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Nordic style for fine motor skills.",
+            "longDesc": "Danish design stacking cups in soft colors. Ideal for towers, bath time, or the beach. Helps hand-eye coordination without overstimulating.",
+            "features": [
+                "Nordic design",
+                "BPA/PVC Free",
+                "Open-ended play",
+                "Multi-use"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=100bcb-21"
+        },
+        {
+            "id": 105,
+            "name": "Mega Bloks First Builders",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Giant blocks for little builders.",
+            "longDesc": "The ideal first building set. Large blocks impossible to swallow and easy to snap together/apart. Fosters creativity and fine motor skills.",
+            "features": [
+                "Safe size",
+                "Easy fit",
+                "Storage bag",
+                "Endless creativity"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+First+Builders&tag=100bcb-21"
+        },
+        {
+            "id": 106,
+            "name": "Montessori Munari Mobile",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Visual tracking for newborns.",
+            "longDesc": "The first Montessori mobile. High contrast black and white geometric shapes balanced on a glass sphere to reflect light. Perfect for developing focus and tracking.",
+            "features": [
+                "High contrast",
+                "Visual tracking",
+                "Calming movement",
+                "Montessori classic"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Munari+Mobile&tag=100bcb-21"
+        },
+        {
+            "id": 107,
+            "name": "High Contrast Cards",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Visual stimulation for 0-3 months.",
+            "longDesc": "Black and white patterned cards designed for baby's developing vision. Stimulates brain growth and visual attention during tummy time.",
+            "features": [
+                "Visual stimulation",
+                "Tummy time aid",
+                "Durable card",
+                "Brain development"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=High+Contrast+Baby+Cards&tag=100bcb-21"
+        },
+        {
+            "id": 108,
+            "name": "Wooden Play Gym",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Encourages reaching and grasping.",
+            "longDesc": "Simple wooden frame to hang tactile mobiles. Promotes freedom of movement and concentration without overstimulation required by battery toys.",
+            "features": [
+                "Natural wood",
+                "Stable base",
+                "Encourages reaching",
+                "Minimalist"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Baby+Play+Gym&tag=100bcb-21"
+        },
+        {
+            "id": 109,
+            "name": "Interlocking Discs",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "First hand-to-hand transfer toy.",
+            "longDesc": "Two wooden discs joined together. The unique shape encourages the baby to transfer the object from one hand to the other and rotate their wrists.",
+            "features": [
+                "Wrist rotation",
+                "Hand transfer",
+                "Grasping skill",
+                "Natural wood"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Interlocking+Discs&tag=100bcb-21"
+        },
+        {
+            "id": 110,
+            "name": "Rolling Bell Rattle",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Encourages auditory tracking.",
+            "longDesc": "A cylinder with a bell inside. When rolled, it makes a pleasant sound, encouraging the baby to turn their head and eventually crawl towards it.",
+            "features": [
+                "Auditory tracking",
+                "Encourages movement",
+                "Wooden bars",
+                "Pleasant sound"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Rolling+Bell+Rattle&tag=100bcb-21"
+        },
+        {
+            "id": 111,
+            "name": "Sensory Balls Set",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Tactile variety for exploration.",
+            "longDesc": "A set of balls with different textures, sizes, and weights. Perfect for sensory exploration and developing grasping strength.",
+            "features": [
+                "Varied textures",
+                "BPA Free",
+                "Sensory play",
+                "Easy grip"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Baby+Sensory+Balls+Textured&tag=100bcb-21"
+        },
+        {
+            "id": 112,
+            "name": "Wrist Rattles",
+            "category": "toys",
+            "subcategory": "0-6m",
+            "shortDesc": "Discovering hands and feet.",
+            "longDesc": "Soft rattles that attach to wrists or ankles. Helps the baby discover their own limbs and understand that they control movement causing sound.",
+            "features": [
+                "Body awareness",
+                "Soft fabric",
+                "Cause & effect",
+                "Auditory feedback"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Wrist+Rattles&tag=100bcb-21"
+        },
+        {
+            "id": 113,
+            "name": "Object Permanence Box",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Classic Montessori cognitive toy.",
+            "longDesc": "A wooden box with a hole and tray. Baby drops the ball and it reappears. Teaches that objects still exist even when unseen (object permanence).",
+            "features": [
+                "Object permanence",
+                "Hand-eye coordination",
+                "Logic skill",
+                "Satisfaction"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Object+Permanence+Box&tag=100bcb-21"
+        },
+        {
+            "id": 114,
+            "name": "Spinning Drum",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Building wrist strength and color focus.",
+            "longDesc": "A rotating drum with colors and mirror. Spinning it requires a specific wrist movement and produces visual and auditory reward.",
+            "features": [
+                "Wrist muscle",
+                "Visual tracking",
+                "Cause & effect",
+                "Interactive"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Spinning+Drum&tag=100bcb-21"
+        },
+        {
+            "id": 115,
+            "name": "Egg in Cup",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Precise hand movements.",
+            "longDesc": "A wooden egg and a matching cup. Putting the egg in the cup and taking it out refines grasp and release skills.",
+            "features": [
+                "Grasp release",
+                "Fine motor",
+                "Natural wood",
+                "Simplistic focus"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Egg+Cup&tag=100bcb-21"
+        },
+        {
+            "id": 116,
+            "name": "Treasure Basket",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Heuristic play with real objects.",
+            "longDesc": "A low basket filled with safe, everyday objects of various materials (wood, metal, leather, brush). Encourages independent exploration.",
+            "features": [
+                "Sensory variety",
+                "Curiosity",
+                "Real world items",
+                "Open play"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Heuristic+Play+Treasure+Basket&tag=100bcb-21"
+        },
+        {
+            "id": 117,
+            "name": "Ball Tracker Run",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Tracking moving objects.",
+            "longDesc": "A wooden tower where balls zigzag down. Mesmerizing for babies, teaching gravity and tracking moving objects visually.",
+            "features": [
+                "Visual tracking",
+                "Predictability",
+                "Focus",
+                "Gravity lesson"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Ball+Tracker+Run&tag=100bcb-21"
+        },
+        {
+            "id": 118,
+            "name": "Pop-Up Toy",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "Push, turn, toggle mechanism.",
+            "longDesc": "Classic cause-and-effect toy where different buttons (push, switch, turn) make animals pop up. Great for finger strength and problem solving.",
+            "features": [
+                "Finger strength",
+                "Mechanism logic",
+                "Surprise element",
+                "Color matching"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Galt+Toys+Pop+Up&tag=100bcb-21"
+        },
+        {
+            "id": 119,
+            "name": "Single Shape Puzzle",
+            "category": "toys",
+            "subcategory": "6-12m",
+            "shortDesc": "First step to puzzles.",
+            "longDesc": "A puzzle with just one piece (usually a circle) and a large knob. Focuses on the concept of fitting a shape into a specific hole.",
+            "features": [
+                "Large knob",
+                "Shape matching",
+                "Success feeling",
+                "Motor control"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Single+Shape+Puzzle&tag=100bcb-21"
+        },
+        {
+            "id": 120,
+            "name": "Pikler Triangle",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Safe indoor climbing structure.",
+            "longDesc": "A wooden climbing triangle. Allows children to explore their physical limits, balance, and climbing skills in a safe environment.",
+            "features": [
+                "Gross motor",
+                "Risk assessment",
+                "Sturdy wood",
+                "Foldable"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Pikler+Triangle+Foldable&tag=100bcb-21"
+        },
+        {
+            "id": 121,
+            "name": "Hammering Bench",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Coordination and strength.",
+            "longDesc": "Wooden bench with pegs and a hammer. Hitting the pegs requires hand-eye coordination and allows practicing controlled force.",
+            "features": [
+                "Hand-eye coord",
+                "Arm strength",
+                "Repetitive play",
+                "Durable"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Hammering+Bench&tag=100bcb-21"
+        },
+        {
+            "id": 122,
+            "name": "Wooden Rainbow",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Open-ended stacking toy.",
+            "longDesc": "The famous Waldorf rainbow. Can be stacked, used as tunnels, bridges, or fences. Encourages creativity and understanding balance.",
+            "features": [
+                "Creativity",
+                "Balance",
+                "Vibrant colors",
+                "Decorative"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Grimms+Wooden+Rainbow&tag=100bcb-21"
+        },
+        {
+            "id": 123,
+            "name": "Shape Sorter Cube",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Classic problem solving.",
+            "longDesc": "Wooden cube with holes for different geometric shapes. A standard for learning shapes and trial-and-error problem solving.",
+            "features": [
+                "Shape recognition",
+                "Problem solving",
+                "Fine motor",
+                "Classic toy"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Shape+Sorting+Cube&tag=100bcb-21"
+        },
+        {
+            "id": 124,
+            "name": "Coin Posting Box",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Refining fine motor skills.",
+            "longDesc": "A box with a slot for coins. Inserting coins requires precise orientation and wrist control. Very satisfying for toddlers.",
+            "features": [
+                "Precision",
+                "Repetition",
+                "Drawer retrieval",
+                "Concentration"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Coin+Box&tag=100bcb-21"
+        },
+        {
+            "id": 125,
+            "name": "Realistic Animal Figures",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Vocabulary and matching.",
+            "longDesc": "High quality, realistic animal figures (like Schleich). Great for learning names, sounds, and matching with picture cards.",
+            "features": [
+                "Realistic detail",
+                "Vocabulary",
+                "Imaginative play",
+                "Matching game"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Schleich+Farm+Animals&tag=100bcb-21"
+        },
+        {
+            "id": 126,
+            "name": "Wooden Musical Set",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Rhythm and auditory exploration.",
+            "longDesc": "Real instruments (xylophone, maracas, tambourine) made of wood. Introduction to rhythm and music without electronic sounds.",
+            "features": [
+                "Musical initiation",
+                "Rhythm",
+                "Natural materials",
+                "Auditory sense"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Musical+Instruments+Toddler&tag=100bcb-21"
+        },
+        {
+            "id": 127,
+            "name": "Busy Board",
+            "category": "toys",
+            "subcategory": "1-2y",
+            "shortDesc": "Real life locks and latches.",
+            "longDesc": "A board with zippers, latches, switches, and wheels. Safe way to satisfy curiosity about how everyday mechanics work.",
+            "features": [
+                "Fine motor",
+                "Mechanics",
+                "Problem solving",
+                "Travel friendly"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Montessori+Busy+Board&tag=100bcb-21"
+        },
+        {
+            "id": 128,
+            "name": "Magnetic Tiles",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "3D construction and geometry.",
+            "longDesc": "Translucent magnetic tiles that snap together. Essential for learning 3D shapes, magnetism, and architectural creativity.",
+            "features": [
+                "3D building",
+                "Magnetism",
+                "Color mixing",
+                "Creative STEM"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles+Set&tag=100bcb-21"
+        },
+        {
+            "id": 129,
+            "name": "Wooden Cleaning Set",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Practical life skills.",
+            "longDesc": "Child-sized broom, mop, and duster. Toddlers love to imitate adults and help. Fosters responsibility and coordination.",
+            "features": [
+                "Functional tools",
+                "Responsibility",
+                "Gross motor",
+                "Imitation play"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cleaning+Set&tag=100bcb-21"
+        },
+        {
+            "id": 130,
+            "name": "Wobble Balance Board",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Balance and open-ended play.",
+            "longDesc": "A curved wooden board. It's a balance beam, a bridge, a slide, a cradle, or a chair. Limits are only imagination.",
+            "features": [
+                "Vestibular system",
+                "Balance",
+                "Imagination",
+                "Sturdy wood"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Wobble+Balance+Board&tag=100bcb-21"
+        },
+        {
+            "id": 131,
+            "name": "Cutting Fruit Set",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Fine motor and life skills.",
+            "longDesc": "Wooden fruits held by velcro that can be 'sliced' with a wooden knife. Satisfying sound and great for hand strength.",
+            "features": [
+                "Hand strength",
+                "Life skills",
+                "Healthy food",
+                "Velcro sound"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cutting+Fruit&tag=100bcb-21"
+        },
+        {
+            "id": 132,
+            "name": "Lacing Beads",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Concentration and dexterity.",
+            "longDesc": "Large wooden beads and a string. Threading them requires high concentration and develops the pincer grasp for writing later.",
+            "features": [
+                "Focus",
+                "Pincer grasp",
+                "Fine motor",
+                "Sequencing"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Lacing+Beads&tag=100bcb-21"
+        },
+        {
+            "id": 133,
+            "name": "Pattern Blocks",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Geometry and patterns.",
+            "longDesc": "Geometric shapes to create patterns or pictures. Introduction to math concepts like symmetry, fractions, and spatial awareness.",
+            "features": [
+                "Geometry",
+                "Symmetry",
+                "Puzzle solving",
+                "Relaxing"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Wooden+Pattern+Blocks&tag=100bcb-21"
+        },
+        {
+            "id": 134,
+            "name": "Watercolor Paint Set",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Artistic expression.",
+            "longDesc": "Non-toxic watercolors and good quality paper. Allows experimenting with color mixing and fluid movement. Process art over product.",
+            "features": [
+                "Creativity",
+                "Color theory",
+                "Fine motor",
+                "Self expression"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Non+Toxic+Watercolor+Set+Kids&tag=100bcb-21"
+        },
+        {
+            "id": 135,
+            "name": "Balance Bike",
+            "category": "toys",
+            "subcategory": "2y+",
+            "shortDesc": "Coordination before pedaling.",
+            "longDesc": "A pedal-free bike. Teaches balance and steering first, making the transition to a real bike much easier than training wheels.",
+            "features": [
+                "Balance",
+                "Coordination",
+                "Outdoor play",
+                "Confidence"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Kinderkraft+Balance+Bike&tag=100bcb-21"
+        },
+        {
+            "id": 200,
+            "name": "The Whole-Brain Child",
+            "category": "books",
+            "shortDesc": "Revolutionary strategies to nurture your child's developing mind.",
+            "longDesc": "Daniel J. Siegel and Tina Payne Bryson offer 12 key strategies to foster healthy brain development, leading to calmer, happier children.",
+            "features": [
+                "Neuroscience",
+                "Practical strategies",
+                "Emotional intelligence",
+                "Bestseller"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=The+Whole+Brain+Child+Siegel&tag=100bcb-21"
+        },
+        {
+            "id": 201,
+            "name": "How to Talk So Kids Will Listen",
+            "category": "books",
+            "shortDesc": "The ultimate communication guide.",
+            "longDesc": "Adele Faber and Elaine Mazlish provide down-to-earth methods to solve common problems and build foundations for lasting relationships.",
+            "features": [
+                "Communication",
+                "Conflict resolution",
+                "Respectful parenting",
+                "Classic"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=How+to+Talk+So+Kids+Will+Listen&tag=100bcb-21"
+        },
+        {
+            "id": 202,
+            "name": "No-Drama Discipline",
+            "category": "books",
+            "shortDesc": "Discipline without chaos.",
+            "longDesc": "Siegel and Bryson highlight the link between a child's neurological development and the way a parent reacts to misbehavior.",
+            "features": [
+                "Discipline",
+                "Brain based",
+                "Connection",
+                "Calmness"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=No+Drama+Discipline&tag=100bcb-21"
+        },
+        {
+            "id": 203,
+            "name": "The Montessori Toddler",
+            "category": "books",
+            "shortDesc": "Turn your home into a Montessori haven.",
+            "longDesc": "Simone Davies shows how to turn life with a toddler into a mutually rich and rewarding time of curiosity, learning, respect, and discovery.",
+            "features": [
+                "Montessori at home",
+                "Toddler guide",
+                "Beautifully illustrated",
+                "Practical"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=The+Montessori+Toddler&tag=100bcb-21"
+        },
+        {
+            "id": 204,
+            "name": "Kiss Me: How to Raise Your Children With Love",
+            "category": "books",
+            "shortDesc": "Carlos González's defense of natural parenting.",
+            "longDesc": "A pediatrician's guide emphasizing that children are good, unselfish, and don't manipulate. A call for affection and responsiveness.",
+            "features": [
+                "Attachment parenting",
+                "Pediatrician author",
+                "Reassuring",
+                "Love oriented"
+            ],
+            "affiliateLink": "https://www.amazon.es/s?k=Kiss+Me+Carlos+Gonzalez&tag=100bcb-21"
+        }
+    ]
+}
