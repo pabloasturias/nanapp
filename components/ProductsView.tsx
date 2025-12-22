@@ -33,7 +33,7 @@ const CATEGORIES = [
     // Toys is handled separately
 ];
 
-type ViewMode = 'menu' | 'top50' | 'toys' | 'registry';
+type ViewMode = 'menu' | 'top50' | 'toys' | 'registry' | 'books';
 
 export const ProductsView: React.FC = () => {
     const { t, language } = useLanguage();
@@ -58,8 +58,12 @@ export const ProductsView: React.FC = () => {
             return toys;
         }
 
+        if (currentView === 'books') {
+            return currentProducts.filter(p => p.category.toLowerCase() === 'books');
+        }
+
         if (currentView === 'top50') {
-            let filtered = currentProducts.filter(p => p.category.toLowerCase() !== 'toys');
+            let filtered = currentProducts.filter(p => p.category.toLowerCase() !== 'toys' && p.category.toLowerCase() !== 'books');
             if (activeCategory !== 'all') {
                 filtered = filtered.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
             }
@@ -204,7 +208,33 @@ export const ProductsView: React.FC = () => {
                         </div>
                     </button>
 
-                    {/* Registry Card (Optional, or combined) */}
+                    {/* Books Card */}
+                    <button
+                        onClick={() => setCurrentView('books')}
+                        className="group relative h-32 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-blue-500/30 hover:bg-slate-800"
+                    >
+                        <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-blue-500/10 to-transparent" />
+                        <div className="absolute bottom-[-10%] right-[-5%] opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                            <BookOpen size={120} className="text-blue-400" />
+                        </div>
+
+                        <div className="relative z-10 flex h-full flex-col justify-between">
+                            <div className="flex items-start justify-between">
+                                <div className="rounded-xl bg-blue-500/20 p-3 text-blue-300 backdrop-blur-sm">
+                                    <BookOpen size={24} />
+                                </div>
+                                <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
+                                    <ChevronRight size={20} />
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-white">Biblioteca para Padres</h3>
+                                <p className="text-xs text-slate-400">Libros esenciales de crianza</p>
+                            </div>
+                        </div>
+                    </button>
+
+                    {/* Registry Card */}
                     <button
                         onClick={() => setCurrentView('registry')}
                         className="group relative h-28 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-orange-500/30 hover:bg-slate-800"
@@ -241,11 +271,11 @@ export const ProductsView: React.FC = () => {
                 >
                     <ChevronLeft size={20} />
                     <span className="text-sm font-bold uppercase tracking-wider">
-                        {currentView === 'top50' ? 'Menú' : 'Menú'}
+                        Menú
                     </span>
                 </button>
                 <h2 className="mt-2 text-xl font-bold text-white font-['Quicksand']">
-                    {currentView === 'top50' ? t('tab_top50') : currentView === 'toys' ? t('cat_toys') : t('tab_registry')}
+                    {currentView === 'top50' ? t('tab_top50') : currentView === 'toys' ? t('cat_toys') : currentView === 'books' ? 'Biblioteca' : t('tab_registry')}
                 </h2>
             </div>
 
@@ -292,15 +322,42 @@ export const ProductsView: React.FC = () => {
                 </div>
             )}
 
-            <div className="flex flex-col gap-3 px-4 pb-8">
-                {currentView === 'registry' ? (
-                    <div className="text-center py-20 bg-slate-800/30 rounded-[2rem] border border-white/5 mx-2">
-                        <Gift size={48} className="mx-auto text-slate-600 mb-4" />
-                        <h3 className="text-slate-400 font-bold mb-2">Próximamente</h3>
-                        <p className="text-slate-500 text-sm">Estamos preparando la lista de regalos perfecta.</p>
+            {currentView === 'registry' ? (
+                <div className="px-4">
+                    <div className="bg-gradient-to-br from-orange-100 to-amber-100 rounded-[2rem] p-8 text-center shadow-xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+
+                        <Gift size={64} className="mx-auto text-orange-500 mb-6 drop-shadow-sm" />
+
+                        <h3 className="text-2xl font-bold text-orange-900 mb-2 font-['Quicksand']">{t('registry_hero_title')}</h3>
+                        <p className="text-orange-800 text-lg mb-6 font-medium">{t('registry_hero_subtitle')}</p>
+
+                        <p className="text-orange-900/70 text-sm mb-8 leading-relaxed max-w-xs mx-auto">
+                            {t('registry_hero_desc')}
+                        </p>
+
+                        <div className="space-y-4 mb-8 text-left max-w-xs mx-auto">
+                            {[t('registry_bullet_1'), t('registry_bullet_2'), t('registry_bullet_3')].map((benefit, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <div className="p-1 rounded-full bg-orange-500/20 text-orange-600"><Check size={12} strokeWidth={3} /></div>
+                                    <span className="text-sm text-orange-900/80 font-medium">{benefit}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <a
+                            href="https://www.amazon.es/gp/baby/homepage?tag=100bcb-21"
+                            target="_blank"
+                            className="flex items-center justify-center gap-2 w-full py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all active:scale-95"
+                        >
+                            {t('amazon_banner_cta')}
+                            <ExternalLink size={18} />
+                        </a>
                     </div>
-                ) : (
-                    filteredProducts.map((product) => (
+                </div>
+            ) : (
+                <div className="flex flex-col gap-3 px-4 pb-8">
+                    {filteredProducts.map((product) => (
                         <div
                             key={product.id}
                             onClick={() => setSelectedProduct(product)}
@@ -312,7 +369,7 @@ export const ProductsView: React.FC = () => {
                                         <div className="flex items-center gap-2">
                                             <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
                                                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                                                    {t(`cat_${product.category.toLowerCase()}` as any)}
+                                                    {t(`cat_${product.category.toLowerCase()}` as any) || (product.category === 'books' ? 'Libros' : product.category)}
                                                 </span>
                                             </div>
                                         </div>
@@ -332,11 +389,9 @@ export const ProductsView: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                    ))
-                )}
-            </div>
-
-            {renderProductDetail()}
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
