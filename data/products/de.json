@@ -353,113 +353,113 @@
         "id": 26,
         "name": "Owlet Dream Sock",
         "category": "health",
-        "shortDesc": "Tranquilidad total monitoreando constantes.",
-        "longDesc": "Tecnología hospitalaria en casa. Mide oxígeno y pulso mientras duerme. Te avisa en la base y el móvil si los niveles bajan, permitiéndote dormir con verdadera paz mental.",
+        "shortDesc": "Ruhiges Gewissen durch Vitalwerte-Monitoring.",
+        "longDesc": "Krankenhaus-Technologie für zu Hause. Misst Sauerstoff und Puls während des Schlafs. Warnt über Basisstation und Smartphone bei Abweichungen. Für echten, ruhigen Schlaf.",
         "features": [
-            "Oximetría de pulso",
-            "Historial de sueño",
-            "Carga inalámbrica",
-            "Notificaciones tiempo real"
+            "Pulsoximetrie",
+            "Schlafverlauf",
+            "Kabelloses Laden",
+            "Echtzeit-Benachrichtigungen"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Owlet+Dream+Sock&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Owlet+Dream+Sock&tag=nanapp-21"
     },
     {
         "id": 27,
-        "name": "Nanny Monitor Respiración",
+        "name": "Nanny Atmungsmonitor",
         "category": "health",
-        "shortDesc": "El monitor con certificado médico más fiable.",
-        "longDesc": "Usado en maternidades de toda Europa. Un colchón sensor de gran superficie detecta cada microsespiración. Si para 20s, suena una alarma acústica potente.",
+        "shortDesc": "Der zertifizierte und zuverlässigste Monitor.",
+        "longDesc": "Wird in Geburtsstationen europaweit eingesetzt. Eine große Sensormatte erkennt jede Mikrobewegung der Atmung. Alarm bei 20s Stillstand. Laut und sicher.",
         "features": [
-            "Certificado Dispositivo Médico",
-            "Gran superficie sensor",
-            "Alarma acústica fuerte",
-            "Sin falsas alarmas"
+            "Zertifiziertes Medizinprodukt",
+            "Große Sensorfläche",
+            "Lauter akustischer Alarm",
+            "Keine Fehlalarme"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Nanny+Monitor+Respiracion&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Nanny+Reanimator&tag=nanapp-21"
     },
     {
         "id": 28,
-        "name": "Philips Serie 800 Purificador",
+        "name": "Philips Serie 800 Luftreiniger",
         "category": "environment",
-        "shortDesc": "Aire puro de alérgenos en modo silencio total.",
-        "longDesc": "Tamaño compacto ideal para dormitorios. Su modo sueño es ultra silencioso y sin luces. Elimina virus, alérgenos y polvo en minutos gracias a su filtro HEPA.",
+        "shortDesc": "Reine Luft und absolute Stille.",
+        "longDesc": "Kompakt, ideal für Schlafzimmer. Der Schlafmodus ist flüsterleise und dunkel. Entfernt Viren, Allergene und Staub in Minuten dank HEPA-Filter.",
         "features": [
-            "Filtro HEPA nanoprotect",
-            "Modo sueño ultra-silencioso",
-            "Indicador calidad aire",
-            "Bajo consumo"
+            "NanoProtect HEPA-Filter",
+            "Ultra-leiser Schlafmodus",
+            "Luftqualitätsanzeige",
+            "Geringer Stromverbrauch"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Philips+Purificador+Aire+Serie+800&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Philips+Luftreiniger+800&tag=nanapp-21"
     },
     {
         "id": 29,
         "name": "Dyson Purifier Cool Autoreact",
         "category": "environment",
-        "shortDesc": "La joya de la corona en purificación y ventilación.",
-        "longDesc": "Captura polvo, alérgenos y virus H1N1. Ventila sin aspas (100% seguro para dedos pequeños) y monitorea la calidad del aire en tiempo real. Un lujo que mejora la salud.",
+        "shortDesc": "Das Juwel der Luftreinigung.",
+        "longDesc": "Fängt Staub, Allergene und Viren. Ventiliert ohne Rotorblätter (100% sicher für kleine Finger) und überwacht die Luftqualität in Echtzeit. Ein Luxus für die Gesundheit.",
         "features": [
-            "Sin aspas (Seguro)",
-            "Filtrado HEPA H13 vidrio",
-            "Giro 350 grados",
-            "Monitorización LCD"
+            "Rotorlos (Sicher)",
+            "HEPA-13 Glasfilter",
+            "350° Drehung",
+            "LCD-Überwachung"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Dyson+Purifier+Cool+Autoreact&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Dyson+Purifier+Cool&tag=nanapp-21"
     },
     {
         "id": 30,
-        "name": "GroClock Reloj Sueño",
+        "name": "GroClock Schlaftrainer",
         "category": "sleep",
-        "shortDesc": "Enseña a dormir más tiempo de forma visual.",
-        "longDesc": "El sol sale en la pantalla solo cuando es hora de levantar. Los niños entienden el concepto visualmente y se quedan en la cama hasta que 'sale el sol', regalándote horas de sueño.",
+        "shortDesc": "Zeigt visuell, wann Aufstehzeit ist.",
+        "longDesc": "Die Sonne geht auf dem Bildschirm erst auf, wenn es Zeit ist. Kinder verstehen das Konzept visuell und bleiben länger liegen, was Eltern mehr Schlaf schenkt.",
         "features": [
-            "Pantalla educativa",
-            "Brillo ajustable",
-            "Cuento incluido",
-            "Opción reloj digital"
+            "Lern-Bildschirm",
+            "Helligkeit verstellbar",
+            "Gute-Nacht-Geschichte inkl.",
+            "Optional Digitaluhr"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=GroClock&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=GroClock&tag=nanapp-21"
     },
     {
         "id": 31,
         "name": "Tommee Tippee Twist & Click",
         "category": "hygiene",
-        "shortDesc": "El único cubo que envuelve cada pañal individualmente.",
-        "longDesc": "Garantizado contra olores. Su sistema envuelve y sella cada pañal en una película antibacteriana, bloqueando gérmenes y olor. Imprescindible si cambias en la habitación.",
+        "shortDesc": "Der einzige Eimer, der jede Windel einzeln eindreht.",
+        "longDesc": "Garantierter Geruchsschutz. Das System versiegelt jede Windel einzeln in antibakterieller Folie. Ein Muss, wenn im Schlafzimmer gewickelt wird.",
         "features": [
-            "Bloqueo olor garantizado",
-            "Film antibacteriano",
-            "Capacidad ~28 pañales",
-            "Fácil recarga"
+            "Garantiert geruchsfrei",
+            "Antibakterielle Folie",
+            "Kapazität ~28 Windeln",
+            "Einfaches Nachfüllen"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Twist+&+Click&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Tommee+Tippee+Twist+Click&tag=nanapp-21"
     },
     {
         "id": 32,
-        "name": "Prince Lionheart Calentador",
+        "name": "Prince Lionheart Feuchttuchwärmer",
         "category": "hygiene",
-        "shortDesc": "Toallitas siempre húmedas y calientes, nunca secas.",
-        "longDesc": "Sistema patentado que evita que se sequen o se pongan marrones. Mantiene la temperatura perfecta para limpiar el culete sin sobresaltos nocturnos.",
+        "shortDesc": "Immer warme Tücher, niemals ausgetrocknet.",
+        "longDesc": "Patentiertes System gegen Austrocknen und Bräunung. Hält die perfekte Temperatur, um den Po ohne nachtlliche Kälteschocks zu reinigen.",
         "features": [
-            "Sistema Ever-Fresh",
-            "Luz nocturna suave",
-            "Gran capacidad",
-            "Temperatura segura"
+            "Ever-Fresh System",
+            "Sanftes Nachtlicht",
+            "Große Kapazität",
+            "Sichere Temperatur"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Prince+Lionheart+Wipes+Warmer&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Prince+Lionheart+Wipes+Warmer&tag=nanapp-21"
     },
     {
         "id": 33,
-        "name": "Philips Avent Calienta Biberón",
+        "name": "Philips Avent Flaschenwärmer",
         "category": "mom",
-        "shortDesc": "Calentamiento inteligente que evita quemaduras.",
-        "longDesc": "Calcula el tiempo exacto según el volumen y temperatura inicial. Calienta uniformemente sin puntos calientes peligrosos y mantiene la leche caliente hasta 1 hora.",
+        "shortDesc": "Intelligentes Erwärmen ohne Verbrennungsgefahr.",
+        "longDesc": "Berechnet die Zeit exakt nach Menge und Starttemperatur. Erwärmt gleichmäßig ohne heiße Stellen (Hotspots) und hält die Milch bis zu 60 Min. warm.",
         "features": [
-            "Control temperatura inteligente",
-            "Función descongelar",
-            "Mantiene calor 60min",
-            "Compatible tarritos"
+            "Intelligente Temp-Kontrolle",
+            "Auftaufunktion",
+            "60min Warmhaltefunktion",
+            "Auch für Gläschen"
         ],
-        "affiliateLink": "https://www.amazon.es/s?k=Philips+Avent+Calienta+Biberones+Rapido&tag=100bcb-21"
+        "affiliateLink": "https://www.amazon.de/s?k=Philips+Avent+Flaschenwaermer&tag=nanapp-21"
     },
     {
         "id": 34,
