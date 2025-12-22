@@ -203,7 +203,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         >
                             <div className="flex items-center gap-3">
                                 <Info size={18} className="text-indigo-400" />
-                                <span className="text-sm font-semibold text-slate-300">Sobre nanapp</span>
+                                <span className="text-sm font-semibold text-slate-300">{t('about_nanapp')}</span>
                             </div>
                             <ChevronRight size={16} className="text-slate-600" />
                         </button>

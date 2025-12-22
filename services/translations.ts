@@ -720,6 +720,7 @@ export const translations = {
     HEARTBEAT: "Battement de cœur",
 
     // About
+    about_nanapp: "À propos de nanapp",
     about_title: "À propos de nanapp",
     about_subtitle: "L'art de prendre soin",
     about_p1: "Nanapp naît de la tradition la plus ancienne du monde : l'acte d'endormir un enfant.",
