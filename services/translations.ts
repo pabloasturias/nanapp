@@ -263,7 +263,23 @@ export const translations = {
     about_dedicated_names: "A Sara, Pili y Aurora.",
     about_dedicated_msg: "Y a todas las madres y padres que buscan un momento de calma.",
     about_footer_made: "Hecho con ❤️ para Vega",
-    about_gratitude_msg: "En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer."
+    about_gratitude_msg: "En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer.",
+
+    // Tools Extended
+    tool_bf_left: "Izquierda",
+    tool_bf_right: "Derecha",
+    tool_bf_next: "Te toca:",
+    tool_bf_manual: "Registro Rápido (Sin tiempo)",
+    tool_bf_timer: "Usar Temporizador",
+    tool_bf_last: "Última vez:",
+    tool_diff_breast: "Pecho",
+
+    // Growth
+    tool_growth_chart: "Gráfico de Crecimiento",
+    tool_growth_percentile: "Percentil",
+    tool_growth_birthdate: "Fecha de Nacimiento",
+    tool_growth_set_date: "Calculadora de Percentiles: Configura la fecha de nacimiento en ajustes o aquí mismo.",
+
   },
   en: {
     app_slogan: "the sound of silence",
@@ -521,7 +537,23 @@ export const translations = {
     about_dedicated_names: "To Sara, Pili and Aurora.",
     about_dedicated_msg: "And to all mothers and fathers seeking a moment of calm.",
     about_footer_made: "Made with ❤️ for Vega",
-    about_gratitude_msg: "In deep gratitude to the mothers and grandmothers, full of patience, who cared for us. Because patience is a virtue that, often, comes in the form of a woman."
+    about_gratitude_msg: "In deep gratitude to the mothers and grandmothers, full of patience, who cared for us. Because patience is a virtue that, often, comes in the form of a woman.",
+
+    // Tools Extended
+    tool_bf_left: "Left",
+    tool_bf_right: "Right",
+    tool_bf_next: "Next side:",
+    tool_bf_manual: "Quick Log (No time)",
+    tool_bf_timer: "Use Timer",
+    tool_bf_last: "Last time:",
+    tool_diff_breast: "Breast",
+
+    // Growth
+    tool_growth_chart: "Growth Chart",
+    tool_growth_percentile: "Percentile",
+    tool_growth_birthdate: "Birth Date",
+    tool_growth_set_date: "Percentile Calculator: Set birth date.",
+
   },
   fr: {
     app_slogan: "le son du silence",

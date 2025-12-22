@@ -81,20 +81,18 @@ const ALL_TEETH = generateTeeth();
 const VisualTooth: React.FC<{
     def: ToothDef;
     isErupted: boolean;
+    isExpected?: boolean; // New prop
     onClick: () => void;
-}> = ({ def, isErupted, onClick }) => {
-    // Calculate path/shape based on position
-    // We'll use a simple rounded shape, scaled/rotated
-    // Position 1 (Center) -> Position 5 (Back)
-
+}> = ({ def, isErupted, isExpected, onClick }) => {
     // Widths
     const width = def.type === 'molar' ? 45 : def.type === 'canine' ? 35 : 30;
     const height = def.type === 'molar' ? 40 : 45;
 
     // Color
-    const baseColor = isErupted ? '#F472B6' : '#334155'; // Pink-400 vs Slate-700
-    const borderColor = isErupted ? '#FBCFE8' : '#475569'; // Pink-200 vs Slate-600
-    const opacity = isErupted ? 1 : 0.4;
+    const baseColor = isErupted ? '#F472B6' : isExpected ? '#451a03' : '#334155'; // Pink | Amber-900 | Slate-700
+    const borderColor = isErupted ? '#FBCFE8' : isExpected ? '#f59e0b' : '#475569'; // Pink | Amber-500 | Slate-600
+    const opacity = isErupted ? 1 : isExpected ? 0.8 : 0.4; // Highlight expected
+
 
     return (
         <button
@@ -234,7 +232,12 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
         <div className="flex flex-col h-full bg-slate-950">
             <div className="shrink-0 p-6 pb-2">
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Registro Dentición</h3>
-                <p className="text-slate-400 text-sm">Toca los dientes que ya han salido.</p>
+                <p className="text-slate-400 text-sm mb-2">Toca los dientes que ya han salido.</p>
+                <div className="flex gap-4 text-[10px] text-slate-500 bg-white/5 p-2 rounded-lg">
+                    <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-slate-700 border border-slate-600"></div>Sin salir</span>
+                    <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-pink-400 border border-pink-200"></div>Salido</span>
+                    <span className="flex items-center gap-1 opacity-50"><div className="w-2 h-2 rounded-full bg-amber-500/20 border border-amber-500"></div>Esperado pronto</span>
+                </div>
             </div>
 
             <div className="flex-1 flex flex-col items-center justify-center p-4 relative overflow-y-auto w-full">
