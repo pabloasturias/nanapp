@@ -30,7 +30,7 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
                             <Baby size={40} className="text-orange-200" strokeWidth={1.5} />
                         </div>
                         <h2 className="text-3xl font-bold text-orange-50 font-['Quicksand'] mb-2">{t('story_nana')}</h2>
-                        <p className="text-sm text-orange-200/60 uppercase tracking-[0.2em] font-bold">El arte de cuidar</p>
+                        <p className="text-sm text-orange-200/60 uppercase tracking-[0.2em] font-bold">{t('about_subtitle')}</p>
                     </div>
                 </div>
 
@@ -39,11 +39,11 @@ export const StoryView: React.FC<StoryViewProps> = ({ onBack }) => {
                     <div className="bg-gradient-to-br from-indigo-950/40 to-slate-900/40 p-6 rounded-[2rem] border border-indigo-500/10 relative overflow-hidden">
                         <Heart size={80} className="absolute -top-4 -right-4 text-pink-500/5 rotate-12" />
 
-                        <h3 className="text-xl font-bold text-indigo-100 mb-6 font-serif italic relative z-10">Dedicado a...</h3>
+                        <h3 className="text-xl font-bold text-indigo-100 mb-6 font-serif italic relative z-10">{t('about_dedicated_title')}</h3>
 
                         <div className="space-y-4 text-sm text-slate-300 leading-relaxed font-light relative z-10">
                             <p>
-                                En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer.
+                                {t('about_gratitude_msg')}
                             </p>
                         </div>
                     </div>

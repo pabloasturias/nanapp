@@ -2,7 +2,8 @@ export type Language = 'es' | 'en' | 'fr' | 'de' | 'it' | 'pt';
 
 export const translations = {
   es: {
-    app_slogan: "el sonido del descanso",
+    app_slogan: "sound of sleep",
+    menu: "Menú",
     tab_sounds: "Sonidos",
     tab_stats: "Estadisticas",
     stats_subtitle: "Tu descanso en números",
@@ -261,10 +262,12 @@ export const translations = {
     about_dedicated_title: "Dedicado a...",
     about_dedicated_names: "A Sara, Pili y Aurora.",
     about_dedicated_msg: "Y a todas las madres y padres que buscan un momento de calma.",
-    about_footer_made: "Hecho con ❤️ para Vega"
+    about_footer_made: "Hecho con ❤️ para Vega",
+    about_gratitude_msg: "En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer."
   },
   en: {
     app_slogan: "sound of sleep",
+    menu: "Menu",
     tab_sounds: "Sounds",
     tab_stats: "Stats",
     stats_subtitle: "Your sleep journey",
@@ -517,10 +520,12 @@ export const translations = {
     about_dedicated_title: "Dedicated to...",
     about_dedicated_names: "To Sara, Pili and Aurora.",
     about_dedicated_msg: "And to all mothers and fathers seeking a moment of calm.",
-    about_footer_made: "Made with ❤️ for Vega"
+    about_footer_made: "Made with ❤️ for Vega",
+    about_gratitude_msg: "In deep gratitude to the mothers and grandmothers, full of patience, who cared for us. Because patience is a virtue that, often, comes in the form of a woman."
   },
   fr: {
-    app_slogan: "le son du repos",
+    app_slogan: "sound of sleep",
+    menu: "Menu",
     tab_sounds: "Sons",
     tab_stats: "Stats",
     stats_subtitle: "Votre sommeil",
@@ -728,10 +733,12 @@ export const translations = {
     about_dedicated_title: "Dédié à...",
     about_dedicated_names: "À Sara, Pili et Aurora.",
     about_dedicated_msg: "Et à toutes les mères et tous les pères qui cherchent un moment de calme.",
-    about_footer_made: "Fait avec ❤️ pour Vega"
+    about_footer_made: "Fait avec ❤️ pour Vega",
+    about_gratitude_msg: "Avec une profonde gratitude envers les mères et les grands-mères pleines de patience qui ont pris soin de nous. Parce que la patience est une vertu qui, bien souvent, prend les traits d'une femme.",
   },
   de: {
-    app_slogan: "der klang der ruhe",
+    app_slogan: "sound of sleep",
+    menu: "Menu",
     tab_sounds: "Töne",
     tab_stats: "Statistik",
     stats_subtitle: "Dein Schlaf",
@@ -977,10 +984,12 @@ export const translations = {
     about_dedicated_title: "Gewidmet...",
     about_dedicated_names: "Für Sara, Pili und Aurora.",
     about_dedicated_msg: "Und an alle Mütter und Väter, die einen Moment der Ruhe suchen.",
-    about_footer_made: "Gemacht mit ❤️ für Vega"
+    about_footer_made: "Gemacht mit ❤️ für Vega",
+    about_gratitude_msg: "In tiefer Dankbarkeit an die Mütter und Großmütter voller Geduld, die sich um uns gekümmert haben. Denn Geduld ist eine Tugend, die oft in weiblicher Gestalt daherkommt."
   },
   it: {
-    app_slogan: "il suono del riposo",
+    app_slogan: "sound of sleep",
+    menu: "Menu",
     tab_sounds: "Suoni",
     tab_stats: "Statistiche",
     stats_subtitle: "Il tuo riposo",
@@ -1149,6 +1158,8 @@ export const translations = {
     about_dedicated_names: "A Sara, Pili e Aurora.",
     about_dedicated_msg: "E a tutte le madri e i padri che cercano un momento di calma.",
     about_footer_made: "Fatto con ❤️ per Vega",
+    about_gratitude_msg: "Con profonda gratitudine alle madri e alle nonne piene di pazienza che si sono prese cura di noi. Perché la pazienza è una virtù che, molto spesso, ha un volto femminile.",
+
     about_nanapp: "Su nanapp",
     story_more_title: "Più di un'app",
     story_more_desc: "Un sussurro digital.",
@@ -1188,7 +1199,8 @@ export const translations = {
     HEARTBEAT: "Battito cardiaco",
   },
   pt: {
-    app_slogan: "o som do descanso",
+    app_slogan: "sound of sleep",
+    menu: "Menu",
     tab_sounds: "Sons",
     tab_stats: "Estatísticas",
     stats_subtitle: "Seu descanso",
@@ -1393,6 +1405,7 @@ export const translations = {
     about_dedicated_title: "Dedicado a...",
     about_dedicated_names: "A Sara, Pili e Aurora.",
     about_dedicated_msg: "E a todas as mães e pais que procuram um momento de calma.",
-    about_footer_made: "Feito com ❤️ para Vega"
+    about_footer_made: "Feito com ❤️ para Vega",
+    about_gratitude_msg: "Com profunda gratidão às mães e avós cheias de paciência que cuidaram de nós. Porque a paciência é uma virtude que, muitas vezes, vem em forma de mulher."
   }
 };

@@ -289,7 +289,7 @@ export const ProductsView: React.FC = () => {
                 >
                     <ChevronLeft size={20} />
                     <span className="text-sm font-bold uppercase tracking-wider">
-                        Menú
+                        {t('menu')}
                     </span>
                 </button>
                 <h2 className="mt-2 text-xl font-bold text-white font-['Quicksand']">
