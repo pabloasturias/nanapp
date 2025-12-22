@@ -32,10 +32,21 @@ export const MedsDashboard: React.FC = () => {
     );
 };
 
+
+import { LastDaysChart } from './visualizations/LastDaysChart';
+
 export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { addLog, getLogsByDate } = useToolData<MedsLog>('meds');
-    const logs = getLogsByDate(new Date());
-    const hasVitD = logs.some(l => l.medName === VITAMIN_D_KEY);
+    const { addLog, getLogsByDate, logs } = useToolData<MedsLog>('meds');
+    // We used getLogsByDate before, but now we have access to all 'logs' for the Chart.
+    // For 'Today's History', we can filter logs manually or use getLogsByDate.
+    // Using filtered logs for history is cleaner if we already have 'logs'.
+    const todaysLogs = logs.filter(l => {
+        const d = new Date(l.timestamp);
+        const now = new Date();
+        return d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+    });
+
+    const hasVitD = todaysLogs.some(l => l.medName === VITAMIN_D_KEY);
 
     const handleAdd = (name: string, dose?: string) => {
         addLog({ medName: name, dose });
@@ -51,25 +62,29 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <div className="flex flex-col h-full p-6">
 
             {/* Vitamin D Section */}
-            <div className="mb-8">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Diario</h3>
-                <button
-                    onClick={() => !hasVitD && handleAdd(VITAMIN_D_KEY)}
-                    className={`w-full p-6 rounded-2xl border flex items-center justify-between transition-all ${hasVitD
-                            ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400'
-                            : 'bg-slate-800 border-white/5 text-slate-300 hover:bg-slate-700'
-                        }`}
-                >
-                    <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${hasVitD ? 'bg-emerald-500 text-white' : 'bg-slate-700'}`}>
-                            {hasVitD ? <Check size={24} strokeWidth={3} /> : <span className="text-xl font-bold">D</span>}
-                        </div>
-                        <div className="text-left">
-                            <p className="font-bold text-lg">Vitamina D</p>
-                            <p className="text-xs opacity-70">1 gota diaria</p>
-                        </div>
+            <div className="mb-8 p-4 bg-slate-900/50 rounded-2xl border border-white/5">
+                <div className="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Vitamina D</h3>
+                        <p className="text-[10px] text-slate-400">Diario</p>
                     </div>
-                </button>
+                    {/* Quick Action */}
+                    {!hasVitD && (
+                        <button
+                            onClick={() => handleAdd(VITAMIN_D_KEY)}
+                            className="bg-emerald-500 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg shadow-emerald-500/20 active:scale-95 transition-all"
+                        >
+                            Registrar Hoy
+                        </button>
+                    )}
+                </div>
+
+                {/* Last 7 Days Visualization */}
+                <LastDaysChart
+                    data={logs.filter(l => l.medName === VITAMIN_D_KEY).map(l => ({ timestamp: l.timestamp, status: 'completed' }))}
+                    days={7}
+                    label="Últimos 7 días"
+                />
             </div>
 
             {/* Common Meds */}
@@ -116,10 +131,10 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     Hoy
                 </h3>
                 <div className="space-y-3">
-                    {logs.length === 0 ? (
+                    {todaysLogs.length === 0 ? (
                         <p className="text-sm text-slate-500 italic text-center py-4">Sin registros hoy</p>
                     ) : (
-                        logs.map((log, i) => (
+                        todaysLogs.map((log, i) => (
                             <div key={i} className="flex items-center justify-between p-3 bg-slate-800 rounded-xl border border-white/5">
                                 <div className="flex items-center gap-3">
                                     <Pill size={16} className="text-slate-500" />
