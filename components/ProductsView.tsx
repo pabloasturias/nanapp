@@ -387,7 +387,7 @@ export const ProductsView: React.FC = () => {
                                         <div className="flex items-center gap-2">
                                             <div className="px-2 py-0.5 rounded-md bg-slate-800/80 border border-white/5 flex items-center gap-1.5">
                                                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                                                    {t(`cat_${product.category.toLowerCase()}` as any) || product.category}
+                                                    {product.category.toLowerCase() === 'toys' && product.subcategory ? product.subcategory : (t(`cat_${product.category.toLowerCase()}` as any) || product.category)}
                                                 </span>
                                             </div>
                                         </div>

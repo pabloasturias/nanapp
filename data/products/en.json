@@ -1,0 +1,1356 @@
+[
+    {
+        "id": 1,
+        "name": "Chicco Next2Me Forever",
+        "category": "sleep",
+        "shortDesc": "The ultimate 3-in-1 evolutionary co-sleeper.",
+        "longDesc": "More than a co-sleeper. Evolves with your baby up to 4 years. Patented folding side panel for maximum safety, wheels for moving, and Montessori floor bed mode.",
+        "features": [
+            "Use up to 4 years",
+            "Patented safety system",
+            "Montessori floor bed mode",
+            "Wheels with brakes"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Chicco+Next2Me+Forever&tag=100bcb-21"
+    },
+    {
+        "id": 2,
+        "name": "Ecus Kids Pingu Mattress",
+        "category": "sleep",
+        "shortDesc": "The most recommended anti-suffocation crib mattress.",
+        "longDesc": "Scientifically designed to prevent plagiocephaly and suffocation. Its core with air channels reduces pressure on baby's head and ensures breathing even if they roll over.",
+        "features": [
+            "Plagiocephaly prevention",
+            "Sanitary Certificate",
+            "Max 3D breathability",
+            "Anti-mite treatment"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Ecus+Kids+Pigu+Colchon+Cuna&tag=100bcb-21"
+    },
+    {
+        "id": 3,
+        "name": "Tommee Tippee Grobag 2.5 TOG",
+        "category": "sleep",
+        "shortDesc": "Premium sleeping bag for absolute thermal safety.",
+        "longDesc": "The gold standard in sleeping bags. Ergonomic design for healthy hips (IHDI), easy night diaper changes with double zipper, and luxury cotton fabric.",
+        "features": [
+            "Hip healthy (Certified)",
+            "Two-way zipper",
+            "Soft premium fabric",
+            "No noisy snaps"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Grobag+2.5+TOG&tag=100bcb-21"
+    },
+    {
+        "id": 4,
+        "name": "Love To Dream Swaddle UP",
+        "category": "sleep",
+        "shortDesc": "The only swaddle that allows sleeping with arms up.",
+        "longDesc": "Revolutionary design allowing baby to sleep in their natural position (arms up) to self-soothe, while preventing startle reflex. Thousands of parents 'saved'.",
+        "features": [
+            "Natural arms position",
+            "Self-soothing (hand sucking)",
+            "Prevents Moro reflex",
+            "Easy diaper change"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Love+To+Dream+Swaddle+UP&tag=100bcb-21"
+    },
+    {
+        "id": 5,
+        "name": "Hatch Rest 2nd Gen",
+        "category": "environment",
+        "shortDesc": "The most desired 'All-in-One' sleep device.",
+        "longDesc": "Combines smart white noise machine, night light, and audio monitor. All controlled from your phone. Create custom sleep routines that grow with your child.",
+        "features": [
+            "Wi-Fi App Control",
+            "Custom light and sound",
+            "'Time-to-Rise' feature",
+            "Audio monitor"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Hatch+Rest+2+Gen&tag=100bcb-21"
+    },
+    {
+        "id": 6,
+        "name": "Portable Blackout Curtains",
+        "category": "environment",
+        "shortDesc": "Total 'Blackout' darkness wherever you go.",
+        "longDesc": "Turns any room into a sleep cave. Attaches to window with premium suction cups. Essential for vacations or visiting family.",
+        "features": [
+            "100% light block",
+            "High-hold suction cups",
+            "Adjustable with velcro",
+            "Travel bag included"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Cortinas+Opacas+Portatiles+Bebe&tag=100bcb-21"
+    },
+    {
+        "id": 7,
+        "name": "Nanit Pro Smart Monitor",
+        "category": "environment",
+        "shortDesc": "The Tesla of baby monitors. Computer vision for sleep.",
+        "longDesc": "Not just see your baby, but analyze their sleep. Gives data on sleep duration, night visits, and breathing (with special band). Unmatched HD video quality.",
+        "features": [
+            "1080p HD overhead video",
+            "Sleep analytics",
+            "Breathing monitor (wearable)",
+            "Two-way audio"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nanit+Pro+Camera&tag=100bcb-21"
+    },
+    {
+        "id": 8,
+        "name": "Levoit Dual 150 Humidifier",
+        "category": "health",
+        "shortDesc": "Absolute silence and precise humidity control.",
+        "longDesc": "Amazon's favorite humidifier. Ultrasonic technology almost inaudible (28dB), easy to clean tank (large opening), and rotating nozzle. Vital for colds.",
+        "features": [
+            "Silent (<28dB)",
+            "Easy top fill",
+            "Auto shut-off safety",
+            "Essential oil diffuser"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Levoit+Humidificador+Bebe&tag=100bcb-21"
+    },
+    {
+        "id": 9,
+        "name": "Nosiboo Pro Nasal Aspirator",
+        "category": "health",
+        "shortDesc": "Hospital power with friendly design.",
+        "longDesc": "The ultimate nasal aspirator. Design award winner. Adjustable strong suction to clear noses in seconds when no other aspirator can.",
+        "features": [
+            "Adjustable suction power",
+            "Friendly 'Bear' design",
+            "Easy clean (head)",
+            "Recommended by ENTs"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nosiboo+Pro&tag=100bcb-21"
+    },
+    {
+        "id": 10,
+        "name": "GroEgg 2 Thermometer",
+        "category": "environment",
+        "shortDesc": "Visual safety. Changes color with temperature.",
+        "longDesc": "At a glance know if the room is safe. Yellow (perfect), Blue (cold), Red (hot). Also acts as a perfect dim pleasant night light.",
+        "features": [
+            "Intuitive color code",
+            "Dimmable night light",
+            "Precise digital reading",
+            "Iconic design"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=GroEgg+2&tag=100bcb-21"
+    },
+    {
+        "id": 11,
+        "name": "VAVA Night Light",
+        "category": "environment",
+        "shortDesc": "Parents' favorite touch light.",
+        "longDesc": "Portable, rechargeable, and with warm light that doesn't wake baby up. Perfect for night feeds and diaper changes. SOS mode and safe surface for baby to play.",
+        "features": [
+            "Easy touch control",
+            "Long battery life",
+            "Warm/White light",
+            "Safe (ABS+PP)"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VAVA+Luz+Nocturna+Bebe&tag=100bcb-21"
+    },
+    {
+        "id": 12,
+        "name": "Bibs De Lux Pacifiers",
+        "category": "sleep",
+        "shortDesc": "The renewed Danish classic. Style and acceptance.",
+        "longDesc": "Round nipple mimics mother's nipple, with iconic vintage aesthetic and premium matte finishes. Curved shield to avoid irritating skin around mouth.",
+        "features": [
+            "Cherry nipple latex/silicone",
+            "Iconic design and colors",
+            "Vented shield",
+            "BPA/PVC free"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Bibs+De+Lux+Chupetes&tag=100bcb-21"
+    },
+    {
+        "id": 13,
+        "name": "Jané Nursing Pillow",
+        "category": "mom",
+        "shortDesc": "4-in-1 versatility with ergonomic filling.",
+        "longDesc": "A trusted classic. Filled with microspheres that adapt to your body and baby's. Use for pregnancy, breastfeeding, and as a baby lounge nest.",
+        "features": [
+            "Adaptable microsphere fill",
+            "Removable washable cover",
+            "Evolutionary multi-use",
+            "Baby safety harness"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Jane+Cojin+Lactancia&tag=100bcb-21"
+    },
+    {
+        "id": 14,
+        "name": "Songmics Nursing Chair",
+        "category": "mom",
+        "shortDesc": "Bestselling rocker for comfort and price.",
+        "longDesc": "No need to spend 600€. This birch rocker offers the perfect sway and adjustable footrest. Thousands of moms recommend it for night feeds.",
+        "features": [
+            "Birch wood frame",
+            "5-pos adjustable footrest",
+            "100% cotton washable cover",
+            "Useful side pocket"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Songmics+Mecedora+Lactancia&tag=100bcb-21"
+    },
+    {
+        "id": 15,
+        "name": "BabyBjörn Harmony",
+        "category": "travel",
+        "shortDesc": "The luxury carrier. Super soft 3D mesh.",
+        "longDesc": "The ultimate carrier from newborn to 3 years. Tech 3D mesh prevents overheating. Superior lumbar support and certified ergonomic hip design.",
+        "features": [
+            "Breathable 3D mesh",
+            "Premium lumbar support",
+            "From NB without insert",
+            "Scandinavian design"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=BabyBjörn+Harmony&tag=100bcb-21"
+    },
+    {
+        "id": 16,
+        "name": "BabyBjörn Travel Crib Light",
+        "category": "travel",
+        "shortDesc": "Sets up in 1 move. Maximum lightness.",
+        "longDesc": "The best travel crib on the market, hands down. Weighs only 6kg and unfolds magically in a second. Comfy mattress included (not a board) and carry bag.",
+        "features": [
+            "Instant setup",
+            "Featherweight (6kg)",
+            "Comfy mattress included",
+            "Breathable mesh fabric"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Babybjorn+Cuna+Viaje+Light&tag=100bcb-21"
+    },
+    {
+        "id": 17,
+        "name": "Munchkin Portable Changer",
+        "category": "hygiene",
+        "shortDesc": "Survival kit for quick changes.",
+        "longDesc": "Compact and stylish. Includes head pad, mesh pocket for diapers, and wipes case. Everything you need in a clutch bag.",
+        "features": [
+            "Extra head padding",
+            "Wipes case included",
+            "Organizer pockets",
+            "Easy clean"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Cambiador+Portatil&tag=100bcb-21"
+    },
+    {
+        "id": 18,
+        "name": "Carter's 2-Way Zip Pajamas",
+        "category": "sleep",
+        "shortDesc": "The #1 American pajamas for quality and fit.",
+        "longDesc": "Famous for their designs and durability. The 2-way zipper is standard on all models, making life easier for parents at every diaper change.",
+        "features": [
+            "Ankle-to-chin zipper",
+            "Durable cotton",
+            "Secure 'snug fit'",
+            "Fun designs"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Carter's+Pijama+Bebe+Cremallera&tag=100bcb-21"
+    },
+    {
+        "id": 19,
+        "name": "Goodnight Moon",
+        "category": "sleep",
+        "shortDesc": "The classic bedtime story for generations.",
+        "longDesc": "In a great green room, tucked away in bed, is a little bunny. 'Goodnight room, goodnight moon.' The quiet poetry and gentle illustrations make it the perfect end-of-day book.",
+        "features": [
+            "Soothing rhythm",
+            "Classic illustrations",
+            "Bedtime routine",
+            "Calming"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=Goodnight+Moon+Board+Book&tag=nanapp-20"
+    },
+    {
+        "id": 20,
+        "name": "Stokke Flexi Bath + Support",
+        "category": "hygiene",
+        "shortDesc": "The Norwegian folding tub that saves space.",
+        "longDesc": "Iconic design that folds completely flat. With the optional newborn support, it's the perfect solution for safe and comfortable baths without taking up the whole bathroom.",
+        "features": [
+            "Ultra compact fold",
+            "Ergonomic NB support",
+            "Heat-sensitive plug",
+            "Durable design"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Stokke+Flexi+Bath&tag=100bcb-21"
+    },
+    {
+        "id": 21,
+        "name": "Weleda Calendula Oil",
+        "category": "hygiene",
+        "shortDesc": "The liquid gold for baby's skin.",
+        "longDesc": "Certified natural cosmetics. Soothes skin and envelops baby in a thermal protective layer. The gentle scent is relaxing and perfect for post-bath massage.",
+        "features": [
+            "100% Bio and Natural",
+            "No mineral oils",
+            "With marigold extract",
+            "Protects sensitive skin"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Weleda+Aceite+Calendula+Bebe&tag=100bcb-21"
+    },
+    {
+        "id": 22,
+        "name": "Sophie La Girafe",
+        "category": "health",
+        "shortDesc": "The world's most famous teether since 1961.",
+        "longDesc": "Made of 100% natural rubber and food paint. Stimulates all 5 senses. Its legs and ears are perfect for soothing sore gums. An essential gift.",
+        "features": [
+            "Natural Hevea rubber",
+            "Stimulates 5 senses",
+            "Easy grip",
+            "Cultural icon"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Sophie+La+Girafe&tag=100bcb-21"
+    },
+    {
+        "id": 23,
+        "name": "Aden+Anais Fitted Sheets",
+        "category": "sleep",
+        "shortDesc": "Luxury muslin that gets softer with every wash.",
+        "longDesc": "Cotton muslin is the most breathable fabric for babies. These sheets are not only beautiful but regulate temperature better than regular cotton.",
+        "features": [
+            "100% Cotton muslin",
+            "Thermoregulating",
+            "Designer prints",
+            "Extra softness"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Aden+Anais+Sabanas+Cuna&tag=100bcb-21"
+    },
+    {
+        "id": 24,
+        "name": "Galetoss Pilates Ball",
+        "category": "mom",
+        "shortDesc": "Sturdy and safe for bouncing with baby.",
+        "longDesc": "Thick anti-burst material. Essential for soothing colic through gentle bouncing. A lifesaver for parents with high-demand babies.",
+        "features": [
+            "Anti-Burst system",
+            "Non-slip surface",
+            "Pump included",
+            "Supports +300kg"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Pelota+Pilates+Embarazo&tag=100bcb-21"
+    },
+    {
+        "id": 25,
+        "name": "Munchkin Diaper Organizer",
+        "category": "mom",
+        "shortDesc": "Sturdy and spacious diaper caddy.",
+        "longDesc": "Keep chaos under control. Space for dozens of diapers, wipes, and creams. Sturdy handle to carry the 'change hq' to any room.",
+        "features": [
+            "Rigid compartments",
+            "Side mesh pockets",
+            "Reinforced handle",
+            "Perfect gift"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Organizador+Pañales&tag=100bcb-21"
+    },
+    {
+        "id": 26,
+        "name": "Owlet Dream Sock",
+        "category": "health",
+        "shortDesc": "Total peace of mind monitoring vitals.",
+        "longDesc": "Hospital tech at home. Measures oxygen and pulse while sleeping. Alerts base and phone if levels drop, allowing you to sleep with true peace of mind.",
+        "features": [
+            "Pulse oximetry",
+            "Sleep history",
+            "Wireless charging",
+            "Real-time notifications"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Owlet+Dream+Sock&tag=100bcb-21"
+    },
+    {
+        "id": 27,
+        "name": "Nanny Breathing Monitor",
+        "category": "health",
+        "shortDesc": "The most reliable medically certified monitor.",
+        "longDesc": "Used in maternity wards across Europe. A large surface sensor mat detects every micro-breath. If it stops for 20s, a loud acoustic alarm sounds.",
+        "features": [
+            "Medical Device Certified",
+            "Large sensor surface",
+            "Loud acoustic alarm",
+            "No false alarms"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nanny+Monitor+Respiracion&tag=100bcb-21"
+    },
+    {
+        "id": 28,
+        "name": "Philips 800 Series Purifier",
+        "category": "environment",
+        "shortDesc": "Pure allergen-free air in total silence.",
+        "longDesc": "Compact size ideal for bedrooms. Its sleep mode is ultra-quiet and light-free. Removes viruses, allergens, and dust in minutes thanks to its HEPA filter.",
+        "features": [
+            "HEPA Nanoprotect filter",
+            "Ultra-quiet sleep mode",
+            "Air quality indicator",
+            "Low consumption"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Philips+Purificador+Aire+Serie+800&tag=100bcb-21"
+    },
+    {
+        "id": 29,
+        "name": "Dyson Purifier Cool Autoreact",
+        "category": "environment",
+        "shortDesc": "The jewel in purification and cooling.",
+        "longDesc": "Captures dust, allergens, and H1N1 virus. Bladeless fan (100% safe for little fingers) and monitors air quality in real-time. A luxury that improves health.",
+        "features": [
+            "Bladeless (Safe)",
+            "HEPA H13 glass filter",
+            "350 degree oscillation",
+            "LCD monitoring"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Dyson+Purifier+Cool+Autoreact&tag=100bcb-21"
+    },
+    {
+        "id": 30,
+        "name": "GroClock Sleep Trainer",
+        "category": "sleep",
+        "shortDesc": "Teaches longer sleep visually.",
+        "longDesc": "The sun comes up on screen only when it's time to get up. Kids understand the concept visually and stay in bed until 'the sun comes up', gifting you hours of sleep.",
+        "features": [
+            "Educational screen",
+            "Adjustable brightness",
+            "Story included",
+            "Digital clock option"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=GroClock&tag=100bcb-21"
+    },
+    {
+        "id": 31,
+        "name": "Tommee Tippee Twist & Click",
+        "category": "hygiene",
+        "shortDesc": "The only bin that twists and wraps each nappy individually.",
+        "longDesc": "Guaranteed protection against odors. Its system twists and seals each diaper in antibacterial film, blocking germs and smells. Essential if you change in the bedroom.",
+        "features": [
+            "Odor block guarantee",
+            "Antibacterial film",
+            "Capacity ~28 nappies",
+            "Easy refill"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Twist+&+Click&tag=100bcb-21"
+    },
+    {
+        "id": 32,
+        "name": "Prince Lionheart Wipe Warmer",
+        "category": "hygiene",
+        "shortDesc": "Wipes always moist and warm, never dry.",
+        "longDesc": "Patented system prevents them from drying out or turning brown. Maintains the perfect temperature to clean baby's bum without night startles.",
+        "features": [
+            "Ever-Fresh System",
+            "Soft night light",
+            "Large capacity",
+            "Safe temperature"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Prince+Lionheart+Wipes+Warmer&tag=100bcb-21"
+    },
+    {
+        "id": 33,
+        "name": "Philips Avent Bottle Warmer",
+        "category": "mom",
+        "shortDesc": "Smart warming that prevents burns.",
+        "longDesc": "Calculates exact time based on volume and starting temperature. Heats evenly without dangerous hot spots and keeps milk warm for up to 1 hour.",
+        "features": [
+            "Smart temp control",
+            "Defrost function",
+            "Keeps warm 60min",
+            "Jar compatible"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Philips+Avent+Calienta+Biberones+Rapido&tag=100bcb-21"
+    },
+    {
+        "id": 34,
+        "name": "MAM Milk Dispenser",
+        "category": "mom",
+        "shortDesc": "Triangular design to not spill a gram.",
+        "longDesc": "Seemingly simple, but its triangular shape makes it easy to pour all powder into narrow-neck bottles without clogging. Leak-proof lids and medical grade material.",
+        "features": [
+            "Triangular shape",
+            "3 large servings",
+            "Sterilizer safe",
+            "BPA/BPS free"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Dosificador+Leche+MAM&tag=100bcb-21"
+    },
+    {
+        "id": 35,
+        "name": "Haakaa Manual Breast Pump",
+        "category": "mom",
+        "shortDesc": "The original viral silicone collector.",
+        "longDesc": "Uses the let-down reflex while breastfeeding. Attaches by suction and collects milk effectively. One piece, silent, no cords.",
+        "features": [
+            "Food grade silicone",
+            "Suction base",
+            "No assembly",
+            "Silent"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Haakaa+Sacaleches&tag=100bcb-21"
+    },
+    {
+        "id": 36,
+        "name": "Glocusent Reading Light",
+        "category": "mom",
+        "shortDesc": "Award-winning goose-neck amber light.",
+        "longDesc": "Designed for readers, adopted by moms. 3 light tones (including amber sleep-friendly). Eternal battery and perfect directionality to not disturb your partner.",
+        "features": [
+            "Amber mode (1800k)",
+            "USB-C rechargeable",
+            "360 flexible neck",
+            "Lightweight"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Glocusent+Luz+Lectura&tag=100bcb-21"
+    },
+    {
+        "id": 37,
+        "name": "3 Sprouts Organizer",
+        "category": "environment",
+        "shortDesc": "Adorable animal design and functionality.",
+        "longDesc": "Brightens the room while organizing. Sturdy structure that doesn't deform. Perfect for diapers, lotions, and emergency wipes.",
+        "features": [
+            "Canvas animal designs",
+            "Sturdy structure",
+            "Large pockets",
+            "Hang easy"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=3+Sprouts+Organizador&tag=100bcb-21"
+    },
+    {
+        "id": 38,
+        "name": "Medela Freestyle Hands-Free",
+        "category": "mom",
+        "shortDesc": "Total freedom. Invisible double pump.",
+        "longDesc": "The most advanced hospital-grade hands-free pump. Worn inside the bra. Compact motor in pocket. Reclaim hours of your life while pumping.",
+        "features": [
+            "True hands-free",
+            "Anatomic cups",
+            "Rechargeable battery",
+            "App connectivity"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Medela+Freestyle+Hands+Free&tag=100bcb-21"
+    },
+    {
+        "id": 39,
+        "name": "Burt's Bees Fleece Jumpsuit",
+        "category": "sleep",
+        "shortDesc": "Organic cotton and recycled polyester soft.",
+        "longDesc": "The eco-friendly brand par excellence. Its fleece jumpsuit is famous for being warm but not stifling, ideal for babies who kick off blankets.",
+        "features": [
+            "Organic cotton",
+            "Zipper guard",
+            "Non-slip soles",
+            "Little bee design"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Burt's+Bees+Baby+Jumpsuit&tag=100bcb-21"
+    },
+    {
+        "id": 40,
+        "name": "Tommee Tippee Groblind",
+        "category": "travel",
+        "shortDesc": "The original suction portable blind.",
+        "longDesc": "Fits any window up to 130x198cm. Long-lasting suction cups that don't fall off mid-nap. Essential for summer and travel.",
+        "features": [
+            "XL adjustable size",
+            "Total blackout",
+            "Travel bag",
+            "Velcro resizing"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Groblind&tag=100bcb-21"
+    },
+    {
+        "id": 41,
+        "name": "BSensible Protective Sheet",
+        "category": "hygiene",
+        "shortDesc": "2-in-1: Tencel sheet and waterproof protector.",
+        "longDesc": "Natural dermoprotective fabric (Tencel/Zinc) that is waterproof but breathes like a second skin. Forget noisy plastics. Quality made in Spain.",
+        "features": [
+            "Tencel + Zinc Oxide",
+            "Invisible waterproof",
+            "Natural anti-mite",
+            "Made in Spain"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=BSensible+Sabana+Protectora+Cuna&tag=nanapp-20"
+    },
+    {
+        "id": 42,
+        "name": "Norit Baby Detergent",
+        "category": "hygiene",
+        "shortDesc": "The lifelong baby scent. Hypoallergenic.",
+        "longDesc": "Recommended by dermatologists/pediatricians. Formula without sensitizing preservatives. Keeps clothes soft without softener (which shouldn't be used for babies).",
+        "features": [
+            "Hypoallergenic",
+            "No optical brighteners",
+            "Iconic gentle scent",
+            "Cares for delicate fibers"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Norit+Bebe&tag=nanapp-20"
+    },
+    {
+        "id": 43,
+        "name": "MAM Clip It!",
+        "category": "sleep",
+        "shortDesc": "Adjustable safe length and washable.",
+        "longDesc": "One of the few clips that allows length adjustment for sleeping safety. Compatible with button, ring, and teethers. Sturdy design.",
+        "features": [
+            "Adjustable length",
+            "Universal compatibility",
+            "Washable",
+            "Safe mechanism"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=MAM+Clip+It&tag=nanapp-20"
+    },
+    {
+        "id": 44,
+        "name": "Lorena Canals Washable Rug",
+        "category": "environment",
+        "shortDesc": "Cotton rugs washable in washing machine.",
+        "longDesc": "The revolution in kids' decor. Vomit or stain? Into the washer and ready. 100% natural cotton and non-toxic dyes. Beautiful designs and soft touch.",
+        "features": [
+            "Home washable",
+            "100% natural cotton",
+            "Handmade",
+            "Non-toxic dyes"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lorena+Canals+Alfombra&tag=nanapp-20"
+    },
+    {
+        "id": 45,
+        "name": "Loop Quiet Earplugs",
+        "category": "mom",
+        "shortDesc": "Designer noise reduction for sleep.",
+        "longDesc": "Soft-touch silicone super comfy for side sleeping. Reduces 26dB (snoring/street noise) but allows you to hear a loud cry or alarm next to you.",
+        "features": [
+            "Ultra-soft silicone",
+            "-26dB reduction",
+            "Stays put",
+            "Carry case"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Loop+Quiet+Earplugs&tag=nanapp-20"
+    },
+    {
+        "id": 46,
+        "name": "MantaSilk Sleep Mask",
+        "category": "mom",
+        "shortDesc": "100% Mulberry silk protecting skin and sleep.",
+        "longDesc": "Grade 6A silk (highest). Blocks light totally and is anti-wrinkle. Elastic doesn't squeeze hair. A small luxury to improve your naps.",
+        "features": [
+            "100% Mulberry Silk",
+            "Breathable",
+            "Hypoallergenic",
+            "Oeko-Tex Certified"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Antifaz+Seda+Natural&tag=nanapp-20"
+    },
+    {
+        "id": 47,
+        "name": "Banbaloo Bed Bumper",
+        "category": "sleep",
+        "shortDesc": "The safe foam roller bumper.",
+        "longDesc": "Better than ugly metal rails. A viscoelastic foam cylinder placed under the sheet. Stops the child gently without 'cage' feeling.",
+        "features": [
+            "Memory foam",
+            "Invisible under sheet",
+            "Portable",
+            "No assembly"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Banbaloo+Barrera+Cama&tag=nanapp-20"
+    },
+    {
+        "id": 48,
+        "name": "Baby Shusher Original",
+        "category": "sleep",
+        "shortDesc": "The viral sleep miracle machine.",
+        "longDesc": "Used by newborn photographers. Emits a rhythmic and loud 'SHHHHH' that activates the calming reflex. 15/30min timer and necessary high volume.",
+        "features": [
+            "Real Shhh sound",
+            "Portable and sturdy",
+            "Adjustable volume",
+            "Wrist strap"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Baby+Shusher&tag=nanapp-20"
+    },
+    {
+        "id": 49,
+        "name": "Jellycat Bunny",
+        "category": "sleep",
+        "shortDesc": "London's softest and most luxurious plush.",
+        "longDesc": "A modern classic. Its fabric is indescribably soft. Safe from birth and so durable it will become their childhood companion.",
+        "features": [
+            "Supreme softness",
+            "Bashful Bunny design",
+            "EN71 Safe",
+            "Hand washable"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Jellycat+Bunny+Beige&tag=nanapp-20"
+    },
+    {
+        "id": 50,
+        "name": "Beaba Stainless Steel Jar",
+        "category": "travel",
+        "shortDesc": "French style and thermal performance.",
+        "longDesc": "Double wall stainless steel. Keeps food hot 5h or cold 7h. Wide mouth to eat directly from and 100% airtight lid with handle.",
+        "features": [
+            "304 Stainless Steel",
+            "100% Airtight",
+            "No flavor transfer",
+            "Ergonomic design"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo+Porciones&tag=nanapp-20"
+    },
+    {
+        "id": 51,
+        "name": "Rockit Rocker (Rechargeable)",
+        "category": "travel",
+        "shortDesc": "The rocket that rocks the stroller automatically.",
+        "longDesc": "A godsend for stops at traffic lights or cafes. Attaches to any stroller and rocks it gently so baby doesn't wake up. Silent, adjustable speed, and now USB rechargeable.",
+        "features": [
+            "Universal (any stroller)",
+            "Gentle rocking",
+            "USB Rechargeable",
+            "Water resistant"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker+Recargable&tag=nanapp-20"
+    },
+    {
+        "id": 101,
+        "name": "Lamaze Freddie the Firefly",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Complete sensory toy for early development.",
+        "longDesc": "Stimulates sight, hearing, and touch. Wings with different textures, self-discovery mirror, rattles, and teether. The perfect stroller toy.",
+        "features": [
+            "Visual stimulation",
+            "Teether included",
+            "Universal clip",
+            "Varied textures"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie+Luciérnaga&tag=nanapp-20"
+    },
+    {
+        "id": 102,
+        "name": "Manhattan Toy Winkel",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "The labyrinth design rattle and teether.",
+        "longDesc": "Easy to grasp for tiny hands. Its soft color tubes can be cooled in the fridge to soothe gums. Hypnotic for babies.",
+        "features": [
+            "Easy grip",
+            "Cooling effect (fridge)",
+            "Motor development",
+            "BPA Free"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=nanapp-20"
+    },
+    {
+        "id": 103,
+        "name": "VTech Crawl Ball",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Encourages baby to chase it and crawl.",
+        "longDesc": "Moves by itself randomly encouraging baby to follow. Lights, songs, and animals teaching basic vocabulary while developing gross motor skills.",
+        "features": [
+            "Auto movement",
+            "Lights and sounds",
+            "Encourages crawling",
+            "English language"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VTech+Bola+Cantarina&tag=nanapp-20"
+    },
+    {
+        "id": 104,
+        "name": "Mushie Stacking Cups",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Nordic style for fine motor skills.",
+        "longDesc": "Danish design stacking cups in soft colors. Ideal for tower, bath, or beach. Helps hand-eye coordination without overstimulating.",
+        "features": [
+            "Nordic design",
+            "BPA/PVC free",
+            "Open play",
+            "Multi-use (bath/sand)"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=nanapp-20"
+    },
+    {
+        "id": 105,
+        "name": "Mega Bloks Building Bag",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Giant blocks for little builders.",
+        "longDesc": "The ideal first building set. Large blocks impossible to swallow and easy to fit/separate. Fosters creativity and fine motor skills.",
+        "features": [
+            "Safe size",
+            "Easy fit",
+            "Storage bag",
+            "Infinite creativity"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+Bolsa&tag=nanapp-20"
+    },
+    {
+        "id": 106,
+        "name": "VTech Baby Walker",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Activity center and support for first steps.",
+        "longDesc": "Removable activity panel for floor play and sturdy walker to gain confidence walking. Speed control on wheels for safety.",
+        "features": [
+            "Removable panel",
+            "Adjustable brake",
+            "Musical keyboard",
+            "Sturdy"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VTech+Correpasillos+Andandin&tag=nanapp-20"
+    },
+    {
+        "id": 107,
+        "name": "Magna-Tiles 32 Pieces",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Original 3D magnetic construction.",
+        "longDesc": "The ultimate toy investment. Translucent pieces that magnetically join on any side. Math, geometry, and creativity in one durable toy.",
+        "features": [
+            "Safe magnets",
+            "STEAM play",
+            "Extreme durability",
+            "Expansion compatible"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles&tag=nanapp-20"
+    },
+    {
+        "id": 108,
+        "name": "Melissa & Doug Sound Puzzle",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Wooden puzzle with auditory reward.",
+        "longDesc": "Place the correct piece (e.g., cow) to hear the realistic animal sound. Reinforces cause-effect, vocabulary, and fine motor skills.",
+        "features": [
+            "Real wood",
+            "Realistic sounds",
+            "Easy grip pegs",
+            "Educational quality"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Puzzle+Sonidos&tag=nanapp-20"
+    },
+    {
+        "id": 136,
+        "name": "Montessori Munari Mobile",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Visual tracking for newborns.",
+        "longDesc": "The first Montessori mobile. High contrast black and white geometric shapes balanced on a glass sphere to reflect light. Perfect for developing focus and tracking.",
+        "features": [
+            "High contrast",
+            "Visual tracking",
+            "Calming movement",
+            "Classic Montessori"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Munari+Mobile&tag=nanapp-20"
+    },
+    {
+        "id": 137,
+        "name": "High Contrast Cards",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Visual stimulation 0-3 months.",
+        "longDesc": "Black and white patterned cards designed for baby's developing vision. Stimulates brain growth and visual attention during tummy time.",
+        "features": [
+            "Visual stimulation",
+            "Tummy time aid",
+            "Sturdy card",
+            "Brain development"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=High+Contrast+Baby+Cards&tag=nanapp-20"
+    },
+    {
+        "id": 138,
+        "name": "Wooden Play Gym",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Encourages reach and grasp.",
+        "longDesc": "Simple wooden structure to hang tactile mobiles. Promotes freedom of movement and concentration without overstimulation of battery toys.",
+        "features": [
+            "Natural wood",
+            "Stable base",
+            "Encourages reach",
+            "Minimalist"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Baby+Play+Gym&tag=nanapp-20"
+    },
+    {
+        "id": 109,
+        "name": "Interlocking Discs",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "First hand-to-hand transfer toy.",
+        "longDesc": "Two wooden discs joined together. Unique shape encourages baby to pass object from one hand to another and rotate wrists.",
+        "features": [
+            "Wrist rotation",
+            "Hand transfer",
+            "Grip dexterity",
+            "Natural wood"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Interlocking+Discs&tag=nanapp-20"
+    },
+    {
+        "id": 110,
+        "name": "Rolling Bell Rattle",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Incentivizes auditory tracking.",
+        "longDesc": "A cylinder with a bell inside. When rolling, emits a pleasant sound, encouraging baby to turn head and eventually crawl towards it.",
+        "features": [
+            "Auditory tracking",
+            "Incentivizes movement",
+            "Wooden bars",
+            "Pleasant sound"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Rolling+Bell+Rattle&tag=nanapp-20"
+    },
+    {
+        "id": 111,
+        "name": "Sensory Balls Set",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Tactile variety for exploration.",
+        "longDesc": "A set of balls with different textures, sizes, and weights. Perfect for sensory exploration and developing grip strength.",
+        "features": [
+            "Varied textures",
+            "BPA Free",
+            "Sensory play",
+            "Easy grip"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Baby+Sensory+Balls+Textured&tag=nanapp-20"
+    },
+    {
+        "id": 112,
+        "name": "Wrist Rattles",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Discovering hands and feet.",
+        "longDesc": "Soft rattles that adjust to wrists or ankles. Helps baby discover their own limbs and understand they control the movement causing sound.",
+        "features": [
+            "Body awareness",
+            "Soft fabric",
+            "Cause-effect",
+            "Auditory feedback"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Wrist+Rattles&tag=nanapp-20"
+    },
+    {
+        "id": 113,
+        "name": "Object Permanence Box",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Classic Montessori cognitive toy.",
+        "longDesc": "Wooden box with hole and tray. Baby drops the ball and it reappears. Teaches that objects continue to exist even if unseen (object permanence).",
+        "features": [
+            "Object permanence",
+            "Eye-hand coord",
+            "Logic",
+            "Satisfaction"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Object+Permanence+Box&tag=nanapp-20"
+    },
+    {
+        "id": 114,
+        "name": "Spinning Drum",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Strengthening wrist and color focus.",
+        "longDesc": "A spinning drum with colors and mirror. Spinning it requires a specific wrist movement and produces visual and auditory reward.",
+        "features": [
+            "Wrist muscle",
+            "Visual tracking",
+            "Cause-effect",
+            "Interactive"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Spinning+Drum&tag=nanapp-20"
+    },
+    {
+        "id": 115,
+        "name": "Egg in Cup",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Precise hand movements.",
+        "longDesc": "A wooden egg and a custom cup. Placing the egg in the cup and removing it refines grasp and release skills.",
+        "features": [
+            "Grasp and release",
+            "Fine motor",
+            "Natural wood",
+            "Simplistic focus"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Egg+Cup&tag=nanapp-20"
+    },
+    {
+        "id": 116,
+        "name": "Treasure Basket",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Heuristic play with real objects.",
+        "longDesc": "A low basket filled with safe everyday objects of various materials (wood, metal, leather, brush). Fosters independent exploration.",
+        "features": [
+            "Sensory variety",
+            "Curiosity",
+            "Real objects",
+            "Open play"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Heuristic+Play+Treasure+Basket&tag=nanapp-20"
+    },
+    {
+        "id": 117,
+        "name": "Ball Tracker",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Tracking moving objects.",
+        "longDesc": "A wooden tower where balls fall in zigzag. Hypnotic for babies, teaches gravity and visual tracking of objects in movement.",
+        "features": [
+            "Visual tracking",
+            "Predictability",
+            "Focus",
+            "Gravity lesson"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Ball+Tracker+Run&tag=nanapp-20"
+    },
+    {
+        "id": 118,
+        "name": "Pop-Up Toy",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Push, turn, switch mechanism.",
+        "longDesc": "Classic cause-effect where different buttons (push, switch, turn) make animals pop up. Great for finger strength and problem solving.",
+        "features": [
+            "Finger strength",
+            "Mechanism logic",
+            "Surprise element",
+            "Colors"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Galt+Toys+Pop+Up&tag=nanapp-20"
+    },
+    {
+        "id": 119,
+        "name": "Geometric Sorter",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Shapes, colors, and fractions.",
+        "longDesc": "More than a sorter. Teaches colors, counting (1 to 4 holes), and basic geometry. Made of solid wood.",
+        "features": [
+            "Learn counting",
+            "Fraction concept",
+            "Fine motor",
+            "Solid wood"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Geometric+Sorter&tag=nanapp-20"
+    },
+    {
+        "id": 120,
+        "name": "Pound & Tap Bench",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Hammer and xylophone in one.",
+        "longDesc": "Baby hammers balls, they fall and roll over the xylophone creating music. Later the xylophone can be removed for separate play.",
+        "features": [
+            "Musical initiation",
+            "Hand-eye coord",
+            "Removable xylophone",
+            "Sturdy construction"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Hape+Pound+Tap+Bench&tag=nanapp-20"
+    },
+    {
+        "id": 121,
+        "name": "Barnyard Activity Cube",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "5 sides of farm fun.",
+        "longDesc": "Award-winning wooden cube. Includes bead maze, animal rotators, and sorters. Perfect height for sitting or kneeling.",
+        "features": [
+            "5 play sides",
+            "Sturdy rounded wood",
+            "Farm theme",
+            "Heirloom quality"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Activity+Cube+Farm&tag=nanapp-20"
+    },
+    {
+        "id": 122,
+        "name": "Baby Stella Doll",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "First empathy doll.",
+        "longDesc": "Soft doll with magnetic pacifier. Sized for toddlers. Simple features encourage imagination and 'caring' role play.",
+        "features": [
+            "Soft body",
+            "Magnetic pacifier",
+            "Diverse skin tones",
+            "Role play"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Baby+Stella&tag=nanapp-20"
+    },
+    {
+        "id": 123,
+        "name": "Pikler Triangle",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Gross motor climbing structure.",
+        "longDesc": "Foldable climbing triangle. Encourages free movement, climbing, and balance at the child's own pace. A Montessori gym essential at home.",
+        "features": [
+            "Gross motor",
+            "Foldable storage",
+            "Solid wood",
+            "Safe climbing"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Pikler+Triangle+Foldable&tag=nanapp-20"
+    },
+    {
+        "id": 124,
+        "name": "Wooden Balance Board",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Open-ended balance toy.",
+        "longDesc": "Is it a bridge? A tunnel? A slide? A rocker? The balance board develops vestibular system and is infinitely creatively used.",
+        "features": [
+            "Vestibular system",
+            "Open-ended play",
+            "Max creativity",
+            "Super sturdy"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Balance+Board+Kids&tag=nanapp-20"
+    },
+    {
+        "id": 125,
+        "name": "Realistic Animal Figures",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Schleich/Papo style animals.",
+        "longDesc": "High quality realistic animals. Essential for vocabulary and matching games with real animal photos or flashcards.",
+        "features": [
+            "Realistic details",
+            "Durable material",
+            "Vocabulary building",
+            "Montessori classic"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Schleich+Farm+Animals&tag=nanapp-20"
+    },
+    {
+        "id": 126,
+        "name": "Cleaning Set",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Practical life imitation.",
+        "longDesc": "Toddlers love to mimic parents. A functional broom, mop, and duster set sized for them. Fosters independence and contributing to home life.",
+        "features": [
+            "Functional tools",
+            "Toddler size",
+            "Practical life",
+            "Empowerment"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Dust+Sweep+Mop&tag=nanapp-20"
+    },
+    {
+        "id": 127,
+        "name": "Play Kitchen",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Pretend play center approx 2y.",
+        "longDesc": "Simple wooden kitchen. Encourages symbolic play, cooking 'recipes', and social interaction. Neutral design fits any living room.",
+        "features": [
+            "Symbolic play",
+            "Neutral design",
+            "Sturdy wood",
+            "Storage space"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Play+Kitchen+Kids&tag=nanapp-20"
+    },
+    {
+        "id": 128,
+        "name": "Pattern Blocks",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Geometric puzzles and creativity.",
+        "longDesc": "Wooden tessellation shapes. Kids create patterns, animals, or mosaics. Develops spatial awareness and geometry intuition.",
+        "features": [
+            "Spatial awareness",
+            "Geometry intuition",
+            "Creativity",
+            "Color recognition"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Pattern+Blocks&tag=nanapp-20"
+    },
+    {
+        "id": 129,
+        "name": "Water Blocks",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Construction with sensory twist.",
+        "longDesc": "Blocks filled with colored water/sand. Beautiful visual effects when building against light. Adds sensory dimension to construction.",
+        "features": [
+            "Visual sensory",
+            "Building toy",
+            "Light play",
+            "Primary colors"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Sensory+Water+Blocks&tag=nanapp-20"
+    },
+    {
+        "id": 130,
+        "name": "Play Silk Scarf",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Simple, versatile, magical.",
+        "longDesc": "A large silk scarf is a cape, a lake, a roof for a fort, or a peek-a-boo tool. The ultimate open-ended toy.",
+        "features": [
+            "Real silk",
+            "Open ended",
+            "Sensory touch",
+            "Lightweight"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Sarah's+Silks+Playsilk&tag=nanapp-20"
+    },
+    {
+        "id": 131,
+        "name": "Magnifying Glass",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Exploring nature up close.",
+        "longDesc": "A sturdy magnifying glass for little hands. Turns every walk into a scientific expedition looking for bugs and leaves.",
+        "features": [
+            "Shatterproof",
+            "Outdoor exploration",
+            "Scientific observation",
+            "Easy grip"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Kids+Magnifying+Glass&tag=nanapp-20"
+    },
+    {
+        "id": 132,
+        "name": "Kinetic Sand",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Sensory sand that never dries.",
+        "longDesc": "Mesmerizing texture that flows like liquid but holds shape. Perfect for indoor sensory play without the mess of real sand.",
+        "features": [
+            "Mess-free",
+            "Sensory tactile",
+            "Never dries",
+            "Calming"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Kinetic+Sand&tag=nanapp-20"
+    },
+    {
+        "id": 133,
+        "name": "Bee-Hive Matching",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Fine motor tweezer work.",
+        "longDesc": "Wooden bees to be placed in their color-matching hives using wooden tweezers. Excellent for pre-writing pincer grasp.",
+        "features": [
+            "Pincer grasp",
+            "Color matching",
+            "Pre-writing skill",
+            "Focus"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=PlanToys+Bee+Hive&tag=nanapp-20"
+    },
+    {
+        "id": 134,
+        "name": "Wooden Calendar & Clock",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Understanding time and dates.",
+        "longDesc": "Visual wooden board with slider for days, months, seasons, and clock. Helps visualize abstract concept of time.",
+        "features": [
+            "Time concept",
+            "Daily ritual",
+            "Seasons learning",
+            "Visual aid"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Calendar+Clock+Kids&tag=nanapp-20"
+    },
+    {
+        "id": 135,
+        "name": "Color Sorting Bowls",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Sorting and categorizing.",
+        "longDesc": "Simple bowls and tokens/acorns. Sorting by color is a precursor to mathematical logic and organizing abilities.",
+        "features": [
+            "Math logic",
+            "Color sorting",
+            "Concentration",
+            "Basic counting"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Color+Sorting+Bowls&tag=nanapp-20"
+    },
+    {
+        "id": 200,
+        "name": "The Whole-Brain Child",
+        "category": "books",
+        "shortDesc": "Revolutionary strategies to nurture your child's developing mind.",
+        "longDesc": "Daniel J. Siegel and Tina Payne Bryson offer 12 key strategies that foster healthy brain development, leading to calmer, happier children.",
+        "features": [
+            "Neuroscience",
+            "Practical strategies",
+            "Emotional intelligence",
+            "Bestseller"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=The+Whole+Brain+Child&tag=nanapp-20"
+    },
+    {
+        "id": 201,
+        "name": "How to Talk So Kids Will Listen",
+        "category": "books",
+        "shortDesc": "The ultimate guide to communication.",
+        "longDesc": "Adele Faber and Elaine Mazlish provide practical and respectful methods to solve common conflicts and build lasting relationship foundations.",
+        "features": [
+            "Communication",
+            "Conflict resolution",
+            "Respectful parenting",
+            "Classic"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=How+to+Talk+So+Kids+Will+Listen&tag=nanapp-20"
+    },
+    {
+        "id": 202,
+        "name": "No-Drama Discipline",
+        "category": "books",
+        "shortDesc": "The whole-brain way to calm the chaos.",
+        "longDesc": "Siegel and Bryson highlight the link between a child's neurological development and the way parents react to misbehavior, promoting connection.",
+        "features": [
+            "Discipline",
+            "Brain-based",
+            "Connection",
+            "Calm"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=No+Drama+Discipline&tag=nanapp-20"
+    },
+    {
+        "id": 203,
+        "name": "The Montessori Toddler",
+        "category": "books",
+        "shortDesc": "Turn your home into a Montessori paradise.",
+        "longDesc": "Simone Davies shows how to turn life with a toddler into a rich and rewarding time of curiosity, learning, respect, and discovery.",
+        "features": [
+            "Montessori at home",
+            "Toddler guide",
+            "Beautiful illustrations",
+            "Practical"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=The+Montessori+Toddler&tag=nanapp-20"
+    },
+    {
+        "id": 204,
+        "name": "What to Expect the First Year",
+        "category": "books",
+        "shortDesc": "The comprehensive month-by-month guide.",
+        "longDesc": "Heidi Murkoff's essential guide covers everything from care and feeding to sleep and development. The bible for new parents.",
+        "features": [
+            "Comprehensive",
+            "Month-by-month",
+            "Standard reference",
+            "Reassuring"
+        ],
+        "affiliateLink": "https://www.amazon.com/s?k=What+to+Expect+the+First+Year&tag=nanapp-20"
+    }
+]

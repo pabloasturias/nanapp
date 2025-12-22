@@ -66,7 +66,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
           </a>
 
           <a
-            href="https://www.buymeacoffee.com/pabloasturias" // Placeholder, verified by user context
+            href="https://buymeacoffee.com/blonen"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 w-full p-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold shadow-lg shadow-amber-500/20 transition-all active:scale-[0.98]"

@@ -251,7 +251,17 @@ export const translations = {
     // Tools UI
     tool_add_title: "Añadir Herramienta",
     tool_active: "Activas",
-    tool_available: "Disponibles"
+    tool_available: "Disponibles",
+
+    // About
+    about_title: "Sobre nanapp",
+    about_subtitle: "El arte de cuidar",
+    about_p1: "Nanapp nace de la tradición más antigua del mundo: el acto de dormir a un niño.",
+    about_p2: "Está inspirada en cómo las abuelas y madres han calmado a sus nietos e hijos durante generaciones, susurrando nanas y transmitiendo una calma que solo el amor puede generar. Queríamos capturar esa esencia en una herramienta moderna.",
+    about_dedicated_title: "Dedicado a...",
+    about_dedicated_names: "A Sara, Pili y Aurora.",
+    about_dedicated_msg: "Y a todas las madres y padres que buscan un momento de calma.",
+    about_footer_made: "Hecho con ❤️ para Vega"
   },
   en: {
     app_slogan: "sound of sleep",
@@ -497,7 +507,17 @@ export const translations = {
     // Tools UI
     tool_add_title: "Add Tool",
     tool_active: "Active",
-    tool_available: "Available"
+    tool_available: "Available",
+
+    // About
+    about_title: "About nanapp",
+    about_subtitle: "The art of caring",
+    about_p1: "Nanapp is born from the world's oldest tradition: the act of soothing a child to sleep.",
+    about_p2: "It is inspired by how grandmothers and mothers have soothed their grandchildren and children for generations, whispering lullabies and transmitting a calm that only love can generate. We wanted to capture that essence in a modern tool.",
+    about_dedicated_title: "Dedicated to...",
+    about_dedicated_names: "To Sara, Pili and Aurora.",
+    about_dedicated_msg: "And to all mothers and fathers seeking a moment of calm.",
+    about_footer_made: "Made with ❤️ for Vega"
   },
   fr: {
     app_slogan: "le son du repos",
@@ -698,6 +718,16 @@ export const translations = {
     STREAM: "Ruisseau",
     FAN: "Ventilateur",
     HEARTBEAT: "Battement de cœur",
+
+    // About
+    about_title: "À propos de nanapp",
+    about_subtitle: "L'art de prendre soin",
+    about_p1: "Nanapp naît de la tradition la plus ancienne du monde : l'acte d'endormir un enfant.",
+    about_p2: "Elle s'inspire de la façon dont les grands-mères et les mères ont apaisé leurs petits-enfants et enfants pendant des générations, en murmurant des berceuses et en transmettant un calme que seul l'amour peut générer. Nous voulions capturer cette essence dans un outil moderne.",
+    about_dedicated_title: "Dédié à...",
+    about_dedicated_names: "À Sara, Pili et Aurora.",
+    about_dedicated_msg: "Et à toutes les mères et tous les pères qui cherchent un moment de calme.",
+    about_footer_made: "Fait avec ❤️ pour Vega"
   },
   de: {
     app_slogan: "der klang der ruhe",
@@ -937,6 +967,16 @@ export const translations = {
     tool_add_title: "Tool hinzufügen",
     tool_active: "Aktiv",
     tool_available: "Verfügbar",
+
+    // About
+    about_title: "Über nanapp",
+    about_subtitle: "Die Kunst des Kümmerns",
+    about_p1: "Nanapp entspringt der ältesten Tradition der Welt: ein Kind in den Schlaf zu wiegen.",
+    about_p2: "Sie ist inspiriert davon, wie Großmütter und Mütter seit Generationen ihre Enkel und Kinder beruhigen, indem sie Schlaflieder flüstern und eine Ruhe übertragen, die nur Liebe erzeugen kann. Wir wollten diese Essenz in einem modernen Werkzeug einfangen.",
+    about_dedicated_title: "Gewidmet...",
+    about_dedicated_names: "Für Sara, Pili und Aurora.",
+    about_dedicated_msg: "Und an alle Mütter und Väter, die einen Moment der Ruhe suchen.",
+    about_footer_made: "Gemacht mit ❤️ für Vega"
   },
   it: {
     app_slogan: "il suono del riposo",
@@ -1099,6 +1139,15 @@ export const translations = {
     why_assoc_desc: "Il cervello collega suono e sonno.",
     story_nana: "La Ninna Nanna",
     story_origin: "L'origine",
+    // About
+    about_title: "Su nanapp",
+    about_subtitle: "L'arte di prendersi cura",
+    about_p1: "Nanapp nasce dalla tradizione più antica del mondo: l'atto di far addormentare un bambino.",
+    about_p2: "È ispirata a come le nonne e le madri hanno calmato i loro nipoti e figli per generazioni, sussurrando ninne nanne e trasmettendo una calma che solo l'amore può generare. Volevamo catturare quell'essenza in uno strumento moderno.",
+    about_dedicated_title: "Dedicato a...",
+    about_dedicated_names: "A Sara, Pili e Aurora.",
+    about_dedicated_msg: "E a tutte le madri e i padri che cercano un momento di calma.",
+    about_footer_made: "Fatto con ❤️ per Vega",
     about_nanapp: "Su nanapp",
     story_more_title: "Più di un'app",
     story_more_desc: "Un sussurro digital.",
@@ -1335,5 +1384,14 @@ export const translations = {
     STREAM: "Riacho",
     FAN: "Ventilador",
     HEARTBEAT: "Batimento",
+    // About
+    about_title: "Sobre a nanapp",
+    about_subtitle: "A arte de cuidar",
+    about_p1: "A nanapp nasce da tradição mais antiga do mundo: o ato de adormecer uma criança.",
+    about_p2: "É inspirada em como as avós e mães acalmaram seus netos e filhos durante gerações, sussurrando canções de ninar e transmitindo uma calma que só o amor pode gerar. Queríamos capturar essa essência em uma ferramenta moderna.",
+    about_dedicated_title: "Dedicado a...",
+    about_dedicated_names: "A Sara, Pili e Aurora.",
+    about_dedicated_msg: "E a todas as mães e pais que procuram um momento de calma.",
+    about_footer_made: "Feito com ❤️ para Vega"
   }
 };

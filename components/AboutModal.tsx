@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Heart } from 'lucide-react';
+import { useLanguage } from '../services/LanguageContext';
 
 interface AboutModalProps {
     isOpen: boolean;
@@ -7,6 +8,8 @@ interface AboutModalProps {
 }
 
 export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
+    const { t } = useLanguage();
+
     if (!isOpen) return null;
 
     return (
@@ -37,15 +40,15 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="p-8 pt-10 overflow-y-auto">
-                    <h2 className="text-2xl font-bold text-orange-50 mb-1">Sobre nanapp</h2>
-                    <p className="text-xs text-slate-500 font-medium uppercase tracking-widest mb-6">El arte de cuidar</p>
+                    <h2 className="text-2xl font-bold text-orange-50 mb-1">{t('about_title')}</h2>
+                    <p className="text-xs text-slate-500 font-medium uppercase tracking-widest mb-6">{t('about_subtitle')}</p>
 
                     <div className="space-y-6 text-sm text-slate-300 leading-relaxed font-light">
                         <p>
-                            <span className="text-orange-200 font-medium">Nanapp</span> nace de la tradición más antigua del mundo: el acto de dormir a un niño.
+                            <span className="text-orange-200 font-medium">Nanapp</span> {t('about_p1').replace('Nanapp', '')}
                         </p>
                         <p>
-                            Está inspirada en cómo las abuelas y madres han calmado a sus nietos e hijos durante generaciones, susurrando nanas y transmitiendo una calma que solo el amor puede generar. Queríamos capturar esa esencia en una herramienta moderna.
+                            {t('about_p2')}
                         </p>
 
                         <div className="my-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
@@ -53,18 +56,18 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                         <div className="bg-slate-800/30 p-6 rounded-2xl border border-white/5 relative">
                             <Heart size={16} className="text-pink-400 absolute top-6 right-6 opacity-50" />
 
-                            <h3 className="text-orange-50 font-bold mb-4 font-serif italic text-lg">Dedicado a...</h3>
+                            <h3 className="text-orange-50 font-bold mb-4 font-serif italic text-lg">{t('about_dedicated_title')}</h3>
 
                             <p className="mb-4">
-                                A Sara, Pili y Aurora.
+                                {t('about_dedicated_names')}
                                 <br /><br />
-                                Y a todas las madres y padres que buscan un momento de calma.
+                                {t('about_dedicated_msg')}
                             </p>
                         </div>
 
                         <div className="mt-8 pt-6 border-t border-slate-100 text-center">
                             <p className="text-xs text-slate-400">
-                                Hecho con ❤️ para Leo
+                                {t('about_footer_made')}
                             </p>
                             <p className="text-[10px] text-slate-300 mt-1 font-mono">
                                 v1.2.1 (Monetization Update)
