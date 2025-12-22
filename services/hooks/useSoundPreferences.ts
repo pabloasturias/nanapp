@@ -25,7 +25,7 @@ export function useSoundPreferences() {
             if (saved) {
                 const parsed = JSON.parse(saved);
                 if (Array.isArray(parsed) && parsed.length > 0) {
-                    setActiveSoundIds(parsed);
+                    setActiveSoundIds(parsed.slice(0, 8));
                 }
             }
         } catch (e) {
