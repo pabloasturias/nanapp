@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Moon, BookOpen, Hammer, Wrench } from 'lucide-react';
+import { Music, Moon, BookOpen, Wrench } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface BottomNavProps {
@@ -26,14 +26,9 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tools' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <div className="relative w-7 h-7 flex items-center justify-center">
-            <Hammer
-              size={22}
-              className={`absolute transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} -rotate-45 text-current transform-origin-center`}
-              strokeWidth={activeTab === 'tools' ? 2.5 : 2}
-            />
             <Wrench
-              size={22}
-              className={`absolute transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} rotate-45 text-current transform-origin-center scale-x-[-1]`}
+              size={24}
+              className={`transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} rotate-90 text-current transform-origin-center`}
               strokeWidth={activeTab === 'tools' ? 2.5 : 2}
             />
           </div>
