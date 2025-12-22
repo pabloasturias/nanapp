@@ -142,128 +142,125 @@ export const ProductsView: React.FC = () => {
     };
 
     // Render Menu (Landing Page)
-    if (currentView === 'menu') {
-        return (
-            <div className="flex-1 overflow-y-auto px-4 pb-24 pt-4 relative animate-[fade-in_0.3s_ease-out]">
-                <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="p-3 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-2xl text-teal-300 border border-teal-500/10">
-                            <BookOpen size={24} />
-                        </div>
-                        <div>
-                            <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">Recursos</h2>
-                            <p className="text-xs text-slate-400 font-medium tracking-wide">{t('resource_subtitle')}</p>
-                        </div>
+    const renderMenu = () => (
+        <div className="flex-1 overflow-y-auto px-4 pb-24 pt-4 relative animate-[fade-in_0.3s_ease-out]">
+            <div className="mb-6">
+                <div className="flex items-center gap-3 mb-2">
+                    <div className="p-3 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-2xl text-teal-300 border border-teal-500/10">
+                        <BookOpen size={24} />
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold text-orange-50 font-['Quicksand']">Recursos</h2>
+                        <p className="text-xs text-slate-400 font-medium tracking-wide">{t('resource_subtitle')}</p>
                     </div>
                 </div>
-
-                <div className="grid gap-4">
-                    {/* Top 50 Card */}
-                    <button
-                        onClick={() => setCurrentView('top50')}
-                        className="group relative h-40 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-teal-500/30 hover:bg-slate-800"
-                    >
-                        <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-teal-500/10 to-transparent" />
-                        <div className="absolute bottom-[-20%] right-[-10%] opacity-20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                            <Star size={160} className="text-teal-400" fill="currentColor" />
-                        </div>
-
-                        <div className="relative z-10 flex h-full flex-col justify-between">
-                            <div className="flex items-start justify-between">
-                                <div className="rounded-xl bg-teal-500/20 p-3 text-teal-300 backdrop-blur-sm">
-                                    <Star size={24} fill="currentColor" className="text-teal-400" />
-                                </div>
-                                <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
-                                    <ChevronRight size={20} />
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-1">{t('tab_top50')}</h3>
-                                <p className="text-sm text-slate-400">Los esenciales imprescindibles</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    {/* Toys Card */}
-                    <button
-                        onClick={() => setCurrentView('toys')}
-                        className="group relative h-40 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-purple-500/30 hover:bg-slate-800"
-                    >
-                        <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-purple-500/10 to-transparent" />
-                        <div className="absolute bottom-[-10%] right-[-5%] opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-12">
-                            <Gamepad2 size={160} className="text-purple-400" />
-                        </div>
-
-                        <div className="relative z-10 flex h-full flex-col justify-between">
-                            <div className="flex items-start justify-between">
-                                <div className="rounded-xl bg-purple-500/20 p-3 text-purple-300 backdrop-blur-sm">
-                                    <Gamepad2 size={24} />
-                                </div>
-                                <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
-                                    <ChevronRight size={20} />
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-white mb-1">{t('cat_toys')}</h3>
-                                <p className="text-sm text-slate-400">Juego y desarrollo (0-3 años)</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    {/* Books Card */}
-                    <button
-                        onClick={() => setCurrentView('books')}
-                        className="group relative h-32 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-blue-500/30 hover:bg-slate-800"
-                    >
-                        <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-blue-500/10 to-transparent" />
-                        <div className="absolute bottom-[-10%] right-[-5%] opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
-                            <BookOpen size={120} className="text-blue-400" />
-                        </div>
-
-                        <div className="relative z-10 flex h-full flex-col justify-between">
-                            <div className="flex items-start justify-between">
-                                <div className="rounded-xl bg-blue-500/20 p-3 text-blue-300 backdrop-blur-sm">
-                                    <BookOpen size={24} />
-                                </div>
-                                <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
-                                    <ChevronRight size={20} />
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-white">Biblioteca para Padres</h3>
-                                <p className="text-xs text-slate-400">Libros esenciales de crianza</p>
-                            </div>
-                        </div>
-                    </button>
-
-                    {/* Registry Card */}
-                    <button
-                        onClick={() => setCurrentView('registry')}
-                        className="group relative h-28 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-orange-500/30 hover:bg-slate-800"
-                    >
-                        <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-orange-500/10 to-transparent" />
-                        <div className="relative z-10 flex items-center justify-between h-full">
-                            <div className="flex items-center gap-4">
-                                <div className="rounded-xl bg-orange-500/20 p-3 text-orange-300 backdrop-blur-sm">
-                                    <Gift size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-bold text-white">{t('tab_registry')}</h3>
-                                    <p className="text-xs text-slate-400">Ideas para regalar</p>
-                                </div>
-                            </div>
-                            <ChevronRight size={20} className="text-slate-500" />
-                        </div>
-                    </button>
-
-                </div>
-                {renderProductDetail()}
             </div>
-        );
-    }
+
+            <div className="grid gap-4">
+                {/* Top 50 Card */}
+                <button
+                    onClick={() => setCurrentView('top50')}
+                    className="group relative h-40 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-teal-500/30 hover:bg-slate-800"
+                >
+                    <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-teal-500/10 to-transparent" />
+                    <div className="absolute bottom-[-20%] right-[-10%] opacity-20 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                        <Star size={160} className="text-teal-400" fill="currentColor" />
+                    </div>
+
+                    <div className="relative z-10 flex h-full flex-col justify-between">
+                        <div className="flex items-start justify-between">
+                            <div className="rounded-xl bg-teal-500/20 p-3 text-teal-300 backdrop-blur-sm">
+                                <Star size={24} fill="currentColor" className="text-teal-400" />
+                            </div>
+                            <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
+                                <ChevronRight size={20} />
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-white mb-1">{t('tab_top50')}</h3>
+                            <p className="text-sm text-slate-400">Los esenciales imprescindibles</p>
+                        </div>
+                    </div>
+                </button>
+
+                {/* Toys Card */}
+                <button
+                    onClick={() => setCurrentView('toys')}
+                    className="group relative h-40 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-purple-500/30 hover:bg-slate-800"
+                >
+                    <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-purple-500/10 to-transparent" />
+                    <div className="absolute bottom-[-10%] right-[-5%] opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-12">
+                        <Gamepad2 size={160} className="text-purple-400" />
+                    </div>
+
+                    <div className="relative z-10 flex h-full flex-col justify-between">
+                        <div className="flex items-start justify-between">
+                            <div className="rounded-xl bg-purple-500/20 p-3 text-purple-300 backdrop-blur-sm">
+                                <Gamepad2 size={24} />
+                            </div>
+                            <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
+                                <ChevronRight size={20} />
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-white mb-1">{t('cat_toys')}</h3>
+                            <p className="text-sm text-slate-400">Juego y desarrollo (0-3 años)</p>
+                        </div>
+                    </div>
+                </button>
+
+                {/* Books Card */}
+                <button
+                    onClick={() => setCurrentView('books')}
+                    className="group relative h-32 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-blue-500/30 hover:bg-slate-800"
+                >
+                    <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-blue-500/10 to-transparent" />
+                    <div className="absolute bottom-[-10%] right-[-5%] opacity-10 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+                        <BookOpen size={120} className="text-blue-400" />
+                    </div>
+
+                    <div className="relative z-10 flex h-full flex-col justify-between">
+                        <div className="flex items-start justify-between">
+                            <div className="rounded-xl bg-blue-500/20 p-3 text-blue-300 backdrop-blur-sm">
+                                <BookOpen size={24} />
+                            </div>
+                            <div className="rounded-full bg-white/5 p-2 text-slate-400 opacity-0 transition-all group-hover:opacity-100">
+                                <ChevronRight size={20} />
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-bold text-white">Biblioteca para Padres</h3>
+                            <p className="text-xs text-slate-400">Libros esenciales de crianza</p>
+                        </div>
+                    </div>
+                </button>
+
+                {/* Registry Card */}
+                <button
+                    onClick={() => setCurrentView('registry')}
+                    className="group relative h-28 w-full overflow-hidden rounded-[2rem] border border-white/5 bg-slate-800/50 p-6 text-left transition-all hover:border-orange-500/30 hover:bg-slate-800"
+                >
+                    <div className="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-l from-orange-500/10 to-transparent" />
+                    <div className="relative z-10 flex items-center justify-between h-full">
+                        <div className="flex items-center gap-4">
+                            <div className="rounded-xl bg-orange-500/20 p-3 text-orange-300 backdrop-blur-sm">
+                                <Gift size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-white">{t('tab_registry')}</h3>
+                                <p className="text-xs text-slate-400">Ideas para regalar</p>
+                            </div>
+                        </div>
+                        <ChevronRight size={20} className="text-slate-500" />
+                    </div>
+                </button>
+
+            </div>
+        </div>
+    );
 
     // Render Lists
-    return (
+    const renderList = () => (
         <div className="flex-1 overflow-y-auto pb-24 px-1 relative animate-[slide-in-right_0.2s_ease-out]">
             {/* Nav Header */}
             <div className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md px-4 py-4 mb-4 border-b border-white/5">
@@ -395,5 +392,12 @@ export const ProductsView: React.FC = () => {
                 </div>
             )}
         </div>
+    );
+
+    return (
+        <>
+            {currentView === 'menu' ? renderMenu() : renderList()}
+            {renderProductDetail()}
+        </>
     );
 };
