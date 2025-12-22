@@ -29,7 +29,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
 
             <div className="mt-8 text-center animate-[fade-in_1s_ease-out_0.5s_both]">
                 <h1 className="text-3xl font-bold text-orange-50 font-['Quicksand'] mb-2 tracking-tight">nanapp</h1>
-                <p className="text-orange-200/60 text-xs font-medium uppercase tracking-[0.3em]">El sonido del descanso</p>
+                <p className="text-orange-200/60 text-xs font-medium uppercase tracking-[0.3em]">Sound of Sleep</p>
             </div>
         </div>
     );

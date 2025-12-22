@@ -1,0 +1,1356 @@
+[
+    {
+        "id": 1,
+        "name": "Chicco Next2Me Forever",
+        "category": "sleep",
+        "shortDesc": "O berço co-sleeping evolutivo definitivo 3 em 1.",
+        "longDesc": "Mais que um co-sleeping. Evolui com o seu bebé até aos 4 anos. Painel lateral patenteado para segurança máxima, rodas e modo cama de chão Montessori.",
+        "features": [
+            "Uso até 4 anos",
+            "Sistema co-sleeping patenteado",
+            "Modo cama chão Montessori",
+            "Rodas com travões"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Chicco+Next2Me+Forever&tag=nanapp-21"
+    },
+    {
+        "id": 2,
+        "name": "Ecus Kids Colchão Pigü",
+        "category": "sleep",
+        "shortDesc": "O colchão de berço anti-sufoco mais recomendado.",
+        "longDesc": "Desenhado cientificamente para prevenir a plagiocefalia e o sufoco. O seu núcleo com canais de ar reduz a pressão na cabeça e garante a respiração.",
+        "features": [
+            "Prevenção Plagiocefalia",
+            "Certificado Sanitário",
+            "Respirabilidade máxima 3D",
+            "Tratamento anti-ácaros"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Ecus+Kids+Pigu+Colchao&tag=nanapp-21"
+    },
+    {
+        "id": 3,
+        "name": "Tommee Tippee Grobag 2.5 TOG",
+        "category": "sleep",
+        "shortDesc": "Saco de dormir premium para segurança térmica absoluta.",
+        "longDesc": "O padrão ouro em sacos de dormir. Design ergonómico para ancas saudáveis, muda de fralda noturna fácil com fecho duplo.",
+        "features": [
+            "Ancas saudáveis (Certificado)",
+            "Fecho bidirecional",
+            "Tecido premium macio",
+            "Sem botões ruidosos"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Grobag+2.5+TOG&tag=nanapp-21"
+    },
+    {
+        "id": 4,
+        "name": "Love To Dream Swaddle UP",
+        "category": "sleep",
+        "shortDesc": "O único swaddle que permite dormir com braços para cima.",
+        "longDesc": "Design revolucionário que permite ao bebé dormir na sua posição natural (braços para cima) para se auto-acalmar, evitando o reflexo de Moro.",
+        "features": [
+            "Posição natural braços",
+            "Auto-calmante",
+            "Evita reflexo Moro",
+            "Muda fácil"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Love+To+Dream+Swaddle+UP&tag=nanapp-21"
+    },
+    {
+        "id": 5,
+        "name": "Hatch Rest 2ª Ger",
+        "category": "environment",
+        "shortDesc": "O dispositivo de sono 'Tudo em Um' mais desejado.",
+        "longDesc": "Combina máquina de ruído branco smart, luz noturna e monitor de áudio. Tudo controlado pelo telemóvel.",
+        "features": [
+            "Controlo App Wi-Fi",
+            "Luz e som personalizáveis",
+            "Função 'Time-to-Rise'",
+            "Monitor áudio"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Hatch+Rest+2+Gen&tag=nanapp-21"
+    },
+    {
+        "id": 6,
+        "name": "Cortinas Blackout Portáteis",
+        "category": "environment",
+        "shortDesc": "Escuridão total 'Blackout' onde quer que vá.",
+        "longDesc": "Transforma qualquer quarto numa gruta de sono. Adere à janela com ventosas premium. Indispensável para férias.",
+        "features": [
+            "Bloqueio 100% luz",
+            "Ventosas alta fixação",
+            "Ajustável com velcro",
+            "Saco viagem incluído"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Cortinas+Blackout+Portateis&tag=nanapp-21"
+    },
+    {
+        "id": 7,
+        "name": "Nanit Pro Smart Monitor",
+        "category": "environment",
+        "shortDesc": "O Tesla das babás eletrónicas. Visão artificial do sono.",
+        "longDesc": "Não só vê o bebé, como analisa o seu sono. Dados sobre quanto dormiu e respiração (com banda especial).",
+        "features": [
+            "Vídeo 1080p HD zenital",
+            "Análise sono",
+            "Monitor respiração",
+            "Áudio bidirecional"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nanit+Pro+Camera&tag=nanapp-21"
+    },
+    {
+        "id": 8,
+        "name": "Levoit Dual 150 Humidificador",
+        "category": "health",
+        "shortDesc": "Silêncio absoluto e controlo de humidade preciso.",
+        "longDesc": "O humidificador favorito. Tecnologia ultrassónica quase inaudível (28dB), depósito fácil de limpar. Vital para constipações.",
+        "features": [
+            "Silencioso (<28dB)",
+            "Enchimento fácil",
+            "Desligar auto",
+            "Difusor óleos"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Levoit+Humidificador+Bebe&tag=nanapp-21"
+    },
+    {
+        "id": 9,
+        "name": "Nosiboo Pro Aspirador Nasal",
+        "category": "health",
+        "shortDesc": "Potência hospitalar com design amigável.",
+        "longDesc": "O aspirador nasal definitivo. Premiado. Sucção ajustável e potente para limpar narizes em segundos.",
+        "features": [
+            "Potência ajustável",
+            "Design 'Urso'",
+            "Limpeza fácil",
+            "Recomendado ORL"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nosiboo+Pro&tag=nanapp-21"
+    },
+    {
+        "id": 10,
+        "name": "GroEgg 2 Termómetro",
+        "category": "environment",
+        "shortDesc": "Segurança visual. Muda de cor com a temperatura.",
+        "longDesc": "Num relance sabe se o quarto é seguro. Amarelo (perfeito), Azul (frio), Vermelho (quente). Serve também de luz noturna.",
+        "features": [
+            "Código cores intuitivo",
+            "Luz noturna ajustável",
+            "Leitura digital",
+            "Design icónico"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=GroEgg+2&tag=nanapp-21"
+    },
+    {
+        "id": 11,
+        "name": "Luz Noturna VAVA",
+        "category": "environment",
+        "shortDesc": "A luz tátil favorita dos pais.",
+        "longDesc": "Portátil, recarregável e com luz quente que não acorda. Perfeita para amamentação noturna e muda.",
+        "features": [
+            "Controlo tátil",
+            "Bateria longa duração",
+            "Luz quente/branca",
+            "Segura (ABS+PP)"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VAVA+Luz+Noturna&tag=nanapp-21"
+    },
+    {
+        "id": 12,
+        "name": "Chupetas Bibs De Lux",
+        "category": "sleep",
+        "shortDesc": "O clássico dinamarquês. Estilo e aceitação.",
+        "longDesc": "Tetina redonda que imita o mamilo materno, estética vintage. Escudo curvo para não irritar a pele.",
+        "features": [
+            "Tetina cereja látex",
+            "Design icónico",
+            "Escudo ventilado",
+            "Sem BPA/PVC"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Bibs+De+Lux&tag=nanapp-21"
+    },
+    {
+        "id": 13,
+        "name": "Almofada Amamentação Jané",
+        "category": "mom",
+        "shortDesc": "Versatilidade 4 em 1 com enchimento ergonómico.",
+        "longDesc": "Um clássico. Enchimento de microesferas que se adaptam ao corpo. Útil para gravidez, amamentação e ninho.",
+        "features": [
+            "Microesferas adaptáveis",
+            "Capa lavável",
+            "Multiusos evolutivo",
+            "Arnês segurança"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Jane+Almofada+Amamentacao&tag=nanapp-21"
+    },
+    {
+        "id": 14,
+        "name": "Poltrona Amamentação Songmics",
+        "category": "mom",
+        "shortDesc": "A cadeira de baloiço best-seller.",
+        "longDesc": "Estrutura em bétula, balanço perfeito e apoio de pés ajustável. Recomendada por milhares de mães.",
+        "features": [
+            "Estrutura bétula",
+            "Apoio pés ajustável",
+            "Capa 100% algodão",
+            "Bolso lateral"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Songmics+Cadeira+Amamentacao&tag=nanapp-21"
+    },
+    {
+        "id": 15,
+        "name": "BabyBjörn Harmony",
+        "category": "travel",
+        "shortDesc": "O porta-bebés de luxo. Malha 3D ultra suave.",
+        "longDesc": "O marsúpio definitivo desde o nascimento até aos 3 anos. Malha 3D tecnológica. Suporte lombar.",
+        "features": [
+            "Malha 3D respirável",
+            "Suporte lombar",
+            "Desde nascimento",
+            "Design escandinavo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=BabyBjorn+Harmony&tag=nanapp-21"
+    },
+    {
+        "id": 16,
+        "name": "BabyBjörn Berço Viagem Light",
+        "category": "travel",
+        "shortDesc": "Monta-se em 1 movimento. Leveza máxima.",
+        "longDesc": "O melhor berço de viagem. Pesa apenas 6kg e abre magicamente num segundo. Colchão integrado.",
+        "features": [
+            "Montagem instantânea",
+            "Peso pluma (6kg)",
+            "Colchão incluído",
+            "Tecido rede"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Babybjorn+Berco+Viagem+Light&tag=nanapp-21"
+    },
+    {
+        "id": 17,
+        "name": "Munchkin Mudador Portátil",
+        "category": "hygiene",
+        "shortDesc": "Kit de sobrevivência para mudas rápidas.",
+        "longDesc": "Compacto e elegante. Inclui almofada cabeça, bolso rede para fraldas e estojo toalhetes.",
+        "features": [
+            "Acolchoado extra",
+            "Estojo toalhetes",
+            "Bolsos organizadores",
+            "Limpeza fácil"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Mudador+Portatil&tag=nanapp-21"
+    },
+    {
+        "id": 18,
+        "name": "Pijamas Carter's Zip",
+        "category": "sleep",
+        "shortDesc": "Os pijamas americanos #1.",
+        "longDesc": "Famosos por design e durabilidade. O fecho de 2 vias facilita a vida aos pais em cada muda.",
+        "features": [
+            "Fecho tornozelo a queixo",
+            "Algodão resistente",
+            "Ajuste seguro",
+            "Designs divertidos"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Carter's+Pijama+Bebe+Zip&tag=nanapp-21"
+    },
+    {
+        "id": 19,
+        "name": "Livros de Dormir",
+        "category": "sleep",
+        "shortDesc": "Clássicos para o ritual do sono.",
+        "longDesc": "Livros cartonados para os mais pequenos. Histórias simples e relaxantes como 'Adivinha quanto eu gosto de ti'.",
+        "features": [
+            "Ritual sono",
+            "Cartão resistente",
+            "Ilustrações doces",
+            "Favorece a calma"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Livros+Bebe+Dormir&tag=nanapp-21"
+    },
+    {
+        "id": 20,
+        "name": "Stokke Flexi Bath",
+        "category": "hygiene",
+        "shortDesc": "A banheira dobrável poupa-espaço.",
+        "longDesc": "Design icónico que se dobra totalmente. Com o suporte recém-nascido opcional, é a solução perfeita.",
+        "features": [
+            "Dobra ultra compacta",
+            "Suporte ergonómico",
+            "Tampa termossensível",
+            "Durável"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Stokke+Flexi+Bath&tag=nanapp-21"
+    },
+    {
+        "id": 21,
+        "name": "Weleda Óleo de Calêndula",
+        "category": "hygiene",
+        "shortDesc": "Ouro líquido para a pele do bebé.",
+        "longDesc": "Cosmética natural certificada. Acalma a pele e envolve o bebé numa camada térmica.",
+        "features": [
+            "100% Bio e Natural",
+            "Sem óleos minerais",
+            "Extrato calêndula",
+            "Protege pele"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Weleda+Oleo+Calendula+Bebe&tag=nanapp-21"
+    },
+    {
+        "id": 22,
+        "name": "Sophie la Girafe",
+        "category": "health",
+        "shortDesc": "O mordedor mais famoso desde 1961.",
+        "longDesc": "Borracha 100% natural. Estimula os 5 sentidos. Ideal para gengivas doloridas.",
+        "features": [
+            "Borracha natural",
+            "Stimula 5 sentidos",
+            "Pega fácil",
+            "Ícone cultural"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Sophie+La+Girafe&tag=nanapp-21"
+    },
+    {
+        "id": 23,
+        "name": "Lençóis Aden+Anais",
+        "category": "sleep",
+        "shortDesc": "Musselina de luxo que amacia na lavagem.",
+        "longDesc": "A musselina de algodão é o tecido mais respirável. Estes lençóis regulam a temperatura.",
+        "features": [
+            "100% Musselina algodão",
+            "Termorreguladores",
+            "Design autor",
+            "Suavidade extra"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Aden+Anais+Lencois&tag=nanapp-21"
+    },
+    {
+        "id": 24,
+        "name": "Bola Pilates Galetoss",
+        "category": "mom",
+        "shortDesc": "Resistente e segura para embalar.",
+        "longDesc": "Material anti-rebentamento. Essencial para acalmar cólicas com o balanço.",
+        "features": [
+            "Sistema Anti-Burst",
+            "Superfície antiderrapante",
+            "Bomba incluída",
+            "Suporta +300kg"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Bola+Pilates+Gravidez&tag=nanapp-21"
+    },
+    {
+        "id": 25,
+        "name": "Munchkin Organizador Fraldas",
+        "category": "mom",
+        "shortDesc": "Cesto organizador robusto.",
+        "longDesc": "Mantenha o caos sob controlo. Espaço para dezenas de fraldas, toalhetes e cremes.",
+        "features": [
+            "Compartimentos rígidos",
+            "Bolsos rede laterais",
+            "Pega reforçada",
+            "Presente perfeito"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Munchkin+Organizador+Fraldas&tag=nanapp-21"
+    },
+    {
+        "id": 26,
+        "name": "Owlet Dream Sock",
+        "category": "health",
+        "shortDesc": "Tranquilidade total monitorizando constantes.",
+        "longDesc": "Tecnologia hospitalar em casa. Mede oxigénio e pulso durante o sono.",
+        "features": [
+            "Oximetria pulso",
+            "Histórico sono",
+            "Carregamento sem fios",
+            "Notificações real time"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Owlet+Dream+Sock&tag=nanapp-21"
+    },
+    {
+        "id": 27,
+        "name": "Nanny Monitor Respiração",
+        "category": "health",
+        "shortDesc": "O monitor certificado médico mais fiável.",
+        "longDesc": "Usado em maternidades. Um colchão sensor deteta cada micro-respiração. Se parar 20s, toca alarme.",
+        "features": [
+            "Certificado Médico",
+            "Grande sensor",
+            "Alarme acústico",
+            "Sem falsos alarmes"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Nanny+Monitor+Respiracao&tag=nanapp-21"
+    },
+    {
+        "id": 28,
+        "name": "Philips Série 800 Purificador",
+        "category": "environment",
+        "shortDesc": "Ar puro em silêncio.",
+        "longDesc": "Tamanho compacto. Modo sono ultra silencioso. Elimina vírus e alergénios.",
+        "features": [
+            "Filtro HEPA nanoprotect",
+            "Modo sono silencioso",
+            "Indicador qualidade ar",
+            "Baixo consumo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Philips+Purificador+Ar+Serie+800&tag=nanapp-21"
+    },
+    {
+        "id": 29,
+        "name": "Dyson Purifier Cool Autoreact",
+        "category": "environment",
+        "shortDesc": "A joia da purificação.",
+        "longDesc": "Captura pó, alergénios e vírus. Ventila sem pás (100% seguro) e monitoriza o ar.",
+        "features": [
+            "Sem pás (Seguro)",
+            "Filtro HEPA H13",
+            "Rotação 350 graus",
+            "Monitor LCD"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Dyson+Purifier+Cool+Autoreact&tag=nanapp-21"
+    },
+    {
+        "id": 30,
+        "name": "GroClock Relógio Sono",
+        "category": "sleep",
+        "shortDesc": "Ensina a dormir mais tempo visualmente.",
+        "longDesc": "O sol nasce no ecrã só quando é hora de levantar. As crianças percebem visualmente.",
+        "features": [
+            "Ecrã educativo",
+            "Brilho ajustável",
+            "História incluída",
+            "Opção digital"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=GroClock&tag=nanapp-21"
+    },
+    {
+        "id": 31,
+        "name": "Tommee Tippee Twist & Click",
+        "category": "hygiene",
+        "shortDesc": "O único que embrulha cada fralda individualmente.",
+        "longDesc": "Garantido contra odores. O sistema sela cada fralda numa película antibacteriana.",
+        "features": [
+            "Bloqueio odor garantido",
+            "Filme antibacteriano",
+            "Capacidade ~28 fraldas",
+            "Recarga fácil"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Twist+Click&tag=nanapp-21"
+    },
+    {
+        "id": 32,
+        "name": "Prince Lionheart Aquecedor",
+        "category": "hygiene",
+        "shortDesc": "Toalhetes sempre quentes e húmidos.",
+        "longDesc": "Sistema patenteado previne a secura. Mantém temperatura perfeita.",
+        "features": [
+            "Sistema Ever-Fresh",
+            "Luz noturna",
+            "Grande capacidade",
+            "Temperatura segura"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Prince+Lionheart+Wipes+Warmer&tag=nanapp-21"
+    },
+    {
+        "id": 33,
+        "name": "Philips Avent Aquecedor",
+        "category": "mom",
+        "shortDesc": "Aquecimento inteligente.",
+        "longDesc": "Calcula tempo conforme volume e temperatura. Aquece uniformemente e mantém quente 60 min.",
+        "features": [
+            "Controlo smart",
+            "Descongelação",
+            "Mantém quente",
+            "Compatível boiões"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Philips+Avent+Aquecedor+Biberao&tag=nanapp-21"
+    },
+    {
+        "id": 34,
+        "name": "Doseador Leite MAM",
+        "category": "mom",
+        "shortDesc": "Design triangular anti-derrames.",
+        "longDesc": "A forma triangular facilita verter nos biberões de gargalo estreito.",
+        "features": [
+            "Forma triangular",
+            "3 doses grandes",
+            "Esterilizável",
+            "Sem BPA/BPS"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Doseador+Leite+MAM&tag=nanapp-21"
+    },
+    {
+        "id": 35,
+        "name": "Haakaa Bomba Manual",
+        "category": "mom",
+        "shortDesc": "O coletor de silicone viral.",
+        "longDesc": "Aproveita o reflexo de ejeção. Fixa-se por vácuo e recolhe o leite que se perderia.",
+        "features": [
+            "Silicone alimentar",
+            "Base ventosa",
+            "Sem montagem",
+            "Silencioso"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Haakaa+Bomba&tag=nanapp-21"
+    },
+    {
+        "id": 36,
+        "name": "Luz Leitura Glocusent",
+        "category": "mom",
+        "shortDesc": "Luz âmbar de pescoço premiada.",
+        "longDesc": "Desenhada para leitores, adotada por mães. 3 tons de luz (incluindo âmbar protetor de sono). Bateria longa duração.",
+        "features": [
+            "Modo Âmbar (1800k)",
+            "Recarregável USB-C",
+            "Pescoço flexível 360",
+            "Leve"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Glocusent+Luz+Leitura&tag=nanapp-21"
+    },
+    {
+        "id": 37,
+        "name": "Organizador 3 Sprouts",
+        "category": "environment",
+        "shortDesc": "Design animal adorável e funcionalidade.",
+        "longDesc": "Alegra o quarto enquanto organiza. Estrutura firme. Perfeito para pijamas, fraldas e cremes.",
+        "features": [
+            "Designs animais",
+            "Estrutura rígida",
+            "Bolsos grandes",
+            "Fácil pendurar"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=3+Sprouts+Organizador&tag=nanapp-21"
+    },
+    {
+        "id": 38,
+        "name": "Medela Freestyle Hands-Free",
+        "category": "mom",
+        "shortDesc": "Liberdade total. Bomba dupla invisível.",
+        "longDesc": "A bomba mãos-livres de grau hospitalar mais avançada. Usa-se no soutien. Motor compacto.",
+        "features": [
+            "Mãos livres real",
+            "Copas anatómicas",
+            "Bateria recarregável",
+            "App Smart"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Medela+Freestyle+Hands+Free&tag=nanapp-21"
+    },
+    {
+        "id": 39,
+        "name": "Burt's Bees Macacão Polar",
+        "category": "sleep",
+        "shortDesc": "Algodão bio e poliéster reciclado suave.",
+        "longDesc": "A marca eco-friendly. O macacão em 'fleece' é famoso por ser quente mas não abafado.",
+        "features": [
+            "Algodão biológico",
+            "Fecho com proteção",
+            "Antiderrapante",
+            "Design abelha"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Burt's+Bees+Baby+Jumpsuit&tag=nanapp-21"
+    },
+    {
+        "id": 40,
+        "name": "Tommee Tippee Groblind",
+        "category": "travel",
+        "shortDesc": "A cortina portátil de ventosa original.",
+        "longDesc": "Adapta-se a janelas até 130x198cm. Ventosas de longa duração. Indispensável para verão e viagens.",
+        "features": [
+            "Tamanho XL adaptável",
+            "Blackout total",
+            "Saco viagem",
+            "Velcro ajustável"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Tommee+Tippee+Groblind&tag=nanapp-21"
+    },
+    {
+        "id": 41,
+        "name": "BSensible Lençol Protetor",
+        "category": "hygiene",
+        "shortDesc": "2 em 1: Lençol Tencel e protetor impermeável.",
+        "longDesc": "Tecido dermoprotetor natural (Tencel/Zinco) impermeável mas respirável como uma segunda pele. Qualidade Espanhola.",
+        "features": [
+            "Tencel + Óxido Zinco",
+            "Impermeável invisível",
+            "Anti-ácaro natural",
+            "Made in Spain"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=BSensible+Lencol&tag=nanapp-21"
+    },
+    {
+        "id": 42,
+        "name": "Detergente Bebé Hipoalergénico",
+        "category": "hygiene",
+        "shortDesc": "Cheirinho a bebé, fórmula segura.",
+        "longDesc": "Recomendado dermatologistas. Fórmula sem conservantes sensibilizantes. Mantém a roupa macia sem amaciador.",
+        "features": [
+            "Hipoalergénico",
+            "Sem branqueadores",
+            "Cheiro suave",
+            "Cura fibras"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Detergente+Bebe&tag=nanapp-21"
+    },
+    {
+        "id": 43,
+        "name": "MAM Clip It!",
+        "category": "sleep",
+        "shortDesc": "Comprimento seguro ajustável e lavável.",
+        "longDesc": "Um dos poucos prendedores ajustáveis para segurança no sono. Compatível com tudo.",
+        "features": [
+            "Comprimento ajustável",
+            "Compatível tudo",
+            "Lavável",
+            "Seguro"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=MAM+Clip+It&tag=nanapp-21"
+    },
+    {
+        "id": 44,
+        "name": "Lorena Canals Tapete Lavável",
+        "category": "environment",
+        "shortDesc": "Tapetes de algodão laváveis na máquina.",
+        "longDesc": "A revolução déco. Mancha? Na máquina e pronto. Algodão 100% natural e tintas não tóxicas.",
+        "features": [
+            "Lavável em casa",
+            "100% Algodão natural",
+            "Feito à mão",
+            "Tintas não tóxicas"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lorena+Canals+Tapete&tag=nanapp-21"
+    },
+    {
+        "id": 45,
+        "name": "Loop Quiet Tampões",
+        "category": "mom",
+        "shortDesc": "Redução de ruído de design para dormir.",
+        "longDesc": "Silicone 'soft-touch' comodíssimo. Reduzem 26dB (ressonar) mas ouve choros fortes.",
+        "features": [
+            "Silicone ultra-soft",
+            "-26dB redução",
+            "Estáveis",
+            "Caixa transporte"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Loop+Quiet+Earplugs&tag=nanapp-21"
+    },
+    {
+        "id": 46,
+        "name": "MantaSilk Máscara Seda",
+        "category": "mom",
+        "shortDesc": "Seda amoreira 100% protege pele e sono.",
+        "longDesc": "Seda grau 6A. Bloqueia a luz totalmente. O elástico não aperta. Um luxo para as sestas.",
+        "features": [
+            "100% Seda Amoreira",
+            "Respirável",
+            "Hipoalergénico",
+            "Certificado Oeko-Tex"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Mascara+Sono+Seda&tag=nanapp-21"
+    },
+    {
+        "id": 47,
+        "name": "Banbaloo Barreira Cama",
+        "category": "sleep",
+        "shortDesc": "O rolo de espuma seguro (Bumper).",
+        "longDesc": "Melhor que barreiras de metal. Cilindro de espuma viscoelástica sob o lençol. Seguro e sem efeito 'jaula'.",
+        "features": [
+            "Espuma viscoelástica",
+            "Invisível",
+            "Portátil",
+            "Sem montagem"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Banbaloo+Barreira&tag=nanapp-21"
+    },
+    {
+        "id": 48,
+        "name": "Baby Shusher Original",
+        "category": "sleep",
+        "shortDesc": "A máquina milagrosa do sono.",
+        "longDesc": "Emite um 'SHHHHH' rítmico e forte que ativa o reflexo de calma. Timer 15/30min.",
+        "features": [
+            "Som Shhh real",
+            "Portátil",
+            "Volume ajustável",
+            "Fio pulso"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Baby+Shusher&tag=nanapp-21"
+    },
+    {
+        "id": 49,
+        "name": "Jellycat Coelho",
+        "category": "sleep",
+        "shortDesc": "O peluche mais macio e luxuoso de Londres.",
+        "longDesc": "Um clássico moderno. Tecido indescritivelmente macio. Seguro desde o nascimento.",
+        "features": [
+            "Maciez suprema",
+            "Design Bashful Bunny",
+            "Seguro EN71",
+            "Lavável à mão"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Jellycat+Bunny+Beige&tag=nanapp-21"
+    },
+    {
+        "id": 50,
+        "name": "Beaba Termo Inox",
+        "category": "travel",
+        "shortDesc": "Estilo francês e performance térmica.",
+        "longDesc": "Inox parede dupla. Mantém quente 5h ou frio 7h. Boca larga e tampa 100% hermética.",
+        "features": [
+            "Aço Inox 304",
+            "100% Hermético",
+            "Sem transferência sabor",
+            "Ergonómico"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Beaba+Termo&tag=nanapp-21"
+    },
+    {
+        "id": 51,
+        "name": "Rockit Rocker (Recarregável)",
+        "category": "travel",
+        "shortDesc": "O foguetão que embala o carrinho sozinho.",
+        "longDesc": "Prende-se a qualquer carrinho e embala-o suavemente. Silencioso, velocidade ajustável e recarregável USB.",
+        "features": [
+            "Universal",
+            "Balanço suave",
+            "Recarregável USB",
+            "Resistente água"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Rockit+Rocker&tag=nanapp-21"
+    },
+    {
+        "id": 101,
+        "name": "Lamaze Freddie o Pirilampo",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Brinquedo sensorial completo.",
+        "longDesc": "Estimula visão, audição e tato. Asas texturizadas, espelho, chocalhos e mordedor. Perfeito para carrinho.",
+        "features": [
+            "Estimulação visual",
+            "Mordedor",
+            "Clip universal",
+            "Texturas várias"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Freddie&tag=nanapp-21"
+    },
+    {
+        "id": 102,
+        "name": "Manhattan Toy Winkel",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Chocalho e mordedor labirinto.",
+        "longDesc": "Fácil de agarrar. Os tubos coloridos podem ser arrefecidos no frigorífico para alívio gengivas.",
+        "features": [
+            "Pega fácil",
+            "Efeito frio",
+            "Desenvolvimento motor",
+            "Sem BPA"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Manhattan+Toy+Winkel&tag=nanapp-21"
+    },
+    {
+        "id": 103,
+        "name": "VTech Bola Saltitona",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Encoraja o bebé a gatinhar.",
+        "longDesc": "Move-se sozinha de forma aleatória. Luzes, canções e animais ensinam vocabulário e estimulam movimento.",
+        "features": [
+            "Movimento automático",
+            "Luzes e sons",
+            "Encoraja gatinhar",
+            "Português"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VTech+Bola&tag=nanapp-21"
+    },
+    {
+        "id": 104,
+        "name": "Copos Empilháveis Mushie",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Estilo nórdico para motricidade fina.",
+        "longDesc": "Copos design dinamarquês. Ideais para torres, banho ou praia. Ajudam coordenação olho-mão.",
+        "features": [
+            "Design nórdico",
+            "Sem BPA/PVC",
+            "Jogo aberto",
+            "Multiusos"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Mushie+Stacking+Cups&tag=nanapp-21"
+    },
+    {
+        "id": 105,
+        "name": "Mega Bloks Saco Clássico",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Blocos gigantes para pequenos construtores.",
+        "longDesc": "O primeiro jogo de construção ideal. Blocos grandes impossíveis de engolir e fáceis de encaixar.",
+        "features": [
+            "Tamanho seguro",
+            "Encaixe fácil",
+            "Saco arrumação",
+            "Criatividade"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Mega+Bloks+Saco&tag=nanapp-21"
+    },
+    {
+        "id": 106,
+        "name": "VTech Andador",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Centro de atividades e apoio à marcha.",
+        "longDesc": "Painel de atividades removível para brincar no chão e andador robusto para segurança ao caminhar. Velocidade ajustável.",
+        "features": [
+            "Painel removível",
+            "Travão ajustável",
+            "Teclado musical",
+            "Robusto"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=VTech+Andador&tag=nanapp-21"
+    },
+    {
+        "id": 107,
+        "name": "Magna-Tiles 32 Peças",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Construções magnéticas 3D originais.",
+        "longDesc": "O investimento definitivo. Peças translúcidas que se atraem. Matemática, geometria e criatividade.",
+        "features": [
+            "Ímanes seguros",
+            "Jogo STEAM",
+            "Durabilidade extrema",
+            "Compatível"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles&tag=nanapp-21"
+    },
+    {
+        "id": 108,
+        "name": "Melissa & Doug Puzzle Sonoro",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Puzzle de madeira com recompensa sonora.",
+        "longDesc": "Ao colocar a peça certa, toca o som realista do animal. Reforça causa-efeito e vocabulário.",
+        "features": [
+            "Madeira real",
+            "Sons realistas",
+            "Pega fácil",
+            "Educativo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Sound+Puzzle&tag=nanapp-21"
+    },
+    {
+        "id": 109,
+        "name": "Discos Interligados",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Primeiro jogo de transferência mão-mão.",
+        "longDesc": "Dois discos de madeira unidos. Encoraja o bebé a passar o objeto de uma mão para a outra.",
+        "features": [
+            "Rotação pulso",
+            "Transferência manual",
+            "Destreza",
+            "Madeira natural"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Interlocking+Discs&tag=nanapp-21"
+    },
+    {
+        "id": 110,
+        "name": "Chocalho Rolante",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Incentiva o seguimento auditivo.",
+        "longDesc": "Cilindro com guizo. Ao rolar emite um som agradável, encorajando o bebé a segui-lo.",
+        "features": [
+            "Seguimento auditivo",
+            "Incentiva movimento",
+            "Barras madeira",
+            "Som agradável"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Rolling+Rattle&tag=nanapp-21"
+    },
+    {
+        "id": 111,
+        "name": "Set Bolas Sensoriais",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Variedade tátil para exploração.",
+        "longDesc": "Set de bolas com texturas, tamanhos e pesos diferentes. Perfeito para exploração sensorial.",
+        "features": [
+            "Texturas várias",
+            "Sem BPA",
+            "Jogo sensorial",
+            "Pega fácil"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Bolas+Sensoriais+Bebe&tag=nanapp-21"
+    },
+    {
+        "id": 112,
+        "name": "Chocalhos de Pulso",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Descoberta de mãos e pés.",
+        "longDesc": "Chocalhos macios para pulsos ou tornozelos. Ajuda o bebé a descobrir os próprios membros e a causa-efeito.",
+        "features": [
+            "Consciência corporal",
+            "Tecido macio",
+            "Causa-efeito",
+            "Feedback auditivo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lamaze+Wrist+Rattles&tag=nanapp-21"
+    },
+    {
+        "id": 113,
+        "name": "Caixa de Permanência",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Jogo cognitivo Montessori clássico.",
+        "longDesc": "Caixa de madeira com buraco e tabuleiro. O bebé insere a bola e ela reaparece. Ensina a permanência do objeto.",
+        "features": [
+            "Permanência objeto",
+            "Coord. olho-mão",
+            "Lógica",
+            "Satisfação"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Permanence+Box&tag=nanapp-21"
+    },
+    {
+        "id": 114,
+        "name": "Tambor Giratório",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Reforça pulso e foco cores.",
+        "longDesc": "Tambor giratório com cores e espelho. Rodá-lo requer um movimento de pulso específico.",
+        "features": [
+            "Músculos pulso",
+            "Seguimento visual",
+            "Causa-efeito",
+            "Interativo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Spinning+Drum&tag=nanapp-21"
+    },
+    {
+        "id": 115,
+        "name": "Ovo no Copo",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Movimentos precisos da mão.",
+        "longDesc": "Ovo de madeira e copo. Colocar e tirar o ovo afina a preensão e o relaxamento.",
+        "features": [
+            "Pegar e largar",
+            "Motricidade fina",
+            "Madeira natural",
+            "Simplicidade"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Egg+Cup&tag=nanapp-21"
+    },
+    {
+        "id": 116,
+        "name": "Cesto dos Tesouros",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Jogo heurístico com objetos reais.",
+        "longDesc": "Um cesto baixo cheio de objetos seguros e quotidianos de vários materiais (madeira, metal, couro). Encoraja a exploração independente.",
+        "features": [
+            "Variedade sensorial",
+            "Curiosidade",
+            "Objetos reais",
+            "Jogo aberto"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Cesto+Tesouros+Montessori&tag=nanapp-21"
+    },
+    {
+        "id": 117,
+        "name": "Torre de Bolas",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Seguimento de objetos móveis.",
+        "longDesc": "Torre em madeira onde as bolas descem em ziguezague. Hipnótico, ensina gravidade e seguimento visual.",
+        "features": [
+            "Seguimento visual",
+            "Previsibilidade",
+            "Concentração",
+            "Lição gravidade"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Torre+Bolas+Madeira&tag=nanapp-21"
+    },
+    {
+        "id": 118,
+        "name": "Brinquedo Pop-Up",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "Empurrar, rodar, disparar.",
+        "longDesc": "Clássico causa-efeito onde vários botões fazem saltar animais. Ótimo para força dos dedos e lógica.",
+        "features": [
+            "Força dedos",
+            "Lógica mecanismos",
+            "Surpresa",
+            "Cores"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Galt+Toys+Pop+Up&tag=nanapp-21"
+    },
+    {
+        "id": 119,
+        "name": "Puzzle Forma Única",
+        "category": "toys",
+        "subcategory": "6-12m",
+        "shortDesc": "O primeiro passo para os puzzles.",
+        "longDesc": "Puzzle de uma peça com pega grande. Foca-se no conceito de encaixar uma forma no buraco específico.",
+        "features": [
+            "Pega grande",
+            "Encaixe formas",
+            "Sucesso",
+            "Controlo motor"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Single+Shape+Puzzle&tag=nanapp-21"
+    },
+    {
+        "id": 120,
+        "name": "Triângulo Pikler",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Estrutura de escalada segura indoor.",
+        "longDesc": "Triângulo de madeira. Permite explorar limites físicos, equilíbrio e escalada em segurança.",
+        "features": [
+            "Motricidade global",
+            "Avaliação risco",
+            "Madeira robusta",
+            "Dobrável"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Triangulo+Pikler&tag=nanapp-21"
+    },
+    {
+        "id": 121,
+        "name": "Banco de Martelar",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Coordenação e força.",
+        "longDesc": "Banco madeira com pinos e martelo. Bater requer coordenação olho-mão e controlo de força.",
+        "features": [
+            "Coord. olho-mão",
+            "Força braço",
+            "Jogo repetitivo",
+            "Durável"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Banco+Martelar+Madeira&tag=nanapp-21"
+    },
+    {
+        "id": 122,
+        "name": "Arco-íris Waldorf",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Jogo de empilhar aberto.",
+        "longDesc": "Empilha-se, vira túnel, ponte ou cerca. Estimula criatividade e equilíbrio.",
+        "features": [
+            "Criatividade",
+            "Equilíbrio",
+            "Cores vivas",
+            "Decorativo"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Grimms+Rainbow&tag=nanapp-21"
+    },
+    {
+        "id": 123,
+        "name": "Cubo de Formas",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Resolução de problemas clássica.",
+        "longDesc": "Cubo madeira com buracos para formas geométricas. Padrão para aprender formas e resolução problemas.",
+        "features": [
+            "Reconhecimento formas",
+            "Problem solving",
+            "Motricidade fina",
+            "Clássico"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Shape+Sorting&tag=nanapp-21"
+    },
+    {
+        "id": 124,
+        "name": "Caixa de Moedas",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Refinar motricidade fina.",
+        "longDesc": "Caixa com ranhura para moedas. Inserir requer orientação precisa e controlo de pulso.",
+        "features": [
+            "Precisão",
+            "Repetição",
+            "Gaveta",
+            "Concentração"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Coin+Box&tag=nanapp-21"
+    },
+    {
+        "id": 125,
+        "name": "Animais Realistas",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Vocabulário e emparelhamento.",
+        "longDesc": "Figuras animais alta qualidade (tipo Schleich). Ideal para aprender nomes e associar a imagens.",
+        "features": [
+            "Detalhe realista",
+            "Vocabulário",
+            "Imaginação",
+            "Associação"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Schleich+Farm+Animals&tag=nanapp-21"
+    },
+    {
+        "id": 126,
+        "name": "Instrumentos Musicais Madeira",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Ritmo e exploração auditiva.",
+        "longDesc": "Verdadeiros instrumentos (xilofone, maracas) em madeira. Introdução ao ritmo sem eletrónica.",
+        "features": [
+            "Iniciação musical",
+            "Ritmo",
+            "Materiais naturais",
+            "Audição"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Instrumentos+Musicais+Madeira&tag=nanapp-21"
+    },
+    {
+        "id": 127,
+        "name": "Busy Board",
+        "category": "toys",
+        "subcategory": "1-2y",
+        "shortDesc": "Fechaduras e trincos reais.",
+        "longDesc": "Quadro com fechos, trincos e interruptores. Forma segura de satisfazer a curiosidade mecânica.",
+        "features": [
+            "Motricidade fina",
+            "Mecânica",
+            "Problem solving",
+            "Ideal viagem"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Busy+Board&tag=nanapp-21"
+    },
+    {
+        "id": 128,
+        "name": "Blocos Magnéticos",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Construção 3D e geometria.",
+        "longDesc": "Peças magnéticas translúcidas. Essencial para formas 3D e magnetismo.",
+        "features": [
+            "Construção 3D",
+            "Magnetismo",
+            "Mistura cores",
+            "STEAM"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Magna+Tiles+Set&tag=nanapp-21"
+    },
+    {
+        "id": 129,
+        "name": "Set Limpeza Madeira",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Vida prática.",
+        "longDesc": "Vassoura, esfregona tamanho criança. Adoram imitar e ajudar. Promove responsabilidade.",
+        "features": [
+            "Ferramentas funcionais",
+            "Responsabilidade",
+            "Motricidade global",
+            "Imitação"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cleaning+Set&tag=nanapp-21"
+    },
+    {
+        "id": 130,
+        "name": "Tábua de Equilíbrio",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Equilíbrio e jogo aberto.",
+        "longDesc": "Tábua de madeira curva. Ponte, escorrega, berço... Limitado apenas pela imaginação.",
+        "features": [
+            "Sistema vestibular",
+            "Equilíbrio",
+            "Imaginação",
+            "Madeira robusta"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wobble+Balance+Board&tag=nanapp-21"
+    },
+    {
+        "id": 131,
+        "name": "Fruta de Cortar",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Motricidade fina e vida prática.",
+        "longDesc": "Fruta madeira com velcro para cortar. Som satisfatório e reforça a mão.",
+        "features": [
+            "Força mão",
+            "Vida prática",
+            "Comida saudável",
+            "Som velcro"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Melissa+Doug+Cutting+Food&tag=nanapp-21"
+    },
+    {
+        "id": 132,
+        "name": "Contas para Enfiar",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Concentração e destreza.",
+        "longDesc": "Grandes contas madeira e fio. Enfiar requer concentração e prepara para a escrita.",
+        "features": [
+            "Foco",
+            "Pega pinça",
+            "Motricidade fina",
+            "Sequenciação"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Lacing+Beads+Toddler&tag=nanapp-21"
+    },
+    {
+        "id": 133,
+        "name": "Blocos Geométricos",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Geometria e padrões.",
+        "longDesc": "Formas geométricas para criar desenhos. Introdução a simetria e frações.",
+        "features": [
+            "Geometria",
+            "Simetria",
+            "Puzzles",
+            "Relaxante"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Pattern+Blocks&tag=nanapp-21"
+    },
+    {
+        "id": 134,
+        "name": "Aguarelas Não Tóxicas",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Expressão artística.",
+        "longDesc": "Aguarelas seguras e papel qualidade. Permite experimentar cor e fluidez.",
+        "features": [
+            "Criatividade",
+            "Teoria cor",
+            "Motricidade fina",
+            "Auto-expressão"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Non+Toxic+Watercolors&tag=nanapp-21"
+    },
+    {
+        "id": 135,
+        "name": "Bicicleta sem Pedais",
+        "category": "toys",
+        "subcategory": "2y+",
+        "shortDesc": "Coordenação antes de pedalar.",
+        "longDesc": "Bicicleta de balanço. Ensina equilíbrio e direção, facilitando transição para bicicleta real.",
+        "features": [
+            "Equilíbrio",
+            "Coordenação",
+            "Ar livre",
+            "Confiança"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Balance+Bike&tag=nanapp-21"
+    },
+    {
+        "id": 136,
+        "name": "Móbil Munari",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Seguimento visual recém-nascido.",
+        "longDesc": "Primeiro móbil Montessori. Formas geométricas preto e branco equilibradas.",
+        "features": [
+            "Alto contraste",
+            "Seguimento visual",
+            "Movimento calmo",
+            "Clássico"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Montessori+Munari&tag=nanapp-21"
+    },
+    {
+        "id": 137,
+        "name": "Cartões Alto Contraste",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Estimulação visual 0-3 meses.",
+        "longDesc": "Cartões preto e branco para visão do bebé. Estimula cérebro.",
+        "features": [
+            "Estimulação visual",
+            "Ajuda tummy time",
+            "Cartão rígido",
+            "Desenvolvimento"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=High+Contrast+Cards+Baby&tag=nanapp-21"
+    },
+    {
+        "id": 138,
+        "name": "Ginásio de Madeira",
+        "category": "toys",
+        "subcategory": "0-6m",
+        "shortDesc": "Encoraja alcançar e agarrar.",
+        "longDesc": "Estrutura simples madeira para pendurar móbeis. Promove movimento livre.",
+        "features": [
+            "Madeira natural",
+            "Estável",
+            "Encoraja movimento",
+            "Minimalista"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Wooden+Play+Gym&tag=nanapp-21"
+    },
+    {
+        "id": 200,
+        "name": "O Cérebro da Criança",
+        "category": "books",
+        "shortDesc": "Estratégias revolucionárias para a mente.",
+        "longDesc": "Siegel e Bryson oferecem 12 estratégias para desenvolvimento cerebral saudável.",
+        "features": [
+            "Neurociência",
+            "Prático",
+            "Inteligência emocional",
+            "Bestseller"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=O+Cerebro+da+Crianca+Siegel&tag=nanapp-21"
+    },
+    {
+        "id": 201,
+        "name": "Como Falar para as Crianças Ouvirem",
+        "category": "books",
+        "shortDesc": "O guia definitivo de comunicação.",
+        "longDesc": "Métodos práticos para resolver conflitos e fazer-se ouvir.",
+        "features": [
+            "Comunicação",
+            "Resolução conflitos",
+            "Respeito",
+            "Clássico"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Como+Falar+para+as+Criancas+Ouvirem&tag=nanapp-21"
+    },
+    {
+        "id": 202,
+        "name": "Disciplina Sem Dramas",
+        "category": "books",
+        "shortDesc": "Disciplina sem caos.",
+        "longDesc": "Ligação entre desenvolvimento neurológico e comportamento.",
+        "features": [
+            "Disciplina",
+            "Cérebro",
+            "Conexão",
+            "Calma"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Disciplina+Sem+Dramas&tag=nanapp-21"
+    },
+    {
+        "id": 203,
+        "name": "A Criança Montessori",
+        "category": "books",
+        "shortDesc": "A sua casa, um paraíso Montessori.",
+        "longDesc": "Simone Davies mostra como viver com uma criança pequena com respeito e descoberta.",
+        "features": [
+            "Montessori casa",
+            "Guia toddler",
+            "Belas ilustrações",
+            "Prático"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=A+Crianca+Montessori&tag=nanapp-21"
+    },
+    {
+        "id": 204,
+        "name": "Bésame mucho",
+        "category": "books",
+        "shortDesc": "Carlos González e a parentalidade natural.",
+        "longDesc": "Guia pediátrico sobre a importância do afeto e resposta sensível.",
+        "features": [
+            "Parentalidade contacto",
+            "Autor pediatra",
+            "Tranquilizador",
+            "Amor"
+        ],
+        "affiliateLink": "https://www.amazon.es/s?k=Besame+mucho+Carlos+Gonzalez&tag=nanapp-21"
+    }
+]

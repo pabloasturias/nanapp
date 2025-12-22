@@ -48,11 +48,20 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
         });
     }, [STORAGE_KEY]);
 
+    const removeLog = useCallback((predicate: (log: T) => boolean) => {
+        setLogs(prev => {
+            const updated = prev.filter(log => !predicate(log));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            return updated;
+        });
+    }, [STORAGE_KEY]);
+
     return {
         logs,
         addLog,
         updateLatestLog,
         getLatestLog,
-        getLogsByDate
+        getLogsByDate,
+        removeLog
     };
 };

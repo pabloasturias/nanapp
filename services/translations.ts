@@ -2,7 +2,7 @@ export type Language = 'es' | 'en' | 'fr' | 'de' | 'it' | 'pt';
 
 export const translations = {
   es: {
-    app_slogan: "sound of sleep",
+    app_slogan: "el sonido del silencio",
     menu: "Menú",
     tab_sounds: "Sonidos",
     tab_stats: "Estadisticas",
@@ -266,7 +266,7 @@ export const translations = {
     about_gratitude_msg: "En profundo agradecimiento a las madres y abuelas llenas de paciencia que cuidaron de nosotros. Porque la paciencia es una virtud que, muchas veces, viene en frasco de mujer."
   },
   en: {
-    app_slogan: "sound of sleep",
+    app_slogan: "the sound of silence",
     menu: "Menu",
     tab_sounds: "Sounds",
     tab_stats: "Stats",
@@ -524,7 +524,7 @@ export const translations = {
     about_gratitude_msg: "In deep gratitude to the mothers and grandmothers, full of patience, who cared for us. Because patience is a virtue that, often, comes in the form of a woman."
   },
   fr: {
-    app_slogan: "sound of sleep",
+    app_slogan: "le son du silence",
     menu: "Menu",
     tab_sounds: "Sons",
     tab_stats: "Stats",
@@ -698,11 +698,7 @@ export const translations = {
     story_promise_desc: "nanapp est 100% gratuite et privée. Pas de données, pas de suivi. Juste de l'aide.",
     story_community_title: "Communauté",
     story_community_desc: "Merci de nous faire confiance pour prendre soin du sommeil de ce que vous avez de plus cher.",
-    // Categories
-    cat_all: "Tous",
-    cat_toys: "Jouets",
-    cat_books: "Livres",
-    cat_sleep: "Sommeil",
+
     tab_top50: "Top 50 Produits",
     top50_subtitle: "Les essentiels incontournables",
     toys_subtitle: "Jeu et développement (0-3 ans)",
@@ -735,9 +731,19 @@ export const translations = {
     about_dedicated_msg: "Et à toutes les mères et tous les pères qui cherchent un moment de calme.",
     about_footer_made: "Fait avec ❤️ pour Vega",
     about_gratitude_msg: "Avec une profonde gratitude envers les mères et les grands-mères pleines de patience qui ont pris soin de nous. Parce que la patience est une vertu qui, bien souvent, prend les traits d'une femme.",
+    // Categories
+    cat_all: "Tous",
+    cat_toys: "Jouets",
+    cat_books: "Livres",
+    cat_sleep: "Sommeil",
+    cat_environment: "Environnement",
+    cat_travel: "Voyage",
+    cat_hygiene: "Hygiène",
+    cat_mom: "Maman",
+    cat_health: "Santé",
   },
   de: {
-    app_slogan: "sound of sleep",
+    app_slogan: "Der Klang der Stille",
     menu: "Menu",
     tab_sounds: "Töne",
     tab_stats: "Statistik",
@@ -988,7 +994,7 @@ export const translations = {
     about_gratitude_msg: "In tiefer Dankbarkeit an die Mütter und Großmütter voller Geduld, die sich um uns gekümmert haben. Denn Geduld ist eine Tugend, die oft in weiblicher Gestalt daherkommt."
   },
   it: {
-    app_slogan: "sound of sleep",
+    app_slogan: "il suono del silenzio",
     menu: "Menu",
     tab_sounds: "Suoni",
     tab_stats: "Statistiche",
@@ -1159,6 +1165,16 @@ export const translations = {
     about_dedicated_msg: "E a tutte le madri e i padri che cercano un momento di calma.",
     about_footer_made: "Fatto con ❤️ per Vega",
     about_gratitude_msg: "Con profonda gratitudine alle madri e alle nonne piene di pazienza che si sono prese cura di noi. Perché la pazienza è una virtù che, molto spesso, ha un volto femminile.",
+    // Categories
+    cat_all: "Tutti",
+    cat_toys: "Giocattoli",
+    cat_books: "Libri",
+    cat_sleep: "Sonno",
+    cat_environment: "Ambiente",
+    cat_travel: "Viaggio",
+    cat_hygiene: "Igiene",
+    cat_mom: "Mamma",
+    cat_health: "Salute",
 
     about_nanapp: "Su nanapp",
     story_more_title: "Più di un'app",
@@ -1174,9 +1190,7 @@ export const translations = {
     story_promise_desc: "Gratis e privato.",
     story_community_title: "Comunità",
     story_community_desc: "Grazie per la fiducia.",
-    cat_toys: "Giocattoli",
-    cat_books: "Libri",
-    cat_sleep: "Sonno", // Assuming 'cat_sleep' context from diff logic, though it wasn't explicitly in prev snippet for IT. Adding it relative to cat_toys if needed or just appending.
+
     tab_top50: "Top 50 Prodotti",
     top50_subtitle: "Gli essenziali irrinunciabili",
     toys_subtitle: "Gioco e sviluppo (0-3 anni)",
@@ -1199,7 +1213,7 @@ export const translations = {
     HEARTBEAT: "Battito cardiaco",
   },
   pt: {
-    app_slogan: "sound of sleep",
+    app_slogan: "o som do silêncio",
     menu: "Menu",
     tab_sounds: "Sons",
     tab_stats: "Estatísticas",
@@ -1374,9 +1388,15 @@ export const translations = {
     story_promise_desc: "Grátis e privado.",
     story_community_title: "Comunidade",
     story_community_desc: "Obrigado pela confiança.",
+    cat_all: "Todos",
     cat_toys: "Brinquedos",
     cat_books: "Livros",
-    cat_sleep: "Sono", // Assumed context
+    cat_sleep: "Sono",
+    cat_environment: "Ambiente",
+    cat_travel: "Viagem",
+    cat_hygiene: "Higiene",
+    cat_mom: "Mamãe",
+    cat_health: "Saúde",
     tab_top50: "Top 50 Produtos",
     top50_subtitle: "Os essenciais indispensáveis",
     toys_subtitle: "Brincadeira e desenvolvimento (0-3 anos)",
