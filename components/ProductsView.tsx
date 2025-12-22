@@ -120,17 +120,19 @@ export const ProductsView: React.FC = () => {
                                     <p className="text-slate-300 leading-relaxed text-base">{selectedProduct.longDesc}</p>
                                 </div>
 
-                                <div>
-                                    <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Características</h3>
-                                    <ul className="space-y-3">
-                                        {selectedProduct.features.map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-xl">
-                                                <div className="mt-0.5 text-teal-400 bg-teal-400/10 p-1 rounded-full"><Check size={12} strokeWidth={3} /></div>
-                                                <span className="text-sm text-slate-300">{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                {selectedProduct.features && selectedProduct.features.length > 0 && (
+                                    <div>
+                                        <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Características</h3>
+                                        <ul className="space-y-3">
+                                            {selectedProduct.features.map((feature, i) => (
+                                                <li key={i} className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-xl">
+                                                    <div className="mt-0.5 text-teal-400 bg-teal-400/10 p-1 rounded-full"><Check size={12} strokeWidth={3} /></div>
+                                                    <span className="text-sm text-slate-300">{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
