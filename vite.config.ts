@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
           enabled: false
         },
         registerType: 'prompt',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg', 'icons/*.png', 'screenshots/*.png'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons/*.png', 'screenshots/*.png'],
         manifest: false, // We use existing manifest.json in public folder
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,json,mp3,wav}'],
