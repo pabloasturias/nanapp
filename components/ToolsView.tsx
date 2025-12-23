@@ -71,7 +71,7 @@ export const ToolsView: React.FC = () => {
 
     const handleOpenTool = (id: ToolId) => {
         setSelectedToolId(id);
-        window.history.pushState({ toolId: id }, '');
+        window.history.pushState({ tab: 'tools', toolId: id }, '');
     };
 
     const handleCloseTool = () => {

@@ -36,21 +36,95 @@ const AppContent: React.FC = () => {
     const audio = useAudioEngine(parseFloat(localStorage.getItem('dw_volume') || '0.4'));
     const timer = useTimer(parseInt(localStorage.getItem('dw_duration') || '40', 10));
     const { logSession } = useStatistics();
-    const { activeSoundIds, toggleSoundVisibility, reorderSounds } = useSoundPreferences(); // New Hook
+    const { activeSoundIds, toggleSoundVisibility, reorderSounds } = useSoundPreferences();
 
-    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools'>('sounds');
+    // Navigation State
+    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools'>(() => {
+        return window.history.state?.tab || 'sounds';
+    });
+
+    // Modal States
     const [showSettings, setShowSettings] = useState(false);
-    const [showManageSounds, setShowManageSounds] = useState(false); // New State
+    const [showManageSounds, setShowManageSounds] = useState(false);
     const [showWhyModal, setShowWhyModal] = useState(false);
     const [showSupportModal, setShowSupportModal] = useState(false);
     const [showLegalModal, setShowLegalModal] = useState(false);
     const [quickInfoType, setQuickInfoType] = useState<'colic' | 'arsenic' | null>(null);
+
     const [isPageVisible, setIsPageVisible] = useState(true);
     const [isOffline, setIsOffline] = useState(!navigator.onLine);
-
     const [toastMessage, setToastMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
     const wakeLockRef = useRef<WakeLockSentinel | null>(null);
+
+    // --- history / Navigation Logic ---
+
+    // Sync State from History ( PopState )
+    useEffect(() => {
+        const handlePopState = (event: PopStateEvent) => {
+            const state = event.state || {}; // default to empty if null
+
+            // Sync Tab
+            if (state.tab) setActiveTab(state.tab);
+            else setActiveTab('sounds'); // Default fall back
+
+            // Sync Modals
+            setShowSettings(state.modal === 'settings');
+            setShowManageSounds(state.modal === 'manage');
+            setShowWhyModal(state.modal === 'why');
+            setShowSupportModal(state.modal === 'support');
+            setShowLegalModal(state.modal === 'legal');
+
+            // Quick Info Special Case
+            if (state.modal === 'info_colic') setQuickInfoType('colic');
+            else if (state.modal === 'info_arsenic') setQuickInfoType('arsenic');
+            else setQuickInfoType(null);
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
+
+    // Navigation Helpers
+    const navigateToTab = (tab: typeof activeTab) => {
+        if (tab === activeTab) return;
+        setActiveTab(tab);
+        // Clear modals when switching tabs? Ideally yes.
+        // But passing 'modal: undefined' in pushState implicitly clears them in history.
+        // We must also clear local state to match "immediate" UI update.
+        closeAllModalsLocal(); // Helper to clear local booleans
+        window.history.pushState({ tab, modal: undefined }, '');
+    };
+
+    const openModal = (modalName: string) => {
+        // Update local state
+        if (modalName === 'settings') setShowSettings(true);
+        if (modalName === 'manage') setShowManageSounds(true);
+        if (modalName === 'why') setShowWhyModal(true);
+        if (modalName === 'support') setShowSupportModal(true);
+        if (modalName === 'legal') setShowLegalModal(true);
+        if (modalName === 'info_colic') setQuickInfoType('colic');
+        if (modalName === 'info_arsenic') setQuickInfoType('arsenic');
+
+        // Push State
+        window.history.pushState({ tab: activeTab, modal: modalName }, '');
+    };
+
+    const closeModal = () => {
+        // Expectation: The modal was opened via pushState, so 'back' closes it.
+        window.history.back();
+    };
+
+    const closeAllModalsLocal = () => {
+        setShowSettings(false);
+        setShowManageSounds(false);
+        setShowWhyModal(false);
+        setShowSupportModal(false);
+        setShowLegalModal(false);
+        setQuickInfoType(null);
+    };
+
+    // ----------------------------------
 
     const showNotification = (msg: string) => {
         setToastMessage(msg);
@@ -68,7 +142,7 @@ const AppContent: React.FC = () => {
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [audio.isPlaying, audio.pause, audio.play]); // Add deps
+    }, [audio.isPlaying, audio.pause, audio.play]);
 
     // Visibility & Offline
     useEffect(() => {
@@ -126,18 +200,10 @@ const AppContent: React.FC = () => {
     // Statistics Logging
     useEffect(() => {
         let startTime: number | null = null;
-
         if (audio.isPlaying) {
             startTime = Date.now();
         }
-
-        return () => {
-            // This cleanup runs when audio.isPlaying changes (e.g. becomes false)
-            // or when component unmounts. 
-            // Ideally we want to capture ONLY when it STOPS playing.
-            // But hooks are tricky. Let's use a separate effect for strict state changes?
-            // Or better: Tracking ref.
-        };
+        return () => { };
     }, [audio.isPlaying]);
 
     const startTimeRef = useRef<number | null>(null);
@@ -197,27 +263,12 @@ const AppContent: React.FC = () => {
     const handleStop = (longFade = false) => {
         audio.stop(longFade);
         timer.stop();
-        // timer.setRemaining(null); // Wait, timer hook manages reset on active toggle or start
         if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'none';
     };
 
     // Timer Integration
-    // Check if timer finished
-    useEffect(() => {
-        if (timer.remaining === null && timer.isActive && !audio.isPlaying && !audio.isPaused) {
-            // Timer naturally finished/stopped. Ensure audio stops if it was running?
-            // Actually useTimer stops itself when remaining <= 0.
-            // We need to trigger audio stop when timer hits 0.
-            // Let's watch timer.remaining.
-        }
-    }, [timer.remaining]);
-
-    // Better approach: useTimer executes a callback? Or we watch state.
-    // In `useTimer`, we put logic inside the interval check. But cleaner to have a callback.
-    // Since I implemented `useTimer` without callback, let's add an effect here.
     useEffect(() => {
         if (timer.remaining === null && audio.isPlaying && timer.isActive) {
-            // Timer finished!
             handleStop(true);
         }
     }, [timer.remaining, audio.isPlaying, timer.isActive]);
@@ -235,10 +286,22 @@ const AppContent: React.FC = () => {
     const lastTapRef = useRef(0);
 
     const renderContent = () => {
-        if (activeTab === 'story') return <StoryView onBack={() => setActiveTab('sounds')} />;
+        if (activeTab === 'story') return <StoryView onBack={closeModal} />; // Using closeModal as back action if pushed?
+        // Wait, StoryView is a TAB, not a Modal.
+        // If I went to Story tab via 'Settings' -> 'GoToStory', I pushed { tab: 'story' }.
+        // So 'back' should pop that state and return to previous tab (e.g. Sounds).
+        // Correct.
         if (activeTab === 'sleep') return <SleepView />;
         if (activeTab === 'tips') return <ProductsView />;
-        if (activeTab === 'stats') return <StatsView onBack={() => setActiveTab('sounds')} />;
+        if (activeTab === 'stats') return <StatsView onBack={() => navigateToTab('sounds')} />;
+        // StatsView back button might want to go explicitly to sounds? or just back?
+        // navigateToTab('sounds') pushes a new entry 'Sounds'.
+        // If I want 'Back', I should use history.back().
+        // Let's use history.back() for consistency if we want "Back" behavior.
+        // But the UI says "Back" (implied to Home).
+        // Let's stick navigateToTab('sounds') for explicit navigation, or closeModal (back) for history.
+        // navigateToTab('sounds') is safer for "Home" buttons.
+
         if (activeTab === 'tools') return <ToolsView />;
 
         return (
@@ -247,13 +310,13 @@ const AppContent: React.FC = () => {
                     <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={() => setShowManageSounds(true)}
+                            onClick={() => openModal('manage')}
                             className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-teal-200 hover:border-teal-200/50 transition-colors"
                         >
                             <SlidersHorizontal size={14} />
                         </button>
                         <button
-                            onClick={() => setShowWhyModal(true)}
+                            onClick={() => openModal('why')}
                             className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-orange-200 hover:border-orange-200/50 transition-colors flex items-center gap-1.5 pr-3"
                         >
                             <HelpCircle size={14} />
@@ -275,7 +338,6 @@ const AppContent: React.FC = () => {
                             />
                         );
                     })}
-                    {/* Add placeholder to fill grid if odd number? No, CSS grid handles it. */}
                 </div>
 
                 <div className="shrink-0 h-6 flex items-center justify-center mb-1">
@@ -323,25 +385,38 @@ const AppContent: React.FC = () => {
             <ReloadPrompt />
             <SettingsModal
                 isOpen={showSettings}
-                onClose={() => setShowSettings(false)}
+                onClose={closeModal}
                 isWarmthActive={audio.isWarmthActive} onToggleWarmth={audio.toggleWarmth}
                 volume={audio.volume} onVolumeChange={audio.setVolume}
                 isMuted={audio.isMuted} onToggleMute={audio.toggleMute}
                 fadeDuration={audio.fadeDuration} onFadeChange={audio.changeFade}
                 heartbeatLayer={audio.heartbeatLayer} onToggleHeartbeatLayer={audio.toggleHeartbeat}
                 timerDuration={timer.duration} onTimerChange={timer.setDuration}
-                onOpenLegal={() => { setShowSettings(false); setShowLegalModal(true); }}
-                onGoToStory={() => setActiveTab('story')}
+                onOpenLegal={() => {
+                    // Close settings? Or stack?
+                    // To maintain stack: push 'legal'.
+                    // Since Settings is full screen-ish but technically a modal...
+                    // Standard flow: Open Settings -> Click Legal. 
+                    // Should we Close Settings then Open Legal? Or open Legal on top?
+                    // Implementation: openModal('legal'). This PUSHES state. 
+                    // state becomes { tab: ..., modal: 'legal' }.
+                    // The useEffect will see modal='legal' and set showSettings(false).
+                    // So it replaces Settings with Legal visually.
+                    // When back is pressed -> Pops to { tab: ..., modal: 'settings' }. Settings re-appears. 
+                    // This is PERFECT behavioral flow.
+                    openModal('legal');
+                }}
+                onGoToStory={() => navigateToTab('story')}
             />
-            <WhyItWorksModal isOpen={showWhyModal} onClose={() => setShowWhyModal(false)} />
-            <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={() => setQuickInfoType(null)} />
-            <SupportModal isOpen={showSupportModal} onClose={() => setShowSupportModal(false)} onGoToProducts={() => setActiveTab('tips')} />
-            <LegalModal isOpen={showLegalModal} onClose={() => setShowLegalModal(false)} />
+            <WhyItWorksModal isOpen={showWhyModal} onClose={closeModal} />
+            <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={closeModal} />
+            <SupportModal isOpen={showSupportModal} onClose={closeModal} onGoToProducts={() => navigateToTab('tips')} />
+            <LegalModal isOpen={showLegalModal} onClose={closeModal} />
             <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
             <ManageSoundsModal
                 isOpen={showManageSounds}
-                onClose={() => setShowManageSounds(false)}
+                onClose={closeModal}
                 activeSoundIds={activeSoundIds}
                 onToggleSound={toggleSoundVisibility}
                 onReorderSounds={reorderSounds}
@@ -349,16 +424,16 @@ const AppContent: React.FC = () => {
 
             <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-[calc(5rem+env(safe-area-inset-bottom))]">
                 <Header
-                    onOpenSettings={() => setShowSettings(true)}
-                    onOpenSupport={() => setShowSupportModal(true)}
-                    onOpenStats={() => setActiveTab('stats')}
-                    onGoToStory={() => setActiveTab('story')}
+                    onOpenSettings={() => openModal('settings')}
+                    onOpenSupport={() => openModal('support')}
+                    onOpenStats={() => navigateToTab('stats')}
+                    onGoToStory={() => navigateToTab('story')}
                     isOffline={isOffline}
                 />
                 {renderContent()}
             </div>
 
-            <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
+            <BottomNav activeTab={activeTab} setActiveTab={navigateToTab} />
         </div>
     );
 };
