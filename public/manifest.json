@@ -29,6 +29,11 @@
       "purpose": "any"
     },
     {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
       "src": "/icons/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
@@ -54,11 +59,18 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
   "background_color": "#020617",
   "theme_color": "#020617",
-  "categories": ["health", "lifestyle", "medical"],
+  "categories": [
+    "health",
+    "lifestyle",
+    "medical"
+  ],
   "lang": "es",
   "dir": "ltr",
   "prefer_related_applications": false,
@@ -76,21 +88,36 @@
       "short_name": "Blanco",
       "description": "Iniciar ruido blanco",
       "url": "/?sound=WHITE_NOISE",
-      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Ruido Rosa",
       "short_name": "Rosa",
       "description": "Iniciar ruido rosa",
       "url": "/?sound=PINK_NOISE",
-      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Océano",
       "short_name": "Océano",
       "description": "Sonido del océano",
       "url": "/?sound=OCEAN",
-      "icons": [{"src": "/icons/icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "protocol_handlers": [

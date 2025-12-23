@@ -117,13 +117,39 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                             <p className="text-xs text-blue-400/70">{new Date(l.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={() => downloadIcs(l)}
-                                        className="p-2 text-blue-400 hover:text-white bg-blue-500/20 hover:bg-blue-500 rounded-lg transition-colors"
-                                        title="Añadir al calendario"
-                                    >
-                                        <Calendar size={16} />
-                                    </button>
+                                    <div className="flex items-center gap-1">
+                                        <button
+                                            onClick={() => {
+                                                if ("Notification" in window) {
+                                                    Notification.requestPermission().then(permission => {
+                                                        if (permission === "granted") {
+                                                            new Notification("Recordatorio Nanapp", {
+                                                                body: `Cita médica: ${l.reason} - ${new Date(l.timestamp).toLocaleString()}`,
+                                                                icon: '/pwa-192x192.png' // Fallback icon path
+                                                            });
+                                                        }
+                                                    });
+                                                }
+                                            }}
+                                            className="p-2 text-blue-400 hover:text-white bg-blue-500/20 hover:bg-blue-500 rounded-lg transition-colors"
+                                            title="Recordarme (Notificación)"
+                                        >
+                                            <Clock size={16} />
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                const startDate = new Date(l.timestamp);
+                                                const endDate = new Date(l.timestamp + 60 * 60 * 1000);
+                                                const format = (d: Date) => d.toISOString().replace(/-|:|\.\d+/g, '');
+                                                const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(l.reason)}&dates=${format(startDate)}/${format(endDate)}&details=${encodeURIComponent('Cita médica registrada en Nanapp')}`;
+                                                window.open(url, '_blank');
+                                            }}
+                                            className="p-2 text-blue-400 hover:text-white bg-blue-500/20 hover:bg-blue-500 rounded-lg transition-colors"
+                                            title="Añadir a Google Calendar"
+                                        >
+                                            <Calendar size={16} />
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                         </div>

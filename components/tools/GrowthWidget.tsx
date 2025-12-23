@@ -36,7 +36,7 @@ export const GrowthDashboard: React.FC = () => {
     );
 };
 
-export const GrowthFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+export const GrowthFull: React.FC<{ onClose: () => void; onOpenSettings: () => void }> = ({ onClose, onOpenSettings }) => {
     const { t } = useLanguage();
     const { addLog, logs, removeLog } = useToolData<GrowthLog>('growth');
     const { activeBaby, updateBaby, abies } = useBaby();
@@ -93,7 +93,7 @@ export const GrowthFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-200">Perfil Requerido</h3>
                 <p className="text-sm text-slate-400">Para seguir el crecimiento y ver percentiles, necesitas crear o seleccionar un perfil de bebé.</p>
-                <button onClick={onClose} className="px-6 py-3 bg-indigo-600 rounded-xl text-white font-bold">
+                <button onClick={onOpenSettings} className="px-6 py-3 bg-indigo-600 rounded-xl text-white font-bold">
                     Ir a Ajustes
                 </button>
             </div>

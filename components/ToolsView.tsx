@@ -47,7 +47,7 @@ const TOOLS_CONFIG: ToolDefinition[] = [
 ];
 
 
-export const ToolsView: React.FC = () => {
+export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSettings }) => {
     const { t } = useLanguage();
     const { activeTools, toggleTool } = useTools();
     const [isManageMode, setIsManageMode] = useState(false);
@@ -99,7 +99,7 @@ export const ToolsView: React.FC = () => {
             case 'bottle': return <BottleFull onClose={handleCloseTool} />;
             case 'meds': return <MedsFull onClose={handleCloseTool} />;
             case 'sleep': return <SleepFull onClose={handleCloseTool} />;
-            case 'growth': return <GrowthFull onClose={handleCloseTool} />;
+            case 'growth': return <GrowthFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
             case 'fever': return <TempFull onClose={handleCloseTool} />;
             case 'solids': return <SolidsFull onClose={handleCloseTool} />;
             case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
