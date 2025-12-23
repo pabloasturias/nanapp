@@ -4,16 +4,8 @@ import App from './App';
 import './index.css';
 import { registerSW } from 'virtual:pwa-register';
 
-const updateSW = registerSW({
-  onNeedRefresh() {
-    if (confirm('Nueva versión disponible. ¿Recargar?')) {
-      updateSW(true);
-    }
-  },
-  onOfflineReady() {
-    console.log('App lista para modo offline');
-  },
-});
+// Removed manual registration to avoid conflict with ReloadPrompt.tsx
+// which handles updates with a better UI.
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
