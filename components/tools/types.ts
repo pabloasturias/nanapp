@@ -9,16 +9,14 @@ export type ToolId =
     | 'growth'
     | 'teething'
     | 'solids'
-    | 'tummy_time'
-    | 'bath'
     | 'vaccines'
     | 'fever'
     | 'pumping'
     | 'pediatrician_notes'
     | 'milestones'
-    | 'sound_memories'
     | 'medical_agenda'
-    | 'head_circumference';
+    | 'first_words'
+    | 'routines';
 
 export interface ToolDefinition {
     id: ToolId;
@@ -97,16 +95,6 @@ export interface PumpingLog {
     side: 'L' | 'R' | 'double';
 }
 
-export interface TummyLog {
-    timestamp: number;
-    durationSeconds: number;
-}
-
-export interface BathLog {
-    timestamp: number;
-    type?: 'sponge' | 'tub';
-}
-
 export interface SolidsLog {
     timestamp: number;
     food: string;
@@ -122,6 +110,7 @@ export interface VaccineLog {
     timestamp: number; // Date administered
     vaccineName: string;
     doseNumber?: number;
+    completed?: boolean;
 }
 
 export interface MilestoneLog {
@@ -147,6 +136,23 @@ export interface AppointmentLog {
     reason: string;
     completed: boolean;
 }
+
+export interface FirstWordsLog {
+    timestamp: number;
+    word: string; // "Agua"
+    pronunciation?: string; // "Aba"
+    notes?: string; // "Dicho en la bañera"
+}
+
+export interface RoutineLog {
+    timestamp: number; // Created timestamp
+    startTime: string; // "08:00"
+    activity: string; // "Desayuno"
+    icon?: string; // lucide icon name? or category
+    babyId?: string;
+}
+
+
 
 export interface SoundLog {
     timestamp: number;

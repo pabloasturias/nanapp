@@ -23,6 +23,8 @@ import { TeethingDashboard, TeethingFull } from './tools/TeethingWidget';
 import { MilestonesDashboard, MilestonesFull } from './tools/MilestonesWidget';
 import { NotesDashboard, NotesFull } from './tools/NotesWidget';
 import { AgendaDashboard, AgendaFull } from './tools/AgendaWidget';
+import { FirstWordsDashboard, FirstWordsFull } from './tools/FirstWordsWidget';
+import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
 
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -31,12 +33,14 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
     { id: 'diapers', icon: Layers, translationKey: 'tool_diapers', color: 'text-amber-400', bgColor: 'bg-amber-500/10' },
     { id: 'sleep', icon: Moon, translationKey: 'tool_sleep', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
+    { id: 'routines', icon: Activity, translationKey: 'tool_routines', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
+    { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'fever', icon: Thermometer, translationKey: 'tool_fever', color: 'text-red-500', bgColor: 'bg-red-500/10' },
-    { id: 'pumping', icon: Activity, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
+    { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
@@ -104,12 +108,36 @@ export const ToolsView: React.FC = () => {
             case 'milestones': return <MilestonesFull onClose={handleCloseTool} />;
             case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
             case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
+            case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
+            case 'routines': return <RoutineFull onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
                     <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">Estamos trabajando en esta herramienta.</p>
                 </div>
             );
+        }
+    };
+
+    const renderDashboardWidget = (id: ToolId) => {
+        switch (id) {
+            case 'breastfeeding': return <BreastfeedingDashboard />;
+            case 'diapers': return <DiaperDashboard />;
+            case 'bottle': return <BottleDashboard />;
+            case 'meds': return <MedsDashboard />;
+            case 'sleep': return <SleepDashboard />;
+            case 'growth': return <GrowthDashboard />;
+            case 'fever': return <TempDashboard />;
+            case 'solids': return <SolidsDashboard />;
+            case 'pumping': return <PumpingDashboard />;
+            case 'vaccines': return <VaccinesDashboard />;
+            case 'teething': return <TeethingDashboard />;
+            case 'milestones': return <MilestonesDashboard />;
+            case 'pediatrician_notes': return <NotesDashboard />;
+            case 'medical_agenda': return <AgendaDashboard />;
+            case 'first_words': return <FirstWordsDashboard />;
+            case 'routines': return <RoutineDashboard />;
+            default: return "--";
         }
     };
 
@@ -220,21 +248,7 @@ export const ToolsView: React.FC = () => {
                             <div>
                                 <h3 className="text-sm font-bold text-slate-200 leading-tight mb-0.5">{t(tool.translationKey as any)}</h3>
                                 <div className="text-[10px] text-slate-500 font-medium uppercase tracking-wide min-h-[1.5em]">
-                                    {tool.id === 'breastfeeding' ? <BreastfeedingDashboard /> :
-                                        tool.id === 'diapers' ? <DiaperDashboard /> :
-                                            tool.id === 'bottle' ? <BottleDashboard /> :
-                                                tool.id === 'meds' ? <MedsDashboard /> :
-                                                    tool.id === 'sleep' ? <SleepDashboard /> :
-                                                        tool.id === 'growth' ? <GrowthDashboard /> :
-                                                            tool.id === 'fever' ? <TempDashboard /> :
-                                                                tool.id === 'solids' ? <SolidsDashboard /> :
-                                                                    tool.id === 'pumping' ? <PumpingDashboard /> :
-                                                                        tool.id === 'vaccines' ? <VaccinesDashboard /> :
-                                                                            tool.id === 'teething' ? <TeethingDashboard /> :
-                                                                                tool.id === 'milestones' ? <MilestonesDashboard /> :
-                                                                                    tool.id === 'pediatrician_notes' ? <NotesDashboard /> :
-                                                                                        tool.id === 'medical_agenda' ? <AgendaDashboard /> :
-                                                                                            "--"}
+                                    {renderDashboardWidget(tool.id)}
                                 </div>
                             </div>
 
