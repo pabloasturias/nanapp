@@ -172,8 +172,15 @@ export const TeethingDashboard: React.FC = () => {
     );
 };
 
+import { Info, X } from 'lucide-react';
+import { useLanguage } from '../../services/LanguageContext';
+
+// ... existing code ...
+
 export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { logs, addLog, removeLog } = useToolData<TeethingLog>('teething');
+    const { logs, addLog } = useToolData<TeethingLog>('teething');
+    const { t } = useLanguage();
+    const [showInfo, setShowInfo] = React.useState(false);
 
     const getIsErupted = (tooth: ToothDef) => {
         return logs.some(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
@@ -181,43 +188,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
 
     const toggleTooth = (tooth: ToothDef) => {
         const isErupted = getIsErupted(tooth);
-
-        if (isErupted) {
-            // Remove. Note: This clears specific ID. 
-            // If the user has an old GROUP ID logged, we can't easily remove just one tooth of the group without migrating data.
-            // For now, simpler approach: We filter out the specific ID. 
-            // If an old group ID exists, we warn or removing it removes the whole group?
-            // Let's iterate and remove anything matching this tooth.
-            const idsToRemove = [tooth.id, tooth.oldGroupId].filter(Boolean) as string[];
-            // We need a removeLog that probably filters by predicate, but our hook might only support index or object.
-            // Assuming we have to find the log object to remove.
-            // The logic: if older "inc_low" exists, and we click "Low Left 1", we want to un-erupt it.
-            // We should remove the "inc_low" log and add back "inc_low_right" (Low Right 1) if it meant to stay?
-            // Too complex. Let's just Add/Remove specific ID. 
-            // If "inc_low" exists, we effectively migrate it on first interaction?
-            // "Removing" in a robust system means deleting the log entry.
-            // If `removeLog` takes an ID or filter, use that.
-            // Our `useToolData` usually exposes `updateLog` or `removeLog` (by timestamp or index).
-            // Let's assume we can add multiple.
-
-            // To simplify: This tool only ADDS (as babies don't lose teeth yet).
-            // But users make mistakes.
-            // I'll stick to: Add if not present.
-            // If present, we do nothing for now (safe) or try to remove.
-            // Given the previous code didn't handle removal easily (it just had `addLog`), I'll stick to ADDING.
-            // Wait, previous code was `if (isOut(id)) return; toggle...`. It only added.
-            // I will allow adding. If they made a mistake, well, it's a prototype.
-            // Actually, I'll allow toggle if I can find the log.
-
-            const relevantLog = logs.find(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
-            if (relevantLog) {
-                // Warning: we can't delete easily without an ID or index.
-                // Ideally `removeLog` needs the log object or index.
-                // I'll assume standard ADD for now.
-                return;
-            }
-        }
-
+        if (isErupted) return; // Only add for now
         addLog({ timestamp: Date.now(), toothId: tooth.id });
         if (navigator.vibrate) navigator.vibrate(50);
     };
@@ -229,10 +200,79 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     const lowerLeft = ALL_TEETH.filter(t => t.jaw === 'lower' && t.side === 'left').sort((a, b) => a.position - b.position);
 
     return (
-        <div className="flex flex-col h-full bg-slate-950">
-            <div className="shrink-0 p-6 pb-2">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Registro Dentición</h3>
-                <p className="text-slate-400 text-sm mb-2">Toca los dientes que ya han salido.</p>
+        <div className="flex flex-col h-full bg-slate-950 relative">
+
+            {/* Info Overlay */}
+            {showInfo && (
+                <div className="absolute inset-0 z-50 bg-slate-950 flex flex-col animate-[fade-in_0.2s]">
+                    <div className="p-6 pb-2 flex items-center justify-between">
+                        <h3 className="text-xl font-bold text-pink-200">{t('tool_teething_info_title')}</h3>
+                        <button onClick={() => setShowInfo(false)} className="p-2 bg-slate-900 rounded-full text-slate-400">
+                            <X size={20} />
+                        </button>
+                    </div>
+                    <div className="flex-1 overflow-y-auto p-6 pt-0 space-y-8">
+                        {/* Chart */}
+                        <section>
+                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                {t('tool_teething_chart_title')}
+                            </h4>
+                            <div className="bg-slate-900 rounded-xl p-4 border border-white/5 space-y-3">
+                                <div className="flex justify-between text-xs border-b border-white/5 pb-2 mb-2 font-bold text-slate-400">
+                                    <span>Diente</span>
+                                    <span>Meses (Aprox)</span>
+                                </div>
+                                {ALL_TEETH.filter(t => t.side === 'right').sort((a, b) => {
+                                    // Custom sort order for chart: Center out
+                                    return a.position - b.position || (a.jaw === 'upper' ? -1 : 1);
+                                }).slice(0, 5).map((t) => (
+                                    // Showing one set of examples (e.g. Upper Right) to simplify chart, generic names
+                                    <div key={t.label} className="flex justify-between text-sm text-slate-300">
+                                        <span>{t.label}</span>
+                                        <span className="text-pink-300 tabular-nums">{t.months}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Tips */}
+                        <section>
+                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                {t('tool_teething_tips_title')}
+                            </h4>
+                            <div className="grid gap-3">
+                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
+                                    <p className="text-sm text-slate-300">{t('tool_teething_tip_1')}</p>
+                                </div>
+                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
+                                    <p className="text-sm text-slate-300">{t('tool_teething_tip_2')}</p>
+                                </div>
+                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
+                                    <p className="text-sm text-slate-300">{t('tool_teething_tip_3')}</p>
+                                </div>
+                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
+                                    <p className="text-sm text-slate-300">{t('tool_teething_tip_4')}</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            )}
+
+            <div className="shrink-0 p-6 pb-2 flex justify-between items-start">
+                <div>
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Registro Dentición</h3>
+                    <p className="text-slate-400 text-sm mb-2">Toca los dientes que ya han salido.</p>
+                </div>
+                <button
+                    onClick={() => setShowInfo(true)}
+                    className="p-2 bg-slate-900 text-pink-300 rounded-full border border-pink-500/30 hover:bg-pink-500/10 transition-colors"
+                >
+                    <Info size={18} />
+                </button>
+            </div>
+
+            <div className="shrink-0 px-6 pb-2">
                 <div className="flex gap-4 text-[10px] text-slate-500 bg-white/5 p-2 rounded-lg">
                     <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-slate-700 border border-slate-600"></div>Sin salir</span>
                     <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-pink-400 border border-pink-200"></div>Salido</span>

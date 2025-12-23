@@ -280,6 +280,16 @@ export const translations = {
     tool_growth_birthdate: "Fecha de Nacimiento",
     tool_growth_set_date: "Calculadora de Percentiles: Configura la fecha de nacimiento en ajustes o aquí mismo.",
 
+    // Teething Info
+    tool_teething_info_title: "Guía de Dentición",
+    tool_teething_chart_title: "Calendario de Erupción",
+    tool_teething_tips_title: "Alivio y Consejos",
+    tool_teething_tip_1: "Mordedores fríos: El frío ayuda a adormecer las encías y reducir la inflamación.",
+    tool_teething_tip_2: "Masaje de encías: Usa un dedo limpio para masajear suavemente las encías doloridas.",
+    tool_teething_tip_3: "Limpieza: Limpia la cara del bebé a menudo para evitar irritaciones por la baba.",
+    tool_teething_tip_4: "Medicación: Consulta con tu pediatra sobre analgésicos si el malestar es intenso.",
+
+
   },
   en: {
     app_slogan: "the sound of silence",
@@ -553,6 +563,16 @@ export const translations = {
     tool_growth_percentile: "Percentile",
     tool_growth_birthdate: "Birth Date",
     tool_growth_set_date: "Percentile Calculator: Set birth date.",
+
+    // Teething Info
+    tool_teething_info_title: "Teething Guide",
+    tool_teething_chart_title: "Eruption Calendar",
+    tool_teething_tips_title: "Relief & Tips",
+    tool_teething_tip_1: "Cold teethers: Cold helps numb the gums and reduce inflammation.",
+    tool_teething_tip_2: "Gum massage: Use a clean finger to gently massage sore gums.",
+    tool_teething_tip_3: "Cleanliness: Wipe the baby's face often to prevent irritation from drooling.",
+    tool_teething_tip_4: "Medication: Consult your pediatrician about pain relievers if discomfort is intense.",
+
 
   },
   fr: {
