@@ -182,7 +182,7 @@ export const translations = {
     story_quote: "Duerme pequeño, duerme ya...",
 
     story_promise_title: "La Promesa",
-    story_promise_desc: "nanapp es 100% gratuita y privada. Sin datos, sin registros. Solo ayuda.",
+    story_promise_desc: "Hemos tomado una decisión consciente: Nanapp es 100% Local. Tus datos, las rutinas de tu bebé y tus registros NUNCA salen de tu dispositivo. Preferimos sacrificar la 'nube' para garantizarte un anonimato absoluto. Lo que pasa en casa, se queda en casa.",
     story_community_title: "Comunidad",
     story_community_desc: "Gracias por confiar en nosotros para cuidar el sueño de lo que más quieres.",
     about_nanapp: "Sobre nanapp",
@@ -299,9 +299,18 @@ export const translations = {
     settings_baby_active: "Activo",
     settings_baby_select: "Seleccionar",
 
+
     // Charts
     chart_now: "Ahora",
     chart_24h_ago: "Hace 24h",
+
+    // Privacy & Safety
+    privacy_title: "Privacidad y Datos",
+    privacy_local_first_title: "Local y Privado",
+    privacy_local_first_desc: "Tus datos se quedan en ESTE dispositivo. Diseñamos la app así para garantizar que nadie (ni nosotros) pueda acceder a la información de tu familia. Anonimato total por diseño.",
+    audio_safety_title: "Seguridad y Responsabilidad",
+    audio_safety_desc: "Distancia mín >1m. Nanapp no se hace responsable por uso indebido o daños auditivos.",
+    audio_legal_warning: "AVISO LEGAL: El uso de esta aplicación es responsabilidad exclusiva del usuario. Los desarrolladores no se hacen responsables de posibles daños auditivos o de otro tipo derivados del uso incorrecto o prolongado de los sonidos. Mantén siempre el dispositivo a una distancia segura (>1 metro) y NUNCA dentro de la cuna.",
 
 
 
@@ -482,7 +491,7 @@ export const translations = {
     story_quote: "Sleep little one, sleep now...",
 
     story_promise_title: "The Promise",
-    story_promise_desc: "nanapp is 100% free and private. No data, no tracking. Just help.",
+    story_promise_desc: "We made a conscious choice: Nanapp is 100% Local. Your data, baby routines, and logs NEVER leave your device. We prefer to sacrifice the 'cloud' to guarantee absolute anonymity. What happens at home, stays at home.",
     story_community_title: "Community",
     story_community_desc: "Thank you for trusting us to care for what you love most.",
     about_nanapp: "About nanapp",
@@ -599,9 +608,18 @@ export const translations = {
     settings_baby_active: "Active",
     settings_baby_select: "Select",
 
+
     // Charts
     chart_now: "Now",
     chart_24h_ago: "24h ago",
+
+    // Privacy & Safety
+    privacy_title: "Privacy & Data",
+    privacy_local_first_title: "Local & Private",
+    privacy_local_first_desc: "Your data stays on THIS device. We designed the app this way to ensure no one (not even us) can access your family's info. Total anonymity by design.",
+    audio_safety_title: "Safety First",
+    audio_safety_desc: "Keep device at least 1m (3ft) away from baby. Never place inside crib.",
+    audio_legal_warning: "LEGAL NOTICE: The use of this application is the sole responsibility of the user. The developers are not responsible for any hearing damage or other issues arising from incorrect or prolonged use of the sounds. Always keep the device at a safe distance (>1 meter) and NEVER inside the crib.",
 
 
 
@@ -779,9 +797,17 @@ export const translations = {
     story_quote: "Dors petit ange, dors...",
 
     story_promise_title: "La Promesse",
-    story_promise_desc: "nanapp est 100% gratuite et privée. Pas de données, pas de suivi. Juste de l'aide.",
+    story_promise_desc: "Nous avons fait un choix conscient : Nanapp est 100% Local. Vos données, les routines de bébé et vos journaux ne quittent JAMAIS votre appareil. Nous préférons sacrifier le 'cloud' pour vous garantir un anonymat absolu. Ce qui se passe à la maison, reste à la maison.",
     story_community_title: "Communauté",
     story_community_desc: "Merci de nous faire confiance pour prendre soin du sommeil de ce que vous avez de plus cher.",
+
+    // Privacy & Safety
+    privacy_title: "Confidentialité et Données",
+    privacy_local_first_title: "Local et Privé",
+    privacy_local_first_desc: "Vos données restent sur CET appareil. Nous avons conçu l'application ainsi pour garantir que personne (pas même nous) ne puisse accéder aux informations de votre famille. Anonymat total par conception.",
+    audio_safety_title: "Sécurité et Responsabilité",
+    audio_safety_desc: "Distance min >1m. Nanapp n'est pas responsable d'une utilisation incorrecte ou de dommages auditivos.",
+    audio_legal_warning: "AVIS JURIDIQUE : L'utilisation de cette application relève de la seule responsabilité de l'utilisateur. Les développeurs ne sont pas responsables des éventuels dommages auditifs ou autres problèmes découlant d'une utilisation incorrecte ou prolongée des sons. Gardez toujours l'appareil à une distance de sécurité (>1 mètre) et JAMAIS à l'intérieur du berceau.",
 
     tab_top50: "Top 50 Produits",
     top50_subtitle: "Les essentiels incontournables",
@@ -1016,9 +1042,17 @@ export const translations = {
     story_quote: "Schlaf kleine Maus...",
 
     story_promise_title: "Das Versprechen",
-    story_promise_desc: "Kostenlos und privat.",
+    story_promise_desc: "Wir haben uns bewusst entschieden: Nanapp ist 100% Lokal. Deine Daten, Baby-Routinen und Protokolle verlassen NIEMALS dein Gerät. Wir verzichten lieber auf die 'Cloud', um absolute Anonymität zu garantieren. Was zu Hause passiert, bleibt zu Hause.",
     story_community_title: "Comunidad",
     story_community_desc: "Danke für dein Vertrauen.",
+
+    // Privacy & Safety
+    privacy_title: "Datenschutz",
+    privacy_local_first_title: "Lokal und Privat",
+    privacy_local_first_desc: "Deine Daten bleiben auf DIESEM Gerät. Wir haben die App so konzipiert, dass niemand (nicht einmal wir) auf die Informationen deiner Familie zugreifen kann. Absolute Anonymität durch Design.",
+    audio_safety_title: "Sicherheit",
+    audio_safety_desc: "Mindestabstand >1m. Nanapp haftet nicht für unsachgemäßen Gebrauch.",
+    audio_legal_warning: "RECHTLICHER HINWEIS: Die Nutzung dieser Anwendung erfolgt auf eigene Verantwortung. Die Entwickler haften nicht für Hörschäden oder andere Probleme, die durch unsachgemäßen oder längeren Gebrauch der Töne entstehen. Halte das Gerät immer in sicherem Abstand (>1 Meter) und NIEMALS im Kinderbett.",
     TRAIN: "Zug",
     CAT_PURR: "Schnurren",
     FIREPLACE: "Kamin",
@@ -1271,9 +1305,17 @@ export const translations = {
     story_quote: "Dormi piccolo...",
 
     story_promise_title: "La Promessa",
-    story_promise_desc: "Gratis e privato.",
+    story_promise_desc: "Abbiamo fatto una scelta consapevole: Nanapp è 100% Locale. I tuoi dati, le routine del bambino e i registri NON lasciano MAI il tuo dispositivo. Preferiamo sacrificare il 'cloud' per garantirti un anonimato assoluto. Ciò che accade a casa, resta a casa.",
     story_community_title: "Comunità",
     story_community_desc: "Grazie per la fiducia.",
+
+    // Privacy & Safety
+    privacy_title: "Privacy e Dati",
+    privacy_local_first_title: "Locale e Privato",
+    privacy_local_first_desc: "I tuoi dati rimangono su QUESTO dispositivo. Abbiamo progettato l'app in questo modo per garantire che nessuno (nemmeno noi) possa accedere alle informazioni della tua famiglia. Anonimato totale fin dalla progettazione.",
+    audio_safety_title: "Sicurezza",
+    audio_safety_desc: "Distanza min >1m. Nanapp non è responsabile per uso improprio.",
+    audio_legal_warning: "AVVISO LEGALE: L'uso di questa applicazione è di esclusiva responsabilità dell'utente. Gli sviluppatori non sono responsabili per eventuali danni all'udito o altri problemi derivanti dall'uso errato o prolungato dei suoni. Tieni sempre il dispositivo a una distanza di sicurezza (>1 metro) e MAI all'interno della culla.",
 
     tab_top50: "Top 50 Prodotti",
     top50_subtitle: "Gli essenziali irrinunciabili",
@@ -1469,9 +1511,17 @@ export const translations = {
     story_quote: "Dorme pequeno...",
 
     story_promise_title: "A Promessa",
-    story_promise_desc: "Grátis e privado.",
+    story_promise_desc: "Fizemos uma escolha consciente: Nanapp é 100% Local. Os seus dados, rotinas do bebé e registos NUNCA saem do seu dispositivo. Preferimos sacrificar a 'nuvem' para garantir anonimato absoluto. O que acontece em casa, fica em casa.",
     story_community_title: "Comunidade",
     story_community_desc: "Obrigado pela confiança.",
+
+    // Privacy & Safety
+    privacy_title: "Privacidade e Dados",
+    privacy_local_first_title: "Local e Privado",
+    privacy_local_first_desc: "Os seus dados ficam NESTE dispositivo. Desenhámos a app assim para garantir que ninguém (nem nós) possa aceder às informações da sua família. Anonimato total por design.",
+    audio_safety_title: "Segurança",
+    audio_safety_desc: "Distância mín >1m. Nanapp não se responsabiliza pelo uso indevido.",
+    audio_legal_warning: "AVISO LEGAL: A utilização desta aplicação é da exclusiva responsabilidade do utilizador. Os programadores não se responsabilizam por danos auditivos ou outros problemas decorrentes do uso incorreto ou prolongado dos sons. Mantenha sempre o dispositivo a uma distância segura (>1 metro) e NUNCA dentro do berço.",
     cat_all: "Todos",
     cat_toys: "Brinquedos",
     cat_books: "Livros",

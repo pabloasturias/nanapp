@@ -310,12 +310,6 @@ const AppContent: React.FC = () => {
                     <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={() => openModal('manage')}
-                            className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-teal-200 hover:border-teal-200/50 transition-colors"
-                        >
-                            <SlidersHorizontal size={14} />
-                        </button>
-                        <button
                             onClick={() => openModal('why')}
                             className="p-1.5 rounded-full bg-slate-800/60 text-slate-400 border border-slate-700 hover:text-orange-200 hover:border-orange-200/50 transition-colors flex items-center gap-1.5 pr-3"
                         >
@@ -427,6 +421,7 @@ const AppContent: React.FC = () => {
                     onOpenSettings={() => openModal('settings')}
                     onOpenSupport={() => openModal('support')}
                     onOpenStats={() => navigateToTab('stats')}
+                    onOpenManageSounds={() => openModal('manage')}
                     onGoToStory={() => navigateToTab('story')}
                     isOffline={isOffline}
                 />

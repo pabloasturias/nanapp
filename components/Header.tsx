@@ -1,17 +1,18 @@
 
 import React from 'react';
-import { Settings, WifiOff, Baby, Heart, BarChart2 } from 'lucide-react';
+import { Settings, WifiOff, Baby, Heart, BarChart2, SlidersHorizontal } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface HeaderProps {
     onOpenSettings: () => void;
     onOpenSupport: () => void;
     onOpenStats: () => void;
+    onOpenManageSounds: () => void;
     onGoToStory: () => void;
     isOffline: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, onOpenStats, onGoToStory, isOffline }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, onOpenStats, onOpenManageSounds, onGoToStory, isOffline }) => {
     const { t } = useLanguage();
 
     return (
@@ -40,6 +41,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, o
                 </button>
                 <button onClick={onOpenSupport} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
                     <Heart size={18} />
+                </button>
+                <button onClick={onOpenManageSounds} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
+                    <SlidersHorizontal size={18} />
                 </button>
                 <button onClick={onOpenSettings} className="p-2 rounded-full bg-slate-950/50 text-orange-100/70 hover:text-white transition-colors border border-orange-100/5 hover:bg-slate-800">
                     <Settings size={18} />

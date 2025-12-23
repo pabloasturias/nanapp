@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check, Users, Plus, Trash2, Calendar } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check, Users, Plus, Trash2, Calendar, AlertTriangle } from 'lucide-react';
 
 import { useLanguage } from '../services/LanguageContext';
 import { useBaby, BabyProfile } from '../services/BabyContext';
@@ -214,6 +214,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
                                     className="w-full h-1.5 bg-slate-700 rounded-full appearance-none cursor-pointer accent-orange-400"
                                 />
+
+                                {/* Safety Disclaimer */}
+                                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-3">
+                                    <Shield size={16} className="text-red-400 shrink-0 mt-0.5" />
+                                    <div>
+                                        <h4 className="text-[10px] font-bold text-red-300 uppercase tracking-wide mb-0.5">{t('audio_safety_title')}</h4>
+                                        <p className="text-[10px] text-red-200/70 leading-relaxed">
+                                            {t('audio_safety_desc')}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Legal Warning */}
+                                <div className="p-3 bg-amber-500/5 border border-amber-500/10 rounded-xl flex items-start gap-3">
+                                    <AlertTriangle size={16} className="text-amber-500/50 shrink-0 mt-0.5" />
+                                    <div>
+                                        <p className="text-[9px] text-slate-400 leading-relaxed text-justify">
+                                            {t('audio_legal_warning')}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Divider */}
@@ -233,6 +254,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     onChange={(e) => onFadeChange(parseFloat(e.target.value))}
                                     className="w-full h-1.5 bg-slate-700 rounded-full appearance-none cursor-pointer accent-pink-400"
                                 />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* SECTION: PRIVACY */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
+                            <Shield size={12} />
+                            <span>{t('privacy_title')}</span>
+                        </div>
+
+                        <div className="bg-slate-800/30 p-5 rounded-3xl border border-slate-700/30">
+                            <div className="flex items-start gap-3">
+                                <div className="p-2 bg-emerald-500/10 rounded-xl text-emerald-400 shrink-0">
+                                    <Shield size={18} />
+                                </div>
+                                <div>
+                                    <span className="text-sm font-semibold text-slate-200 block mb-1">{t('privacy_local_first_title')}</span>
+                                    <p className="text-xs text-slate-400 leading-relaxed">
+                                        {t('privacy_local_first_desc')}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

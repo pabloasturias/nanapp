@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Heart, Star, ExternalLink } from 'lucide-react';
+import { X, Heart, Star, ExternalLink, Shield } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface SupportModalProps {
@@ -74,6 +74,17 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
             <Heart size={20} fill="currentColor" className="text-amber-900/50" />
             <span>{t('support_donate')}</span>
           </a>
+
+          {/* Privacy Promise */}
+          <div className="bg-slate-800/50 p-4 rounded-2xl border border-white/5 flex items-start gap-3 text-left">
+            <Shield size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+            <div>
+              <h3 className="text-xs font-bold text-emerald-200 mb-1">{t('story_promise_title')}</h3>
+              <p className="text-[10px] text-slate-400 leading-relaxed">
+                {t('story_promise_desc')}
+              </p>
+            </div>
+          </div>
 
           <div className="pt-2">
             <p className="text-xs text-slate-500 font-medium">
