@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Syringe, Check, Calendar, ChevronRight } from 'lucide-react';
+import { Syringe, Check, Calendar, ChevronRight, Plus } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { VaccineLog } from './types';
 
@@ -34,60 +34,99 @@ export const VaccinesDashboard: React.FC = () => {
 
 export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const { logs, addLog } = useToolData<VaccineLog>('vaccines');
-    // logs contains all completed vaccines
+    const [customName, setCustomName] = useState('');
 
-    const isDone = (name: string) => logs.some(l => l.vaccineName === name);
-
-    const toggleVaccine = (name: string) => {
-        if (isDone(name)) {
-            // Uncheck? useToolData is append-only for now. 
-            // In a real app we'd remove. Here we'll just ignore for "Undo" simplicity 
-            // or perhaps we shouldn't allow easy undo to avoid accidental data loss.
-            // Let's allow ADDING only for now.
-            return;
-        }
+    const handleAdd = (name: string) => {
+        if (!name) return;
         addLog({
             timestamp: Date.now(),
             vaccineName: name
         });
+        setCustomName('');
         if (navigator.vibrate) navigator.vibrate(50);
     };
 
+    const isDone = (name: string) => logs.some(l => l.vaccineName === name);
+
+    // Filter available suggestions (not yet done)
+    const suggestions = COMMON_VACCINES.filter(v => !isDone(v.label));
+
+    // Sort logs by date desc
+    const sortedLogs = [...logs].sort((a, b) => b.timestamp - a.timestamp);
+
     return (
-        <div className="flex flex-col h-full p-6">
-            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Calendario Vacunal</h3>
+        <div className="flex flex-col h-full bg-slate-900">
 
-            <div className="flex-1 overflow-y-auto space-y-3">
-                {COMMON_VACCINES.map((v) => {
-                    const done = isDone(v.label);
-                    const log = logs.find(l => l.vaccineName === v.label);
+            {/* Add Custom */}
+            <div className="p-4 bg-slate-800/50 border-b border-white/5 space-y-3">
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Añadir Vacuna</h3>
+                <div className="flex gap-2">
+                    <input
+                        type="text"
+                        value={customName}
+                        onChange={(e) => setCustomName(e.target.value)}
+                        placeholder="Nombre de la vacuna..."
+                        className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-purple-500 outline-none"
+                    />
+                    <button
+                        onClick={() => handleAdd(customName)}
+                        disabled={!customName}
+                        className="bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-bold px-4 rounded-xl transition-colors"
+                    >
+                        <Plus />
+                    </button>
+                </div>
+            </div>
 
-                    return (
-                        <button
-                            key={v.id}
-                            onClick={() => toggleVaccine(v.label)}
-                            className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${done
-                                    ? 'bg-purple-500/20 border-purple-500/50'
-                                    : 'bg-slate-800 border-white/5 hover:bg-slate-700'
-                                }`}
-                        >
-                            <div className="flex items-center gap-4">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${done ? 'bg-purple-500 text-white' : 'bg-slate-600 text-slate-400'}`}>
-                                    {done ? <Check size={16} /> : <Syringe size={16} />}
+            <div className="flex-1 overflow-y-auto p-4 space-y-6">
+
+                {/* Suggestions */}
+                {suggestions.length > 0 && (
+                    <div>
+                        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Sugerencias (Comunes)</h3>
+                        <div className="space-y-2">
+                            {suggestions.map((v) => (
+                                <button
+                                    key={v.id}
+                                    onClick={() => handleAdd(v.label)}
+                                    className="w-full text-left p-3 rounded-xl border border-white/5 bg-slate-800/40 hover:bg-slate-700 transition-all flex items-center justify-between group"
+                                >
+                                    <div>
+                                        <p className="font-bold text-slate-300 group-hover:text-purple-300">{v.label}</p>
+                                        <p className="text-[10px] text-slate-500">{v.desc}</p>
+                                    </div>
+                                    <div className="p-2 rounded-full bg-slate-800 text-slate-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                                        <Plus size={16} />
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Historial */}
+                {sortedLogs.length > 0 && (
+                    <div>
+                        <h3 className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-3">Historial ({sortedLogs.length})</h3>
+                        <div className="space-y-2">
+                            {sortedLogs.map((log) => (
+                                <div key={log.timestamp} className="bg-purple-500/10 border border-purple-500/20 p-3 rounded-xl flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-purple-500 text-white p-1.5 rounded-full">
+                                            <Check size={14} />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-purple-100">{log.vaccineName}</p>
+                                            <p className="text-[10px] text-purple-300 opacity-70">
+                                                {new Date(log.timestamp).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className={`font-bold ${done ? 'text-purple-200' : 'text-slate-300'}`}>{v.label}</p>
-                                    <p className="text-[10px] text-slate-500">{v.desc}</p>
-                                </div>
-                            </div>
-                            {done && (
-                                <span className="text-xs text-purple-300 font-mono opacity-70">
-                                    {new Date(log!.timestamp).toLocaleDateString()}
-                                </span>
-                            )}
-                        </button>
-                    );
-                })}
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

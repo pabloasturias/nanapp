@@ -58,6 +58,14 @@ export const BottleDashboard: React.FC = () => {
     );
 };
 
+const FEEDING_GUIDELINES = [
+    { range: '0-1 mes', amount: '60-120ml', freq: '6-8 veces/día' },
+    { range: '1-2 meses', amount: '90-150ml', freq: '5-7 veces/día' },
+    { range: '2-4 meses', amount: '120-180ml', freq: '5-6 veces/día' },
+    { range: '4-6 meses', amount: '150-210ml', freq: '4-5 veces/día' },
+    { range: '+6 meses', amount: 'Variable com AC', freq: 'A demanda' },
+];
+
 export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const { addLog, logs } = useToolData<BottleLog>('bottle');
     const { activeBaby } = useBaby();
@@ -65,6 +73,9 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
     const [amount, setAmount] = useState(120); // Default 120ml
     const [type, setType] = useState<BottleLog['type']>('formula');
+
+    // Toggle for info
+    const [showInfo, setShowInfo] = useState(false);
 
     const handleSave = () => {
         addLog({
@@ -89,6 +100,28 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         return babyLogs.filter(l => l.timestamp >= startOfDay && l.timestamp < endOfDay);
     }, [babyLogs]);
 
+    // Calculate Average (Last 7 days excluding today)
+    const average = useMemo(() => {
+        const now = new Date();
+        const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const sevenDaysAgo = startOfToday - (7 * 86400000);
+
+        const last7DaysLogs = babyLogs.filter(l => l.timestamp >= sevenDaysAgo && l.timestamp < startOfToday);
+        if (last7DaysLogs.length === 0) return 0;
+
+        // Group by day
+        const days: Record<string, number> = {};
+        last7DaysLogs.forEach(l => {
+            const dayKey = new Date(l.timestamp).toDateString();
+            days[dayKey] = (days[dayKey] || 0) + (l.amount || 0);
+        });
+
+        const totalVol = Object.values(days).reduce((a, b) => a + b, 0);
+        const dayCount = Object.keys(days).length;
+
+        return dayCount > 0 ? Math.round(totalVol / dayCount) : 0;
+    }, [babyLogs]);
+
     // Timeline Data
     const timelineEvents = useMemo(() => {
         return babyLogs.map(log => ({
@@ -108,18 +141,56 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <div className="flex flex-col h-full bg-slate-900">
 
             {/* Timeline Visualization */}
-            <div className="shrink-0 p-4 pb-0">
-                <div className="mb-2 flex items-center justify-between">
+            <div className="shrink-0 p-4 pb-0 space-y-3">
+                <div className="flex items-center justify-between">
                     <span className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Resumen 24h</span>
-                    <span className="text-xs font-bold text-blue-200 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">
-                        Total Hoy: {dailyVolume}ml
-                    </span>
+                    <div className="flex gap-2">
+                        {average > 0 && (
+                            <span className="text-[10px] font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded-full border border-white/5">
+                                Media 7d: {average}ml
+                            </span>
+                        )}
+                        <span className="text-xs font-bold text-blue-200 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">
+                            Total Hoy: {dailyVolume}ml
+                        </span>
+                    </div>
                 </div>
                 <TimelineChart events={timelineEvents} height={60} />
             </div>
 
             <div className="p-6 pb-2">
-                <h2 className="text-xl font-bold text-blue-50 mb-6 text-center">Registrar Toma</h2>
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-xl font-bold text-blue-50">Registrar Toma</h2>
+                    <button
+                        onClick={() => setShowInfo(!showInfo)}
+                        className={`p-2 rounded-full border transition-all ${showInfo ? 'bg-blue-500 text-white border-blue-500' : 'bg-slate-800 text-blue-400 border-slate-700'}`}
+                    >
+                        <Info size={20} />
+                    </button>
+                </div>
+
+                {/* Info Panel */}
+                {showInfo && (
+                    <div className="bg-slate-800/80 p-4 rounded-xl border border-blue-500/30 mb-6 text-sm animate-in slide-in-from-top-2">
+                        <h3 className="font-bold text-blue-200 mb-2">Guía de Referencia</h3>
+                        <div className="space-y-2">
+                            <div className="grid grid-cols-3 gap-2 text-[10px] font-bold opacity-50 uppercase border-b border-white/5 pb-1">
+                                <span>Edad</span>
+                                <span>Cantidad</span>
+                                <span>Frecuencia</span>
+                            </div>
+                            {FEEDING_GUIDELINES.map((g, i) => (
+                                <div key={i} className="grid grid-cols-3 gap-2 text-xs text-slate-300">
+                                    <span className="font-bold text-blue-300">{g.range}</span>
+                                    <span>{g.amount}</span>
+                                    <span>{g.freq}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-[10px] text-slate-500 mt-3 italic">*Valores aproximados. Cada bebé es único.</p>
+                    </div>
+                )}
+
 
                 {/* Amount Stepper */}
                 <div className="flex flex-col items-center mb-8">
@@ -225,8 +296,8 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             <div key={i} className="flex items-center justify-between p-3 bg-slate-800/80 rounded-xl border border-white/5">
                                 <div className="flex items-center gap-3">
                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${log.type === 'breastmilk' ? 'bg-pink-500/10 text-pink-400' :
-                                            log.type === 'formula' ? 'bg-blue-500/10 text-blue-400' :
-                                                'bg-cyan-500/10 text-cyan-400'
+                                        log.type === 'formula' ? 'bg-blue-500/10 text-blue-400' :
+                                            'bg-cyan-500/10 text-cyan-400'
                                         }`}>
                                         <GlassWater size={14} />
                                     </div>

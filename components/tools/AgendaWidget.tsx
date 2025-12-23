@@ -44,6 +44,33 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const upcoming = logs.filter(l => l.timestamp >= Date.now()).sort((a, b) => a.timestamp - b.timestamp);
     const past = logs.filter(l => l.timestamp < Date.now()).sort((a, b) => b.timestamp - a.timestamp);
 
+    const downloadIcs = (log: AppointmentLog) => {
+        const startDate = new Date(log.timestamp);
+        const endDate = new Date(log.timestamp + 60 * 60 * 1000); // Assume 1 hour default
+        const formatDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, '');
+
+        const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'BEGIN:VEVENT',
+            `DTSTART:${formatDate(startDate)}`,
+            `DTEND:${formatDate(endDate)}`,
+            `SUMMARY:${log.reason}`,
+            `DESCRIPTION:Cita médica registrada en Nanapp`,
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${log.reason.replace(/\s+/g, '_')}.ics`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className="flex flex-col h-full p-6">
 
@@ -79,15 +106,24 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         <h3 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-3">Próximas</h3>
                         <div className="space-y-2">
                             {upcoming.map((l, i) => (
-                                <div key={i} className="bg-blue-500/10 border border-blue-500/30 p-3 rounded-xl flex gap-3 items-center">
-                                    <div className="w-10 text-center bg-blue-500/20 rounded-lg p-1">
-                                        <p className="text-xs font-bold text-blue-300">{new Date(l.timestamp).getDate()}</p>
-                                        <p className="text-[10px] text-blue-400 uppercase">{new Date(l.timestamp).toLocaleDateString([], { month: 'short' })}</p>
+                                <div key={i} className="bg-blue-500/10 border border-blue-500/30 p-3 rounded-xl flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 text-center bg-blue-500/20 rounded-lg p-1">
+                                            <p className="text-xs font-bold text-blue-300">{new Date(l.timestamp).getDate()}</p>
+                                            <p className="text-[10px] text-blue-400 uppercase">{new Date(l.timestamp).toLocaleDateString([], { month: 'short' })}</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-blue-100">{l.reason}</p>
+                                            <p className="text-xs text-blue-400/70">{new Date(l.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-blue-100">{l.reason}</p>
-                                        <p className="text-xs text-blue-400/70">{new Date(l.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-                                    </div>
+                                    <button
+                                        onClick={() => downloadIcs(l)}
+                                        className="p-2 text-blue-400 hover:text-white bg-blue-500/20 hover:bg-blue-500 rounded-lg transition-colors"
+                                        title="Añadir al calendario"
+                                    >
+                                        <Calendar size={16} />
+                                    </button>
                                 </div>
                             ))}
                         </div>
