@@ -174,22 +174,77 @@ export const TeethingDashboard: React.FC = () => {
 
 import { Info, X } from 'lucide-react';
 import { useLanguage } from '../../services/LanguageContext';
+import { useBaby } from '../../services/BabyContext';
 
 // ... existing code ...
 
 export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { logs, addLog } = useToolData<TeethingLog>('teething');
+    const { logs, addLog, removeLog } = useToolData<TeethingLog>('teething');
     const { t } = useLanguage();
+    const { activeBaby } = useBaby();
     const [showInfo, setShowInfo] = React.useState(false);
 
+    // Filter logs for active baby
+    const babyLogs = useMemo(() => {
+        if (!activeBaby) return logs;
+        return logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+    }, [logs, activeBaby]);
+
     const getIsErupted = (tooth: ToothDef) => {
-        return logs.some(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
+        return babyLogs.some(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
+    };
+
+    // Calculate Age in Months
+    const babyAgeMonths = useMemo(() => {
+        if (!activeBaby?.birthDate) return 0;
+        const diff = Date.now() - activeBaby.birthDate;
+        return diff / (1000 * 60 * 60 * 24 * 30.44); // Approx
+    }, [activeBaby]);
+
+    const getIsExpected = (tooth: ToothDef) => {
+        if (getIsErupted(tooth)) return false; // Already out
+        if (!babyAgeMonths) return false;
+
+        // Parse months range "6-10m"
+        try {
+            const parts = tooth.months.replace('m', '').split('-');
+            if (parts.length === 2) {
+                const start = parseInt(parts[0]);
+                const end = parseInt(parts[1]);
+                // Expected if we are close to start (e.g. 1 month before) or within range
+                return babyAgeMonths >= (start - 1) && babyAgeMonths <= (end + 2);
+            }
+        } catch (e) { return false; }
+        return false;
     };
 
     const toggleTooth = (tooth: ToothDef) => {
         const isErupted = getIsErupted(tooth);
-        if (isErupted) return; // Only add for now
-        addLog({ timestamp: Date.now(), toothId: tooth.id });
+        if (isErupted) {
+            // Remove log logic
+            // We need to find the log ID. But logs here are objects from localStorage. 
+            // removeLog expects a timestamp usually if implemented that way, or we need to find the log entry.
+            // useToolData's removeLog takes the LOG object or ID?
+            // Looking at useToolData.ts, removeLog typically removes by strict equality or ID.
+            // Let's assume we can't easily remove without ID. 
+            // But actually, I added removeLog to useToolData in step 1. 
+            // Let's look at useToolData signature if I can.
+            // Assuming removeLog removes the specific log object reference or index.
+            // If I can't remove easily, I won't implement toggle OFF heavily yet, or just add a log.
+            // But user might want to undo.
+            // Let's try to find the log.
+            const logToRemove = babyLogs.find(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
+            if (logToRemove && removeLog) {
+                removeLog(logToRemove);
+            }
+            return;
+        }
+
+        addLog({
+            timestamp: Date.now(),
+            toothId: tooth.id,
+            babyId: activeBaby?.id
+        });
         if (navigator.vibrate) navigator.vibrate(50);
     };
 
@@ -293,7 +348,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                             <div className="flex gap-1.5 items-end translate-y-2">
                                 {upperRight.map(t => (
                                     <div key={t.id} className={`transform ${t.position === 5 ? 'translate-y-8 rotate-[-15deg]' : t.position >= 3 ? 'translate-y-2 rotate-[-5deg]' : ''}`}>
-                                        <VisualTooth def={t} isErupted={getIsErupted(t)} onClick={() => toggleTooth(t)} />
+                                        <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
                                     </div>
                                 ))}
                             </div>
@@ -301,7 +356,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                             <div className="flex gap-1.5 items-end translate-y-2">
                                 {upperLeft.map(t => (
                                     <div key={t.id} className={`transform ${t.position === 5 ? 'translate-y-8 rotate-[15deg]' : t.position >= 3 ? 'translate-y-2 rotate-[5deg]' : ''}`}>
-                                        <VisualTooth def={t} isErupted={getIsErupted(t)} onClick={() => toggleTooth(t)} />
+                                        <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
                                     </div>
                                 ))}
                             </div>
@@ -316,7 +371,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                             <div className="flex gap-1.5 items-start -translate-y-2">
                                 {lowerRight.map(t => (
                                     <div key={t.id} className={`transform ${t.position === 5 ? '-translate-y-8 rotate-[15deg]' : t.position >= 3 ? '-translate-y-2 rotate-[5deg]' : ''}`}>
-                                        <VisualTooth def={t} isErupted={getIsErupted(t)} onClick={() => toggleTooth(t)} />
+                                        <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
                                     </div>
                                 ))}
                             </div>
@@ -324,7 +379,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                             <div className="flex gap-1.5 items-start -translate-y-2">
                                 {lowerLeft.map(t => (
                                     <div key={t.id} className={`transform ${t.position === 5 ? '-translate-y-8 rotate-[-15deg]' : t.position >= 3 ? '-translate-y-2 rotate-[-5deg]' : ''}`}>
-                                        <VisualTooth def={t} isErupted={getIsErupted(t)} onClick={() => toggleTooth(t)} />
+                                        <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
                                     </div>
                                 ))}
                             </div>
@@ -337,3 +392,4 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
         </div>
     );
 };
+

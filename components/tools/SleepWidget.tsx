@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Moon, Sun, Clock, History, Play, StopCircle, Pause } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { SleepLog } from './types';
+import { useBaby } from '../../services/BabyContext';
 
 export const SleepDashboard: React.FC = () => {
-    const { getLatestLog } = useToolData<SleepLog>('sleep');
-    const logs = useToolData<SleepLog>('sleep').logs;
-    const latest = logs.length > 0 ? logs[0] : null;
+    const { logs } = useToolData<SleepLog>('sleep');
+    const { activeBaby } = useBaby();
+
+    const latest = useMemo(() => {
+        if (!activeBaby) return logs[0];
+        return logs.find(l => !l.babyId || l.babyId === activeBaby.id);
+    }, [logs, activeBaby]);
 
     const isSleeping = latest && !latest.endTime;
 
@@ -58,10 +63,17 @@ export const SleepDashboard: React.FC = () => {
 };
 
 export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { addLog, updateLatestLog, logs } = useToolData<SleepLog>('sleep');
+    const { addLog, updateLog, logs } = useToolData<SleepLog>('sleep');
+    const { activeBaby } = useBaby();
     const [_, setTick] = useState(0);
 
-    const latest = logs.length > 0 ? logs[0] : null;
+    // Filter logs for active baby
+    const babyLogs = useMemo(() => {
+        if (!activeBaby) return logs;
+        return logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+    }, [logs, activeBaby]);
+
+    const latest = babyLogs.length > 0 ? babyLogs[0] : null;
     const isSleeping = latest && !latest.endTime;
 
     // Timer ticker
@@ -76,7 +88,8 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const handleSleep = () => {
         addLog({
             timestamp: Date.now(),
-            type: 'nap'
+            type: 'nap',
+            babyId: activeBaby?.id
         });
         if (navigator.vibrate) navigator.vibrate(50);
     };
@@ -85,7 +98,9 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         if (!latest) return;
         const end = Date.now();
         const duration = Math.floor((end - latest.timestamp) / 60000);
-        updateLatestLog({
+
+        // Correctly update the specific log
+        updateLog(l => l === latest, {
             endTime: end,
             durationMinutes: duration
         });
@@ -124,8 +139,8 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 <button
                     onClick={isSleeping ? handleWake : handleSleep}
                     className={`w-40 h-40 rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all transform active:scale-95 ${isSleeping
-                            ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white border-4 border-orange-200/20'
-                            : 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-4 border-indigo-300/20'
+                        ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white border-4 border-orange-200/20'
+                        : 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-4 border-indigo-300/20'
                         }`}
                 >
                     <div className="flex flex-col items-center gap-2">
@@ -135,6 +150,8 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         </span>
                     </div>
                 </button>
+
+                {/* Manual Add Button for lost sessions? (Future enhancement) */}
 
             </div>
 
@@ -146,7 +163,7 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </h3>
 
                 <div className="space-y-3">
-                    {logs.filter(l => l.endTime).map((log, i) => ( // Only show finished logs or handle active differently
+                    {babyLogs.filter(l => l.endTime).map((log, i) => (
                         <div key={i} className="flex items-center justify-between p-3 bg-slate-800 rounded-xl border border-white/5">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
@@ -167,7 +184,7 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             </div>
                         </div>
                     ))}
-                    {logs.length === 0 && <p className="text-sm text-slate-500 italic text-center">Sin registros</p>}
+                    {babyLogs.filter(l => l.endTime).length === 0 && <p className="text-sm text-slate-500 italic text-center">Sin registros</p>}
                 </div>
             </div>
         </div>

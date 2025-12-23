@@ -363,10 +363,14 @@ const AppContent: React.FC = () => {
     );
 };
 
+import { BabyProvider } from './services/BabyContext';
+
 const App: React.FC = () => {
     return (
         <LanguageProvider>
-            <AppContent />
+            <BabyProvider>
+                <AppContent />
+            </BabyProvider>
         </LanguageProvider>
     );
 }

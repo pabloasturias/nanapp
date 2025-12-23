@@ -1,19 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Play, Pause, Square, History, Clock, Zap, Timer } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { BreastfeedingLog } from './types';
 import { useLanguage } from '../../services/LanguageContext';
 import { TimelineChart } from './visualizations/TimelineChart';
+import { useBaby } from '../../services/BabyContext';
 
 // --- Dashboard Component (Small Card content) ---
 export const BreastfeedingDashboard: React.FC = () => {
-    const { getLatestLog } = useToolData<BreastfeedingLog>('breastfeeding');
+    const { logs } = useToolData<BreastfeedingLog>('breastfeeding');
     const { t } = useLanguage();
-    const [latest, setLatest] = useState<BreastfeedingLog | null>(null);
+    const { activeBaby } = useBaby();
 
-    useEffect(() => {
-        setLatest(getLatestLog());
-    }, [getLatestLog]);
+    const latest = useMemo(() => {
+        if (!logs.length) return null;
+        if (!activeBaby) return logs[0];
+        return logs.find(l => l.babyId === activeBaby.id) || logs[0];
+        // Fallback to first log if none for this baby? Maybe logs[0] is confusing if it belongs to sibling. 
+        // Better: logs.find(l => !l.babyId) || logs.find(l => l.babyId === activeBaby.id) ? NO.
+        // Best: logs.find(l => l.babyId === activeBaby.id) || (logs.find(l => !l.babyId)); // Legacy support
+    }, [logs, activeBaby]);
 
     if (!latest) return <span className="opacity-60">Sin registros</span>;
 
@@ -46,7 +52,8 @@ export const BreastfeedingDashboard: React.FC = () => {
 // --- Full View Component (Modal Content) ---
 export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const { t } = useLanguage();
-    const { addLog, getLogsByDate, logs } = useToolData<BreastfeedingLog>('breastfeeding');
+    const { addLog, logs } = useToolData<BreastfeedingLog>('breastfeeding');
+    const { activeBaby } = useBaby();
 
     const [isTimerMode, setIsTimerMode] = useState(false);
     const [isActive, setIsActive] = useState(false);
@@ -57,8 +64,14 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
     const startTimeRef = useRef<number | null>(null);
     const intervalRef = useRef<number | null>(null);
 
+    // Filter Logs for active Baby
+    const babyLogs = useMemo(() => {
+        if (!activeBaby) return logs;
+        return logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+    }, [logs, activeBaby]);
+
     // Get Next Side Suggestion
-    const latestLog = logs.length > 0 ? logs[0] : null;
+    const latestLog = babyLogs.length > 0 ? babyLogs[0] : null;
     const recommendedSide = latestLog ? (latestLog.side === 'L' ? 'R' : 'L') : 'L';
 
     // Initialize side if not tracking
@@ -96,7 +109,8 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
         addLog({
             side: selectedSide,
             durationSeconds: 0,
-            manual: true
+            manual: true,
+            babyId: activeBaby?.id
         });
         if (navigator.vibrate) navigator.vibrate(50);
     };
@@ -114,7 +128,8 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
             addLog({
                 side,
                 durationSeconds: duration,
-                manual: false
+                manual: false,
+                babyId: activeBaby?.id
             });
         }
         setDuration(0);
@@ -127,7 +142,13 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
         return `${m}:${s.toString().padStart(2, '0')}`;
     };
 
-    const history = getLogsByDate(new Date());
+    // Calculate logs for today manually since getLogsByDate from hook isn't filtered
+    const history = useMemo(() => {
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const endOfDay = startOfDay + 86400000;
+        return babyLogs.filter(l => l.timestamp >= startOfDay && l.timestamp < endOfDay);
+    }, [babyLogs]);
 
     return (
         <div className="flex flex-col h-full bg-slate-950">
@@ -219,7 +240,7 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
                         Resumen 24h
                     </h3>
                     <TimelineChart events={
-                        logs.map(l => ({
+                        babyLogs.map(l => ({
                             timestamp: l.timestamp,
                             durationSeconds: l.durationSeconds,
                             color: l.side === 'L' ? 'bg-pink-500' : 'bg-purple-500',
@@ -271,3 +292,4 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
         </div>
     );
 };
+

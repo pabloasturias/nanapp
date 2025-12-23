@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Pill, Check, Clock, History, Plus } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { MedsLog } from './types';
+import { useBaby } from '../../services/BabyContext';
+import { LastDaysChart } from './visualizations/LastDaysChart';
 
 const VITAMIN_D_KEY = 'Vit D';
 
 export const MedsDashboard: React.FC = () => {
-    const { getLogsByDate, getLatestLog } = useToolData<MedsLog>('meds');
+    const { logs } = useToolData<MedsLog>('meds');
+    const { activeBaby } = useBaby();
 
-    // Check Vit D status for today
-    const todaysLogs = getLogsByDate(new Date());
-    const hasVitD = todaysLogs.some(l => l.medName === VITAMIN_D_KEY);
+    // Latest filtered log
+    const { latest, hasVitD } = useMemo(() => {
+        const babyLogs = !activeBaby ? logs : logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+        const l = babyLogs.length > 0 ? babyLogs[0] : null; // Sorted by timestamp desc in useToolData usually
 
-    // Get last non-VitD med
-    const lastMed = getLatestLog(); // This gives absolute latest. 
-    // If latest is Vit D, we might want to know about Dalsy too?
-    // For dashboard, simplest is Vit D status + Latest Log info.
+        // Check Vit D today
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const hasD = babyLogs.some(log => log.medName === VITAMIN_D_KEY && log.timestamp >= startOfDay);
+
+        return { latest: l, hasVitD: hasD };
+    }, [logs, activeBaby]);
 
     return (
         <div className="flex flex-col gap-1">
@@ -23,33 +30,40 @@ export const MedsDashboard: React.FC = () => {
                 {hasVitD ? <Check size={12} strokeWidth={3} /> : <div className="w-3 h-3 rounded-full border border-current" />}
                 Vit D: {hasVitD ? 'Hecha' : 'Pendiente'}
             </div>
-            {lastMed && lastMed.medName !== VITAMIN_D_KEY && (
+            {latest && latest.medName !== VITAMIN_D_KEY && (
                 <span className="text-[10px] opacity-70 truncate max-w-[120px]">
-                    Último: {lastMed.medName}
+                    Último: {latest.medName}
                 </span>
             )}
         </div>
     );
 };
 
-
-import { LastDaysChart } from './visualizations/LastDaysChart';
-
 export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { addLog, getLogsByDate, logs } = useToolData<MedsLog>('meds');
-    // We used getLogsByDate before, but now we have access to all 'logs' for the Chart.
-    // For 'Today's History', we can filter logs manually or use getLogsByDate.
-    // Using filtered logs for history is cleaner if we already have 'logs'.
-    const todaysLogs = logs.filter(l => {
-        const d = new Date(l.timestamp);
+    const { addLog, logs } = useToolData<MedsLog>('meds');
+    const { activeBaby } = useBaby();
+
+    // Filter logs for active baby
+    const babyLogs = useMemo(() => {
+        if (!activeBaby) return logs;
+        return logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+    }, [logs, activeBaby]);
+
+    const todaysLogs = useMemo(() => {
         const now = new Date();
-        return d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-    });
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const endOfDay = startOfDay + 86400000;
+        return babyLogs.filter(l => l.timestamp >= startOfDay && l.timestamp < endOfDay);
+    }, [babyLogs]);
 
     const hasVitD = todaysLogs.some(l => l.medName === VITAMIN_D_KEY);
 
     const handleAdd = (name: string, dose?: string) => {
-        addLog({ medName: name, dose });
+        addLog({
+            medName: name,
+            dose,
+            babyId: activeBaby?.id
+        });
         if (navigator.vibrate) navigator.vibrate(50);
         if (name === VITAMIN_D_KEY) {
             // Stay info
@@ -81,7 +95,7 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
                 {/* Last 7 Days Visualization */}
                 <LastDaysChart
-                    data={logs.filter(l => l.medName === VITAMIN_D_KEY).map(l => ({ timestamp: l.timestamp, status: 'completed' }))}
+                    data={babyLogs.filter(l => l.medName === VITAMIN_D_KEY).map(l => ({ timestamp: l.timestamp, status: 'completed' }))}
                     days={7}
                     label="Últimos 7 días"
                 />

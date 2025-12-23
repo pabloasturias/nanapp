@@ -48,6 +48,19 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
         });
     }, [STORAGE_KEY]);
 
+    const updateLog = useCallback((predicate: (log: T) => boolean, updates: Partial<T>) => {
+        setLogs(prev => {
+            const index = prev.findIndex(predicate);
+            if (index === -1) return prev;
+
+            const newLogs = [...prev];
+            newLogs[index] = { ...newLogs[index], ...updates };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(newLogs));
+            return newLogs;
+        });
+    }, [STORAGE_KEY]);
+
+
     const removeLog = useCallback((predicate: (log: T) => boolean) => {
         setLogs(prev => {
             const updated = prev.filter(log => !predicate(log));
@@ -60,8 +73,10 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
         logs,
         addLog,
         updateLatestLog,
+        updateLog,
         getLatestLog,
         getLogsByDate,
         removeLog
     };
+
 };

@@ -1,6 +1,9 @@
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check, Users, Plus, Trash2, Calendar } from 'lucide-react';
+
 import { useLanguage } from '../services/LanguageContext';
+import { useBaby, BabyProfile } from '../services/BabyContext';
+
 
 interface SettingsModalProps {
     isOpen: boolean;
@@ -30,7 +33,38 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     onOpenLegal, onGoToStory,
     timerDuration, onTimerChange
 }) => {
+
     const { t, language, setLanguage } = useLanguage();
+    const { babies, activeBabyId, addBaby, removeBaby, setActiveBabyId } = useBaby();
+
+    const [showAddBaby, setShowAddBaby] = React.useState(false);
+    const [newBabyName, setNewBabyName] = React.useState('');
+    const [newBabyDate, setNewBabyDate] = React.useState('');
+    const [newBabyGender, setNewBabyGender] = React.useState<'boy' | 'girl'>('boy');
+
+    const handleSaveBaby = () => {
+        if (!newBabyName || !newBabyDate) return;
+        // Parse date carefully
+        const parts = newBabyDate.split('-');
+        const dateTs = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2])).getTime();
+
+        addBaby({
+            name: newBabyName,
+            birthDate: dateTs,
+            gender: newBabyGender
+        });
+        setShowAddBaby(false);
+        setNewBabyName('');
+        setNewBabyDate('');
+        setNewBabyGender('boy');
+    };
+
+    const formatDate = (ts: number) => {
+        return new Date(ts).toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', {
+            year: 'numeric', month: 'short', day: 'numeric'
+        });
+    };
+
 
     if (!isOpen) return null;
 
@@ -67,6 +101,97 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 <div className="p-6 space-y-8 overflow-y-auto">
+
+                    {/* SECTION: FAMILY */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
+                            <Users size={12} />
+                            <span>{t('settings_family_title')}</span>
+                        </div>
+
+                        <div className="bg-slate-800/30 p-4 rounded-3xl border border-slate-700/30 space-y-3">
+                            {babies.map(baby => (
+                                <div key={baby.id} className={`p-3 rounded-2xl flex items-center justify-between border transition-all ${activeBabyId === baby.id ? 'bg-indigo-500/10 border-indigo-500/50' : 'bg-slate-800/50 border-white/5'}`}>
+                                    <div
+                                        className="flex-1 cursor-pointer"
+                                        onClick={() => setActiveBabyId(baby.id)}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <span className={`text-sm font-bold ${activeBabyId === baby.id ? 'text-indigo-200' : 'text-slate-300'}`}>
+                                                {baby.name}
+                                            </span>
+                                            {activeBabyId === baby.id && <Check size={14} className="text-indigo-400" />}
+                                        </div>
+                                        <div className="flex items-center gap-2 text-[10px] text-slate-500">
+                                            <span>{formatDate(baby.birthDate)}</span>
+                                            <span>•</span>
+                                            <span>{baby.gender === 'boy' ? t('settings_baby_boy') : t('settings_baby_girl')}</span>
+                                        </div>
+                                    </div>
+                                    <button
+                                        onClick={() => removeBaby(baby.id)}
+                                        className="p-2 text-slate-600 hover:text-red-400 transition-colors"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
+                                </div>
+                            ))}
+
+                            {/* Add Form or Button */}
+                            {!showAddBaby ? (
+                                <button
+                                    onClick={() => setShowAddBaby(true)}
+                                    className="w-full py-3 border border-dashed border-slate-700 rounded-2xl text-slate-500 text-xs font-bold hover:bg-slate-800 hover:border-slate-600 transition-all flex items-center justify-center gap-2"
+                                >
+                                    <Plus size={14} />
+                                    {t('settings_baby_add')}
+                                </button>
+                            ) : (
+                                <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 space-y-3 animate-in fade-in slide-in-from-top-2">
+                                    <input
+                                        type="text"
+                                        placeholder={t('settings_baby_name_placeholder')}
+                                        value={newBabyName}
+                                        onChange={e => setNewBabyName(e.target.value)}
+                                        className="w-full px-3 py-2 bg-slate-900/50 rounded-xl border border-slate-700 text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+                                    />
+                                    <div className="flex gap-2">
+                                        <div className="flex-1 relative">
+                                            <input
+                                                type="date"
+                                                value={newBabyDate}
+                                                onChange={e => setNewBabyDate(e.target.value)}
+                                                className="w-full px-3 py-2 bg-slate-900/50 rounded-xl border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                                            />
+                                        </div>
+                                        <select
+                                            value={newBabyGender}
+                                            onChange={e => setNewBabyGender(e.target.value as any)}
+                                            className="px-2 py-2 bg-slate-900/50 rounded-xl border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                                        >
+                                            <option value="boy">{t('settings_baby_boy')}</option>
+                                            <option value="girl">{t('settings_baby_girl')}</option>
+                                        </select>
+                                    </div>
+                                    <div className="flex gap-2 pt-1">
+                                        <button
+                                            onClick={() => setShowAddBaby(false)}
+                                            className="flex-1 py-2 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold hover:bg-slate-600"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            onClick={handleSaveBaby}
+                                            disabled={!newBabyName || !newBabyDate}
+                                            className="flex-1 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-500 disabled:opacity-50"
+                                        >
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
 
                     {/* SECTION: AUDIO */}
                     <div className="space-y-4">

@@ -287,7 +287,25 @@ export const translations = {
     tool_teething_tip_1: "Mordedores fríos: El frío ayuda a adormecer las encías y reducir la inflamación.",
     tool_teething_tip_2: "Masaje de encías: Usa un dedo limpio para masajear suavemente las encías doloridas.",
     tool_teething_tip_3: "Limpieza: Limpia la cara del bebé a menudo para evitar irritaciones por la baba.",
+
     tool_teething_tip_4: "Medicación: Consulta con tu pediatra sobre analgésicos si el malestar es intenso.",
+
+    // Profiles
+    settings_family_title: "Mi Familia",
+    settings_baby_add: "Añadir Bebé",
+    settings_baby_name_placeholder: "Nombre del bebé",
+    settings_baby_birthdate: "Fecha de Nacimiento",
+    settings_baby_gender: "Sexo (para percentiles)",
+    settings_baby_boy: "Niño",
+    settings_baby_girl: "Niña",
+    settings_baby_active: "Activo",
+    settings_baby_select: "Seleccionar",
+
+    // Charts
+    chart_now: "Ahora",
+    chart_24h_ago: "Hace 24h",
+
+
 
 
   },
@@ -571,7 +589,25 @@ export const translations = {
     tool_teething_tip_1: "Cold teethers: Cold helps numb the gums and reduce inflammation.",
     tool_teething_tip_2: "Gum massage: Use a clean finger to gently massage sore gums.",
     tool_teething_tip_3: "Cleanliness: Wipe the baby's face often to prevent irritation from drooling.",
+
     tool_teething_tip_4: "Medication: Consult your pediatrician about pain relievers if discomfort is intense.",
+
+    // Profiles
+    settings_family_title: "My Family",
+    settings_baby_add: "Add Baby",
+    settings_baby_name_placeholder: "Baby's Name",
+    settings_baby_birthdate: "Birth Date",
+    settings_baby_gender: "Gender (for percentiles)",
+    settings_baby_boy: "Boy",
+    settings_baby_girl: "Girl",
+    settings_baby_active: "Active",
+    settings_baby_select: "Select",
+
+    // Charts
+    chart_now: "Now",
+    chart_24h_ago: "24h ago",
+
+
 
 
   },

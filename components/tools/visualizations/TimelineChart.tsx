@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useLanguage } from '../../../services/LanguageContext';
 
 export interface TimeEvent {
     timestamp: number; // Start time
@@ -16,6 +17,7 @@ interface TimelineChartProps {
 }
 
 export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24h' }) => {
+    const { t } = useLanguage();
     // Current time
     const now = Date.now();
 
@@ -67,7 +69,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24
                         const pos = getPos(ts);
                         return (
                             <div key={h} className="absolute top-0 bottom-0 border-l border-slate-800 text-[9px] text-slate-600 pl-1 flex flex-col justify-end pb-1" style={{ left: `${pos}%` }}>
-                                {h === 0 ? 'Ahora' : `-${h}h`}
+                                {h === 0 ? t('chart_now') : `-${h}h`}
                             </div>
                         );
                     })}
@@ -94,8 +96,8 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24
             </div>
 
             <div className="flex justify-between text-[10px] text-slate-500 mt-1 px-1">
-                <span>Hace 24h</span>
-                <span>Ahora</span>
+                <span>{t('chart_24h_ago')}</span>
+                <span>{t('chart_now')}</span>
             </div>
         </div>
     );
