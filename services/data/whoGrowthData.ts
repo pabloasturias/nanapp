@@ -72,7 +72,9 @@ export const WHO_DATA: { boys: GenderData; girls: GenderData } = {
  * Interpolates P50, P3, P97 for a given month.
  */
 export const getPercentiles = (gender: 'boy' | 'girl' | 'unknown', type: 'weight' | 'length', month: number) => {
-    const data = WHO_DATA[gender === 'unknown' ? 'boys' : gender][type];
+    // Map gender to valid key (boys/girls)
+    const key = gender === 'girl' ? 'girls' : 'boys';
+    const data = WHO_DATA[key][type];
 
     // Find closest points
     let lower = data[0];

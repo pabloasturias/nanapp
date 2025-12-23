@@ -31,8 +31,10 @@ export interface ToolDefinition {
 export interface ToolData {
     id: string; // Unique instance ID (for future multiple babies support?) OR just toolId
     timestamp: number;
+    babyId?: string; // Optional for backward compatibility
     [key: string]: any;
 }
+
 
 // --- Specific Log Types ---
 
@@ -110,7 +112,9 @@ export interface SolidsLog {
     food: string;
     reaction: 'love' | 'ok' | 'hate' | 'allergy';
     amount?: 'taste' | 'meal';
+    notes?: string;
 }
+
 
 // --- Batch 4: Lists & Memories ---
 

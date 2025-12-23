@@ -16,8 +16,6 @@ import { MedsDashboard, MedsFull } from './tools/MedsWidget';
 import { SleepDashboard, SleepFull } from './tools/SleepWidget';
 import { GrowthDashboard, GrowthFull } from './tools/GrowthWidget';
 import { TempDashboard, TempFull } from './tools/TemperatureWidget';
-import { TummyDashboard, TummyFull } from './tools/TummyWidget';
-import { BathDashboard, BathFull } from './tools/BathWidget';
 import { SolidsDashboard, SolidsFull } from './tools/SolidsWidget';
 import { PumpingDashboard, PumpingFull } from './tools/PumpingWidget';
 import { VaccinesDashboard, VaccinesFull } from './tools/VaccinesWidget';
@@ -25,36 +23,66 @@ import { TeethingDashboard, TeethingFull } from './tools/TeethingWidget';
 import { MilestonesDashboard, MilestonesFull } from './tools/MilestonesWidget';
 import { NotesDashboard, NotesFull } from './tools/NotesWidget';
 import { AgendaDashboard, AgendaFull } from './tools/AgendaWidget';
-import { SoundDashboard, SoundFull } from './tools/SoundWidget';
-import { HeadDashboard, HeadFull } from './tools/HeadWidget';
 
-// Configuration for all 18 tools
+// Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'breastfeeding', icon: Baby, translationKey: 'tool_breastfeeding', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
     { id: 'bottle', icon: GlassWater, translationKey: 'tool_bottle', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
+    { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
     { id: 'diapers', icon: Layers, translationKey: 'tool_diapers', color: 'text-amber-400', bgColor: 'bg-amber-500/10' },
     { id: 'sleep', icon: Moon, translationKey: 'tool_sleep', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
-    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
-    { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-    { id: 'tummy_time', icon: Timer, translationKey: 'tool_tummy_time', color: 'text-teal-400', bgColor: 'bg-teal-500/10' },
-    { id: 'bath', icon: Droplets, translationKey: 'tool_bath', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
+    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'fever', icon: Thermometer, translationKey: 'tool_fever', color: 'text-red-500', bgColor: 'bg-red-500/10' },
     { id: 'pumping', icon: Activity, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
-    { id: 'sound_memories', icon: Mic, translationKey: 'tool_sound_memories', color: 'text-rose-500', bgColor: 'bg-rose-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
-    { id: 'head_circumference', icon: Circle, translationKey: 'tool_head_circumference', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
 ];
+
 
 export const ToolsView: React.FC = () => {
     const { t } = useLanguage();
     const { activeTools, toggleTool } = useTools();
     const [isManageMode, setIsManageMode] = useState(false);
-    const [selectedToolId, setSelectedToolId] = useState<ToolId | null>(null);
+
+    // Initialize from history state if present, to handle reloads/navigation better
+    const [selectedToolId, setSelectedToolId] = useState<ToolId | null>(() => {
+        const state = window.history.state;
+        return state?.toolId || null;
+    });
+
+    // Handle Browser Back Button
+    React.useEffect(() => {
+        const handlePopState = (event: PopStateEvent) => {
+            const state = event.state;
+            if (state && state.toolId) {
+                setSelectedToolId(state.toolId);
+            } else {
+                setSelectedToolId(null);
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
+
+    const handleOpenTool = (id: ToolId) => {
+        setSelectedToolId(id);
+        window.history.pushState({ toolId: id }, '');
+    };
+
+    const handleCloseTool = () => {
+        // If we have history state, go back. Otherwise (direct load?), just nullify.
+        // But for safety to match our pushState logic:
+        if (window.history.state?.toolId) {
+            window.history.back();
+        } else {
+            setSelectedToolId(null);
+        }
+    };
 
     // Filter tools
     const activeToolsList = TOOLS_CONFIG.filter(tool => activeTools.includes(tool.id));
@@ -62,24 +90,20 @@ export const ToolsView: React.FC = () => {
 
     const renderToolContent = (toolId: ToolId) => {
         switch (toolId) {
-            case 'breastfeeding': return <BreastfeedingFull onClose={() => setSelectedToolId(null)} />;
-            case 'diapers': return <DiaperFull onClose={() => setSelectedToolId(null)} />;
-            case 'bottle': return <BottleFull onClose={() => setSelectedToolId(null)} />;
-            case 'meds': return <MedsFull onClose={() => setSelectedToolId(null)} />;
-            case 'sleep': return <SleepFull onClose={() => setSelectedToolId(null)} />;
-            case 'growth': return <GrowthFull onClose={() => setSelectedToolId(null)} />;
-            case 'fever': return <TempFull onClose={() => setSelectedToolId(null)} />;
-            case 'tummy_time': return <TummyFull onClose={() => setSelectedToolId(null)} />;
-            case 'bath': return <BathFull onClose={() => setSelectedToolId(null)} />;
-            case 'solids': return <SolidsFull onClose={() => setSelectedToolId(null)} />;
-            case 'pumping': return <PumpingFull onClose={() => setSelectedToolId(null)} />;
-            case 'vaccines': return <VaccinesFull onClose={() => setSelectedToolId(null)} />;
-            case 'teething': return <TeethingFull onClose={() => setSelectedToolId(null)} />;
-            case 'milestones': return <MilestonesFull onClose={() => setSelectedToolId(null)} />;
-            case 'pediatrician_notes': return <NotesFull onClose={() => setSelectedToolId(null)} />;
-            case 'medical_agenda': return <AgendaFull onClose={() => setSelectedToolId(null)} />;
-            case 'sound_memories': return <SoundFull onClose={() => setSelectedToolId(null)} />;
-            case 'head_circumference': return <HeadFull onClose={() => setSelectedToolId(null)} />;
+            case 'breastfeeding': return <BreastfeedingFull onClose={handleCloseTool} />;
+            case 'diapers': return <DiaperFull onClose={handleCloseTool} />;
+            case 'bottle': return <BottleFull onClose={handleCloseTool} />;
+            case 'meds': return <MedsFull onClose={handleCloseTool} />;
+            case 'sleep': return <SleepFull onClose={handleCloseTool} />;
+            case 'growth': return <GrowthFull onClose={handleCloseTool} />;
+            case 'fever': return <TempFull onClose={handleCloseTool} />;
+            case 'solids': return <SolidsFull onClose={handleCloseTool} />;
+            case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
+            case 'vaccines': return <VaccinesFull onClose={handleCloseTool} />;
+            case 'teething': return <TeethingFull onClose={handleCloseTool} />;
+            case 'milestones': return <MilestonesFull onClose={handleCloseTool} />;
+            case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
+            case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -98,7 +122,7 @@ export const ToolsView: React.FC = () => {
                     {/* Modal Header */}
                     <div className="p-4 flex items-center gap-4 border-b border-white/5 bg-slate-900/50 backdrop-blur-md">
                         <button
-                            onClick={() => setSelectedToolId(null)}
+                            onClick={handleCloseTool}
                             className="p-2 -ml-2 text-slate-400 hover:text-white transition-colors"
                         >
                             <ChevronRight className="rotate-180" size={24} />
@@ -183,7 +207,7 @@ export const ToolsView: React.FC = () => {
                     {activeToolsList.map(tool => (
                         <div
                             key={tool.id}
-                            onClick={() => setSelectedToolId(tool.id)}
+                            onClick={() => handleOpenTool(tool.id)}
                             className="bg-slate-800/50 backdrop-blur-md rounded-[1.5rem] p-4 border border-white/5 hover:bg-slate-800 transition-all cursor-pointer group relative overflow-hidden h-32 flex flex-col justify-between active:scale-[0.98]"
                         >
                             {/* Icon Bg Glow */}
@@ -203,18 +227,14 @@ export const ToolsView: React.FC = () => {
                                                     tool.id === 'sleep' ? <SleepDashboard /> :
                                                         tool.id === 'growth' ? <GrowthDashboard /> :
                                                             tool.id === 'fever' ? <TempDashboard /> :
-                                                                tool.id === 'tummy_time' ? <TummyDashboard /> :
-                                                                    tool.id === 'bath' ? <BathDashboard /> :
-                                                                        tool.id === 'solids' ? <SolidsDashboard /> :
-                                                                            tool.id === 'pumping' ? <PumpingDashboard /> :
-                                                                                tool.id === 'vaccines' ? <VaccinesDashboard /> :
-                                                                                    tool.id === 'teething' ? <TeethingDashboard /> :
-                                                                                        tool.id === 'milestones' ? <MilestonesDashboard /> :
-                                                                                            tool.id === 'pediatrician_notes' ? <NotesDashboard /> :
-                                                                                                tool.id === 'medical_agenda' ? <AgendaDashboard /> :
-                                                                                                    tool.id === 'sound_memories' ? <SoundDashboard /> :
-                                                                                                        tool.id === 'head_circumference' ? <HeadDashboard /> :
-                                                                                                            "--"}
+                                                                tool.id === 'solids' ? <SolidsDashboard /> :
+                                                                    tool.id === 'pumping' ? <PumpingDashboard /> :
+                                                                        tool.id === 'vaccines' ? <VaccinesDashboard /> :
+                                                                            tool.id === 'teething' ? <TeethingDashboard /> :
+                                                                                tool.id === 'milestones' ? <MilestonesDashboard /> :
+                                                                                    tool.id === 'pediatrician_notes' ? <NotesDashboard /> :
+                                                                                        tool.id === 'medical_agenda' ? <AgendaDashboard /> :
+                                                                                            "--"}
                                 </div>
                             </div>
 

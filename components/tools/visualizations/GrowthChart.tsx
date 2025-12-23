@@ -27,7 +27,7 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
     const maxAge = Math.max(12, Math.ceil(maxUserAge) + 2); // At least 12 months, or 2 months past last log.
 
     // WHO Data Key
-    const whoKey = gender === 'unknown' ? 'boys' : gender;
+    const whoKey = gender === 'girl' ? 'girls' : 'boys';
     const whoProp = type === 'weight' ? 'weight' : 'length'; // WHO calls height 'length'
     const standard = WHO_DATA[whoKey][whoProp];
 
