@@ -67,6 +67,70 @@ body {
     animation: float 6s ease-in-out infinite;
 }
 
+/* Splash Screen Animations */
+.loader-container {
+    width: 250px;
+    height: 250px;
+}
+
+.svg-icon-path {
+    fill: none;
+    /* Sin relleno */
+    stroke: #D4AF37;
+    /* Color dorado */
+    stroke-width: 3;
+    /* Grosor de la línea */
+    stroke-linecap: round;
+    /* Bordes de línea redondeados */
+    stroke-linejoin: round;
+    /* Uniones redondeadas */
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 4s ease-in-out infinite forwards;
+}
+
+.path-face {
+    animation-delay: 0s;
+}
+
+.path-features {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-features 4s ease-in-out infinite forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    60% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash-features {
+    0% {
+        opacity: 1;
+        stroke-dashoffset: 200;
+    }
+
+    30% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
