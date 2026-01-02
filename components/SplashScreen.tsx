@@ -18,16 +18,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
                 <svg className="loader-svg w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                    {/* 
-                      Refined Baby Face - "Melon Shape" + Integrated Ears 
-                      Style: Single continuous stroke outline, thin constant weight, golden #D4AF37
-                    */}
-
-                    {/* 
-                       THE SILHOUETTE
-                       Starts at top center (gap for curl), curves smoothly into ears, then down to chin.
-                       Using Bezier curves to ensure the "seamless flow" from cheeks to ears.
-                    */}
+                    {/* Face Outline - Melon Shape with Ears */}
                     <path
                         className="svg-icon-path path-face"
                         d="
@@ -41,41 +32,34 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
                            C 18 85, 35 80, 50 80       
                            C 52 65, 65 45, 90 45
                         "
-                        /* 
-                           Explanation of points:
-                           1. Start Top-Rightish (110,45) - Gap for curl
-                           2. Curve to Right Ear Top (150,80)
-                           3. Right Ear Loop (out to 182,105, back to 152,128) - "Flows seamlessly"
-                           4. Right Cheek to Chin (100,175) is handled by the curve from 152,128
-                              Wait, standard cubic bezier from 152,128 to 100,175 might need control points.
-                              Adjusted control points in path d above for smoother melon shape.
-                        */
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
 
-                    {/* THE CURL - Stylized spiral at top center */}
+                    {/* Curl */}
                     <path
                         className="svg-icon-path path-face"
                         d="M 100 65 C 90 55, 90 35, 100 30 C 110 30, 110 50, 100 55"
                         style={{ animationDelay: '0.5s' }}
                     />
 
-                    {/* FEATURES - Minimalist */}
+                    {/* 
+                       FEATURES - Laughing Expression 
+                       Eyes: Inverted U (∩) for happy closing eyes
+                       Mouth: Broad smile
+                    */}
 
-                    {/* Eyebrows - Simple high arcs */}
-                    <path className="svg-icon-path path-features" d="M 65 95 Q 75 90, 85 95" />
-                    <path className="svg-icon-path path-features" d="M 115 95 Q 125 90, 135 95" />
+                    {/* Left Eye (Happy Inverted U) */}
+                    <path className="svg-icon-path path-features" d="M 65 115 Q 75 100, 85 115" />
 
-                    {/* Eyes - Sleeping arcs (Inverse U) */}
-                    <path className="svg-icon-path path-features" d="M 68 115 Q 75 120, 82 115" />
-                    <path className="svg-icon-path path-features" d="M 118 115 Q 125 120, 132 115" />
+                    {/* Right Eye (Happy Inverted U) */}
+                    <path className="svg-icon-path path-features" d="M 115 115 Q 125 100, 135 115" />
 
-                    {/* Nose - Tiny curve/dot */}
-                    <path className="svg-icon-path path-features" d="M 98 128 Q 100 130, 102 128" />
+                    {/* Tiny Nose (kept as it adds center balance) */}
+                    <path className="svg-icon-path path-features" d="M 98 130 Q 100 132, 102 130" />
 
-                    {/* Mouth - Small smile */}
-                    <path className="svg-icon-path path-features" d="M 85 145 Q 100 152, 115 145" />
+                    {/* Big Happy Smile */}
+                    <path className="svg-icon-path path-features" d="M 75 145 Q 100 160, 125 145" />
 
                 </svg>
             </div>
