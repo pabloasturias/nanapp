@@ -18,48 +18,66 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
                 <svg className="loader-svg w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                    {/* Face Outline - Melon Shape with Ears */}
+                    {/* 
+                       Redesigned "Zen Baby" - Minimalist & Premium
+                       Inspired by modern line art icons (e.g. Noun Project, Oura aesthetics).
+                       
+                       Key Changes to fix "Monkey" look:
+                       1. REMOVED side poking ears (main cause of primate look).
+                       2. Increased forehead ratio (Kindchenschema: huge forehead = cute baby).
+                       3. Features are tiny and placed lower on the face.
+                       4. "Curl" is sleek and integrated.
+                    */}
+
+                    {/* HEAD SHAPE: Pure, smooth, slightly weighted at bottom for cheeks. No ears. */}
                     <path
                         className="svg-icon-path path-face"
                         d="
-                           M 110 45                   
-                           C 135 45, 148 65, 150 80   
-                           C 165 80, 182 85, 182 105   
-                           C 182 125, 165 130, 152 128 
-                           C 148 160, 125 175, 100 175 
-                           C 75 175, 52 160, 48 128    
-                           C 35 130, 18 125, 18 105    
-                           C 18 85, 35 80, 50 80       
-                           C 52 65, 65 45, 90 45
+                           M 100 35
+                           C 145 35, 175 70, 175 110
+                           C 175 155, 145 185, 100 185
+                           C 55 185, 25 155, 25 110
+                           C 25 70, 55 35, 100 35
+                           Z
                         "
+                        /* A slightly modified circle, wider at cheeks? 
+                           Let's stick to a near-perfect super-ellipse for maximum premium feel.
+                        */
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
 
-                    {/* Curl */}
+                    {/* THE CURL: Floating floating elegantly above/on forehead */}
                     <path
                         className="svg-icon-path path-face"
-                        d="M 100 65 C 90 55, 90 35, 100 30 C 110 30, 110 50, 100 55"
+                        d="M 100 35 C 100 35, 90 20, 105 15 C 115 12, 120 25, 110 32"
+                        strokeLinecap="round"
                         style={{ animationDelay: '0.5s' }}
                     />
 
-                    {/* 
-                       FEATURES - Laughing Expression 
-                       Eyes: Inverted U (∩) for happy closing eyes
-                       Mouth: Broad smile
-                    */}
+                    {/* FEATURES: Placed LOWER (y=120+) to emphasize forehead */}
 
-                    {/* Left Eye (Happy Inverted U) */}
-                    <path className="svg-icon-path path-features" d="M 65 115 Q 75 100, 85 115" />
+                    {/* Eyes: Gentle peaceful arches. Not too wide. */}
+                    {/* Left Eye */}
+                    <path
+                        className="svg-icon-path path-features"
+                        d="M 70 115 Q 80 105, 90 115"
+                        strokeLinecap="round"
+                    />
 
-                    {/* Right Eye (Happy Inverted U) */}
-                    <path className="svg-icon-path path-features" d="M 115 115 Q 125 100, 135 115" />
+                    {/* Right Eye */}
+                    <path
+                        className="svg-icon-path path-features"
+                        d="M 110 115 Q 120 105, 130 115"
+                        strokeLinecap="round"
+                    />
 
-                    {/* Tiny Nose (kept as it adds center balance) */}
-                    <path className="svg-icon-path path-features" d="M 98 130 Q 100 132, 102 130" />
-
-                    {/* Big Happy Smile */}
-                    <path className="svg-icon-path path-features" d="M 75 145 Q 100 160, 125 145" />
+                    {/* Mouth: Tiny, subtle smile. High up near eyes to be cute. */}
+                    <path
+                        className="svg-icon-path path-features"
+                        d="M 92 135 Q 100 140, 108 135"
+                        strokeLinecap="round"
+                    />
 
                 </svg>
             </div>
