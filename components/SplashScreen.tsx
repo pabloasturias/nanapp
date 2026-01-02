@@ -6,8 +6,8 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
-            setTimeout(onComplete, 800); // Wait for fade out
-        }, 3500); // Extended slightly for the drawing to finish comfortably
+            setTimeout(onComplete, 800);
+        }, 3500);
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -19,59 +19,64 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
             <div className="loader-container mb-8">
                 <svg className="loader-svg w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                     {/* 
-                      Geometric Baby Face Construction:
-                      Centered at 100,105
+                      Refined Baby Face - "Melon Shape" + Integrated Ears 
+                      Style: Single continuous stroke outline, thin constant weight, golden #D4AF37
                     */}
 
-                    {/* HEAD SHAPE: Main circle, gap at top for curl */}
-                    {/* Starts at roughly 1 o'clock (120, 70) and goes around to 11 o'clock (80, 70) */}
+                    {/* 
+                       THE SILHOUETTE
+                       Starts at top center (gap for curl), curves smoothly into ears, then down to chin.
+                       Using Bezier curves to ensure the "seamless flow" from cheeks to ears.
+                    */}
                     <path
                         className="svg-icon-path path-face"
-                        d="M 125 57 A 65 65 0 1 1 75 57"
-                        style={{ animationDelay: '0s' }}
+                        d="
+                           M 110 45                   
+                           C 135 45, 148 65, 150 80   
+                           C 165 80, 182 85, 182 105   
+                           C 182 125, 165 130, 152 128 
+                           C 148 160, 125 175, 100 175 
+                           C 75 175, 52 160, 48 128    
+                           C 35 130, 18 125, 18 105    
+                           C 18 85, 35 80, 50 80       
+                           C 52 65, 65 45, 90 45
+                        "
+                        /* 
+                           Explanation of points:
+                           1. Start Top-Rightish (110,45) - Gap for curl
+                           2. Curve to Right Ear Top (150,80)
+                           3. Right Ear Loop (out to 182,105, back to 152,128) - "Flows seamlessly"
+                           4. Right Cheek to Chin (100,175) is handled by the curve from 152,128
+                              Wait, standard cubic bezier from 152,128 to 100,175 might need control points.
+                              Adjusted control points in path d above for smoother melon shape.
+                        */
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     />
 
-                    {/* EARS: Perfect semicircles attached to the head sides */}
-                    {/* Left Ear attached around x=35 */}
-                    <path
-                        className="svg-icon-path path-features"
-                        d="M 36 105 C 15 105, 15 85, 36 85"
-                        transform="rotate(-15, 36, 95)" /* Tweaked angle for cuteness */
-                        style={{ animationDelay: '1.2s' }}
-                    />
-                    {/* Right Ear */}
-                    <path
-                        className="svg-icon-path path-features"
-                        d="M 164 105 C 185 105, 185 85, 164 85"
-                        transform="rotate(15, 164, 95)"
-                        style={{ animationDelay: '1.2s' }}
-                    />
-
-                    {/* CURL: The signature single hair curl at the top */}
+                    {/* THE CURL - Stylized spiral at top center */}
                     <path
                         className="svg-icon-path path-face"
-                        d="M 100 75 C 95 60, 85 50, 100 45 C 115 40, 120 55, 110 65"
-                        style={{ animationDelay: '0.8s' }}
+                        d="M 100 65 C 90 55, 90 35, 100 30 C 110 30, 110 50, 100 55"
+                        style={{ animationDelay: '0.5s' }}
                     />
 
-                    {/* EYES: Symmetrical sleeping arcs */}
-                    <path
-                        className="svg-icon-path path-features"
-                        d="M 65 110 Q 80 95, 95 110"
-                        style={{ animationDelay: '1.8s' }}
-                    />
-                    <path
-                        className="svg-icon-path path-features"
-                        d="M 105 110 Q 120 95, 135 110"
-                        style={{ animationDelay: '1.8s' }}
-                    />
+                    {/* FEATURES - Minimalist */}
 
-                    {/* MOUTH: Gentle smile */}
-                    <path
-                        className="svg-icon-path path-features"
-                        d="M 85 145 Q 100 155, 115 145"
-                        style={{ animationDelay: '2.2s' }}
-                    />
+                    {/* Eyebrows - Simple high arcs */}
+                    <path className="svg-icon-path path-features" d="M 65 95 Q 75 90, 85 95" />
+                    <path className="svg-icon-path path-features" d="M 115 95 Q 125 90, 135 95" />
+
+                    {/* Eyes - Sleeping arcs (Inverse U) */}
+                    <path className="svg-icon-path path-features" d="M 68 115 Q 75 120, 82 115" />
+                    <path className="svg-icon-path path-features" d="M 118 115 Q 125 120, 132 115" />
+
+                    {/* Nose - Tiny curve/dot */}
+                    <path className="svg-icon-path path-features" d="M 98 128 Q 100 130, 102 128" />
+
+                    {/* Mouth - Small smile */}
+                    <path className="svg-icon-path path-features" d="M 85 145 Q 100 152, 115 145" />
+
                 </svg>
             </div>
 
