@@ -7,7 +7,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(onComplete, 800); // Wait for fade out
-        }, 3000); // Show for 3 seconds (timed to match animation completion before loop reset)
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -18,10 +18,24 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
                 <svg className="loader-svg w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                    <path className="svg-icon-path path-face" d="M100 55 C 105 55, 110 50, 110 45 C 110 35, 95 35, 95 45 C 95 50, 98 55, 100 58 C 80 60, 60 80, 60 110 C 60 115, 50 115, 50 125 C 50 135, 60 135, 60 130 C 60 160, 80 180, 100 180 C 120 180, 140 160, 140 130 C 140 135, 150 135, 150 125 C 150 115, 140 115, 140 110 C 140 80, 120 60, 100 58" />
-                    <path className="svg-icon-path path-features" d="M75 120 Q 85 110, 95 120" />
-                    <path className="svg-icon-path path-features" d="M125 120 Q 135 110, 145 120" />
-                    <path className="svg-icon-path path-features" d="M90 150 Q 100 160, 110 150" />
+                    {/* Face Outline with Hair Curl - Continuous elegant line */}
+                    {/* Starts at top, does a curl, then traces the face circle */}
+                    <path
+                        className="svg-icon-path path-face"
+                        d="M 100 30 
+                           C 110 5, 130 15, 115 32 
+                           C 155 35, 175 70, 175 105 
+                           C 175 150, 145 180, 100 180 
+                           C 55 180, 25 150, 25 105 
+                           C 25 70, 45 35, 85 32"
+                    />
+
+                    {/* Sleeping Eyes - Arched downwards for relaxation */}
+                    <path className="svg-icon-path path-features" d="M 65 110 Q 80 100, 95 110" />
+                    <path className="svg-icon-path path-features" d="M 105 110 Q 120 100, 135 110" />
+
+                    {/* Small Smile */}
+                    <path className="svg-icon-path path-features" d="M 85 140 Q 100 150, 115 140" />
                 </svg>
             </div>
 
