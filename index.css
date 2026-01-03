@@ -68,71 +68,58 @@ body {
 }
 
 /* Splash Screen Animations */
+/* Splash Screen Animations */
 .loader-container {
     width: 200px;
-    /* Slightly larger to look good */
     height: 200px;
 }
 
-/* ESTILOS DE LA LÍNEA */
 .baby-icon-path {
     fill: none;
     stroke: #D4AF37;
-    /* Color Dorado Oura */
-    stroke-width: 2.5;
-    /* Grosor elegante */
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-/* ANIMACIÓN PRINCIPAL (CONTORNO) */
 .draw-outline {
-    stroke-dasharray: 600;
-    /* Longitud del trazo */
-    stroke-dashoffset: 600;
-    /* Empieza oculto */
-    animation: drawLine 3.5s ease-in-out infinite;
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: drawLine 4s ease-in-out infinite;
 }
 
-/* ANIMACIÓN RASGOS (OJOS/BOCA) */
 .draw-features {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
     opacity: 0;
-    animation: drawFeatures 3.5s ease-in-out infinite;
+    animation: drawFeatures 4s ease-in-out infinite;
 }
 
-/* DEFINICIÓN DE LOS TIEMPOS (KEYFRAMES) */
 @keyframes drawLine {
     0% {
-        stroke-dashoffset: 600;
+        stroke-dashoffset: 800;
     }
 
-    /* Empieza vacío */
     45% {
         stroke-dashoffset: 0;
     }
 
-    /* Se termina de dibujar al 45% del tiempo */
     100% {
         stroke-dashoffset: 0;
     }
-
-    /* Se mantiene visible */
 }
 
 @keyframes drawFeatures {
 
     0%,
     35% {
-        stroke-dashoffset: 100;
+        stroke-dashoffset: 200;
         opacity: 0;
     }
 
     50% {
         opacity: 1;
         stroke-dashoffset: 0;
-        /* Aparecen justo después del contorno */
     }
 
     100% {

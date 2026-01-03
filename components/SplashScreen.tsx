@@ -7,7 +7,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(onComplete, 800);
-        }, 3500);
+        }, 3600); // 4s animation cycle roughly, wait nearly a full cycle
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -17,28 +17,29 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
     return (
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
-                <svg className="loader-svg w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-
+                <svg className="loader-svg w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path className="baby-icon-path draw-outline"
-                        d="M 50 22 
-                             C 55 22, 56 16, 50 16 
-                             C 45 16, 48 24, 50 25 
-                             C 70 25, 75 40, 75 48 
-                             C 82 48, 82 58, 75 58 
-                             C 75 75, 65 85, 50 85 
-                             C 35 85, 25 75, 25 58 
-                             C 18 58, 18 48, 25 48 
-                             C 25 40, 30 25, 50 25" />
+                        d="
+             M 50 20 
+             Q 56 12, 56 18 T 50 23 
+             C 35 23, 22 35, 22 50
+             C 18 50, 18 60, 22 60
+             C 25 80, 40 90, 50 90
+             C 60 90, 75 80, 78 60
+             C 82 60, 82 50, 78 50
+             C 78 35, 65 23, 50 23
+          " />
 
-                    <path className="baby-icon-path draw-features" d="M 38 45 Q 42 40, 46 45" />
-                    <circle className="baby-icon-path draw-features" cx="42" cy="48" r="1.5" style={{ fill: '#D4AF37' }} />
+                    <path className="baby-icon-path draw-features" d="M 35 40 Q 40 35, 45 40" />
+                    <path className="baby-icon-path draw-features" d="M 55 40 Q 60 35, 65 40" />
 
-                    <path className="baby-icon-path draw-features" d="M 54 45 Q 58 40, 62 45" />
-                    <circle className="baby-icon-path draw-features" cx="58" cy="48" r="1.5" style={{ fill: '#D4AF37' }} />
+                    <path className="baby-icon-path draw-features" d="M 38 48 Q 40 46, 42 48" />
+                    <path className="baby-icon-path draw-features" d="M 58 48 Q 60 46, 62 48" />
 
-                    <path className="baby-icon-path draw-features" d="M 48 55 Q 50 56, 52 55" />
-                    <path className="baby-icon-path draw-features" d="M 45 65 Q 50 70, 55 65" />
-                    <path className="baby-icon-path draw-features" d="M 48 70 Q 50 72, 52 70" />
+                    <path className="baby-icon-path draw-features" d="M 48 58 Q 50 60, 52 58" />
+
+                    <path className="baby-icon-path draw-features" d="M 42 68 Q 50 75, 58 68" />
+                    <path className="baby-icon-path draw-features" d="M 48 78 Q 50 80, 52 78" />
                 </svg>
             </div>
 
