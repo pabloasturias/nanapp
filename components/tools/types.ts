@@ -16,7 +16,9 @@ export type ToolId =
     | 'milestones'
     | 'medical_agenda'
     | 'first_words'
-    | 'routines';
+    | 'routines'
+    | 'head_position'
+    | 'endocrine_info';
 
 export interface ToolDefinition {
     id: ToolId;
@@ -149,6 +151,12 @@ export interface RoutineLog {
     startTime: string; // "08:00"
     activity: string; // "Desayuno"
     icon?: string; // lucide icon name? or category
+    babyId?: string;
+}
+
+export interface HeadPositionLog {
+    timestamp: number;
+    side: 'left' | 'right' | 'back';
     babyId?: string;
 }
 

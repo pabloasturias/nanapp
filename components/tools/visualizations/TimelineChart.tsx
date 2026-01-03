@@ -16,17 +16,17 @@ interface TimelineChartProps {
     showGhost?: boolean; // Show previous day ghost?
 }
 
-export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24h' }) => {
+export const TimelineChart: React.FC<TimelineChartProps> = ({ events, referenceDate, unit = '24h' }) => {
     const { t } = useLanguage();
-    // Current time
-    const now = Date.now();
+    // Base time for the window (right edge of the graph usually)
+    const referenceTime = referenceDate ? referenceDate.getTime() : Date.now();
 
     // Window definition
     const msIn24h = 24 * 60 * 60 * 1000;
     // We want 'Now' to be at ~90% of the chart so the latest bar is visible
     const buffer = msIn24h * 0.1;
-    const windowEnd = now + buffer;
-    const windowStart = now - (msIn24h - buffer);
+    const windowEnd = referenceTime + buffer;
+    const windowStart = referenceTime - (msIn24h - buffer);
 
     // Filter events in window
     const activeEvents = useMemo(() => {
@@ -64,8 +64,8 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({ events, unit = '24
                 <div className="absolute inset-0 pointer-events-none">
                     {/* Render grid lines manually based on % */}
                     {ticks.map(h => {
-                        // h hours ago from NOW.
-                        const ts = now - (h * 60 * 60 * 1000);
+                        // h hours ago from referenceTime.
+                        const ts = referenceTime - (h * 60 * 60 * 1000);
                         const pos = getPos(ts);
                         return (
                             <div key={h} className="absolute top-0 bottom-0 border-l border-slate-800 text-[9px] text-slate-600 pl-1 flex flex-col justify-end pb-1" style={{ left: `${pos}%` }}>

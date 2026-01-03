@@ -5,7 +5,8 @@ import { ToolDefinition, ToolId } from './tools/types';
 import {
     Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils,
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
-    Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X
+    Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X,
+    RotateCcw, ShieldCheck
 } from 'lucide-react';
 
 // Widget Imports
@@ -25,6 +26,8 @@ import { NotesDashboard, NotesFull } from './tools/NotesWidget';
 import { AgendaDashboard, AgendaFull } from './tools/AgendaWidget';
 import { FirstWordsDashboard, FirstWordsFull } from './tools/FirstWordsWidget';
 import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
+import { HeadPositionDashboard, HeadPositionFull } from './tools/HeadPositionWidget';
+import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
 
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -44,6 +47,8 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
+    { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
+    { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
 ];
 
 
@@ -110,6 +115,8 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
             case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
             case 'routines': return <RoutineFull onClose={handleCloseTool} />;
+            case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
+            case 'endocrine_info': return <EndocrineFull onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -137,6 +144,8 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'medical_agenda': return <AgendaDashboard />;
             case 'first_words': return <FirstWordsDashboard />;
             case 'routines': return <RoutineDashboard />;
+            case 'head_position': return <HeadPositionDashboard />;
+            case 'endocrine_info': return <EndocrineDashboard />;
             default: return "--";
         }
     };

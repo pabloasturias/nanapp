@@ -302,7 +302,7 @@ const AppContent: React.FC = () => {
         // Let's stick navigateToTab('sounds') for explicit navigation, or closeModal (back) for history.
         // navigateToTab('sounds') is safer for "Home" buttons.
 
-        if (activeTab === 'tools') return <ToolsView />;
+        if (activeTab === 'tools') return <ToolsView onOpenSettings={() => openModal('settings')} />;
 
         return (
             <>

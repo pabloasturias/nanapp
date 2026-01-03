@@ -48,6 +48,8 @@ function isWhiteish(r, g, b) {
     return (r > 200 && g > 200 && b > 200);
 }
 
+
+
 async function generateIcons() {
     try {
         console.log(`Reading master icon from: ${MASTER_ICON_PATH}`);
@@ -56,22 +58,16 @@ async function generateIcons() {
         const height = originalImage.bitmap.height;
 
         // --- PART 1: Generate Splash Mask (Line Art ONLY) ---
-        // Strategy: Keep Gold pixels Opaque. Make everything else (Blue, White) Transparent.
-        // This ensures corners and background disappear in the mask.
         console.log("Generating Splash Mask...");
         const splashImage = originalImage.clone();
-
         splashImage.scan(0, 0, width, height, function (x, y, idx) {
             const r = this.bitmap.data[idx + 0];
             const g = this.bitmap.data[idx + 1];
             const b = this.bitmap.data[idx + 2];
-
-            // If it looks Gold, keep it (make sure alpha is 255).
-            // If it's Blue or White, kill it.
             if (isGoldish(r, g, b)) {
                 this.bitmap.data[idx + 3] = 255;
             } else {
-                this.bitmap.data[idx + 3] = 0; // Transparent
+                this.bitmap.data[idx + 3] = 0;
             }
         });
 
@@ -79,53 +75,89 @@ async function generateIcons() {
         await splashImage.resize({ w: 512, h: 512 }).write(splashPath);
 
 
-        // --- PART 2: Generate App Icons (Gold + Blue, No White Corners) ---
-        // Strategy: Keep Gold & Blue pixels Opaque. Make White corners Transparent.
+        // --- PART 2: Generate App Icons (Gold + Blue, No White Corners, WITH PADDING) ---
         console.log("Generating App Icons...");
         const appIconImage = originalImage.clone();
 
+        // Remove white corners from source first
         appIconImage.scan(0, 0, width, height, function (x, y, idx) {
             const r = this.bitmap.data[idx + 0];
             const g = this.bitmap.data[idx + 1];
             const b = this.bitmap.data[idx + 2];
-
-            // If Whiteish -> Transparent (Remove corners)
             if (isWhiteish(r, g, b)) {
                 this.bitmap.data[idx + 3] = 0;
             } else {
-                // Keep Blue/Gold/Everything else opaque
                 this.bitmap.data[idx + 3] = 255;
             }
         });
 
-        // Generate sizes
+        // Loop for sizes
         for (const targetSize of SIZES) {
             let filename = `icon-${targetSize}.png`;
-            let source = appIconImage;
 
-            // SPECIAL CASE: Tiny Favicons (16, 32)
-            // User previously asked for "solo la silueta" (silhouette only) for favicons.
-            // That means "Like Splash" (Transparent BG).
-            // Let's verify: "el favicone ha quedado raro, puedes quitar otra vez el fondo blanco? y dejar solo la silueta del bebe?"
-            // Yes. Favicons = Splash Style (Transparent, only lines).
+            // SPECIAL CASE: Tiny Favicons (Keep Transparent, No Padding needed usually)
+            if (targetSize === 16 || targetSize === 32) {
+                if (targetSize === 16) filename = 'favicon-16x16.png';
+                if (targetSize === 32) filename = 'favicon-32x32.png';
 
-            if (targetSize === 16) {
-                filename = 'favicon-16x16.png';
-                source = splashImage; // Use the line-only version
-            } else if (targetSize === 32) {
-                filename = 'favicon-32x32.png';
-                source = splashImage; // Use the line-only version
+                const finalPath = path.join(ICONS_DIR, filename);
+                console.log(`Generating Favicon ${targetSize}x${targetSize} (LineArt) at: ${finalPath}`);
+                await splashImage.clone().resize({ w: targetSize, h: targetSize }).write(finalPath);
+                continue; // Done for favicon
             }
 
-            const finalPath = path.join(ICONS_DIR, filename);
-            console.log(`Generating ${targetSize}x${targetSize} icon (${source === splashImage ? 'LineArt' : 'FullColor'}) at: ${finalPath}`);
-            await source.clone().resize({ w: targetSize, h: targetSize }).write(finalPath);
-        }
+            // REGULAR APP ICONS (144+) - Add Padding
+            // Create a new square canvas of targetSize, filled with Blue
+            // The "Blue" should match the icon background. 
+            // We can pick a pixel color or just use TARGET_BLUE approx.
+            // Or better: Clone the original logic?
+            // Actually, we want to scale DOWN the appIconImage and place it on a Blue background.
+            // Padding factor: e.g. 0.8 scale (10% padding on each side)
 
-        // Maskable: Full Color (Blue BG is fine for maskable, OS handles crop)
-        // But removing white corners is still good practice if the source had them.
-        const maskablePath = path.join(ICONS_DIR, 'icon-maskable-512.png');
-        await appIconImage.clone().resize({ w: 512, h: 512 }).write(maskablePath);
+            const paddedCanvas = new Jimp({ width: targetSize, height: targetSize, color: 0x0f172aff }); // Start with Hex Blue #0f172a
+
+            // Re-apply specific blue from image if needed, but #0f172a is our Tailwind slate-950 approx match
+            // or we pick top-left pixel (if not white)? 
+            // Let's stick to safe hardcoded dark blue or #0f172a. 
+            // Better: use the numeric color from TARGET_BLUE.
+            // Jimp hex format: 0xRRGGBBAA
+            // 15, 23, 42 -> 0F 17 2A -> 0x0f172aff. 
+
+            // Scale the icon image
+            const scaleFactor = 0.75; // More space as requested
+            const iconSize = Math.floor(targetSize * scaleFactor);
+            const offset = Math.floor((targetSize - iconSize) / 2);
+
+            const resizedIcon = appIconImage.clone().resize({ w: iconSize, h: iconSize });
+
+            // Composite
+            paddedCanvas.composite(resizedIcon, offset, offset);
+
+            // Make corners transparent again? 
+            // The canvas is square. iOS/Android mask it themselves.
+            // If we want "No White Corners" equivalent, we just return the full square with blue BG.
+            // The user's white corners were from the source image. Removing them made it transparent.
+            // If we put it on a blue background, the transparency becomes blue. Perfect.
+
+            // BUT, wait. Maskable icon MUST be full bleed.
+            // Regular icons (e.g. PWA) usually are full bleed squares too.
+            // If we add padding, the "Face" is smaller. That is what user wants.
+
+            const finalPath = path.join(ICONS_DIR, filename);
+            console.log(`Generating Padded Icon ${targetSize}x${targetSize} at: ${finalPath}`);
+            await paddedCanvas.write(finalPath);
+
+            if (targetSize === 512) {
+                // Maskable too
+                const maskablePath = path.join(ICONS_DIR, 'icon-maskable-512.png');
+                // Standard maskable has 'safe zone'. 0.75 scale is essentially ensuring safe zone.
+                // So we can assume the same padded canvas is good for maskable?
+                // Or we generate a separate one with slightly less padding? 
+                // Safe zone is inner 80% (diameter) circle. 
+                // If our critical content (face) is within 75%, it's fully safe.
+                await paddedCanvas.write(maskablePath);
+            }
+        }
 
         console.log('All icons generated successfully!');
 
@@ -134,5 +166,3 @@ async function generateIcons() {
         process.exit(1);
     }
 }
-
-generateIcons();

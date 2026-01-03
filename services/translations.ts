@@ -315,6 +315,8 @@ export const translations = {
 
 
 
+    tool_head_position: "Posición Cabeza",
+    tool_endocrine_info: "Disruptores Endocrinos",
   },
   en: {
     app_slogan: "the sound of silence",
@@ -624,6 +626,8 @@ export const translations = {
 
 
 
+    tool_head_position: "Head Position",
+    tool_endocrine_info: "Endocrine Disruptors",
   },
   fr: {
     app_slogan: "le son du silence",
