@@ -20,8 +20,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, o
                 onClick={onGoToStory}
                 className="flex items-center gap-3 group text-left"
             >
-                <div className="p-2.5 bg-orange-400/10 rounded-full border border-orange-200/10 group-hover:bg-orange-400/20 transition-colors">
-                    <Baby size={24} className="text-orange-200" strokeWidth={2} />
+                <div className="relative group-hover:scale-105 transition-transform duration-300">
+                    <img
+                        src="/icons/icon-192.png"
+                        alt="Nanapp Logo"
+                        className="w-11 h-11 rounded-xl shadow-sm border border-orange-200/10"
+                    />
                 </div>
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight text-orange-50 leading-none mb-1 font-['Quicksand']">
