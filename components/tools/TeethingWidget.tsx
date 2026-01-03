@@ -1,6 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { TeethingLog } from './types';
+import { Info, X, Settings, Check, Calendar, Trash2 } from 'lucide-react';
+import { useLanguage } from '../../services/LanguageContext';
+import { useBaby } from '../../services/BabyContext';
 
 // Tooth Definitions
 type ToothType = 'incisor' | 'canine' | 'molar';
@@ -93,7 +96,6 @@ const VisualTooth: React.FC<{
     const borderColor = isErupted ? '#FBCFE8' : isExpected ? '#f59e0b' : '#475569'; // Pink | Amber-500 | Slate-600
     const opacity = isErupted ? 1 : isExpected ? 0.8 : 0.4; // Highlight expected
 
-
     return (
         <button
             onClick={onClick}
@@ -131,23 +133,23 @@ const VisualTooth: React.FC<{
 
 export const TeethingDashboard: React.FC = () => {
     const { logs } = useToolData<TeethingLog>('teething');
+    const { activeBaby } = useBaby();
 
-    // Count unique erupted teeth (accounting for old groups)
+    // Count unique erupted teeth for active baby
     const count = useMemo(() => {
         let eruptedCount = 0;
         const processedIds = new Set();
 
-        logs.forEach(log => {
-            // If it's a specific ID
+        // Filter logs for active baby first!
+        const babyLogs = activeBaby ? logs.filter(l => !l.babyId || l.babyId === activeBaby.id) : logs;
+
+        babyLogs.forEach(log => {
             if (ALL_TEETH.some(t => t.id === log.toothId)) {
                 if (!processedIds.has(log.toothId)) {
                     eruptedCount++;
                     processedIds.add(log.toothId);
                 }
             } else {
-                // It's a group ID, count all teeth in that group that haven't been counted?
-                // Actually simplified: specific IDs override groups.
-                // But for the count, we assume if group is present, all in group are out.
                 const groupTeeth = ALL_TEETH.filter(t => t.oldGroupId === log.toothId);
                 groupTeeth.forEach(t => {
                     if (!processedIds.has(t.id)) {
@@ -158,7 +160,7 @@ export const TeethingDashboard: React.FC = () => {
             }
         });
         return eruptedCount;
-    }, [logs]);
+    }, [logs, activeBaby]);
 
     return (
         <div className="flex flex-col">
@@ -172,66 +174,102 @@ export const TeethingDashboard: React.FC = () => {
     );
 };
 
-import { Info, X } from 'lucide-react';
-import { useLanguage } from '../../services/LanguageContext';
-import { useBaby } from '../../services/BabyContext';
-
-// ... existing code ...
-
-export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+export const TeethingFull: React.FC<{ onClose: () => void; onOpenSettings: () => void }> = ({ onClose, onOpenSettings }) => {
     const { logs, addLog, removeLog } = useToolData<TeethingLog>('teething');
     const { t } = useLanguage();
-    const { activeBaby } = useBaby();
-    // Filter logs for active baby
+    const { babies, activeBaby, setActiveBabyId } = useBaby();
+
+    // View State
+    const [viewBabyId, setViewBabyId] = useState<string | null>(activeBaby?.id || null);
+    const [selectedTooth, setSelectedTooth] = useState<ToothDef | null>(null);
+    const [editDate, setEditDate] = useState<string>('');
+
+    // Sync view with active
+    useEffect(() => {
+        if (activeBaby && !viewBabyId) setViewBabyId(activeBaby.id);
+    }, [activeBaby]);
+
+    const currentBaby = babies.find(b => b.id === viewBabyId) || babies[0];
+
+    // Filter logs for view baby
     const babyLogs = useMemo(() => {
-        if (!activeBaby) return logs;
-        return logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
-    }, [logs, activeBaby]);
+        if (!currentBaby) return [];
+        return logs.filter(l => !l.babyId || l.babyId === currentBaby.id);
+    }, [logs, currentBaby]);
 
     const getIsErupted = (tooth: ToothDef) => {
         return babyLogs.some(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
     };
 
-    // Calculate Age in Months
+    // Get existing log for selected tooth
+    const getLogForTooth = (tooth: ToothDef) => {
+        return babyLogs.find(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
+    };
+
+    // Calculate Age in Months for expectations
     const babyAgeMonths = useMemo(() => {
-        if (!activeBaby?.birthDate) return 0;
-        const diff = Date.now() - activeBaby.birthDate;
-        return diff / (1000 * 60 * 60 * 24 * 30.44); // Approx
-    }, [activeBaby]);
+        if (!currentBaby?.birthDate) return 0;
+        const diff = Date.now() - currentBaby.birthDate;
+        return diff / (1000 * 60 * 60 * 24 * 30.44);
+    }, [currentBaby]);
 
     const getIsExpected = (tooth: ToothDef) => {
-        if (getIsErupted(tooth)) return false; // Already out
+        if (getIsErupted(tooth)) return false;
         if (!babyAgeMonths) return false;
-
-        // Parse months range "6-10m"
         try {
             const parts = tooth.months.replace('m', '').split('-');
             if (parts.length === 2) {
                 const start = parseInt(parts[0]);
                 const end = parseInt(parts[1]);
-                // Expected if we are close to start (e.g. 1 month before) or within range
                 return babyAgeMonths >= (start - 1) && babyAgeMonths <= (end + 2);
             }
         } catch (e) { return false; }
         return false;
     };
 
-    const toggleTooth = (tooth: ToothDef) => {
-        const isErupted = getIsErupted(tooth);
-        if (isErupted) {
-            const logToRemove = babyLogs.find(l => l.toothId === tooth.id || l.toothId === tooth.oldGroupId);
-            if (logToRemove && removeLog) {
-                removeLog(l => l.timestamp === logToRemove.timestamp);
-            }
-            return;
+    const handleToothClick = (tooth: ToothDef) => {
+        const log = getLogForTooth(tooth);
+        if (log) {
+            // Already erupted, prep edit
+            const date = new Date(log.timestamp);
+            setEditDate(date.toISOString().split('T')[0]);
+        } else {
+            // New
+            setEditDate(new Date().toISOString().split('T')[0]);
+        }
+        setSelectedTooth(tooth);
+    };
+
+    const handleSaveTooth = () => {
+        if (!selectedTooth) return;
+
+        // Remove existing first (to update or toggle off)
+        const existingLog = getLogForTooth(selectedTooth);
+        if (existingLog && removeLog) {
+            removeLog(l => l.timestamp === existingLog.timestamp);
         }
 
+        // Add new log if we are saving (not deleting)
+        // Wait, if I want to just delete, I should have a delete button.
+        // This function assumes "Save" = "Erupted with this date".
+
         addLog({
-            timestamp: Date.now(),
-            toothId: tooth.id,
-            babyId: activeBaby?.id
+            timestamp: new Date(editDate).getTime(),
+            toothId: selectedTooth.id,
+            babyId: currentBaby.id
         });
+
         if (navigator.vibrate) navigator.vibrate(50);
+        setSelectedTooth(null);
+    };
+
+    const handleDeleteTooth = () => {
+        if (!selectedTooth) return;
+        const existingLog = getLogForTooth(selectedTooth);
+        if (existingLog && removeLog) {
+            removeLog(l => l.timestamp === existingLog.timestamp);
+        }
+        setSelectedTooth(null);
     };
 
     // Organized by arch
@@ -240,8 +278,41 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     const lowerRight = ALL_TEETH.filter(t => t.jaw === 'lower' && t.side === 'right').sort((a, b) => b.position - a.position);
     const lowerLeft = ALL_TEETH.filter(t => t.jaw === 'lower' && t.side === 'left').sort((a, b) => a.position - b.position);
 
+    if (!currentBaby) return null;
+
     return (
         <div className="flex flex-col h-full bg-slate-950 relative">
+
+            {/* Sticky Header: Baby Selector */}
+            <div className="bg-slate-900/95 backdrop-blur-md border-b border-white/5 pb-2 sticky top-0 z-30 shadow-md">
+                <div className="px-4 py-3 overflow-x-auto no-scrollbar">
+                    <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold text-slate-500 uppercase mr-1">Bebé:</span>
+                        {babies.map(baby => (
+                            <button
+                                key={baby.id}
+                                onClick={() => {
+                                    setViewBabyId(baby.id);
+                                    setActiveBabyId(baby.id);
+                                }}
+                                className={`relative pl-1.5 pr-3.5 py-1.5 rounded-full border transition-all flex items-center gap-2 ${viewBabyId === baby.id
+                                    ? 'bg-rose-600 border-rose-500 text-white shadow-md'
+                                    : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600'
+                                    }`}
+                            >
+                                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${baby.gender === 'girl' ? 'bg-pink-100/20 text-pink-100' : 'bg-blue-100/20 text-blue-100'}`}>
+                                    {baby.name[0].toUpperCase()}
+                                </div>
+                                <span className="text-xs font-bold">{baby.name}</span>
+                            </button>
+                        ))}
+                        <button onClick={onOpenSettings} className="p-1.5 ml-auto rounded-full bg-slate-800 text-slate-500 hover:text-white border border-transparent hover:border-slate-700">
+                            <Settings size={14} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div className="flex-1 overflow-y-auto w-full">
                 <div className="flex flex-col items-center justify-center p-4 min-h-[400px]">
                     {/* Mouth Container */}
@@ -251,19 +322,17 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                         <div className="relative">
                             <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold text-slate-600 tracking-widest uppercase">Maxilar Superior</div>
                             <div className="flex justify-center gap-1.5 items-end rounded-b-[4rem] px-8 pb-4">
-                                {/* Right Side (Display on Left) */}
                                 <div className="flex gap-1.5 items-end translate-y-2">
                                     {upperRight.map(t => (
                                         <div key={t.id} className={`transform ${t.position === 5 ? 'translate-y-8 rotate-[-15deg]' : t.position >= 3 ? 'translate-y-2 rotate-[-5deg]' : ''}`}>
-                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
+                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => handleToothClick(t)} />
                                         </div>
                                     ))}
                                 </div>
-                                {/* Left Side (Display on Right) */}
                                 <div className="flex gap-1.5 items-end translate-y-2">
                                     {upperLeft.map(t => (
                                         <div key={t.id} className={`transform ${t.position === 5 ? 'translate-y-8 rotate-[15deg]' : t.position >= 3 ? 'translate-y-2 rotate-[5deg]' : ''}`}>
-                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
+                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => handleToothClick(t)} />
                                         </div>
                                     ))}
                                 </div>
@@ -274,19 +343,17 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                         <div className="relative">
                             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-xs font-bold text-slate-600 tracking-widest uppercase">Mandíbula</div>
                             <div className="flex justify-center gap-1.5 items-start rounded-t-[4rem] px-8 pt-4">
-                                {/* Right Side (Display on Left) */}
                                 <div className="flex gap-1.5 items-start -translate-y-2">
                                     {lowerRight.map(t => (
                                         <div key={t.id} className={`transform ${t.position === 5 ? '-translate-y-8 rotate-[15deg]' : t.position >= 3 ? '-translate-y-2 rotate-[5deg]' : ''}`}>
-                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
+                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => handleToothClick(t)} />
                                         </div>
                                     ))}
                                 </div>
-                                {/* Left Side (Display on Right) */}
                                 <div className="flex gap-1.5 items-start -translate-y-2">
                                     {lowerLeft.map(t => (
                                         <div key={t.id} className={`transform ${t.position === 5 ? '-translate-y-8 rotate-[-15deg]' : t.position >= 3 ? '-translate-y-2 rotate-[-5deg]' : ''}`}>
-                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => toggleTooth(t)} />
+                                            <VisualTooth def={t} isErupted={getIsErupted(t)} isExpected={getIsExpected(t)} onClick={() => handleToothClick(t)} />
                                         </div>
                                     ))}
                                 </div>
@@ -295,9 +362,8 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                     </div>
                 </div>
 
-                {/* Info Section Moved Inline */}
+                {/* Info Section */}
                 <div className="p-6 space-y-8 pb-24">
-                    {/* Chart */}
                     <section>
                         <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                             {t('tool_teething_chart_title')}
@@ -307,10 +373,7 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                                 <span>Diente</span>
                                 <span>Meses (Aprox)</span>
                             </div>
-                            {ALL_TEETH.filter(t => t.side === 'right').sort((a, b) => {
-                                // Custom sort order for chart: Center out
-                                return a.position - b.position || (a.jaw === 'upper' ? -1 : 1);
-                            }).slice(0, 5).map((t) => (
+                            {ALL_TEETH.filter(t => t.side === 'right').sort((a, b) => a.position - b.position || (a.jaw === 'upper' ? -1 : 1)).slice(0, 5).map((t) => (
                                 <div key={t.label} className="flex justify-between text-sm text-slate-300">
                                     <span>{t.label}</span>
                                     <span className="text-pink-300 tabular-nums">{t.months}</span>
@@ -318,30 +381,55 @@ export const TeethingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                             ))}
                         </div>
                     </section>
-
-                    {/* Tips */}
-                    <section>
-                        <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                            {t('tool_teething_tips_title')}
-                        </h4>
-                        <div className="grid gap-3">
-                            <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
-                                <p className="text-sm text-slate-300">{t('tool_teething_tip_1')}</p>
-                            </div>
-                            <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
-                                <p className="text-sm text-slate-300">{t('tool_teething_tip_2')}</p>
-                            </div>
-                            <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
-                                <p className="text-sm text-slate-300">{t('tool_teething_tip_3')}</p>
-                            </div>
-                            <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
-                                <p className="text-sm text-slate-300">{t('tool_teething_tip_4')}</p>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
+
+            {/* Edit Modal */}
+            {selectedTooth && (
+                <div className="absolute inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200">
+                    <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 w-full max-w-xs shadow-2xl space-y-4">
+                        <div className="text-center">
+                            <h3 className="text-lg font-bold text-white mb-1">{selectedTooth.label}</h3>
+                            <p className="text-xs text-slate-400 uppercase tracking-wider">{selectedTooth.jaw === 'upper' ? 'Superior' : 'Inferior'} · {selectedTooth.side === 'left' ? 'Izquierda' : 'Derecha'}</p>
+                        </div>
+
+                        <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 flex flex-col gap-3">
+                            <label className="text-xs font-bold text-slate-400 uppercase">Fecha de Salida (Opcional)</label>
+                            <div className="flex items-center bg-slate-950 rounded-lg border border-slate-700 px-3 py-2">
+                                <Calendar size={16} className="text-slate-500 mr-2" />
+                                <input
+                                    type="date"
+                                    value={editDate}
+                                    onChange={(e) => setEditDate(e.target.value)}
+                                    className="bg-transparent text-white text-sm w-full outline-none"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex gap-2 pt-2">
+                            {getLogForTooth(selectedTooth) && (
+                                <button
+                                    onClick={handleDeleteTooth}
+                                    className="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition-colors"
+                                    title="Marcar como no salido"
+                                >
+                                    <Trash2 size={20} />
+                                </button>
+                            )}
+                            <button
+                                onClick={handleSaveTooth}
+                                className="flex-1 py-3 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl shadow-lg shadow-rose-900/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+                            >
+                                <Check size={18} />
+                                {getLogForTooth(selectedTooth) ? 'Actualizar' : 'Marcar Salido'}
+                            </button>
+                        </div>
+                        <button onClick={() => setSelectedTooth(null)} className="w-full py-2 text-xs font-bold text-slate-500 hover:text-slate-300 mt-2">
+                            CANCELAR
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
-

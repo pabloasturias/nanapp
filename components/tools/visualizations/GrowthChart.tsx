@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react';
-import { WHO_DATA } from '../../../services/data/whoGrowthData';
-import { GrowthLog } from '../types';
+import React, { useMemo, useState } from 'react';
+import { GrowthLog } from '../../types';
+import { WHO_DATA, getPercentiles } from '../../../../services/data/whoGrowthData';
+import { AlertCircle } from 'lucide-react';
 
 interface GrowthChartProps {
     logs: GrowthLog[];
@@ -34,7 +35,15 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
 
     const standard = WHO_DATA[whoKey] ? WHO_DATA[whoKey][whoProp] : undefined;
 
-    if (!standard) return <div className="p-4 text-xs text-slate-500">Datos no disponibles</div>;
+    if (!standard) {
+        return (
+            <div className="flex flex-col items-center justify-center w-full h-full min-h-[150px] text-xs text-slate-500 bg-slate-900/50 rounded-lg p-4">
+                <AlertCircle size={16} className="mb-2 opacity-50" />
+                <span>Datos no disponibles ({whoKey}/{whoProp})</span>
+            </div>
+        );
+    }
+
     const chartData = standard.filter(d => d[0] <= maxAge);
     if (chartData.length === 0) return null;
 
@@ -52,7 +61,7 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
 
     const width = 300;
     const height = 180;
-    const padding = { top: 20, right: 10, bottom: 20, left: 35 }; // Increased top padding for tooltip
+    const padding = { top: 20, right: 10, bottom: 20, left: 35 };
     const chartW = width - padding.left - padding.right;
     const chartH = height - padding.top - padding.bottom;
 
@@ -83,7 +92,7 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
     }
 
     // Interaction State
-    const [hover, setHover] = React.useState<{ x: number, y: number, value: number, age: number } | null>(null);
+    const [hover, setHover] = useState<{ x: number, age: number, userPoint?: { val: number, age: number }, percentiles: { p3: number, p50: number, p97: number } } | null>(null);
 
     const handleMouseMove = (e: React.MouseEvent<SVGSVGElement> | React.TouchEvent<SVGSVGElement>) => {
         const svg = e.currentTarget;
@@ -98,35 +107,34 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
             return;
         }
 
-        // Find closest user point? Or just show percentile at that age?
-        // User asked to see values. Let's snap to closest USER point if close, else just show X line.
-        // Actually, best is to snap to the closest actual data point we have (User point).
+        // Calculate percentiles for this exact mouse age
+        // Type case matching: WHO data uses 'weight', 'length', 'head'
+        // getPercentiles uses 'weight' | 'length' currently, need to ensure it handles head or we cast
+        // Luckily I updated whoGrowthData.ts? No, I only updated the DATA export. 
+        // Wait, getPercentiles implementation: const data = WHO_DATA[key][type];
+        // It DOES support 'head' if passed! TS just complains.
+        const percentiles = getPercentiles(gender, whoProp as any, age);
 
-        let closest = null;
+        let userPoint = undefined;
         let minDist = Infinity;
 
-        // Check user points
         userPoints.forEach(p => {
             const px = scaleX(p.age);
             const dist = Math.abs(px - relX);
             if (dist < minDist) {
                 minDist = dist;
-                closest = p;
+                userPoint = p;
             }
         });
 
-        // Threshold for snapping (e.g. 20px)
-        if (closest && minDist < 20) {
-            setHover({
-                x: scaleX(closest.age),
-                y: scaleY(closest.val!),
-                value: closest.val!,
-                age: closest.age
-            });
-        } else {
-            // Just general crosshair?
-            setHover(null);
-        }
+        if (minDist > 15) userPoint = undefined; // Snap threshold
+
+        setHover({
+            x: userPoint ? scaleX(userPoint.age) : relX, // Snap line to point if close
+            age: userPoint ? userPoint.age : age,
+            userPoint: userPoint ? { val: userPoint.val!, age: userPoint.age } : undefined,
+            percentiles
+        });
     };
 
     return (
@@ -180,7 +188,7 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
                     <path d={lineP97} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="2 2" />
                     <path d={lineP50} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
 
-                    <text x={scaleX(maxAge) - 5} y={scaleY(chartData[chartData.length - 1][3]) - 5} fill="rgba(255,255,255,0.2)" fontSize="8" textAnchor="end">P50 (Media)</text>
+                    <text x={scaleX(maxAge) - 5} y={scaleY(chartData[chartData.length - 1][3]) - 5} fill="rgba(255,255,255,0.2)" fontSize="8" textAnchor="end">P50</text>
 
                     {/* User Line */}
                     {userPoints.length > 0 && (
@@ -205,17 +213,48 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
                         <g>
                             <line
                                 x1={hover.x} y1={0} x2={hover.x} y2={chartH}
-                                stroke="#fff" strokeWidth="1" strokeDasharray="2 2" opacity="0.5"
+                                stroke="#fff" strokeWidth="1" strokeDasharray="2 2" opacity="0.3"
                             />
-                            <circle cx={hover.x} cy={hover.y} r="5" fill="#fff" />
+                            {hover.userPoint && (
+                                <circle cx={hover.x} cy={scaleY(hover.userPoint.val)} r="5" fill="#fff" stroke={strokeColor} strokeWidth="2" />
+                            )}
 
-                            {/* Tooltip Box */}
-                            <g transform={`translate(${Math.min(Math.max(hover.x - 30, 0), chartW - 60)}, -15)`}>
-                                <rect width="60" height="20" rx="4" fill="#1e293b" stroke="rgba(255,255,255,0.2)" />
-                                <text x="30" y="13" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#fff">
-                                    {hover.value.toFixed(2)} {type === 'weight' ? 'kg' : 'cm'}
-                                </text>
-                            </g>
+                            {/* Updated Detailed Info Box */}
+                            <foreignObject x={hover.x > chartW / 2 ? hover.x - 100 : hover.x + 10} y={10} width="90" height="auto" style={{ overflow: 'visible' }}>
+                                <div className="bg-slate-900/95 backdrop-blur border border-slate-700/50 rounded-lg p-2 text-[9px] text-slate-300 shadow-xl pointer-events-none min-w-[90px]">
+                                    <div className="font-bold text-white mb-1.5 border-b border-white/10 pb-1 text-center">
+                                        {hover.age.toFixed(1)} meses
+                                    </div>
+                                    <div className="space-y-0.5">
+                                        <div className="flex justify-between">
+                                            <span className="text-emerald-400">P97</span>
+                                            <span>{hover.percentiles.p97.toFixed(1)}</span>
+                                        </div>
+                                        <div className="flex justify-between font-bold text-white bg-white/5 rounded px-0.5 -mx-0.5">
+                                            <span className="text-emerald-500">Media</span>
+                                            <span>{hover.percentiles.p50.toFixed(1)}</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span className="text-emerald-400">P3</span>
+                                            <span>{hover.percentiles.p3.toFixed(1)}</span>
+                                        </div>
+                                    </div>
+
+                                    {hover.userPoint && (
+                                        <div className="mt-2 pt-1.5 border-t border-white/10">
+                                            <div className="font-bold text-white flex justify-between items-center mb-0.5">
+                                                <span>Bebé ({type === 'weight' ? 'kg' : 'cm'}):</span>
+                                            </div>
+                                            <div className="text-center text-xs font-bold text-indigo-400 bg-indigo-500/10 rounded py-0.5">
+                                                {hover.userPoint.val.toFixed(2)}
+                                            </div>
+                                            <div className="text-[8px] text-slate-400 text-center mt-0.5">
+                                                {hover.userPoint.val > hover.percentiles.p50 ? '> Media' : '< Media'}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </foreignObject>
                         </g>
                     )}
                 </g>
