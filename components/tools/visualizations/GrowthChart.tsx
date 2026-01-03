@@ -32,8 +32,11 @@ export const GrowthChart: React.FC<GrowthChartProps> = ({ logs, birthDate, gende
     else if (type === 'height') whoProp = 'length';
     else whoProp = 'head';
 
-    const standard = WHO_DATA[whoKey][whoProp];
+    const standard = WHO_DATA[whoKey] ? WHO_DATA[whoKey][whoProp] : undefined;
+
+    if (!standard) return <div className="p-4 text-xs text-slate-500">Datos no disponibles</div>;
     const chartData = standard.filter(d => d[0] <= maxAge);
+    if (chartData.length === 0) return null;
 
     let minY = chartData[0][1];
     let maxY = chartData[chartData.length - 1][5];
