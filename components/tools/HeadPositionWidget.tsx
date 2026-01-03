@@ -144,24 +144,24 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
 
                         return (
                             <div className="space-y-4">
-                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full">
+                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full mb-4">
                                     <button
                                         onClick={() => setTimeRange('12h')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '12h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        12h
+                                        Últimas 12h
                                     </button>
                                     <button
                                         onClick={() => setTimeRange('24h')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '24h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        24h
+                                        Últimas 24h
                                     </button>
                                     <button
                                         onClick={() => setTimeRange('7d')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '7d' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        7 días
+                                        Últimos 7 días
                                     </button>
                                 </div>
 

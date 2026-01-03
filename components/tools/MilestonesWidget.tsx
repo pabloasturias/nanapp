@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Trophy, Check, Star, Plus } from 'lucide-react';
+import { Trophy, Check, Star, Plus, Search } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { MilestoneLog } from './types';
 import { useBaby } from '../../services/BabyContext';
@@ -50,6 +50,7 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
     const [customText, setCustomText] = useState('');
     const [selectedMilestone, setSelectedMilestone] = useState<{ id: string, label: string } | null>(null);
     const [date, setDate] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         if (activeBaby && !viewBabyId) setViewBabyId(activeBaby.id);
@@ -202,14 +203,27 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
         <div className="flex flex-col h-full relative bg-slate-950">
             {/* Sticky Header: Baby Selector & Title */}
             <div className="bg-slate-900/95 backdrop-blur-md border-b border-white/5 sticky top-0 z-30 shadow-md flex flex-col">
-                <div className="p-4 flex justify-between items-center pb-2">
-                    <h3 className="font-bold text-lg text-white">Hitos</h3>
-                    <button
-                        onClick={() => setIsAddingCustom(true)}
-                        className="p-2 bg-slate-800 rounded-full text-slate-300 hover:text-white"
-                    >
-                        <Plus size={20} />
-                    </button>
+                <div className="p-4 flex flex-col gap-4 pb-2">
+                    <div className="flex justify-between items-center">
+                        <h3 className="font-bold text-lg text-white">Hitos</h3>
+                        <button
+                            onClick={() => setIsAddingCustom(true)}
+                            className="p-2 bg-slate-800 rounded-full text-slate-300 hover:text-white"
+                        >
+                            <Plus size={20} />
+                        </button>
+                    </div>
+                    {/* Search Bar */}
+                    <div className="relative">
+                        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                        <input
+                            type="text"
+                            placeholder="Buscar hito..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-500 placeholder-slate-600"
+                        />
+                    </div>
                 </div>
 
                 <div className="px-4 py-2 overflow-x-auto no-scrollbar pb-3">
@@ -267,42 +281,52 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                     </div>
                 )}
 
-                {EXTENDED_MILESTONES.map((group) => (
-                    <div key={group.category} className="space-y-3">
-                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1 sticky top-0">{group.category}</h4>
-                        <div className="space-y-2">
-                            {group.items.map((m) => {
-                                const log = getLog(m.id);
-                                const done = !!log;
+                {EXTENDED_MILESTONES.map((group) => {
+                    // Filter items
+                    const filteredItems = group.items.filter(item =>
+                        !searchTerm ||
+                        item.label.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
 
-                                return (
-                                    <button
-                                        key={m.id}
-                                        onClick={() => handleMilestoneClick(m.id, m.label)}
-                                        className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${done
-                                            ? 'bg-yellow-500/20 border-yellow-500/50'
-                                            : 'bg-slate-900 border-white/5 hover:bg-slate-800'
-                                            }`}
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${done ? 'bg-yellow-500 text-slate-900' : 'bg-slate-800 text-slate-600'}`}>
-                                                {done ? <Trophy size={20} /> : <Star size={20} />}
+                    if (filteredItems.length === 0) return null;
+
+                    return (
+                        <div key={group.category} className="space-y-3">
+                            <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1 pt-4 first:pt-0">{group.category}</h4>
+                            <div className="space-y-2">
+                                {filteredItems.map((m) => {
+                                    const log = getLog(m.id);
+                                    const done = !!log;
+
+                                    return (
+                                        <button
+                                            key={m.id}
+                                            onClick={() => handleMilestoneClick(m.id, m.label)}
+                                            className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${done
+                                                ? 'bg-yellow-500/20 border-yellow-500/50'
+                                                : 'bg-slate-900 border-white/5 hover:bg-slate-800'
+                                                }`}
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${done ? 'bg-yellow-500 text-slate-900' : 'bg-slate-800 text-slate-600'}`}>
+                                                    {done ? <Trophy size={20} /> : <Star size={20} />}
+                                                </div>
+                                                <div className="flex-1">
+                                                    <p className={`font-bold ${done ? 'text-yellow-200' : 'text-slate-300'}`}>{m.label}</p>
+                                                </div>
                                             </div>
-                                            <div className="flex-1">
-                                                <p className={`font-bold ${done ? 'text-yellow-200' : 'text-slate-300'}`}>{m.label}</p>
-                                            </div>
-                                        </div>
-                                        {done && (
-                                            <span className="text-xs text-yellow-300 font-mono opacity-70">
-                                                {new Date(log.timestamp).toLocaleDateString()}
-                                            </span>
-                                        )}
-                                    </button>
-                                );
-                            })}
+                                            {done && (
+                                                <span className="text-xs text-yellow-300 font-mono opacity-70">
+                                                    {new Date(log.timestamp).toLocaleDateString()}
+                                                </span>
+                                            )}
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             {/* Date Selection Modal */}

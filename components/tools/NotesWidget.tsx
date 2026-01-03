@@ -75,6 +75,17 @@ export const NotesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         onChange={e => setContent(e.target.value)}
                     />
                 </div>
+
+                {/* Footer Save Button */}
+                <div className="p-4 border-t border-white/5 bg-slate-900/50 backdrop-blur pb-8">
+                    <button
+                        onClick={handleSave}
+                        disabled={!content.trim()}
+                        className="w-full py-4 bg-slate-200 text-slate-900 rounded-xl font-bold text-lg shadow-lg hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
+                    >
+                        Guardar Nota
+                    </button>
+                </div>
             </div>
         );
     }

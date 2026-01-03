@@ -268,9 +268,10 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                                             removeLog(item => item.timestamp === l.timestamp);
                                                         }
                                                     }}
-                                                    className="pl-2 text-slate-600 hover:text-rose-500 transition-colors"
+                                                    className="pl-2 text-slate-600 hover:text-rose-500 transition-colors flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider"
                                                 >
-                                                    <Trash2 size={16} />
+                                                    <Trash2 size={14} />
+                                                    Borrar
                                                 </button>
                                             </div>
                                             <p className="text-sm text-slate-400 mb-4">{eventDate.toLocaleDateString([], { weekday: 'long', day: 'numeric', month: 'long' })}</p>
