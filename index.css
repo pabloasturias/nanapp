@@ -69,60 +69,70 @@ body {
 
 /* Splash Screen Animations */
 .loader-container {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    /* Slightly larger to look good */
+    height: 200px;
 }
 
-.svg-icon-path {
+/* ESTILOS DE LA LÍNEA */
+.baby-icon-path {
     fill: none;
-    /* Sin relleno */
     stroke: #D4AF37;
-    /* Color dorado */
-    stroke-width: 3;
-    /* Grosor de la línea */
+    /* Color Dorado Oura */
+    stroke-width: 2.5;
+    /* Grosor elegante */
     stroke-linecap: round;
-    /* Bordes de línea redondeados */
     stroke-linejoin: round;
-    /* Uniones redondeadas */
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: dash 4s ease-in-out infinite forwards;
 }
 
-.path-face {
-    animation-delay: 0s;
+/* ANIMACIÓN PRINCIPAL (CONTORNO) */
+.draw-outline {
+    stroke-dasharray: 600;
+    /* Longitud del trazo */
+    stroke-dashoffset: 600;
+    /* Empieza oculto */
+    animation: drawLine 3.5s ease-in-out infinite;
 }
 
-.path-features {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    animation: dash-features 4s ease-in-out infinite forwards;
-    animation-delay: 1.5s;
+/* ANIMACIÓN RASGOS (OJOS/BOCA) */
+.draw-features {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
     opacity: 0;
+    animation: drawFeatures 3.5s ease-in-out infinite;
 }
 
-@keyframes dash {
+/* DEFINICIÓN DE LOS TIEMPOS (KEYFRAMES) */
+@keyframes drawLine {
     0% {
-        stroke-dashoffset: 1000;
+        stroke-dashoffset: 600;
     }
 
-    60% {
+    /* Empieza vacío */
+    45% {
         stroke-dashoffset: 0;
     }
 
+    /* Se termina de dibujar al 45% del tiempo */
     100% {
         stroke-dashoffset: 0;
     }
+
+    /* Se mantiene visible */
 }
 
-@keyframes dash-features {
-    0% {
-        opacity: 1;
-        stroke-dashoffset: 200;
+@keyframes drawFeatures {
+
+    0%,
+    35% {
+        stroke-dashoffset: 100;
+        opacity: 0;
     }
 
-    30% {
+    50% {
+        opacity: 1;
         stroke-dashoffset: 0;
+        /* Aparecen justo después del contorno */
     }
 
     100% {
@@ -130,6 +140,7 @@ body {
         stroke-dashoffset: 0;
     }
 }
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
