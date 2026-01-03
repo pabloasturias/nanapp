@@ -10,7 +10,7 @@ export type ToolId =
     | 'teething'
     | 'solids'
     | 'vaccines'
-    | 'fever'
+
     | 'pumping'
     | 'pediatrician_notes'
     | 'milestones'
@@ -82,11 +82,7 @@ export interface GrowthLog {
     headCm?: number; // Can be tracked here or separately
 }
 
-export interface TemperatureLog {
-    timestamp: number;
-    temp: number; // Celsius
-    note?: string; // "After Meds" etc
-}
+
 
 // --- Batch 3: Activity & Feeding ---
 
@@ -113,12 +109,14 @@ export interface VaccineLog {
     vaccineName: string;
     doseNumber?: number;
     completed?: boolean;
+    babyId?: string;
 }
 
 export interface MilestoneLog {
     timestamp: number;
     milestoneId: string; // 'smile', 'roll', etc
     note?: string;
+    babyId?: string;
 }
 
 export interface TeethingLog {
@@ -137,6 +135,7 @@ export interface AppointmentLog {
     doctorName?: string;
     reason: string;
     completed: boolean;
+    babyId?: string;
 }
 
 export interface FirstWordsLog {
