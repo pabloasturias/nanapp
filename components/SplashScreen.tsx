@@ -24,11 +24,11 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
                 className="mb-8 w-[180px] h-[180px] animate-[pulse_3s_ease-in-out_infinite]"
                 style={{
                     backgroundColor: '#fec76f',
-                    maskImage: 'url(/icons/icon-512.png)',
+                    maskImage: 'url(/icons/icon-splash.png)',
                     maskSize: 'contain',
                     maskRepeat: 'no-repeat',
                     maskPosition: 'center',
-                    WebkitMaskImage: 'url(/icons/icon-512.png)',
+                    WebkitMaskImage: 'url(/icons/icon-splash.png)',
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
                     WebkitMaskPosition: 'center'

@@ -14,44 +14,38 @@ async function generateIcons() {
         console.log(`Reading master icon from: ${MASTER_ICON_PATH}`);
         const originalImage = await Jimp.read(MASTER_ICON_PATH);
 
-        // Step 1: Create a base with a white filled circle for the Face Background
-        // The icon is assumed to be roughly centered and circular-ish.
-        // We'll create a 512x512 canvas, draw a white circle, then overlay the icon.
+        // --- PART 1: Generate Transparent Line-Art Version for Splash Screen ---
+        // This preserves the transparency of the original PNG (assuming it is transparent)
+        // or just resizes it. Ideally, for a colored mask, we just need the lines to be opaque 
+        // and the rest transparent.
+        const splashPath = path.join(ICONS_DIR, 'icon-splash.png');
+        console.log(`Generating line-only splash icon at: ${splashPath}`);
+        // Ensure it's 512x512 for good quality
+        await originalImage.clone().resize({ w: 512, h: 512 }).write(splashPath);
+
+
+        // --- PART 2: Generate White-Filled Face Versions for App Icons/Favicons ---
         const size = 512;
-        const radius = size / 2 - 10; // slightly smaller than edge
+        const radius = size / 2 - 10;
 
-        // Create a new image transparent
         const bg = new Jimp({ width: size, height: size, color: 0x00000000 });
-
-        // Create the white circle layer
-        // Since Jimp drawing primitives are limited in the basic package sometimes, 
-        // we can scan pixels or use a shape. 
-        // Actually, easiest hack: Resize the original non-transparent pixels to be white? 
-        // No, user wants "rellenado en blanco" (filled white).
-        // Let's iterate pixels to draw a circle.
 
         const center = size / 2;
         const radiusSq = radius * radius;
 
-        // Brute-force circle drawing (fast enough for 512x512 one time)
+        // Draw white circle background
         for (let y = 0; y < size; y++) {
             for (let x = 0; x < size; x++) {
                 const dx = x - center;
                 const dy = y - center;
                 if (dx * dx + dy * dy <= radiusSq) {
-                    bg.setPixelColor(0xFFFFFFFF, x, y); // White fully opaque
+                    bg.setPixelColor(0xFFFFFFFF, x, y);
                 }
             }
         }
 
-        // Resize original to fit nicely on top if needed, 
-        // assuming master_icon.png is already 512x512 or close.
         const iconLayer = originalImage.clone().resize({ w: size, h: size });
-
-        // Composite: White Circle Background + Icon (Black Lines) on top
         bg.composite(iconLayer, 0, 0);
-
-        // This 'bg' is now our new Master for generation
 
         for (const targetSize of SIZES) {
             let filename = `icon-${targetSize}.png`;
@@ -64,12 +58,11 @@ async function generateIcons() {
             await bg.clone().resize({ w: targetSize, h: targetSize }).write(finalPath);
         }
 
-        // Maskable icon (safe to use same filled version)
         const maskablePath = path.join(ICONS_DIR, 'icon-maskable-512.png');
         console.log(`Generating maskable icon at: ${maskablePath}`);
         await bg.clone().write(maskablePath);
 
-        console.log('All icons (with white face fill) generated successfully!');
+        console.log('All icons generated successfully!');
 
     } catch (error) {
         console.error('Error generating icons:', error);
