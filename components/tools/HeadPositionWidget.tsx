@@ -51,6 +51,8 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
 
     const [viewBabyId, setViewBabyId] = useState<string | null>(activeBaby?.id || null);
 
+    const [timeRange, setTimeRange] = useState<'12h' | '24h' | '7d'>('24h');
+
     useEffect(() => {
         if (activeBaby && !viewBabyId) setViewBabyId(activeBaby.id);
     }, [activeBaby]);
@@ -112,17 +114,22 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
 
             <div className="flex-1 overflow-y-auto p-4 space-y-6">
 
-                {/* Balance Visualization (Last 7 Days) */}
+                {/* Balance Visualization */}
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                     <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-between">
-                        <span>Balance (Últimos 7 días)</span>
+                        <span>Balance ({timeRange === '12h' ? '12h' : timeRange === '24h' ? '24h' : '7 días'})</span>
                         <Info size={14} />
                     </h3>
 
                     {(() => {
-                        // Calculate stats
-                        const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
-                        const recentLogs = babyLogs.filter(l => l.timestamp > sevenDaysAgo);
+                        // Calculate stats based on active time range
+                        const now = Date.now();
+                        let timeLimit = now - (24 * 60 * 60 * 1000); // Default 24h
+
+                        if (timeRange === '12h') timeLimit = now - (12 * 60 * 60 * 1000);
+                        if (timeRange === '7d') timeLimit = now - (7 * 24 * 60 * 60 * 1000);
+
+                        const recentLogs = babyLogs.filter(l => l.timestamp > timeLimit);
                         const total = recentLogs.length || 1;
                         const left = recentLogs.filter(l => l.side === 'left').length;
                         const right = recentLogs.filter(l => l.side === 'right').length;
@@ -132,13 +139,37 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
                         const rightPct = Math.round((right / total) * 100);
                         const backPct = Math.round((back / total) * 100);
 
+                        // Ensure total is 100% (handle rounding errors simplistically)
+                        // not strictly necessary for visual bars but good for text
+
                         return (
-                            <div className="space-y-3">
+                            <div className="space-y-4">
+                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full">
+                                    <button
+                                        onClick={() => setTimeRange('12h')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '12h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        12h
+                                    </button>
+                                    <button
+                                        onClick={() => setTimeRange('24h')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '24h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        24h
+                                    </button>
+                                    <button
+                                        onClick={() => setTimeRange('7d')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '7d' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        7 días
+                                    </button>
+                                </div>
+
                                 <div className="h-6 w-full flex rounded-full overflow-hidden bg-slate-800">
                                     {left > 0 && <div style={{ width: `${leftPct}%` }} className="h-full bg-blue-500 flex items-center justify-center text-[10px] font-bold text-blue-100">{leftPct}%</div>}
                                     {back > 0 && <div style={{ width: `${backPct}%` }} className="h-full bg-emerald-500 flex items-center justify-center text-[10px] font-bold text-emerald-100">{backPct}%</div>}
                                     {right > 0 && <div style={{ width: `${rightPct}%` }} className="h-full bg-purple-500 flex items-center justify-center text-[10px] font-bold text-purple-100">{rightPct}%</div>}
-                                    {recentLogs.length === 0 && <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-600">Sin datos recientes</div>}
+                                    {recentLogs.length === 0 && <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-600">Sin datos</div>}
                                 </div>
                                 <div className="flex justify-between text-xs text-slate-400 px-1">
                                     <span className="text-blue-400 font-bold">Izquierda ({left})</span>
