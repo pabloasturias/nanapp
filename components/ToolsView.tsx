@@ -16,7 +16,7 @@ import { BottleDashboard, BottleFull } from './tools/BottleWidget';
 import { MedsDashboard, MedsFull } from './tools/MedsWidget';
 import { SleepDashboard, SleepFull } from './tools/SleepWidget';
 import { GrowthDashboard, GrowthFull } from './tools/GrowthWidget';
-import { TempDashboard, TempFull } from './tools/TemperatureWidget';
+
 import { SolidsDashboard, SolidsFull } from './tools/SolidsWidget';
 import { PumpingDashboard, PumpingFull } from './tools/PumpingWidget';
 import { VaccinesDashboard, VaccinesFull } from './tools/VaccinesWidget';
@@ -42,7 +42,7 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
-    { id: 'fever', icon: Thermometer, translationKey: 'tool_fever', color: 'text-red-500', bgColor: 'bg-red-500/10' },
+
     { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
@@ -105,7 +105,7 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'meds': return <MedsFull onClose={handleCloseTool} />;
             case 'sleep': return <SleepFull onClose={handleCloseTool} />;
             case 'growth': return <GrowthFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
-            case 'fever': return <TempFull onClose={handleCloseTool} />;
+
             case 'solids': return <SolidsFull onClose={handleCloseTool} />;
             case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
             case 'vaccines': return <VaccinesFull onClose={handleCloseTool} />;
@@ -134,7 +134,7 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'meds': return <MedsDashboard />;
             case 'sleep': return <SleepDashboard />;
             case 'growth': return <GrowthDashboard />;
-            case 'fever': return <TempDashboard />;
+
             case 'solids': return <SolidsDashboard />;
             case 'pumping': return <PumpingDashboard />;
             case 'vaccines': return <VaccinesDashboard />;
