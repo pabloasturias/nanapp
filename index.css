@@ -76,8 +76,9 @@ body {
 
 .baby-icon-path {
     fill: none;
-    stroke: #D4AF37;
-    stroke-width: 2;
+    stroke: #f97316;
+    /* Color Naranja Botones (Orange-500) */
+    stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;
 }

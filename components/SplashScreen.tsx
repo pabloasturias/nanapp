@@ -7,7 +7,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(onComplete, 800);
-        }, 3600); // 4s animation cycle roughly, wait nearly a full cycle
+        }, 3600);
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -17,29 +17,48 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
     return (
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
-                <svg className="loader-svg w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path className="baby-icon-path draw-outline"
-                        d="
-             M 50 20 
-             Q 56 12, 56 18 T 50 23 
-             C 35 23, 22 35, 22 50
-             C 18 50, 18 60, 22 60
-             C 25 80, 40 90, 50 90
-             C 60 90, 75 80, 78 60
-             C 82 60, 82 50, 78 50
-             C 78 35, 65 23, 50 23
-          " />
+                <svg className="loader-svg w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    {/* SVG Based on User Uploaded Image 
+                        Line Color: Orange (#f97316) set in CSS
+                        Background: Dark Blue (#0f172a) from parent div
+                    */}
 
-                    <path className="baby-icon-path draw-features" d="M 35 40 Q 40 35, 45 40" />
-                    <path className="baby-icon-path draw-features" d="M 55 40 Q 60 35, 65 40" />
+                    {/* HEAD: Open at top for curl. Round shape. */}
+                    {/* Starts at 1 o'clock, goes round to 11 o'clock */}
+                    <path
+                        className="baby-icon-path draw-outline"
+                        d="M 120 50 A 70 70 0 1 1 80 50"
+                    />
 
-                    <path className="baby-icon-path draw-features" d="M 38 48 Q 40 46, 42 48" />
-                    <path className="baby-icon-path draw-features" d="M 58 48 Q 60 46, 62 48" />
+                    {/* EARS: Simple semicircles on sides */}
+                    <path
+                        className="baby-icon-path draw-outline"
+                        d="M 30 100 C 20 100, 20 80, 30 80"
+                        transform="rotate(-15, 30, 90)" /* Adjust to fit head curve better */
+                        style={{ display: 'none' }} /* The path A command above puts it at x~30? No. */
+                    />
 
-                    <path className="baby-icon-path draw-features" d="M 48 58 Q 50 60, 52 58" />
+                    {/* EARS RE-IMPLEMENTATION: Attached to head path visually */}
+                    {/* Left Ear */}
+                    <path className="baby-icon-path draw-features" d="M 32 105 C 15 105, 15 75, 32 75" />
 
-                    <path className="baby-icon-path draw-features" d="M 42 68 Q 50 75, 58 68" />
-                    <path className="baby-icon-path draw-features" d="M 48 78 Q 50 80, 52 78" />
+                    {/* Right Ear */}
+                    <path className="baby-icon-path draw-features" d="M 168 105 C 185 105, 185 75, 168 75" />
+
+
+                    {/* CURL: Spiral at top */}
+                    <path
+                        className="baby-icon-path draw-outline"
+                        d="M 100 70 C 90 60, 90 40, 100 35 C 110 30, 120 40, 110 50"
+                    />
+
+                    {/* EYES: Happy Arcs (Inverted U) */}
+                    <path className="baby-icon-path draw-features" d="M 65 110 Q 80 95, 95 110" />
+                    <path className="baby-icon-path draw-features" d="M 105 110 Q 120 95, 135 110" />
+
+                    {/* MOUTH: Small Smile */}
+                    <path className="baby-icon-path draw-features" d="M 85 140 Q 100 155, 115 140" />
+
                 </svg>
             </div>
 
