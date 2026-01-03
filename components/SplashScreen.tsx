@@ -17,67 +17,25 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
     return (
         <div className={`fixed inset-0 z-[200] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-800 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="loader-container mb-8">
-                {/* 
-                    Exact recreation of the uploaded Baby Face Icon.
-                    ViewBox 0 0 100 100 for easier coordinate mapping.
-                */}
-                <svg className="loader-svg w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <svg className="loader-svg w-full h-full" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <gStroke stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
 
-                    {/* 
-                        HEAD OUTLINE:
-                        Starts to the left of the top curl, goes CCW around to the right of the curl.
-                        Circular shape centered approx at 50,55.
-                    */}
-                    <path
-                        className="baby-icon-path draw-outline"
-                        d="M 46 26
-                           A 33 33 0 1 0 54 26"
-                    />
+                        {/* Main Contour: Continuous line from Curl -> Head -> Ears */}
+                        <path
+                            id="main-contour"
+                            className="draw-outline"
+                            stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"
+                            d="M 52 22 C 55 22, 56 17, 51 17 C 47 17, 48 24, 50 25 C 33 25, 20 37, 20 53 C 16 53, 16 62, 20 62 C 23 82, 38 92, 50 92 C 62 92, 77 82, 80 62 C 84 62, 84 53, 80 53 C 80 37, 67 25, 50 25"
+                        />
 
-                    {/*
-                        EARS:
-                        Attached to the sides of the head circle.
-                        Located roughly at y=55.
-                        Left Ear: x=17
-                        Right Ear: x=83
-                    */}
-                    {/* Left Ear */}
-                    <path
-                        className="baby-icon-path draw-features"
-                        d="M 17 55 C 14 55, 14 45, 17 45"
-                        transform="rotate(-10, 17, 50) translate(2, 4)"
-                    />
-                    {/* Actually, let's draw them ON the path coordinates to be safer */}
-                    <path className="baby-icon-path draw-outline" d="M 18 52 C 12 52, 12 62, 18 62" />
-                    <path className="baby-icon-path draw-outline" d="M 82 52 C 88 52, 88 62, 82 62" />
+                        {/* Features Group: Eyes and Mouth */}
+                        <g id="features" className="draw-features" stroke="#f97316" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M 35 45 C 38 41, 44 41, 47 45" />
+                            <path d="M 53 45 C 56 41, 62 41, 65 45" />
+                            <path d="M 40 65 C 45 72, 55 72, 60 65" />
+                        </g>
 
-
-                    {/* 
-                        CURL:
-                        A spiral spring starting from the top center gap.
-                    */}
-                    <path
-                        className="baby-icon-path draw-outline"
-                        d="M 50 33 
-                           C 50 25, 56 22, 54 18
-                           C 52 15, 48 18, 48 20
-                           C 48 22, 52 22, 52 20"
-                    />
-
-                    {/* 
-                        EYES:
-                        Happy closed eyes (inverted Arches).
-                        Centered around y=55.
-                    */}
-                    <path className="baby-icon-path draw-features" d="M 35 55 Q 40 48, 45 55" />
-                    <path className="baby-icon-path draw-features" d="M 55 55 Q 60 48, 65 55" />
-
-                    {/* 
-                        MOUTH:
-                        Simple smile below eyes.
-                    */}
-                    <path className="baby-icon-path draw-features" d="M 42 70 Q 50 78, 58 70" />
-
+                    </gStroke>
                 </svg>
             </div>
 
