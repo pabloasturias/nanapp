@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Ruler, Scale, History, Check, Plus, AlertCircle, User, Baby, ChevronDown, Activity, X, Settings } from 'lucide-react';
+import { Ruler, Scale, History, Check, Plus, AlertCircle, User, Baby, ChevronDown, Activity, X, Settings, Trash2 } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { useBaby, BabyProfile } from '../../services/BabyContext';
 import { useLanguage } from '../../services/LanguageContext';
@@ -310,7 +310,7 @@ export const GrowthFull: React.FC<{ onClose: () => void; onOpenSettings: () => v
                             <div key={chartType} className="bg-slate-900/50 border border-slate-800 rounded-2xl p-4 min-h-[220px]">
                                 <div className="flex items-center justify-between mb-2">
                                     <h4 className={`text-xs font-bold uppercase tracking-wider ${chartType === 'weight' ? 'text-emerald-400' :
-                                            chartType === 'height' ? 'text-teal-400' : 'text-cyan-400'
+                                        chartType === 'height' ? 'text-teal-400' : 'text-cyan-400'
                                         }`}>
                                         {chartType === 'weight' ? 'Peso (kg)' :
                                             chartType === 'height' ? 'Altura (cm)' : 'Perímetro Craneal (cm)'}
@@ -367,11 +367,24 @@ export const GrowthFull: React.FC<{ onClose: () => void; onOpenSettings: () => v
                                     </div>
                                 </div>
 
-                                {/* Secondary Values (Small) - Show all available */}
-                                <div className="flex flex-col items-end gap-1 text-[10px] text-slate-600 font-mono">
-                                    {(tab === 'all' || tab !== 'weight') && log.weightKg && <span className="text-emerald-500/70">{log.weightKg}kg</span>}
-                                    {(tab === 'all' || tab !== 'height') && log.heightCm && <span className="text-teal-500/70">{log.heightCm}cm</span>}
-                                    {(tab === 'all' || tab !== 'head') && log.headCm && <span className="text-cyan-500/70">HC:{log.headCm}</span>}
+                                <div className="flex items-center gap-2">
+                                    {/* Secondary Values (Small) - Show all available */}
+                                    <div className="flex flex-col items-end gap-1 text-[10px] text-slate-600 font-mono text-right">
+                                        {(tab === 'all' || tab !== 'weight') && log.weightKg && <span className="text-emerald-500/70">{log.weightKg}kg</span>}
+                                        {(tab === 'all' || tab !== 'height') && log.heightCm && <span className="text-teal-500/70">{log.heightCm}cm</span>}
+                                        {(tab === 'all' || tab !== 'head') && log.headCm && <span className="text-cyan-500/70">HC:{log.headCm}</span>}
+                                    </div>
+
+                                    <button
+                                        onClick={() => {
+                                            if (confirm('¿Eliminar registro?')) {
+                                                removeLog(l => l.timestamp === log.timestamp);
+                                            }
+                                        }}
+                                        className="p-2 text-slate-600 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg transition-all ml-2"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
                                 </div>
                             </div>
                         ))
