@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { GrowthLog } from '../types';
-import { WHO_DATA, getPercentiles } from '../../../services/data/whoGrowthData';
+import { WHO_DATA, getPercentiles } from '@/services/data/whoGrowthData';
 import { AlertCircle } from 'lucide-react';
 
 interface GrowthChartProps {
