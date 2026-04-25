@@ -458,8 +458,8 @@ const SmartDashboard: React.FC<{
                     </div>
                     <div className="flex-1 min-w-0">
                         <div className="flex items-baseline justify-between">
-                            <h1 className="text-xl font-bold text-white tracking-tight truncate">{activeBaby.name}</h1>
-                            <span className="text-xs font-bold text-orange-300 shrink-0 ml-2">{daysSinceBirth}d</span>
+                            <h1 className="text-xl font-bold text-white tracking-tight truncate">{activeBaby?.name || 'Bebé'}</h1>
+                            <span className="text-xs font-bold text-orange-300 shrink-0 ml-2">{daysSinceBirth || 0}d</span>
                         </div>
                         {latestGrowth && (
                             <div className="flex items-center gap-2 mt-0.5">
@@ -472,15 +472,17 @@ const SmartDashboard: React.FC<{
                 </div>
 
                 {/* ── Story Insight Pill ── */}
-                <div className="mb-4 p-3 rounded-2xl bg-white/5 border border-white/5 flex items-start gap-3">
-                    <div className="p-2 rounded-xl bg-orange-500/10 text-orange-400 shrink-0">
-                        <insight.icon size={16} />
+                {insight && (
+                    <div className="mb-4 p-3 rounded-2xl bg-white/5 border border-white/5 flex items-start gap-3">
+                        <div className="p-2 rounded-xl bg-orange-500/10 text-orange-400 shrink-0">
+                            {React.createElement(insight.icon, { size: 16 })}
+                        </div>
+                        <div>
+                            <h4 className="text-[10px] font-bold text-orange-200 uppercase tracking-wider mb-0.5">{insight.title}</h4>
+                            <p className="text-xs text-slate-300 leading-relaxed italic opacity-80">"{insight.text}"</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 className="text-[10px] font-bold text-orange-200 uppercase tracking-wider mb-0.5">{insight.title}</h4>
-                        <p className="text-xs text-slate-300 leading-relaxed italic opacity-80">"{insight.text}"</p>
-                    </div>
-                </div>
+                )}
 
                 {/* ── Quick stat pills ── */}
                 <div className="grid grid-cols-3 gap-2">
