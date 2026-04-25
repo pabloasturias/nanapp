@@ -120,7 +120,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ currentSoundId, onPlaySound,
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex-1 flex flex-col h-full pb-24 px-4 overflow-hidden gap-6 pt-2"
+            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-12"
         >
             {/* ── SMART DASHBOARD ─────────────────────────────────── */}
             <SmartDashboard
@@ -315,6 +315,7 @@ const SmartDashboard: React.FC<{
     onAddBaby: () => void;
     onOpenTool: (id: ToolId) => void;
 }> = ({ activeBaby, onAddBaby, onOpenTool }) => {
+    const { babies, setActiveBabyId } = useBaby();
     const { logs: bfLogs }     = useToolData<BreastfeedingLog>('breastfeeding');
     const { logs: diaperLogs } = useToolData<DiaperLog>('diapers');
     const { logs: medsLogs }   = useToolData<MedsLog>('meds');
@@ -363,8 +364,46 @@ const SmartDashboard: React.FC<{
         .sort((a, b) => a.timestamp - b.timestamp)[0];
 
     const daysSinceBirth = Math.floor((now - activeBaby.birthDate) / (1000 * 60 * 60 * 24));
+    const months = Math.floor(daysSinceBirth / 30.5);
     const bfMinutesAgo = lastBf ? Math.floor((now - lastBf.timestamp) / 60000) : null;
     const diaperMinutesAgo = lastDiaper ? Math.floor((now - lastDiaper.timestamp) / 60000) : null;
+
+    // ── Storytelling Insights ───────────────────────────────────
+    const hoursPlayed = Math.round(stats.totalPlayTimeMinutes / 60);
+    const getInsight = () => {
+        if (hoursPlayed > 0) {
+            return {
+                title: "Vuestro refugio sonoro",
+                text: `Esta semana habéis compartido ${hoursPlayed} horas de calma. El ruido blanco ha sido vuestro aliado para que ${activeBaby.name} se sienta como en el útero.`,
+                icon: Moon
+            };
+        }
+        return {
+            title: "Un nuevo comienzo",
+            text: `Cada registro en nanapp es una pieza más del puzzle que estás construyendo con ${activeBaby.name}. Vas por buen camino.`,
+            icon: Heart
+        };
+    };
+
+    // ── Age-based Tips ──────────────────────────────────────────
+    const getTip = (m: number) => {
+        const tips = [
+            "El ruido blanco imita el sonido del útero. Es el abrazo sonoro que ayuda a calmar su sistema nervioso.",
+            "A esta edad, su visión aún es borrosa. Acércate a unos 20cm para que pueda reconocer tu cara.",
+            "Las rutinas predecibles son su ancla. Hacer lo mismo antes de dormir le da seguridad emocional.",
+            "¿Notas que intenta imitar tus sonidos? Háblale mucho, estás sentando las bases de su lenguaje.",
+            "El movimiento es vida. Un poco de 'tummy time' diario fortalece su cuello para sus futuras aventuras.",
+            "Empieza la fase de exploración. Asegura los enchufes y esquinas; su curiosidad no tiene límites.",
+            "La ansiedad por separación es normal. Es la señal de que ha creado un vínculo fuerte y sano contigo.",
+            "Fomentar su autonomía en pequeñas cosas le ayuda a ganar confianza. Déjale elegir entre dos juguetes.",
+            "El juego es su trabajo. A través de él aprende causa-efecto y resolución de problemas básicos."
+        ];
+        const index = Math.min(m, tips.length - 1);
+        return tips[index];
+    };
+
+    const insight = getInsight();
+    const ageTip = getTip(months);
 
     // ── Alerts ──────────────────────────────────────────────────
     const alerts: { id: string; icon: React.ElementType; label: string; detail: string; color: string; bg: string; border: string; tool: ToolId }[] = [];
@@ -382,6 +421,28 @@ const SmartDashboard: React.FC<{
 
     return (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="shrink-0 flex flex-col gap-3">
+            {/* ── BABY SELECTOR (only if multi) ── */}
+            {babies.length > 1 && (
+                <div className="flex gap-2 mb-1 overflow-x-auto pb-1 scrollbar-hide">
+                    {babies.map(b => (
+                        <button 
+                            key={b.id}
+                            onClick={() => setActiveBabyId(b.id)}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${
+                                activeBaby.id === b.id 
+                                ? 'bg-orange-500/20 border-orange-500 text-orange-200' 
+                                : 'bg-slate-800/40 border-white/5 text-slate-400 hover:bg-slate-800'
+                            }`}
+                        >
+                            <div className={`w-2 h-2 rounded-full ${b.gender === 'girl' ? 'bg-pink-400' : 'bg-blue-400'}`} />
+                            <span className="text-xs font-bold">{b.name}</span>
+                        </button>
+                    ))}
+                    <button onClick={onAddBaby} className="flex items-center gap-2 px-4 py-2 rounded-full border bg-slate-800/20 border-white/5 text-slate-500 hover:text-white transition-all">
+                        <Plus size={14} />
+                    </button>
+                </div>
+            )}
 
             {/* ── HERO ── */}
             <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-900/50 via-slate-800/60 to-slate-900/70 border border-white/5 p-4 shadow-xl">
@@ -406,6 +467,17 @@ const SmartDashboard: React.FC<{
                                 <button onClick={() => onOpenTool('growth')} className="text-[9px] text-slate-500 hover:text-slate-300 ml-auto">Actualizar →</button>
                             </div>
                         )}
+                    </div>
+                </div>
+
+                {/* ── Story Insight Pill ── */}
+                <div className="mb-4 p-3 rounded-2xl bg-white/5 border border-white/5 flex items-start gap-3">
+                    <div className="p-2 rounded-xl bg-orange-500/10 text-orange-400 shrink-0">
+                        <insight.icon size={16} />
+                    </div>
+                    <div>
+                        <h4 className="text-[10px] font-bold text-orange-200 uppercase tracking-wider mb-0.5">{insight.title}</h4>
+                        <p className="text-xs text-slate-300 leading-relaxed italic opacity-80">"{insight.text}"</p>
                     </div>
                 </div>
 
@@ -440,7 +512,6 @@ const SmartDashboard: React.FC<{
                     </button>
                 </div>
 
-                {/* Meds today */}
                 {todayMeds.length > 0 && (
                     <button onClick={() => onOpenTool('meds')} className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 transition-all">
                         <Pill size={13} className="text-red-400 shrink-0" />
@@ -450,6 +521,17 @@ const SmartDashboard: React.FC<{
                         <ChevronRight size={12} className="text-slate-600 ml-auto shrink-0" />
                     </button>
                 )}
+            </div>
+
+            {/* ── Daily Tip ── */}
+            <div className="bg-slate-900/40 rounded-3xl p-4 border border-white/5 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-2xl bg-teal-500/10 flex items-center justify-center shrink-0">
+                    <Smile size={20} className="text-teal-400" />
+                </div>
+                <div className="flex-1">
+                    <h5 className="text-[10px] font-bold text-teal-300 uppercase tracking-widest mb-0.5">Consejo para {months} meses</h5>
+                    <p className="text-xs text-slate-400 leading-tight">{ageTip}</p>
+                </div>
             </div>
 
             {/* ── ALERTS ── */}
