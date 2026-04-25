@@ -166,3 +166,5 @@ async function generateIcons() {
         process.exit(1);
     }
 }
+
+generateIcons();

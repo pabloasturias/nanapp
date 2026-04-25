@@ -4,8 +4,10 @@ export interface BabyProfile {
     id: string;
     name: string;
     birthDate: number; // timestamp
-    gender: 'boy' | 'girl' | 'unknown'; // important for percentiles
+    gender: 'boy' | 'girl' | 'unknown';
     themeColor?: string;
+    caregiverName?: string;
+    caregiverRole?: 'mama' | 'papa' | 'otro';
 }
 
 interface BabyContextType {

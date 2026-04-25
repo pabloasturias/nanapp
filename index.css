@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
-:root {
-    /* Sleep Palette */
-    --color-sleep-bg: #0f172a;
-    /* Slate 900 */
-    --color-sleep-surface: rgba(30, 41, 59, 0.7);
-    /* Slate 800 + opacity */
-    --color-accent-primary: #fb923c;
-    /* Orange 400 */
-    --color-accent-soft: #fed7aa;
-    /* Orange 200 */
+@theme {
+  /* Override default slate to our deep midnight blue */
+  --color-slate-950: #0B0F19;
+  --color-slate-900: #12192b;
+  --color-slate-800: #1c2742;
+  
+  /* Soften the stark white/black for elegance */
+  --color-white: #f8fafc;
+  
+  /* Override bright oranges to soft gold/peach */
+  --color-orange-500: #FDBA74;
+  --color-orange-400: #fed7aa;
+  --color-orange-300: #ffedd5;
+}
 
-    /* Glassmorphism */
-    --glass-bg: rgba(15, 23, 42, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-blur: 16px;
+:root {
+    /* Midnight Lullaby Palette */
+    --color-sleep-bg: #0B0F19; /* Deep Midnight Blue */
+    --color-sleep-surface: rgba(18, 25, 43, 0.7); /* Slightly lighter midnight blue */
+    --color-accent-primary: #FDBA74; /* Soft Peach / Gold (orange-300) */
+    --color-accent-soft: #FFEDD5; /* Lighter Peach (orange-100) */
+
+    /* Premium Glassmorphism */
+    --glass-bg: rgba(18, 25, 43, 0.45);
+    --glass-border: rgba(253, 186, 116, 0.08); /* Gold tinted border */
+    --glass-blur: 32px; /* Stronger blur for premium feel */
 }
 
 body {
     background-color: var(--color-sleep-bg);
+    background-image: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.5) 0%, transparent 60%),
+                      radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 50%);
+    background-attachment: fixed;
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
@@ -86,8 +100,7 @@ body {
 
 .baby-icon-path {
     fill: none;
-    stroke: #f97316;
-    /* Color Naranja Botones (Orange-500) */
+    stroke: #FDBA74; /* Soft Gold/Peach */
     stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;

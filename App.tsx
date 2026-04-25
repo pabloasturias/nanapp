@@ -3,6 +3,8 @@ import { SoundButton } from './components/SoundButton';
 import { ManageSoundsModal } from './components/ManageSoundsModal'; // New Import
 import { Controls } from './components/Controls';
 import { Visualizer } from './components/Visualizer';
+import { HomeView } from './components/HomeView';
+import { DiscoverView } from './components/DiscoverView';
 import { ProductsView } from './components/ProductsView';
 import { SleepView } from './components/SleepView';
 import { StoryView } from './components/StoryView';
@@ -27,6 +29,7 @@ import { useStatistics } from './services/hooks/useStatistics';
 import { useSoundPreferences } from './services/hooks/useSoundPreferences'; // New Import
 
 import { SplashScreen } from './components/SplashScreen';
+import { QuickLogFAB } from './components/QuickLogFAB';
 
 const AppContent: React.FC = () => {
     const { t } = useLanguage();
@@ -39,8 +42,8 @@ const AppContent: React.FC = () => {
     const { activeSoundIds, toggleSoundVisibility, reorderSounds } = useSoundPreferences();
 
     // Navigation State
-    const [activeTab, setActiveTab] = useState<'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools'>(() => {
-        return window.history.state?.tab || 'sounds';
+    const [activeTab, setActiveTab] = useState<'home' | 'audio' | 'routine' | 'discover' | 'story' | 'stats'>(() => {
+        return window.history.state?.tab || 'home';
     });
 
     // Modal States
@@ -66,7 +69,7 @@ const AppContent: React.FC = () => {
 
             // Sync Tab
             if (state.tab) setActiveTab(state.tab);
-            else setActiveTab('sounds'); // Default fall back
+            else setActiveTab('home'); // Default fall back
 
             // Sync Modals
             setShowSettings(state.modal === 'settings');
@@ -286,28 +289,49 @@ const AppContent: React.FC = () => {
     const lastTapRef = useRef(0);
 
     const renderContent = () => {
-        if (activeTab === 'story') return <StoryView onBack={closeModal} />; // Using closeModal as back action if pushed?
-        // Wait, StoryView is a TAB, not a Modal.
-        // If I went to Story tab via 'Settings' -> 'GoToStory', I pushed { tab: 'story' }.
-        // So 'back' should pop that state and return to previous tab (e.g. Sounds).
-        // Correct.
-        if (activeTab === 'sleep') return <SleepView />;
-        if (activeTab === 'tips') return <ProductsView />;
-        if (activeTab === 'stats') return <StatsView onBack={() => navigateToTab('sounds')} />;
-        // StatsView back button might want to go explicitly to sounds? or just back?
-        // navigateToTab('sounds') pushes a new entry 'Sounds'.
-        // If I want 'Back', I should use history.back().
-        // Let's use history.back() for consistency if we want "Back" behavior.
-        // But the UI says "Back" (implied to Home).
-        // Let's stick navigateToTab('sounds') for explicit navigation, or closeModal (back) for history.
-        // navigateToTab('sounds') is safer for "Home" buttons.
+        const playerControls = (
+            <div className="w-full">
+                <div className="shrink-0 h-6 flex items-center justify-center mb-1">
+                    {audio.isPlaying && (
+                        <div className="flex items-center gap-2">
+                            {audio.isWarmthActive && <span className="w-1.5 h-1.5 rounded-full bg-orange-400" title="Warmth On"></span>}
+                            <p className="text-orange-100/80 text-xs font-bold uppercase animate-pulse tracking-widest">
+                                {t('playing')} · {audio.currentSound ? t(audio.currentSound as any) : ''}
+                            </p>
+                        </div>
+                    )}
+                    {!audio.isPlaying && audio.isPaused && (
+                        <p className="text-orange-200/50 text-xs font-bold uppercase tracking-widest">{t('paused')}</p>
+                    )}
+                </div>
 
-        if (activeTab === 'tools') return <ToolsView onOpenSettings={() => openModal('settings')} />;
+                <div className="shrink-0 px-2 pb-2" onClick={(e) => e.stopPropagation()}>
+                    <Controls
+                        isPlaying={audio.isPlaying}
+                        isPaused={audio.isPaused}
+                        onPlay={handlePlay}
+                        onPause={handlePause}
+                        onStop={() => handleStop(false)}
+                        timerDuration={timer.duration}
+                        timerRemaining={timer.remaining}
+                        onAdjustTimer={(delta) => { timer.adjust(delta); showNotification(`${t('timer')}: ${Math.max(10, timer.duration + delta)}m`); }}
+                        isTimerActive={timer.isActive}
+                        onToggleTimerActive={timer.toggleActive}
+                        hapticsEnabled={false}
+                    />
+                </div>
+            </div>
+        );
+        if (activeTab === 'home') return <HomeView currentSoundId={audio.currentSound} onPlaySound={handleSoundSelect} onOpenTool={(id) => { navigateToTab('routine'); window.history.pushState({ tab: 'routine', toolId: id }, ''); }} onOpenSettings={() => openModal('settings')} playerControls={playerControls} />;
+        if (activeTab === 'story') return <StoryView onBack={closeModal} />;
+        if (activeTab === 'stats') return <StatsView onBack={() => navigateToTab('routine')} />;
+        if (activeTab === 'routine') return <ToolsView onOpenSettings={() => openModal('settings')} />;
+        if (activeTab === 'discover') return <DiscoverView />;
 
         return (
             <>
-                <div className="shrink-0 flex items-center justify-between px-6 mb-2">
-                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
+                <div className="shrink-0 flex items-center justify-between px-6 mb-2 mt-4">
+                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_audio')}</h2>
                     <div className="flex items-center gap-2">
                         <button
                             onClick={() => openModal('legal')}
@@ -346,41 +370,28 @@ const AppContent: React.FC = () => {
                     })}
                 </div>
 
-                <div className="shrink-0 h-6 flex items-center justify-center mb-1">
-                    {audio.isPlaying && (
-                        <div className="flex items-center gap-2">
-                            {audio.isWarmthActive && <span className="w-1.5 h-1.5 rounded-full bg-orange-400" title="Warmth On"></span>}
-                            <p className="text-orange-100/80 text-xs font-bold uppercase animate-pulse tracking-widest">
-                                {t('playing')} · {audio.currentSound ? t(audio.currentSound as any) : ''}
-                            </p>
-                        </div>
-                    )}
-                    {!audio.isPlaying && audio.isPaused && (
-                        <p className="text-orange-200/50 text-xs font-bold uppercase tracking-widest">{t('paused')}</p>
-                    )}
-                </div>
-
-                <div className="shrink-0 px-6 pb-2" onClick={(e) => e.stopPropagation()}>
-                    <Controls
-                        isPlaying={audio.isPlaying}
-                        isPaused={audio.isPaused}
-                        onPlay={handlePlay}
-                        onPause={handlePause}
-                        onStop={() => handleStop(false)}
-                        timerDuration={timer.duration}
-                        timerRemaining={timer.remaining}
-                        onAdjustTimer={(delta) => { timer.adjust(delta); showNotification(`${t('timer')}: ${Math.max(10, timer.duration + delta)}m`); }}
-                        isTimerActive={timer.isActive}
-                        onToggleTimerActive={timer.toggleActive}
-                        hapticsEnabled={false}
-                    />
-                </div>
+                {playerControls}
             </>
         );
     };
 
+    const isNightActive = () => {
+        const h = new Date().getHours();
+        const nightOn = localStorage.getItem('nanapp_night_mode') !== 'false';
+        return (h >= 23 || h < 6) && nightOn;
+    };
+    const [nightActive, setNightActive] = React.useState(isNightActive);
+    useEffect(() => {
+        const check = () => setNightActive(isNightActive());
+        const t = setInterval(check, 60000);
+        window.addEventListener('nanapp_settings_changed', check);
+        return () => { clearInterval(t); window.removeEventListener('nanapp_settings_changed', check); };
+    }, []);
+
     return (
-        <div className="relative h-[100dvh] w-full flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950" onClick={handleBackgroundClick}>
+        // ── Mobile-only shell: always phone-width, centered on desktop ──
+        <div className="flex items-center justify-center w-full h-[100dvh] bg-slate-950">
+        <div className="relative h-[100dvh] w-full max-w-[430px] flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950 shadow-2xl" onClick={handleBackgroundClick}>
 
             {/* Splash Screen */}
             {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
@@ -416,7 +427,7 @@ const AppContent: React.FC = () => {
             />
             <WhyItWorksModal isOpen={showWhyModal} onClose={closeModal} />
             <QuickInfoModal isOpen={quickInfoType !== null} type={quickInfoType} onClose={closeModal} />
-            <SupportModal isOpen={showSupportModal} onClose={closeModal} onGoToProducts={() => navigateToTab('tips')} />
+            <SupportModal isOpen={showSupportModal} onClose={closeModal} onGoToProducts={() => navigateToTab('discover')} />
             <LegalModal isOpen={showLegalModal} onClose={closeModal} />
             <Toast message={toastMessage} isVisible={showToast} onHide={() => setShowToast(false)} />
 
@@ -439,7 +450,18 @@ const AppContent: React.FC = () => {
                 {renderContent()}
             </div>
 
-            <BottomNav activeTab={activeTab} setActiveTab={navigateToTab} />
+            {!nightActive && (
+                <BottomNav 
+                    activeTab={
+                        activeTab === 'story' ? 'audio' :
+                        activeTab === 'stats' ? 'routine' :
+                        (activeTab as 'home' | 'audio' | 'routine' | 'discover')
+                    } 
+                    setActiveTab={navigateToTab as any} 
+                />
+            )}
+            {!nightActive && <QuickLogFAB />}
+        </div>
         </div>
     );
 };

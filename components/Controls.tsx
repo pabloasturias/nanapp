@@ -106,8 +106,8 @@ export const Controls: React.FC<ControlsProps> = ({
             onClick={handleMainAction}
             className={`col-span-3 flex items-center justify-center gap-3 h-full rounded-[2rem] border transition-all active:scale-95 shadow-xl
                 ${isPlaying 
-                    ? 'bg-slate-800 border-slate-700 text-orange-400 shadow-orange-500/5' 
-                    : 'bg-orange-400 border-orange-300 text-white shadow-orange-500/20'}`}
+                    ? 'bg-gradient-to-br from-orange-400 to-orange-500 border-orange-300 text-slate-950 shadow-[0_0_30px_rgba(249,115,22,0.4)]' 
+                    : 'bg-gradient-to-br from-slate-700 to-slate-800 border-slate-600/50 text-slate-200 shadow-lg hover:from-slate-600 hover:to-slate-700'}`}
           >
               {isPlaying ? (
                   <>

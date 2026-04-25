@@ -1,10 +1,10 @@
 import React from 'react';
-import { Music, Moon, BookOpen, Wrench } from 'lucide-react';
+import { Home, Music, Wrench, Compass } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';
 
 interface BottomNavProps {
-  activeTab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools';
-  setActiveTab: (tab: 'sounds' | 'sleep' | 'tips' | 'story' | 'stats' | 'tools') => void;
+  activeTab: 'home' | 'audio' | 'routine' | 'discover';
+  setActiveTab: (tab: 'home' | 'audio' | 'routine' | 'discover') => void;
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
@@ -12,44 +12,44 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
 
   return (
     <div className="fixed bottom-0 left-0 right-0 mx-auto max-w-lg w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 rounded-t-[2rem] pb-[env(safe-area-inset-bottom)]">
-      <div className="flex justify-around items-center h-20">
+      <div className="flex justify-around items-center h-20 px-4">
+        
+        {/* HOME */}
         <button
-          onClick={() => setActiveTab('sounds')}
-          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'sounds' || activeTab === 'story' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+          onClick={() => setActiveTab('home')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'home' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <Music size={26} strokeWidth={activeTab === 'sounds' ? 2.5 : 2} className={activeTab === 'sounds' ? 'drop-shadow-lg' : ''} />
-          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sounds')}</span>
+          <Home size={26} strokeWidth={activeTab === 'home' ? 2.5 : 2} className={activeTab === 'home' ? 'drop-shadow-lg scale-110 transition-transform' : 'transition-transform'} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_home')}</span>
         </button>
 
+        {/* AUDIO */}
         <button
-          onClick={() => setActiveTab('tools')}
-          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tools' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+          onClick={() => setActiveTab('audio')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'audio' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <div className="relative w-7 h-7 flex items-center justify-center">
-            <Wrench
-              size={24}
-              className={`transition-all duration-300 ${activeTab === 'tools' ? 'drop-shadow-lg scale-110' : 'scale-100'} -rotate-45 text-current transform-origin-center`}
-              strokeWidth={activeTab === 'tools' ? 2.5 : 2}
-            />
-          </div>
-          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_tools')}</span>
+          <Music size={26} strokeWidth={activeTab === 'audio' ? 2.5 : 2} className={activeTab === 'audio' ? 'drop-shadow-lg scale-110 transition-transform' : 'transition-transform'} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_audio')}</span>
         </button>
 
+        {/* TOOLS */}
         <button
-          onClick={() => setActiveTab('sleep')}
-          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'sleep' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+          onClick={() => setActiveTab('routine')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'routine' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <Moon size={26} strokeWidth={activeTab === 'sleep' ? 2.5 : 2} className={activeTab === 'sleep' ? 'drop-shadow-lg' : ''} />
-          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_sleep')}</span>
+          <Wrench size={24} strokeWidth={activeTab === 'routine' ? 2.5 : 2} className={activeTab === 'routine' ? 'drop-shadow-lg scale-110 transition-transform' : 'transition-transform'} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_routine')}</span>
         </button>
 
+        {/* DISCOVER */}
         <button
-          onClick={() => setActiveTab('tips')}
-          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'tips' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
+          onClick={() => setActiveTab('discover')}
+          className={`flex flex-col items-center gap-1.5 w-full h-full justify-center transition-colors ${activeTab === 'discover' ? 'text-orange-300' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <BookOpen size={26} strokeWidth={activeTab === 'tips' ? 2.5 : 2} className={activeTab === 'tips' ? 'drop-shadow-lg' : ''} />
-          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_resources')}</span>
+          <Compass size={26} strokeWidth={activeTab === 'discover' ? 2.5 : 2} className={activeTab === 'discover' ? 'drop-shadow-lg scale-110 transition-transform' : 'transition-transform'} />
+          <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_discover')}</span>
         </button>
+
       </div>
     </div>
   );

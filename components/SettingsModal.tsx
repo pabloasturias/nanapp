@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check, Users, Plus, Trash2, Calendar, AlertTriangle } from 'lucide-react';
+import { X, Thermometer, Volume2, VolumeX, Globe, Heart, Shield, Info, Clock, ChevronRight, Check, Users, Plus, Trash2, Calendar, AlertTriangle, Moon, Music, Baby } from 'lucide-react';
+import { SOUNDS } from '../constants';
 
 import { useLanguage } from '../services/LanguageContext';
 import { useBaby, BabyProfile } from '../services/BabyContext';
@@ -105,7 +106,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     {/* SECTION: FAMILY */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
-                            <Users size={12} />
+                            <Baby size={12} />
                             <span>{t('settings_family_title')}</span>
                         </div>
 
@@ -327,7 +328,89 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         </div>
                     </div>
 
-                    {/* SECTION: GENERAL */}
+                    {/* SECTION: NIGHT MODE */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
+                            <Moon size={12} />
+                            <span>Modo Noche</span>
+                        </div>
+
+                        <div className="bg-slate-800/30 rounded-3xl border border-slate-700/30 overflow-hidden">
+                            {/* Toggle auto night mode */}
+                            <div className="p-4 flex items-center justify-between border-b border-white/5">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-2 bg-red-900/30 rounded-xl" style={{color: 'rgba(200,80,80,0.9)'}}>
+                                        <Moon size={18} />
+                                    </div>
+                                    <div>
+                                        <span className="text-sm font-semibold text-slate-200 block">Activar automáticamente</span>
+                                        <span className="text-[10px] text-slate-500">De 23:00 a 06:00, pantalla roja</span>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => {
+                                        const current = localStorage.getItem('nanapp_night_mode') !== 'false';
+                                        localStorage.setItem('nanapp_night_mode', String(!current));
+                                        window.dispatchEvent(new Event('nanapp_settings_changed'));
+                                    }}
+                                    className={`w-10 h-6 rounded-full transition-colors relative ${
+                                        localStorage.getItem('nanapp_night_mode') !== 'false' ? 'bg-red-700' : 'bg-slate-700'
+                                    }`}
+                                >
+                                    <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${
+                                        localStorage.getItem('nanapp_night_mode') !== 'false' ? 'translate-x-4' : ''
+                                    }`} />
+                                </button>
+                            </div>
+
+                            {/* Default night sound */}
+                            <div className="p-4">
+                                <div className="flex items-center gap-2 mb-3">
+                                    <Music size={14} className="text-slate-400" />
+                                    <span className="text-sm font-semibold text-slate-300">Sonido por defecto de noche</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {SOUNDS.slice(0, 6).map(sound => {
+                                        const stored = localStorage.getItem('nanapp_night_sound') || SOUNDS[0].id;
+                                        const isSelected = stored === sound.id;
+                                        return (
+                                            <button
+                                                key={sound.id}
+                                                onClick={() => {
+                                                    localStorage.setItem('nanapp_night_sound', sound.id);
+                                                    window.dispatchEvent(new Event('nanapp_settings_changed'));
+                                                }}
+                                                className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all border ${
+                                                    isSelected
+                                                        ? 'border-red-700/60 text-red-300'
+                                                        : 'bg-slate-800/50 text-slate-400 border-transparent hover:bg-slate-800'
+                                                }`}
+                                                style={isSelected ? {background: 'rgba(120,20,20,0.4)'} : {}}
+                                            >
+                                                {isSelected && <Check size={11} />}
+                                                <sound.Icon size={13} />
+                                                <span className="truncate">{sound.label}</span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            
+                            {/* Manual night mode trigger */}
+                            <div className="p-4 border-t border-white/5 bg-slate-800/20">
+                                <button
+                                    onClick={() => {
+                                        window.dispatchEvent(new Event('nanapp_force_night'));
+                                        onClose();
+                                    }}
+                                    className="w-full py-3 px-4 rounded-xl bg-slate-800 border border-slate-700/50 text-slate-300 font-bold text-sm hover:bg-slate-700 hover:text-white transition-all flex items-center justify-center gap-2"
+                                >
+                                    <Moon size={16} className="text-slate-400" />
+                                    Probar vista nocturna ahora
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
                             <Globe size={12} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Droplets, Disc, Check, History, Clock } from 'lucide-react';
+import { Droplets, Disc, Check, History, Clock, Trash2, PieChart } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { DiaperLog } from './types';
 
@@ -48,7 +48,7 @@ export const DiaperDashboard: React.FC = () => {
 };
 
 export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { addLog, getLogsByDate } = useToolData<DiaperLog>('diapers');
+    const { addLog, getLogsByDate, removeLog } = useToolData<DiaperLog>('diapers');
     const [selectedType, setSelectedType] = useState<DiaperLog['type'] | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
@@ -58,27 +58,35 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             type: selectedType,
             color: selectedColor || undefined
         });
-        // Reset or Close? Let's reset for quick entry, or toast.
-        // For now, just reset and maybe vibrate.
         setSelectedType(null);
         setSelectedColor(null);
         if (navigator.vibrate) navigator.vibrate(50);
         onClose();
     };
 
+    const handleDelete = (timestamp: number) => {
+        if (window.confirm("¿Seguro que quieres borrar este registro?")) {
+            removeLog((l) => l.timestamp === timestamp);
+        }
+    };
+
     const history = getLogsByDate(new Date());
 
+    // Stats
+    const wetCount = history.filter(l => l.type === 'wet' || l.type === 'mixed').length;
+    const dirtyCount = history.filter(l => l.type === 'dirty' || l.type === 'mixed').length;
+
     return (
-        <div className="flex flex-col h-full p-6">
-            <h2 className="text-xl font-bold text-amber-50 mb-6 text-center">Nuevo Pañal</h2>
+        <div className="flex flex-col h-full bg-slate-950 p-6 overflow-y-auto">
+            <h2 className="text-xl font-bold text-amber-50 mb-6 text-center font-['Outfit']">Nuevo Pañal</h2>
 
             {/* Type Selection */}
             <div className="grid grid-cols-3 gap-4 mb-8">
                 <button
                     onClick={() => setSelectedType('wet')}
-                    className={`aspect-square rounded-2xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'wet'
-                            ? 'bg-blue-500/20 border-blue-400 text-blue-300'
-                            : 'bg-slate-800 border-white/5 text-slate-500 hover:bg-slate-700'
+                    className={`aspect-square rounded-3xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'wet'
+                            ? 'bg-blue-500/20 border-blue-400 text-blue-300 scale-105 shadow-lg shadow-blue-500/20'
+                            : 'bg-slate-900 border-white/5 text-slate-500 hover:bg-slate-800'
                         }`}
                 >
                     <Droplets size={32} />
@@ -87,9 +95,9 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
                 <button
                     onClick={() => setSelectedType('dirty')}
-                    className={`aspect-square rounded-2xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'dirty'
-                            ? 'bg-amber-600/20 border-amber-500 text-amber-300'
-                            : 'bg-slate-800 border-white/5 text-slate-500 hover:bg-slate-700'
+                    className={`aspect-square rounded-3xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'dirty'
+                            ? 'bg-amber-600/20 border-amber-500 text-amber-300 scale-105 shadow-lg shadow-amber-500/20'
+                            : 'bg-slate-900 border-white/5 text-slate-500 hover:bg-slate-800'
                         }`}
                 >
                     <Disc size={32} />
@@ -98,9 +106,9 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
                 <button
                     onClick={() => setSelectedType('mixed')}
-                    className={`aspect-square rounded-2xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'mixed'
-                            ? 'bg-orange-500/20 border-orange-400 text-orange-300'
-                            : 'bg-slate-800 border-white/5 text-slate-500 hover:bg-slate-700'
+                    className={`aspect-square rounded-3xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${selectedType === 'mixed'
+                            ? 'bg-orange-500/20 border-orange-400 text-orange-300 scale-105 shadow-lg shadow-orange-500/20'
+                            : 'bg-slate-900 border-white/5 text-slate-500 hover:bg-slate-800'
                         }`}
                 >
                     <div className="flex">
@@ -114,8 +122,8 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             {/* Color Palette (Show if Dirty or Mixed) */}
             {(selectedType === 'dirty' || selectedType === 'mixed') && (
                 <div className="mb-8 animate-[fade-in_0.3s_ease-out]">
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 text-center">Color</p>
-                    <div className="flex justify-between px-2">
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 text-center">Color de las heces</p>
+                    <div className="flex justify-between px-2 bg-slate-900/50 p-4 rounded-3xl border border-white/5">
                         {STOOL_COLORS.map(c => (
                             <button
                                 key={c.id}
@@ -136,44 +144,78 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <button
                 disabled={!selectedType}
                 onClick={handleSave}
-                className={`w-full py-4 rounded-xl font-bold text-lg transition-all mb-8 ${selectedType
-                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg'
-                        : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                className={`w-full py-4 rounded-2xl font-bold text-lg transition-all mb-8 ${selectedType
+                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-[1.02]'
+                        : 'bg-slate-900 text-slate-500 cursor-not-allowed'
                     }`}
             >
-                Guardar
+                Guardar Registro
             </button>
 
+            {/* Stats Summary */}
+            {history.length > 0 && (
+                <div className="mb-6 flex gap-4 animate-[fade-in_0.3s]">
+                    <div className="flex-1 bg-slate-900/50 rounded-2xl p-4 flex items-center justify-between border border-white/5">
+                        <div className="flex items-center gap-2">
+                            <Droplets size={16} className="text-blue-400" />
+                            <span className="text-sm font-bold text-slate-300">Pí Hoy</span>
+                        </div>
+                        <span className="text-xl font-bold text-blue-400">{wetCount}</span>
+                    </div>
+                    <div className="flex-1 bg-slate-900/50 rounded-2xl p-4 flex items-center justify-between border border-white/5">
+                        <div className="flex items-center gap-2">
+                            <Disc size={16} className="text-amber-400" />
+                            <span className="text-sm font-bold text-slate-300">Caca Hoy</span>
+                        </div>
+                        <span className="text-xl font-bold text-amber-400">{dirtyCount}</span>
+                    </div>
+                </div>
+            )}
+
             {/* History */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 mt-4">
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                     <History size={12} />
-                    Hoy
+                    Historial de Hoy
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-3 pb-8">
                     {history.length === 0 ? (
-                        <p className="text-sm text-slate-500 italic text-center py-4">Sin registros hoy</p>
+                        <div className="flex flex-col items-center justify-center py-10 bg-slate-900/30 rounded-3xl border border-white/5 border-dashed">
+                            <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
+                                <Check size={32} className="text-slate-500" />
+                            </div>
+                            <p className="text-slate-400 font-bold">Sin cambios de pañal aún</p>
+                            <p className="text-xs text-slate-500 mt-1">El bebé está limpio por ahora</p>
+                        </div>
                     ) : (
                         history.map((log, i) => (
-                            <div key={i} className="flex items-center justify-between p-3 bg-slate-800 rounded-xl border border-white/5">
-                                <div className="flex items-center gap-3">
-                                    <div className={`p-2 rounded-lg ${log.type === 'wet' ? 'text-blue-400 bg-blue-500/10' : 'text-amber-400 bg-amber-500/10'}`}>
-                                        {log.type === 'wet' ? <Droplets size={16} /> : <Disc size={16} />}
+                            <div key={i} className="group flex items-center justify-between p-4 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                                <div className="flex items-center gap-4">
+                                    <div className={`p-3 rounded-xl shadow-inner ${log.type === 'wet' ? 'text-blue-400 bg-blue-500/10' : 'text-amber-400 bg-amber-500/10'}`}>
+                                        {log.type === 'wet' ? <Droplets size={20} /> : <Disc size={20} />}
                                     </div>
-                                    <span className="text-sm font-bold text-slate-200 capitalize">
-                                        {log.type === 'mixed' ? 'Ambos' : (log.type === 'wet' ? 'Pí' : 'Caca')}
-                                    </span>
-                                    {log.color && (
-                                        <span
-                                            className="w-3 h-3 rounded-full border border-white/10"
-                                            style={{ backgroundColor: STOOL_COLORS.find(c => c.id === log.color)?.hex }}
-                                        />
-                                    )}
+                                    <div>
+                                        <span className="text-sm font-bold text-slate-200 capitalize flex items-center gap-2">
+                                            {log.type === 'mixed' ? 'Ambos' : (log.type === 'wet' ? 'Pí' : 'Caca')}
+                                            {log.color && (
+                                                <span
+                                                    className="w-3 h-3 rounded-full border border-white/20 shadow-sm"
+                                                    style={{ backgroundColor: STOOL_COLORS.find(c => c.id === log.color)?.hex }}
+                                                />
+                                            )}
+                                        </span>
+                                        <div className="text-xs text-slate-500 flex items-center gap-1 mt-1">
+                                            <Clock size={10} />
+                                            {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-xs text-slate-500 flex items-center gap-1">
-                                    <Clock size={10} />
-                                    {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                </div>
+                                <button 
+                                    onClick={() => handleDelete(log.timestamp)}
+                                    className="p-2 text-slate-600 hover:text-red-400 hover:bg-red-500/10 rounded-full transition-colors"
+                                >
+                                    <Trash2 size={18} />
+                                </button>
                             </div>
                         ))
                     )}

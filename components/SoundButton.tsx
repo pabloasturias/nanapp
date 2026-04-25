@@ -32,17 +32,17 @@ export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onCli
       }}
       className={`group relative flex flex-col items-center justify-center p-2 w-full h-full min-h-[65px] rounded-[2rem] border transition-all duration-300
         ${isActive
-          ? 'bg-orange-400 border-orange-300 shadow-[0_0_30px_rgba(251,146,60,0.25)]'
+          ? 'bg-gradient-to-br from-orange-400 to-orange-500 border-orange-300 shadow-[0_0_30px_rgba(249,115,22,0.4)]'
           : 'bg-slate-800/60 border-orange-100/5 hover:bg-slate-800 hover:border-orange-100/10'
         }`}
     >
-      <div className={`mb-2 p-3 rounded-full transition-transform duration-500 ${isActive ? 'scale-105 bg-white/25' : 'bg-slate-900/50 group-hover:bg-slate-900'}`}>
+      <div className={`mb-2 p-3 rounded-full transition-transform duration-500 ${isActive ? 'scale-105 bg-slate-950/10' : 'bg-slate-900/50 group-hover:bg-slate-900'}`}>
         <IconComponent
           size={24}
-          className={isActive ? 'text-white' : 'text-slate-400 group-hover:text-orange-200/80'}
+          className={isActive ? 'text-slate-950' : 'text-slate-400 group-hover:text-orange-200/80'}
         />
       </div>
-      <span className={`text-xs font-semibold tracking-wide ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-orange-50'}`}>
+      <span className={`text-xs font-semibold tracking-wide ${isActive ? 'text-slate-950' : 'text-slate-400 group-hover:text-orange-50'}`}>
         {t(sound.id as any)}
       </span>
     </button>

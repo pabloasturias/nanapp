@@ -21,14 +21,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSupport, o
                 className="flex items-center gap-3 group text-left"
             >
                 <div className="relative group-hover:scale-105 transition-transform duration-300">
-                    <img
-                        src="/icons/icon-192.png"
-                        alt="Nanapp Logo"
-                        className="w-11 h-11 rounded-xl shadow-sm border border-orange-200/10"
-                    />
+                    <div className="w-11 h-11 rounded-xl shadow-[0_0_15px_rgba(253,186,116,0.15)] border border-amber-200/20 bg-[#12192b] flex items-center justify-center overflow-hidden">
+                        <img src="/app_logo.png" alt="nanapp logo" className="w-full h-full object-cover transform scale-110" />
+                    </div>
                 </div>
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-orange-50 leading-none mb-1 font-['Quicksand']">
+                    <h1 className="text-2xl font-bold tracking-tight text-orange-50 leading-none mb-1 font-['Outfit']">
                         nanapp
                     </h1>
                     <div className="flex items-center gap-2">
