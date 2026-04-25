@@ -6,7 +6,7 @@ import { useBaby } from '../services/BabyContext';
 import { useStatistics } from '../services/hooks/useStatistics';
 import { useToolData } from '../services/hooks/useToolData';
 import { ToolDefinition, ToolId, GrowthLog, BreastfeedingLog, DiaperLog, MedsLog, SleepLog, AppointmentLog } from './tools/types';
-import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X } from 'lucide-react';
+import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X, Heart } from 'lucide-react';
 import { SoundType } from '../types';
 import { SoundButton } from './SoundButton';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -316,6 +316,7 @@ const SmartDashboard: React.FC<{
     onOpenTool: (id: ToolId) => void;
 }> = ({ activeBaby, onAddBaby, onOpenTool }) => {
     const { babies, setActiveBabyId } = useBaby();
+    const { stats } = useStatistics();
     const { logs: bfLogs }     = useToolData<BreastfeedingLog>('breastfeeding');
     const { logs: diaperLogs } = useToolData<DiaperLog>('diapers');
     const { logs: medsLogs }   = useToolData<MedsLog>('meds');
