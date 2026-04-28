@@ -136,11 +136,9 @@ export const TeethingDashboard: React.FC = () => {
     const { activeBaby } = useBaby();
 
     // Count unique erupted teeth for active baby
-    const count = useMemo(() => {
+    const { count, nextTooth } = useMemo(() => {
         let eruptedCount = 0;
         const processedIds = new Set();
-
-        // Filter logs for active baby first!
         const babyLogs = activeBaby ? logs.filter(l => !l.babyId || l.babyId === activeBaby.id) : logs;
 
         babyLogs.forEach(log => {
@@ -149,24 +147,32 @@ export const TeethingDashboard: React.FC = () => {
                     eruptedCount++;
                     processedIds.add(log.toothId);
                 }
-            } else {
-                const groupTeeth = ALL_TEETH.filter(t => t.oldGroupId === log.toothId);
-                groupTeeth.forEach(t => {
-                    if (!processedIds.has(t.id)) {
-                        eruptedCount++;
-                        processedIds.add(t.id);
-                    }
-                });
             }
         });
-        return eruptedCount;
+
+        // Predict next
+        const babyAgeMonths = activeBaby ? (Date.now() - activeBaby.birthDate) / (1000 * 60 * 60 * 24 * 30.44) : 0;
+        const next = ALL_TEETH.find(t => {
+            if (processedIds.has(t.id)) return false;
+            const parts = t.months.replace('m', '').split('-');
+            return babyAgeMonths < parseInt(parts[1] || parts[0]);
+        });
+
+        return { count: eruptedCount, nextTooth: next };
     }, [logs, activeBaby]);
 
     return (
-        <div className="flex flex-col">
-            <span className="font-bold text-rose-200">
-                {count} / 20
-            </span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+                <span className="font-bold text-rose-200">
+                    {count} / 20
+                </span>
+                {nextTooth && (
+                    <div className="text-[8px] font-black bg-rose-500/10 text-rose-400 px-1 rounded flex items-center gap-1 border border-rose-500/20">
+                        <Calendar size={8} /> {nextTooth.id.includes('U') ? 'Sup' : 'Inf'}
+                    </div>
+                )}
+            </div>
             <span className="text-[10px] opacity-70">
                 Dientes
             </span>
@@ -394,7 +400,21 @@ export const TeethingFull: React.FC<{ onClose: () => void; onOpenSettings: () =>
                         </div>
 
                         <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 flex flex-col gap-3">
-                            <label className="text-xs font-bold text-slate-400 uppercase">Fecha de Salida (Opcional)</label>
+                            <label className="text-xs font-bold text-slate-400 uppercase">Sintomas vinculados</label>
+                            <div className="grid grid-cols-2 gap-2">
+                                {['Babbeo', 'Irritabilidad', 'Fiebre leve', 'Mordisqueo'].map(s => (
+                                    <button 
+                                        key={s}
+                                        className="py-2 px-3 rounded-lg border border-slate-700 text-[10px] font-bold text-slate-400 hover:border-pink-500/50 hover:text-pink-200 transition-all text-left"
+                                    >
+                                        {s}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 flex flex-col gap-3">
+                            <label className="text-xs font-bold text-slate-400 uppercase">Fecha de Salida</label>
                             <div className="flex items-center bg-slate-950 rounded-lg border border-slate-700 px-3 py-2">
                                 <Calendar size={16} className="text-slate-500 mr-2" />
                                 <input

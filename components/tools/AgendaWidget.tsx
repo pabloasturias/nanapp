@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Calendar, Plus, Clock, Trash2, Settings } from 'lucide-react';
+import { Calendar, Plus, Clock, Trash2, Settings, ClipboardList, CheckSquare, Square, MapPin, ExternalLink } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { AppointmentLog } from './types';
 import { useBaby } from '../../services/BabyContext';
@@ -13,13 +13,18 @@ export const AgendaDashboard: React.FC = () => {
         .filter(l => l.timestamp > Date.now() && (!l.babyId || (activeBaby && l.babyId === activeBaby.id)))
         .sort((a, b) => a.timestamp - b.timestamp)[0];
 
-    if (!upcoming) return <span className="opacity-60">Sin citas</span>;
+    const daysLeft = Math.ceil((upcoming.timestamp - Date.now()) / (1000 * 60 * 60 * 24));
 
     return (
-        <div className="flex flex-col">
-            <span className="font-bold text-blue-200 truncate">
-                {new Date(upcoming.timestamp).toLocaleDateString()}
-            </span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+                <span className="font-bold text-blue-200 truncate max-w-[80px]">
+                    {new Date(upcoming.timestamp).toLocaleDateString()}
+                </span>
+                <div className={`text-[8px] font-black px-1 rounded flex items-center gap-1 border ${daysLeft <= 1 ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' : 'bg-blue-500/10 text-blue-400 border-blue-500/20'}`}>
+                    <Clock size={8} /> {daysLeft === 0 ? 'HOY' : `en ${daysLeft}d`}
+                </div>
+            </div>
             <span className="text-[10px] opacity-70 truncate">
                 {upcoming.reason}
             </span>
@@ -36,6 +41,7 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     // Form State
     const [date, setDate] = useState('');
     const [reason, setReason] = useState('');
+    const [location, setLocation] = useState('');
     const [reminder, setReminder] = useState(false);
     const [isAdding, setIsAdding] = useState(false);
 
@@ -68,6 +74,7 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         addLog({
             timestamp,
             reason,
+            location: location.trim() || undefined,
             completed: false,
             babyId: eventBabyId
         });
@@ -96,6 +103,7 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
         setDate('');
         setReason('');
+        setLocation('');
         setReminder(false);
         setIsAdding(false);
     };
@@ -188,6 +196,17 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 />
                             </div>
 
+                            <div className="flex items-center gap-4 text-slate-300 pt-2 border-t border-white/5">
+                                <MapPin size={20} className="text-blue-400" />
+                                <input
+                                    type="text"
+                                    value={location}
+                                    onChange={e => setLocation(e.target.value)}
+                                    placeholder="Ubicación (ej: Hospital)"
+                                    className="bg-transparent text-white focus:outline-none flex-1 font-medium text-lg"
+                                />
+                            </div>
+
                             <div
                                 className="flex items-center gap-4 text-slate-300 cursor-pointer pt-2 border-t border-white/5"
                                 onClick={() => setReminder(!reminder)}
@@ -275,6 +294,44 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                                 </button>
                                             </div>
                                             <p className="text-sm text-slate-400 mb-4">{eventDate.toLocaleDateString([], { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+                                            
+                                            {l.location && (
+                                                <div className="flex items-center gap-2 mb-4 text-xs text-blue-400">
+                                                    <MapPin size={12} />
+                                                    <span className="font-bold">{l.location}</span>
+                                                    <a 
+                                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.location)}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="ml-auto flex items-center gap-1 bg-blue-500/10 px-2 py-1 rounded hover:bg-blue-500/20 transition-colors"
+                                                    >
+                                                        Cómo llegar <ExternalLink size={10} />
+                                                    </a>
+                                                </div>
+                                            )}
+
+                                            {/* Prep Checklist Section */}
+                                            <div className="mb-6 p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                                                <div className="flex items-center gap-2 mb-3">
+                                                    <ClipboardList size={16} className="text-blue-400" />
+                                                    <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Preparación para la visita</h5>
+                                                </div>
+                                                <div className="space-y-2">
+                                                    {[
+                                                        'Anotar dudas sobre alimentación',
+                                                        'Revisar cartilla de vacunas',
+                                                        'Apuntar cambios en el sueño',
+                                                        'Consultar sobre el peso'
+                                                    ].map((item, idx) => (
+                                                        <div key={idx} className="flex items-center gap-3 group/item cursor-pointer">
+                                                            <div className="w-4 h-4 rounded border border-slate-700 flex items-center justify-center text-slate-800">
+                                                                <div className="w-2 h-2 rounded-sm group-hover/item:bg-blue-500/30 transition-colors"></div>
+                                                            </div>
+                                                            <span className="text-xs text-slate-400">{item}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
 
                                             <button
                                                 onClick={() => downloadIcs(l)}

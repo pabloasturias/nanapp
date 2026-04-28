@@ -175,3 +175,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+/* Audio Waveform Animation */
+@keyframes wave {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1.2); }
+}
+
+.animate-wave {
+    animation: wave 1s ease-in-out infinite;
+    transform-origin: center;
+}

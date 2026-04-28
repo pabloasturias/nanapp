@@ -14,7 +14,6 @@ import { BreastfeedingDashboard, BreastfeedingFull } from './tools/Breastfeeding
 import { DiaperDashboard, DiaperFull } from './tools/DiaperWidget';
 import { BottleDashboard, BottleFull } from './tools/BottleWidget';
 import { MedsDashboard, MedsFull } from './tools/MedsWidget';
-import { SleepDashboard, SleepFull } from './tools/SleepWidget';
 import { GrowthDashboard, GrowthFull } from './tools/GrowthWidget';
 
 import { SolidsDashboard, SolidsFull } from './tools/SolidsWidget';
@@ -28,15 +27,12 @@ import { FirstWordsDashboard, FirstWordsFull } from './tools/FirstWordsWidget';
 import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
 import { HeadPositionDashboard, HeadPositionFull } from './tools/HeadPositionWidget';
 import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
-import { MemoryBook } from './MemoryBook';
-
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'breastfeeding', icon: Baby, translationKey: 'tool_breastfeeding', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
     { id: 'bottle', icon: GlassWater, translationKey: 'tool_bottle', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
-    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
@@ -109,7 +105,6 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
             case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseTool} />;
-            case 'memory_poster': return <MemoryBook onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -134,7 +129,6 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'first_words': return <FirstWordsDashboard />;
             case 'head_position': return <HeadPositionDashboard />;
             case 'endocrine_info': return <EndocrineDashboard />;
-            case 'memory_poster': return <span className="text-orange-200">Generar Lámina</span>;
             default: return "--";
         }
     };

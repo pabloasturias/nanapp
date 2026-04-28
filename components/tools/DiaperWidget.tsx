@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Droplets, Disc, Check, History, Clock, Trash2, PieChart } from 'lucide-react';
+import { Droplets, Disc, Check, History, Clock, Trash2, PieChart, AlertTriangle } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { DiaperLog } from './types';
 
@@ -12,9 +12,19 @@ const STOOL_COLORS = [
     { id: 'white', hex: '#F5F5F5', label: 'Blanco' },
 ];
 
+const STOOL_TEXTURES = [
+    { id: 'liquid', label: 'Líquida', icon: '💧' },
+    { id: 'soft', label: 'Pastosa', icon: '☁️' },
+    { id: 'hard', label: 'Dura', icon: '🪨' },
+];
+
 export const DiaperDashboard: React.FC = () => {
-    const { getLatestLog } = useToolData<DiaperLog>('diapers');
+    const { getLatestLog, logs } = useToolData<DiaperLog>('diapers');
     const latest = getLatestLog();
+
+    const lastWet = logs.find(l => l.type === 'wet' || l.type === 'mixed');
+    const hoursSinceWet = lastWet ? (Date.now() - lastWet.timestamp) / 3600000 : 24;
+    const isDehydrated = hoursSinceWet > 6;
 
     if (!latest) return <span className="opacity-60">Sin registros</span>;
 
@@ -34,12 +44,16 @@ export const DiaperDashboard: React.FC = () => {
 
     return (
         <div className="flex flex-col">
-            <span className="font-bold text-amber-200 flex items-center gap-1">
-                {typeLabel}
-                {latest.color && (
-                    <span className="w-2 h-2 rounded-full inline-block ml-1" style={{ backgroundColor: STOOL_COLORS.find(c => c.id === latest.color)?.hex || 'white' }}></span>
-                )}
-            </span>
+            <div className="flex items-center gap-2">
+                <span className={`font-bold ${isDehydrated ? 'text-red-400' : 'text-amber-200'} flex items-center gap-1`}>
+                    {isDehydrated && <AlertTriangle size={10} className="animate-pulse" />}
+                    {typeLabel}
+                    {latest.color && (
+                        <span className="w-2 h-2 rounded-full inline-block ml-1" style={{ backgroundColor: STOOL_COLORS.find(c => c.id === latest.color)?.hex || 'white' }}></span>
+                    )}
+                </span>
+                {isDehydrated && <span className="text-[8px] font-black bg-red-500/20 text-red-300 px-1.5 py-0.5 rounded-full uppercase tracking-tighter">¡Beber!</span>}
+            </div>
             <span className="text-[10px] opacity-70">
                 Hace {timeSince(latest.timestamp)}
             </span>
@@ -48,18 +62,25 @@ export const DiaperDashboard: React.FC = () => {
 };
 
 export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-    const { addLog, getLogsByDate, removeLog } = useToolData<DiaperLog>('diapers');
+    const { addLog, getLogsByDate, removeLog, logs } = useToolData<DiaperLog>('diapers');
     const [selectedType, setSelectedType] = useState<DiaperLog['type'] | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
+    const [selectedTexture, setSelectedTexture] = useState<string | null>(null);
+
+    const lastWet = logs.find(l => l.type === 'wet' || l.type === 'mixed');
+    const hoursSinceWet = lastWet ? (Date.now() - lastWet.timestamp) / 3600000 : 24;
+    const isDehydrated = hoursSinceWet > 6;
 
     const handleSave = () => {
         if (!selectedType) return;
         addLog({
             type: selectedType,
-            color: selectedColor || undefined
+            color: selectedColor || undefined,
+            texture: selectedTexture || undefined
         });
         setSelectedType(null);
         setSelectedColor(null);
+        setSelectedTexture(null);
         if (navigator.vibrate) navigator.vibrate(50);
         onClose();
     };
@@ -119,23 +140,71 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </button>
             </div>
 
-            {/* Color Palette (Show if Dirty or Mixed) */}
+            {/* Color & Texture Palette (Show if Dirty or Mixed) */}
             {(selectedType === 'dirty' || selectedType === 'mixed') && (
-                <div className="mb-8 animate-[fade-in_0.3s_ease-out]">
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 text-center">Color de las heces</p>
-                    <div className="flex justify-between px-2 bg-slate-900/50 p-4 rounded-3xl border border-white/5">
-                        {STOOL_COLORS.map(c => (
-                            <button
-                                key={c.id}
-                                onClick={() => setSelectedColor(c.id)}
-                                className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-transform ${selectedColor === c.id ? 'scale-125 border-white shadow-xl' : 'border-transparent scale-100 opacity-70'
-                                    }`}
-                                style={{ backgroundColor: c.hex }}
-                                title={c.label}
-                            >
-                                {selectedColor === c.id && <Check size={16} className={c.id === 'white' ? 'text-black' : 'text-white'} />}
-                            </button>
-                        ))}
+                <div className="space-y-6 animate-[fade-in_0.3s_ease-out] mb-8">
+                    <div>
+                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 text-center">Color de las heces</p>
+                        <div className="flex justify-between px-2 bg-slate-900/50 p-4 rounded-[2rem] border border-white/5">
+                            {STOOL_COLORS.map(c => (
+                                <button
+                                    key={c.id}
+                                    onClick={() => setSelectedColor(c.id)}
+                                    className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-transform ${selectedColor === c.id ? 'scale-125 border-white shadow-xl' : 'border-transparent scale-100 opacity-70'
+                                        }`}
+                                    style={{ backgroundColor: c.hex }}
+                                    title={c.label}
+                                >
+                                    {selectedColor === c.id && <Check size={16} className={c.id === 'white' ? 'text-black' : 'text-white'} />}
+                                </button>
+                            ))}
+                        </div>
+                        {/* Legend */}
+                        <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1">
+                            <div className="flex items-center gap-1">
+                                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Normal</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Alerta (Sangre)</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Alerta (Biliar)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 text-center">Textura</p>
+                        <div className="grid grid-cols-3 gap-2">
+                            {STOOL_TEXTURES.map(t => (
+                                <button
+                                    key={t.id}
+                                    onClick={() => setSelectedTexture(t.id)}
+                                    className={`py-3 rounded-2xl border-2 flex flex-col items-center gap-1 transition-all ${selectedTexture === t.id 
+                                        ? 'bg-amber-500/20 border-amber-500 text-amber-200' 
+                                        : 'bg-slate-900 border-white/5 text-slate-500'}`}
+                                >
+                                    <span className="text-xl">{t.icon}</span>
+                                    <span className="text-[10px] font-bold uppercase">{t.label}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Hydration Alert */}
+            {isDehydrated && (
+                <div className="mb-8 p-4 rounded-3xl bg-red-500/10 border border-red-500/20 flex items-center gap-4 animate-pulse">
+                    <div className="w-10 h-10 rounded-2xl bg-red-500/20 flex items-center justify-center text-red-400 shrink-0">
+                        <AlertTriangle size={20} />
+                    </div>
+                    <div>
+                        <p className="text-xs font-bold text-red-200">Alerta de Hidratación</p>
+                        <p className="text-[10px] text-red-400/80 leading-tight">Han pasado {Math.round(hoursSinceWet)}h sin un pañal húmedo. Asegúrate de que {activeBaby?.name || 'el bebé'} esté tomando suficiente líquido.</p>
                     </div>
                 </div>
             )}

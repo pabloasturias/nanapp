@@ -51,7 +51,6 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
-    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
 ];
 
 interface HomeViewProps {

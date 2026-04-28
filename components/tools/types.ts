@@ -50,14 +50,17 @@ export interface BottleLog {
     timestamp: number;
     amount: number; // ml
     unit: 'ml' | 'oz'; // default ml
-    type: 'formula' | 'breastmilk' | 'cow' | 'water';
+    type: 'formula' | 'breastmilk' | 'cow' | 'water' | 'mixed';
+    babyId?: string;
 }
 
 export interface DiaperLog {
     timestamp: number;
     type: 'wet' | 'dirty' | 'mixed'; // mixed = wet + dirty
     color?: string; // Hex code or label for stool
+    texture?: string; // e.g. 'liquid', 'soft', 'hard'
     notes?: string;
+    babyId?: string;
 }
 
 export interface MedsLog {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Play, Pause, Square, History, Clock, Zap, Timer, Trash2, CheckCircle2 } from 'lucide-react';
+import { Play, Pause, Square, History, Clock, Zap, Timer, Trash2, CheckCircle2, RefreshCw } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { BreastfeedingLog } from './types';
 import { useLanguage } from '../../services/LanguageContext';
@@ -33,14 +33,19 @@ export const BreastfeedingDashboard: React.FC = () => {
     const sideColor = nextSide === 'L' ? 'text-pink-300' : 'text-purple-300';
 
     return (
-        <div className="flex flex-col">
-            <div className="flex items-center gap-1 font-bold text-slate-300 mb-0.5">
-                <span className="text-[10px] opacity-70 uppercase tracking-wider">{t('tool_bf_next')} </span>
-                <span className={`${sideColor}`}>{nextSideLabel}</span>
+        <div className="flex items-center gap-3">
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs shadow-inner ${latest.side === 'L' ? 'bg-pink-500/20 text-pink-400' : 'bg-purple-500/20 text-purple-400'}`}>
+                {latest.side === 'L' ? 'IZQ' : 'DER'}
             </div>
-            <span className="text-[10px] opacity-50">
-                {t('tool_bf_last')} {timeSince(latest.timestamp)} • {latest.side === 'L' ? t('tool_bf_left') : t('tool_bf_right')}
-            </span>
+            <div className="flex flex-col">
+                <div className="flex items-center gap-1 font-bold text-slate-300 mb-0.5 leading-none">
+                    <span className="text-[9px] opacity-70 uppercase tracking-tighter">{t('tool_bf_next')}: </span>
+                    <span className={`text-[11px] ${sideColor}`}>{nextSideLabel}</span>
+                </div>
+                <span className="text-[10px] opacity-40 italic">
+                    {t('tool_bf_last')} {timeSince(latest.timestamp)}
+                </span>
+            </div>
         </div>
     );
 };
@@ -138,6 +143,28 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
         setDuration(0);
         startTimeRef.current = null;
     };
+
+    const handleQuickSwitch = () => {
+        // 1. Save current side if enough time has passed
+        if (duration > 0) {
+            addLog({
+                side,
+                durationSeconds: duration,
+                manual: false,
+                babyId: activeBaby?.id
+            });
+        }
+        
+        // 2. Flip side and reset timer
+        const newSide = side === 'L' ? 'R' : 'L';
+        setSide(newSide);
+        setDuration(0);
+        startTimeRef.current = Date.now();
+        setIsActive(true);
+        setIsPaused(false);
+
+        if (navigator.vibrate) navigator.vibrate([30, 50]);
+    };
     
     const handleDelete = (timestamp: number) => {
         if(window.confirm("¿Estás seguro de que quieres borrar esta toma?")) {
@@ -180,21 +207,31 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
                         <div className={`px-4 py-1 rounded-full text-xs font-bold uppercase mb-4 border ${side === 'L' ? 'bg-pink-500/20 border-pink-500 text-pink-200' : 'bg-purple-500/20 border-purple-500 text-purple-200'}`}>
                             {side === 'L' ? t('tool_bf_left') : t('tool_bf_right')}
                         </div>
-                        <div className="text-7xl font-mono font-light tracking-tighter text-white mb-8 drop-shadow-lg">
+                        <div className="text-7xl font-mono font-light tracking-tighter text-white drop-shadow-lg">
                             {formatTime(duration)}
                         </div>
+                        <div className="flex flex-col items-center mb-8 opacity-40">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Fin estimado</span>
+                            <span className="text-sm font-bold">{new Date(Date.now() + (15 * 60 - duration) * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
                         <div className="flex items-center gap-6">
-                            {!isPaused ? (
-                                <button onClick={handlePause} className="w-20 h-20 bg-amber-500/20 text-amber-500 rounded-full border border-amber-500/50 flex items-center justify-center hover:bg-amber-500/30 transition-all shadow-lg">
-                                    <Pause size={32} fill="currentColor" />
-                                </button>
-                            ) : (
-                                <button onClick={() => handleStartTimer(side)} className="w-20 h-20 bg-emerald-500 text-white rounded-full shadow-xl shadow-emerald-500/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
-                                    <Play size={32} fill="currentColor" className="ml-1" />
-                                </button>
-                            )}
                             <button onClick={handleStop} className="w-16 h-16 bg-slate-800 text-slate-400 rounded-full border border-white/10 flex items-center justify-center hover:text-red-400 hover:border-red-500/50 transition-all">
                                 <Square size={24} fill="currentColor" />
+                            </button>
+                            
+                            {!isPaused ? (
+                                <button onClick={handlePause} className="w-24 h-24 bg-amber-500/20 text-amber-500 rounded-full border border-amber-500/50 flex items-center justify-center hover:bg-amber-500/30 transition-all shadow-lg">
+                                    <Pause size={36} fill="currentColor" />
+                                </button>
+                            ) : (
+                                <button onClick={() => handleStartTimer(side)} className="w-24 h-24 bg-emerald-500 text-white rounded-full shadow-xl shadow-emerald-500/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+                                    <Play size={36} fill="currentColor" className="ml-1" />
+                                </button>
+                            )}
+
+                            <button onClick={handleQuickSwitch} className="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30 flex flex-col items-center justify-center hover:bg-blue-500/30 transition-all group">
+                                <RefreshCw size={20} className="group-hover:rotate-180 transition-transform duration-500" />
+                                <span className="text-[8px] font-bold mt-1 uppercase">Cambio</span>
                             </button>
                         </div>
                     </div>

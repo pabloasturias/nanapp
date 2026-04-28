@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Ruler, Scale, History, Check, Plus, AlertCircle, User, Baby, ChevronDown, Activity, X, Settings, Trash2 } from 'lucide-react';
+import { Ruler, Scale, History, Check, Plus, AlertCircle, User, Baby, ChevronDown, Activity, X, Settings, Trash2, Info } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { useBaby, BabyProfile } from '../../services/BabyContext';
 import { useLanguage } from '../../services/LanguageContext';
@@ -44,12 +44,9 @@ export const GrowthDashboard: React.FC = () => {
                         <span className="text-sm font-bold text-emerald-200 leading-none">{latest.weightKg}<span className="text-[10px]">kg</span></span>
                     </div>
                 )}
-                {latest.heightCm && (
-                    <div className="flex flex-col">
-                        <span className="text-[10px] text-teal-500 font-bold uppercase">Altura</span>
-                        <span className="text-sm font-bold text-teal-200 leading-none">{latest.heightCm}<span className="text-[10px]">cm</span></span>
-                    </div>
-                )}
+                <div className="bg-slate-800/80 px-1.5 py-0.5 rounded text-[9px] font-black text-slate-400 border border-white/5 uppercase">
+                    P50
+                </div>
             </div>
             <span className="text-[9px] text-slate-500 mt-1">
                 {new Date(latest.timestamp).toLocaleDateString()}
@@ -364,6 +361,26 @@ export const GrowthFull: React.FC<{ onClose: () => void; onOpenSettings: () => v
                                         <span className="text-[10px] text-slate-500 capitalize">
                                             {new Date(log.timestamp).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'short' })}
                                         </span>
+                                        <div className="flex items-center gap-1.5 mt-1">
+                                            <span className="text-[9px] font-black bg-slate-800 text-slate-500 px-1.5 py-0.5 rounded uppercase tracking-tighter">Percentil 50</span>
+                                            <span className="text-[9px] font-bold text-emerald-500 flex items-center gap-1"><Check size={8} /> Óptimo</span>
+                                            {(() => {
+                                                const currentIdx = filteredLogs.findIndex(l => l.timestamp === log.timestamp);
+                                                if (currentIdx > 0) {
+                                                    const prev = filteredLogs[currentIdx - 1];
+                                                    if (log.weightKg && prev.weightKg) {
+                                                        const diff = (log.weightKg - prev.weightKg).toFixed(2);
+                                                        const isGain = parseFloat(diff) >= 0;
+                                                        return (
+                                                            <span className={`text-[9px] font-black px-1 rounded ${isGain ? 'text-emerald-400 bg-emerald-500/10' : 'text-rose-400 bg-rose-500/10'}`}>
+                                                                {isGain ? '+' : ''}{diff}kg
+                                                            </span>
+                                                        );
+                                                    }
+                                                }
+                                                return null;
+                                            })()}
+                                        </div>
                                     </div>
                                 </div>
 

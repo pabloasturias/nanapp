@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Pill, Check, Clock, History, Plus, Trash2, TrendingUp, Bell, BellOff, Edit2, X } from 'lucide-react';
+import { Pill, Check, Clock, History, Plus, Trash2, TrendingUp, Bell, BellOff, Edit2, X, Calculator, AlertTriangle } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
-import { MedsLog } from './types';
+import { MedsLog, GrowthLog } from './types';
 import { useBaby } from '../../services/BabyContext';
 import { LastDaysChart } from './visualizations/LastDaysChart';
 import { TimelineChart } from './visualizations/TimelineChart';
@@ -12,28 +12,51 @@ export const MedsDashboard: React.FC = () => {
     const { logs } = useToolData<MedsLog>('meds');
     const { activeBaby } = useBaby();
 
-    // Latest filtered log
-    const { latest, hasVitD } = useMemo(() => {
+    const { latest, hasVitD, nextDose } = useMemo(() => {
         const babyLogs = !activeBaby ? logs : logs.filter(l => !l.babyId || l.babyId === activeBaby.id);
-        const l = babyLogs.length > 0 ? babyLogs[0] : null; // Sorted by timestamp desc in useToolData usually
+        const l = babyLogs.length > 0 ? babyLogs[0] : null;
 
-        // Check Vit D today
         const now = new Date();
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
         const hasD = babyLogs.some(log => log.medName === VITAMIN_D_KEY && log.timestamp >= startOfDay);
 
-        return { latest: l, hasVitD: hasD };
+        // Find next scheduled dose
+        const saved = localStorage.getItem('nanapp_treatments');
+        const treatments: Treatment[] = saved ? JSON.parse(saved) : [];
+        
+        let next: { name: string; time: number } | null = null;
+        treatments.forEach(t => {
+            if (t.frequency && t.frequency.endsWith('h')) {
+                const hours = parseInt(t.frequency);
+                const last = babyLogs.find(log => log.medName === t.name);
+                if (last) {
+                    const due = last.timestamp + (hours * 3600000);
+                    if (!next || due < next.time) {
+                        next = { name: t.name, time: due };
+                    }
+                }
+            }
+        });
+
+        return { latest: l, hasVitD: hasD, nextDose: next };
     }, [logs, activeBaby]);
 
     return (
         <div className="flex flex-col gap-1">
-            <div className={`flex items-center gap-1.5 text-xs font-bold ${hasVitD ? 'text-emerald-400' : 'text-red-300'}`}>
-                {hasVitD ? <Check size={12} strokeWidth={3} /> : <div className="w-3 h-3 rounded-full border border-current" />}
-                Vit D: {hasVitD ? 'Hecha' : 'Pendiente'}
+            <div className="flex items-center justify-between">
+                <div className={`flex items-center gap-1 text-[10px] font-bold ${hasVitD ? 'text-emerald-400' : 'text-red-300'}`}>
+                    {hasVitD ? <Check size={10} strokeWidth={3} /> : <div className="w-2.5 h-2.5 rounded-full border border-current" />}
+                    Vit D
+                </div>
+                {nextDose && nextDose.time > Date.now() && (
+                    <div className="text-[9px] font-black text-blue-400 bg-blue-500/10 px-1.5 rounded flex items-center gap-1">
+                        <Clock size={8} /> {Math.ceil((nextDose.time - Date.now()) / 3600000)}h
+                    </div>
+                )}
             </div>
-            {latest && latest.medName !== VITAMIN_D_KEY && (
-                <span className="text-[10px] opacity-70 truncate max-w-[120px]">
-                    Último: {latest.medName}
+            {latest && (
+                <span className="text-[10px] opacity-70 truncate">
+                    {latest.medName}: {new Date(latest.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                 </span>
             )}
         </div>
@@ -116,12 +139,32 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
     };
 
+    const [newFrequency, setNewFrequency] = useState('8h');
+    const [showCalc, setShowCalc] = useState(false);
+
+    const { logs: growthLogs } = useToolData<GrowthLog>('growth');
+
+    const calcDose = useMemo(() => {
+        if (!activeBaby) return null;
+        const babyGrowth = growthLogs.filter(l => !l.babyId || l.babyId === activeBaby.id);
+        const lastGrowth = babyGrowth.sort((a, b) => b.timestamp - a.timestamp)[0];
+        
+        const weight = lastGrowth?.weightKg || 8.5; // Fallback to 8.5 if not found
+        return {
+            weight,
+            apiretal: (weight * 0.15).toFixed(1) + ' ml',
+            dalsy: (weight / 3).toFixed(1) + ' ml',
+            isEstimated: !lastGrowth
+        };
+    }, [activeBaby, growthLogs]);
+
     const handleAddTreatment = () => {
         if (!newName) return;
         const newTreatment: Treatment = {
             id: Date.now().toString(),
             name: newName,
             dose: newDose,
+            frequency: newFrequency,
             notify: newNotify,
             color: COLORS[treatments.length % COLORS.length]
         };
@@ -167,7 +210,7 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
             {/* Config Panel */}
             {showConfig && (
-                <div className="p-4 bg-slate-800/80 border-b border-white/5 animate-in slide-in-from-top-2">
+                <div className="p-4 bg-slate-800/80 border-b border-white/5 animate-in slide-in-from-top-2 space-y-4">
                     <div className="space-y-3">
                         <input
                             value={newName}
@@ -175,29 +218,68 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             placeholder="Nombre (ej: Ibuprofeno)"
                             className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none"
                         />
-                        <input
-                            value={newDose}
-                            onChange={e => setNewDose(e.target.value)}
-                            placeholder="Dosis (ej: 2.5ml)"
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none"
-                        />
-                        <div className="flex items-center justify-between">
-                            <button
-                                onClick={() => setNewNotify(!newNotify)}
-                                className={`flex items-center gap-2 text-xs font-bold px-3 py-2 rounded-lg border transition-all ${newNotify ? 'bg-blue-500/20 border-blue-500 text-blue-300' : 'bg-slate-900 border-slate-700 text-slate-500'}`}
+                        <div className="flex gap-2">
+                            <input
+                                value={newDose}
+                                onChange={e => setNewDose(e.target.value)}
+                                placeholder="Dosis (ej: 2.5ml)"
+                                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none"
+                            />
+                            <select 
+                                value={newFrequency}
+                                onChange={e => setNewFrequency(e.target.value)}
+                                className="bg-slate-900 border border-slate-700 rounded-lg p-3 text-white outline-none"
                             >
-                                {newNotify ? <Bell size={14} /> : <BellOff size={14} />}
-                                {newNotify ? 'Recordatorios ON' : 'Sin avisos'}
-                            </button>
-                            <button
-                                onClick={handleAddTreatment}
-                                disabled={!newName}
-                                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold text-sm disabled:opacity-50"
-                            >
-                                <Plus size={18} />
-                            </button>
+                                <option value="">Sin horario</option>
+                                <option value="4h">Cada 4h</option>
+                                <option value="6h">Cada 6h</option>
+                                <option value="8h">Cada 8h</option>
+                                <option value="12h">Cada 12h</option>
+                                <option value="24h">Cada 24h</option>
+                            </select>
                         </div>
                     </div>
+                    
+                    <div className="flex items-center justify-between">
+                        <button
+                            onClick={() => setNewNotify(!newNotify)}
+                            className={`flex items-center gap-2 text-xs font-bold px-3 py-2 rounded-lg border transition-all ${newNotify ? 'bg-blue-500/20 border-blue-500 text-blue-300' : 'bg-slate-900 border-slate-700 text-slate-500'}`}
+                        >
+                            {newNotify ? <Bell size={14} /> : <BellOff size={14} />}
+                            {newNotify ? 'Avisos ON' : 'Sin avisos'}
+                        </button>
+                        <button
+                            onClick={handleAddTreatment}
+                            disabled={!newName}
+                            className="bg-blue-600 text-white px-6 py-2 rounded-xl font-bold text-sm disabled:opacity-50 shadow-lg shadow-blue-900/40"
+                        >
+                            Añadir
+                        </button>
+                    </div>
+
+                    {/* Calculator Toggle */}
+                    <button 
+                        onClick={() => setShowCalc(!showCalc)}
+                        className="w-full py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2"
+                    >
+                        <Calculator size={14} /> Calculadora de Dosis por Peso
+                    </button>
+                    
+                    {showCalc && calcDose && (
+                        <div className="p-3 bg-slate-950 rounded-xl border border-white/5 grid grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-1">
+                            <div className="text-center">
+                                <p className="text-[8px] text-slate-500 uppercase font-black">Apiretal</p>
+                                <p className="text-lg font-bold text-red-400">{calcDose.apiretal}</p>
+                            </div>
+                            <div className="text-center border-l border-white/5">
+                                <p className="text-[8px] text-slate-500 uppercase font-black">Dalsy (20mg/ml)</p>
+                                <p className="text-lg font-bold text-orange-400">{calcDose.dalsy}</p>
+                            </div>
+                            <p className="col-span-2 text-[8px] text-slate-600 italic text-center">
+                                Basado en {calcDose.weight}kg {calcDose.isEstimated ? '(estimado)' : '(sincronizado)'}. Consulta siempre a tu pediatra.
+                            </p>
+                        </div>
+                    )}
                 </div>
             )}
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Plus, Save, Trash2 } from 'lucide-react';
+import { FileText, Plus, Save, Trash2, Tag, Mic, AlertCircle, HelpCircle, CheckCircle, Pin } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { NoteLog } from './types';
 
@@ -25,14 +25,23 @@ export const NotesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const { logs, addLog, removeLog } = useToolData<NoteLog>('pediatrician_notes');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [category, setCategory] = useState<'doubt' | 'symptom' | 'instruction' | 'general'>('general');
     const [isAdding, setIsAdding] = useState(false);
+
+    const CATEGORIES = [
+        { id: 'general', label: 'General', color: 'bg-slate-500', icon: FileText },
+        { id: 'doubt', label: 'Duda', color: 'bg-amber-500', icon: HelpCircle },
+        { id: 'symptom', label: 'Síntoma', color: 'bg-rose-500', icon: AlertCircle },
+        { id: 'instruction', label: 'Instrucción', color: 'bg-emerald-500', icon: CheckCircle }
+    ];
 
     const handleSave = () => {
         if (!content.trim()) return;
         addLog({
             timestamp: Date.now(),
             title: title.trim(),
-            content: content.trim()
+            content: content.trim(),
+            category: category as any
         });
         setTitle('');
         setContent('');
@@ -68,6 +77,24 @@ export const NotesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         onChange={e => setTitle(e.target.value)}
                         autoFocus
                     />
+
+                    {/* Category Selector */}
+                    <div className="flex gap-2 mb-6 overflow-x-auto no-scrollbar py-1">
+                        {CATEGORIES.map(cat => (
+                            <button
+                                key={cat.id}
+                                onClick={() => setCategory(cat.id as any)}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all whitespace-nowrap ${category === cat.id
+                                    ? 'bg-slate-200 text-slate-900 border-slate-200'
+                                    : 'bg-slate-900 border-white/5 text-slate-400'
+                                    }`}
+                            >
+                                <cat.icon size={14} />
+                                <span className="text-xs font-bold">{cat.label}</span>
+                            </button>
+                        ))}
+                    </div>
+
                     <textarea
                         className="flex-1 bg-transparent text-lg text-slate-300 placeholder-slate-600 focus:outline-none resize-none leading-relaxed"
                         placeholder="Escribe aquí los apuntes del pediatra..."
@@ -104,12 +131,30 @@ export const NotesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         <p>No hay notas guardadas</p>
                     </div>
                 ) : (
-                    logs.map((log) => (
-                        <div key={log.timestamp} className="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2 group relative">
+                    [...logs].sort((a,b) => {
+                        const aPinned = (a as any).pinned ? 1 : 0;
+                        const bPinned = (b as any).pinned ? 1 : 0;
+                        if (aPinned !== bPinned) return bPinned - aPinned;
+                        return b.timestamp - a.timestamp;
+                    }).map((log) => (
+                        <div key={log.timestamp} className={`bg-slate-900 border p-4 rounded-xl space-y-2 group relative transition-all ${(log as any).pinned ? 'border-blue-500/50 shadow-lg shadow-blue-500/5' : 'border-slate-800'}`}>
                             <div className="flex justify-between items-start">
-                                <h4 className="font-bold text-slate-200 text-lg">{log.title || 'Sin título'}</h4>
+                                <h4 className="font-bold text-slate-200 text-lg flex items-center gap-2">
+                                    {(log as any).pinned && <Pin size={12} className="text-blue-400 fill-blue-400" />}
+                                    {log.title || 'Sin título'}
+                                </h4>
                                 <div className="flex items-center gap-2">
                                     <span className="text-[10px] text-slate-500 uppercase tracking-wider">{new Date(log.timestamp).toLocaleDateString()}</span>
+                                    <button
+                                        onClick={() => {
+                                            const newLogs = logs.map(l => l.timestamp === log.timestamp ? { ...l, pinned: !(l as any).pinned } : l);
+                                            localStorage.setItem('nanapp_pediatrician_notes', JSON.stringify(newLogs));
+                                            window.location.reload(); // Simple state force for this logic
+                                        }}
+                                        className={`p-1 rounded hover:bg-white/5 transition-colors ${(log as any).pinned ? 'text-blue-400' : 'text-slate-600'}`}
+                                    >
+                                        <Pin size={14} className={(log as any).pinned ? 'fill-current' : ''} />
+                                    </button>
                                     <button
                                         onClick={() => {
                                             if (confirm('¿Eliminar esta nota?')) removeLog(l => l.timestamp === log.timestamp);

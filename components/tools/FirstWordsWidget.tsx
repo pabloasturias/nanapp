@@ -148,6 +148,25 @@ export const FirstWordsFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                         />
                     </div>
 
+                    <div className="flex items-center gap-4 bg-slate-950 p-3 rounded-xl border border-white/5">
+                        <button className="w-10 h-10 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center animate-pulse">
+                            <Mic size={18} />
+                        </button>
+                        <div className="flex-1 flex items-center gap-0.5 h-6">
+                            {[...Array(12)].map((_, i) => (
+                                <div 
+                                    key={i} 
+                                    className="w-1 bg-indigo-500/50 rounded-full animate-wave"
+                                    style={{ 
+                                        height: `${20 + Math.random() * 80}%`,
+                                        animationDelay: `${i * 0.1}s` 
+                                    }}
+                                />
+                            ))}
+                        </div>
+                        <span className="text-[10px] font-bold text-slate-500 uppercase">Grabar audio</span>
+                    </div>
+
                     <button
                         onClick={handleSave}
                         disabled={!word}

@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { HeadPositionLog } from './types';
 import { useBaby } from '../../services/BabyContext';
-import { Settings, Info, RotateCcw, ArrowRight, ArrowLeft, ArrowUp } from 'lucide-react';
+import { Settings, Info, RotateCcw, ArrowRight, ArrowLeft, ArrowUp, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../../services/LanguageContext';
 
 export const HeadPositionDashboard: React.FC = () => {
@@ -17,28 +17,40 @@ export const HeadPositionDashboard: React.FC = () => {
             .sort((a, b) => b.timestamp - a.timestamp)[0];
     }, [logs, activeBaby]);
 
-    if (!lastLog) {
-        return (
-            <div className="flex flex-col items-center opacity-50">
-                <span className="text-2xl font-bold text-slate-500">?</span>
-                <span className="text-[10px]">Sin registro</span>
-            </div>
-        );
-    }
+    const { leftPct, rightPct, backPct, recommendation } = useMemo(() => {
+        const babyLogs = activeBaby ? logs.filter(l => !l.babyId || l.babyId === activeBaby.id) : logs;
+        const now = Date.now();
+        const recent = babyLogs.filter(l => l.timestamp > now - (24 * 60 * 60 * 1000));
+        const total = recent.length || 1;
+        const left = recent.filter(l => l.side === 'left').length;
+        const right = recent.filter(l => l.side === 'right').length;
+        const back = recent.filter(l => l.side === 'back').length;
 
-    const labels = {
-        left: 'Izquierda',
-        right: 'Derecha',
-        back: 'Boca Arriba'
-    };
+        const lPct = Math.round((left / total) * 100);
+        const rPct = Math.round((right / total) * 100);
+        const bPct = Math.round((back / total) * 100);
+
+        let rec = 'Buen equilibrio';
+        if (lPct > 60) rec = 'Toca lado derecho';
+        else if (rPct > 60) rec = 'Toca lado izquierdo';
+        else if (bPct > 80) rec = 'Alternar lados';
+
+        return { leftPct: lPct, rightPct: rPct, backPct: bPct, recommendation: rec };
+    }, [logs, activeBaby]);
 
     return (
-        <div className="flex flex-col items-center">
-            <span className={`text-lg font-bold ${lastLog.side === 'left' ? 'text-blue-400' : lastLog.side === 'right' ? 'text-purple-400' : 'text-emerald-400'}`}>
-                {labels[lastLog.side]}
-            </span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" style={{ opacity: leftPct / 100 }}></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500" style={{ opacity: rightPct / 100 }}></div>
+                </div>
+                <span className="text-[8px] font-black bg-purple-500/10 text-purple-400 px-1 rounded border border-purple-500/20 uppercase">
+                    {recommendation}
+                </span>
+            </div>
             <span className="text-[10px] opacity-70">
-                Última posición
+                {lastLog ? (lastLog.side === 'left' ? 'Izquierda' : lastLog.side === 'right' ? 'Derecha' : 'Arriba') : 'Sin datos'}
             </span>
         </div>
     );
@@ -52,6 +64,7 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
     const [viewBabyId, setViewBabyId] = useState<string | null>(activeBaby?.id || null);
 
     const [timeRange, setTimeRange] = useState<'12h' | '24h' | '7d'>('24h');
+    const [periodFilter, setPeriodFilter] = useState<'all' | 'day' | 'night'>('all');
 
     useEffect(() => {
         if (activeBaby && !viewBabyId) setViewBabyId(activeBaby.id);
@@ -117,7 +130,7 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
                 {/* Balance Visualization */}
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                     <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-between">
-                        <span>Balance ({timeRange === '12h' ? '12h' : timeRange === '24h' ? '24h' : '7 días'})</span>
+                        <span>Balance ({periodFilter === 'day' ? 'Día' : periodFilter === 'night' ? 'Noche' : 'Total'})</span>
                         <Info size={14} />
                     </h3>
 
@@ -129,7 +142,15 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
                         if (timeRange === '12h') timeLimit = now - (12 * 60 * 60 * 1000);
                         if (timeRange === '7d') timeLimit = now - (7 * 24 * 60 * 60 * 1000);
 
-                        const recentLogs = babyLogs.filter(l => l.timestamp > timeLimit);
+                        const recentLogs = babyLogs.filter(l => {
+                            if (l.timestamp < timeLimit) return false;
+                            if (periodFilter === 'all') return true;
+                            const hour = new Date(l.timestamp).getHours();
+                            if (periodFilter === 'day') return hour >= 8 && hour < 20;
+                            if (periodFilter === 'night') return hour < 8 || hour >= 20;
+                            return true;
+                        });
+
                         const total = recentLogs.length || 1;
                         const left = recentLogs.filter(l => l.side === 'left').length;
                         const right = recentLogs.filter(l => l.side === 'right').length;
@@ -144,24 +165,45 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
 
                         return (
                             <div className="space-y-4">
-                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full mb-4">
+                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full mb-2">
                                     <button
                                         onClick={() => setTimeRange('12h')}
-                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '12h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '12h' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        Últimas 12h
+                                        12h
                                     </button>
                                     <button
                                         onClick={() => setTimeRange('24h')}
-                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '24h' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '24h' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        Últimas 24h
+                                        24h
                                     </button>
                                     <button
                                         onClick={() => setTimeRange('7d')}
-                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '7d' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all ${timeRange === '7d' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        Últimos 7 días
+                                        7d
+                                    </button>
+                                </div>
+
+                                <div className="flex justify-center bg-slate-950/50 p-1 rounded-lg border border-slate-800/50 w-full mb-4">
+                                    <button
+                                        onClick={() => setPeriodFilter('all')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'all' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        Todo
+                                    </button>
+                                    <button
+                                        onClick={() => setPeriodFilter('day')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'day' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        <Sun size={10} /> Día
+                                    </button>
+                                    <button
+                                        onClick={() => setPeriodFilter('night')}
+                                        className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'night' ? 'bg-indigo-500/20 text-indigo-400' : 'text-slate-500 hover:text-slate-300'}`}
+                                    >
+                                        <Moon size={10} /> Noche
                                     </button>
                                 </div>
 

@@ -33,19 +33,38 @@ export const VaccinesDashboard: React.FC = () => {
     const { logs } = useToolData<VaccineLog>('vaccines');
     const { activeBaby } = useBaby();
 
-    const latest = logs
-        .filter(l => !l.babyId || (activeBaby && l.babyId === activeBaby.id))
-        .sort((a, b) => b.timestamp - a.timestamp)[0];
+    const { latest, next } = useMemo(() => {
+        const babyLogs = activeBaby ? logs.filter(l => !l.babyId || l.babyId === activeBaby.id) : logs;
+        const sorted = [...babyLogs].sort((a, b) => b.timestamp - a.timestamp);
+        const last = sorted[0];
 
-    if (!latest) return <span className="opacity-60">Sin registros</span>;
+        // Predict next
+        const babyAgeMonths = activeBaby ? (Date.now() - activeBaby.birthDate) / (1000 * 60 * 60 * 24 * 30.44) : 0;
+        const nextVac = COMMON_VACCINES.find(v => {
+            const isDone = babyLogs.some(l => l.vaccineName === v.label);
+            if (isDone) return false;
+            const monthMatch = v.id.match(/^(\d+)m/);
+            if (!monthMatch) return false;
+            return babyAgeMonths < parseInt(monthMatch[1]);
+        });
+
+        return { latest: last, next: nextVac };
+    }, [logs, activeBaby]);
 
     return (
-        <div className="flex flex-col">
-            <span className="font-bold text-purple-200 truncate">
-                {latest.vaccineName}
-            </span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+                <span className="font-bold text-purple-200 truncate max-w-[80px]">
+                    {latest ? latest.vaccineName : 'Ninguna'}
+                </span>
+                {next && (
+                    <div className="text-[8px] font-black bg-purple-500/10 text-purple-400 px-1 rounded flex items-center gap-1 border border-purple-500/20">
+                        <Calendar size={8} /> Próx: {next.id.match(/^(\d+)m/)?.[1]}m
+                    </div>
+                )}
+            </div>
             <span className="text-[10px] opacity-70">
-                {new Date(latest.timestamp).toLocaleDateString()}
+                {latest ? new Date(latest.timestamp).toLocaleDateString() : 'Pendiente'}
             </span>
         </div>
     );
@@ -57,6 +76,7 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
 
     const [viewBabyId, setViewBabyId] = useState<string | null>(activeBaby?.id || null);
     const [vaccineName, setVaccineName] = useState('');
+    const [reactionNote, setReactionNote] = useState('');
     const [date, setDate] = useState(() => {
         const now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
@@ -80,10 +100,12 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
         addLog({
             timestamp: new Date(date).getTime(),
             vaccineName: vaccineName.trim(),
+            note: reactionNote.trim() || undefined,
             babyId: currentBaby.id
         });
 
         setVaccineName('');
+        setReactionNote('');
         // Reset date to now? Or keep? Reset is safer to avoid accidental duplicates
         const now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
@@ -157,6 +179,14 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                                 onChange={(e) => setDate(e.target.value)}
                                 className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-purple-500 outline-none transition-colors"
                             />
+                        <div>
+                            <label className="text-[10px] uppercase text-slate-500 font-bold mb-1 block">Reacciones (opcional)</label>
+                            <textarea
+                                value={reactionNote}
+                                onChange={(e) => setReactionNote(e.target.value)}
+                                placeholder="Ej: Fiebre leve 38ºC, irritabilidad..."
+                                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-purple-500 outline-none transition-colors placeholder-slate-600 text-sm h-20 resize-none"
+                            />
                         </div>
 
                         <button
@@ -213,6 +243,9 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                                             <p className="text-xs text-slate-500">
                                                 {new Date(log.timestamp).toLocaleDateString()}
                                             </p>
+                                            {log.note && (
+                                                <p className="text-[10px] text-purple-400 mt-1 italic font-medium">Reacción: {log.note}</p>
+                                            )}
                                         </div>
                                     </div>
                                     <button

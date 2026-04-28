@@ -27,11 +27,11 @@ export const BottleDashboard: React.FC = () => {
     return (
         <div className="flex flex-col">
             <div className="flex items-center gap-2">
-                <span className="font-bold text-blue-200">
-                    {latest.amount}{latest.unit} · {latest.type === 'formula' ? 'Fórmula' : 'Materna'}
+                <span className={`font-bold ${latest.type === 'formula' ? 'text-blue-300' : latest.type === 'breastmilk' ? 'text-pink-300' : 'text-indigo-300'}`}>
+                    {latest.amount}{latest.unit} · {latest.type === 'formula' ? 'Fórmula' : latest.type === 'breastmilk' ? 'Materna' : 'Mezcla'}
                 </span>
-                <span className="text-[10px] text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded border border-white/5">
-                    Total Hoy: {dailyTotal}ml
+                <span className="text-[9px] font-black text-slate-500 bg-slate-800/80 px-2 py-0.5 rounded-full border border-white/5 uppercase tracking-tighter">
+                    Hoy: {dailyTotal}ml
                 </span>
             </div>
             <span className="text-[10px] opacity-70">
@@ -113,9 +113,9 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 {view === 'log' ? (
                     <div className="p-6">
                         {/* Selector de cantidad */}
-                        <div className="flex flex-col items-center mb-10 py-8 bg-slate-900/30 rounded-[2rem] border border-white/5">
+                        <div className="flex flex-col items-center mb-10 py-6 bg-slate-900/30 rounded-[2.5rem] border border-white/5 w-full">
                             <div className="text-[10px] uppercase font-black text-blue-400 tracking-[0.2em] mb-4">Cantidad</div>
-                            <div className="flex items-center gap-8">
+                            <div className="flex items-center gap-8 mb-6">
                                 <button onClick={() => setAmount(a => Math.max(0, a - 10))} className="w-12 h-12 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-400 active:scale-90 transition-all">
                                     <Minus size={24} />
                                 </button>
@@ -124,23 +124,53 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                     <Plus size={24} />
                                 </button>
                             </div>
+                            
+                            <div className="flex flex-wrap justify-center gap-2 px-4">
+                                {[60, 90, 120, 150, 180, 210].map(val => (
+                                    <button 
+                                        key={val} 
+                                        onClick={() => { setAmount(val); if (navigator.vibrate) navigator.vibrate(10); }}
+                                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${amount === val ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/20' : 'bg-slate-800 text-slate-400 border border-white/5 hover:bg-slate-700'}`}
+                                    >
+                                        {val}ml
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Tipo */}
-                        <div className="grid grid-cols-2 gap-3 mb-8">
-                            <button onClick={() => setType('formula')} className={`p-4 rounded-2xl border flex items-center gap-3 transition-all ${type === 'formula' ? 'bg-blue-500/10 border-blue-500/50 text-blue-200' : 'bg-slate-900/50 border-white/5 text-slate-500'}`}>
-                                <Milk size={20} />
-                                <span className="font-bold text-sm">Fórmula</span>
+                        <div className="grid grid-cols-3 gap-2 mb-8">
+                            <button onClick={() => setType('formula')} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all ${type === 'formula' ? 'bg-blue-500/10 border-blue-500/50 text-blue-200' : 'bg-slate-900/50 border-white/5 text-slate-500'}`}>
+                                <Milk size={18} className="mb-2" />
+                                <span className="font-bold text-[10px] uppercase tracking-wider">Fórmula</span>
                             </button>
-                            <button onClick={() => setType('breastmilk')} className={`p-4 rounded-2xl border flex items-center gap-3 transition-all ${type === 'breastmilk' ? 'bg-pink-500/10 border-pink-500/50 text-pink-200' : 'bg-slate-900/50 border-white/5 text-slate-500'}`}>
-                                <Droplet size={20} />
-                                <span className="font-bold text-sm">Materna</span>
+                            <button onClick={() => setType('breastmilk')} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all ${type === 'breastmilk' ? 'bg-pink-500/10 border-pink-500/50 text-pink-200' : 'bg-slate-900/50 border-white/5 text-slate-500'}`}>
+                                <Droplet size={18} className="mb-2" />
+                                <span className="font-bold text-[10px] uppercase tracking-wider">Materna</span>
+                            </button>
+                            <button onClick={() => setType('mixed')} className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all ${type === 'mixed' ? 'bg-indigo-500/10 border-indigo-500/50 text-indigo-200' : 'bg-slate-900/50 border-white/5 text-slate-500'}`}>
+                                <div className="flex gap-[-4px] mb-2">
+                                    <Milk size={14} className="-mr-1" />
+                                    <Droplet size={14} />
+                                </div>
+                                <span className="font-bold text-[10px] uppercase tracking-wider">Mezcla</span>
                             </button>
                         </div>
 
                         <button onClick={handleSave} className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-black text-lg shadow-xl shadow-blue-600/20 active:scale-[0.98] transition-all">
                             Guardar Registro
                         </button>
+
+                        {/* Prep Tips */}
+                        <div className="mt-8 p-5 bg-slate-900 border border-white/5 rounded-[2rem] flex items-center gap-4">
+                            <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 shrink-0">
+                                <Info size={24} />
+                            </div>
+                            <div className="space-y-1">
+                                <h4 className="text-xs font-black text-white uppercase tracking-widest">Tip de Seguridad</h4>
+                                <p className="text-[11px] text-slate-400 leading-relaxed">La temperatura ideal son <strong className="text-blue-300">37°C</strong>. Prueba siempre unas gotas en tu muñeca antes de dárselo.</p>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div className="p-6 space-y-6">

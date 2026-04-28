@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Droplets, Minus, Plus, Activity, Calendar } from 'lucide-react';
+import { Droplets, Minus, Plus, Activity, Calendar, Play, StopCircle, Clock, Package } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { PumpingLog } from './types';
 
@@ -14,13 +14,24 @@ export const PumpingDashboard: React.FC = () => {
             .reduce((acc, curr) => acc + (curr.amountMl || 0), 0);
     }, [logs]);
 
+    // Stock calculation (Total since ever - what might have been used if we had bottle tracking sync)
+    // For now, just sum all logs as "Stock Available" (simplified)
+    const stockTotal = useMemo(() => {
+        return logs.reduce((acc, curr) => acc + (curr.amountMl || 0), 0);
+    }, [logs]);
+
     return (
-        <div className="flex flex-col">
-            <span className="font-bold text-violet-200">
-                {total24h} ml
-            </span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+                <span className="font-bold text-violet-200">
+                    {total24h} ml
+                </span>
+                <div className="text-[9px] font-black text-emerald-400 flex items-center gap-1 bg-emerald-500/10 px-1 rounded">
+                    <Package size={8} /> {stockTotal}
+                </div>
+            </div>
             <span className="text-[10px] opacity-70">
-                Últimas 24h
+                24h / Stock total
             </span>
         </div>
     );
@@ -30,6 +41,22 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const { addLog, logs, removeLog } = useToolData<PumpingLog>('pumping');
     const [amount, setAmount] = useState(100);
     const [side, setSide] = useState<'left' | 'right' | 'double'>('double');
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
+    const [seconds, setSeconds] = useState(0);
+
+    React.useEffect(() => {
+        let interval: number;
+        if (isTimerRunning) {
+            interval = window.setInterval(() => setSeconds(s => s + 1), 1000);
+        }
+        return () => clearInterval(interval);
+    }, [isTimerRunning]);
+
+    const formatTime = (s: number) => {
+        const m = Math.floor(s / 60);
+        const sec = s % 60;
+        return `${m}:${sec.toString().padStart(2, '0')}`;
+    };
 
     const handleSave = () => {
         addLog({
@@ -98,11 +125,23 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     return (
         <div className="flex flex-col h-full bg-slate-950 overflow-y-auto">
 
+            {/* Timer Section */}
+            <div className="p-6 pb-2 flex flex-col items-center border-b border-white/5">
+                <div className="text-4xl font-mono font-light text-violet-200 mb-4">{formatTime(seconds)}</div>
+                <button 
+                    onClick={() => setIsTimerRunning(!isTimerRunning)}
+                    className={`flex items-center gap-3 px-8 py-3 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all ${isTimerRunning ? 'bg-red-500/20 text-red-400 border border-red-500/40' : 'bg-violet-600 text-white shadow-lg shadow-violet-900/40'}`}
+                >
+                    {isTimerRunning ? <StopCircle size={18} /> : <Play size={18} />}
+                    {isTimerRunning ? 'Parar' : 'Iniciar Timer'}
+                </button>
+            </div>
+
             {/* Input Section */}
             <div className="p-6 pb-2 space-y-6">
                 {/* Amount */}
                 <div className="flex flex-col items-center">
-                    <span className="text-xs font-bold text-violet-400 uppercase tracking-widest mb-4">Cantidad Extraída</span>
+                    <span className="text-[10px] font-black text-violet-400 uppercase tracking-widest mb-4">Cantidad recolectada</span>
                     <div className="flex items-center gap-6">
                         <button
                             onClick={() => setAmount(a => Math.max(0, a - 10))}
@@ -111,7 +150,7 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             <Minus size={20} />
                         </button>
                         <div className="text-center w-32">
-                            <span className="text-5xl font-bold text-white">{amount}</span>
+                            <span className="text-5xl font-bold text-white tabular-nums">{amount}</span>
                             <span className="text-base font-bold text-slate-500 ml-1">ml</span>
                         </div>
                         <button
@@ -155,18 +194,26 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </div>
 
             {/* Stats Cards */}
-            <div className="px-6 py-4 grid grid-cols-3 gap-3">
-                <div className="bg-slate-900 border border-white/5 p-3 rounded-xl flex flex-col items-center">
+            <div className="px-6 py-4 grid grid-cols-2 gap-3">
+                <div className="bg-slate-900 border border-white/5 p-3 rounded-xl flex items-center justify-between">
                     <span className="text-[10px] uppercase text-slate-500 font-bold">24h</span>
                     <span className="text-lg font-bold text-white">{stat24h}<span className="text-xs text-slate-500 ml-0.5">ml</span></span>
                 </div>
-                <div className="bg-slate-900 border border-white/5 p-3 rounded-xl flex flex-col items-center">
-                    <span className="text-[10px] uppercase text-slate-500 font-bold">3 Días</span>
-                    <span className="text-lg font-bold text-white">{stat3d}<span className="text-xs text-slate-500 ml-0.5">ml</span></span>
-                </div>
-                <div className="bg-slate-900 border border-white/5 p-3 rounded-xl flex flex-col items-center">
+                <div className="bg-slate-900 border border-white/5 p-3 rounded-xl flex items-center justify-between">
                     <span className="text-[10px] uppercase text-slate-500 font-bold">7 Días</span>
                     <span className="text-lg font-bold text-white">{stat7d}<span className="text-xs text-slate-500 ml-0.5">ml</span></span>
+                </div>
+                <div className="col-span-2 bg-slate-900 border border-white/5 p-4 rounded-xl space-y-2">
+                    <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-500">
+                        <span>Balance L/R (7d)</span>
+                        <span className="text-white">
+                            {Math.round((dailyChart.reduce((a,b)=>a+b.left,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100)}% / {Math.round((dailyChart.reduce((a,b)=>a+b.right,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100)}%
+                        </span>
+                    </div>
+                    <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden flex">
+                        <div className="h-full bg-pink-500" style={{ width: `${(dailyChart.reduce((a,b)=>a+b.left,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100}%` }}></div>
+                        <div className="h-full bg-purple-500" style={{ width: `${(dailyChart.reduce((a,b)=>a+b.right,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100}%` }}></div>
+                    </div>
                 </div>
             </div>
 

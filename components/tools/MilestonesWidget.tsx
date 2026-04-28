@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Trophy, Check, Star, Plus, Search } from 'lucide-react';
+import { Trophy, Check, Star, Plus, Search, Image as ImageIcon, Info, Calendar, Share2 } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { MilestoneLog } from './types';
 import { useBaby } from '../../services/BabyContext';
@@ -316,13 +316,35 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className={`font-bold ${done ? 'text-yellow-200' : 'text-slate-300'}`}>{m.label}</p>
+                                                    <div className="flex items-center gap-2 mt-1">
+                                                        <span className="text-[9px] text-slate-500 font-bold bg-slate-800 px-1.5 py-0.5 rounded uppercase tracking-tighter">Est: {m.id === 'walk' ? '12-18m' : m.id === 'crawl' ? '8-10m' : 'Standard'}</span>
+                                                        {done && <span className="text-[9px] text-emerald-500 font-bold flex items-center gap-0.5"><Check size={8} /> A tiempo</span>}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            {done && (
-                                                <span className="text-xs text-yellow-300 font-mono opacity-70">
-                                                    {new Date(log.timestamp).toLocaleDateString()}
-                                                </span>
-                                            )}
+                                            <div className="flex flex-col items-end gap-2">
+                                                {done ? (
+                                                    <div className="flex flex-col items-end gap-1">
+                                                        <span className="text-[10px] text-yellow-300 font-mono opacity-70">
+                                                            {new Date(log.timestamp).toLocaleDateString()}
+                                                        </span>
+                                                        <div className="flex items-center gap-2">
+                                                            <button 
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    alert('¡Hito compartido con éxito!');
+                                                                }}
+                                                                className="p-1 rounded bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
+                                                            >
+                                                                <Share2 size={12} />
+                                                            </button>
+                                                            <ImageIcon size={14} className="text-slate-600" />
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <Plus size={16} className="text-slate-700" />
+                                                )}
+                                            </div>
                                         </button>
                                     );
                                 })}

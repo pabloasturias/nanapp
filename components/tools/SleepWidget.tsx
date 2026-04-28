@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Moon, Sun, Clock, History, Play, StopCircle, Pause, Calendar, ChevronLeft, ChevronRight, X, AlertCircle, Trash2, CheckCircle2 } from 'lucide-react';
+import { Moon, Sun, Clock, History, Play, StopCircle, Pause, Calendar, ChevronLeft, ChevronRight, X, AlertCircle, Trash2, CheckCircle2, Music, Volume2 } from 'lucide-react';
 import { useToolData } from '../../services/hooks/useToolData';
 import { SleepLog } from './types';
 import { useBaby } from '../../services/BabyContext';
@@ -151,6 +151,17 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [_, setTick] = useState(0);
     const [viewDate, setViewDate] = useState(new Date());
     const [isAddingManual, setIsAddingManual] = useState(false);
+    const [showWakeReason, setShowWakeReason] = useState(false);
+    const [lastReason, setLastReason] = useState('');
+    const [isNoisePlaying, setIsNoisePlaying] = useState(false);
+
+    const WAKE_REASONS = [
+        { id: 'hunger', label: 'Hambre', icon: '🍼' },
+        { id: 'diaper', label: 'Pañal', icon: '💩' },
+        { id: 'comfort', label: 'Consuelo', icon: '🫂' },
+        { id: 'noise', label: 'Ruido', icon: '🔊' },
+        { id: 'unknown', label: 'NS/NC', icon: '❓' }
+    ];
 
     const babyLogs = useMemo(() => {
         if (!activeBaby) return logs;
@@ -177,15 +188,22 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         if (navigator.vibrate) navigator.vibrate(50);
     };
 
-    const handleWake = () => {
+    const handleWake = (reason?: string) => {
         if (!latest) return;
         const end = Date.now();
         const duration = Math.floor((end - latest.timestamp) / 60000);
         updateLog(l => l === latest, {
             endTime: end,
-            durationMinutes: duration
+            durationMinutes: duration,
+            quality: reason as any // We use quality field to store reason for now or add new field
         });
+        setShowWakeReason(false);
         if (navigator.vibrate) navigator.vibrate(50);
+    };
+
+    const toggleNoise = () => {
+        setIsNoisePlaying(!isNoisePlaying);
+        if (navigator.vibrate) navigator.vibrate(10);
     };
 
     const handleSaveManual = (start: number, end: number) => {
@@ -271,21 +289,56 @@ export const SleepFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     )}
                 </div>
 
-                <button
-                    onClick={isSleeping ? handleWake : handleSleep}
-                    className={`w-36 h-36 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-all transform active:scale-95 ${isSleeping
-                        ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white border-4 border-orange-200/20'
-                        : 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-4 border-indigo-300/20'
-                        }`}
-                >
-                    <div className="flex flex-col items-center gap-1">
-                        {isSleeping ? <Sun size={36} fill="currentColor" /> : <Moon size={36} fill="currentColor" />}
-                        <span className="font-bold text-sm uppercase tracking-widest mt-1">
-                            {isSleeping ? 'Despertar' : 'Dormir'}
-                        </span>
-                    </div>
-                </button>
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={isSleeping ? () => setShowWakeReason(true) : handleSleep}
+                        className={`w-32 h-32 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-all transform active:scale-95 ${isSleeping
+                            ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white border-4 border-orange-200/20'
+                            : 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-4 border-indigo-300/20'
+                            }`}
+                    >
+                        <div className="flex flex-col items-center gap-1">
+                            {isSleeping ? <Sun size={32} fill="currentColor" /> : <Moon size={32} fill="currentColor" />}
+                            <span className="font-bold text-[10px] uppercase tracking-widest mt-1">
+                                {isSleeping ? 'Despertar' : 'Dormir'}
+                            </span>
+                        </div>
+                    </button>
+
+                    <button 
+                        onClick={toggleNoise}
+                        className={`w-14 h-14 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all border ${isNoisePlaying ? 'bg-indigo-500 border-indigo-400 text-white shadow-lg shadow-indigo-500/20' : 'bg-slate-900 border-white/5 text-slate-500'}`}
+                    >
+                        {isNoisePlaying ? <Volume2 size={20} className="animate-pulse" /> : <Music size={20} />}
+                        <span className="text-[8px] font-bold uppercase">Ruido</span>
+                    </button>
+                </div>
             </div>
+
+            {/* Wake Reason Modal */}
+            {showWakeReason && (
+                <div className="absolute inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-6 animate-in fade-in zoom-in duration-200">
+                    <div className="bg-slate-900 border border-white/10 rounded-[2.5rem] p-6 w-full max-w-sm shadow-2xl">
+                        <h3 className="text-xl font-bold text-white mb-2 text-center">¿Por qué se despertó?</h3>
+                        <p className="text-xs text-slate-500 text-center mb-6">Esto ayuda a entender sus patrones de sueño</p>
+                        
+                        <div className="grid grid-cols-3 gap-3 mb-8">
+                            {WAKE_REASONS.map(r => (
+                                <button 
+                                    key={r.id}
+                                    onClick={() => handleWake(r.label)}
+                                    className="aspect-square bg-slate-800 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-700 active:scale-95 transition-all border border-white/5"
+                                >
+                                    <span className="text-2xl">{r.icon}</span>
+                                    <span className="text-[10px] font-bold text-slate-300 uppercase">{r.label}</span>
+                                </button>
+                            ))}
+                        </div>
+                        
+                        <button onClick={() => setShowWakeReason(false)} className="w-full py-4 text-slate-500 font-bold uppercase text-xs tracking-widest">Omitir</button>
+                    </div>
+                </div>
+            )}
 
             {/* Timeline / Stats Section */}
             <div className="flex-1 bg-slate-900/50 rounded-t-[2.5rem] border-t border-white/5 flex flex-col overflow-hidden">
