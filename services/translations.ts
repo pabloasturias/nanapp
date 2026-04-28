@@ -368,6 +368,9 @@ export const translations = {
     tool_memory_poster: "Proyecto Memoria",
     tool_memory_poster_subtitle: "Lámina del Primer Año",
     tool_memory_poster_desc: "Genera una lámina artística en PDF con el resumen visual del primer año de tu bebé. Incluye gráficas de crecimiento, hitos con fechas, fase lunar y mucho más.",
+    tool_footprint: "Huellas",
+    tool_footprint_subtitle: "Captura sus pequeñas huellas",
+    tool_footprint_desc: "Usa la pantalla de tu móvil como un lienzo para capturar la forma del pie o la mano de tu bebé. Un recuerdo digital único.",
   },
   en: {
     app_slogan: "the sound of silence",
@@ -721,6 +724,9 @@ export const translations = {
     tool_memory_poster: "Memory Project",
     tool_memory_poster_subtitle: "First Year Poster",
     tool_memory_poster_desc: "Generate an artistic PDF poster with the visual summary of your baby's first year. Includes growth charts, milestones with dates, moon phase, and more.",
+    tool_footprint: "Prints",
+    tool_footprint_subtitle: "Capture their tiny prints",
+    tool_footprint_desc: "Use your mobile screen as a canvas to capture the shape of your baby's foot or hand. A unique digital keepsake.",
   },
   fr: {
     app_slogan: "le son du silence",

@@ -431,7 +431,7 @@ const AppContent: React.FC = () => {
                 onReorderSounds={reorderSounds}
             />
 
-            <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-40">
+            <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0">
                 <Header
                     onOpenSettings={() => openModal('settings')}
                     onOpenSupport={() => openModal('support')}
@@ -452,7 +452,6 @@ const AppContent: React.FC = () => {
                     setActiveTab={navigateToTab as any} 
                 />
             )}
-            {!nightActive && <QuickLogFAB />}
         </div>
         </div>
     );

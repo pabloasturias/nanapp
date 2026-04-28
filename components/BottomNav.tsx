@@ -11,8 +11,9 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
   const { t } = useLanguage();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 mx-auto max-w-lg w-full z-50 bg-slate-900/95 backdrop-blur-lg border-t border-orange-100/5 rounded-t-[2rem] pb-[env(safe-area-inset-bottom)]">
-      <div className="flex justify-around items-center h-20 px-4">
+    <div className="fixed bottom-6 left-6 right-6 mx-auto max-w-[400px] z-50">
+      <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
+        <div className="flex justify-around items-center h-16 px-2">
         
         {/* HOME */}
         <button

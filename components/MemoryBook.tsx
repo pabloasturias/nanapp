@@ -1,14 +1,24 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Download, X, Star, Heart, Ruler, MessageCircle, Moon, Trophy, Activity, Calendar, ShieldCheck, Stethoscope, Utensils, Zap, Quote } from 'lucide-react';
+import { Download, X, Heart, Moon, Quote, Footprints, Hand } from 'lucide-react';
 import { useBaby } from '../services/BabyContext';
 import { useToolData } from '../services/hooks/useToolData';
-import { GrowthLog, MilestoneLog, FirstWordLog, TeethingLog, SolidsLog, VaccineLog, AppointmentLog, SleepLog, BottleLog, BreastfeedingLog } from './tools/types';
+import { GrowthLog, MilestoneLog, FirstWordLog, TeethingLog, SolidsLog, VaccineLog, AppointmentLog, SleepLog, BottleLog, FootprintLog } from './tools/types';
 import { useLanguage } from '../services/LanguageContext';
 
 interface MemoryBookProps {
     onClose: () => void;
 }
+
+// --- High-End Typography & Style Constants ---
+const STYLE = {
+    fontSerif: "'Playfair Display', serif", // Fallback to serif if not loaded
+    fontSans: "'Inter', sans-serif",
+    paper: "#FAF9F6",
+    ink: "#1A1A1A",
+    accent: "#D4AF37", // Gold-ish subtle accent
+    muted: "#8C8C8C"
+};
 
 // --- Helpers ---
 
@@ -22,26 +32,34 @@ const getZodiac = (date: Date) => {
 };
 
 const getMoonPhase = (date: Date) => {
-    // Known New Moon: 2024-01-11 11:57 UTC
     const refDate = new Date('2024-01-11T11:57:00Z').getTime();
-    const now = date.getTime();
     const cycle = 29.530588 * 24 * 60 * 60 * 1000;
-    const phase = ((now - refDate) % cycle) / cycle;
-    if (phase < 0.05 || phase > 0.95) return { label: 'Luna Nueva', emoji: '🌑' };
-    if (phase < 0.2) return { label: 'Luna Creciente', emoji: '🌒' };
-    if (phase < 0.3) return { label: 'Cuarto Creciente', emoji: '🌓' };
-    if (phase < 0.45) return { label: 'Gibosa Creciente', emoji: '🌔' };
-    if (phase < 0.55) return { label: 'Luna Llena', emoji: '🌕' };
-    if (phase < 0.7) return { label: 'Gibosa Menguante', emoji: '🌖' };
-    if (phase < 0.8) return { label: 'Cuarto Menguante', emoji: '🌗' };
-    return { label: 'Luna Menguante', emoji: '🌘' };
+    const phase = ((date.getTime() - refDate) % cycle) / cycle;
+    if (phase < 0.05 || phase > 0.95) return { label: 'Luna Nueva', type: 'new' };
+    if (phase < 0.25) return { label: 'Luna Creciente', type: 'crescent-inc' };
+    if (phase < 0.5) return { label: 'Cuarto Creciente', type: 'quarter-inc' };
+    if (phase < 0.55) return { label: 'Luna Llena', type: 'full' };
+    if (phase < 0.75) return { label: 'Luna Menguante', type: 'crescent-dec' };
+    return { label: 'Cuarto Menguante', type: 'quarter-dec' };
 };
 
-// --- Sparkline Component ---
-const Sparkline: React.FC<{ data: number[], color: string, width: number, height: number }> = ({ data, color, width, height }) => {
-    if (data.length < 2) return <div className="h-full flex items-center justify-center text-[8px] text-slate-300">Esperando datos...</div>;
-    const min = Math.min(...data) * 0.95;
-    const max = Math.max(...data) * 1.05;
+// --- Minimalist SVG Moon ---
+const MoonIllustration: React.FC<{ type: string }> = ({ type }) => (
+    <svg width="40" height="40" viewBox="0 0 40 40" className="opacity-80">
+        <circle cx="20" cy="20" r="18" fill="none" stroke={STYLE.muted} strokeWidth="0.5" />
+        {type === 'full' && <circle cx="20" cy="20" r="15" fill={STYLE.accent} opacity="0.2" />}
+        {type.includes('crescent') && <path d="M20 5 A15 15 0 0 1 20 35 A12 12 0 0 0 20 5" fill={STYLE.muted} opacity="0.3" />}
+        {type === 'new' && <circle cx="20" cy="20" r="15" fill={STYLE.muted} opacity="0.1" />}
+    </svg>
+);
+
+// --- Fine Line Chart ---
+const FineChart: React.FC<{ data: number[], color: string }> = ({ data, color }) => {
+    if (data.length < 2) return null;
+    const width = 240;
+    const height = 50;
+    const min = Math.min(...data) * 0.9;
+    const max = Math.max(...data) * 1.1;
     const range = max - min;
     const points = data.map((val, i) => ({
         x: (i / (data.length - 1)) * width,
@@ -50,12 +68,9 @@ const Sparkline: React.FC<{ data: number[], color: string, width: number, height
     const path = `M ${points[0].x} ${points[0].y} ` + points.slice(1).map(p => `L ${p.x} ${p.y}`).join(' ');
     
     return (
-        <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
-            <path d={path} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            {/* Dots */}
-            {points.map((p, i) => (
-                <circle key={i} cx={p.x} cy={p.y} r="2" fill="white" stroke={color} strokeWidth="1" />
-            ))}
+        <svg width={width} height={height} className="overflow-visible mt-4">
+            <path d={path} fill="none" stroke={color} strokeWidth="0.75" />
+            <circle cx={points[points.length-1].x} cy={points[points.length-1].y} r="2" fill={color} />
         </svg>
     );
 };
@@ -64,42 +79,41 @@ export const MemoryBook: React.FC<MemoryBookProps> = ({ onClose }) => {
     const { activeBaby } = useBaby();
     const { t } = useLanguage();
     
+    // Data fetching
     const { logs: growthLogs } = useToolData<GrowthLog>('growth');
     const { logs: milestoneLogs } = useToolData<MilestoneLog>('milestones');
     const { logs: wordLogs } = useToolData<FirstWordLog>('first_words');
     const { logs: teethingLogs } = useToolData<TeethingLog>('teething');
     const { logs: solidsLogs } = useToolData<SolidsLog>('solids');
-    const { logs: vaccineLogs } = useToolData<VaccineLog>('vaccines');
-    const { logs: apptLogs } = useToolData<AppointmentLog>('medical_agenda');
     const { logs: sleepLogs } = useToolData<SleepLog>('sleep');
     const { logs: bottleLogs } = useToolData<BottleLog>('bottle');
+    const { logs: footprintLogs } = useToolData<FootprintLog>('footprint');
 
-    const babyName = activeBaby?.name || 'Tu Bebé';
-    const birthDate = activeBaby ? new Date(activeBaby.birthDate) : new Date();
+    // --- MOCK DATA FOR "PERFECT EXAMPLE" if real data is missing ---
+    const useMock = growthLogs.length < 2;
+    const realFootprint = footprintLogs.find(l => l.type === 'pie' && (!l.babyId || l.babyId === activeBaby?.id));
+    const realHandprint = footprintLogs.find(l => l.type === 'mano' && (!l.babyId || l.babyId === activeBaby?.id));
+    
+    const babyName = activeBaby?.name || 'Leo Alexander';
+    const birthDate = activeBaby ? new Date(activeBaby.birthDate) : new Date('2024-04-11');
     const zodiac = getZodiac(birthDate);
     const moon = getMoonPhase(birthDate);
 
-    // --- Data Processing ---
-    
-    const milestones = useMemo(() => 
-        milestoneLogs.filter(l => !l.babyId || l.babyId === activeBaby?.id).sort((a,b) => a.timestamp - b.timestamp).slice(0, 15),
-    [milestoneLogs, activeBaby]);
+    const milestones = useMemo(() => {
+        const real = milestoneLogs.filter(l => !l.babyId || l.babyId === activeBaby?.id).sort((a,b) => a.timestamp - b.timestamp);
+        if (!useMock) return real.slice(0, 10);
+        return [
+            { timestamp: birthDate.getTime() + 86400000 * 45, milestoneId: 'Primera Sonrisa' },
+            { timestamp: birthDate.getTime() + 86400000 * 120, milestoneId: 'Se dio la vuelta' },
+            { timestamp: birthDate.getTime() + 86400000 * 180, milestoneId: 'Se mantuvo sentado' },
+            { timestamp: birthDate.getTime() + 86400000 * 240, milestoneId: 'Empezó a gatear' },
+            { timestamp: birthDate.getTime() + 86400000 * 300, milestoneId: 'Se puso de pie' },
+            { timestamp: birthDate.getTime() + 86400000 * 360, milestoneId: 'Primeros pasos' }
+        ];
+    }, [milestoneLogs, activeBaby, useMock, birthDate]);
 
-    const weightData = useMemo(() => growthLogs.map(l => l.weightKg || 0).filter(v => v > 0).reverse(), [growthLogs]);
-    const heightData = useMemo(() => growthLogs.map(l => l.heightCm || 0).filter(v => v > 0).reverse(), [growthLogs]);
-
-    const bottleMonthly = useMemo(() => {
-        const months: Record<string, number[]> = {};
-        bottleLogs.forEach(l => {
-            const m = new Date(l.timestamp).toLocaleDateString('es-ES', { month: 'short' });
-            if (!months[m]) months[m] = [];
-            months[m].push(l.amount);
-        });
-        return Object.entries(months).map(([name, vals]) => ({
-            name,
-            avg: Math.round(vals.reduce((a,b) => a+b, 0) / vals.length)
-        })).slice(-6);
-    }, [bottleLogs]);
+    const weightData = useMock ? [3.4, 4.1, 5.2, 6.4, 7.5, 8.8, 9.5] : growthLogs.map(l => l.weightKg || 0).filter(v => v > 0).reverse();
+    const heightData = useMock ? [50, 53, 58, 62, 65, 70, 74] : growthLogs.map(l => l.heightCm || 0).filter(v => v > 0).reverse();
 
     const handleDownload = () => window.print();
 
@@ -108,168 +122,165 @@ export const MemoryBook: React.FC<MemoryBookProps> = ({ onClose }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-slate-950 flex flex-col overflow-hidden"
+            className="fixed inset-0 z-[100] bg-[#121212] flex flex-col overflow-hidden font-sans"
         >
-            {/* Header Controls */}
-            <div className="p-4 flex items-center justify-between border-b border-white/5 bg-slate-900/80 backdrop-blur-md sticky top-0 z-10 print:hidden">
-                <button onClick={onClose} className="p-2 text-slate-400 hover:text-white transition-colors">
+            {/* Elegant Header Controls */}
+            <div className="p-6 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-xl print:hidden">
+                <button onClick={onClose} className="p-2 text-white/40 hover:text-white transition-colors">
                     <X size={24} />
                 </button>
-                <div className="flex flex-col items-center max-w-md text-center">
-                    <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-200">Lámina de Recuerdo</h2>
-                    <p className="text-[9px] text-slate-400 mt-1 leading-tight">
-                        "Aunque ahora estos momentos se sienten eternos, el tiempo tiende a desdibujar los detalles. Guarda esta lámina: es la huella digital de su primer capítulo."
-                    </p>
+                <div className="text-center">
+                    <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/60 mb-1">Keepsake Edition</h2>
+                    <p className="text-[9px] text-white/30 tracking-widest">{useMock ? 'MODO DEMOSTRACIÓN' : 'DATOS REALES'}</p>
                 </div>
                 <button 
                     onClick={handleDownload}
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 text-slate-950 font-black text-xs shadow-xl active:scale-95 transition-all"
+                    className="flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold text-xs shadow-2xl hover:scale-105 active:scale-95 transition-all"
                 >
-                    <Download size={14} /> GENERAR PDF
+                    <Download size={14} /> EXPORTAR PDF
                 </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto bg-slate-900 p-4 md:p-8 flex justify-center items-center print:p-0 print:bg-white">
-                {/* ── THE POSTER (LANDSCAPE) ── */}
-                <div className="w-full max-w-[297mm] aspect-[1.414/1] bg-[#faf9f6] shadow-2xl relative overflow-hidden p-[10mm] flex flex-col text-slate-800 print:shadow-none print:w-full print:h-full print:m-0">
+            <div className="flex-1 overflow-y-auto bg-[#1A1A1A] p-4 md:p-12 flex justify-center items-start print:p-0 print:bg-white">
+                {/* ── THE POSTER (EDITORIAL LANDSCAPE) ── */}
+                <div className="w-full max-w-[297mm] aspect-[1.414/1] bg-[#FAF9F6] shadow-[0_0_100px_rgba(0,0,0,0.5)] relative overflow-hidden p-[20mm] flex flex-col text-[#1A1A1A] print:shadow-none print:w-full print:h-full print:m-0">
                     
-                    {/* Frame */}
-                    <div className="absolute inset-[6mm] border-[0.5px] border-slate-200 pointer-events-none" />
+                    {/* Subtle Texture Layer */}
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
+
+                    {/* Fine Borders */}
+                    <div className="absolute inset-[10mm] border-[0.5px] border-[#E5E2D9] pointer-events-none" />
                     
-                    {/* Header */}
-                    <div className="text-center mt-4 mb-8 relative z-10">
-                        <div className="flex justify-center gap-8 mb-2 text-[10px] uppercase font-black tracking-widest text-slate-300">
-                            <span>{zodiac}</span>
-                            <span>{moon.emoji} {moon.label}</span>
+                    {/* Header: Editorial Identity */}
+                    <div className="flex justify-between items-start mb-16 relative z-10">
+                        <div className="flex flex-col">
+                            <p className="text-[10px] font-bold tracking-[0.5em] text-[#A6A295] mb-6 uppercase">Vol. I · El Origen</p>
+                            <h1 className="text-[80px] font-serif font-black leading-none tracking-tight text-[#1A1A1A] mb-2 lowercase">{babyName}</h1>
+                            <div className="flex items-center gap-6 mt-4">
+                                <div className="text-left">
+                                    <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest">Nacimiento</p>
+                                    <p className="text-lg font-serif italic text-[#1A1A1A]">{birthDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                                </div>
+                                <div className="w-[1px] h-8 bg-[#E5E2D9]" />
+                                <div className="text-left">
+                                    <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest">Signo</p>
+                                    <p className="text-lg font-serif italic text-[#1A1A1A]">{zodiac}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h1 className="text-6xl font-serif font-black tracking-[-0.02em] text-slate-900 leading-none">Primer año de {babyName}</h1>
-                        <div className="flex items-center justify-center gap-4 mt-2">
-                            <div className="h-[1px] w-12 bg-slate-200" />
-                            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400">MEMORIA VISUAL · {birthDate.getFullYear()}</p>
-                            <div className="h-[1px] w-12 bg-slate-200" />
+                        <div className="flex flex-col items-end text-right">
+                            <MoonIllustration type={moon.type} />
+                            <p className="text-[10px] font-bold text-[#A6A295] uppercase tracking-widest mt-4">{moon.label}</p>
+                            <p className="text-[9px] italic text-[#A6A295] mt-1">La noche que llegaste</p>
                         </div>
                     </div>
 
-                    <div className="flex-1 grid grid-cols-3 gap-x-12 relative z-10 px-8 overflow-hidden">
+                    <div className="flex-1 grid grid-cols-4 gap-x-12 relative z-10">
                         
-                        {/* COLUMN 1: VISUAL GROWTH */}
-                        <div className="flex flex-col gap-8">
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <Activity size={14} /> EVOLUCIÓN PESO (KG)
-                                </h3>
-                                <div className="h-24 w-full bg-white/40 rounded-2xl p-4 border border-slate-100 relative">
-                                    <Sparkline data={weightData.length > 0 ? weightData : [3.4, 4.2, 5.1, 6.0]} color="#f97316" width={220} height={60} />
-                                    <div className="flex justify-between mt-1 text-[8px] text-slate-400 font-bold">
-                                        <span>Nacimiento</span>
-                                        <span>{weightData[weightData.length-1] || '—'} kg</span>
+                        {/* COL 1: FIRST STEPS (Timeline) */}
+                        <div className="col-span-1 border-r border-[#E5E2D9] pr-8">
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[#A6A295] mb-10 uppercase">Primeros Pasos</h3>
+                            <div className="space-y-8">
+                                {milestones.map((m, i) => (
+                                    <div key={i} className="flex flex-col group">
+                                        <p className="text-[9px] font-bold text-[#D4AF37] mb-1">
+                                            {new Date(m.timestamp).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' }).toUpperCase()}
+                                        </p>
+                                        <p className="text-[13px] font-serif text-[#1A1A1A] leading-tight capitalize">{m.milestoneId.replace(/_/g, ' ')}</p>
                                     </div>
-                                </div>
-                            </section>
-
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <Ruler size={14} /> EVOLUCIÓN ALTURA (CM)
-                                </h3>
-                                <div className="h-24 w-full bg-white/40 rounded-2xl p-4 border border-slate-100 relative">
-                                    <Sparkline data={heightData.length > 0 ? heightData : [51, 54, 58, 62]} color="#6366f1" width={220} height={60} />
-                                    <div className="flex justify-between mt-1 text-[8px] text-slate-400 font-bold">
-                                        <span>Nacimiento</span>
-                                        <span>{heightData[heightData.length-1] || '—'} cm</span>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <Zap size={14} /> EVOLUCIÓN BIBERONES (ML AVG)
-                                </h3>
-                                <div className="flex items-end justify-between h-20 px-2 pt-4">
-                                    {bottleMonthly.length > 0 ? bottleMonthly.map((m, i) => (
-                                        <div key={i} className="flex flex-col items-center gap-1">
-                                            <div 
-                                                className="w-4 bg-orange-200 rounded-t-sm" 
-                                                style={{ height: `${(m.avg / 250) * 60}px` }} 
-                                            />
-                                            <span className="text-[7px] font-bold text-slate-400 uppercase">{m.name}</span>
-                                            <span className="text-[8px] font-black text-slate-600">{m.avg}</span>
-                                        </div>
-                                    )) : <p className="text-[10px] text-slate-300 italic">Esperando registros...</p>}
-                                </div>
-                            </section>
+                                ))}
+                                {milestones.length === 0 && <p className="text-xs italic text-[#A6A295]">Escribiendo la historia...</p>}
+                            </div>
                         </div>
 
-                        {/* COLUMN 2: MILESTONES WITH DATES */}
-                        <div className="flex flex-col gap-6">
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <Trophy size={14} /> MOMENTOS CLAVE
-                                </h3>
-                                <div className="space-y-2.5">
-                                    {milestones.map((m, i) => (
-                                        <div key={i} className="flex justify-between items-center text-[10px]">
-                                            <span className="font-bold text-slate-700 capitalize flex items-center gap-2">
-                                                <div className="w-1 h-1 rounded-full bg-orange-300" />
-                                                {m.milestoneId.replace(/_/g, ' ')}
-                                            </span>
-                                            <span className="text-[9px] text-slate-400 font-mono tracking-tighter">
-                                                {new Date(m.timestamp).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' })}
-                                            </span>
-                                        </div>
-                                    ))}
-                                    {milestones.length === 0 && <p className="text-xs text-slate-300 italic font-serif">Tu historia está por escribir...</p>}
-                                </div>
-                            </section>
+                        {/* COL 2: GROWTH (Charts) */}
+                        <div className="col-span-1 border-r border-[#E5E2D9] pr-8">
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[#A6A295] mb-10 uppercase">Evolución</h3>
+                            
+                            <div className="mb-12">
+                                <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest mb-1">Peso en Reposo</p>
+                                <p className="text-2xl font-serif text-[#1A1A1A]">{weightData[weightData.length-1]} <span className="text-xs italic opacity-50">kg</span></p>
+                                <FineChart data={weightData} color="#D4AF37" />
+                            </div>
+
+                            <div>
+                                <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest mb-1">Longitud</p>
+                                <p className="text-2xl font-serif text-[#1A1A1A]">{heightData[heightData.length-1]} <span className="text-xs italic opacity-50">cm</span></p>
+                                <FineChart data={heightData} color="#A6A295" />
+                            </div>
                         </div>
 
-                        {/* COLUMN 3: DEEP MEMORIES */}
-                        <div className="flex flex-col gap-8 h-full">
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <Utensils size={14} /> PRIMEROS SABORES
-                                </h3>
-                                <div className="grid grid-cols-2 gap-2">
-                                    {solidsLogs.slice(0, 4).map((s, i) => (
-                                        <div key={i} className="p-2 bg-white rounded-xl border border-slate-100 flex flex-col justify-center items-center text-center">
-                                            <span className="text-lg mb-1">{s.reaction === 'love' ? '❤️' : '🥑'}</span>
-                                            <p className="text-[9px] font-black text-slate-800 capitalize leading-tight">{s.food}</p>
+                        {/* COL 3: SU MUNDO (Stats & Solids) */}
+                        <div className="col-span-1 border-r border-[#E5E2D9] pr-8">
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[#A6A295] mb-10 uppercase">Su Mundo</h3>
+                            
+                            <div className="mb-12">
+                                <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest mb-4">Primeros Sabores</p>
+                                <div className="space-y-4">
+                                    {solidsLogs.length > 0 ? solidsLogs.slice(0, 3).map((s, i) => (
+                                        <div key={i} className="flex justify-between items-center border-b border-[#E5E2D9]/50 pb-2">
+                                            <span className="text-[12px] font-serif italic">{s.food}</span>
+                                            <span className="text-[10px]">{s.reaction === 'love' ? '❤️' : '✨'}</span>
                                         </div>
-                                    ))}
-                                    {solidsLogs.length === 0 && <p className="col-span-2 text-[10px] text-slate-300 italic font-serif">Pronto, nuevas aventuras...</p>}
+                                    )) : (
+                                        ['Aguacate', 'Pera', 'Calabaza'].map((f, i) => (
+                                            <div key={i} className="flex justify-between items-center border-b border-[#E5E2D9]/50 pb-2 opacity-30">
+                                                <span className="text-[12px] font-serif italic">{f}</span>
+                                                <span className="text-[10px]">✨</span>
+                                            </div>
+                                        ))
+                                    )}
                                 </div>
-                            </section>
+                            </div>
 
-                            <section>
-                                <h3 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-200 pb-2">
-                                    <MessageCircle size={14} /> SUS PRIMERAS VOCES
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {wordLogs.slice(0, 6).map((w, i) => (
-                                        <div key={i} className="px-3 py-1.5 bg-indigo-50/50 rounded-xl border border-indigo-100/50">
-                                            <p className="text-[11px] font-black text-indigo-900 leading-none mb-1">"{w.word}"</p>
-                                            <p className="text-[8px] text-indigo-400 font-bold uppercase">{new Date(w.timestamp).toLocaleDateString('es-ES', { month: 'short' })}</p>
-                                        </div>
+                            <div>
+                                <p className="text-[9px] font-bold text-[#A6A295] uppercase tracking-widest mb-4">Sus Palabras</p>
+                                <div className="flex flex-wrap gap-x-4 gap-y-2">
+                                    {(wordLogs.length > 0 ? wordLogs : [{word: 'Mamá'}, {word: 'Agua'}, {word: 'No'}]).slice(0, 5).map((w, i) => (
+                                        <span key={i} className={`text-[15px] font-serif italic ${wordLogs.length === 0 ? 'opacity-30' : ''}`}>"{w.word}"</span>
                                     ))}
                                 </div>
-                            </section>
+                            </div>
+                        </div>
 
-                            <section className="mt-auto">
-                                <div className="p-6 rounded-[2.5rem] bg-slate-900 text-slate-100 relative overflow-hidden shadow-2xl">
-                                    <Quote size={20} className="text-orange-500/20 absolute top-4 left-4" />
-                                    <p className="text-[11px] font-serif italic leading-relaxed text-slate-300 relative z-10 px-4">
-                                        "El tiempo desdibuja los detalles, pero esta lámina guarda la esencia de tu inicio. Siempre serás nuestro pequeño milagro."
-                                    </p>
-                                    <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl" />
+                        {/* COL 4: QUOTE & CLOSURE */}
+                        <div className="col-span-1 flex flex-col justify-end">
+                            <div className="mb-auto flex flex-col items-center">
+                                <h3 className="text-[10px] font-bold tracking-[0.3em] text-[#A6A295] mb-6 uppercase w-full">Sus Huellas</h3>
+                                <div className="flex gap-4">
+                                    <div className="relative w-24 h-36 bg-white/30 rounded-full flex items-center justify-center overflow-hidden border border-[#E5E2D9]/30">
+                                        {realFootprint ? (
+                                            <img src={realFootprint.imageData} className="w-full h-full object-contain rotate-[-10deg] opacity-70" alt="Huella Pie" />
+                                        ) : (
+                                            <Footprints size={40} className="text-[#A6A295] opacity-20 rotate-[-15deg]" />
+                                        )}
+                                        <span className="absolute bottom-2 text-[6px] font-bold text-[#A6A295] uppercase tracking-tighter">Pie</span>
+                                    </div>
+                                    <div className="relative w-24 h-36 bg-white/30 rounded-full flex items-center justify-center overflow-hidden border border-[#E5E2D9]/30">
+                                        {realHandprint ? (
+                                            <img src={realHandprint.imageData} className="w-full h-full object-contain rotate-[10deg] opacity-70" alt="Huella Mano" />
+                                        ) : (
+                                            <Hand size={40} className="text-[#A6A295] opacity-20 rotate-[15deg]" />
+                                        )}
+                                        <span className="absolute bottom-2 text-[6px] font-bold text-[#A6A295] uppercase tracking-tighter">Mano</span>
+                                    </div>
                                 </div>
-                            </section>
+                                <p className="text-[8px] font-bold text-[#A6A295] mt-4 uppercase tracking-widest">Escala 1:1 Digital</p>
+                            </div>
+
+                            <div className="mt-12 relative">
+                                <Quote size={20} className="text-[#D4AF37] opacity-20 absolute -top-4 -left-2" />
+                                <p className="text-[14px] font-serif italic leading-relaxed text-[#5C5A52]">
+                                    "El tiempo es un hilo fino que une cada uno de estos instantes. Aunque ahora sean tu presente, mañana serán tu tesoro más preciado. Gracias por elegirnos para ver el mundo de nuevo."
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Footer */}
-                    <div className="mt-6 text-center border-t border-slate-100 pt-4 opacity-50 relative z-10">
-                        <p className="text-[8px] font-black uppercase tracking-[0.5em] text-slate-300">
-                            CREADO CON AMOR POR NANAPP PARA {babyName.toUpperCase()}
-                        </p>
+                    {/* Footer: Fine Print */}
+                    <div className="mt-16 flex justify-between items-end border-t border-[#E5E2D9] pt-8 opacity-40">
+                        <p className="text-[8px] font-bold uppercase tracking-[0.5em]">Creado con Amor · Nanapp</p>
+                        <p className="text-[8px] font-bold uppercase tracking-[0.5em]">Edición Limitada 2024</p>
                     </div>
 
                 </div>

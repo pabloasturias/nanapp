@@ -177,3 +177,10 @@ export interface SoundLog {
     // Let's stick to "Transcript/Description" to be safe on storage, or very short base64.
 }
 
+export interface FootprintLog {
+    timestamp: number;
+    imageData: string; // Base64 data URL
+    type: 'pie' | 'mano';
+    babyId?: string;
+}
+

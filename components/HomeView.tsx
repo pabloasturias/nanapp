@@ -6,7 +6,7 @@ import { useBaby } from '../services/BabyContext';
 import { useStatistics } from '../services/hooks/useStatistics';
 import { useToolData } from '../services/hooks/useToolData';
 import { ToolDefinition, ToolId, GrowthLog, BottleLog, MedsLog, AppointmentLog } from './tools/types';
-import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X, Heart, BookOpen, Star } from 'lucide-react';
+import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X, Heart, BookOpen, Star, Footprints } from 'lucide-react';
 import { SoundType } from '../types';
 import { SoundButton } from './SoundButton';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -52,6 +52,7 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
     { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
+    { id: 'footprint', icon: Footprints, translationKey: 'tool_footprint', color: 'text-amber-600', bgColor: 'bg-amber-500/10' },
 ];
 
 interface HomeViewProps {
@@ -117,7 +118,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ currentSoundId, onPlaySound,
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-40"
+            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-28"
         >
             {/* ── SMART DASHBOARD ─────────────────────────────────── */}
             <SmartDashboard
@@ -237,7 +238,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ currentSoundId, onPlaySound,
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="flex-1 overflow-y-auto pr-2 pb-4 grid grid-cols-1 gap-2 content-start"
+                            className="flex-1 overflow-y-auto pb-28 px-1 relative animate-[fade-in_0.5s_ease-out] grid grid-cols-1 gap-2 content-start"
                         >
                             {TOOLS_CONFIG.map(tool => {
                                 const isSelected = favoriteTools.includes(tool.id);
@@ -566,7 +567,7 @@ const BabyOnboardingFlow: React.FC<{ onComplete: (b: any) => void; onCancel: () 
     const handleNext = () => setStep(s => s + 1);
 
     return (
-        <div className="flex flex-col h-full justify-center">
+        <div className="flex-1 min-h-0 flex flex-col h-full bg-slate-950 overflow-y-auto pb-28">
             <button onClick={onCancel} className="absolute top-6 right-6 p-2 text-slate-500 hover:text-white">
                 <X size={24} />
             </button>

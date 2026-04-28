@@ -8,7 +8,7 @@ export const DiscoverView: React.FC = () => {
     const [showMemoryBook, setShowMemoryBook] = useState(false);
 
     return (
-        <div className="flex-1 min-h-0 flex flex-col h-full bg-slate-950 overflow-y-auto pb-40">
+        <div className="flex-1 min-h-0 flex flex-col h-full bg-slate-950 overflow-y-auto pb-28">
             
             {/* Memory Book Incentive Card */}
             <div className="p-6">
