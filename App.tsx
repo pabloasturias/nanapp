@@ -430,13 +430,15 @@ const AppContent: React.FC = () => {
                 onReorderSounds={reorderSounds}
             />
 
-            <Header
-                onOpenSettings={() => openModal('settings')}
-                onOpenSupport={() => openModal('support')}
-                onOpenStats={() => navigateToTab('stats')}
-                onGoToStory={() => navigateToTab('story')}
-                isOffline={isOffline}
-            />
+            <div className="print:hidden">
+                <Header
+                    onOpenSettings={() => openModal('settings')}
+                    onOpenSupport={() => openModal('support')}
+                    onOpenStats={() => navigateToTab('stats')}
+                    onGoToStory={() => navigateToTab('story')}
+                    isOffline={isOffline}
+                />
+            </div>
 
             <main className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide bg-slate-950">
                 {/* Background Sandwich filling */}
@@ -451,14 +453,16 @@ const AppContent: React.FC = () => {
             </main>
 
             {!nightActive && (
-                <BottomNav 
-                    activeTab={
-                        activeTab === 'story' ? 'audio' :
-                        activeTab === 'stats' ? 'routine' :
-                        (activeTab as 'home' | 'audio' | 'routine' | 'discover')
-                    } 
-                    setActiveTab={navigateToTab as any} 
-                />
+                <div className="print:hidden">
+                    <BottomNav 
+                        activeTab={
+                            activeTab === 'story' ? 'audio' :
+                            activeTab === 'stats' ? 'routine' :
+                            (activeTab as 'home' | 'audio' | 'routine' | 'discover')
+                        } 
+                        setActiveTab={navigateToTab as any} 
+                    />
+                </div>
             )}
         </div>
         </div>
