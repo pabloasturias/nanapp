@@ -388,7 +388,6 @@ const AppContent: React.FC = () => {
             {/* Splash Screen */}
             {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
 
-            {isPageVisible && <Visualizer isActive={audio.isPlaying} type="calm" />}
 
             {/* UI Layovers */}
             <ReloadPrompt />
@@ -439,12 +438,20 @@ const AppContent: React.FC = () => {
                 isOffline={isOffline}
             />
 
-            <div className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide bg-slate-950">
-                {renderContent()}
-            </div>
+            <main className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide bg-slate-950">
+                {/* Background Sandwich filling */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {isPageVisible && <Visualizer isActive={audio.isPlaying} type="calm" />}
+                </div>
+
+                {/* Content Layer */}
+                <div className="relative z-10 w-full max-w-lg mx-auto pb-12">
+                    {renderContent()}
+                </div>
+            </main>
 
             {!nightActive && (
-                <div className="bg-slate-950 px-2 pb-2">
+                <footer className="bg-slate-950 px-3 pb-3 shrink-0">
                     <BottomNav 
                         activeTab={
                             activeTab === 'story' ? 'audio' :
@@ -453,7 +460,7 @@ const AppContent: React.FC = () => {
                         } 
                         setActiveTab={navigateToTab as any} 
                     />
-                </div>
+                </footer>
             )}
         </div>
         </div>

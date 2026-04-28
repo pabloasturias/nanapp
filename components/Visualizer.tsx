@@ -7,7 +7,7 @@ interface VisualizerProps {
 
 export const Visualizer: React.FC<VisualizerProps> = ({ isActive, type }) => {
   return (
-    <div className={`pointer-events-none fixed inset-0 flex items-center justify-center overflow-hidden transition-opacity duration-[2000ms] ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden transition-opacity duration-[2000ms] ${isActive ? 'opacity-100' : 'opacity-0'}`}>
       
       {/* Background Gradient Mesh (Deep Blue & Warmth) */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950/40" />
