@@ -442,7 +442,7 @@ const AppContent: React.FC = () => {
 
             <main className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide bg-slate-950">
                 {/* Background Sandwich filling */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 pointer-events-none overflow-hidden print:hidden">
                     {isPageVisible && <Visualizer isActive={audio.isPlaying} type="calm" />}
                 </div>
 
