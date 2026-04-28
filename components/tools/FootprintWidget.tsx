@@ -29,7 +29,7 @@ export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
     const setupCanvas = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
         if (!ctx) return;
 
         const dpr = window.devicePixelRatio || 1;
@@ -40,10 +40,10 @@ export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
         
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.fillStyle = '#1A1A1A';
+        ctx.imageSmoothingEnabled = true;
     };
 
-    const draw = (x: number, y: number, pressure: number = 0.5) => {
+    const drawInk = (x: number, y: number, pressure: number = 0.5) => {
         const canvas = canvasRef.current;
         const ctx = canvas?.getContext('2d');
         if (!ctx || !canvas) return;
@@ -52,27 +52,45 @@ export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
         const posX = x - rect.left;
         const posY = y - rect.top;
 
-        const radius = type === 'pie' ? 18 + (pressure * 20) : 15 + (pressure * 15);
-        const gradient = ctx.createRadialGradient(posX, posY, 0, posX, posY, radius);
-        gradient.addColorStop(0, 'rgba(26, 26, 26, 0.4)');
-        gradient.addColorStop(0.5, 'rgba(26, 26, 26, 0.1)');
-        gradient.addColorStop(1, 'rgba(26, 26, 26, 0)');
+        // Realistic ink effect: center is darker, edges are grainy
+        const radius = type === 'pie' ? 12 + (pressure * 20) : 10 + (pressure * 15);
+        
+        // Draw multiple "splatters" for texture
+        for (let i = 0; i < 8; i++) {
+            const offsetX = (Math.random() - 0.5) * radius * 0.8;
+            const offsetY = (Math.random() - 0.5) * radius * 0.8;
+            const subRadius = Math.random() * (radius * 0.6);
+            
+            const gradient = ctx.createRadialGradient(
+                posX + offsetX, posY + offsetY, 0, 
+                posX + offsetX, posY + offsetY, subRadius
+            );
+            
+            const opacity = 0.1 + (Math.random() * 0.2);
+            gradient.addColorStop(0, `rgba(26, 26, 26, ${opacity})`);
+            gradient.addColorStop(1, 'rgba(26, 26, 26, 0)');
 
-        ctx.fillStyle = gradient;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(posX + offsetX, posY + offsetY, subRadius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Darker core
+        const coreGradient = ctx.createRadialGradient(posX, posY, 0, posX, posY, radius * 0.4);
+        coreGradient.addColorStop(0, 'rgba(26, 26, 26, 0.15)');
+        coreGradient.addColorStop(1, 'rgba(26, 26, 26, 0)');
+        ctx.fillStyle = coreGradient;
         ctx.beginPath();
-        ctx.arc(posX, posY, radius, 0, Math.PI * 2);
+        ctx.arc(posX, posY, radius * 0.4, 0, Math.PI * 2);
         ctx.fill();
         
         setHasContent(true);
     };
 
-    const handleTouch = (e: React.TouchEvent) => {
-        e.preventDefault();
-        const touches = e.targetTouches;
-        for (let i = 0; i < touches.length; i++) {
-            const touch = touches[i];
-            draw(touch.clientX, touch.clientY, touch.force || 0.5);
-        }
+    const handlePointer = (e: React.PointerEvent) => {
+        if (e.buttons !== 1 && e.type !== 'pointerdown') return;
+        drawInk(e.clientX, e.clientY, e.pressure || 0.5);
     };
 
     const handleClear = () => {
@@ -164,10 +182,10 @@ export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
                     >
                         <div className="flex-1 relative border border-dashed border-[#E5E2D9] rounded-[2rem] overflow-hidden bg-white/50">
                             <canvas 
-                                ref={canvasRef}
-                                onTouchStart={handleTouch}
-                                onTouchMove={handleTouch}
-                                className="w-full h-full touch-none"
+                                 ref={canvasRef}
+                                 onPointerDown={handlePointer}
+                                 onPointerMove={handlePointer}
+                                 className="w-full h-full touch-none cursor-crosshair"
                             />
                             
                             {!hasContent && (

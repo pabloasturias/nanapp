@@ -382,8 +382,8 @@ const AppContent: React.FC = () => {
 
     return (
         // ── Mobile-only shell: always phone-width, centered on desktop ──
-        <div className="flex items-center justify-center w-full h-[100dvh] bg-slate-950">
-        <div className="relative h-[100dvh] w-full max-w-[430px] flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950 shadow-2xl">
+        <div className="flex items-center justify-center w-full h-[100dvh] bg-slate-950 overflow-hidden">
+        <div className="relative h-full w-full max-w-[430px] flex flex-col overflow-hidden bg-slate-950 shadow-2xl">
 
             {/* Splash Screen */}
             {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
@@ -431,26 +431,29 @@ const AppContent: React.FC = () => {
                 onReorderSounds={reorderSounds}
             />
 
-            <div className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide">
-                <Header
-                    onOpenSettings={() => openModal('settings')}
-                    onOpenSupport={() => openModal('support')}
-                    onOpenStats={() => navigateToTab('stats')}
-                    onGoToStory={() => navigateToTab('story')}
-                    isOffline={isOffline}
-                />
+            <Header
+                onOpenSettings={() => openModal('settings')}
+                onOpenSupport={() => openModal('support')}
+                onOpenStats={() => navigateToTab('stats')}
+                onGoToStory={() => navigateToTab('story')}
+                isOffline={isOffline}
+            />
+
+            <div className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide bg-slate-950">
                 {renderContent()}
             </div>
 
             {!nightActive && (
-                <BottomNav 
-                    activeTab={
-                        activeTab === 'story' ? 'audio' :
-                        activeTab === 'stats' ? 'routine' :
-                        (activeTab as 'home' | 'audio' | 'routine' | 'discover')
-                    } 
-                    setActiveTab={navigateToTab as any} 
-                />
+                <div className="bg-slate-950 px-2 pb-2">
+                    <BottomNav 
+                        activeTab={
+                            activeTab === 'story' ? 'audio' :
+                            activeTab === 'stats' ? 'routine' :
+                            (activeTab as 'home' | 'audio' | 'routine' | 'discover')
+                        } 
+                        setActiveTab={navigateToTab as any} 
+                    />
+                </div>
             )}
         </div>
         </div>
