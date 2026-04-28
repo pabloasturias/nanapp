@@ -38,7 +38,6 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-    { id: 'footprint', icon: Footprints, translationKey: 'tool_footprint', color: 'text-amber-600', bgColor: 'bg-amber-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
@@ -138,7 +137,6 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'head_position': return <HeadPositionDashboard />;
             case 'endocrine_info': return <EndocrineDashboard />;
             case 'memory_poster': return <span className="text-orange-200">Generar Lámina</span>;
-            case 'footprint': return <FootprintDashboard />;
             default: return "--";
         }
     };

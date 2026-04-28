@@ -13,113 +13,44 @@ interface FootprintWidgetProps {
 export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
     const { t } = useLanguage();
     const { activeBaby } = useBaby();
-    const { logs, addLog, deleteLog } = useToolData<FootprintLog>('footprint');
+    const { addLog } = useToolData<FootprintLog>('footprint');
     
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [hasContent, setHasContent] = useState(false);
-    const [showInstructions, setShowInstructions] = useState(true);
+    const [image, setImage] = useState<string | null>(null);
     const [type, setType] = useState<'pie' | 'mano'>('pie');
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (!showInstructions) {
-            setupCanvas();
-        }
-    }, [showInstructions]);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
 
-    const setupCanvas = () => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d', { alpha: true });
-        if (!ctx) return;
-
-        const dpr = window.devicePixelRatio || 1;
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        ctx.scale(dpr, dpr);
-        
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.imageSmoothingEnabled = true;
-    };
-
-    const drawInk = (x: number, y: number, pressure: number = 0.5) => {
-        const canvas = canvasRef.current;
-        const ctx = canvas?.getContext('2d');
-        if (!ctx || !canvas) return;
-
-        const rect = canvas.getBoundingClientRect();
-        const posX = x - rect.left;
-        const posY = y - rect.top;
-
-        // Realistic ink effect: center is darker, edges are grainy
-        const radius = type === 'pie' ? 12 + (pressure * 20) : 10 + (pressure * 15);
-        
-        // Draw multiple "splatters" for texture
-        for (let i = 0; i < 8; i++) {
-            const offsetX = (Math.random() - 0.5) * radius * 0.8;
-            const offsetY = (Math.random() - 0.5) * radius * 0.8;
-            const subRadius = Math.random() * (radius * 0.6);
-            
-            const gradient = ctx.createRadialGradient(
-                posX + offsetX, posY + offsetY, 0, 
-                posX + offsetX, posY + offsetY, subRadius
-            );
-            
-            const opacity = 0.1 + (Math.random() * 0.2);
-            gradient.addColorStop(0, `rgba(26, 26, 26, ${opacity})`);
-            gradient.addColorStop(1, 'rgba(26, 26, 26, 0)');
-
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(posX + offsetX, posY + offsetY, subRadius, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        // Darker core
-        const coreGradient = ctx.createRadialGradient(posX, posY, 0, posX, posY, radius * 0.4);
-        coreGradient.addColorStop(0, 'rgba(26, 26, 26, 0.15)');
-        coreGradient.addColorStop(1, 'rgba(26, 26, 26, 0)');
-        ctx.fillStyle = coreGradient;
-        ctx.beginPath();
-        ctx.arc(posX, posY, radius * 0.4, 0, Math.PI * 2);
-        ctx.fill();
-        
-        setHasContent(true);
-    };
-
-    const handlePointer = (e: React.PointerEvent) => {
-        if (e.buttons !== 1 && e.type !== 'pointerdown') return;
-        drawInk(e.clientX, e.clientY, e.pressure || 0.5);
-    };
-
-    const handleClear = () => {
-        const canvas = canvasRef.current;
-        const ctx = canvas?.getContext('2d');
-        if (!ctx || !canvas) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        setHasContent(false);
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            setImage(event.target?.result as string);
+        };
+        reader.readAsDataURL(file);
     };
 
     const handleSave = () => {
-        const canvas = canvasRef.current;
-        if (!canvas || !hasContent) return;
+        if (!image) return;
 
-        const imageData = canvas.toDataURL('image/png');
         addLog({
             timestamp: Date.now(),
-            imageData,
+            imageData: image,
             type,
             babyId: activeBaby?.id
         });
         onClose();
     };
 
+    const reset = () => {
+        setImage(null);
+    };
+
     return (
         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             className="fixed inset-0 z-50 bg-[#FAF9F6] flex flex-col font-sans"
         >
             <div className="p-4 flex items-center justify-between border-b border-[#E5E2D9]">
@@ -127,94 +58,84 @@ export const FootprintFull: React.FC<FootprintWidgetProps> = ({ onClose }) => {
                     <X size={20} />
                 </button>
                 <div className="text-center">
-                    <h2 className="text-[10px] font-bold uppercase tracking-widest text-[#A6A295]">{t('tool_footprint')}</h2>
+                    <h2 className="text-[10px] font-bold uppercase tracking-widest text-[#A6A295]">Registro de Recuerdo</h2>
                     <p className="text-[9px] italic text-[#A6A295]">{activeBaby?.name}</p>
                 </div>
                 <div className="w-10" />
             </div>
 
-            <AnimatePresence mode="wait">
-                {showInstructions ? (
-                    <motion.div 
-                        key="instructions"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="flex-1 flex flex-col items-center justify-center p-8 text-center"
-                    >
-                        <div className="flex gap-4 mb-8">
-                            <div className="w-20 h-20 rounded-full bg-[#1A1A1A]/5 flex items-center justify-center">
-                                <Footprints size={32} className="text-[#D4AF37]" />
-                            </div>
-                            <div className="w-20 h-20 rounded-full bg-[#1A1A1A]/5 flex items-center justify-center">
-                                <Hand size={32} className="text-[#D4AF37]" />
-                            </div>
+            <div className="flex-1 flex flex-col p-6 overflow-y-auto">
+                {!image ? (
+                    <div className="flex-1 flex flex-col items-center justify-center text-center">
+                        <div className="w-24 h-24 rounded-full bg-[#1A1A1A]/5 flex items-center justify-center mb-8">
+                            <Camera size={40} className="text-[#D4AF37]" />
                         </div>
-                        <h3 className="text-xl font-serif italic text-[#1A1A1A] mb-4">Captura sus pequeños pasos y caricias</h3>
+                        <h3 className="text-2xl font-serif italic text-[#1A1A1A] mb-4">Captura su primer paso</h3>
                         <p className="text-sm text-[#A6A295] leading-relaxed mb-12 max-w-xs">
-                            Elige qué quieres capturar y presiona suavemente sobre la pantalla para crear un recuerdo eterno.
+                            Sube una foto de la huella de su mano o pie (en papel o digital) para incluirla en su lámina del primer año.
                         </p>
-                        
-                        <div className="grid grid-cols-2 gap-4 w-full mb-12">
-                            <button onClick={() => setType('pie')} className={`p-6 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 ${type === 'pie' ? 'border-[#D4AF37] bg-[#D4AF37]/5' : 'border-[#E5E2D9] opacity-40'}`}>
+
+                        <div className="flex gap-4 w-full mb-8">
+                            <button 
+                                onClick={() => setType('pie')} 
+                                className={`flex-1 p-6 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 ${type === 'pie' ? 'border-[#D4AF37] bg-[#D4AF37]/5' : 'border-[#E5E2D9] opacity-40'}`}
+                            >
                                 <Footprints size={32} />
-                                <span className="text-[10px] font-bold uppercase tracking-widest">Pie</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-black">Pie</span>
                             </button>
-                            <button onClick={() => setType('mano')} className={`p-6 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 ${type === 'mano' ? 'border-[#D4AF37] bg-[#D4AF37]/5' : 'border-[#E5E2D9] opacity-40'}`}>
+                            <button 
+                                onClick={() => setType('mano')} 
+                                className={`flex-1 p-6 rounded-3xl border-2 transition-all flex flex-col items-center gap-3 ${type === 'mano' ? 'border-[#D4AF37] bg-[#D4AF37]/5' : 'border-[#E5E2D9] opacity-40'}`}
+                            >
                                 <Hand size={32} />
-                                <span className="text-[10px] font-bold uppercase tracking-widest">Mano</span>
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-black">Mano</span>
                             </button>
                         </div>
+
+                        <input 
+                            type="file" 
+                            accept="image/*" 
+                            capture="environment"
+                            className="hidden" 
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                        />
 
                         <button 
-                            onClick={() => setShowInstructions(false)}
-                            className="w-full py-4 rounded-full bg-[#1A1A1A] text-white font-bold text-sm tracking-widest shadow-xl hover:scale-105 transition-all"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="w-full py-4 rounded-full bg-[#1A1A1A] text-white font-bold text-sm tracking-widest shadow-xl flex items-center justify-center gap-3"
                         >
-                            COMENZAR
+                            <ImageIcon size={18} /> HACER FOTO O SUBIR
                         </button>
-                    </motion.div>
+                    </div>
                 ) : (
-                    <motion.div 
-                        key="canvas"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex-1 flex flex-col p-4 relative"
-                    >
-                        <div className="flex-1 relative border border-dashed border-[#E5E2D9] rounded-[2rem] overflow-hidden bg-white/50">
-                            <canvas 
-                                 ref={canvasRef}
-                                 onPointerDown={handlePointer}
-                                 onPointerMove={handlePointer}
-                                 className="w-full h-full touch-none cursor-crosshair"
-                            />
-                            
-                            {!hasContent && (
-                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20">
-                                    {type === 'pie' ? <Footprints size={80} className="text-[#A6A295] mb-4" /> : <Hand size={80} className="text-[#A6A295] mb-4" />}
-                                    <p className="text-xs uppercase tracking-widest font-bold text-[#A6A295]">Presiona la {type} aquí</p>
+                    <div className="flex-1 flex flex-col">
+                        <div className="flex-1 relative rounded-[2rem] overflow-hidden border border-[#E5E2D9] bg-white shadow-inner">
+                            <img src={image} alt="Preview" className="w-full h-full object-contain" />
+                            <div className="absolute top-4 right-4">
+                                <div className="bg-[#D4AF37] text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                                    {type === 'pie' ? 'Pie' : 'Mano'}
                                 </div>
-                            )}
+                            </div>
                         </div>
 
-                        <div className="mt-6 flex items-center justify-between gap-4">
+                        <div className="mt-8 flex gap-4">
                             <button 
-                                onClick={handleClear}
-                                className="p-4 rounded-full bg-[#E5E2D9] text-[#1A1A1A] hover:bg-[#D4D1C5] transition-colors"
+                                onClick={reset}
+                                className="p-4 rounded-full bg-[#E5E2D9] text-[#1A1A1A]"
                             >
                                 <RotateCcw size={20} />
                             </button>
-                            
                             <button 
                                 onClick={handleSave}
-                                disabled={!hasContent}
-                                className="flex-1 py-4 rounded-full bg-[#1A1A1A] disabled:opacity-20 text-white font-bold text-sm tracking-widest shadow-xl flex items-center justify-center gap-2"
+                                className="flex-1 py-4 rounded-full bg-[#1A1A1A] text-white font-bold text-sm tracking-widest shadow-xl flex items-center justify-center gap-2"
                             >
-                                <Check size={18} /> GUARDAR {type.toUpperCase()}
+                                <Check size={18} /> GUARDAR RECUERDO
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
+            </div>
         </motion.div>
     );
 };
