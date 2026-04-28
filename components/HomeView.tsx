@@ -457,87 +457,9 @@ const SmartDashboard: React.FC<{
                     </div>
                 </div>
 
-                {/* ── Story Insight Pill ── */}
-                {insight && (
-                    <div className="mb-4 p-3 rounded-2xl bg-white/5 border border-white/5 flex items-start gap-3">
-                        <div className="p-2 rounded-xl bg-orange-500/10 text-orange-400 shrink-0">
-                            {React.createElement(insight.icon, { size: 16 })}
-                        </div>
-                        <div>
-                            <h4 className="text-[10px] font-bold text-orange-200 uppercase tracking-wider mb-0.5">{insight.title}</h4>
-                            <p className="text-xs text-slate-300 leading-relaxed italic opacity-80">"{insight.text}"</p>
-                        </div>
-                    </div>
-                )}
-
-                {/* ── Quick stat pills ── */}
-                <div className="grid grid-cols-2 gap-2">
-                    {/* Bottle */}
-                    <button onClick={() => onOpenTool('bottle')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
-                        <GlassWater size={16} className="mb-1 text-blue-300/60" />
-                        <span className="text-[10px] font-bold text-white leading-none">
-                            {bottleToday}ml
-                        </span>
-                        <span className="text-[8px] text-slate-500 mt-0.5">Biberón Hoy</span>
-                    </button>
-
-                    {/* Growth */}
-                    <button onClick={() => onOpenTool('growth')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
-                        <Ruler size={16} className="mb-1 text-emerald-300/60" />
-                        <span className="text-[10px] font-bold text-white leading-none">
-                            {latestGrowth ? `${latestGrowth.weightKg}kg` : '—'}
-                        </span>
-                        <span className="text-[8px] text-slate-500 mt-0.5">Peso</span>
-                    </button>
-                </div>
-
-                {todayMeds.length > 0 && (
-                    <button onClick={() => onOpenTool('meds')} className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 transition-all">
-                        <Pill size={13} className="text-red-400 shrink-0" />
-                        <span className="text-[10px] text-slate-300 font-medium truncate">
-                            Medicamentos hoy: {todayMeds.map(m => m.medName).join(', ')}
-                        </span>
-                        <ChevronRight size={12} className="text-slate-600 ml-auto shrink-0" />
-                    </button>
-                )}
             </div>
-
-            {/* ── Daily Tip ── */}
-            <div className="bg-slate-900/40 rounded-3xl p-4 border border-white/5 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-teal-500/10 flex items-center justify-center shrink-0">
-                    <Smile size={20} className="text-teal-400" />
-                </div>
-                <div className="flex-1">
-                    <h5 className="text-[10px] font-bold text-teal-300 uppercase tracking-widest mb-0.5">Consejo para {months} meses</h5>
-                    <p className="text-xs text-slate-400 leading-tight">{ageTip}</p>
-                </div>
-            </div>
-
-            {/* ── ALERTS ── */}
-            {alerts.length > 0 && (
-                <div className="flex flex-col gap-2">
-                    {alerts.map((alert, i) => (
-                        <motion.button
-                            key={alert.id}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.06 }}
-                            onClick={() => onOpenTool(alert.tool)}
-                            className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${alert.bg} ${alert.border} text-left active:scale-[0.98] transition-all`}
-                        >
-                            <div className={`w-8 h-8 shrink-0 rounded-xl flex items-center justify-center ${alert.bg} border ${alert.border}`}>
-                                <alert.icon size={16} className={alert.color} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className={`text-xs font-bold ${alert.color} leading-tight`}>{alert.label}</p>
-                                <p className="text-[10px] text-slate-500 truncate mt-0.5">{alert.detail}</p>
-                            </div>
-                            <ChevronRight size={14} className="text-slate-600 shrink-0" />
-                        </motion.button>
-                    ))}
-                </div>
-            )}
         </motion.div>
+
     );
 };
 
