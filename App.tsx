@@ -278,15 +278,6 @@ const AppContent: React.FC = () => {
     }, [timer.remaining, audio.isPlaying, timer.isActive]);
 
 
-    const handleBackgroundClick = () => {
-        const now = Date.now();
-        if (now - lastTapRef.current < 300) {
-            if (audio.isPlaying) { handlePause(); showNotification(t('paused')); }
-            else { handlePlay(); showNotification(t('playing')); }
-        }
-        lastTapRef.current = now;
-    };
-
     const lastTapRef = useRef(0);
 
     const renderContent = () => {
@@ -392,7 +383,7 @@ const AppContent: React.FC = () => {
     return (
         // ── Mobile-only shell: always phone-width, centered on desktop ──
         <div className="flex items-center justify-center w-full h-[100dvh] bg-slate-950">
-        <div className="relative h-[100dvh] w-full max-w-[430px] flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950 shadow-2xl" onClick={handleBackgroundClick}>
+        <div className="relative h-[100dvh] w-full max-w-[430px] flex flex-col overflow-hidden transition-colors duration-500 bg-slate-950 shadow-2xl">
 
             {/* Splash Screen */}
             {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
@@ -440,7 +431,7 @@ const AppContent: React.FC = () => {
                 onReorderSounds={reorderSounds}
             />
 
-            <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-[calc(5rem+env(safe-area-inset-bottom))]">
+            <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0 pb-40">
                 <Header
                     onOpenSettings={() => openModal('settings')}
                     onOpenSupport={() => openModal('support')}

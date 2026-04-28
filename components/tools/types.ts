@@ -18,7 +18,8 @@ export type ToolId =
     | 'first_words'
     | 'routines'
     | 'head_position'
-    | 'endocrine_info';
+    | 'endocrine_info'
+    | 'memory_poster';
 
 export interface ToolDefinition {
     id: ToolId;

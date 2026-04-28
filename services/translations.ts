@@ -365,6 +365,9 @@ export const translations = {
     tool_endocrine_tip_3: "Lavar ropa nueva",
     tool_endocrine_tip_4: "Ventilar a diario",
     tool_endocrine_disclaimer: "Info educativa, no médica.",
+    tool_memory_poster: "Proyecto Memoria",
+    tool_memory_poster_subtitle: "Lámina del Primer Año",
+    tool_memory_poster_desc: "Genera una lámina artística en PDF con el resumen visual del primer año de tu bebé. Incluye gráficas de crecimiento, hitos con fechas, fase lunar y mucho más.",
   },
   en: {
     app_slogan: "the sound of silence",
@@ -715,6 +718,9 @@ export const translations = {
     tool_endocrine_tip_3: "Wash new clothes",
     tool_endocrine_tip_4: "Ventilate daily",
     tool_endocrine_disclaimer: "Educational info, not medical.",
+    tool_memory_poster: "Memory Project",
+    tool_memory_poster_subtitle: "First Year Poster",
+    tool_memory_poster_desc: "Generate an artistic PDF poster with the visual summary of your baby's first year. Includes growth charts, milestones with dates, moon phase, and more.",
   },
   fr: {
     app_slogan: "le son du silence",
@@ -984,6 +990,9 @@ export const translations = {
     tool_endocrine_tip_3: "Laver vêtements neufs",
     tool_endocrine_tip_4: "Aérer quotidiennement",
     tool_endocrine_disclaimer: "Info éducative, pas médicale.",
+    tool_memory_poster: "Projet Mémoire",
+    tool_memory_poster_subtitle: "Affiche de la Première Année",
+    tool_memory_poster_desc: "Générez une affiche PDF artistique avec le résumé visuel de la première année de votre bébé. Comprend des graphiques de croissance, des jalons avec dates, la phase lunaire et plus.",
   },
   de: {
     app_slogan: "Der Klang der Stille",
@@ -1286,6 +1295,9 @@ export const translations = {
     tool_endocrine_tip_3: "Neue Kleidung waschen",
     tool_endocrine_tip_4: "Täglich lüften",
     tool_endocrine_disclaimer: "Bildungsinformation, kein ärztlicher Rat.",
+    tool_memory_poster: "Gedächtnisprojekt",
+    tool_memory_poster_subtitle: "Plakat zum ersten Jahr",
+    tool_memory_poster_desc: "Erstellen Sie ein künstlerisches PDF-Poster mit der visuellen Zusammenfassung des ersten Jahres Ihres Babys. Enthält Wachstumstabellen, Meilensteine mit Daten, Mondphasen und mehr.",
   },
   it: {
     app_slogan: "il suono del silenzio",
@@ -1555,6 +1567,9 @@ export const translations = {
     tool_endocrine_tip_3: "Lavare vestiti nuovi",
     tool_endocrine_tip_4: "Arieggiare ogni giorno",
     tool_endocrine_disclaimer: "Info educativa, non medica.",
+    tool_memory_poster: "Progetto Memoria",
+    tool_memory_poster_subtitle: "Poster del Primo Anno",
+    tool_memory_poster_desc: "Genera un poster PDF artistico con il riepilogo visivo del primo anno del tuo bambino. Include grafici di crescita, traguardi con date, fase lunare e altro.",
   },
   pt: {
     app_slogan: "o som do silêncio",

@@ -47,7 +47,7 @@ export const StatsView: React.FC<StatsViewProps> = ({ onBack }) => {
     const chartHeight = [40, 65, 30, 85, 50, 95, 60]; // Static visual for now
 
     return (
-        <div className="flex flex-col h-full bg-slate-900 text-white overflow-y-auto pb-24 absolute inset-0 z-20 animate-[slide-left_0.3s_ease-out]">
+        <div className="flex flex-col h-full bg-slate-900 text-white overflow-y-auto pb-40 absolute inset-0 z-20 animate-[slide-left_0.3s_ease-out]">
             {/* Header with Back Button */}
             <div className="p-6 pt-12 pb-2 flex items-center gap-4">
                 <button

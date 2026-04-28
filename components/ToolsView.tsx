@@ -28,6 +28,7 @@ import { FirstWordsDashboard, FirstWordsFull } from './tools/FirstWordsWidget';
 import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
 import { HeadPositionDashboard, HeadPositionFull } from './tools/HeadPositionWidget';
 import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
+import { MemoryBook } from './MemoryBook';
 
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -44,6 +45,7 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
+    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
 ];
 
 
@@ -107,6 +109,7 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
             case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseTool} />;
+            case 'memory_poster': return <MemoryBook onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -131,12 +134,13 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'first_words': return <FirstWordsDashboard />;
             case 'head_position': return <HeadPositionDashboard />;
             case 'endocrine_info': return <EndocrineDashboard />;
+            case 'memory_poster': return <span className="text-orange-200">Generar Lámina</span>;
             default: return "--";
         }
     };
 
     return (
-        <div className="flex-1 overflow-y-auto pb-24 px-1 relative animate-[fade-in_0.5s_ease-out]">
+        <div className="flex-1 overflow-y-auto pb-40 px-1 relative animate-[fade-in_0.5s_ease-out]">
 
             {/* Tool Detail Modal */}
             {selectedToolId && (

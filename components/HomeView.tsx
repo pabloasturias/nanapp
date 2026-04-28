@@ -51,6 +51,7 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
+    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
 ];
 
 interface HomeViewProps {
@@ -116,7 +117,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ currentSoundId, onPlaySound,
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-12"
+            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-40"
         >
             {/* ── SMART DASHBOARD ─────────────────────────────────── */}
             <SmartDashboard
@@ -523,7 +524,7 @@ const SmartDashboard: React.FC<{
                     <h5 className="text-[10px] font-bold text-orange-300 uppercase tracking-widest mb-0.5">Proyecto Memoria</h5>
                     <p className="text-xs text-slate-300 leading-tight">Completa sus datos para generar su **Lámina de Recuerdo** en PDF, lista para encuadrar.</p>
                 </div>
-                <button onClick={() => onOpenTool('discover' as any)} className="text-[9px] font-black uppercase text-orange-400 tracking-wider bg-orange-400/10 px-2 py-1 rounded-lg">Ver</button>
+                <button onClick={() => onOpenTool('memory_poster')} className="text-[9px] font-black uppercase text-orange-400 tracking-wider bg-orange-400/10 px-2 py-1 rounded-lg">Ver</button>
             </div>
             {/* ── ALERTS ── */}
             {alerts.length > 0 && (
