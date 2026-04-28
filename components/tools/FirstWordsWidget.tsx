@@ -164,7 +164,7 @@ export const FirstWordsFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                                 />
                             ))}
                         </div>
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">Grabar audio</span>
+                        <span className="text-[10px] font-bold text-slate-500 uppercase">{t('tool_firstwords_record')}</span>
                     </div>
 
                     <button

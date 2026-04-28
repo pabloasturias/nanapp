@@ -191,19 +191,19 @@ export const HeadPositionFull: React.FC<{ onClose: () => void; onOpenSettings: (
                                         onClick={() => setPeriodFilter('all')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'all' ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        Todo
+                                        {t('tool_head_all')}
                                     </button>
                                     <button
                                         onClick={() => setPeriodFilter('day')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'day' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        <Sun size={10} /> Día
+                                        <Sun size={10} /> {t('tool_head_day')}
                                     </button>
                                     <button
                                         onClick={() => setPeriodFilter('night')}
                                         className={`flex-1 py-1.5 rounded-md text-[10px] font-bold transition-all flex items-center justify-center gap-1 ${periodFilter === 'night' ? 'bg-indigo-500/20 text-indigo-400' : 'text-slate-500 hover:text-slate-300'}`}
                                     >
-                                        <Moon size={10} /> Noche
+                                        <Moon size={10} /> {t('tool_head_night')}
                                     </button>
                                 </div>
 

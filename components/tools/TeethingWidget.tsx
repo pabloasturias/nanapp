@@ -400,30 +400,40 @@ export const TeethingFull: React.FC<{ onClose: () => void; onOpenSettings: () =>
                         </div>
 
                         <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 flex flex-col gap-3">
-                            <label className="text-xs font-bold text-slate-400 uppercase">Sintomas vinculados</label>
+                        <div className="space-y-3">
+                            <label className="text-[10px] font-bold text-slate-500 uppercase">{t('tool_teething_symptoms')}</label>
                             <div className="grid grid-cols-2 gap-2">
-                                {['Babbeo', 'Irritabilidad', 'Fiebre leve', 'Mordisqueo'].map(s => (
-                                    <button 
-                                        key={s}
-                                        className="py-2 px-3 rounded-lg border border-slate-700 text-[10px] font-bold text-slate-400 hover:border-pink-500/50 hover:text-pink-200 transition-all text-left"
+                                {[
+                                    { id: 'drool', label: t('tool_teething_symptom_drool') },
+                                    { id: 'irritability', label: t('tool_teething_symptom_irritability') },
+                                    { id: 'fever', label: t('tool_teething_symptom_fever') },
+                                    { id: 'biting', label: t('tool_teething_symptom_biting') }
+                                ].map(s => (
+                                    <button
+                                        key={s.id}
+                                        onClick={() => {
+                                            const current = symptoms.split(', ').filter(Boolean);
+                                            const next = current.includes(s.label) 
+                                                ? current.filter(x => x !== s.label)
+                                                : [...current, s.label];
+                                            setSymptoms(next.join(', '));
+                                        }}
+                                        className={`px-3 py-2 rounded-xl text-[10px] font-bold border transition-all ${symptoms.includes(s.label) ? 'bg-amber-500 border-amber-400 text-white' : 'bg-slate-900 border-white/5 text-slate-400'}`}
                                     >
-                                        {s}
+                                        {s.label}
                                     </button>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 flex flex-col gap-3">
-                            <label className="text-xs font-bold text-slate-400 uppercase">Fecha de Salida</label>
-                            <div className="flex items-center bg-slate-950 rounded-lg border border-slate-700 px-3 py-2">
-                                <Calendar size={16} className="text-slate-500 mr-2" />
-                                <input
-                                    type="date"
-                                    value={editDate}
-                                    onChange={(e) => setEditDate(e.target.value)}
-                                    className="bg-transparent text-white text-sm w-full outline-none"
-                                />
-                            </div>
+                        <div className="space-y-1">
+                            <label className="text-[10px] font-bold text-slate-500 uppercase">{t('tool_teething_eruption_date')}</label>
+                            <input 
+                                type="date" 
+                                value={editDate} 
+                                onChange={e => setEditDate(e.target.value)}
+                                className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-amber-500"
+                            />
                         </div>
 
                         <div className="flex gap-2 pt-2">

@@ -179,13 +179,14 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                                 onChange={(e) => setDate(e.target.value)}
                                 className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-purple-500 outline-none transition-colors"
                             />
-                        <div>
-                            <label className="text-[10px] uppercase text-slate-500 font-bold mb-1 block">Reacciones (opcional)</label>
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">{t('tool_vaccine_reactions')}</label>
                             <textarea
-                                value={reactionNote}
-                                onChange={(e) => setReactionNote(e.target.value)}
-                                placeholder="Ej: Fiebre leve 38ºC, irritabilidad..."
-                                className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-purple-500 outline-none transition-colors placeholder-slate-600 text-sm h-20 resize-none"
+                                value={reaction}
+                                onChange={e => setReaction(e.target.value)}
+                                placeholder={t('tool_vaccine_reaction_placeholder')}
+                                className="w-full bg-slate-900 border border-white/5 rounded-2xl p-4 text-sm text-slate-300 outline-none focus:border-rose-500/50 transition-colors resize-none h-24"
                             />
                         </div>
 
@@ -244,7 +245,12 @@ export const VaccinesFull: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                                                 {new Date(log.timestamp).toLocaleDateString()}
                                             </p>
                                             {log.note && (
-                                                <p className="text-[10px] text-purple-400 mt-1 italic font-medium">Reacción: {log.note}</p>
+                                                <div className="mt-2 p-2 bg-slate-950/50 rounded-lg border border-white/5">
+                                                    <p className="text-[10px] text-slate-400">
+                                                        <span className="font-bold text-rose-400 uppercase tracking-tighter mr-1">{t('tool_vaccine_reaction_label')}</span>
+                                                        {log.note}
+                                                    </p>
+                                                </div>
                                             )}
                                         </div>
                                     </div>

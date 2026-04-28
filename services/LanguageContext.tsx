@@ -4,7 +4,7 @@ import { translations, Language } from './translations';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: keyof typeof translations['es']) => string;
+  t: (key: keyof typeof translations['es'], variables?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -34,8 +34,14 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     localStorage.setItem('dw_lang', lang);
   };
 
-  const t = (key: keyof typeof translations['es']) => {
-    return translations[language][key] || translations['es'][key] || key;
+  const t = (key: keyof typeof translations['es'], variables?: Record<string, string | number>) => {
+    let text = translations[language][key] || translations['es'][key] || key;
+    if (variables) {
+      Object.entries(variables).forEach(([k, v]) => {
+        text = text.replace(`{{${k}}}`, String(v));
+      });
+    }
+    return text;
   };
 
   return (

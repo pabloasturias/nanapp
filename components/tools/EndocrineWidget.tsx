@@ -153,7 +153,7 @@ export const EndocrineFull: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
                     <h3 className="text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center gap-2">
                         <Sparkles size={14} />
-                        Alternativas Saludables
+                        {t('tool_endocrine_swaps')}
                     </h3>
                     <div className="space-y-3">
                         {[

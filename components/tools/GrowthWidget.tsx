@@ -370,11 +370,14 @@ export const GrowthFull: React.FC<{ onClose: () => void; onOpenSettings: () => v
                                                     const prev = filteredLogs[currentIdx - 1];
                                                     if (log.weightKg && prev.weightKg) {
                                                         const diff = (log.weightKg - prev.weightKg).toFixed(2);
-                                                        const isGain = parseFloat(diff) >= 0;
+                                                        const isIncrease = parseFloat(diff) >= 0;
                                                         return (
-                                                            <span className={`text-[9px] font-black px-1 rounded ${isGain ? 'text-emerald-400 bg-emerald-500/10' : 'text-rose-400 bg-rose-500/10'}`}>
-                                                                {isGain ? '+' : ''}{diff}kg
-                                                            </span>
+                                                            <>
+                                                                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isIncrease ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'}`}>
+                                                                    {isIncrease ? '+' : ''}{diff}kg
+                                                                </span>
+                                                                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('tool_growth_optimal')}</span>
+                                                            </>
                                                         );
                                                     }
                                                 }

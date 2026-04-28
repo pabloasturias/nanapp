@@ -175,6 +175,15 @@ export const BottleFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 ) : (
                     <div className="p-6 space-y-6">
                         {/* Monthly Summary Card */}
+                        <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 flex items-start gap-3">
+                            <Info size={18} className="text-amber-500 shrink-0 mt-0.5" />
+                            <div>
+                                <h4 className="text-xs font-bold text-amber-500 uppercase tracking-widest">{t('tool_bottle_safety_tip')}</h4>
+                                <p className="text-[10px] text-slate-400 mt-1 leading-relaxed">
+                                    {t('tool_bottle_temp_tip')}
+                                </p>
+                            </div>
+                        </div>
                         <div className="bg-slate-900/50 border border-white/5 rounded-3xl p-6 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4 opacity-10"><TrendingUp size={80} /></div>
                             <h3 className="text-xs font-black text-blue-400 uppercase tracking-widest mb-4">Análisis del Mes</h3>

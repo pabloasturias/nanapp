@@ -141,7 +141,7 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <div className="p-6 pb-2 space-y-6">
                 {/* Amount */}
                 <div className="flex flex-col items-center">
-                    <span className="text-[10px] font-black text-violet-400 uppercase tracking-widest mb-4">Cantidad recolectada</span>
+                    <span className="text-[10px] font-black text-violet-400 uppercase tracking-widest mb-4">{t('tool_pumping_amount_collected')}</span>
                     <div className="flex items-center gap-6">
                         <button
                             onClick={() => setAmount(a => Math.max(0, a - 10))}
@@ -204,8 +204,11 @@ export const PumpingFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <span className="text-lg font-bold text-white">{stat7d}<span className="text-xs text-slate-500 ml-0.5">ml</span></span>
                 </div>
                 <div className="col-span-2 bg-slate-900 border border-white/5 p-4 rounded-xl space-y-2">
+                    <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center justify-between">
+                        <span>{t('tool_pumping_balance')}</span>
+                        <TrendingUp size={14} />
+                    </h3>
                     <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-500">
-                        <span>Balance L/R (7d)</span>
                         <span className="text-white">
                             {Math.round((dailyChart.reduce((a,b)=>a+b.left,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100)}% / {Math.round((dailyChart.reduce((a,b)=>a+b.right,0) / (dailyChart.reduce((a,b)=>a+b.total,0) || 1)) * 100)}%
                         </span>

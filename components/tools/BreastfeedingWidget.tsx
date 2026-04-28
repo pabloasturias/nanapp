@@ -210,11 +210,14 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
                         <div className="text-7xl font-mono font-light tracking-tighter text-white drop-shadow-lg">
                             {formatTime(duration)}
                         </div>
-                        <div className="flex flex-col items-center mb-8 opacity-40">
-                            <span className="text-[10px] font-black uppercase tracking-widest">Fin estimado</span>
-                            <span className="text-sm font-bold">{new Date(Date.now() + (15 * 60 - duration) * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <div className="flex flex-col items-center gap-1 animate-pulse">
+                            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('tool_bf_est_end')}</span>
+                            <span className="text-xl font-bold text-slate-400">
+                                {new Date(Date.now() + (15 * 60000)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </span>
+                            <span className="text-[8px] text-slate-600 font-bold uppercase">{t('tool_bf_est_duration')}</span>
                         </div>
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-6 mt-8">
                             <button onClick={handleStop} className="w-16 h-16 bg-slate-800 text-slate-400 rounded-full border border-white/10 flex items-center justify-center hover:text-red-400 hover:border-red-500/50 transition-all">
                                 <Square size={24} fill="currentColor" />
                             </button>
@@ -231,7 +234,7 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
 
                             <button onClick={handleQuickSwitch} className="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30 flex flex-col items-center justify-center hover:bg-blue-500/30 transition-all group">
                                 <RefreshCw size={20} className="group-hover:rotate-180 transition-transform duration-500" />
-                                <span className="text-[8px] font-bold mt-1 uppercase">Cambio</span>
+                                <span className="text-[8px] font-bold mt-1 uppercase">{t('tool_bf_switch')}</span>
                             </button>
                         </div>
                     </div>
@@ -239,10 +242,10 @@ export const BreastfeedingFull: React.FC<{ onClose: () => void }> = ({ onClose }
                     // Manual Entry Mode
                     <div className="w-full flex flex-col items-center animate-[fade-in_0.2s]">
                         <h3 className="text-xl font-bold text-white mb-6 font-['Outfit']">
-                            Añadir toma manual ({isManualEntry === 'L' ? t('tool_bf_left') : t('tool_bf_right')})
+                            {t('tool_bf_manual_add')} ({isManualEntry === 'L' ? t('tool_bf_left') : t('tool_bf_right')})
                         </h3>
                         <div className="text-5xl font-bold text-white mb-8 flex items-baseline gap-2">
-                            {manualMinutes} <span className="text-xl text-slate-400">min</span>
+                            {manualMinutes} <span className="text-xl text-slate-400">{t('unit_min')}</span>
                         </div>
                         <div className="flex gap-4 w-full max-w-xs mb-8">
                             {[5, 10, 15, 20].map(val => (

@@ -329,14 +329,14 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                                                             {new Date(log.timestamp).toLocaleDateString()}
                                                         </span>
                                                         <div className="flex items-center gap-2">
-                                                            <button 
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    alert('¡Hito compartido con éxito!');
+                                                            <button
+                                                                onClick={() => {
+                                                                    alert(t('tool_milestone_share_success'));
                                                                 }}
-                                                                className="p-1 rounded bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
+                                                                title={t('tool_milestone_share')}
+                                                                className="p-2 rounded-lg bg-slate-900 border border-white/5 text-slate-500 hover:text-indigo-400 transition-colors"
                                                             >
-                                                                <Share2 size={12} />
+                                                                <Share2 size={16} />
                                                             </button>
                                                             <ImageIcon size={14} className="text-slate-600" />
                                                         </div>

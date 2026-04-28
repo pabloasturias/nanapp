@@ -159,19 +159,21 @@ export const DiaperFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 </button>
                             ))}
                         </div>
-                        {/* Legend */}
-                        <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-1">
-                            <div className="flex items-center gap-1">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Normal</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Alerta (Sangre)</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Alerta (Biliar)</span>
+                        <div className="bg-slate-900 border border-white/5 rounded-2xl p-4 space-y-3 mt-4">
+                            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{t('tool_diaper_color_legend')}</h4>
+                            <div className="grid grid-cols-2 gap-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-[#EAB308]"></div>
+                                    <span className="text-[10px] text-slate-400">{t('tool_diaper_color_mustard')}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-[#15803d]"></div>
+                                    <span className="text-[10px] text-slate-400">{t('tool_diaper_color_alert')}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-[#b91c1c]"></div>
+                                    <span className="text-[10px] text-slate-400">{t('tool_diaper_color_blood')}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

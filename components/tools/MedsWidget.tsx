@@ -306,27 +306,36 @@ export const MedsFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <div className="text-right">
-                                    {isTakenToday ? (
-                                        <span className="text-[10px] font-bold opacity-60 flex items-center justify-end gap-1">
-                                            <Check size={10} /> Hoy
+                                <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
+                                    <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-1 flex items-center justify-between">
+                                        <span>Dosis Sugerida</span>
+                                        <span className="opacity-50 lowercase font-normal">
+                                            {t('tool_meds_calc_basis', { weight: doseWeight, source: doseSource === 'sync' ? t('tool_meds_sync') : t('tool_meds_est') })}
                                         </span>
-                                    ) : (
-                                        <span className="text-[10px] font-bold opacity-40">Pendiente</span>
-                                    )}
-                                    {lastTaken && (
-                                        <p className="text-[10px] opacity-50">
-                                            Hace {Math.floor((Date.now() - lastTaken.timestamp) / 3600000)}h
-                                        </p>
-                                    )}
-                                </div>
-
+                                    </p>
+                                    <p className="text-2xl font-bold text-white">
+                                        {calcDose(m.id)} <span className="text-sm font-medium text-slate-500">ml</span>
+                                    </p>
                                 <button
                                     onClick={() => handleTake(t)}
                                     className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors active:scale-95"
                                 >
                                     <Plus size={20} />
                                 </button>
+                                <div className="text-right">
+                                    {isTakenToday ? (
+                                        <span className="text-[10px] font-bold opacity-60 flex items-center justify-end gap-1">
+                                            <Check size={10} /> {t('date_today')}
+                                        </span>
+                                    ) : (
+                                        <span className="text-[10px] font-bold opacity-40">{t('status_pending')}</span>
+                                    )}
+                                    {lastTaken && (
+                                        <p className="text-[10px] opacity-50">
+                                            {t('time_ago_hours', { hours: Math.floor((Date.now() - lastTaken.timestamp) / 3600000) })}
+                                        </p>
+                                    )}
+                                </div>
 
                                 {showConfig && (
                                     <button

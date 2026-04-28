@@ -202,7 +202,7 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                     type="text"
                                     value={location}
                                     onChange={e => setLocation(e.target.value)}
-                                    placeholder="Ubicación (ej: Hospital)"
+                                    placeholder={t('tool_agenda_location_placeholder')}
                                     className="bg-transparent text-white focus:outline-none flex-1 font-medium text-lg"
                                 />
                             </div>
@@ -305,7 +305,7 @@ export const AgendaFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                                         rel="noopener noreferrer"
                                                         className="ml-auto flex items-center gap-1 bg-blue-500/10 px-2 py-1 rounded hover:bg-blue-500/20 transition-colors"
                                                     >
-                                                        Cómo llegar <ExternalLink size={10} />
+                                                        {t('tool_agenda_get_directions')} <ExternalLink size={10} />
                                                     </a>
                                                 </div>
                                             )}
