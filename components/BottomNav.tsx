@@ -51,6 +51,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_discover')}</span>
         </button>
 
+        </div>
       </div>
     </div>
   );
