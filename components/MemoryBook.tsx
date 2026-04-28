@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Download, X, Heart, Moon, Quote, Footprints, Hand } from 'lucide-react';
+import { Download, X, Heart, Moon, Quote, Hand } from 'lucide-react';
 import { useBaby } from '../services/BabyContext';
 import { useToolData } from '../services/hooks/useToolData';
-import { GrowthLog, MilestoneLog, FirstWordLog, TeethingLog, SolidsLog, VaccineLog, AppointmentLog, SleepLog, BottleLog, FootprintLog } from './tools/types';
+import { GrowthLog, MilestoneLog } from './tools/types';
 import { useLanguage } from '../services/LanguageContext';
 
 interface MemoryBookProps {

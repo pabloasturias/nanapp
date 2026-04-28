@@ -6,7 +6,7 @@ import {
     Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils,
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
     Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X,
-    RotateCcw, ShieldCheck, Footprints, BookOpen
+    RotateCcw, ShieldCheck, BookOpen
 } from 'lucide-react';
 
 // Widget Imports
@@ -29,7 +29,6 @@ import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
 import { HeadPositionDashboard, HeadPositionFull } from './tools/HeadPositionWidget';
 import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
 import { MemoryBook } from './MemoryBook';
-import { FootprintDashboard, FootprintFull } from './tools/FootprintWidget';
 
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
@@ -111,7 +110,6 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
             case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseTool} />;
             case 'memory_poster': return <MemoryBook onClose={handleCloseTool} />;
-            case 'footprint': return <FootprintFull onClose={handleCloseTool} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
