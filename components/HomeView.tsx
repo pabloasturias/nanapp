@@ -5,8 +5,8 @@ import { useLanguage } from '../services/LanguageContext';
 import { useBaby } from '../services/BabyContext';
 import { useStatistics } from '../services/hooks/useStatistics';
 import { useToolData } from '../services/hooks/useToolData';
-import { ToolDefinition, ToolId, GrowthLog, BreastfeedingLog, DiaperLog, MedsLog, SleepLog, AppointmentLog } from './tools/types';
-import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X, Heart } from 'lucide-react';
+import { ToolDefinition, ToolId, GrowthLog, BottleLog, MedsLog, AppointmentLog } from './tools/types';
+import { Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils, Droplets, Syringe, Activity, FileText, Trophy, Mic, Calendar, RotateCcw, ShieldCheck, Edit2, Check, Plus, ChevronRight, X, Heart, BookOpen, Star } from 'lucide-react';
 import { SoundType } from '../types';
 import { SoundButton } from './SoundButton';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -40,19 +40,15 @@ const GirlIcon = ({ size = 24, className = "" }) => (
 const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'breastfeeding', icon: Baby, translationKey: 'tool_breastfeeding', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
     { id: 'bottle', icon: GlassWater, translationKey: 'tool_bottle', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
-    { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-    { id: 'diapers', icon: Layers, translationKey: 'tool_diapers', color: 'text-amber-400', bgColor: 'bg-amber-500/10' },
-    { id: 'sleep', icon: Moon, translationKey: 'tool_sleep', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
-    { id: 'routines', icon: Activity, translationKey: 'tool_routines', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
+    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
+    { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
-    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
-    { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
 ];
@@ -317,10 +313,8 @@ const SmartDashboard: React.FC<{
 }> = ({ activeBaby, onAddBaby, onOpenTool }) => {
     const { babies, setActiveBabyId } = useBaby();
     const { stats } = useStatistics();
-    const { logs: bfLogs }     = useToolData<BreastfeedingLog>('breastfeeding');
-    const { logs: diaperLogs } = useToolData<DiaperLog>('diapers');
+    const { logs: bottleLogs } = useToolData<BottleLog>('bottle');
     const { logs: medsLogs }   = useToolData<MedsLog>('meds');
-    const { logs: sleepLogs }  = useToolData<SleepLog>('sleep');
     const { logs: agendaLogs } = useToolData<AppointmentLog>('medical_agenda');
     const { logs: growthLogs } = useToolData<GrowthLog>('growth');
 
@@ -339,7 +333,7 @@ const SmartDashboard: React.FC<{
                     </div>
                     <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-200 via-orange-100 to-white mb-3 font-['Outfit'] tracking-tight">Bienvenido a nanapp</h1>
                     <p className="text-sm text-slate-300 mb-8 leading-relaxed max-w-xs mx-auto">
-                        Crea el perfil de tu bebé para acceder al dashboard inteligente, registro de tomas, sueño y mucho más.
+                        Crea el perfil de tu bebé para acceder al dashboard inteligente, registro de tomas, salud y mucho más.
                     </p>
                     <button onClick={onAddBaby} className="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold text-base px-8 py-4 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
                         <Plus size={20} />
@@ -355,19 +349,16 @@ const SmartDashboard: React.FC<{
     const todayStart = new Date().setHours(0, 0, 0, 0);
 
     // ── Data ────────────────────────────────────────────────────
-    const lastBf = bfLogs.filter(l => !l.babyId || l.babyId === bid).sort((a, b) => b.timestamp - a.timestamp)[0];
-    const lastDiaper = diaperLogs.filter(l => !l.babyId || l.babyId === bid).sort((a, b) => b.timestamp - a.timestamp)[0];
-    const lastSleep = sleepLogs.filter(l => !l.babyId || l.babyId === bid).sort((a, b) => b.timestamp - a.timestamp)[0];
+    const daysSinceBirth = Math.floor((now - activeBaby.birthDate) / (1000 * 60 * 60 * 24));
+    const months = Math.floor(daysSinceBirth / 30.5);
     const latestGrowth = growthLogs.filter(l => !l.babyId || l.babyId === bid).sort((a, b) => b.timestamp - a.timestamp)[0];
+    const bottleToday = bottleLogs.filter(l => l.timestamp >= todayStart && (l.type === 'formula' || l.type === 'breastmilk')).reduce((s, l) => s + (l.amount || 0), 0);
     const todayMeds = medsLogs.filter(l => l.timestamp >= todayStart);
     const nextAppt = agendaLogs
         .filter(l => !l.completed && l.timestamp >= todayStart)
         .sort((a, b) => a.timestamp - b.timestamp)[0];
 
-    const daysSinceBirth = Math.floor((now - activeBaby.birthDate) / (1000 * 60 * 60 * 24));
-    const months = Math.floor(daysSinceBirth / 30.5);
-    const bfMinutesAgo = lastBf ? Math.floor((now - lastBf.timestamp) / 60000) : null;
-    const diaperMinutesAgo = lastDiaper ? Math.floor((now - lastDiaper.timestamp) / 60000) : null;
+
 
     // ── Storytelling Insights ───────────────────────────────────
     const hoursPlayed = Math.round(stats.totalPlayTimeMinutes / 60);
@@ -406,15 +397,9 @@ const SmartDashboard: React.FC<{
     const insight = getInsight();
     const ageTip = getTip(months);
 
-    // ── Alerts ──────────────────────────────────────────────────
     const alerts: { id: string; icon: React.ElementType; label: string; detail: string; color: string; bg: string; border: string; tool: ToolId }[] = [];
 
-    if (bfMinutesAgo !== null && bfMinutesAgo > 180) {
-        alerts.push({ id: 'bf', icon: Baby, label: 'Hace más de 3h sin toma', detail: `Última: ${fmtAgo(now - lastBf!.timestamp)} · Toca ${lastBf!.side === 'L' ? 'Der.' : 'Izq.'}`, color: 'text-pink-300', bg: 'bg-pink-950/60', border: 'border-pink-500/30', tool: 'breastfeeding' });
-    }
-    if (diaperMinutesAgo !== null && diaperMinutesAgo > 240) {
-        alerts.push({ id: 'diaper', icon: Layers, label: 'Hace más de 4h sin pañal', detail: fmtAgo(now - lastDiaper!.timestamp), color: 'text-amber-300', bg: 'bg-amber-950/60', border: 'border-amber-500/30', tool: 'diapers' });
-    }
+
     if (nextAppt) {
         const apptDate = new Date(nextAppt.timestamp);
         alerts.push({ id: 'appt', icon: Calendar, label: nextAppt.reason, detail: apptDate.toLocaleDateString('es', { weekday: 'short', day: 'numeric', month: 'short' }) + (nextAppt.doctorName ? ` · ${nextAppt.doctorName}` : ''), color: 'text-blue-300', bg: 'bg-blue-950/60', border: 'border-blue-500/30', tool: 'medical_agenda' });
@@ -485,33 +470,23 @@ const SmartDashboard: React.FC<{
                 )}
 
                 {/* ── Quick stat pills ── */}
-                <div className="grid grid-cols-3 gap-2">
-                    {/* Feeding */}
-                    <button onClick={() => onOpenTool('breastfeeding')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
-                        <Baby size={16} className={`mb-1 ${bfMinutesAgo !== null && bfMinutesAgo > 180 ? 'text-pink-400' : 'text-pink-300/60'}`} />
+                <div className="grid grid-cols-2 gap-2">
+                    {/* Bottle */}
+                    <button onClick={() => onOpenTool('bottle')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
+                        <GlassWater size={16} className="mb-1 text-blue-300/60" />
                         <span className="text-[10px] font-bold text-white leading-none">
-                            {lastBf ? `${bfMinutesAgo}m` : '—'}
+                            {bottleToday}ml
                         </span>
-                        <span className="text-[8px] text-slate-500 mt-0.5">Lactancia</span>
-                        {lastBf && <span className="text-[8px] font-bold text-pink-300 mt-0.5 bg-pink-500/15 px-1.5 rounded-full">→{lastBf.side === 'L' ? 'D' : 'I'}</span>}
+                        <span className="text-[8px] text-slate-500 mt-0.5">Biberón Hoy</span>
                     </button>
 
-                    {/* Diaper */}
-                    <button onClick={() => onOpenTool('diapers')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
-                        <Layers size={16} className={`mb-1 ${diaperMinutesAgo !== null && diaperMinutesAgo > 240 ? 'text-amber-400' : 'text-amber-300/60'}`} />
+                    {/* Growth */}
+                    <button onClick={() => onOpenTool('growth')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
+                        <Ruler size={16} className="mb-1 text-emerald-300/60" />
                         <span className="text-[10px] font-bold text-white leading-none">
-                            {lastDiaper ? `${diaperMinutesAgo}m` : '—'}
+                            {latestGrowth ? `${latestGrowth.weightKg}kg` : '—'}
                         </span>
-                        <span className="text-[8px] text-slate-500 mt-0.5">Pañal</span>
-                    </button>
-
-                    {/* Sleep */}
-                    <button onClick={() => onOpenTool('sleep')} className="flex flex-col items-center p-2.5 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-800/60 active:scale-95 transition-all">
-                        <Moon size={16} className="mb-1 text-indigo-300/60" />
-                        <span className="text-[10px] font-bold text-white leading-none">
-                            {lastSleep ? fmtAgo(now - lastSleep.timestamp) : '—'}
-                        </span>
-                        <span className="text-[8px] text-slate-500 mt-0.5">Sueño</span>
+                        <span className="text-[8px] text-slate-500 mt-0.5">Peso</span>
                     </button>
                 </div>
 
@@ -536,7 +511,20 @@ const SmartDashboard: React.FC<{
                     <p className="text-xs text-slate-400 leading-tight">{ageTip}</p>
                 </div>
             </div>
-
+            {/* ── Memory Book Incentive ── */}
+            <div className="bg-gradient-to-br from-orange-500/10 to-rose-500/10 rounded-3xl p-4 border border-orange-500/20 flex items-center gap-4 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:rotate-12 transition-transform">
+                    <BookOpen size={60} />
+                </div>
+                <div className="w-10 h-10 rounded-2xl bg-orange-500/20 flex items-center justify-center shrink-0">
+                    <Star size={20} className="text-orange-400" fill="currentColor" />
+                </div>
+                <div className="flex-1">
+                    <h5 className="text-[10px] font-bold text-orange-300 uppercase tracking-widest mb-0.5">Proyecto Memoria</h5>
+                    <p className="text-xs text-slate-300 leading-tight">Completa sus datos para generar su **Lámina de Recuerdo** en PDF, lista para encuadrar.</p>
+                </div>
+                <button onClick={() => onOpenTool('discover' as any)} className="text-[9px] font-black uppercase text-orange-400 tracking-wider bg-orange-400/10 px-2 py-1 rounded-lg">Ver</button>
+            </div>
             {/* ── ALERTS ── */}
             {alerts.length > 0 && (
                 <div className="flex flex-col gap-2">

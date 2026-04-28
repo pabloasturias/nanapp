@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Baby, Layers, Moon, Music, ChevronRight, X } from 'lucide-react';
+import { Moon, Music, ChevronRight, X, Baby, GlassWater } from 'lucide-react';
 import { BabyProfile } from '../services/BabyContext';
 import { useToolData } from '../services/hooks/useToolData';
-import { BreastfeedingLog, DiaperLog } from './tools/types';
+import { BottleLog } from './tools/types';
 import { SoundType } from '../types';
 import { SOUNDS } from '../constants';
 
@@ -44,7 +44,6 @@ const NIGHT_PHRASES = [
 // ─── Utilidades ───────────────────────────────────────────────────────────────
 const getPhrase = (baby: BabyProfile, nightCount: number): string => {
     const hour = new Date().toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
-    const name = baby.caregiverName || (baby.caregiverRole === 'papa' ? 'papá' : 'mamá');
     const babyName = baby.name;
     const idx = nightCount % NIGHT_PHRASES.length;
     return NIGHT_PHRASES[idx]
@@ -67,8 +66,7 @@ export const NightCompanion: React.FC<NightCompanionProps> = ({
     baby, onPlaySound, currentSoundId, onOpenTool, playerControls, onExitPreview, isPreview
 }) => {
     const [currentTime, setCurrentTime] = useState(new Date());
-    const { addLog: addBf } = useToolData<BreastfeedingLog>('breastfeeding');
-    const { addLog: addDiaper } = useToolData<DiaperLog>('diapers');
+    const { addLog: addBottle } = useToolData<BottleLog>('bottle');
     const [justLogged, setJustLogged] = useState<string | null>(null);
 
     const nightNumber = Math.floor((Date.now() - baby.birthDate) / (1000 * 60 * 60 * 24));
@@ -86,14 +84,9 @@ export const NightCompanion: React.FC<NightCompanionProps> = ({
 
     const timeStr = currentTime.toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
 
-    const logQuick = (type: 'breast' | 'diaper') => {
-        if (type === 'breast') {
-            addBf({ timestamp: Date.now(), side: 'L', durationSeconds: 0, manual: true, babyId: baby.id });
-            setJustLogged('Toma registrada ✓');
-        } else {
-            addDiaper({ timestamp: Date.now(), type: 'wet', babyId: baby.id });
-            setJustLogged('Pañal registrado ✓');
-        }
+    const logQuick = (type: 'bottle') => {
+        addBottle({ timestamp: Date.now(), amount: 120, unit: 'ml', type: 'formula', babyId: baby.id });
+        setJustLogged('Biberón registrado ✓');
         setTimeout(() => setJustLogged(null), 2500);
     };
 
@@ -183,34 +176,20 @@ export const NightCompanion: React.FC<NightCompanionProps> = ({
                 className="w-full flex flex-col gap-3"
             >
                 {/* Quick log row */}
-                <div className="grid grid-cols-2 gap-3">
-                    <button
-                        onClick={() => logQuick('breast')}
-                        className="flex items-center justify-center gap-2 py-4 rounded-2xl border transition-all active:scale-95"
-                        style={{
-                            background: 'rgba(180, 30, 30, 0.15)',
-                            borderColor: 'rgba(180, 60, 60, 0.3)',
-                            color: 'rgba(220, 140, 140, 0.9)'
-                        }}
-                    >
-                        <Baby size={18} />
-                        <span className="text-sm font-bold">Toma</span>
-                    </button>
-                    <button
-                        onClick={() => logQuick('diaper')}
-                        className="flex items-center justify-center gap-2 py-4 rounded-2xl border transition-all active:scale-95"
-                        style={{
-                            background: 'rgba(180, 30, 30, 0.15)',
-                            borderColor: 'rgba(180, 60, 60, 0.3)',
-                            color: 'rgba(220, 140, 140, 0.9)'
-                        }}
-                    >
-                        <Layers size={18} />
-                        <span className="text-sm font-bold">Pañal</span>
-                    </button>
-                </div>
+                <button
+                    onClick={() => logQuick('bottle')}
+                    className="flex items-center justify-center gap-2 py-5 rounded-2xl border transition-all active:scale-95 w-full mb-1"
+                    style={{
+                        background: 'rgba(180, 30, 30, 0.15)',
+                        borderColor: 'rgba(180, 60, 60, 0.3)',
+                        color: 'rgba(220, 140, 140, 0.9)'
+                    }}
+                >
+                    <GlassWater size={20} />
+                    <span className="text-sm font-bold">Registrar Biberón</span>
+                </button>
 
-                {/* Sound button */}
+                {/* Sound button - The primary focus for night mode */}
                 <button
                     onClick={() => onPlaySound(firstSound.id as SoundType)}
                     className="flex items-center justify-between px-5 py-4 rounded-2xl border w-full transition-all active:scale-95"

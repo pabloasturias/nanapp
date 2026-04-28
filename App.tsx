@@ -31,6 +31,7 @@ import { useSoundPreferences } from './services/hooks/useSoundPreferences'; // N
 import { SplashScreen } from './components/SplashScreen';
 import { QuickLogFAB } from './components/QuickLogFAB';
 
+
 const AppContent: React.FC = () => {
     const { t } = useLanguage();
     const [showSplash, setShowSplash] = useState(true);

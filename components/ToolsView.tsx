@@ -33,20 +33,15 @@ import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
 const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'breastfeeding', icon: Baby, translationKey: 'tool_breastfeeding', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
     { id: 'bottle', icon: GlassWater, translationKey: 'tool_bottle', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
-    { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-    { id: 'diapers', icon: Layers, translationKey: 'tool_diapers', color: 'text-amber-400', bgColor: 'bg-amber-500/10' },
-    { id: 'sleep', icon: Moon, translationKey: 'tool_sleep', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
-    { id: 'routines', icon: Activity, translationKey: 'tool_routines', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
+    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
+    { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
-    { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
-
     { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
-    { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
 ];
@@ -100,21 +95,16 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
     const renderToolContent = (toolId: ToolId) => {
         switch (toolId) {
             case 'breastfeeding': return <BreastfeedingFull onClose={handleCloseTool} />;
-            case 'diapers': return <DiaperFull onClose={handleCloseTool} />;
             case 'bottle': return <BottleFull onClose={handleCloseTool} />;
             case 'meds': return <MedsFull onClose={handleCloseTool} />;
-            case 'sleep': return <SleepFull onClose={handleCloseTool} />;
+            case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
             case 'growth': return <GrowthFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
-
-            case 'solids': return <SolidsFull onClose={handleCloseTool} />;
             case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
             case 'vaccines': return <VaccinesFull onClose={handleCloseTool} />;
             case 'teething': return <TeethingFull onClose={handleCloseTool} />;
             case 'milestones': return <MilestonesFull onClose={handleCloseTool} />;
             case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
-            case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
             case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
-            case 'routines': return <RoutineFull onClose={handleCloseTool} />;
             case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseTool} />;
             default: return (
@@ -129,21 +119,16 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
     const renderDashboardWidget = (id: ToolId) => {
         switch (id) {
             case 'breastfeeding': return <BreastfeedingDashboard />;
-            case 'diapers': return <DiaperDashboard />;
             case 'bottle': return <BottleDashboard />;
             case 'meds': return <MedsDashboard />;
-            case 'sleep': return <SleepDashboard />;
+            case 'medical_agenda': return <AgendaDashboard />;
             case 'growth': return <GrowthDashboard />;
-
-            case 'solids': return <SolidsDashboard />;
             case 'pumping': return <PumpingDashboard />;
             case 'vaccines': return <VaccinesDashboard />;
             case 'teething': return <TeethingDashboard />;
             case 'milestones': return <MilestonesDashboard />;
             case 'pediatrician_notes': return <NotesDashboard />;
-            case 'medical_agenda': return <AgendaDashboard />;
             case 'first_words': return <FirstWordsDashboard />;
-            case 'routines': return <RoutineDashboard />;
             case 'head_position': return <HeadPositionDashboard />;
             case 'endocrine_info': return <EndocrineDashboard />;
             default: return "--";

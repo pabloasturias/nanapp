@@ -4,7 +4,7 @@ import { useLanguage } from '../services/LanguageContext';
 import { useToolData } from '../services/hooks/useToolData';
 import { ArrowLeft, Clock, Play, Trophy, Activity, Moon, GlassWater, Ruler, Layers } from 'lucide-react';
 import { SOUNDS } from '../constants';
-import { BottleLog, SleepLog, DiaperLog, GrowthLog } from './tools/types';
+import { BottleLog, SleepLog, DiaperLog, GrowthLog, BreastfeedingLog } from './tools/types';
 
 interface StatsViewProps {
     onBack: () => void;
@@ -15,36 +15,18 @@ export const StatsView: React.FC<StatsViewProps> = ({ onBack }) => {
     const { t } = useLanguage();
 
     // --- Tools Data ---
-    const { logs: bottleLogs } = useToolData<BottleLog>('bottle');
-    const { logs: sleepLogs } = useToolData<SleepLog>('sleep');
-    const { logs: diaperLogs } = useToolData<DiaperLog>('diapers');
     const { logs: growthLogs } = useToolData<GrowthLog>('growth');
+    const { logs: bfLogs } = useToolData<BreastfeedingLog>('breastfeeding');
+    const { logs: bottleLogs } = useToolData<BottleLog>('bottle');
 
     // --- Calculations ---
 
     const todayStats = useMemo(() => {
-        const now = new Date();
-        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-
-        // Bottle (Milk Only)
-        const milkVol = bottleLogs
-            .filter(l => l.timestamp >= startOfDay && l.type !== 'water')
-            .reduce((sum, l) => sum + (l.amount || 0), 0);
-
-        // Sleep
-        const sleepMinutes = sleepLogs
-            .filter(l => l.timestamp >= startOfDay)
-            .reduce((sum, l) => {
-                const duration = l.durationMinutes || (l.endTime ? (l.endTime - l.timestamp) / 60000 : 0);
-                return sum + duration;
-            }, 0);
-
-        // Diapers
-        const wetCount = diaperLogs.filter(l => l.timestamp >= startOfDay && (l.type === 'wet' || l.type === 'mixed')).length;
-        const dirtyCount = diaperLogs.filter(l => l.timestamp >= startOfDay && (l.type === 'dirty' || l.type === 'mixed')).length;
-
-        return { milkVol, sleepMinutes, wetCount, dirtyCount };
-    }, [bottleLogs, sleepLogs, diaperLogs]);
+        const startOfDay = new Date().setHours(0,0,0,0);
+        const bfToday = bfLogs.filter(l => l.timestamp >= startOfDay).length;
+        const bottleToday = bottleLogs.filter(l => l.timestamp >= startOfDay && l.type !== 'water').reduce((s, l) => s + (l.amount || 0), 0);
+        return { bfToday, bottleToday };
+    }, [bfLogs, bottleLogs]);
 
     const latestGrowth = useMemo(() => growthLogs.length > 0 ? growthLogs[0] : null, [growthLogs]);
 
@@ -88,49 +70,7 @@ export const StatsView: React.FC<StatsViewProps> = ({ onBack }) => {
                         Resumen de Hoy
                     </h3>
                     <div className="grid grid-cols-2 gap-3">
-                        {/* Sleep Card */}
-                        <div className="bg-indigo-500/10 border border-indigo-500/20 p-4 rounded-2xl flex flex-col justify-between">
-                            <div className="flex justify-between items-start mb-2">
-                                <div className="p-2 bg-indigo-500/20 rounded-xl text-indigo-300">
-                                    <Moon size={18} />
-                                </div>
-                                <span className="text-xs font-bold text-indigo-200 uppercase opacity-60">Sueño</span>
-                            </div>
-                            <div>
-                                <span className="text-2xl font-bold text-white">{Math.floor(todayStats.sleepMinutes / 60)}</span>
-                                <span className="text-xs text-indigo-300 ml-1">h</span>
-                                <span className="text-lg font-bold text-white ml-2">{Math.round(todayStats.sleepMinutes % 60)}</span>
-                                <span className="text-xs text-indigo-300 ml-1">m</span>
-                            </div>
-                        </div>
-
-                        {/* Bottle Card */}
-                        <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl flex flex-col justify-between">
-                            <div className="flex justify-between items-start mb-2">
-                                <div className="p-2 bg-blue-500/20 rounded-xl text-blue-300">
-                                    <GlassWater size={18} />
-                                </div>
-                                <span className="text-xs font-bold text-blue-200 uppercase opacity-60">Leche</span>
-                            </div>
-                            <div>
-                                <span className="text-2xl font-bold text-white">{todayStats.milkVol}</span>
-                                <span className="text-xs text-blue-300 ml-1">ml</span>
-                            </div>
-                        </div>
-
-                        {/* Diapers Card */}
-                        <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl flex flex-col justify-between">
-                            <div className="flex justify-between items-start mb-2">
-                                <div className="p-2 bg-amber-500/20 rounded-xl text-amber-300">
-                                    <Layers size={18} />
-                                </div>
-                                <span className="text-xs font-bold text-amber-200 uppercase opacity-60">Pañales</span>
-                            </div>
-                            <div className="flex gap-4 text-sm font-bold">
-                                <div className="text-amber-100"><span className="text-lg">{todayStats.wetCount}</span> 💧</div>
-                                <div className="text-amber-100"><span className="text-lg">{todayStats.dirtyCount}</span> 💩</div>
-                            </div>
-                        </div>
+                        {/* Growth Card remains as it is individual */}
 
                         {/* Growth Card */}
                         <div className="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl flex flex-col justify-between">
@@ -138,7 +78,7 @@ export const StatsView: React.FC<StatsViewProps> = ({ onBack }) => {
                                 <div className="p-2 bg-emerald-500/20 rounded-xl text-emerald-300">
                                     <Ruler size={18} />
                                 </div>
-                                <span className="text-xs font-bold text-emerald-200 uppercase opacity-60">Medidas</span>
+                                <span className="text-[10px] font-bold text-emerald-200 uppercase opacity-60">Peso</span>
                             </div>
                             <div>
                                 {latestGrowth ? (
@@ -149,6 +89,34 @@ export const StatsView: React.FC<StatsViewProps> = ({ onBack }) => {
                                 ) : (
                                     <span className="text-xs text-emerald-500 italic">Sin datos</span>
                                 )}
+                            </div>
+                        </div>
+
+                        {/* Breastfeeding Card */}
+                        <div className="bg-pink-500/10 border border-pink-500/20 p-4 rounded-2xl flex flex-col justify-between">
+                            <div className="flex justify-between items-start mb-2">
+                                <div className="p-2 bg-pink-500/20 rounded-xl text-pink-300">
+                                    <Baby size={18} />
+                                </div>
+                                <span className="text-[10px] font-bold text-pink-200 uppercase opacity-60">Tomas</span>
+                            </div>
+                            <div>
+                                <div className="text-lg font-bold text-white">{todayStats.bfToday}</div>
+                                <div className="text-xs text-pink-200/70">Sesiones hoy</div>
+                            </div>
+                        </div>
+
+                        {/* Bottle Card */}
+                        <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl flex flex-col justify-between">
+                            <div className="flex justify-between items-start mb-2">
+                                <div className="p-2 bg-blue-500/20 rounded-xl text-blue-300">
+                                    <GlassWater size={18} />
+                                </div>
+                                <span className="text-[10px] font-bold text-blue-200 uppercase opacity-60">Biberón</span>
+                            </div>
+                            <div>
+                                <div className="text-lg font-bold text-white">{todayStats.bottleToday} <span className="text-xs text-blue-300">ml</span></div>
+                                <div className="text-xs text-blue-200/70">Total hoy</div>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ const STORAGE_KEY_FAV_SOUNDS = 'dw_fav_sounds';
 const STORAGE_KEY_FAV_TOOLS = 'dw_fav_tools';
 
 const DEFAULT_FAV_SOUNDS: SoundType[] = [SoundType.WHITE_NOISE, SoundType.SHUSH];
-const DEFAULT_FAV_TOOLS: ToolId[] = ['breastfeeding', 'diapers', 'sleep', 'meds'];
+const DEFAULT_FAV_TOOLS: ToolId[] = ['breastfeeding', 'meds', 'bottle', 'growth'];
 
 export const useFavorites = () => {
     const [favoriteSounds, setFavoriteSounds] = useState<SoundType[]>(() => {

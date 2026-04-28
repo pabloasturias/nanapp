@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, Baby, GlassWater, Layers, Moon } from 'lucide-react';
+import { Plus, X, Baby, GlassWater } from 'lucide-react';
 import { useToolData } from '../services/hooks/useToolData';
-import { BreastfeedingLog, BottleLog, DiaperLog, SleepLog } from './tools/types';
+import { BreastfeedingLog, BottleLog } from './tools/types';
 import { useBaby } from '../services/BabyContext';
 
 interface QuickAction {
@@ -22,8 +22,6 @@ export const QuickLogFAB: React.FC = () => {
 
     const { addLog: addBf } = useToolData<BreastfeedingLog>('breastfeeding');
     const { addLog: addBottle } = useToolData<BottleLog>('bottle');
-    const { addLog: addDiaper } = useToolData<DiaperLog>('diapers');
-    const { addLog: addSleep } = useToolData<SleepLog>('sleep');
 
     const babyId = activeBaby?.id;
 
@@ -36,21 +34,6 @@ export const QuickLogFAB: React.FC = () => {
 
     const actions: QuickAction[] = [
         {
-            id: 'breast',
-            label: 'Pecho registrado ✓',
-            icon: Baby,
-            color: 'text-pink-300',
-            bg: 'bg-pink-500/20 border-pink-500/30',
-            glow: 'shadow-pink-500/20',
-            onTap: () => log('Pecho registrado ✓', () => addBf({
-                timestamp: Date.now(),
-                side: 'L',
-                durationSeconds: 0,
-                manual: true,
-                ...(babyId ? { babyId } : {})
-            })),
-        },
-        {
             id: 'bottle',
             label: 'Biberón registrado ✓',
             icon: GlassWater,
@@ -59,35 +42,9 @@ export const QuickLogFAB: React.FC = () => {
             glow: 'shadow-blue-500/20',
             onTap: () => log('Biberón registrado ✓', () => addBottle({
                 timestamp: Date.now(),
-                amount: 0,
+                amount: 120,
                 unit: 'ml',
-                type: 'breastmilk',
-                ...(babyId ? { babyId } : {})
-            })),
-        },
-        {
-            id: 'diaper',
-            label: 'Pañal registrado ✓',
-            icon: Layers,
-            color: 'text-amber-300',
-            bg: 'bg-amber-500/20 border-amber-500/30',
-            glow: 'shadow-amber-500/20',
-            onTap: () => log('Pañal registrado ✓', () => addDiaper({
-                timestamp: Date.now(),
-                type: 'wet',
-                ...(babyId ? { babyId } : {})
-            })),
-        },
-        {
-            id: 'nap',
-            label: 'Siesta registrada ✓',
-            icon: Moon,
-            color: 'text-indigo-300',
-            bg: 'bg-indigo-500/20 border-indigo-500/30',
-            glow: 'shadow-indigo-500/20',
-            onTap: () => log('Siesta registrada ✓', () => addSleep({
-                timestamp: Date.now(),
-                type: 'nap',
+                type: 'formula',
                 ...(babyId ? { babyId } : {})
             })),
         },
@@ -139,9 +96,7 @@ export const QuickLogFAB: React.FC = () => {
                                 <action.icon size={18} className={action.color} />
                             </div>
                             <span className="text-sm font-bold text-white whitespace-nowrap">
-                                {action.id === 'breast' ? 'Pecho' :
-                                 action.id === 'bottle' ? 'Biberón' :
-                                 action.id === 'diaper' ? 'Pañal' : 'Siesta'}
+                                Biberón
                             </span>
                         </motion.button>
                     ))}

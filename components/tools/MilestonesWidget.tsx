@@ -71,7 +71,10 @@ export const MilestonesFull: React.FC<{ onClose: () => void }> = ({ onClose }) =
                 { id: 'eye_contact', label: 'Mantiene contacto visual' },
                 { id: 'sounds', label: 'Emite sonidos guturales' },
                 { id: 'lift_head_prone', label: 'Levanta cabeza boca abajo' },
-                { id: 'track_object', label: 'Sigue objetos con la vista' }
+                { id: 'track_object', label: 'Sigue objetos con la vista' },
+                { id: 'earrings', label: 'Puesta de pendientes' },
+                { id: 'first_trip', label: 'Mi primer viaje' },
+                { id: 'favorite_toy', label: 'Mi primer objeto de apego' }
             ]
         },
         {

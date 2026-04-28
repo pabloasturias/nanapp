@@ -3,7 +3,7 @@ import { ToolId } from '../../components/tools/types';
 
 const STORAGE_KEY_ACTIVE_TOOLS = 'dw_tools_active';
 
-const DEFAULT_TOOLS: ToolId[] = ['breastfeeding', 'diapers', 'meds'];
+const DEFAULT_TOOLS: ToolId[] = ['breastfeeding', 'meds', 'medical_agenda', 'growth', 'milestones'];
 
 export const useTools = () => {
     const [activeTools, setActiveTools] = useState<ToolId[]>(() => {
