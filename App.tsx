@@ -381,9 +381,9 @@ const AppContent: React.FC = () => {
     }, []);
 
     return (
-        // ── Mobile-only shell: always phone-width, centered on desktop ──
-        <div className="flex items-center justify-center w-full h-[100dvh] bg-slate-950 overflow-hidden">
-        <div className="relative h-full w-full max-w-[430px] flex flex-col overflow-hidden bg-slate-950 shadow-2xl">
+        // ── Fixed Root Shell: Occupies exact viewport, no global scroll ──
+        <div className="fixed inset-0 bg-slate-950 overflow-hidden flex flex-col items-center justify-center">
+            <div className="relative h-full w-full max-w-[430px] flex flex-col bg-slate-950 shadow-2xl overflow-hidden">
 
             {/* Splash Screen */}
             {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
@@ -451,16 +451,14 @@ const AppContent: React.FC = () => {
             </main>
 
             {!nightActive && (
-                <footer className="bg-slate-950 px-3 pb-3 shrink-0">
-                    <BottomNav 
-                        activeTab={
-                            activeTab === 'story' ? 'audio' :
-                            activeTab === 'stats' ? 'routine' :
-                            (activeTab as 'home' | 'audio' | 'routine' | 'discover')
-                        } 
-                        setActiveTab={navigateToTab as any} 
-                    />
-                </footer>
+                <BottomNav 
+                    activeTab={
+                        activeTab === 'story' ? 'audio' :
+                        activeTab === 'stats' ? 'routine' :
+                        (activeTab as 'home' | 'audio' | 'routine' | 'discover')
+                    } 
+                    setActiveTab={navigateToTab as any} 
+                />
             )}
         </div>
         </div>

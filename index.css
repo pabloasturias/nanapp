@@ -28,14 +28,19 @@
     --glass-blur: 32px; /* Stronger blur for premium feel */
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: var(--color-sleep-bg);
+}
+
+body {
     background-image: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.5) 0%, transparent 60%),
                       radial-gradient(circle at 100% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 50%);
-    background-attachment: fixed;
     color: white;
     font-family: 'Outfit', 'Inter', sans-serif;
-    overflow-x: hidden;
 }
 
 .glass {

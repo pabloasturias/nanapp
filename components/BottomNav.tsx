@@ -11,7 +11,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
   const { t } = useLanguage();
 
   return (
-    <div className="w-full bg-slate-950">
+    <div className="w-full bg-slate-950 px-3 pb-[max(12px,env(safe-area-inset-bottom))] shrink-0 relative z-30">
       <div className="bg-slate-900 border border-white/5 rounded-[2.2rem] h-16 flex justify-around items-center px-4 shadow-xl">
         
         {/* HOME */}
