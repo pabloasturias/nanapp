@@ -368,8 +368,8 @@ export const translations = {
     tool_memory_poster: "Proyecto Memoria",
     tool_memory_poster_subtitle: "Lámina del Primer Año",
     tool_memory_poster_desc: "Genera una lámina artística en PDF con el resumen visual del primer año de tu bebé. Incluye gráficas de crecimiento, hitos con fechas, fase lunar y mucho más.",
-    tool_footprint: "Huellas",
-    tool_footprint_subtitle: "Captura sus pequeñas huellas",
+    tool_footprint: "Huellas (Manos y Pies)",
+    tool_footprint_subtitle: "Captura manos y pies",
     tool_footprint_desc: "Usa la pantalla de tu móvil como un lienzo para capturar la forma del pie o la mano de tu bebé. Un recuerdo digital único.",
   },
   en: {

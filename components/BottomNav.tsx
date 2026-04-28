@@ -11,9 +11,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
   const { t } = useLanguage();
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 mx-auto max-w-[400px] z-50">
-      <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
-        <div className="flex justify-around items-center h-16 px-2">
+    <div className="w-full bg-slate-950 border-t border-white/5 pb-[env(safe-area-inset-bottom)] relative z-20">
+      <div className="flex justify-around items-center h-16 px-4">
         
         {/* HOME */}
         <button
@@ -51,7 +50,6 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab })
           <span className="text-[10px] font-bold uppercase tracking-wide">{t('tab_discover')}</span>
         </button>
 
-        </div>
       </div>
     </div>
   );

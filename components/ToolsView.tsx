@@ -6,7 +6,7 @@ import {
     Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils,
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
     Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X,
-    RotateCcw, ShieldCheck, Footprints
+    RotateCcw, ShieldCheck, Footprints, BookOpen
 } from 'lucide-react';
 
 // Widget Imports
@@ -37,6 +37,8 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'bottle', icon: GlassWater, translationKey: 'tool_bottle', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
+    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
+    { id: 'footprint', icon: Footprints, translationKey: 'tool_footprint', color: 'text-amber-600', bgColor: 'bg-amber-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
@@ -46,8 +48,6 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
     { id: 'endocrine_info', icon: ShieldCheck, translationKey: 'tool_endocrine_info', color: 'text-emerald-500', bgColor: 'bg-emerald-500/10' },
-    { id: 'memory_poster', icon: Moon, translationKey: 'tool_memory_poster', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-    { id: 'footprint', icon: Footprints, translationKey: 'tool_footprint', color: 'text-amber-600', bgColor: 'bg-amber-500/10' },
 ];
 
 
@@ -144,7 +144,7 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
     };
 
     return (
-        <div className="flex-1 overflow-y-auto pb-28 px-1 relative animate-[fade-in_0.5s_ease-out]">
+        <div className="flex-1 pb-8 px-1 relative animate-[fade-in_0.5s_ease-out]">
 
             {/* Tool Detail Modal */}
             {selectedToolId && (
@@ -272,6 +272,38 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
                     )}
                 </div>
             )}
+
+            {/* ── INFO GUIDES SECTION ──────────────────────────── */}
+            <div className="px-4 mt-12 mb-8">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 bg-indigo-500/10 rounded-2xl text-indigo-400 border border-indigo-500/10">
+                        <BookOpen size={24} />
+                    </div>
+                    <div>
+                        <h2 className="text-xl font-bold text-white font-['Quicksand']">{t('info_guides_title')}</h2>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{t('digital_tools_subtitle')}</p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-3">
+                    {[
+                        { title: 'pediatric_guide_title', sub: 'pediatric_guide_subtitle', color: 'from-blue-500/20 to-indigo-500/20', icon: ShieldCheck },
+                        { title: 'feeding_guide_title', sub: 'feeding_guide_subtitle', color: 'from-pink-500/20 to-rose-500/20', icon: Baby },
+                        { title: 'development_guide_title', sub: 'development_guide_subtitle', color: 'from-yellow-500/20 to-orange-500/20', icon: Trophy }
+                    ].map((guide, i) => (
+                        <div key={i} className={`p-5 rounded-[2rem] bg-gradient-to-br ${guide.color} border border-white/5 flex items-center gap-4 hover:scale-[1.02] transition-transform cursor-pointer`}>
+                            <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/60">
+                                <guide.icon size={24} />
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="text-sm font-bold text-white">{t(guide.title as any)}</h3>
+                                <p className="text-[10px] text-slate-400">{t(guide.sub as any)}</p>
+                            </div>
+                            <ChevronRight size={16} className="text-slate-600" />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

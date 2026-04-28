@@ -431,7 +431,7 @@ const AppContent: React.FC = () => {
                 onReorderSounds={reorderSounds}
             />
 
-            <div className="flex-1 flex flex-col w-full max-w-lg mx-auto relative z-10 min-h-0">
+            <div className="flex-1 overflow-y-auto min-h-0 relative scrollbar-hide">
                 <Header
                     onOpenSettings={() => openModal('settings')}
                     onOpenSupport={() => openModal('support')}

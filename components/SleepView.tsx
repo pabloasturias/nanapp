@@ -7,7 +7,7 @@ export const SleepView: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <div className="flex-1 overflow-y-auto pb-24 px-1">
+        <div className="flex-1 pb-8 px-1">
             <div className="space-y-6 animate-[fade-in_0.5s_ease-out]">
 
                 {/* Header */}

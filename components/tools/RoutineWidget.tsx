@@ -174,7 +174,7 @@ export const RoutineFull: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             )}
 
             {/* Timeline List */}
-            <div className="flex-1 overflow-y-auto p-4 relative">
+            <div className="flex-1 p-4 relative">
                 {/* Vertical Line */}
                 <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-800" />
 

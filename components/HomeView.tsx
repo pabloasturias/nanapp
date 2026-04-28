@@ -118,7 +118,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ currentSoundId, onPlaySound,
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex-1 flex flex-col px-4 overflow-y-auto overflow-x-hidden gap-6 pt-2 scrollbar-hide pb-28"
+            className="flex-1 flex flex-col px-4 gap-6 pt-2 pb-8"
         >
             {/* ── SMART DASHBOARD ─────────────────────────────────── */}
             <SmartDashboard
@@ -513,20 +513,7 @@ const SmartDashboard: React.FC<{
                     <p className="text-xs text-slate-400 leading-tight">{ageTip}</p>
                 </div>
             </div>
-            {/* ── Memory Book Incentive ── */}
-            <div className="bg-gradient-to-br from-orange-500/10 to-rose-500/10 rounded-3xl p-4 border border-orange-500/20 flex items-center gap-4 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:rotate-12 transition-transform">
-                    <BookOpen size={60} />
-                </div>
-                <div className="w-10 h-10 rounded-2xl bg-orange-500/20 flex items-center justify-center shrink-0">
-                    <Star size={20} className="text-orange-400" fill="currentColor" />
-                </div>
-                <div className="flex-1">
-                    <h5 className="text-[10px] font-bold text-orange-300 uppercase tracking-widest mb-0.5">Proyecto Memoria</h5>
-                    <p className="text-xs text-slate-300 leading-tight">Completa sus datos para generar su **Lámina de Recuerdo** en PDF, lista para encuadrar.</p>
-                </div>
-                <button onClick={() => onOpenTool('memory_poster')} className="text-[9px] font-black uppercase text-orange-400 tracking-wider bg-orange-400/10 px-2 py-1 rounded-lg">Ver</button>
-            </div>
+
             {/* ── ALERTS ── */}
             {alerts.length > 0 && (
                 <div className="flex flex-col gap-2">
@@ -567,7 +554,7 @@ const BabyOnboardingFlow: React.FC<{ onComplete: (b: any) => void; onCancel: () 
     const handleNext = () => setStep(s => s + 1);
 
     return (
-        <div className="flex-1 min-h-0 flex flex-col h-full bg-slate-950 overflow-y-auto pb-28">
+        <div className="flex-1 min-h-0 flex flex-col h-full bg-slate-950 pb-8">
             <button onClick={onCancel} className="absolute top-6 right-6 p-2 text-slate-500 hover:text-white">
                 <X size={24} />
             </button>
