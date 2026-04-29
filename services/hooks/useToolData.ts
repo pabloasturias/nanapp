@@ -24,6 +24,7 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
             // Prepend new log (newest first)
             const updated = [logEntry, ...prev];
             localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            window.dispatchEvent(new CustomEvent('nanapp_data_changed', { detail: { toolId } }));
             return updated;
         });
     }, [STORAGE_KEY]);
@@ -65,6 +66,7 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
         setLogs(prev => {
             const updated = prev.filter(log => !predicate(log));
             localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            window.dispatchEvent(new CustomEvent('nanapp_data_changed', { detail: { toolId } }));
             return updated;
         });
     }, [STORAGE_KEY]);

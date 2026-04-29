@@ -31,10 +31,30 @@ import { useSoundPreferences } from './services/hooks/useSoundPreferences'; // N
 import { SplashScreen } from './components/SplashScreen';
 import { QuickLogFAB } from './components/QuickLogFAB';
 
+import { GoogleDriveService } from './services/GoogleDriveService';
 
 const AppContent: React.FC = () => {
     const { t } = useLanguage();
     const [showSplash, setShowSplash] = useState(true);
+
+    // Auto-backup logic
+    useEffect(() => {
+        let timeout: any;
+        const handleDataChange = () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(async () => {
+                if (localStorage.getItem('nanapp_gdrive_linked') === 'true') {
+                    await GoogleDriveService.saveBackup();
+                }
+            }, 5000); // 5s debounce
+        };
+
+        window.addEventListener('nanapp_data_changed', handleDataChange);
+        return () => {
+            window.removeEventListener('nanapp_data_changed', handleDataChange);
+            clearTimeout(timeout);
+        };
+    }, []);
 
     // Custom Hooks
     const audio = useAudioEngine(parseFloat(localStorage.getItem('dw_volume') || '0.4'));

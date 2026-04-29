@@ -4,6 +4,8 @@ import { SOUNDS } from '../constants';
 
 import { useLanguage } from '../services/LanguageContext';
 import { useBaby, BabyProfile } from '../services/BabyContext';
+import { GoogleDriveService } from '../services/GoogleDriveService';
+import { Cloud, CloudOff, RefreshCw as RefreshIcon, Download } from 'lucide-react';
 
 
 interface SettingsModalProps {
@@ -37,6 +39,45 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
     const { t, language, setLanguage } = useLanguage();
     const { babies, activeBabyId, addBaby, removeBaby, setActiveBabyId } = useBaby();
+
+    const [isGdriveLinked, setIsGdriveLinked] = React.useState(localStorage.getItem('nanapp_gdrive_linked') === 'true');
+    const [lastBackup, setLastBackup] = React.useState(localStorage.getItem('nanapp_last_backup'));
+    const [isSyncing, setIsSyncing] = React.useState(false);
+
+    React.useEffect(() => {
+        if (isOpen) {
+            GoogleDriveService.init();
+        }
+    }, [isOpen]);
+
+    const handleLinkGdrive = async () => {
+        setIsSyncing(true);
+        const success = await GoogleDriveService.authenticate();
+        if (success) {
+            setIsGdriveLinked(true);
+            await GoogleDriveService.saveBackup();
+            setLastBackup(localStorage.getItem('nanapp_last_backup'));
+        }
+        setIsSyncing(false);
+    };
+
+    const handleManualSync = async () => {
+        setIsSyncing(true);
+        await GoogleDriveService.saveBackup();
+        setLastBackup(localStorage.getItem('nanapp_last_backup'));
+        setIsSyncing(false);
+    };
+
+    const handleRestore = async () => {
+        if (window.confirm(t('settings_backup_restore_desc'))) {
+            setIsSyncing(true);
+            const success = await GoogleDriveService.restoreBackup();
+            if (success) {
+                window.location.reload();
+            }
+            setIsSyncing(false);
+        }
+    };
 
     const [showAddBaby, setShowAddBaby] = React.useState(false);
     const [newBabyName, setNewBabyName] = React.useState('');
@@ -278,6 +319,68 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* SECTION: BACKUP */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-slate-500 uppercase tracking-widest text-[10px] font-bold">
+                            <Cloud size={12} />
+                            <span>{t('settings_backup_title')}</span>
+                        </div>
+
+                        <div className="bg-slate-800/30 p-5 rounded-3xl border border-slate-700/30 space-y-4">
+                            <div className="flex items-start gap-3">
+                                <div className={`p-2 rounded-xl shrink-0 ${isGdriveLinked ? 'bg-blue-500/10 text-blue-400' : 'bg-slate-800 text-slate-500'}`}>
+                                    {isGdriveLinked ? <Cloud size={18} /> : <CloudOff size={18} />}
+                                </div>
+                                <div>
+                                    <span className="text-sm font-semibold text-slate-200 block mb-1">
+                                        {isGdriveLinked ? t('settings_backup_linked') : t('settings_backup_title')}
+                                    </span>
+                                    <p className="text-xs text-slate-400 leading-relaxed">
+                                        {t('settings_backup_desc')}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {isGdriveLinked ? (
+                                <div className="space-y-2 pt-2">
+                                    <div className="flex items-center justify-between px-1">
+                                        <span className="text-[10px] text-slate-500 font-bold uppercase">
+                                            {lastBackup ? t('settings_backup_last', { date: new Date(parseInt(lastBackup)).toLocaleString() }) : 'Nunca sincronizado'}
+                                        </span>
+                                        {isSyncing && <RefreshIcon size={12} className="animate-spin text-blue-400" />}
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={handleManualSync}
+                                            disabled={isSyncing}
+                                            className="flex-1 py-3 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <RefreshIcon size={14} className={isSyncing ? 'animate-spin' : ''} />
+                                            {t('settings_backup_btn_sync')}
+                                        </button>
+                                        <button
+                                            onClick={handleRestore}
+                                            disabled={isSyncing}
+                                            className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-2xl text-xs font-bold transition-all border border-white/5 flex items-center justify-center gap-2"
+                                        >
+                                            <Download size={14} />
+                                            {t('settings_backup_restore')}
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={handleLinkGdrive}
+                                    disabled={isSyncing}
+                                    className="w-full py-4 bg-white text-slate-900 rounded-2xl font-bold text-sm hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-lg shadow-white/5"
+                                >
+                                    {isSyncing ? <RefreshIcon size={18} className="animate-spin" /> : <Cloud size={18} />}
+                                    {t('settings_backup_btn_link')}
+                                </button>
+                            )}
                         </div>
                     </div>
 
