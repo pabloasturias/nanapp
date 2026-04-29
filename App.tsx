@@ -3,7 +3,6 @@ import { SoundButton } from './components/SoundButton';
 import { ManageSoundsModal } from './components/ManageSoundsModal'; // New Import
 import { Controls } from './components/Controls';
 import { Visualizer } from './components/Visualizer';
-import { HomeView } from './components/HomeView';
 import { DiscoverView } from './components/DiscoverView';
 import { ProductsView } from './components/ProductsView';
 import { SleepView } from './components/SleepView';
@@ -12,6 +11,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { ReloadPrompt } from './components/ReloadPrompt';
 import { StatsView } from './components/StatsView';
 import { ToolsView } from './components/ToolsView';
+import { AcademyView } from './components/AcademyView';
 import { WhyItWorksModal } from './components/WhyItWorksModal';
 import { QuickInfoModal } from './components/QuickInfoModal';
 import { SupportModal } from './components/SupportModal';
@@ -63,8 +63,8 @@ const AppContent: React.FC = () => {
     const { activeSoundIds, toggleSoundVisibility, reorderSounds } = useSoundPreferences();
 
     // Navigation State
-    const [activeTab, setActiveTab] = useState<'home' | 'audio' | 'routine' | 'discover' | 'story' | 'stats'>(() => {
-        return window.history.state?.tab || 'home';
+    const [activeTab, setActiveTab] = useState<'audio' | 'tools' | 'academy' | 'discover' | 'story' | 'stats'>(() => {
+        return window.history.state?.tab || 'audio';
     });
 
     // Modal States
@@ -90,7 +90,7 @@ const AppContent: React.FC = () => {
 
             // Sync Tab
             if (state.tab) setActiveTab(state.tab);
-            else setActiveTab('home'); // Default fall back
+            else setActiveTab('audio'); // Default fall back
 
             // Sync Modals
             setShowSettings(state.modal === 'settings');
@@ -334,16 +334,10 @@ const AppContent: React.FC = () => {
                 </div>
             </div>
         );
-        if (activeTab === 'home') return <HomeView currentSoundId={audio.currentSound} onPlaySound={handleSoundSelect} onOpenTool={(id) => { navigateToTab('routine'); window.history.pushState({ tab: 'routine', toolId: id }, ''); }} onOpenSettings={() => openModal('settings')} playerControls={playerControls} />;
-        if (activeTab === 'story') return <StoryView onBack={closeModal} />;
-        if (activeTab === 'stats') return <StatsView onBack={() => navigateToTab('routine')} />;
-        if (activeTab === 'routine') return <ToolsView onOpenSettings={() => openModal('settings')} />;
-        if (activeTab === 'discover') return <DiscoverView />;
-
-        return (
+        if (activeTab === 'audio') return (
             <>
                 <div className="shrink-0 flex items-center justify-between px-6 mb-2 mt-4">
-                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_audio')}</h2>
+                    <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider">{t('tab_sounds')}</h2>
                     <div className="flex items-center gap-2">
                         <button
                             onClick={() => openModal('legal')}
@@ -385,6 +379,13 @@ const AppContent: React.FC = () => {
                 {playerControls}
             </>
         );
+        if (activeTab === 'story') return <StoryView onBack={closeModal} />;
+        if (activeTab === 'stats') return <StatsView onBack={() => navigateToTab('tools')} />;
+        if (activeTab === 'tools') return <ToolsView onOpenSettings={() => openModal('settings')} />;
+        if (activeTab === 'academy') return <AcademyView onOpenSettings={() => openModal('settings')} />;
+        if (activeTab === 'discover') return <DiscoverView />;
+
+        return null;
     };
 
     const isNightActive = () => {
@@ -470,6 +471,9 @@ const AppContent: React.FC = () => {
                 <div className="relative z-10 w-full max-w-lg mx-auto pb-12">
                     {renderContent()}
                 </div>
+
+                {/* Floating Quick Action */}
+                <QuickLogFAB onOpenTool={(id) => { navigateToTab('tools'); window.history.pushState({ tab: 'tools', toolId: id }, ''); }} />
             </main>
 
             {!nightActive && (
@@ -477,8 +481,8 @@ const AppContent: React.FC = () => {
                     <BottomNav 
                         activeTab={
                             activeTab === 'story' ? 'audio' :
-                            activeTab === 'stats' ? 'routine' :
-                            (activeTab as 'home' | 'audio' | 'routine' | 'discover')
+                            activeTab === 'stats' ? 'tools' :
+                            (activeTab as 'audio' | 'tools' | 'academy' | 'discover')
                         } 
                         setActiveTab={navigateToTab as any} 
                     />
