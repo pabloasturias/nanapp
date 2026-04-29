@@ -57,79 +57,86 @@ export const Controls: React.FC<ControlsProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3 w-full bg-slate-900/80 backdrop-blur-xl p-4 rounded-[2.5rem] border border-orange-100/5 shadow-[0_-10px_40px_-10px_rgba(2,6,23,0.6)]">
+    <div className="flex flex-col gap-4 w-full bg-slate-900/40 backdrop-blur-3xl p-5 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden">
       
-      <div className="flex items-center justify-between bg-slate-950/40 rounded-3xl p-1.5 px-4 border border-orange-100/5">
-         <div className="flex items-center gap-2 text-slate-400">
-             <Clock size={14} />
-             <span className="text-[10px] font-bold uppercase tracking-wider">{t('timer')}</span>
+      {/* Background Decorative Gradient */}
+      <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-orange-500/10 blur-[80px] pointer-events-none" />
+
+      {/* TIMER SECTION */}
+      <div className="flex items-center justify-between bg-slate-950/40 rounded-[2rem] p-2 px-5 border border-white/5">
+         <div className="flex items-center gap-2 text-slate-500">
+             <Clock size={16} />
+             <span className="text-[11px] font-black uppercase tracking-tighter">{t('timer')}</span>
          </div>
 
-         <div className="flex items-center gap-2">
+         <div className="flex items-center gap-4">
              <button 
                 onClick={() => { onAdjustTimer(-10); triggerHaptic(); }}
                 disabled={timerDuration <= 10}
-                className="p-2 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-800 text-slate-400 disabled:opacity-20 transition-all hover:bg-slate-700"
              >
-                <Minus size={14} />
+                <Minus size={16} />
              </button>
 
              <button 
                 onClick={() => { onToggleTimerActive(); triggerHaptic(); }}
-                className={`relative min-w-[80px] h-8 flex items-center justify-center rounded-2xl border transition-all duration-300 
-                ${!isTimerActive ? 'bg-transparent border-transparent text-slate-600' : 
-                   isCountingDown 
-                    ? 'bg-orange-500/10 border-orange-500/30 text-orange-200 shadow-[inset_0_0_15px_rgba(249,115,22,0.1)]' 
-                    : 'bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600'}`}
+                className={`flex flex-col items-center justify-center min-w-[70px] transition-all duration-500 ${isTimerActive ? 'scale-110' : 'opacity-40'}`}
              >
-                {isCountingDown && (
-                   <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse shadow-[0_0_5px_rgba(251,146,60,0.8)]" />
-                )}
-                <span className={`font-mono font-bold text-base leading-none ${isTimerActive ? '' : 'line-through decoration-slate-600'}`}>
-                    {isCountingDown 
-                        ? formatTime(timerRemaining!) 
-                        : `${timerDuration}m`}
+                <span className={`font-mono text-xl font-bold leading-none ${isCountingDown ? 'text-orange-400' : 'text-white'}`}>
+                    {isCountingDown ? formatTime(timerRemaining!) : `${timerDuration}m`}
                 </span>
+                {isCountingDown && (
+                  <div className="flex gap-0.5 mt-1">
+                    {[1, 2, 3].map(i => (
+                      <div key={i} className="w-0.5 h-0.5 rounded-full bg-orange-500 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+                    ))}
+                  </div>
+                )}
              </button>
 
              <button 
                 onClick={() => { onAdjustTimer(10); triggerHaptic(); }}
-                className="p-2 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition-all hover:bg-slate-700"
              >
-                <Plus size={14} />
+                <Plus size={16} />
              </button>
          </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 mt-0 h-16">
+      {/* MAIN ACTIONS */}
+      <div className="flex gap-3 h-20">
           <button
             onClick={handleMainAction}
-            className={`col-span-3 flex items-center justify-center gap-3 h-full rounded-[2rem] border transition-all active:scale-95 shadow-xl
+            className={`flex-1 flex items-center justify-center gap-4 h-full rounded-[2.2rem] border transition-all duration-500 active:scale-95 relative overflow-hidden group
                 ${isPlaying 
-                    ? 'bg-gradient-to-br from-orange-400 to-orange-500 border-orange-300 text-slate-950 shadow-[0_0_30px_rgba(249,115,22,0.4)]' 
-                    : 'bg-gradient-to-br from-slate-700 to-slate-800 border-slate-600/50 text-slate-200 shadow-lg hover:from-slate-600 hover:to-slate-700'}`}
+                    ? 'bg-orange-500 border-orange-400 text-slate-950 shadow-[0_15px_40px_rgba(249,115,22,0.3)]' 
+                    : 'bg-white border-white text-slate-950 shadow-xl'}`}
           >
-              {isPlaying ? (
-                  <>
+              {/* Shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
+
+              <div className={`p-3 rounded-full transition-all duration-500 ${isPlaying ? 'bg-slate-950/10' : 'bg-slate-900/5'}`}>
+                {isPlaying ? (
                     <Pause size={28} fill="currentColor" />
-                    <span className="text-sm font-bold uppercase tracking-widest">{t('pause')}</span>
-                  </>
-              ) : (
-                  <>
+                ) : (
                     <Play size={28} fill="currentColor" className="ml-1" />
-                    <span className="text-sm font-bold uppercase tracking-widest">{isPaused ? t('start') : t('start')}</span>
-                  </>
-              )}
+                )}
+              </div>
+              
+              <span className="text-sm font-black uppercase tracking-widest">
+                {isPlaying ? t('pause') : (isPaused ? t('start') : t('start'))}
+              </span>
           </button>
 
           <button
             onClick={() => { onStop(); triggerHaptic(); }}
-            className="col-span-1 flex flex-col items-center justify-center gap-1 h-full rounded-[2rem] bg-slate-800/80 border border-slate-700/50 text-slate-400 hover:text-red-300 hover:border-red-500/20 transition-all active:scale-95"
+            className="w-20 flex flex-col items-center justify-center gap-1 h-full rounded-[2.2rem] bg-slate-800/40 border border-white/5 text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all active:scale-95 group"
           >
-              <Square size={20} fill="currentColor" />
-              <span className="text-[9px] font-bold uppercase">{t('finish')}</span>
+              <Square size={20} fill="currentColor" className="group-hover:scale-110 transition-transform" />
+              <span className="text-[9px] font-black uppercase tracking-tighter">{t('finish')}</span>
           </button>
       </div>
     </div>
+  );
   );
 };
