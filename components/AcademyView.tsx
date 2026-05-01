@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { useLanguage } from '../services/LanguageContext';
 import { 
     BookOpen, ShieldCheck, Baby, Trophy, ChevronRight, 
-    Sparkles, Info, X, SlidersHorizontal 
+    Sparkles, Info, X, SlidersHorizontal, Moon, HeartPulse, LifeBuoy, Carrot, Hand 
 } from 'lucide-react';
 import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
 import { ToolId } from './tools/types';
+import { SleepGuide } from './guides/SleepGuide';
+import { MentalGuide } from './guides/MentalGuide';
+import { CprGuide } from './guides/CprGuide';
+import { BabywearingGuide } from './guides/BabywearingGuide';
+import { BlwGuide } from './guides/BlwGuide';
+import { SigningGuide } from './guides/SigningGuide';
 
 export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSettings }) => {
     const { t } = useLanguage();
@@ -42,6 +48,12 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
     const renderGuideContent = (id: string) => {
         switch (id) {
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseGuide} />;
+            case 'sleep': return <SleepGuide onClose={handleCloseGuide} />;
+            case 'mental': return <MentalGuide onClose={handleCloseGuide} />;
+            case 'cpr': return <CprGuide onClose={handleCloseGuide} />;
+            case 'babywearing': return <BabywearingGuide onClose={handleCloseGuide} />;
+            case 'blw': return <BlwGuide onClose={handleCloseGuide} />;
+            case 'signing': return <SigningGuide onClose={handleCloseGuide} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                     <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
@@ -86,6 +98,14 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
 
             <div className="px-4 space-y-6">
                 
+                {/* Medical Disclaimer */}
+                <div className="bg-slate-900/50 border border-slate-800/50 rounded-2xl p-4 flex items-start gap-3 shadow-inner">
+                    <Info size={16} className="text-slate-500 shrink-0 mt-0.5" />
+                    <p className="text-[10px] text-slate-400 leading-relaxed text-justify">
+                        {t('academy_disclaimer')}
+                    </p>
+                </div>
+
                 {/* Special Tools (moved from ToolsView) */}
                 <div className="space-y-3">
                     <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Guías Especiales</h3>
@@ -110,9 +130,12 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
                     <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Biblioteca de Padres</h3>
                     <div className="grid grid-cols-1 gap-3">
                         {[
-                            { id: 'pediatric', title: 'pediatric_guide_title', sub: 'pediatric_guide_subtitle', color: 'from-blue-500/20 to-indigo-500/20', icon: ShieldCheck },
-                            { id: 'feeding', title: 'feeding_guide_title', sub: 'feeding_guide_subtitle', color: 'from-pink-500/20 to-rose-500/20', icon: Baby },
-                            { id: 'development', title: 'development_guide_title', sub: 'development_guide_subtitle', color: 'from-yellow-500/20 to-orange-500/20', icon: Trophy }
+                            { id: 'sleep', title: 'guide_sleep_title', sub: 'guide_sleep_subtitle', color: 'from-blue-500/20 to-indigo-500/20', icon: Moon },
+                            { id: 'mental', title: 'guide_mental_title', sub: 'guide_mental_subtitle', color: 'from-rose-500/20 to-pink-500/20', icon: HeartPulse },
+                            { id: 'safety', title: 'guide_safety_title', sub: 'guide_safety_subtitle', color: 'from-red-500/20 to-orange-500/20', icon: LifeBuoy },
+                            { id: 'babywear', title: 'guide_babywear_title', sub: 'guide_babywear_subtitle', color: 'from-teal-500/20 to-emerald-500/20', icon: Baby },
+                            { id: 'blw', title: 'guide_blw_title', sub: 'guide_blw_subtitle', color: 'from-amber-500/20 to-orange-500/20', icon: Carrot },
+                            { id: 'signing', title: 'guide_signing_title', sub: 'guide_signing_subtitle', color: 'from-purple-500/20 to-fuchsia-500/20', icon: Hand }
                         ].map((guide, i) => (
                             <div 
                                 key={i} 

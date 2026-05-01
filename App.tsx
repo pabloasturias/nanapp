@@ -361,7 +361,10 @@ const AppContent: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="flex-1 min-h-0 grid grid-cols-2 gap-3 mb-1 auto-rows-fr animate-[fade-in_0.3s_ease-out] px-6 pb-2 overflow-y-auto">
+                <div 
+                    className="flex-1 min-h-0 grid grid-cols-2 gap-3 mb-1 animate-[fade-in_0.3s_ease-out] px-6 pb-2"
+                    style={{ gridTemplateRows: `repeat(${Math.ceil(activeSoundIds.length / 2)}, minmax(0, 1fr))` }}
+                >
                     {activeSoundIds.map(id => {
                         const sound = SOUNDS.find(s => s.id === id);
                         if (!sound) return null;

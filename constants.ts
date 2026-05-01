@@ -1,103 +1,103 @@
 import { SoundType, SoundOption, TimerOption } from './types';
 import { ShushIcon } from './components/icons/SoundIcons';
-import { CloudRain, Wind, Waves, Disc, Volume2, Music, Zap, TrainFront, PawPrint, Flame, Trees, Moon, Droplets, Fan, Heart, Ghost } from 'lucide-react'; // Added new icons
+import { CloudRain, Wind, Waves, Disc, Volume2, Music, Zap, TrainFront, PawPrint, Flame, Trees, Moon, Droplets, Fan, Heart, Speaker, Car, Activity } from 'lucide-react';
 
 export const SOUNDS: SoundOption[] = [
   {
     id: SoundType.WHITE_NOISE,
     label: 'Ruido Blanco',
-    Icon: Volume2, // Using Volume2 for White Noise or similar
-    description: 'Aísla ruidos externos'
+    Icon: Volume2,
+    description: 'Bloquea frecuencias agudas'
   },
   {
-    id: SoundType.RAIN,
+    id: SoundType.WAVES,
     label: 'Ruido Rosa',
-    Icon: CloudRain,
-    description: 'Ruido rosa relajante'
+    Icon: Zap, // Or a better icon for Pink Noise
+    description: 'Sonido suave y equilibrado'
   },
   {
     id: SoundType.BROWN_NOISE,
     label: 'Ruido Marrón',
-    Icon: Disc, // Represents Brown Noise
-    description: 'Profundo y grave'
+    Icon: Speaker,
+    description: 'Profundo y grave, anti-cólicos'
+  },
+  {
+    id: SoundType.HEARTBEAT,
+    label: 'Útero Materno',
+    Icon: Heart,
+    description: 'Simula el vientre materno'
+  },
+  {
+    id: SoundType.SHUSH,
+    label: 'Shhh Rítmico',
+    Icon: ShushIcon,
+    description: 'Tranquiliza el llanto activo'
+  },
+  {
+    id: SoundType.RAIN,
+    label: 'Lluvia',
+    Icon: CloudRain,
+    description: 'Tormenta constante'
   },
   {
     id: SoundType.OCEAN,
-    label: 'Océano',
+    label: 'Fondo Marino',
     Icon: Waves,
-    description: 'Ruido marrón rítmico'
+    description: 'El vaivén de las mareas'
   },
   {
     id: SoundType.HAIR_DRYER,
     label: 'Secador',
     Icon: Wind,
-    description: 'Zumbido cálido'
-  },
-  {
-    id: SoundType.SHUSH,
-    label: 'Shh Rítmico',
-    Icon: ShushIcon,
-    description: 'Sonido calmante humano'
-  },
-  {
-    id: SoundType.WAVES,
-    label: 'Olas',
-    Icon: Zap, // Waves usually represented by something moving
-    description: 'Sonido de mar suave'
-  },
-  {
-    id: SoundType.LULLABY,
-    label: 'Nana',
-    Icon: Music,
-    description: 'Melodía suave'
-  },
-  {
-    id: SoundType.TRAIN,
-    label: 'Tren',
-    Icon: TrainFront,
-    description: 'Rítmico y constante'
-  },
-  {
-    id: SoundType.CAT_PURR,
-    label: 'Ronroneo',
-    Icon: PawPrint,
-    description: 'Vibración relajante'
-  },
-  {
-    id: SoundType.FIREPLACE,
-    label: 'Fuego',
-    Icon: Flame,
-    description: 'Crepitar cálido'
+    description: 'Zumbido doméstico cálido'
   },
   {
     id: SoundType.FOREST,
-    label: 'Bosque',
-    Icon: Trees,
-    description: 'Naturaleza viva'
-  },
-  {
-    id: SoundType.NIGHT_CRICKETS,
-    label: 'Grillos',
-    Icon: Moon,
-    description: 'Noche tranquila'
-  },
-  {
-    id: SoundType.STREAM,
-    label: 'Arroyo',
-    Icon: Droplets,
-    description: 'Agua fluyendo'
+    label: 'Aspiradora',
+    Icon: Fan, // Vacuum icon
+    description: 'Motor constante y grave'
   },
   {
     id: SoundType.FAN,
     label: 'Ventilador',
     Icon: Fan,
-    description: 'Zumbido de aire'
+    description: 'Zumbido de aire blanco'
   },
   {
-    id: SoundType.HEARTBEAT,
-    label: 'Latido',
-    Icon: Heart,
-    description: 'Ritmo vital'
+    id: SoundType.TRAIN,
+    label: 'Viaje en Tren',
+    Icon: TrainFront,
+    description: 'Traqueteo rítmico'
+  },
+  {
+    id: SoundType.CAT_PURR,
+    label: 'Motor de Coche',
+    Icon: Car,
+    description: 'Vibración de viaje por carretera'
+  },
+  {
+    id: SoundType.STREAM,
+    label: 'Arroyo',
+    Icon: Droplets,
+    description: 'Agua fluyendo suave'
+  },
+  {
+    id: SoundType.LULLABY,
+    label: 'Caja de Música',
+    Icon: Music,
+    description: 'Melodía suave para relajar'
+  },
+  {
+    id: SoundType.FIREPLACE,
+    label: 'Fuego',
+    Icon: Flame,
+    description: 'Crepitar de madera cálida'
+  },
+  {
+    id: SoundType.NIGHT_CRICKETS,
+    label: 'Latido Constante',
+    Icon: Activity,
+    description: 'Pulsación rítmica del corazón'
   }
 ];
 

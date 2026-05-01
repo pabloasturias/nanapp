@@ -189,6 +189,7 @@ export const TeethingFull: React.FC<{ onClose: () => void; onOpenSettings: () =>
     const [viewBabyId, setViewBabyId] = useState<string | null>(activeBaby?.id || null);
     const [selectedTooth, setSelectedTooth] = useState<ToothDef | null>(null);
     const [editDate, setEditDate] = useState<string>('');
+    const [symptoms, setSymptoms] = useState<string>('');
 
     // Sync view with active
     useEffect(() => {
@@ -457,6 +458,7 @@ export const TeethingFull: React.FC<{ onClose: () => void; onOpenSettings: () =>
                         <button onClick={() => setSelectedTooth(null)} className="w-full py-2 text-xs font-bold text-slate-500 hover:text-slate-300 mt-2">
                             CANCELAR
                         </button>
+                        </div>
                     </div>
                 </div>
             )}

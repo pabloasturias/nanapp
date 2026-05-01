@@ -30,9 +30,9 @@ export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onCli
         e.stopPropagation();
         onClick();
       }}
-      className={`group relative flex flex-col items-center justify-center p-4 w-full aspect-square rounded-[2.5rem] border transition-all duration-500 overflow-hidden
+      className={`group relative flex flex-col items-center justify-center p-2 w-full h-full min-h-0 rounded-[2rem] border transition-all duration-500 overflow-hidden
         ${isActive
-          ? 'bg-slate-900 border-orange-500/50 shadow-[0_20px_50px_rgba(249,115,22,0.2)] scale-[0.98]'
+          ? 'bg-slate-900 border-orange-500/50 shadow-[0_10px_30px_rgba(249,115,22,0.2)] scale-[0.98]'
           : 'bg-slate-800/20 border-white/5 hover:bg-slate-800/40 hover:border-white/10 active:scale-95'
         }`}
     >
@@ -46,19 +46,19 @@ export const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onCli
         <div className="absolute inset-0 border-2 border-orange-500/20 rounded-[2.5rem] animate-[ping_2s_infinite]" />
       )}
 
-      <div className={`relative z-10 mb-3 p-4 rounded-3xl transition-all duration-500 ${
+      <div className={`relative z-10 mb-1 sm:mb-2 p-2 sm:p-3 rounded-2xl sm:rounded-3xl transition-all duration-500 ${
         isActive 
-          ? 'bg-orange-500 text-slate-950 rotate-[360deg] shadow-[0_0_20px_rgba(249,115,22,0.4)]' 
+          ? 'bg-orange-500 text-slate-950 rotate-[360deg] shadow-[0_0_15px_rgba(249,115,22,0.4)]' 
           : 'bg-slate-800/50 text-slate-400 group-hover:text-orange-200 group-hover:bg-slate-700/50'
       }`}>
         <IconComponent
-          size={28}
+          className="w-5 h-5 sm:w-7 sm:h-7"
           strokeWidth={isActive ? 2.5 : 1.5}
         />
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
-        <span className={`text-[13px] font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-orange-100' : 'text-slate-400 group-hover:text-slate-200'}`}>
+        <span className={`text-[11px] sm:text-[13px] font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-orange-100' : 'text-slate-400 group-hover:text-slate-200'}`}>
           {t(sound.id as any)}
         </span>
         {isActive && (

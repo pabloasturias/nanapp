@@ -339,16 +339,42 @@ export class AudioEngine {
 
   private playRain() {
     if (!this.ctx || !this.masterGain) return;
+    const fadeGain = this.createSourceGain();
+    
+    // Constant rain background
     const noise = this.ctx.createBufferSource();
     noise.buffer = this.createPinkNoiseBuffer();
     noise.loop = true;
     const filter = this.ctx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 800;
-    const fadeGain = this.createSourceGain();
+    filter.frequency.value = 1200;
+    
     noise.connect(filter);
     filter.connect(fadeGain);
+    
+    // Raindrops (random static pops)
+    const drop = () => {
+      if (!this.ctx || Math.random() > 0.6) return;
+      const osc = this.ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(400 + Math.random() * 800, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.05);
+
+      const g = this.ctx.createGain();
+      g.gain.setValueAtTime(0, this.ctx.currentTime);
+      g.gain.linearRampToValueAtTime(0.3, this.ctx.currentTime + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+
+      osc.connect(g);
+      g.connect(fadeGain);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.06);
+    }
+
     fadeGain.connect(this.masterGain);
+    const interval = window.setInterval(drop, 150);
+    this.intervals.push(interval);
+    
     noise.start();
     this.activeNodes.push(noise, filter, fadeGain);
   }
@@ -482,39 +508,20 @@ export class AudioEngine {
   }
 
   private playWaves() {
-    // Similar to Ocean but rougher
+    // This is now PINK NOISE
     if (!this.ctx || !this.masterGain) return;
-    const fadeGain = this.createSourceGain();
-
     const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createBrownNoiseBuffer();
+    noise.buffer = this.createPinkNoiseBuffer();
     noise.loop = true;
-
     const filter = this.ctx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 600;
-
-    const lfo = this.ctx.createOscillator();
-    lfo.type = 'sine';
-    lfo.frequency.value = 0.2;
-
-    const gainMod = this.ctx.createGain();
-    gainMod.gain.value = 0.8;
-
-    const mainGain = this.ctx.createGain();
-    mainGain.gain.value = 0.5;
-
-    lfo.connect(gainMod);
-    gainMod.connect(mainGain.gain);
-
+    filter.frequency.value = 1500; // Bright but not sharp
+    const fadeGain = this.createSourceGain();
     noise.connect(filter);
-    filter.connect(mainGain);
-    mainGain.connect(fadeGain);
+    filter.connect(fadeGain);
     fadeGain.connect(this.masterGain);
-
     noise.start();
-    lfo.start();
-    this.activeNodes.push(noise, filter, lfo, gainMod, mainGain, fadeGain);
+    this.activeNodes.push(noise, filter, fadeGain);
   }
 
   private playLullaby() {
@@ -599,41 +606,42 @@ export class AudioEngine {
   }
 
   private playCatPurr() {
-    // Modulated low frequency saw or square
+    // This is now CAR RIDE
     if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
 
-    const osc = this.ctx.createOscillator();
-    osc.type = 'sawtooth';
-    osc.frequency.value = 25; // Low purr freq
+    // Engine hum
+    const engine = this.ctx.createBufferSource();
+    engine.buffer = this.createBrownNoiseBuffer();
+    engine.loop = true;
+    
+    const engineFilter = this.ctx.createBiquadFilter();
+    engineFilter.type = 'lowpass';
+    engineFilter.frequency.value = 80; // Very deep
+    
+    const engineOsc = this.ctx.createOscillator();
+    engineOsc.type = 'sawtooth';
+    engineOsc.frequency.value = 40;
+    
+    const engineOscFilter = this.ctx.createBiquadFilter();
+    engineOscFilter.type = 'lowpass';
+    engineOscFilter.frequency.value = 150;
+    
+    const oscGain = this.ctx.createGain();
+    oscGain.gain.value = 0.2;
 
-    const measureGain = this.ctx.createGain();
-    measureGain.gain.value = 0.5;
-
-    // Amplitude Modulation (Breathing)
-    const lfo = this.ctx.createOscillator();
-    lfo.type = 'sine';
-    lfo.frequency.value = 0.4; // Purr cycle
-
-    const lfoGain = this.ctx.createGain();
-    lfoGain.gain.value = 0.3; // Depth
-
-    lfo.connect(lfoGain);
-    lfoGain.connect(measureGain.gain);
-
-    // Lowpass to make it muffled
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 100;
-
-    osc.connect(filter);
-    filter.connect(measureGain);
-    measureGain.connect(fadeGain);
+    engine.connect(engineFilter);
+    engineFilter.connect(fadeGain);
+    
+    engineOsc.connect(engineOscFilter);
+    engineOscFilter.connect(oscGain);
+    oscGain.connect(fadeGain);
+    
     fadeGain.connect(this.masterGain);
 
-    osc.start();
-    lfo.start();
-    this.activeNodes.push(osc, lfo, lfoGain, measureGain, filter, fadeGain);
+    engine.start();
+    engineOsc.start();
+    this.activeNodes.push(engine, engineFilter, engineOsc, engineOscFilter, oscGain, fadeGain);
   }
 
   private playFireplace() {
@@ -687,95 +695,76 @@ export class AudioEngine {
   }
 
   private playForest() {
-    // Wind (filtered pink) + Random birds (sine chirps)
+    // This is now VACUUM CLEANER
     if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
 
-    // Wind
-    const wind = this.ctx.createBufferSource();
-    wind.buffer = this.createPinkNoiseBuffer();
-    wind.loop = true;
-    const windFilter = this.ctx.createBiquadFilter();
-    windFilter.type = 'lowpass';
-    windFilter.frequency.value = 400;
-    const windGain = this.ctx.createGain();
-    windGain.gain.value = 0.3;
+    // Broad noise
+    const noise = this.ctx.createBufferSource();
+    noise.buffer = this.createPinkNoiseBuffer();
+    noise.loop = true;
+    
+    const noiseFilter = this.ctx.createBiquadFilter();
+    noiseFilter.type = 'bandpass';
+    noiseFilter.frequency.value = 400;
+    noiseFilter.Q.value = 0.5;
 
-    // Wind modulation
-    const lfo = this.ctx.createOscillator();
-    lfo.frequency.value = 0.1;
-    const lfoGain = this.ctx.createGain();
-    lfoGain.gain.value = 200;
-    lfo.connect(lfoGain);
-    lfoGain.connect(windFilter.frequency);
+    // Resonant motor whine
+    const osc = this.ctx.createOscillator();
+    osc.type = 'triangle';
+    osc.frequency.value = 280;
 
-    wind.connect(windFilter);
-    windFilter.connect(windGain);
-    windGain.connect(fadeGain);
-    wind.start();
-    lfo.start();
+    const oscGain = this.ctx.createGain();
+    oscGain.gain.value = 0.15;
 
-    // Birds
-    const chirp = () => {
-      if (!this.ctx || Math.random() > 0.4) return;
-      const osc = this.ctx.createOscillator();
-      osc.type = 'sine';
-      const startFreq = 2000 + Math.random() * 1000;
-      osc.frequency.setValueAtTime(startFreq, this.ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(startFreq - 500, this.ctx.currentTime + 0.1); // Chirp down
-
-      const g = this.ctx.createGain();
-      g.gain.setValueAtTime(0, this.ctx.currentTime);
-      g.gain.linearRampToValueAtTime(0.1, this.ctx.currentTime + 0.02);
-      g.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.15);
-
-      osc.connect(g);
-      g.connect(fadeGain);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.2);
-    }
-
+    noise.connect(noiseFilter);
+    noiseFilter.connect(fadeGain);
+    
+    osc.connect(oscGain);
+    oscGain.connect(fadeGain);
+    
     fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(chirp, 1500);
 
-    this.intervals.push(interval);
-    this.activeNodes.push(wind, windFilter, windGain, lfo, lfoGain, fadeGain);
+    noise.start();
+    osc.start();
+    
+    this.activeNodes.push(noise, noiseFilter, osc, oscGain, fadeGain);
   }
 
   private playCrickets() {
-    // High pitched pulsed sine waves
+    // This is now STEADY HEARTBEAT
     if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
 
-    const pulse = () => {
+    const beat = () => {
       if (!this.ctx) return;
-      const osc = this.ctx.createOscillator();
-      osc.type = 'triangle';
-      osc.frequency.value = 4500;
-
-      const g = this.ctx.createGain();
-      g.gain.setValueAtTime(0, this.ctx.currentTime);
-      // Triple chirp: chir-chir-chirp
-      const now = this.ctx.currentTime;
-
-      g.gain.linearRampToValueAtTime(0.1, now + 0.05);
-      g.gain.linearRampToValueAtTime(0, now + 0.1);
-
-      g.gain.linearRampToValueAtTime(0.1, now + 0.15);
-      g.gain.linearRampToValueAtTime(0, now + 0.2);
-
-      g.gain.linearRampToValueAtTime(0.1, now + 0.25);
-      g.gain.linearRampToValueAtTime(0, now + 0.3);
-
-      osc.connect(g);
-      g.connect(fadeGain);
-      osc.start();
-      osc.stop(now + 0.4);
+      const t = this.ctx.currentTime;
+      
+      const createThud = (time: number, isStrong: boolean) => {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(60, time);
+        osc.frequency.exponentialRampToValueAtTime(10, time + 0.15);
+  
+        const g = this.ctx.createGain();
+        g.gain.setValueAtTime(0, time);
+        g.gain.linearRampToValueAtTime(isStrong ? 0.8 : 0.4, time + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
+  
+        osc.connect(g);
+        g.connect(fadeGain);
+        osc.start(time);
+        osc.stop(time + 0.25);
+      };
+      
+      createThud(t, true);
+      createThud(t + 0.35, false);
     }
 
     fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(pulse, 1000 + Math.random() * 1000);
-    pulse();
+    const interval = window.setInterval(beat, 1000); // 60 BPM
+    beat();
 
     this.intervals.push(interval);
     this.activeNodes.push(fadeGain);
