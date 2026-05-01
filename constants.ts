@@ -53,9 +53,9 @@ export const SOUNDS: SoundOption[] = [
   },
   {
     id: SoundType.FOREST,
-    label: 'Aspiradora',
-    Icon: Fan, // Vacuum icon
-    description: 'Motor constante y grave'
+    label: 'Bosque',
+    Icon: Trees,
+    description: 'Naturaleza y pájaros suaves'
   },
   {
     id: SoundType.FAN,
@@ -65,15 +65,15 @@ export const SOUNDS: SoundOption[] = [
   },
   {
     id: SoundType.TRAIN,
-    label: 'Viaje en Tren',
+    label: 'Tren',
     Icon: TrainFront,
     description: 'Traqueteo rítmico'
   },
   {
     id: SoundType.CAT_PURR,
-    label: 'Motor de Coche',
-    Icon: Car,
-    description: 'Vibración de viaje por carretera'
+    label: 'Ronroneo',
+    Icon: PawPrint,
+    description: 'Vibración felina relajante'
   },
   {
     id: SoundType.STREAM,
@@ -95,14 +95,17 @@ export const SOUNDS: SoundOption[] = [
   },
   {
     id: SoundType.NIGHT_CRICKETS,
-    label: 'Latido Constante',
-    Icon: Activity,
-    description: 'Pulsación rítmica del corazón'
+    label: 'Grillos',
+    Icon: Moon,
+    description: 'Noche de verano'
   }
 ];
 
 export const TIMER_OPTIONS: TimerOption[] = [
-  { minutes: 15, label: '15m' },
-  { minutes: 30, label: '30m' },
-  { minutes: 60, label: '60m' },
+  { minutes: 15, label: '15 min' },
+  { minutes: 30, label: '30 min' },
+  { minutes: 45, label: '45 min' },
+  { minutes: 60, label: '1 hora' },
+  { minutes: 120, label: '2 horas' },
+  { minutes: 0, label: '∞' }
 ];

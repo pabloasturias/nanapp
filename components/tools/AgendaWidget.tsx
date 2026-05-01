@@ -13,6 +13,8 @@ export const AgendaDashboard: React.FC = () => {
         .filter(l => l.timestamp > Date.now() && (!l.babyId || (activeBaby && l.babyId === activeBaby.id)))
         .sort((a, b) => a.timestamp - b.timestamp)[0];
 
+    if (!upcoming) return <span className="text-[10px] opacity-70 truncate">No hay citas futuras</span>;
+
     const daysLeft = Math.ceil((upcoming.timestamp - Date.now()) / (1000 * 60 * 60 * 24));
 
     return (

@@ -5,22 +5,16 @@ export class AudioEngine {
   private masterGain: GainNode | null = null;
   private warmthFilter: BiquadFilterNode | null = null;
   private activeNodes: AudioNode[] = [];
-  // Separate tracking for heartbeat layer
-  private heartbeatNodes: AudioNode[] = [];
   private heartbeatInterval: number | null = null;
   private isHeartbeatLayerActive: boolean = false;
-
   private intervals: number[] = [];
   private isMuted: boolean = false;
   private isWarmthActive: boolean = false;
   private currentVolume: number = 0.5;
   private currentSound: SoundType | null = null;
   private fadeTime: number = 1.5;
-  private longFadeTime: number = 10;
 
-  constructor() {
-    // Lazy initialization handled in init()
-  }
+  constructor() {}
 
   public init() {
     if (!this.ctx) {
@@ -37,7 +31,6 @@ export class AudioEngine {
       this.masterGain.connect(this.warmthFilter);
       this.warmthFilter.connect(this.ctx.destination);
 
-      // Initialize silent
       this.masterGain.gain.value = 0;
     }
     if (this.ctx.state === 'suspended') {
@@ -49,9 +42,9 @@ export class AudioEngine {
     this.isWarmthActive = active;
     if (this.warmthFilter && this.ctx) {
       const now = this.ctx.currentTime;
-      const targetFreq = active ? 600 : 22000;
+      const targetFreq = active ? 600 : 20000;
       this.warmthFilter.frequency.cancelScheduledValues(now);
-      this.warmthFilter.frequency.exponentialRampToValueAtTime(targetFreq, now + 0.5);
+      this.warmthFilter.frequency.exponentialRampToValueAtTime(targetFreq, now + 1.0);
     }
   }
 
@@ -59,93 +52,27 @@ export class AudioEngine {
     this.fadeTime = Math.max(0.1, seconds);
   }
 
-  // --- HEARTBEAT LAYER CONTROL (IMPROVED) ---
-  public toggleHeartbeatLayer(active: boolean) {
-    this.isHeartbeatLayerActive = active;
-    if (this.currentSound) {
-      if (active) {
-        this.startHeartbeatLayer();
-      } else {
-        this.stopHeartbeatLayer();
-      }
+  public stopAll(fadeOut = true, longFade = false) {
+    const duration = longFade ? 10 : this.fadeTime;
+    const now = this.ctx?.currentTime || 0;
+
+    if (fadeOut && this.masterGain && this.ctx) {
+      this.masterGain.gain.cancelScheduledValues(now);
+      this.masterGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
     }
-  }
 
-  private startHeartbeatLayer() {
-    if (!this.ctx || !this.masterGain || this.heartbeatInterval) return;
-
-    const triggerBeat = (time: number, isFirst: boolean) => {
-      if (!this.ctx || !this.masterGain) return;
-      const osc = this.ctx.createOscillator();
-      osc.type = 'sine';
-      // Sweep frequency downwards for a "thud" sound
-      osc.frequency.setValueAtTime(isFirst ? 70 : 60, time);
-      osc.frequency.exponentialRampToValueAtTime(10, time + 0.15);
-
-      const gain = this.ctx.createGain();
-      gain.gain.setValueAtTime(0, time);
-      // BOOSTED VOLUME: Was 0.3, now 0.6 to cut through noise
-      gain.gain.linearRampToValueAtTime(isFirst ? 0.6 : 0.4, time + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.25);
-
-      const filter = this.ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 150; // Opened slightly for more definition
-
-      osc.connect(gain);
-      gain.connect(filter);
-      filter.connect(this.masterGain);
-
-      osc.start(time);
-      osc.stop(time + 0.3);
-    };
-
-    const scheduleBeats = () => {
-      if (!this.ctx) return;
-      const now = this.ctx.currentTime;
-      triggerBeat(now, true);
-      triggerBeat(now + 0.35, false);
-    };
-
-    scheduleBeats();
-    this.heartbeatInterval = window.setInterval(scheduleBeats, 1200);
-  }
-
-  private stopHeartbeatLayer() {
-    if (this.heartbeatInterval) {
-      clearInterval(this.heartbeatInterval);
-      this.heartbeatInterval = null;
-    }
-  }
-
-  public stopAll(fadeOut: boolean = true, isLongFade: boolean = false) {
-    if (!this.ctx || !this.masterGain) return;
-
-    const duration = isLongFade ? this.longFadeTime : this.fadeTime;
-    const stopTime = this.ctx.currentTime + (fadeOut ? duration : 0.1);
-
-    const nodesToStop = [...this.activeNodes];
+    const nodesToClear = [...this.activeNodes];
     const intervalsToClear = [...this.intervals];
     this.activeNodes = [];
     this.intervals = [];
 
-    // Stop Heartbeat Layer
-    this.stopHeartbeatLayer();
-
-    if (fadeOut && nodesToStop.length > 0) {
-      nodesToStop.forEach(node => {
-        if (node instanceof GainNode) {
-          try {
-            node.gain.cancelScheduledValues(this.ctx!.currentTime);
-            node.gain.setValueAtTime(node.gain.value, this.ctx!.currentTime);
-            node.gain.exponentialRampToValueAtTime(0.001, stopTime);
-          } catch (e) { }
-        }
-      });
+    if (this.heartbeatInterval) {
+        clearInterval(this.heartbeatInterval);
+        this.heartbeatInterval = null;
     }
 
     setTimeout(() => {
-      nodesToStop.forEach(node => {
+      nodesToClear.forEach(node => {
         try {
           if (node instanceof AudioScheduledSourceNode) {
             node.stop();
@@ -170,7 +97,6 @@ export class AudioEngine {
     if (this.masterGain && this.ctx) {
       const now = this.ctx.currentTime;
       const volume = this.isMuted ? 0 : Math.max(0.0001, Math.pow(this.currentVolume, 2.5));
-
       this.masterGain.gain.cancelScheduledValues(now);
       this.masterGain.gain.setTargetAtTime(volume, now, 0.1);
     }
@@ -183,636 +109,365 @@ export class AudioEngine {
 
   public play(sound: SoundType) {
     this.init();
-
-    if (this.ctx?.state === 'suspended') {
-      this.ctx.resume();
-    }
-
-    // Logic Fix: If we have active nodes, and it's the SAME sound, ignore.
-    // BUT if activeNodes is empty (because we paused), we must play!
     if (this.currentSound === sound && this.activeNodes.length > 0) return;
-
-    // Crossfade: Stop previous sound with fade
     if (this.currentSound && this.activeNodes.length > 0) {
       this.stopAll(true, false);
     }
 
     this.currentSound = sound;
-
     if (!this.ctx || !this.masterGain) return;
-
     this.updateVolume();
 
-    if (this.isHeartbeatLayerActive) {
-      this.startHeartbeatLayer();
-    }
-
     switch (sound) {
-      case SoundType.WHITE_NOISE:
-        this.playWhiteNoise();
-        break;
-      case SoundType.RAIN:
-        this.playRain();
-        break;
-      case SoundType.BROWN_NOISE:
-        this.playBrownNoise();
-        break;
-      case SoundType.OCEAN:
-        this.playOcean();
-        break;
-      case SoundType.HAIR_DRYER:
-        this.playHairDryer();
-        break;
-      case SoundType.LULLABY:
-        this.playLullaby();
-        break;
-      case SoundType.SHUSH:
-        this.playShush();
-        break;
-      case SoundType.WAVES:
-        this.playWaves();
-        break;
-      // Improved Synthesis for New Sounds
-      case SoundType.TRAIN:
-        this.playTrain();
-        break;
-      case SoundType.CAT_PURR:
-        this.playCatPurr();
-        break;
-      case SoundType.FIREPLACE:
-        this.playFireplace();
-        break;
-      case SoundType.FOREST:
-        this.playForest();
-        break;
-      case SoundType.NIGHT_CRICKETS:
-        this.playCrickets();
-        break;
-      case SoundType.STREAM:
-        this.playStream();
-        break;
-      case SoundType.FAN:
-        this.playFan();
-        break;
-      case SoundType.HEARTBEAT:
-        this.playHeartbeatSound(); // Renamed to avoid confusion with layer
-        break;
+      case SoundType.WHITE_NOISE: this.playWhiteNoise(); break;
+      case SoundType.RAIN: this.playRain(); break;
+      case SoundType.BROWN_NOISE: this.playBrownNoise(); break;
+      case SoundType.OCEAN: this.playOcean(); break;
+      case SoundType.HAIR_DRYER: this.playAppliance('hair_dryer'); break;
+      case SoundType.FAN: this.playAppliance('fan'); break;
+      case SoundType.SHUSH: this.playShush(); break;
+      case SoundType.WAVES: this.playPinkNoise(); break;
+      case SoundType.TRAIN: this.playTrain(); break;
+      case SoundType.CAT_PURR: this.playCatPurr(); break;
+      case SoundType.FIREPLACE: this.playFireplace(); break;
+      case SoundType.FOREST: this.playForest(); break;
+      case SoundType.NIGHT_CRICKETS: this.playCrickets(); break;
+      case SoundType.STREAM: this.playStream(); break;
+      case SoundType.LULLABY: this.playLullaby(); break;
+      case SoundType.HEARTBEAT: this.playHeartbeatSound(); break;
     }
   }
 
-  // --- Buffers ---
+  // --- Buffer Generators ---
 
-  private createNoiseBuffer(): AudioBuffer {
+  private createNoiseBuffer(type: 'white' | 'pink' | 'brown'): AudioBuffer {
     if (!this.ctx) throw new Error("No Context");
-    const bufferSize = this.ctx.sampleRate * 4;
-    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+    const sampleRate = this.ctx.sampleRate;
+    const bufferSize = sampleRate * 8; // 8 seconds to minimize repeat artifacts
+    const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
     const output = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      // Simple white noise
-      output[i] = Math.random() * 2 - 1;
-    }
-    return buffer;
-  }
 
-  private createPinkNoiseBuffer(): AudioBuffer {
-    if (!this.ctx) throw new Error("No Context");
-    const bufferSize = this.ctx.sampleRate * 4;
-    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-    const output = buffer.getChannelData(0);
-    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      b0 = 0.99886 * b0 + white * 0.0555179;
-      b1 = 0.99332 * b1 + white * 0.0750759;
-      b2 = 0.96900 * b2 + white * 0.1538520;
-      b3 = 0.86650 * b3 + white * 0.3104856;
-      b4 = 0.55000 * b4 + white * 0.5329522;
-      b5 = -0.7616 * b5 - white * 0.0168981;
-      output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
-      output[i] *= 0.11;
-      b6 = white * 0.115926;
-    }
-    return buffer;
-  }
-
-  private createBrownNoiseBuffer(): AudioBuffer {
-    if (!this.ctx) throw new Error("No Context");
-    // Longer buffer for brown noise to avoid loops
-    const bufferSize = this.ctx.sampleRate * 5;
-    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-    const output = buffer.getChannelData(0);
-    let lastOut = 0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      output[i] = (lastOut + (0.02 * white)) / 1.02;
-      lastOut = output[i];
-      output[i] *= 3.5;
+    if (type === 'white') {
+      for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
+    } else if (type === 'pink') {
+      let b0=0, b1=0, b2=0, b3=0, b4=0, b5=0, b6=0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168981;
+        output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+        output[i] *= 0.11;
+        b6 = white * 0.115926;
+      }
+    } else {
+      let lastOut = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        output[i] = (lastOut + (0.02 * white)) / 1.02;
+        lastOut = output[i];
+        output[i] *= 3.5;
+      }
     }
     return buffer;
   }
 
   private createSourceGain(): GainNode {
-    if (!this.ctx) throw new Error("No Context");
-    const gain = this.ctx.createGain();
-    gain.gain.setValueAtTime(0, this.ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(1.0, this.ctx.currentTime + this.fadeTime);
+    const gain = this.ctx!.createGain();
+    gain.gain.setValueAtTime(0, this.ctx!.currentTime);
+    gain.gain.linearRampToValueAtTime(1.0, this.ctx!.currentTime + this.fadeTime);
     return gain;
   }
 
-  // --- Play Methods ---
+  // --- Sound Implementations ---
 
   private playWhiteNoise() {
-    if (!this.ctx || !this.masterGain) return;
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createNoiseBuffer();
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink'); // Pink is more pleasant than white
     noise.loop = true;
-    const filter = this.ctx.createBiquadFilter();
+    const filter = this.ctx!.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 1000; // Softer white noise
+    filter.frequency.value = 2500;
     const fadeGain = this.createSourceGain();
-    noise.connect(filter);
-    filter.connect(fadeGain);
-    fadeGain.connect(this.masterGain);
+    noise.connect(filter); filter.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start();
+    this.activeNodes.push(noise, filter, fadeGain);
+  }
+
+  private playPinkNoise() {
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink');
+    noise.loop = true;
+    const fadeGain = this.createSourceGain();
+    noise.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start();
+    this.activeNodes.push(noise, fadeGain);
+  }
+
+  private playBrownNoise() {
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('brown');
+    noise.loop = true;
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 150;
+    const fadeGain = this.createSourceGain();
+    noise.connect(filter); filter.connect(fadeGain); fadeGain.connect(this.masterGain!);
     noise.start();
     this.activeNodes.push(noise, filter, fadeGain);
   }
 
   private playRain() {
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-    
-    // Constant rain background
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink');
     noise.loop = true;
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 1200;
-    
-    noise.connect(filter);
-    filter.connect(fadeGain);
-    
-    // Raindrops (random static pops)
-    const drop = () => {
-      if (!this.ctx || Math.random() > 0.6) return;
-      const osc = this.ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(400 + Math.random() * 800, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.05);
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'lowpass'; filter.frequency.value = 1000;
+    noise.connect(filter); filter.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start();
+    this.activeNodes.push(noise, filter, fadeGain);
 
-      const g = this.ctx.createGain();
-      g.gain.setValueAtTime(0, this.ctx.currentTime);
-      g.gain.linearRampToValueAtTime(0.3, this.ctx.currentTime + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
-
-      osc.connect(g);
-      g.connect(fadeGain);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.06);
-    }
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(drop, 150);
+    const interval = window.setInterval(() => {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        osc.frequency.setValueAtTime(800 + Math.random() * 1000, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200, this.ctx.currentTime + 0.05);
+        const g = this.ctx.createGain();
+        g.gain.setValueAtTime(0, this.ctx.currentTime);
+        g.gain.linearRampToValueAtTime(0.2, this.ctx.currentTime + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+        osc.connect(g); g.connect(fadeGain);
+        osc.start(); osc.stop(this.ctx.currentTime + 0.1);
+    }, 200);
     this.intervals.push(interval);
-    
-    noise.start();
-    this.activeNodes.push(noise, filter, fadeGain);
-  }
-
-  private playBrownNoise() {
-    if (!this.ctx || !this.masterGain) return;
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createBrownNoiseBuffer();
-    noise.loop = true;
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 200; // Deep rumble
-    const fadeGain = this.createSourceGain();
-    noise.connect(filter);
-    filter.connect(fadeGain);
-    fadeGain.connect(this.masterGain);
-    noise.start();
-    this.activeNodes.push(noise, filter, fadeGain);
   }
 
   private playOcean() {
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink');
     noise.loop = true;
-
-    // Wave modulation
-    const modOsc = this.ctx.createOscillator();
-    modOsc.type = 'sine';
-    modOsc.frequency.value = 0.15; // Slow waves
-
-    const modGain = this.ctx.createGain();
-    modGain.gain.value = 0.5; // Depth of modulation
-
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 350;
-
-    // Connect modulation to gain
-    const gainNode = this.ctx.createGain();
-    gainNode.gain.value = 0.5;
-
-    modOsc.connect(modGain);
-    modGain.connect(gainNode.gain);
-
-    noise.connect(filter);
-    filter.connect(gainNode);
-    gainNode.connect(fadeGain);
-    fadeGain.connect(this.masterGain);
-
-    noise.start();
-    modOsc.start();
-    this.activeNodes.push(noise, filter, modOsc, modGain, gainNode, fadeGain);
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'lowpass'; filter.frequency.value = 800;
+    const lfo = this.ctx!.createOscillator();
+    lfo.frequency.value = 0.12;
+    const lfoGain = this.ctx!.createGain();
+    lfoGain.gain.value = 400;
+    lfo.connect(lfoGain); lfoGain.connect(filter.frequency);
+    noise.connect(filter); filter.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start(); lfo.start();
+    this.activeNodes.push(noise, filter, lfo, lfoGain, fadeGain);
   }
 
-  private playHairDryer() {
-    if (!this.ctx || !this.masterGain) return;
-    const fadeGain = this.createSourceGain();
-
-    // Air flow
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
+  private playAppliance(type: 'hair_dryer' | 'fan') {
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('brown');
     noise.loop = true;
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 800;
-
-    // Motor whine
-    const osc1 = this.ctx.createOscillator(); // 50hz hum
-    osc1.type = 'sawtooth';
-    osc1.frequency.value = 50;
-    const osc2 = this.ctx.createOscillator(); // High whine
-    osc2.type = 'triangle';
-    osc2.frequency.value = 350;
-
-    const motorGain = this.ctx.createGain();
-    motorGain.gain.value = 0.1;
-
-    noise.connect(filter);
-    filter.connect(fadeGain);
-
-    osc1.connect(motorGain);
-    osc2.connect(motorGain);
-    motorGain.connect(fadeGain);
-
-    fadeGain.connect(this.masterGain);
-
-    noise.start();
-    osc1.start();
-    osc2.start();
-    this.activeNodes.push(noise, filter, osc1, osc2, motorGain, fadeGain);
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = type === 'hair_dryer' ? 300 : 150;
+    filter.Q.value = 0.5;
+    const osc = this.ctx!.createOscillator();
+    osc.type = 'triangle';
+    osc.frequency.value = type === 'hair_dryer' ? 120 : 60;
+    const oscGain = this.ctx!.createGain();
+    oscGain.gain.value = 0.2;
+    const fadeGain = this.createSourceGain();
+    noise.connect(filter); filter.connect(fadeGain);
+    osc.connect(oscGain); oscGain.connect(fadeGain);
+    fadeGain.connect(this.masterGain!);
+    noise.start(); osc.start();
+    this.activeNodes.push(noise, filter, osc, oscGain, fadeGain);
   }
 
   private playShush() {
-    if (!this.ctx || !this.masterGain) return;
-    const fadeGain = this.createSourceGain();
-
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink');
     noise.loop = true;
-
-    // Formant filter for "SH" sound
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 1500;
-    filter.Q.value = 3;
-
-    // Rhythmic envelope
-    const lfo = this.ctx.createOscillator();
-    lfo.type = 'sine';
-    lfo.frequency.value = 0.3; // Breath rate
-
-    const lfoGain = this.ctx.createGain();
-    lfoGain.gain.value = 0.5;
-
-    const shushGain = this.ctx.createGain();
-    shushGain.gain.value = 0.5;
-
-    lfo.connect(lfoGain);
-    lfoGain.connect(shushGain.gain);
-
-    noise.connect(filter);
-    filter.connect(shushGain);
-    shushGain.connect(fadeGain);
-    fadeGain.connect(this.masterGain);
-
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'bandpass'; filter.frequency.value = 2000; filter.Q.value = 2;
+    const env = this.ctx!.createGain();
+    const fadeGain = this.createSourceGain();
+    noise.connect(filter); filter.connect(env); env.connect(fadeGain); fadeGain.connect(this.masterGain!);
     noise.start();
-    lfo.start();
-    this.activeNodes.push(noise, filter, lfo, lfoGain, shushGain, fadeGain);
-  }
-
-  private playWaves() {
-    // This is now PINK NOISE
-    if (!this.ctx || !this.masterGain) return;
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
-    noise.loop = true;
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 1500; // Bright but not sharp
-    const fadeGain = this.createSourceGain();
-    noise.connect(filter);
-    filter.connect(fadeGain);
-    fadeGain.connect(this.masterGain);
-    noise.start();
-    this.activeNodes.push(noise, filter, fadeGain);
-  }
-
-  private playLullaby() {
-    if (!this.ctx || !this.masterGain) return;
-    const fadeGain = this.createSourceGain();
-    // Simple sine wave arpeggio
-    const melody = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63]; // C E G C G E
-    let noteIndex = 0;
-
-    const playNextNote = () => {
-      if (!this.ctx || !this.masterGain) return;
-      const note = melody[noteIndex % melody.length];
-      const osc = this.ctx.createOscillator();
-      osc.frequency.setValueAtTime(note, this.ctx.currentTime);
-      osc.type = 'sine';
-
-      const gain = this.ctx.createGain();
-      gain.gain.setValueAtTime(0, this.ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.2, this.ctx.currentTime + 0.1);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 1.5);
-
-      osc.connect(gain);
-      gain.connect(fadeGain);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 2);
-
-      noteIndex++;
-    };
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(playNextNote, 2000); // New note every 2s
-    playNextNote();
-
+    const interval = window.setInterval(() => {
+        const t = this.ctx!.currentTime;
+        env.gain.cancelScheduledValues(t);
+        env.gain.setTargetAtTime(0.8, t, 0.1);
+        env.gain.setTargetAtTime(0, t + 0.8, 0.4);
+    }, 2500);
     this.intervals.push(interval);
-    this.activeNodes.push(fadeGain);
-  }
-
-  // --- NEW SOUNDS SYNTHESIS ---
-
-  private playTrain() {
-    if (!this.ctx || !this.masterGain) return;
-    const fadeGain = this.createSourceGain();
-
-    // Rhythmic chugging: White noise bursts
-    const createChug = (time: number, accent: boolean) => {
-      if (!this.ctx) return;
-      const noise = this.ctx.createBufferSource();
-      noise.buffer = this.createPinkNoiseBuffer(); // Pink more distinct
-      const filter = this.ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 200;
-
-      const gain = this.ctx.createGain();
-      gain.gain.setValueAtTime(0, time);
-      gain.gain.linearRampToValueAtTime(accent ? 0.8 : 0.4, time + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.01, time + 0.2);
-
-      noise.connect(filter);
-      filter.connect(gain);
-      gain.connect(fadeGain);
-
-      noise.start(time);
-      noise.stop(time + 0.3);
-    };
-
-    const startChugLoop = () => {
-      if (!this.ctx) return;
-      const now = this.ctx.currentTime;
-      // Simple Quarter note rhythm: Chug Chug Chug Chug
-      createChug(now, true);
-      createChug(now + 0.25, false);
-      createChug(now + 0.5, false);
-      createChug(now + 0.75, false);
-    };
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(() => startChugLoop(), 1000);
-    startChugLoop();
-
-    this.intervals.push(interval);
-    this.activeNodes.push(fadeGain);
+    this.activeNodes.push(noise, filter, env, fadeGain);
   }
 
   private playCatPurr() {
-    // This is now CAR RIDE
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-
-    // Engine hum
-    const engine = this.ctx.createBufferSource();
-    engine.buffer = this.createBrownNoiseBuffer();
-    engine.loop = true;
-    
-    const engineFilter = this.ctx.createBiquadFilter();
-    engineFilter.type = 'lowpass';
-    engineFilter.frequency.value = 80; // Very deep
-    
-    const engineOsc = this.ctx.createOscillator();
-    engineOsc.type = 'sawtooth';
-    engineOsc.frequency.value = 40;
-    
-    const engineOscFilter = this.ctx.createBiquadFilter();
-    engineOscFilter.type = 'lowpass';
-    engineOscFilter.frequency.value = 150;
-    
-    const oscGain = this.ctx.createGain();
-    oscGain.gain.value = 0.2;
-
-    engine.connect(engineFilter);
-    engineFilter.connect(fadeGain);
-    
-    engineOsc.connect(engineOscFilter);
-    engineOscFilter.connect(oscGain);
-    oscGain.connect(fadeGain);
-    
-    fadeGain.connect(this.masterGain);
-
-    engine.start();
-    engineOsc.start();
-    this.activeNodes.push(engine, engineFilter, engineOsc, engineOscFilter, oscGain, fadeGain);
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('brown');
+    noise.loop = true;
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'lowpass'; filter.frequency.value = 100;
+    const am = this.ctx!.createOscillator();
+    am.frequency.value = 25;
+    const amGain = this.ctx!.createGain();
+    amGain.gain.value = 0.5;
+    const mainGain = this.ctx!.createGain();
+    am.connect(amGain); amGain.connect(mainGain.gain);
+    noise.connect(filter); filter.connect(mainGain); mainGain.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start(); am.start();
+    this.activeNodes.push(noise, filter, am, amGain, mainGain, fadeGain);
   }
 
   private playFireplace() {
-    // Crackling noise. Random bursts of high frequency noise over a low rumble.
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-
-    // 1. Rumble (Low Brown)
-    const rumble = this.ctx.createBufferSource();
-    rumble.buffer = this.createBrownNoiseBuffer();
+    const rumble = this.ctx!.createBufferSource();
+    rumble.buffer = this.createNoiseBuffer('brown');
     rumble.loop = true;
-    const rumbleFilter = this.ctx.createBiquadFilter();
-    rumbleFilter.type = 'lowpass';
-    rumbleFilter.frequency.value = 100;
-    const rumbleGain = this.ctx.createGain();
-    rumbleGain.gain.value = 0.8;
-    rumble.connect(rumbleFilter);
-    rumbleFilter.connect(rumbleGain);
-    rumbleGain.connect(fadeGain);
+    const rFilter = this.ctx!.createBiquadFilter();
+    rFilter.type = 'lowpass'; rFilter.frequency.value = 80;
+    rumble.connect(rFilter); rFilter.connect(fadeGain);
     rumble.start();
-
-    // 2. Crackles - Random click generator
-    // We can simulate this with Short bursts of noise
-    const createCrackle = () => {
-      if (!this.ctx) return;
-      if (Math.random() > 0.3) return; // Don't crackle always
-
-      const crack = this.ctx.createBufferSource();
-      crack.buffer = this.createNoiseBuffer(); // White
-
-      const cf = this.ctx.createBiquadFilter();
-      cf.type = 'highpass';
-      cf.frequency.value = 5000;
-
-      const cg = this.ctx.createGain();
-      cg.gain.setValueAtTime(0.5, this.ctx.currentTime);
-      cg.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.05);
-
-      crack.connect(cf);
-      cf.connect(cg);
-      cg.connect(fadeGain);
-      crack.start();
-      crack.stop(this.ctx.currentTime + 0.1);
-    }
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(createCrackle, 100);
-
+    const interval = window.setInterval(() => {
+        if (Math.random() > 0.3) return;
+        const osc = this.ctx!.createOscillator();
+        osc.frequency.setValueAtTime(2000 + Math.random() * 3000, this.ctx!.currentTime);
+        const g = this.ctx!.createGain();
+        g.gain.setValueAtTime(0, this.ctx!.currentTime);
+        g.gain.linearRampToValueAtTime(0.1, this.ctx!.currentTime + 0.005);
+        g.gain.exponentialRampToValueAtTime(0.001, this.ctx!.currentTime + 0.02);
+        osc.connect(g); g.connect(fadeGain);
+        osc.start(); osc.stop(this.ctx!.currentTime + 0.05);
+    }, 150);
+    fadeGain.connect(this.masterGain!);
     this.intervals.push(interval);
-    this.activeNodes.push(rumble, rumbleFilter, rumbleGain, fadeGain);
+    this.activeNodes.push(rumble, rFilter, fadeGain);
   }
 
   private playForest() {
-    // This is now VACUUM CLEANER
-    if (!this.ctx || !this.masterGain) return;
+    this.playPinkNoise();
     const fadeGain = this.createSourceGain();
-
-    // Broad noise
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = this.createPinkNoiseBuffer();
-    noise.loop = true;
-    
-    const noiseFilter = this.ctx.createBiquadFilter();
-    noiseFilter.type = 'bandpass';
-    noiseFilter.frequency.value = 400;
-    noiseFilter.Q.value = 0.5;
-
-    // Resonant motor whine
-    const osc = this.ctx.createOscillator();
-    osc.type = 'triangle';
-    osc.frequency.value = 280;
-
-    const oscGain = this.ctx.createGain();
-    oscGain.gain.value = 0.15;
-
-    noise.connect(noiseFilter);
-    noiseFilter.connect(fadeGain);
-    
-    osc.connect(oscGain);
-    oscGain.connect(fadeGain);
-    
-    fadeGain.connect(this.masterGain);
-
-    noise.start();
-    osc.start();
-    
-    this.activeNodes.push(noise, noiseFilter, osc, oscGain, fadeGain);
+    fadeGain.connect(this.masterGain!);
+    const bird = () => {
+        const t = this.ctx!.currentTime;
+        const osc = this.ctx!.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(3000 + Math.random() * 2000, t);
+        osc.frequency.exponentialRampToValueAtTime(2000, t + 0.1);
+        const g = this.ctx!.createGain();
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.05, t + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+        osc.connect(g); g.connect(fadeGain);
+        osc.start(t); osc.stop(t + 0.15);
+    };
+    const interval = window.setInterval(() => { if(Math.random() > 0.7) bird(); }, 2000);
+    this.intervals.push(interval);
+    this.activeNodes.push(fadeGain);
   }
 
   private playCrickets() {
-    // This is now STEADY HEARTBEAT
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-
-    const beat = () => {
-      if (!this.ctx) return;
-      const t = this.ctx.currentTime;
-      
-      const createThud = (time: number, isStrong: boolean) => {
-        if (!this.ctx) return;
-        const osc = this.ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(60, time);
-        osc.frequency.exponentialRampToValueAtTime(10, time + 0.15);
-  
-        const g = this.ctx.createGain();
-        g.gain.setValueAtTime(0, time);
-        g.gain.linearRampToValueAtTime(isStrong ? 0.8 : 0.4, time + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
-  
-        osc.connect(g);
-        g.connect(fadeGain);
-        osc.start(time);
-        osc.stop(time + 0.25);
-      };
-      
-      createThud(t, true);
-      createThud(t + 0.35, false);
-    }
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(beat, 1000); // 60 BPM
-    beat();
-
+    fadeGain.connect(this.masterGain!);
+    const chirp = () => {
+        const t = this.ctx!.currentTime;
+        for (let i = 0; i < 3; i++) {
+            const start = t + i * 0.05;
+            const osc = this.ctx!.createOscillator();
+            osc.frequency.value = 4500;
+            const g = this.ctx!.createGain();
+            g.gain.setValueAtTime(0, start);
+            g.gain.linearRampToValueAtTime(0.05, start + 0.01);
+            g.gain.exponentialRampToValueAtTime(0.001, start + 0.04);
+            osc.connect(g); g.connect(fadeGain);
+            osc.start(start); osc.stop(start + 0.05);
+        }
+    };
+    const interval = window.setInterval(() => { if(Math.random() > 0.5) chirp(); }, 1500);
     this.intervals.push(interval);
     this.activeNodes.push(fadeGain);
   }
 
   private playStream() {
-    // Filtered White/Pink noise, higher freq than river
-    if (!this.ctx || !this.masterGain) return;
-    this.playRain(); // Rain buffer is actually good for stream if we filter it higher
-    // But let's customize
+    const noise = this.ctx!.createBufferSource();
+    noise.buffer = this.createNoiseBuffer('pink');
+    noise.loop = true;
+    const filter = this.ctx!.createBiquadFilter();
+    filter.type = 'lowpass'; filter.frequency.value = 1500;
+    const fadeGain = this.createSourceGain();
+    noise.connect(filter); filter.connect(fadeGain); fadeGain.connect(this.masterGain!);
+    noise.start();
+    this.activeNodes.push(noise, filter, fadeGain);
   }
 
-  private playFan() {
-    this.playHairDryer(); // Similar enough
+  private playTrain() {
+    const fadeGain = this.createSourceGain();
+    fadeGain.connect(this.masterGain!);
+    const chug = (t: number, accent: boolean) => {
+        const noise = this.ctx!.createBufferSource();
+        noise.buffer = this.createNoiseBuffer('brown');
+        const filter = this.ctx!.createBiquadFilter();
+        filter.type = 'lowpass'; filter.frequency.value = 200;
+        const g = this.ctx!.createGain();
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(accent ? 0.4 : 0.2, t + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+        noise.connect(filter); filter.connect(g); g.connect(fadeGain);
+        noise.start(t); noise.stop(t + 0.3);
+    };
+    const interval = window.setInterval(() => {
+        const now = this.ctx!.currentTime;
+        chug(now, true); chug(now + 0.5, false);
+    }, 1000);
+    this.intervals.push(interval);
+    this.activeNodes.push(fadeGain);
+  }
+
+  private playLullaby() {
+    const fadeGain = this.createSourceGain();
+    fadeGain.connect(this.masterGain!);
+    const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+    let idx = 0;
+    const playNote = () => {
+        const t = this.ctx!.currentTime;
+        const osc = this.ctx!.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = notes[idx % notes.length];
+        const g = this.ctx!.createGain();
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.2, t + 0.1);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 1.8);
+        osc.connect(g); g.connect(fadeGain);
+        osc.start(t); osc.stop(t + 2);
+        idx++;
+    };
+    const interval = window.setInterval(playNote, 2000);
+    playNote();
+    this.intervals.push(interval);
+    this.activeNodes.push(fadeGain);
   }
 
   private playHeartbeatSound() {
-    // Reuse the heartbeat layer logic or just play it
-    if (!this.ctx || !this.masterGain) return;
     const fadeGain = this.createSourceGain();
-
-    const beat = () => {
-      if (!this.ctx) return;
-      const now = this.ctx.currentTime;
-
-      const osc = this.ctx.createOscillator();
-      osc.frequency.setValueAtTime(60, now);
-      osc.frequency.exponentialRampToValueAtTime(10, now + 0.1);
-
-      const g = this.ctx.createGain();
-      g.gain.setValueAtTime(0.5, now);
-      g.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
-
-      osc.connect(g);
-      g.connect(fadeGain);
-      osc.start(now);
-      osc.stop(now + 0.2);
+    fadeGain.connect(this.masterGain!);
+    const beat = (t: number, strong: boolean) => {
+        const osc = this.ctx!.createOscillator();
+        osc.frequency.setValueAtTime(60, t);
+        osc.frequency.exponentialRampToValueAtTime(10, t + 0.1);
+        const g = this.ctx!.createGain();
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(strong ? 0.6 : 0.3, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+        osc.connect(g); g.connect(fadeGain);
+        osc.start(t); osc.stop(t + 0.2);
     };
-
-    const doubleBeat = () => {
-      beat();
-      setTimeout(beat, 250); // Lub-Dub
-    }
-
-    fadeGain.connect(this.masterGain);
-    const interval = window.setInterval(doubleBeat, 1200);
-    doubleBeat();
-
+    const interval = window.setInterval(() => {
+        const now = this.ctx!.currentTime;
+        beat(now, true); beat(now + 0.3, false);
+    }, 1200);
     this.intervals.push(interval);
     this.activeNodes.push(fadeGain);
   }

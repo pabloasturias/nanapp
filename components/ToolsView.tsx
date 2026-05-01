@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTools } from '../services/hooks/useTools';
 import { useLanguage } from '../services/LanguageContext';
 import { ToolDefinition, ToolId } from './tools/types';
+import { ErrorBoundary } from './ErrorBoundary';
 import {
     Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils,
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
@@ -90,44 +91,62 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
     const availableToolsList = TOOLS_CONFIG.filter(tool => !activeTools.includes(tool.id));
 
     const renderToolContent = (toolId: ToolId) => {
-        switch (toolId) {
-            case 'breastfeeding': return <BreastfeedingFull onClose={handleCloseTool} />;
-            case 'bottle': return <BottleFull onClose={handleCloseTool} />;
-            case 'meds': return <MedsFull onClose={handleCloseTool} />;
-            case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
-            case 'growth': return <GrowthFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
-            case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
-            case 'vaccines': return <VaccinesFull onClose={handleCloseTool} />;
-            case 'teething': return <TeethingFull onClose={handleCloseTool} />;
-            case 'milestones': return <MilestonesFull onClose={handleCloseTool} />;
-            case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
-            case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
-            case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
-            default: return (
-                <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
-                    <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
-                    <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">Estamos trabajando en esta herramienta.</p>
-                </div>
-            );
-        }
+        return (
+            <ErrorBoundary fallbackTitle="Error en Herramienta">
+                {(() => {
+                    switch (toolId) {
+                        case 'breastfeeding': return <BreastfeedingFull onClose={handleCloseTool} />;
+                        case 'bottle': return <BottleFull onClose={handleCloseTool} />;
+                        case 'meds': return <MedsFull onClose={handleCloseTool} />;
+                        case 'medical_agenda': return <AgendaFull onClose={handleCloseTool} />;
+                        case 'growth': return <GrowthFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
+                        case 'pumping': return <PumpingFull onClose={handleCloseTool} />;
+                        case 'vaccines': return <VaccinesFull onClose={handleCloseTool} />;
+                        case 'teething': return <TeethingFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
+                        case 'milestones': return <MilestonesFull onClose={handleCloseTool} />;
+                        case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
+                        case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
+                        case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
+                        default: return (
+                            <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
+                                <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
+                                <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">Estamos trabajando en esta herramienta.</p>
+                            </div>
+                        );
+                    }
+                })()}
+            </ErrorBoundary>
+        );
     };
 
     const renderDashboardWidget = (id: ToolId) => {
-        switch (id) {
-            case 'breastfeeding': return <BreastfeedingDashboard />;
-            case 'bottle': return <BottleDashboard />;
-            case 'meds': return <MedsDashboard />;
-            case 'medical_agenda': return <AgendaDashboard />;
-            case 'growth': return <GrowthDashboard />;
-            case 'pumping': return <PumpingDashboard />;
-            case 'vaccines': return <VaccinesDashboard />;
-            case 'teething': return <TeethingDashboard />;
-            case 'milestones': return <MilestonesDashboard />;
-            case 'pediatrician_notes': return <NotesDashboard />;
-            case 'first_words': return <FirstWordsDashboard />;
-            case 'head_position': return <HeadPositionDashboard />;
-            default: return "--";
-        }
+        return (
+            <ErrorBoundary fallbackTitle="">
+                {(() => {
+                    switch (id) {
+                        case 'breastfeeding': return <BreastfeedingDashboard />;
+                        case 'bottle': return <BottleDashboard />;
+                        case 'meds': return <MedsDashboard />;
+                        case 'medical_agenda': return <AgendaDashboard />;
+                        case 'growth': return <GrowthDashboard />;
+                        case 'pumping': return <PumpingDashboard />;
+                        case 'vaccines': return <VaccinesDashboard />;
+                        case 'teething': return <TeethingDashboard />;
+                        case 'milestones': return <MilestonesDashboard />;
+                        case 'pediatrician_notes': return <NotesDashboard />;
+                        case 'first_words': return <FirstWordsDashboard />;
+                        case 'head_position': return <HeadPositionDashboard />;
+                        case 'solids': return <SolidsDashboard />;
+                        case 'diaper': return <DiaperDashboard />;
+                        case 'sleep': return <SleepDashboard />;
+                        case 'mama': return <MamaDashboard />;
+                        case 'routine': return <RoutineDashboard />;
+                        case 'endocrine': return <EndocrineDashboard />;
+                        default: return "--";
+                    }
+                })()}
+            </ErrorBoundary>
+        );
     };
 
     return (
