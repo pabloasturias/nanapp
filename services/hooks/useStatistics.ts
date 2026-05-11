@@ -22,7 +22,12 @@ export const useStatistics = () => {
         const savedStats = localStorage.getItem('nanapp_stats');
         if (savedStats) {
             try {
-                setStats(JSON.parse(savedStats));
+                const parsed = JSON.parse(savedStats);
+                setStats({
+                    ...INITIAL_STATS,
+                    ...parsed,
+                    soundUsage: parsed.soundUsage || {}
+                });
             } catch (e) {
                 console.error("Failed to parse stats", e);
             }

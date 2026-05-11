@@ -108,7 +108,7 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
 
                 {/* Special Tools (moved from ToolsView) */}
                 <div className="space-y-3">
-                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Guías Especiales</h3>
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">{t('academy_special_guides')}</h3>
                     <div 
                         onClick={() => handleOpenGuide('endocrine_info')}
                         className="bg-slate-900 border border-emerald-500/20 rounded-[2rem] p-5 flex items-center gap-4 hover:bg-slate-800 transition-all cursor-pointer relative overflow-hidden"
@@ -127,7 +127,7 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
 
                 {/* Standard Guides */}
                 <div className="space-y-3">
-                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Biblioteca de Padres</h3>
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">{t('academy_parents_library')}</h3>
                     <div className="grid grid-cols-1 gap-3">
                         {[
                             { id: 'sleep', title: 'guide_sleep_title', sub: 'guide_sleep_subtitle', color: 'from-blue-500/20 to-indigo-500/20', icon: Moon },
@@ -159,9 +159,9 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
                 <div className="p-6 rounded-[2.5rem] bg-indigo-600 text-white relative overflow-hidden mt-8 shadow-xl shadow-indigo-900/20">
                     <div className="relative z-10">
                         <Sparkles className="mb-3 text-indigo-200" size={24} />
-                        <h3 className="text-lg font-bold mb-1">El conocimiento es paz</h3>
+                        <h3 className="text-lg font-bold mb-1">{t('academy_inspiration_title')}</h3>
                         <p className="text-xs text-indigo-100/80 leading-relaxed">
-                            Aprende sobre el desarrollo de tu bebé para entender sus necesidades y disfrutar más de cada etapa.
+                            {t('academy_inspiration_desc')}
                         </p>
                     </div>
                     <BookOpen className="absolute -right-8 -bottom-8 text-white/10" size={160} />

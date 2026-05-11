@@ -497,14 +497,17 @@ const AppContent: React.FC = () => {
 };
 
 import { BabyProvider } from './services/BabyContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const App: React.FC = () => {
     return (
-        <LanguageProvider>
-            <BabyProvider>
-                <AppContent />
-            </BabyProvider>
-        </LanguageProvider>
+        <ErrorBoundary fallbackTitle="Error crítico de la App">
+            <LanguageProvider>
+                <BabyProvider>
+                    <AppContent />
+                </BabyProvider>
+            </LanguageProvider>
+        </ErrorBoundary>
     );
 }
 

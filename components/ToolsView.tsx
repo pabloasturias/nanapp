@@ -7,7 +7,8 @@ import {
     Baby, GlassWater, Layers, Moon, Pill, Ruler, Smile, Utensils,
     Timer, Droplets, Syringe, Thermometer, Activity, FileText, Trophy,
     Mic, Calendar, Circle, ChevronRight, Plus, SlidersHorizontal, X,
-    RotateCcw, ShieldCheck, BookOpen
+    RotateCcw, ShieldCheck, BookOpen, Heart, Trees, PawPrint, Flame,
+    Moon as MoonIcon, CloudRain, Wind, Activity as HeartbeatIcon
 } from 'lucide-react';
 
 // Widget Imports
@@ -28,6 +29,8 @@ import { FirstWordsDashboard, FirstWordsFull } from './tools/FirstWordsWidget';
 import { RoutineDashboard, RoutineFull } from './tools/RoutineWidget';
 import { HeadPositionDashboard, HeadPositionFull } from './tools/HeadPositionWidget';
 import { EndocrineDashboard, EndocrineFull } from './tools/EndocrineWidget';
+import { SleepDashboard, SleepFull } from './tools/SleepWidget';
+import { MamaDashboard, MamaFull } from './tools/MamaWidget';
 // Configuration for Core tools
 const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'breastfeeding', icon: Baby, translationKey: 'tool_breastfeeding', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
@@ -35,13 +38,19 @@ const TOOLS_CONFIG: ToolDefinition[] = [
     { id: 'meds', icon: Pill, translationKey: 'tool_meds', color: 'text-red-400', bgColor: 'bg-red-500/10' },
     { id: 'medical_agenda', icon: Calendar, translationKey: 'tool_medical_agenda', color: 'text-blue-500', bgColor: 'bg-blue-500/10' },
     { id: 'growth', icon: Ruler, translationKey: 'tool_growth', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
+    { id: 'sleep', icon: Moon, translationKey: 'tool_sleep', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
+    { id: 'diaper', icon: Layers, translationKey: 'tool_diaper', color: 'text-amber-400', bgColor: 'bg-amber-500/10' },
+    { id: 'solids', icon: Utensils, translationKey: 'tool_solids', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
+    { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
     { id: 'first_words', icon: Mic, translationKey: 'tool_first_words', color: 'text-fuchsia-400', bgColor: 'bg-fuchsia-500/10' },
     { id: 'teething', icon: Smile, translationKey: 'tool_teething', color: 'text-rose-400', bgColor: 'bg-rose-500/10' },
     { id: 'vaccines', icon: Syringe, translationKey: 'tool_vaccines', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
-    { id: 'pumping', icon: Droplets, translationKey: 'tool_pumping', color: 'text-violet-400', bgColor: 'bg-violet-500/10' },
-    { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
     { id: 'milestones', icon: Trophy, translationKey: 'tool_milestones', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
     { id: 'head_position', icon: RotateCcw, translationKey: 'tool_head_position', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
+    { id: 'routine', icon: Timer, translationKey: 'tool_routine', color: 'text-teal-400', bgColor: 'bg-teal-500/10' },
+    { id: 'endocrine', icon: ShieldCheck, translationKey: 'tool_endocrine', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
+    { id: 'mama', icon: Heart, translationKey: 'tool_mama', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
+    { id: 'pediatrician_notes', icon: FileText, translationKey: 'tool_pediatrician_notes', color: 'text-slate-400', bgColor: 'bg-slate-500/10' },
 ];
 
 
@@ -107,6 +116,12 @@ export const ToolsView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSett
                         case 'pediatrician_notes': return <NotesFull onClose={handleCloseTool} />;
                         case 'first_words': return <FirstWordsFull onClose={handleCloseTool} />;
                         case 'head_position': return <HeadPositionFull onClose={handleCloseTool} onOpenSettings={onOpenSettings} />;
+                        case 'solids': return <SolidsFull onClose={handleCloseTool} />;
+                        case 'diaper': return <DiaperFull onClose={handleCloseTool} />;
+                        case 'sleep': return <SleepFull onClose={handleCloseTool} />;
+                        case 'mama': return <MamaFull onClose={handleCloseTool} />;
+                        case 'routine': return <RoutineFull onClose={handleCloseTool} />;
+                        case 'endocrine': return <EndocrineFull onClose={handleCloseTool} />;
                         default: return (
                             <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
                                 <p className="text-slate-400 text-lg mb-2">Próximamente...</p>

@@ -303,8 +303,8 @@ const newKeys = {
 let content = fs.readFileSync(TRANSLATIONS_FILE, 'utf-8');
 
 for (const lang of Object.keys(newKeys)) {
-  const marker = new RegExp("(\\\\s*" + lang + ":\\\\s*\\\\{)");
-  content = content.replace(marker, \`$1\n\${newKeys[lang]},\`);
+  const marker = new RegExp("(\\s*" + lang + ":\\s*\\{)");
+  content = content.replace(marker, "$1\n" + newKeys[lang] + ",");
 }
 
 fs.writeFileSync(TRANSLATIONS_FILE, content, 'utf-8');

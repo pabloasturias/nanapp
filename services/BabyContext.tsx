@@ -34,15 +34,14 @@ export const BabyProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             if (savedBabies) {
                 const parsed = JSON.parse(savedBabies);
-                setBabies(parsed);
+                if (Array.isArray(parsed)) {
+                    setBabies(parsed);
 
-                // If we have an active ID saved and it exists, use it.
-                // Else if babies exist, pick first.
-                // Else null.
-                if (savedActiveId && parsed.some((b: BabyProfile) => b.id === savedActiveId)) {
-                    setActiveBabyId(savedActiveId);
-                } else if (parsed.length > 0) {
-                    setActiveBabyId(parsed[0].id);
+                    if (savedActiveId && parsed.some((b: BabyProfile) => b.id === savedActiveId)) {
+                        setActiveBabyId(savedActiveId);
+                    } else if (parsed.length > 0) {
+                        setActiveBabyId(parsed[0].id);
+                    }
                 }
             } else {
                 // Initialize with default empty baby if none exists? 

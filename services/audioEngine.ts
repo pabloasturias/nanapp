@@ -52,6 +52,36 @@ export class AudioEngine {
     this.fadeTime = Math.max(0.1, seconds);
   }
 
+  public toggleHeartbeatLayer(active: boolean) {
+    this.isHeartbeatLayerActive = active;
+    if (active) {
+      if (!this.heartbeatInterval) {
+        this.heartbeatInterval = window.setInterval(() => {
+          if (this.ctx && this.masterGain && this.currentSound) {
+            const now = this.ctx.currentTime;
+            const beat = (t: number, strong: boolean) => {
+              const osc = this.ctx!.createOscillator();
+              osc.frequency.setValueAtTime(60, t);
+              osc.frequency.exponentialRampToValueAtTime(10, t + 0.1);
+              const g = this.ctx!.createGain();
+              g.gain.setValueAtTime(0, t);
+              g.gain.linearRampToValueAtTime(strong ? 0.3 : 0.15, t + 0.02);
+              g.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+              osc.connect(g); g.connect(this.masterGain!);
+              osc.start(t); osc.stop(t + 0.2);
+            };
+            beat(now, true); beat(now + 0.3, false);
+          }
+        }, 1200);
+      }
+    } else {
+      if (this.heartbeatInterval) {
+        clearInterval(this.heartbeatInterval);
+        this.heartbeatInterval = null;
+      }
+    }
+  }
+
   public stopAll(fadeOut = true, longFade = false) {
     const duration = longFade ? 10 : this.fadeTime;
     const now = this.ctx?.currentTime || 0;

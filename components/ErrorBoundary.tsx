@@ -32,8 +32,14 @@ export class ErrorBoundary extends Component<Props, State> {
             <AlertTriangle size={24} />
           </div>
           <div>
-            <h3 className="text-white font-bold">{this.props.fallbackTitle || 'Algo salió mal'}</h3>
-            <p className="text-xs text-slate-400 mt-1">Este componente ha fallado, pero el resto de la app sigue funcionando.</p>
+            <h3 className="text-white font-bold text-lg mb-2">{this.props.fallbackTitle || 'Error Crítico'}</h3>
+            <p className="text-sm text-slate-300">
+              Estamos experimentando un problema técnico.
+            </p>
+            <p className="text-sm text-slate-400 mt-2">
+              Por favor, espera un momento mientras nuestro equipo lo soluciona.
+            </p>
+            {/* Ocultamos el error técnico a la vista del usuario, pero podemos mantenerlo en consola */}
           </div>
           <button 
             onClick={() => this.setState({ hasError: false })}

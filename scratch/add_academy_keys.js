@@ -1,0 +1,180 @@
+import fs from 'fs';
+
+const TRANSLATIONS_FILE = './services/translations.ts';
+
+const extraKeys = {
+  es: `
+    academy_special_guides: "Guías Especiales",
+    academy_parents_library: "Biblioteca de Padres",
+    academy_inspiration_title: "El conocimiento es paz",
+    academy_inspiration_desc: "Aprende sobre el desarrollo de tu bebé para entender sus necesidades y disfrutar más de cada etapa.",
+    academy_coming_soon: "Próximamente...",
+    academy_coming_soon_desc: "Esta guía estará disponible pronto en la versión Pro.",
+    academy_disclaimer: "Toda la información contenida en esta academia es de carácter divulgativo y no sustituye en ningún caso el consejo médico profesional. Ante cualquier duda o síntoma, consulta siempre con el pediatra de tu bebé.",
+
+    guide_cpr_title: "Seguridad y RCP",
+    guide_cpr_subtitle: "Prevención y primeros auxilios",
+    cpr_intro: "Estar preparado salva vidas. Aprender primeros auxilios infantiles es fundamental para la tranquilidad de los padres.",
+    cpr_choking_title: "Atragantamiento",
+    cpr_choking_desc: "Si tose, anímale a seguir tosiendo. Si no tose, no llora o se pone morado:",
+    cpr_choking_step_1: "Llama al 112 inmediatamente.",
+    cpr_choking_step_2: "Colócalo boca abajo sobre tu antebrazo, sujetando la mandíbula.",
+    cpr_choking_step_3: "Da 5 palmadas secas entre los omóplatos con el talón de la mano.",
+    cpr_choking_step_4: "Gíralo y da 5 compresiones en el centro del pecho con dos dedos.",
+    cpr_cpr_title: "Reanimación (RCP)",
+    cpr_cpr_desc: "Si el bebé no respira o no responde a estímulos:",
+    cpr_cpr_ratio: "Ritmo: 30 compresiones / 2 ventilaciones",
+    cpr_cpr_step_1: "Inicia con 5 ventilaciones de rescate (boca a boca-nariz).",
+    cpr_cpr_step_2: "Haz 30 compresiones con 2 dedos en el centro del pecho.",
+    cpr_cpr_step_3: "Continúa con ciclos de 2 ventilaciones cortas y 30 compresiones.",
+    cpr_emergency_title: "Teléfono de Emergencias",
+    cpr_emergency_desc: "Mantén la calma y responde a las preguntas del operador.",
+    cpr_disclaimer: "Esta guía es solo un recordatorio rápido. Se recomienda encarecidamente realizar un curso práctico presencial de primeros auxilios pediátricos.",
+
+    guide_babywearing_title: "Porteo Ergonómico",
+    guide_babywearing_subtitle: "Beneficios físicos y emocionales",
+    babywearing_intro: "El porteo recrea la seguridad del útero. Es la herramienta de crianza más potente para calmar el llanto.",
+    babywearing_rules_title: "Reglas de Oro (Seguridad)",
+    babywearing_rules_desc: "Para que el porteo sea seguro, verifica siempre:",
+    babywearing_rule_1: "Vías respiratorias despejadas: La barbilla no debe tocar el pecho del bebé.",
+    babywearing_rule_2: "A la altura de los besos: Debes poder besar su cabecita sin esfuerzo.",
+    babywearing_rule_3: "Espalda en 'C': Respetando su curvatura natural.",
+    babywearing_rule_4: "Piernas en 'M' (Ranita): Rodillas más altas que el culete.",
+    babywearing_benefits_title: "Beneficios Demostrados",
+    babywearing_benefits_desc: "No lo vas a 'malacostumbrar', los bebés nacen necesitando contacto físico.",
+    babywearing_benefit_1: "Reduce los cólicos y el reflujo (postura erguida).",
+    babywearing_benefit_2: "Favorece el desarrollo óptimo de la cadera.",
+    babywearing_benefit_3: "Disminuye el llanto en un 43% de media.",
+    babywearing_disclaimer: "Si tienes dudas sobre el ajuste de tu mochila o fular, consulta con una Asesora de Porteo certificada.",
+
+    guide_blw_title: "BLW y Alérgenos",
+    guide_blw_subtitle: "Introducción segura a sólidos",
+    blw_intro: "El Baby-Led Weaning permite que el bebé descubra texturas, sabores y colores a su propio ritmo.",
+    blw_rules_title: "Requisitos para Empezar (6 meses)",
+    blw_rules_desc: "El bebé debe cumplir TODOS estos hitos antes de ofrecer sólidos:",
+    blw_rule_1: "Se mantiene sentado sin apoyo.",
+    blw_rule_2: "Ha perdido el reflejo de extrusión (no escupe todo con la lengua).",
+    blw_rule_3: "Muestra interés activo por la comida de los adultos.",
+    blw_allergens_title: "Alérgenos Principales",
+    blw_allergens_desc: "Introdúcelos de uno en uno durante 3 días seguidos (preferiblemente por la mañana):",
+    blw_allergen_1: "Huevo (cocinado completamente)",
+    blw_allergen_2: "Cacahuete (en crema o polvo, NUNCA entero)",
+    blw_allergen_3: "Lácteos (yogur natural o queso sin sal)",
+    blw_allergen_4: "Gluten y Pescado",
+    blw_choking_title: "Gagging vs Atragantamiento",
+    blw_choking_desc: "El 'gagging' (arcada) es un reflejo de seguridad normal. Toserá y se pondrá rojo. NO intervengas, anímale. Si se atraganta de verdad, no hará ruido (silencio) y se pondrá morado.",
+    blw_disclaimer: "Consulta siempre al pediatra antes de iniciar la alimentación complementaria.",
+
+    guide_signing_title: "Baby Signing",
+    guide_signing_subtitle: "Comunicación temprana",
+    signing_intro: "Los bebés pueden comunicarse con las manos meses antes de poder hablar. Reduce la frustración significativamente.",
+    signing_how_title: "¿Cómo empezar?",
+    signing_how_desc: "Empieza a los 6-8 meses. Usa la palabra y el signo a la vez, siempre en contexto.",
+    signing_word_1_title: "Leche",
+    signing_word_1_desc: "Abrir y cerrar el puño repetidamente (como ordeñar).",
+    signing_word_2_title: "Más",
+    signing_word_2_desc: "Juntar las puntas de los dedos de ambas manos.",
+    signing_word_3_title: "Comer",
+    signing_word_3_desc: "Llevar la mano cerrada en pinza hacia la boca.",
+    signing_word_4_title: "Dormir / Cama",
+    signing_word_4_desc: "Juntar palmas y apoyar la mejilla sobre ellas.",
+    signing_benefits_title: "Beneficios",
+    signing_benefits_desc: "El uso de signos tempranos acelera el desarrollo del lenguaje hablado y refuerza el vínculo.",
+    signing_disclaimer: "La clave es la constancia y la repetición. No te frustres si tarda semanas en devolver el primer signo."
+  `,
+  en: `
+    academy_special_guides: "Special Guides",
+    academy_parents_library: "Parents Library",
+    academy_inspiration_title: "Knowledge is peace",
+    academy_inspiration_desc: "Learn about your baby's development to understand their needs and enjoy every stage.",
+    academy_coming_soon: "Coming soon...",
+    academy_coming_soon_desc: "This guide will be available soon in the Pro version.",
+    academy_disclaimer: "All information contained in this academy is for educational purposes only and does not replace professional medical advice. If you have any doubts or symptoms, always consult your baby's pediatrician.",
+
+    guide_cpr_title: "Safety & CPR",
+    guide_cpr_subtitle: "Prevention and first aid",
+    cpr_intro: "Being prepared saves lives. Learning infant first aid is fundamental for parents' peace of mind.",
+    cpr_choking_title: "Choking",
+    cpr_choking_desc: "If coughing, encourage them to keep coughing. If they are silent or turning blue:",
+    cpr_choking_step_1: "Call Emergency Services (911/112) immediately.",
+    cpr_choking_step_2: "Place them face down along your forearm, supporting the jaw.",
+    cpr_choking_step_3: "Give 5 firm back blows between the shoulder blades.",
+    cpr_choking_step_4: "Turn them over and give 5 chest thrusts with two fingers.",
+    cpr_cpr_title: "Resuscitation (CPR)",
+    cpr_cpr_desc: "If the baby is not breathing or unresponsive:",
+    cpr_cpr_ratio: "Ratio: 30 compressions / 2 breaths",
+    cpr_cpr_step_1: "Start with 5 initial rescue breaths (mouth over nose and mouth).",
+    cpr_cpr_step_2: "Give 30 compressions with 2 fingers in the center of the chest.",
+    cpr_cpr_step_3: "Continue with cycles of 2 breaths and 30 compressions.",
+    cpr_emergency_title: "Emergency Services",
+    cpr_emergency_desc: "Stay calm and answer the operator's questions.",
+    cpr_disclaimer: "This guide is a quick reminder only. Attending a practical infant first aid course is highly recommended.",
+
+    guide_babywearing_title: "Ergonomic Babywearing",
+    guide_babywearing_subtitle: "Physical & emotional benefits",
+    babywearing_intro: "Babywearing recreates the security of the womb. It's the most powerful parenting tool to soothe crying.",
+    babywearing_rules_title: "Golden Rules (Safety)",
+    babywearing_rules_desc: "For safe babywearing, always check:",
+    babywearing_rule_1: "Clear airways: Chin should not rest on their chest.",
+    babywearing_rule_2: "Close enough to kiss: You should easily kiss their head.",
+    babywearing_rule_3: "C-shaped spine: Respecting their natural curve.",
+    babywearing_rule_4: "M-position legs: Knees higher than their bottom.",
+    babywearing_benefits_title: "Proven Benefits",
+    babywearing_benefits_desc: "You won't 'spoil' them; babies are born needing physical contact.",
+    babywearing_benefit_1: "Reduces colic and reflux (upright posture).",
+    babywearing_benefit_2: "Promotes optimal hip development.",
+    babywearing_benefit_3: "Decreases crying by 43% on average.",
+    babywearing_disclaimer: "If you have doubts about your carrier fit, consult a certified babywearing educator.",
+
+    guide_blw_title: "BLW & Allergens",
+    guide_blw_subtitle: "Safe introduction to solids",
+    blw_intro: "Baby-Led Weaning allows the baby to discover textures, flavors, and colors at their own pace.",
+    blw_rules_title: "Requirements to Start (6 mo)",
+    blw_rules_desc: "Baby must meet ALL these milestones before offering solids:",
+    blw_rule_1: "Sits up independently without support.",
+    blw_rule_2: "Has lost the extrusion reflex (doesn't push food out).",
+    blw_rule_3: "Shows active interest in adult food.",
+    blw_allergens_title: "Major Allergens",
+    blw_allergens_desc: "Introduce one at a time for 3 consecutive days (preferably mornings):",
+    blw_allergen_1: "Egg (fully cooked)",
+    blw_allergen_2: "Peanut (thinned butter or powder, NEVER whole)",
+    blw_allergen_3: "Dairy (plain yogurt or salt-free cheese)",
+    blw_allergen_4: "Wheat and Fish",
+    blw_choking_title: "Gagging vs Choking",
+    blw_choking_desc: "Gagging is a normal safety reflex. They will cough and turn red. Do NOT intervene, encourage them. Choking is silent and they turn blue.",
+    blw_disclaimer: "Always consult your pediatrician before starting complementary feeding.",
+
+    guide_signing_title: "Baby Signing",
+    guide_signing_subtitle: "Early communication",
+    signing_intro: "Babies can communicate with their hands months before speaking. It significantly reduces frustration.",
+    signing_how_title: "How to Start?",
+    signing_how_desc: "Start around 6-8 months. Use the word and sign simultaneously, in context.",
+    signing_word_1_title: "Milk",
+    signing_word_1_desc: "Open and close the fist repeatedly (like milking).",
+    signing_word_2_title: "More",
+    signing_word_2_desc: "Tap the fingertips of both hands together.",
+    signing_word_3_title: "Eat",
+    signing_word_3_desc: "Bring pinched fingers to the mouth.",
+    signing_word_4_title: "Sleep / Bed",
+    signing_word_4_desc: "Press palms together and rest cheek on them.",
+    signing_benefits_title: "Benefits",
+    signing_benefits_desc: "Using early signs accelerates spoken language development and strengthens the bond.",
+    signing_disclaimer: "Consistency and repetition are key. Don't get frustrated if it takes weeks to see the first sign."
+  `
+};
+
+// Copy other languages from English or Spanish just to not break them
+extraKeys.fr = extraKeys.en;
+extraKeys.de = extraKeys.en;
+extraKeys.it = extraKeys.en;
+extraKeys.pt = extraKeys.en;
+
+let content = fs.readFileSync(TRANSLATIONS_FILE, 'utf-8');
+
+for (const lang of Object.keys(extraKeys)) {
+  const marker = new RegExp("(\\s*" + lang + ":\\s*\\{)");
+  content = content.replace(marker, "$1\n" + extraKeys[lang] + ",");
+}
+
+fs.writeFileSync(TRANSLATIONS_FILE, content, 'utf-8');
+console.log("Academy missing translations successfully added.");

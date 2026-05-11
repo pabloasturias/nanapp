@@ -9,7 +9,13 @@ export const useTools = () => {
     const [activeTools, setActiveTools] = useState<ToolId[]>(() => {
         try {
             const saved = localStorage.getItem(STORAGE_KEY_ACTIVE_TOOLS);
-            return saved ? JSON.parse(saved) : DEFAULT_TOOLS;
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) {
+                    return parsed;
+                }
+            }
+            return DEFAULT_TOOLS;
         } catch (e) {
             console.error('Error loading tools', e);
             return DEFAULT_TOOLS;

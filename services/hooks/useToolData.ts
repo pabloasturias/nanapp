@@ -7,7 +7,13 @@ export const useToolData = <T extends { timestamp: number }>(toolId: ToolId) => 
     const [logs, setLogs] = useState<T[]>(() => {
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
-            return saved ? JSON.parse(saved) : [];
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) {
+                    return parsed;
+                }
+            }
+            return [];
         } catch (e) {
             console.error(`Error loading data for ${toolId}`, e);
             return [];
