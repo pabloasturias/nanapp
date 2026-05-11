@@ -152,10 +152,7 @@ export const translations = {
     guide_safety_subtitle: "Prevención y primeros auxilios",
     guide_babywear_title: "Porteo Ergonómico",
     guide_babywear_subtitle: "Beneficios físicos y emocionales",
-    guide_blw_title: "BLW y Alérgenos",
-    guide_blw_subtitle: "Introducción segura a sólidos",
-    guide_signing_title: "Baby Signing",
-    guide_signing_subtitle: "Comunicación temprana",
+
     stats_subtitle: "Tu descanso en números",
     stats_total_time: "Tiempo Total",
     stats_sessions: "Sesiones",
@@ -710,10 +707,7 @@ export const translations = {
     guide_safety_subtitle: "Prevention and first aid",
     guide_babywear_title: "Babywearing",
     guide_babywear_subtitle: "Ergonomic carrying",
-    guide_blw_title: "BLW & Allergens",
-    guide_blw_subtitle: "Safe introduction to solids",
-    guide_signing_title: "Baby Signing",
-    guide_signing_subtitle: "Early communication",
+
     stats_subtitle: "Your sleep journey",
     stats_total_time: "Total Time",
     stats_sessions: "Sessions",
