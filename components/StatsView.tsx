@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useStatistics } from '../services/hooks/useStatistics';
 import { useLanguage } from '../services/LanguageContext';
 import { useToolData } from '../services/hooks/useToolData';
-import { ArrowLeft, Clock, Play, Trophy, Activity, Moon, GlassWater, Ruler, Layers } from 'lucide-react';
+import { ArrowLeft, Clock, Play, Trophy, Activity, Moon, GlassWater, Ruler, Layers, Baby } from 'lucide-react';
 import { SOUNDS } from '../constants';
 import { BottleLog, SleepLog, DiaperLog, GrowthLog, BreastfeedingLog } from './tools/types';
 
