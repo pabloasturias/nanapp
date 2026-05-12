@@ -14,7 +14,7 @@ export const EndocrineDashboard: React.FC = () => {
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
                 </div>
             </div>
-            <span className="text-[10px] opacity-70">Disruptores</span>
+            <span className="text-[10px] opacity-70">{t('endo_disruptors' as any)}</span>
         </div>
     );
 };
@@ -131,17 +131,17 @@ export const EndocrineFull: React.FC<{ onClose: () => void }> = ({ onClose }) =>
 
                 {/* Traffic Light Section */}
                 <div className="space-y-4">
-                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">Semáforo de Ingredientes</h3>
+                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest px-1">{t('endo_traffic_light' as any)}</h3>
                     <div className="grid grid-cols-1 gap-2">
                         {[
-                            { name: 'Parabenos / Ftalatos', risk: 'high', label: 'Evitar siempre' },
-                            { name: 'Fragancias / Perfumes', risk: 'medium', label: 'Usar con cautela' },
-                            { name: 'Aceites Minerales', risk: 'low', label: 'Seguro / Recomendado' }
+                            { name: t('endo_ing_1' as any), risk: 'high', label: t('endo_ing_1_desc' as any) },
+                            { name: t('endo_ing_2' as any), risk: 'medium', label: t('endo_ing_2_desc' as any) },
+                            { name: t('endo_ing_3' as any), risk: 'low', label: t('endo_ing_3_desc' as any) }
                         ].map((ing, i) => (
                             <div key={i} className="flex items-center justify-between p-4 bg-slate-900 border border-white/5 rounded-2xl">
-                                <span className="text-sm font-bold text-slate-200">{ing.name}</span>
+                                <span className="text-sm font-bold text-slate-200">{ing.name as string}</span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-[10px] font-bold text-slate-500 uppercase">{ing.label}</span>
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase">{ing.label as string}</span>
                                     <div className={`w-3 h-3 rounded-full ${ing.risk === 'high' ? 'bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.5)]' : ing.risk === 'medium' ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]'}`}></div>
                                 </div>
                             </div>
@@ -157,9 +157,9 @@ export const EndocrineFull: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                     </h3>
                     <div className="space-y-3">
                         {[
-                            { from: 'Botes de plástico', to: 'Vidrio o Acero Inox' },
-                            { from: 'Fragancias sintéticas', to: 'Sin perfume / Natural' },
-                            { from: 'Ropa sintética', to: 'Algodón Orgánico' }
+                            { from: t('endo_swap_1_from' as any), to: t('endo_swap_1_to' as any) },
+                            { from: t('endo_swap_2_from' as any), to: t('endo_swap_2_to' as any) },
+                            { from: t('endo_swap_3_from' as any), to: t('endo_swap_3_to' as any) }
                         ].map((swap, i) => (
                             <div key={i} className="flex items-center gap-3 bg-slate-950 p-3 rounded-xl border border-white/5">
                                 <div className="flex-1 text-xs text-rose-400 line-through opacity-50">{swap.from}</div>
@@ -174,10 +174,10 @@ export const EndocrineFull: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                 <div className="pt-4 pb-8">
                     <button className="w-full py-5 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-[2rem] flex items-center justify-center gap-3 text-white font-bold text-lg shadow-xl shadow-emerald-900/40 active:scale-[0.98] transition-all group">
                         <Search className="group-hover:scale-110 transition-transform" />
-                        Simular Escáner
+                        {t('endo_scan_btn' as any)}
                         <Sparkles size={16} className="animate-pulse" />
                     </button>
-                    <p className="text-[10px] text-slate-600 text-center mt-4 uppercase font-bold tracking-widest">Analiza la composición en segundos</p>
+                    <p className="text-[10px] text-slate-600 text-center mt-4 uppercase font-bold tracking-widest">{t('endo_scan_desc' as any)}</p>
                 </div>
 
                 <div className="text-center px-4">

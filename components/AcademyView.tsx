@@ -56,8 +56,8 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
             case 'signing': return <SigningGuide onClose={handleCloseGuide} />;
             default: return (
                 <div className="p-8 text-center flex flex-col items-center justify-center h-full opacity-60">
-                    <p className="text-slate-400 text-lg mb-2">Próximamente...</p>
-                    <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">Esta guía estará disponible pronto en la versión Pro.</p>
+                    <p className="text-slate-400 text-lg mb-2">{t('academy_soon_title' as any)}</p>
+                    <p className="text-xs text-slate-600 max-w-[200px] leading-relaxed">{t('academy_soon_desc' as any)}</p>
                 </div>
             );
         }
@@ -91,7 +91,7 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
                     </div>
                     <div>
                         <h2 className="text-2xl font-bold text-white font-['Quicksand']">{t('tab_academy')}</h2>
-                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Pequeña Sabiduría</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{t('academy_wisdom' as any)}</p>
                     </div>
                 </div>
             </div>
