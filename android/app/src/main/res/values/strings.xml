@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Nanapp</string>
+    <string name="title_activity_main">Nanapp</string>
+    <string name="package_name">com.pabloasturias.nanapp</string>
+    <string name="custom_url_scheme">com.pabloasturias.nanapp</string>
+</resources>
