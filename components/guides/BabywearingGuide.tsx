@@ -44,9 +44,9 @@ export const BabywearingGuide: React.FC<{ onClose: () => void }> = ({ onClose })
                             </p>
                             <div className="space-y-3">
                                 {[
-                                    { title: "Forma de 'M'", text: t('wearing_ergo_m') },
-                                    { title: "Espalda en 'C'", text: t('wearing_ergo_c') },
-                                    { title: "Vías Altas", text: t('wearing_ergo_kiss') }
+                                    { title: t('wearing_ergo_m_title' as any), text: t('wearing_ergo_m' as any) },
+                                    { title: t('wearing_ergo_c_title' as any), text: t('wearing_ergo_c' as any) },
+                                    { title: t('wearing_ergo_kiss_title' as any), text: t('wearing_ergo_kiss' as any) }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-3 bg-slate-950 p-3 rounded-xl border border-white/5">
                                         <div className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center shrink-0">
