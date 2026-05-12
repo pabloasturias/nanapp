@@ -18,8 +18,8 @@ export const BabywearingGuide: React.FC<{ onClose: () => void }> = ({ onClose })
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-xl font-bold text-white font-['Quicksand'] tracking-tight">{t('guide_babywearing_title')}</h2>
-                    <p className="text-xs font-bold text-teal-400 uppercase tracking-widest mt-1">{t('guide_babywearing_subtitle')}</p>
+                    <h2 className="text-xl font-bold text-white font-['Quicksand'] tracking-tight">{t('guide_babywear_title')}</h2>
+                    <p className="text-xs font-bold text-teal-400 uppercase tracking-widest mt-1">{t('guide_babywear_subtitle')}</p>
                 </div>
                 <p className="text-sm text-slate-400 max-w-sm mx-auto leading-relaxed">
                     {t('wearing_intro')}

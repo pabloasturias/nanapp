@@ -50,8 +50,8 @@ export const AcademyView: React.FC<{ onOpenSettings: () => void }> = ({ onOpenSe
             case 'endocrine_info': return <EndocrineFull onClose={handleCloseGuide} />;
             case 'sleep': return <SleepGuide onClose={handleCloseGuide} />;
             case 'mental': return <MentalGuide onClose={handleCloseGuide} />;
-            case 'cpr': return <CprGuide onClose={handleCloseGuide} />;
-            case 'babywearing': return <BabywearingGuide onClose={handleCloseGuide} />;
+            case 'safety': return <CprGuide onClose={handleCloseGuide} />;
+            case 'babywear': return <BabywearingGuide onClose={handleCloseGuide} />;
             case 'blw': return <BlwGuide onClose={handleCloseGuide} />;
             case 'signing': return <SigningGuide onClose={handleCloseGuide} />;
             default: return (
